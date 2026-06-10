@@ -2,193 +2,240 @@
 <html lang="hr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tandara Genealogy</title>
+<title>Tandara – Rodoslovlje</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Calibri, Arial, sans-serif;
-        display: flex;
-    }
+body {
+    margin: 0;
+    font-family: Calibri, sans-serif;
+    background: #f2f2f2;
+}
 
-    /* Lijevi stupac */
-    #left {
-        width: 280px;
-        background: #f2f2f2;
-        padding: 20px;
-        overflow-y: auto;
-        border-right: 1px solid #ccc;
-        box-sizing: border-box;
-        text-align: center;
-    }
+.container {
+    display: flex;
+    height: 100vh;
+}
 
-    /* Ikona kućice */
-    #homeicon {
-        width: 60px;
-        cursor: pointer;
-        margin-bottom: 20px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+/* Lijeva kolona */
+.sidebar {
+    width: 320px;
+    background: #1e1e1e;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+}
 
-    /* Desni stupac */
-    #right {
-        flex: 1;
-        background-image: url("Family tree Tandara.png");
-        background-size: contain;
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-color: #fff;
-        padding: 20px 40px 40px 40px;
-        overflow-y: auto;
-        box-sizing: border-box;
-        position: relative;
-        min-height: 100vh;
-    }
+.sidebar h2 {
+    margin-top: 25px;
+    font-size: 20px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+}
 
-    /* Tvoja slika – pomiče se sa sadržajem */
-    .portrait {
-        width: 180px;
-        float: right;
-        margin-left: 20px;
-        margin-bottom: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 8px rgba(0,0,0,0.4);
-    }
+.sidebar a {
+    display: block;
+    color: #ddd;
+    padding: 4px 0;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-    /* Poluprozirna kutija */
-    .box {
-        background: rgba(255, 248, 230, 0.92);
-        padding: 40px;
-        width: 85%;
-        margin-top: 40px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
+.sidebar a:hover {
+    color: #fff;
+}
 
-    .flag {
-        width: 40px;
-        margin-bottom: 10px;
-        display: block;
-    }
+/* Ikone */
+.icon {
+    width: 28px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
 
-    .menu-item {
-        cursor: pointer;
-        padding: 6px 0;
-        font-size: 17px;
-        color: #333;
-        text-align: left;
-    }
+/* Desni sadržaj */
+.content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-image: url('pozadina.jpg');
+    background-size: cover;
+    background-position: center;
+}
 
-    .menu-item:hover {
-        color: #0066cc;
-    }
+/* Sekcije (stranice) */
+.section {
+    display: none;
+    background: rgba(255,255,255,0.85);
+    padding: 30px;
+    border-radius: 10px;
+}
 
-    .section {
-        display: none;
-        position: relative;
-    }
-
-    h1, h2, h3, p {
-        margin-bottom: 18px;
-    }
+.page-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto 20px auto;
+}
 </style>
 
 <script>
-function showSection(id) {
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    const el = document.getElementById(id);
-    if (el) el.style.display = "block";
+function showPage(id) {
+    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
 }
 </script>
 
 </head>
 <body>
 
-<!-- LIJEVI STUPAC -->
-<div id="left">
+<div class="container">
 
-    <!-- HOME IKONA -->
-    <img src="home.png" id="homeicon" onclick="showSection('home')" alt="Home">
+    <!-- Lijeva kolona -->
+    <div class="sidebar">
 
-    <img src="flag-hr.png" class="flag" alt="Hrvatska zastava">
-    <div class="menu-item" onclick="showSection('uvod')">
-        Rodoslovlje prezimena Tandara
+        <!-- HOME ikona -->
+        <a href="#" onclick="showPage('home')">
+            <img src="home.png" class="icon"> HOME
+        </a>
+
+        <!-- HR zastava -->
+        <a href="#" onclick="showPage('hr1')">
+            <img src="hr.png" class="icon"> HRVATSKI
+        </a>
+
+        <!-- ENG zastava -->
+        <a href="#" onclick="showPage('en1')">
+            <img src="uk.png" class="icon"> ENGLISH
+        </a>
+
+        <!-- HR SADRŽAJ -->
+        <h2>HR – Sadržaj</h2>
+
+        <a onclick="showPage('hr1')">STRANICA 1</a>
+        <a onclick="showPage('hr2')">STRANICA 2</a>
+        <a onclick="showPage('hr3')">STRANICA 3</a>
+        <a onclick="showPage('hr4')">STRANICA 4</a>
+        <a onclick="showPage('hr5')">STRANICA 5</a>
+        <a onclick="showPage('hr6')">STRANICA 6</a>
+        <a onclick="showPage('hr7')">STRANICA 7</a>
+        <a onclick="showPage('hr8')">STRANICA 8</a>
+
+        <!-- ENG SADRŽAJ -->
+        <h2>EN – Contents</h2>
+
+        <a onclick="showPage('en1')">PAGE 1</a>
+        <a onclick="showPage('en2')">PAGE 2</a>
+        <a onclick="showPage('en3')">PAGE 3</a>
+        <a onclick="showPage('en4')">PAGE 4</a>
+        <a onclick="showPage('en5')">PAGE 5</a>
+        <a onclick="showPage('en6')">PAGE 6</a>
+        <a onclick="showPage('en7')">PAGE 7</a>
+        <a onclick="showPage('en8')">PAGE 8</a>
+
     </div>
 
-    <hr style="margin:20px 0;">
+    <!-- DESNA STRANA – SADRŽAJ -->
+    <div class="content">
 
-    <img src="flag-uk.png" class="flag" alt="UK zastava">
-    <div class="menu-item" onclick="showSection('intro')">
-        Tandara Family Genealogy
-    </div>
-
-</div>
-
-<!-- DESNI STUPAC -->
-<div id="right">
-
-    <!-- HOME SEKCIJA — SAMO POZADINSKA SLIKA -->
-    <div id="home" class="section" style="display:block;"></div>
-
-    <!-- HRVATSKI UVOD -->
-    <div id="uvod" class="section">
-
-        <div class="box">
-
-            <!-- TVOJA SLIKA KOJA SE POMIČE SA SADRŽAJEM -->
-            <img src="jure.png" class="portrait" alt="Jure Tandara">
-
-            <h1>RODOSLOVLJE PREZIMENA TANDARA</h1>
-            <h2>Uvod</h2>
-
-            <!-- OVDJE UBACITI 1. HR DIO -->
-            <p><strong>UBACITI 1. HR DIO</strong></p>
-
-            <!-- OVDJE UBACITI 2. HR DIO -->
-            <p><strong>UBACITI 2. HR DIO</strong></p>
-
-            <!-- OVDJE UBACITI 3. HR DIO -->
-            <p><strong>UBACITI 3. HR DIO</strong></p>
-
-            <!-- OVDJE UBACITI 4. HR DIO -->
-            <p><strong>UBACITI 4. HR DIO</strong></p>
-
+        <!-- HOME STRANICA -->
+        <div id="home" class="section" style="display:block;">
+            <div class="page-number">HOME</div>
+            <p>Dobrodošli! Odaberite stranicu iz lijevog izbornika.</p>
         </div>
-    </div>
 
-    <!-- ENGLESKI UVOD -->
-    <div id="intro" class="section">
-
-        <div class="box">
-
-            <!-- TVOJA SLIKA I OVDJE (ako želiš) -->
-            <img src="jure.png" class="portrait" alt="Jure Tandara">
-
-            <h1>TANDARA FAMILY GENEALOGY</h1>
-            <h2>Introduction</h2>
-
-            <!-- OVDJE UBACITI 1. ENG DIO -->
-            <p><strong>UBACITI 1. ENG DIO</strong></p>
-
-            <!-- OVDJE UBACITI 2. ENG DIO -->
-            <p><strong>UBACITI 2. ENG DIO</strong></p>
-
-            <!-- OVDJE UBACITI 3. ENG DIO -->
-            <p><strong>UBACITI 3. ENG DIO</strong></p>
-
-            <!-- OVDJE UBACITI 4. ENG DIO -->
-            <p><strong>UBACITI 4. ENG DIO</strong></p>
-
+        <!-- HR STRANICE (8 označenih pozicija) -->
+        <div id="hr1" class="section">
+            <div class="page-number">1</div>
+            <p><b>UBACI OVDJE HR 1. DIO TEKSTA</b></p>
         </div>
-    </div>
 
+        <div id="hr2" class="section">
+            <div class="page-number">2</div>
+            <p><b>UBACI OVDJE HR 2. DIO TEKSTA</b></p>
+        </div>
+
+        <div id="hr3" class="section">
+            <div class="page-number">3</div>
+            <p><b>UBACI OVDJE HR 3. DIO TEKSTA</b></p>
+        </div>
+
+        <div id="hr4" class="section">
+            <div class="page-number">4</div>
+            <p><b>UBACI OVDJE HR 4. DIO TEKSTA</b></p>
+        </div>
+
+        <div id="hr5" class="section">
+            <div class="page-number">5</div>
+            <p><b>UBACI OVDJE HR 5. DIO TEKSTA</b></p>
+        </div>
+
+        <div id="hr6" class="section">
+            <div class="page-number">6</div>
+            <p><b>UBACI OVDJE HR 6. DIO TEKSTA</b></p>
+        </div>
+
+        <div id="hr7" class="section">
+            <div class="page-number">7</div>
+            <p><b>UBACI OVDJE HR 7. DIO TEKSTA</b></p>
+        </div>
+
+        <div id="hr8" class="section">
+            <div class="page-number">8</div>
+            <p><b>UBACI OVDJE HR 8. DIO TEKSTA</b></p>
+        </div>
+
+        <!-- ENG STRANICE (8 označenih pozicija) -->
+        <div id="en1" class="section">
+            <div class="page-number">1</div>
+            <p><b>INSERT ENGLISH PAGE 1 HERE</b></p>
+        </div>
+
+        <div id="en2" class="section">
+            <div class="page-number">2</div>
+            <p><b>INSERT ENGLISH PAGE 2 HERE</b></p>
+        </div>
+
+        <div id="en3" class="section">
+            <div class="page-number">3</div>
+            <p><b>INSERT ENGLISH PAGE 3 HERE</b></p>
+        </div>
+
+        <div id="en4" class="section">
+            <div class="page-number">4</div>
+            <p><b>INSERT ENGLISH PAGE 4 HERE</b></p>
+        </div>
+
+        <div id="en5" class="section">
+            <div class="page-number">5</div>
+            <p><b>INSERT ENGLISH PAGE 5 HERE</b></p>
+        </div>
+
+        <div id="en6" class="section">
+            <div class="page-number">6</div>
+            <p><b>INSERT ENGLISH PAGE 6 HERE</b></p>
+        </div>
+
+        <div id="en7" class="section">
+            <div class="page-number">7</div>
+            <p><b>INSERT ENGLISH PAGE 7 HERE</b></p>
+        </div>
+
+        <div id="en8" class="section">
+            <div class="page-number">8</div>
+            <p><b>INSERT ENGLISH PAGE 8 HERE</b></p>
+        </div>
+
+    </div>
 </div>
 
 </body>
 </html>
+
+
 
           
          
