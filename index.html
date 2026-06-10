@@ -25,6 +25,7 @@
     /* Desni stupac */
     #right {
         flex: 1;
+        height: 1500px; /* VISINA POZADINSKE SLIKE */
         background-image: url("Family tree Tandara.png");
         background-size: contain;
         background-position: top center;
@@ -35,17 +36,16 @@
         box-sizing: border-box;
     }
 
-    /* Poluprozirna kutija */
+    /* Poluprozirna kutija preko slike */
     .box {
         background: rgba(255, 248, 230, 0.92);
-        padding: 30px;
-        max-width: 900px;
-        margin: 0 auto 40px auto;
+        padding: 40px;
+        width: 100%;          /* ŠIRINA KAO SLIKA */
+        max-width: 100%;      /* NE SMIJE BITI UŽE */
+        min-height: 1500px;   /* VISINA KAO SLIKA */
+        margin: 0 auto;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0,0,0,0.3);
-
-        /* KLJUČNO – visina sadržaja jednaka visini slike */
-        min-height: 1200px;
     }
 
     .flag {
@@ -165,6 +165,7 @@ function showSection(id) {
 
 </body>
 </html>
+
 
           
          
