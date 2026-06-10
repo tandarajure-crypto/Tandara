@@ -37,26 +37,25 @@
     #right {
         flex: 1;
         background-image: url("Family tree Tandara.png");
-        background-size: contain;          
-        background-position: top center;   
+        background-size: contain;
+        background-position: top center;
         background-repeat: no-repeat;
         background-color: #fff;
-        padding: 80px 40px 80px 40px;      
+        padding: 20px 40px 40px 40px;
         overflow-y: auto;
         box-sizing: border-box;
         position: relative;
         min-height: 100vh;
     }
 
-    /* Tvoja slika u sekciji */
+    /* Tvoja slika – pomiče se sa sadržajem */
     .portrait {
-        position: absolute;
-        top: 120px;
-        right: 40px;
         width: 180px;
+        float: right;
+        margin-left: 20px;
+        margin-bottom: 20px;
         border-radius: 8px;
         box-shadow: 0 0 8px rgba(0,0,0,0.4);
-        z-index: 10;
     }
 
     /* Poluprozirna kutija */
@@ -64,7 +63,7 @@
         background: rgba(255, 248, 230, 0.92);
         padding: 40px;
         width: 85%;
-        margin-top: 260px;
+        margin-top: 40px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
@@ -137,21 +136,25 @@ function showSection(id) {
     <!-- HRVATSKI UVOD -->
     <div id="uvod" class="section">
 
-        <img src="jure.png" class="portrait" alt="Jure Tandara">
-
         <div class="box">
 
-            <!-- *** CIJELI TVOJ TEKST (dijelovi 1–4) *** -->
-            <!-- POČETAK -->
+            <!-- TVOJA SLIKA KOJA SE POMIČE SA SADRŽAJEM -->
+            <img src="jure.png" class="portrait" alt="Jure Tandara">
+
             <h1>RODOSLOVLJE PREZIMENA TANDARA</h1>
             <h2>Uvod</h2>
 
-            <p>Dobrodošli na web stranice posvećene povijesti, podrijetlu i rodoslovlju prezimena Tandara.</p>
+            <!-- OVDJE UBACITI 1. HR DIO -->
+            <p><strong>UBACITI 1. HR DIO</strong></p>
 
-            <p>Moje ime je Jure Tandara, imam 70 godina, živim u Zagrebu sa suprugom Ružom, imam dva divna sina, pet prekrasnih unuka i autor sam ove webstranice...</p>
+            <!-- OVDJE UBACITI 2. HR DIO -->
+            <p><strong>UBACITI 2. HR DIO</strong></p>
 
-            <!-- *** OVDJE JE UKLJUČEN SAV TEKST IZ DIJELOVA 1–4 *** -->
-            <!-- (Već si ga zalijepio u prethodnim koracima) -->
+            <!-- OVDJE UBACITI 3. HR DIO -->
+            <p><strong>UBACITI 3. HR DIO</strong></p>
+
+            <!-- OVDJE UBACITI 4. HR DIO -->
+            <p><strong>UBACITI 4. HR DIO</strong></p>
 
         </div>
     </div>
@@ -159,12 +162,26 @@ function showSection(id) {
     <!-- ENGLESKI UVOD -->
     <div id="intro" class="section">
 
-        <img src="jure.png" class="portrait" alt="Jure Tandara">
-
         <div class="box">
+
+            <!-- TVOJA SLIKA I OVDJE (ako želiš) -->
+            <img src="jure.png" class="portrait" alt="Jure Tandara">
+
             <h1>TANDARA FAMILY GENEALOGY</h1>
             <h2>Introduction</h2>
-            <p>English version will be added here...</p>
+
+            <!-- OVDJE UBACITI 1. ENG DIO -->
+            <p><strong>UBACITI 1. ENG DIO</strong></p>
+
+            <!-- OVDJE UBACITI 2. ENG DIO -->
+            <p><strong>UBACITI 2. ENG DIO</strong></p>
+
+            <!-- OVDJE UBACITI 3. ENG DIO -->
+            <p><strong>UBACITI 3. ENG DIO</strong></p>
+
+            <!-- OVDJE UBACITI 4. ENG DIO -->
+            <p><strong>UBACITI 4. ENG DIO</strong></p>
+
         </div>
     </div>
 
@@ -172,9 +189,6 @@ function showSection(id) {
 
 </body>
 </html>
-
-
- 
 
           
          
