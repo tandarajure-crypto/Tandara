@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tandara Genealogy</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Calibri, Arial, sans-serif;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Lijevi meni */
+    #menu {
+        width: 280px;
+        background: #f2f2f2;
+        padding: 20px;
+        overflow-y: auto;
+        border-right: 1px solid #ccc;
+    }
+
+    #menu h2 {
+        margin-top: 25px;
+        font-size: 20px;
+    }
+
+    #menu a {
+        display: block;
+        padding: 8px 0;
+        font-size: 18px;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+    }
+
+    #menu a:hover {
+        color: #0066cc;
+    }
+
+    /* Desna kolona – pozadinska slika */
+    #content {
+        flex: 1;
+        background-image: url("Family tree Tandara.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 40px;
+        overflow-y: auto;
+    }
+
+    /* Poluprozirna kutija za tekst */
+    .box {
+        background: rgba(255, 248, 230, 0.92);
+        padding: 30px;
+        max-width: 900px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    h1, h2, h3, p {
+        margin-bottom: 18px;
+    }
+</style>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+</script>
+
+</head>
+<body>
+
+<!-- Lijevi meni -->
+<div id="menu">
+    <h2>🇭🇷 Hrvatski</h2>
+    <a onclick="showSection('uvod')">Uvod</a>
+    <a onclick="showSection('zasto')">Zašto stranica postoji</a>
+    <a onclick="showSection('misija')">Moja misija</a>
+    <a onclick="showSection('buducnost')">Pogled u budućnost</a>
+    <a onclick="showSection('podrijetlo')">Podrijetlo prezimena</a>
+    <a onclick="showSection('razvoj')">Razvoj roda</a>
+    <a onclick="showSection('sirjenje')">Širenje prezimena</a>
+    <a onclick="showSection('znacenje')">Značenje naziva</a>
+    <a onclick="showSection('hipoteze')">Hipoteze širenja</a>
+    <a onclick="showSection('zakljucak')">Zaključak</a>
+    <a onclick="showSection('zahvala')">Zahvala</a>
+
+    <h2>🇬🇧 English</h2>
+    <a onclick="showSection('intro')">Introduction</a>
+    <a onclick="showSection('why')">Why this website exists</a>
+    <a onclick="showSection('mission')">My mission</a>
+    <a onclick="showSection('future')">Looking ahead</a>
+    <a onclick="showSection('origin')">Origin of surname</a>
+    <a onclick="showSection('development')">Development</a>
+    <a onclick="showSection('spread')">Spread</a>
+    <a onclick="showSection('meaning')">Meaning</a>
+    <a onclick="showSection('routes')">Migration routes</a>
+    <a onclick="showSection('conclusion')">Conclusion</a>
+    <a onclick="showSection('ack')">Acknowledgements</a>
+</div>
+
+<!-- Desna kolona -->
+<div id="content">
+
+    <!-- Ovdje idu sekcije (po defaultu skrivene) -->
+    <div id="uvod" class="section box" style="display:none;"></div>
+    <div id="zasto" class="section box" style="display:none;"></div>
+    <div id="misija" class="section box" style="display:none;"></div>
+    <div id="buducnost" class="section box" style="display:none;"></div>
+    <div id="podrijetlo" class="section box" style="display:none;"></div>
+    <div id="razvoj" class="section box" style="display:none;"></div>
+    <div id="sirjenje" class="section box" style="display:none;"></div>
+    <div id="znacenje" class="section box" style="display:none;"></div>
+    <div id="hipoteze" class="section box" style="display:none;"></div>
+    <div id="zakljucak" class="section box" style="display:none;"></div>
+    <div id="zahvala" class="section box" style="display:none;"></div>
+
+    <!-- English -->
+    <div id="intro" class="section box" style="display:none;"></div>
+    <div id="why" class="section box" style="display:none;"></div>
+    <div id="mission" class="section box" style="display:none;"></div>
+    <div id="future" class="section box" style="display:none;"></div>
+    <div id="origin" class="section box" style="display:none;"></div>
+    <div id="development" class="section box" style="display:none;"></div>
+    <div id="spread" class="section box" style="display:none;"></div>
+    <div id="meaning" class="section box" style="display:none;"></div>
+    <div id="routes" class="section box" style="display:none;"></div>
+    <div id="conclusion" class="section box" style="display:none;"></div>
+    <div id="ack" class="section box" style="display:none;"></div>
+
+</div>
+
+</body>
+</html>
 
