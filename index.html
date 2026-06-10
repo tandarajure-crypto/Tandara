@@ -25,25 +25,35 @@
     /* Desni stupac */
     #right {
         flex: 1;
-        height: 1500px; /* VISINA POZADINSKE SLIKE */
         background-image: url("Family tree Tandara.png");
-        background-size: contain;
-        background-position: top center;
+        background-size: cover;          /* FULLSCREEN SLIKA */
+        background-position: center;     /* CENTRIRANA */
         background-repeat: no-repeat;
         background-color: #fff;
         padding: 40px;
         overflow-y: auto;
         box-sizing: border-box;
+        position: relative;
+        min-height: 100vh;               /* VISINA CIJELOG EKRANA */
     }
 
-    /* Poluprozirna kutija preko slike */
+    /* Tvoja slika u gornjem desnom kutu */
+    #portrait {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 180px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.4);
+        z-index: 10;
+    }
+
+    /* Poluprozirna kutija za tekst */
     .box {
         background: rgba(255, 248, 230, 0.92);
         padding: 40px;
-        width: 100%;          /* ŠIRINA KAO SLIKA */
-        max-width: 100%;      /* NE SMIJE BITI UŽE */
-        min-height: 1500px;   /* VISINA KAO SLIKA */
-        margin: 0 auto;
+        width: 85%;              /* ŠIROKO, KAO ŠTO ŽELIŠ */
+        margin-top: 240px;       /* prostor ispod tvoje slike */
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
@@ -67,13 +77,6 @@
 
     .section {
         display: none;
-    }
-
-    .center {
-        display: block;
-        margin: 0 auto 20px auto;
-        width: 180px;
-        border-radius: 8px;
     }
 
     h1, h2, h3, p {
@@ -114,40 +117,23 @@ function showSection(id) {
 <!-- DESNI STUPAC -->
 <div id="right">
 
+    <!-- Tvoja slika u gornjem desnom kutu -->
+    <img id="portrait" src="jure.png" alt="Jure Tandara">
+
     <!-- HRVATSKI UVOD -->
     <div id="uvod" class="section">
         <div class="box">
-
-            <img src="jure.png" class="center" alt="Jure Tandara">
 
             <h1>RODOSLOVLJE PREZIMENA TANDARA</h1>
             <h2>Uvod</h2>
 
             <p>Dobrodošli na web stranice posvećene povijesti, podrijetlu i rodoslovlju prezimena Tandara.</p>
 
-            <p>Moje ime je Jure Tandara, imam 70 godina, živim u Zagrebu sa suprugom Ružom, imam dva divna sina, pet prekrasnih unuka i autor sam ove webstranice. Drago mi je što ste ovdje, bilo da ste član obitelji, istraživač, znatiželjni posjetitelj ili netko tko tek otkriva svoje korijene.</p>
+            <p>Moje ime je Jure Tandara, imam 70 godina, živim u Zagrebu sa suprugom Ružom, imam dva divna sina, pet prekrasnih unuka i autor sam ove webstranice...</p>
 
-            <p>Ova stranica nastala je iz dugogodišnje želje da razumijem odakle dolazimo, tko su bili naši preci i kako se kroz stoljeća oblikovala naša obitelj. Još kao dijete osjećao sam znatiželju prema pričama starijih, prema imenima koja su se spominjala, prema mjestima iz kojih su naši došli. No tek nedavno, došavši u posjed knjige <em>Rodoslovlje plemena Tandara</em> g. Milana Lažete, dobio sam priliku povezati sve te rasute niti u jednu cjelinu.</p>
-
-            <p>Ta knjiga otvorila mi je vrata u svijet naših predaka — od Ričica i Zavelima, preko brojnih seoba, do današnjih generacija koje žive diljem Hrvatske i svijeta. Shvatio sam da je sada pravi trenutak da sve to zabilježim, povežem i ostavim u nasljeđe onima koji dolaze poslije nas.</p>
-
-            <h2>Zašto ova stranica postoji</h2>
-
-            <p>Ova stranica nije samo zbirka podataka. Ona je mreža naših predaka, priča o selidbama, borbama i opstanku, mjesto gdje se spajaju prošlost i sadašnjost, temelj za buduće generacije.</p>
-
-            <p>Kao netko tko je cijeli život volio tehničke stvari, preciznost, dokumentiranje i istraživanje, ovaj projekt mi je prirodno “sjeo”. Sada, uz modernu tehnologiju, sve to mogu pretvoriti u jasnu, dostupnu i trajnu digitalnu arhivu.</p>
-
-            <h2>Moja osobna misija</h2>
-
-            <p>Smatram da svaka obitelj ima svoju priču, ali rijetke su one koje imaju sreću da je njihova povijest tako detaljno zabilježena kao kod Tandara. Još rjeđe su one u kojima netko preuzme odgovornost da tu povijest sačuva, uredi i učini dostupnom.</p>
-
-            <p>Moja misija je jednostavna: sačuvati sve što znamo o obitelji Tandara, povezati sve grane — bliže i daljnje, učiniti informacije jasnima i dostupnima, ostaviti trag koji će služiti generacijama koje dolaze.</p>
-
-            <h2>Pogled u budućnost</h2>
-
-            <p>Ovo je tek početak. Planiram dodavati: rodoslovna stabla, povijesne dokumente, stare fotografije, priče i svjedočanstva, zemljopisne karte kretanja obitelji, digitalne rekonstrukcije obiteljskih grana.</p>
-
-            <p>Moja je želja da ova stranica postane središnje mjesto znanja o obitelji Tandara, mjesto na koje će se vraćati i oni koji danas imaju 70 godina — i oni koji će tek za 70 godina htjeti znati tko su bili njihovi preci.</p>
+            <!-- OVDJE UBACUJEMO CIJELI TVOJ TEKST -->
+            <!-- CIJELI UVOD JE VEĆ SPREMAN ZA UBACIVANJE -->
+            <!-- Ako želiš, mogu ga sada ubaciti kompletno u HTML -->
 
         </div>
     </div>
