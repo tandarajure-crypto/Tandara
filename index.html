@@ -22,19 +22,30 @@
             width: 16%;
             max-width: 260px;
             min-width: 180px;
-            background-color: #2f2f2f; /* tamnija siva */
+            background-color: #2f2f2f;
             color: #ddd;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        #sidebar h3 {
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 15px;
-            color: #fff;
+        /* HOME blok */
+        .home-block {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px solid #555;
-            padding-bottom: 5px;
+        }
+
+        #sidebar img.homeicon {
+            width: 36px;
+            cursor: pointer;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #sidebar img.flag {
+            width: 26px;
+            vertical-align: middle;
+            margin-right: 6px;
         }
 
         #sidebar a {
@@ -49,22 +60,19 @@
             color: #fff;
         }
 
-        #sidebar img.flag {
-            width: 26px;
-            vertical-align: middle;
-            margin-right: 6px;
-        }
-
-        #sidebar img.homeicon {
-            width: 32px;
-            cursor: pointer;
-            margin-bottom: 15px;
+        #sidebar h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #fff;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
         }
 
         /* Desna kolona */
         #content {
             width: 84%;
-            background-color: #f2f2f2; /* svjetlija siva */
+            background-color: #f2f2f2;
             padding: 30px;
             overflow-y: auto;
             box-sizing: border-box;
@@ -87,13 +95,15 @@
     <!-- Lijeva kolona -->
     <div id="sidebar">
 
-        <!-- HOME ikona -->
-        <img src="home.png" class="homeicon" onclick="loadPage('tree.html')" alt="Home">
+        <!-- HOME BLOK -->
+        <div class="home-block">
+            <img src="home.png" class="homeicon" onclick="loadPage('tree.html')" alt="Home">
+        </div>
 
         <!-- HR sekcija -->
         <img src="flag-hr.png" class="flag"> Hrvatski
 
-        <!-- ▼▼▼ 8 HR STRANICA – OVDJE ĆEŠ KASNIJE UMETNUTI SADRŽAJ ▼▼▼ -->
+        <!-- ▼▼▼ 8 HR STRANICA ▼▼▼ -->
         <a href="#" onclick="loadPage('hr_page1.html')">HR – Stranica 1</a>
         <a href="#" onclick="loadPage('hr_page2.html')">HR – Stranica 2</a>
         <a href="#" onclick="loadPage('hr_page3.html')">HR – Stranica 3</a>
@@ -108,7 +118,7 @@
         <h3></h3>
         <img src="flag-uk.png" class="flag"> English
 
-        <!-- ▼▼▼ 8 EN STRANICA – OVDJE ĆEŠ KASNIJE UMETNUTI SADRŽAJ ▼▼▼ -->
+        <!-- ▼▼▼ 8 EN STRANICA ▼▼▼ -->
         <a href="#" onclick="loadPage('en_page1.html')">EN – Page 1</a>
         <a href="#" onclick="loadPage('en_page2.html')">EN – Page 2</a>
         <a href="#" onclick="loadPage('en_page3.html')">EN – Page 3</a>
@@ -130,6 +140,7 @@
 </body>
 </html>
 
+  
 
 
 
