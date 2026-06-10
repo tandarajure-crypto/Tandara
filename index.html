@@ -10,7 +10,6 @@
         margin: 0;
         font-family: Calibri, Arial, sans-serif;
         display: flex;
-        /* maknuto height:100vh i overflow:hidden da stranica može normalno rasti i skrolati */
     }
 
     /* Lijevi stupac */
@@ -44,23 +43,17 @@
         margin: 0 auto 40px auto;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+        /* KLJUČNO – visina sadržaja jednaka visini slike */
+        min-height: 1200px;
     }
 
-    /* Zastave u meniju */
     .flag {
         width: 40px;
         margin-bottom: 10px;
         display: block;
     }
 
-    /* Naslovi u meniju */
-    .menu-title {
-        font-weight: bold;
-        margin: 15px 0 5px 0;
-        font-size: 18px;
-    }
-
-    /* Stavke menija */
     .menu-item {
         cursor: pointer;
         padding: 6px 0;
@@ -72,12 +65,10 @@
         color: #0066cc;
     }
 
-    /* Sekcije */
     .section {
         display: none;
     }
 
-    /* Slika u uvodu */
     .center {
         display: block;
         margin: 0 auto 20px auto;
@@ -104,47 +95,29 @@ function showSection(id) {
 <!-- LIJEVI STUPAC -->
 <div id="left">
 
-    <!-- HRVATSKI BLOK -->
-    <img src="hr.png" class="flag" alt="Hrvatska zastava">
-
-    <div class="menu-title">Hrvatski</div>
-    <div class="menu-item" onclick="showSection('uvod')">Uvod</div>
-    <div class="menu-item" onclick="showSection('zasto')">Zašto stranica postoji</div>
-    <div class="menu-item" onclick="showSection('misija')">Moja misija</div>
-    <div class="menu-item" onclick="showSection('buducnost')">Pogled u budućnost</div>
-    <div class="menu-item" onclick="showSection('podrijetlo')">Podrijetlo prezimena</div>
-    <div class="menu-item" onclick="showSection('razvoj')">Razvoj i širenje</div>
-    <div class="menu-item" onclick="showSection('znacenje')">Značenje prezimena</div>
-    <div class="menu-item" onclick="showSection('hipoteze')">Hipoteze o širenju</div>
-    <div class="menu-item" onclick="showSection('zakljucak')">Zaključak</div>
-    <div class="menu-item" onclick="showSection('zahvala')">Zahvala</div>
+    <!-- HRVATSKI -->
+    <img src="flag-hr.png" class="flag" alt="Hrvatska zastava">
+    <div class="menu-item" onclick="showSection('uvod')">
+        Rodoslovlje prezimena Tandara
+    </div>
 
     <hr style="margin:20px 0;">
 
-    <!-- ENGLESKI BLOK -->
-    <img src="uk.png" class="flag" alt="UK flag">
-
-    <div class="menu-title">English</div>
-    <div class="menu-item" onclick="showSection('intro')">Introduction</div>
-    <div class="menu-item" onclick="showSection('why')">Why this site exists</div>
-    <div class="menu-item" onclick="showSection('mission')">My mission</div>
-    <div class="menu-item" onclick="showSection('future')">Future plans</div>
-    <div class="menu-item" onclick="showSection('origin')">Origin of surname</div>
-    <div class="menu-item" onclick="showSection('development')">Development</div>
-    <div class="menu-item" onclick="showSection('meaning')">Meaning</div>
-    <div class="menu-item" onclick="showSection('hypotheses')">Hypotheses</div>
-    <div class="menu-item" onclick="showSection('conclusion')">Conclusion</div>
-    <div class="menu-item" onclick="showSection('thanks')">Acknowledgment</div>
+    <!-- ENGLESKI -->
+    <img src="flag-uk.png" class="flag" alt="UK zastava">
+    <div class="menu-item" onclick="showSection('intro')">
+        Tandara Family Genealogy
+    </div>
 
 </div>
 
 <!-- DESNI STUPAC -->
 <div id="right">
 
-    <!-- UVOD – HRVATSKI (PRIKAZAN PO DEFAULTU) -->
-    <div id="uvod" class="section" style="display:block;">
+    <!-- HRVATSKI UVOD -->
+    <div id="uvod" class="section">
         <div class="box">
-            <img src="hr.png" class="flag" alt="Hrvatska zastava">
+
             <img src="jure.png" class="center" alt="Jure Tandara">
 
             <h1>RODOSLOVLJE PREZIMENA TANDARA</h1>
@@ -154,7 +127,7 @@ function showSection(id) {
 
             <p>Moje ime je Jure Tandara, imam 70 godina, živim u Zagrebu sa suprugom Ružom, imam dva divna sina, pet prekrasnih unuka i autor sam ove webstranice. Drago mi je što ste ovdje, bilo da ste član obitelji, istraživač, znatiželjni posjetitelj ili netko tko tek otkriva svoje korijene.</p>
 
-            <p>Ova stranica nastala je iz dugogodišnje želje da razumijem odakle dolazimo, tko su bili naši preci i kako se kroz stoljeća oblikovala naša obitelj. Još kao dijete osjećao sam znatiželju prema pričama starijih, prema imenima koja su se spominjala, prema mjestima iz kojih su naši došli. No tek nedavno, došavši u posjed knjige <em>Rodoslovlje plemena Tandara</em> od g. Milana Lažete, dobio sam priliku povezati sve te rasute niti u jednu cjelinu.</p>
+            <p>Ova stranica nastala je iz dugogodišnje želje da razumijem odakle dolazimo, tko su bili naši preci i kako se kroz stoljeća oblikovala naša obitelj. Još kao dijete osjećao sam znatiželju prema pričama starijih, prema imenima koja su se spominjala, prema mjestima iz kojih su naši došli. No tek nedavno, došavši u posjed knjige <em>Rodoslovlje plemena Tandara</em> g. Milana Lažete, dobio sam priliku povezati sve te rasute niti u jednu cjelinu.</p>
 
             <p>Ta knjiga otvorila mi je vrata u svijet naših predaka — od Ričica i Zavelima, preko brojnih seoba, do današnjih generacija koje žive diljem Hrvatske i svijeta. Shvatio sam da je sada pravi trenutak da sve to zabilježim, povežem i ostavim u nasljeđe onima koji dolaze poslije nas.</p>
 
@@ -170,122 +143,28 @@ function showSection(id) {
 
             <p>Moja misija je jednostavna: sačuvati sve što znamo o obitelji Tandara, povezati sve grane — bliže i daljnje, učiniti informacije jasnima i dostupnima, ostaviti trag koji će služiti generacijama koje dolaze.</p>
 
-            <p>Vjerujem da će ova stranica pomoći svakome tko želi razumjeti svoje korijene, pronaći izgubljene veze ili jednostavno osjetiti ponos prema obitelji iz koje potječe.</p>
-
             <h2>Pogled u budućnost</h2>
 
-            <p>Ovo je tek početak. Planiram dodavati: rodoslovna stabla, povijesne dokumente, stare fotografije, priče i svjedočanstva, zemljopisne karte kretanja obitelji, digitalne rekonstrukcije obiteljskih grana. I sve to u obliku koji će biti jednostavan za pregledavanje i razumijevanje.</p>
+            <p>Ovo je tek početak. Planiram dodavati: rodoslovna stabla, povijesne dokumente, stare fotografije, priče i svjedočanstva, zemljopisne karte kretanja obitelji, digitalne rekonstrukcije obiteljskih grana.</p>
 
             <p>Moja je želja da ova stranica postane središnje mjesto znanja o obitelji Tandara, mjesto na koje će se vraćati i oni koji danas imaju 70 godina — i oni koji će tek za 70 godina htjeti znati tko su bili njihovi preci.</p>
 
-            <p>Ovaj projekt nastao je s namjerom da se na jednom mjestu prikupe, sačuvaju i sustavno prikažu podaci o našim precima, obiteljskim granama, mjestima života i događajima koji su obilježili povijest našega roda. Mnoge su informacije tijekom vremena izgubljene ili zaboravljene, stoga je cilj ovoga projekta očuvati naš identitet i baštinu za sadašnje i buduće naraštaje.</p>
-
-            <p>Rodoslovna stabla prikazana na ovim stranicama rezultat su dugogodišnjeg istraživanja crkvenih arhiva, matičnih knjiga, arhivske građe, povijesnih zapisa i osobnih svjedočanstava članova obitelji.</p>
-
-            <h2>Podrijetlo prezimena Tandara</h2>
-
-            <p>Prezime Tandara pripada starim rodovima Imotske krajine i dio je hrvatske kulturne baštine. Njegovo oblikovanje i standardizacija usko su povezani s povijesno-administrativnim promjenama koje su zahvatile Imotsku krajinu tijekom 18. stoljeća.</p>
-
-            <p><strong>Razdoblje osmanske uprave (do 1717.)</strong><br>
-            U osmanskom razdoblju obitelji se nisu vodile pod prezimenima. Administracija je bilježila samo nositelje kućanstava, njihova osobna imena i povremene nadimke radi ubiranja poreza.</p>
-
-            <p><strong>Prvi tragovi roda (1725.)</strong><br>
-            Najraniji poznati zapis potječe iz 1725. godine, kada se spominje Ivan Tandarić, kojemu je dodijeljena zemlja u Ričicama.</p>
-
-            <p><strong>Mletačka uprava i standardizacija prezimena</strong><br>
-            Nakon 1717. uvodi se katastar i obveza prezimena. Oblik Tandarić standardizira se u Tandara.</p>
-
-            <p><strong>Pretpostavljeno podrijetlo iz Ciste (1697.)</strong><br>
-            U Cisti se 1697. spominje prezime Tandar. Vrlo je vjerojatno da je riječ o istom rodu.</p>
-
-            <p><strong>Razvoj roda u 18. stoljeću</strong><br>
-            Do kraja 18. stoljeća rod je demografski snažan i stabilno ukorijenjen u Ričicama.</p>
-
-            <p><strong>Prezime kao prostorna oznaka</strong><br>
-            U kasnijim kartama prezime Tandara pojavljuje se i kao naziv dijela sela.</p>
-
-            <h2>Razvoj i širenje prezimena</h2>
-
-            <p><strong>Jezgra roda: Ričice</strong><br>
-            Prvi čvrsti trag roda je 1725. U 18. stoljeću oblik Tandarić prelazi u Tandara.</p>
-
-            <p><strong>Prvo širenje: Zavelim (1806.–1819.)</strong><br>
-            Dio roda seli na Zavelim. Iz tih obitelji razvijaju se sve zavelimske grane.</p>
-
-            <p><strong>Rani tragovi u Duvnu i Livnu</strong><br>
-            Prezime se pojavljuje u Duvnu i Livnu, vjerojatno zbog ženidbe ili službe.</p>
-
-            <p><strong>Drugi krug širenja: Europa, Kanada, USA</strong><br>
-            Prezime se pojavljuje u Austriji, Švicarskoj, Njemačkoj, UK, Kanadi i SAD-u.</p>
-
-            <p><strong>Slovačka</strong><br>
-            Prezime se pojavljuje u Žilini i Košicama. Vrlo vjerojatno doseljeničko.</p>
-
-            <p><strong>Rumunjska</strong><br>
-            Postoji selo Țandăra i prezime Țandără, ali nema veze s hrvatskim prezimenom.</p>
-
-            <h2>Značenje naziva Tandara u različitim kulturama</h2>
-
-            <p><strong>Australija</strong><br>
-            Tandara i Tandarra znače “utabori se ovdje” i “mjesto za odmor”.</p>
-
-            <p><strong>Brazil</strong><br>
-            Tandara je žensko ime, nema veze s prezimenom.</p>
-
-            <p><strong>Indonezija</strong><br>
-            Toponim s lokalnim značenjem.</p>
-
-            <p><strong>Rumunjska</strong><br>
-            Riječ țăndără znači trijeska, iver. Prezime označava drvodjelju ili osobu sitne građe.</p>
-
-            <h2>Mogući putovi širenja prezimena</h2>
-
-            <p><strong>Hipoteza 1: Putujući prodavači</strong><br>
-            Moguće je da su se pojedine grane odvojile tijekom trgovačkih putovanja.</p>
-
-            <p><strong>Hipoteza 2: Izbjeglištvo pred Osmanlijama</strong><br>
-            Obitelji su bježale prema sjeveru i zapadu. Moguće odvajanje prije 1762.</p>
-
-            <h2>Zaključak</h2>
-
-            <p>Povijest roda Tandara nije prepuštena zaboravu. Zahvaljujući radu Milana Lažete, migracijski putevi i rodoslovlja mogu se precizno pratiti kroz stoljeća.</p>
-
-            <p>Početkom 20. stoljeća mnoge obitelji sele u Slavoniju, Zagreb, Split i dalje u svijet. Danas prezime nosi preko 300 ljudi u Hrvatskoj.</p>
-
-            <p>Bez obzira gdje žive, veza s prvim pretkom iz 1695. ostaje neraskidiva.</p>
-
-            <h2>Zahvala</h2>
-
-            <p>Ovaj projekt ne bi bio moguć bez rada Milana Lažete. Zahvaljujem i rođaku Vici Tandari te svim članovima obitelji koji su sačuvali uspomene i dokumente.</p>
-
-            <p>Ova webstranica zamišljena je kao trajna zbirka podataka o našem rodoslovlju, s ciljem povezivanja sadašnjih i budućih naraštaja.</p>
         </div>
     </div>
 
-    <!-- OSTALE HR SEKCije – za sada prazne -->
-    <div id="zasto" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Zašto stranica postoji</h2></div></div>
-    <div id="misija" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Moja misija</h2></div></div>
-    <div id="buducnost" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Pogled u budućnost</h2></div></div>
-    <div id="podrijetlo" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Podrijetlo prezimena</h2></div></div>
-    <div id="razvoj" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Razvoj i širenje</h2></div></div>
-    <div id="znacenje" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Značenje prezimena</h2></div></div>
-    <div id="hipoteze" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Hipoteze o širenju</h2></div></div>
-    <div id="zakljucak" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Zaključak</h2></div></div>
-    <div id="zahvala" class="section"><div class="box"><img src="hr.png" class="flag" alt=""><h2>Zahvala</h2></div></div>
-
-    <!-- ENGLESKE SEKCIJE – za sada prazne, ali spremne -->
-    <div id="intro" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Introduction</h2></div></div>
-    <div id="why" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Why this site exists</h2></div></div>
-    <div id="mission" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>My mission</h2></div></div>
-    <div id="future" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Future plans</h2></div></div>
-    <div id="origin" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Origin of surname</h2></div></div>
-    <div id="development" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Development</h2></div></div>
-    <div id="meaning" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Meaning</h2></div></div>
-    <div id="hypotheses" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Hypotheses</h2></div></div>
-    <div id="conclusion" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Conclusion</h2></div></div>
-    <div id="thanks" class="section"><div class="box"><img src="uk.png" class="flag" alt=""><h2>Acknowledgment</h2></div></div>
+    <!-- ENGLESKI UVOD -->
+    <div id="intro" class="section">
+        <div class="box">
+            <h1>TANDARA FAMILY GENEALOGY</h1>
+            <h2>Introduction</h2>
+            <p>English version will be added here...</p>
+        </div>
+    </div>
 
 </div>
 
 </body>
 </html>
+
+          
+         
