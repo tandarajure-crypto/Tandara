@@ -14,49 +14,31 @@
         overflow: hidden;
     }
 
-    /* Lijevi meni */
-    #menu {
+    /* Lijevi stupac */
+    #left {
         width: 280px;
         background: #f2f2f2;
         padding: 20px;
         overflow-y: auto;
         border-right: 1px solid #ccc;
+        box-sizing: border-box;
     }
 
-    #menu h2 {
-        margin-top: 25px;
-        font-size: 20px;
+    /* Desni stupac */
+    #right {
+        flex: 1;
+        background-image: url("Family tree Tandara.png");
+        background-size: contain;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-color: #fff;
+        padding: 40px;
+        overflow-y: auto;
+        min-height: 100vh;
+        box-sizing: border-box;
     }
 
-    #menu a {
-        display: block;
-        padding: 8px 0;
-        font-size: 18px;
-        text-decoration: none;
-        color: #333;
-        cursor: pointer;
-    }
-
-    #menu a:hover {
-        color: #0066cc;
-    }
-
-    /* Desna kolona – pozadinska slika */
-#content {
-    flex: 1;
-    background-image: url("Family tree Tandara.png");
-    background-size: contain;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-color: #fff;
-    padding: 40px;
-    overflow-y: auto;
-    min-height: 100vh;
-    box-sizing: border-box;
-}
-
-
-    /* Poluprozirna kutija za tekst */
+    /* Poluprozirna kutija */
     .box {
         background: rgba(255, 248, 230, 0.92);
         padding: 30px;
@@ -64,6 +46,45 @@
         margin: auto;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    /* Zastave */
+    .flag {
+        width: 40px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    /* Naslovi u meniju */
+    .menu-title {
+        font-weight: bold;
+        margin: 15px 0 5px 0;
+        font-size: 18px;
+    }
+
+    /* Stavke menija */
+    .menu-item {
+        cursor: pointer;
+        padding: 6px 0;
+        font-size: 17px;
+        color: #333;
+    }
+
+    .menu-item:hover {
+        color: #0066cc;
+    }
+
+    /* Sekcije */
+    .section {
+        display: none;
+    }
+
+    /* Slika u uvodu */
+    .center {
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 180px;
+        border-radius: 8px;
     }
 
     h1, h2, h3, p {
@@ -81,6 +102,7 @@ function showSection(id) {
 </head>
 <body>
 
+<!-- LIJEVI STUPAC -->
 <div id="left">
 
     <!-- HRVATSKI BLOK -->
@@ -117,52 +139,49 @@ function showSection(id) {
 
 </div>
 
-
+<!-- DESNI STUPAC -->
 <div id="right">
 
     <!-- UVOD -->
     <div id="uvod" class="section" style="display:block;">
+        <div class="box">
+            <img src="jure.png" class="center">
 
-        <img src="jure.png" class="center">
+            <h1>RODOSLOVLJE PREZIMENA TANDARA</h1>
+            <h2>Uvod</h2>
 
-        <h1>RODOSLOVLJE PREZIMENA TANDARA</h1>
-        <h2>Uvod</h2>
+            <p>Dobrodošli na web stranice posvećene povijesti, podrijetlju i rodoslovlju prezimena Tandara.</p>
 
-        <!-- OVDJE IDE CIJELI TVOJ OGROMNI TEKST -->
-        <p>Dobrodošli na web stranice posvećene povijesti, podrijetlju i rodoslovlju prezimena Tandara.</p>
-
-        <p>Moje ime je Jure Tandara, imam 70 godina, živim u Zagrebu sa suprugom Ružom, imam dva divna sina, pet prekrasnih unuka i autor sam ove webstranice...</p>
-
-        <!-- CIJELI TVOJ DOKUMENT ĆU UBACITI KAD MI KAŽEŠ "UBACI CIJELI TEKST" -->
-
+            <p>Moje ime je Jure Tandara, imam 70 godina, živim u Zagrebu sa suprugom Ružom, imam dva divna sina, pet prekrasnih unuka i autor sam ove webstranice...</p>
+        </div>
     </div>
 
-    <!-- OSTALE SEKCIJE -->
-    <div id="zasto" class="section"></div>
-    <div id="misija" class="section"></div>
-    <div id="buducnost" class="section"></div>
-    <div id="podrijetlo" class="section"></div>
-    <div id="razvoj" class="section"></div>
-    <div id="znacenje" class="section"></div>
-    <div id="hipoteze" class="section"></div>
-    <div id="zakljucak" class="section"></div>
-    <div id="zahvala" class="section"></div>
+    <!-- OSTALE SEKCIJE (prazne dok ne ubacimo sadržaj) -->
+    <div id="zasto" class="section"><div class="box"></div></div>
+    <div id="misija" class="section"><div class="box"></div></div>
+    <div id="buducnost" class="section"><div class="box"></div></div>
+    <div id="podrijetlo" class="section"><div class="box"></div></div>
+    <div id="razvoj" class="section"><div class="box"></div></div>
+    <div id="znacenje" class="section"><div class="box"></div></div>
+    <div id="hipoteze" class="section"><div class="box"></div></div>
+    <div id="zakljucak" class="section"><div class="box"></div></div>
+    <div id="zahvala" class="section"><div class="box"></div></div>
 
     <!-- ENGLESKE SEKCIJE -->
-    <div id="intro" class="section"></div>
-    <div id="why" class="section"></div>
-    <div id="mission" class="section"></div>
-    <div id="future" class="section"></div>
-    <div id="origin" class="section"></div>
-    <div id="development" class="section"></div>
-    <div id="meaning" class="section"></div>
-    <div id="hypotheses" class="section"></div>
-    <div id="conclusion" class="section"></div>
-    <div id="thanks" class="section"></div>
+    <div id="intro" class="section"><div class="box"></div></div>
+    <div id="why" class="section"><div class="box"></div></div>
+    <div id="mission" class="section"><div class="box"></div></div>
+    <div id="future" class="section"><div class="box"></div></div>
+    <div id="origin" class="section"><div class="box"></div></div>
+    <div id="development" class="section"><div class="box"></div></div>
+    <div id="meaning" class="section"><div class="box"></div></div>
+    <div id="hypotheses" class="section"><div class="box"></div></div>
+    <div id="conclusion" class="section"><div class="box"></div></div>
+    <div id="thanks" class="section"><div class="box"></div></div>
 
 </div>
 
-
 </body>
 </html>
+
 
