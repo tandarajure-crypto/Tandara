@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -6,29 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodoslovlje prezimena Tandara</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
-
     <style>
         body {
             margin: 0;
-            font-family: Inter, Roboto, Calibri, Arial, sans-serif;
-            color: #333;
+            font-family: Arial, sans-serif;
             display: flex;
             height: 100vh;
         }
 
-        /* Lijeva kolona */
+        /* Lijevi meni */
         #sidebar {
             width: 16%;
-            max-width: 260px;
-            min-width: 180px;
             background-color: #2f2f2f;
             color: #ddd;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        .home-block {
+        #sidebar img.homeicon {
+            width: 36px;
+            cursor: pointer;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        #sidebar img.flag {
+            width: 26px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        #sidebar a {
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
+        #sidebar a:hover {
+            color: #fff;
+        }
+
+        /* Glavni sadržaj */
+        #content {
+            width: 84%;
+            padding: 30px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        /* Tvoja slika gore desno */
+        .profile-photo {
+            float: right;
+            width: 180px;
+            margin: 0 0 15px 20px;
+            border-radius: 6px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Lijevi meni -->
+    <div id="sidebar">
+        <a href="home.html">
+            <img src="home.png" class="homeicon" alt="Home">
+        </a>
+
+        <a href="./index.html">
+            <img src="croatia.png" class="flag"> HR – Stranica 1
+        </a>
+
+        <a href="./en.html">
+            <img src="uk.png" class="flag"> EN – Page 1
+        </a>
+    </div>
+
+    <!-- Glavni sadržaj -->
+    <div id="content">
+
+        <!-- Glavni naslov (jedini) -->
+        <h1>Rodoslovlje prezimena Tandara</h1>
+
+        <!-- Tvoja slika gore desno -->
+        <img src="moja_slika.jpg" class="profile-photo" alt="Autor">
+
+        <!-- Tekst odmah ispod naslova -->
+        <p>
+          
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid #555;
@@ -90,53 +159,10 @@
             color: #333;
         }
     </style>
-</head>
-
-<body>
-
-    <!-- Lijevi meni -->
-    <div id="sidebar">
-        <div class="home-block">
-            <a href="index.html">
-                <img src="home.png" class="homeicon" alt="Home">
-            </a>
-        </div>
-
-        <a href="index.html">
-            <img src="croatia.png" class="flag"> HR – Stranica 1
-        </a>
-
-        <a href="en.html">
-            <img src="uk.png" class="flag"> EN – Page 1
-        </a>
-    </div>
-
-    <!-- Glavni sadržaj -->
-    <div id="content">
-
-        <!-- Glavni naslov -->
-        <h1>Rodoslovlje prezimena Tandara</h1>
-
-        <!-- Slika stabla -->
-        <img src="Family tree Tandara.png" class="main-image" alt="Family Tree Tandara">
-
-        <!-- Tvoja slika gore desno -->
-        <img src="moja_slika.jpg" class="profile-photo" alt="Autor stranice">
-
-        <!-- OVDJE IDE HRVATSKI SADRŽAJ -->
+</
+    <
         <p>
-            Ovdje počinje tvoj hrvatski tekst. Tvoja slika je gore desno, a tekst teče oko nje s lijeve
-            i donje strane. Možeš nastaviti pisati normalno, a slika će ostati u gornjem desnom kutu
-            dok god ima teksta oko nje.
-        </p>
-
-        <p>
-            Kada tekst postane duži, slika će ostati desno, a tekst će se prirodno omatati oko nje,
-            baš kao u novinama. Ovo je idealno za uvodni dio, biografiju ili objašnjenje projekta.
-        </p>
-
-        <!-- Ovdje možeš ubaciti 8 HR dijelova -->
-        <!-- Samo reci i ubacujem ih sve unutra -->
+          
 
     </div>
 
