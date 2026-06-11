@@ -133,23 +133,18 @@ body{
 }
 
 <script>
-
 function showPage(id, el){
 
-    // sakrij sve stranice
     document.querySelectorAll('.page').forEach(page=>{
         page.classList.remove('active');
     });
 
-    // prikaži odabranu stranicu
     document.getElementById(id).classList.add('active');
 
-    // makni aktivnu boju sa svih lijevih stavki
     document.querySelectorAll('.menu-item').forEach(item=>{
         item.classList.remove('active');
     });
 
-    // dodaj aktivnu boju na kliknutu stavku
     if(el){
         el.classList.add('active');
     }
@@ -158,8 +153,8 @@ function showPage(id, el){
 window.onload = function(){
     showPage('home');
 }
-
 </script>
+
 
 
 
