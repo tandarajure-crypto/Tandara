@@ -6,6 +6,111 @@
 <title>Obiteljsko stablo Tandara</title>
 
 <style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#e7c191;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* LIJEVI IZBORNIK */
+
+.sidebar{
+    width:300px;
+    background:#ddb274;
+    border-right:4px solid #7a7a7a;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.sidebar h3{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.menu-item{
+    text-align:center;
+    margin-bottom:25px;
+    cursor:pointer;
+    padding:10px;
+    border-radius:8px;
+}
+
+.menu-item:hover{
+    background:#cfa86a;
+}
+
+.menu-item.active{
+    background:#b98f4f;
+    color:white;
+}
+
+.menu-text{
+    margin-top:10px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.separator{
+    height:8px;
+    background:#bfbfbf;
+    border-radius:4px;
+    margin:30px 0;
+}
+
+.flag{
+    width:60px;
+}
+
+.content{
+    flex:1;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.content img{
+    max-width:100%;
+    height:auto;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+.page{
+    display:none;
+    width:100%;
+}
+
+.page.active{
+    display:block;
+}
+
+.text-content{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+    max-width:900px;
+    margin:auto;
+}
+
+@media(max-width:900px){
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        border-right:none;
+        border-bottom:4px solid #7a7a7a;
+    }
+}
+</style>
+
 <script>
 function showPage(id, el){
 
@@ -29,9 +134,6 @@ window.onload = function(){
 }
 </script>
 
-
-
-
 </head>
 
 <body>
@@ -40,33 +142,32 @@ window.onload = function(){
 
     <!-- LIJEVI STUPAC -->
 
-<div class="sidebar">
+    <div class="sidebar">
 
-    <h3>Sadržaj</h3>
+        <h3>Sadržaj</h3>
 
-    <div class="menu-item" onclick="showPage('home', this)">
-        <img src="home.png" alt="Home">
-        <div class="menu-text">početna</div>
+        <div class="menu-item" onclick="showPage('home', this)">
+            <img src="home.png" alt="Home">
+            <div class="menu-text">početna</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="menu-item" onclick="showPage('hr', this)">
+            <img src="flag-hr.png" class="flag" alt="Hrvatski">
+            <div class="menu-text">Rodoslovlje prezimena Tandara</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="menu-item" onclick="showPage('en', this)">
+            <img src="flag-uk.png" class="flag" alt="English">
+            <div class="menu-text">Genealogy of the Tandara surname</div>
+        </div>
+
+        <div class="separator"></div>
+
     </div>
-
-    <div class="separator"></div>
-
-    <div class="menu-item" onclick="showPage('hr', this)">
-        <img src="flag-hr.png" class="flag" alt="Hrvatski">
-        <div class="menu-text">Rodoslovlje prezimena Tandara</div>
-    </div>
-
-    <div class="separator"></div>
-
-    <div class="menu-item" onclick="showPage('en', this)">
-        <img src="flag-uk.png" class="flag" alt="English">
-        <div class="menu-text">Genealogy of the Tandara surname</div>
-    </div>
-
-    <div class="separator"></div>
-
-</div>
-
 
     <!-- DESNI STUPAC -->
 
@@ -75,10 +176,7 @@ window.onload = function(){
         <!-- POČETNA -->
 
         <div id="home" class="page">
-
-            <img src="Family tree Tandara.png"
-                 alt="Family Tree Tandara">
-
+            <img src="family-tree-tandara.png" alt="Family Tree Tandara">
         </div>
 
         <!-- HRVATSKI -->
@@ -133,6 +231,9 @@ window.onload = function(){
 
 </body>
 </html>
+
+
+
 
 
 
