@@ -1,174 +1,269 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rodoslovlje prezimena Tandara</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obiteljsko stablo Tandara</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            height: 100vh;
-        }
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#e7c191;
+}
 
-        /* Lijevi meni */
-        #sidebar {
-            width: 16%;
-            background-color: #2f2f2f;
-            color: #ddd;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+.container{
+    display:flex;
+    min-height:100vh;
+}
 
-        #sidebar img.homeicon {
-            width: 36px;
-            cursor: pointer;
-            display: block;
-            margin-bottom: 20px;
-        }
+/* LIJEVI IZBORNIK */
 
-        #sidebar img.flag {
-            width: 26px;
-            vertical-align: middle;
-            margin-right: 6px;
-        }
+.sidebar{
+    width:300px;
+    background:#ddb274;
+    border-right:4px solid #7a7a7a;
+    padding:20px;
+    box-sizing:border-box;
+}
 
-        #sidebar a {
-            display: block;
-            color: #ddd;
-            text-decoration: none;
-            padding: 6px 0;
-            font-size: 14px;
-        }
+.sidebar h3{
+    text-align:center;
+    margin-bottom:30px;
+}
 
-        #sidebar a:hover {
-            color: #fff;
-        }
+.menu-item{
+    text-align:center;
+    margin-bottom:25px;
+}
 
-        /* Glavni sadržaj */
-        #content {
-            width: 84%;
-            padding: 30px;
-            overflow-y: auto;
-            box-sizing: border-box;
-        }
+.menu-item img{
+    width:80px;
+    height:auto;
+    cursor:pointer;
+}
 
-        /* Tvoja slika gore desno */
-        .profile-photo {
-            float: right;
-            width: 180px;
-            margin: 0 0 15px 20px;
-            border-radius: 6px;
-        }
+.menu-item a{
+    display:block;
+    margin-top:10px;
+    text-decoration:none;
+    color:#003cff;
+    font-size:28px;
+    font-weight:bold;
+}
 
-        h1 {
-            margin-top: 0;
-        }
-    </style>
+.separator{
+    height:8px;
+    background:#bfbfbf;
+    border-radius:4px;
+    margin:30px 0;
+}
+
+.flag{
+    width:60px;
+    cursor:pointer;
+}
+
+.link{
+    display:block;
+    text-align:center;
+    color:#003cff;
+    text-decoration:none;
+    font-size:18px;
+    font-style:italic;
+    font-weight:bold;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+/* DESNA STRANA */
+
+.content{
+    flex:1;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.content img{
+    max-width:100%;
+    height:auto;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+.page{
+    display:none;
+    width:100%;
+}
+
+.page.active{
+    display:block;
+}
+
+.text-content{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+    max-width:900px;
+    margin:auto;
+}
+
+@media(max-width:900px){
+
+.container{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+    border-right:none;
+    border-bottom:4px solid #7a7a7a;
+}
+
+}
+</style>
+
+<script>
+
+function showPage(id){
+
+    document.querySelectorAll('.page').forEach(page=>{
+        page.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+}
+
+window.onload=function(){
+    showPage('home');
+}
+
+</script>
+
 </head>
 
 <body>
 
-    <!-- Lijevi meni -->
-    <div id="sidebar">
-        <a href="home.html">
-            <img src="home.png" class="homeicon" alt="Home">
-        </a>
+<div class="container">
 
-        <a href="./index.html">
-            <img src="croatia.png" class="flag"> HR – Stranica 1
-        </a>
+    <!-- LIJEVI STUPAC -->
 
-        <a href="./en.html">
-            <img src="uk.png" class="flag"> EN – Page 1
-        </a>
-    </div>
+    <div class="sidebar">
 
-    <!-- Glavni sadržaj -->
-    <div id="content">
+        <h3>Sadržaj</h3>
 
-        <!-- Glavni naslov (jedini) -->
-        <h1>Rodoslovlje prezimena Tandara</h1>
+        <div class="menu-item">
 
-        <!-- Tvoja slika gore desno -->
-        <img src="moja_slika.jpg" class="profile-photo" alt="Autor">
+            <!-- HOME IKONA -->
+            <img src="images/home.png"
+                 alt="Home"
+                 onclick="showPage('home')">
 
-        <!-- Tekst odmah ispod naslova -->
-        <p>
-          
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #555;
-        }
+            <div style="margin-top:10px;font-size:24px;">
+                početna
+            </div>
 
-        #sidebar img.homeicon {
-            width: 36px;
-            cursor: pointer;
-            display: block;
-            margin-bottom: 10px;
-        }
+        </div>
 
-        #sidebar img.flag {
-            width: 26px;
-            vertical-align: middle;
-            margin-right: 6px;
-        }
+        <div class="separator"></div>
 
-        #sidebar a {
-            display: block;
-            color: #ddd;
-            text-decoration: none;
-            padding: 6px 0;
-            font-size: 14px;
-        }
+        <div style="text-align:center;">
+            <img src="images/hr.png"
+                 class="flag"
+                 alt="Hrvatski"
+                 onclick="showPage('hr')">
 
-        #sidebar a:hover {
-            color: #fff;
-        }
+            <span class="link"
+                  onclick="showPage('hr')">
+                Rodoslovlje prezimena Tandara
+            </span>
+        </div>
 
-        /* Glavni sadržaj */
-        #content {
-            width: 84%;
-            padding: 30px;
-            overflow-y: auto;
-            box-sizing: border-box;
-        }
+        <div class="separator"></div>
 
-        img.main-image {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            margin-bottom: 20px;
-        }
+        <div style="text-align:center;">
+            <img src="images/en.png"
+                 class="flag"
+                 alt="English"
+                 onclick="showPage('en')">
 
-        /* Tvoja slika gore desno */
-        .profile-photo {
-            float: right;
-            width: 180px;
-            margin: 0 0 15px 20px; /* lijevo i dolje razmak */
-            border-radius: 6px;
-        }
+            <span class="link"
+                  onclick="showPage('en')">
+                Genealogy of the Tandara surname
+            </span>
+        </div>
 
-        section {
-            margin-bottom: 40px;
-        }
-
-        h1, h2, h3 {
-            color: #333;
-        }
-    </style>
-</
-    <
-        <p>
-          
+        <div class="separator"></div>
 
     </div>
+
+    <!-- DESNI STUPAC -->
+
+    <div class="content">
+
+        <!-- POČETNA -->
+
+        <div id="home" class="page">
+
+            <img src="images/family-tree-tandara.jpg"
+                 alt="Family Tree Tandara">
+
+        </div>
+
+        <!-- HRVATSKI -->
+
+        <div id="hr" class="page">
+
+            <div class="text-content">
+
+                <h1>Rodoslovlje prezimena Tandara</h1>
+
+                <p>
+                Ovdje dolazi hrvatski sadržaj.
+                </p>
+
+                <ul>
+                    <li>Jurina grana</li>
+                    <li>Petrova grana</li>
+                    <li>Antina grana</li>
+                    <li>Matina grana</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- ENGLESKI -->
+
+        <div id="en" class="page">
+
+            <div class="text-content">
+
+                <h1>Genealogy of the Tandara surname</h1>
+
+                <p>
+                English version of the genealogy.
+                </p>
+
+                <ul>
+                    <li>Jurina branch</li>
+                    <li>Petrova branch</li>
+                    <li>Antina branch</li>
+                    <li>Matina branch</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>
-
 
 
 
