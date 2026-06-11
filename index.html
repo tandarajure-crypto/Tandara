@@ -153,17 +153,23 @@ window.onload = function(){
 
         <div class="separator"></div>
 
-        <div class="menu-item" onclick="showPage('hr', this)">
-            <img src="flag-hr.png" class="flag" alt="Hrvatski">
-            <div class="menu-text">Rodoslovlje prezimena Tandara</div>
-        </div>
+       <div class="menu-item">
+    <a href="tandararod.pdf" target="_blank" style="text-decoration:none; color:inherit;">
+        <img src="flag-hr.png" class="flag" alt="Hrvatski">
+        <div class="menu-text">Rodoslovlje prezimena Tandara</div>
+    </a>
+</div>
+
 
         <div class="separator"></div>
 
-        <div class="menu-item" onclick="showPage('en', this)">
-            <img src="flag-uk.png" class="flag" alt="English">
-            <div class="menu-text">Genealogy of the Tandara surname</div>
-        </div>
+        <div class="menu-item">
+    <a href="genealogy.pdf" target="_blank" style="text-decoration:none; color:inherit;">
+        <img src="flag-uk.png" class="flag" alt="English">
+        <div class="menu-text">Genealogy of the Tandara surname</div>
+    </a>
+</div>
+
 
         <div class="separator"></div>
 
@@ -182,48 +188,16 @@ window.onload = function(){
         <!-- HRVATSKI -->
 
         <div id="hr" class="page">
+    <iframe src="tandararod.pdf" style="width:100%; height:90vh; border:none;"></iframe>
+</div>
 
-            <div class="text-content">
-
-                <h1>tandararod</h1>
-
-                <p>
-                Ovdje dolazi hrvatski sadržaj.
-                </p>
-
-                <ul>
-                    <li>Jurina grana</li>
-                    <li>Petrova grana</li>
-                    <li>Antina grana</li>
-                    <li>Matina grana</li>
-                </ul>
-
-            </div>
-
-        </div>
 
         <!-- ENGLESKI -->
 
-        <div id="en" class="page">
-
-            <div class="text-content">
-
-                <h1>genealogy</h1>
-
-                <p>
-                English version of the genealogy.
-                </p>
-
-                <ul>
-                    <li>Jurina branch</li>
-                    <li>Petrova branch</li>
-                    <li>Antina branch</li>
-                    <li>Matina branch</li>
-                </ul>
-
-            </div>
-
-        </div>
+      <div id="en" class="page">
+    <iframe src="genealogy.pdf" style="width:100%; height:90vh; border:none;"></iframe>
+</div>
+  
 
     </div>
 
