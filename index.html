@@ -35,20 +35,23 @@ body{
 .menu-item{
     text-align:center;
     margin-bottom:25px;
-}
-
-.menu-item img{
-    width:80px;
-    height:auto;
     cursor:pointer;
+    padding:10px;
+    border-radius:8px;
 }
 
-.menu-item a{
-    display:block;
+.menu-item:hover{
+    background:#cfa86a;
+}
+
+.menu-item.active{
+    background:#b98f4f;
+    color:white;
+}
+
+.menu-text{
     margin-top:10px;
-    text-decoration:none;
-    color:#003cff;
-    font-size:28px;
+    font-size:22px;
     font-weight:bold;
 }
 
@@ -61,22 +64,7 @@ body{
 
 .flag{
     width:60px;
-    cursor:pointer;
 }
-
-.link{
-    display:block;
-    text-align:center;
-    color:#003cff;
-    text-decoration:none;
-    font-size:18px;
-    font-style:italic;
-    font-weight:bold;
-    margin-top:10px;
-    cursor:pointer;
-}
-
-/* DESNA STRANA */
 
 .content{
     flex:1;
@@ -111,28 +99,18 @@ body{
 }
 
 @media(max-width:900px){
+    .container{
+        flex-direction:column;
+    }
 
-.container{
-    flex-direction:column;
+    .sidebar{
+        width:100%;
+        border-right:none;
+        border-bottom:4px solid #7a7a7a;
+    }
 }
-
-.sidebar{
-    width:100%;
-    border-right:none;
-    border-bottom:4px solid #7a7a7a;
-}
-
-}
-   .menu-item.active {
-    background:#b98f4f;
-    color:white;
-}
-
-.menu-item:hover {
-    background:#cfa86a;
-}
- 
 </style>
+
 .menu-item {
     cursor: pointer;
     padding: 10px;
