@@ -17,8 +17,6 @@ body{
     min-height:100vh;
 }
 
-/* LIJEVI IZBORNIK */
-
 .sidebar{
     width:300px;
     background:#ddb274;
@@ -73,65 +71,18 @@ body{
     max-width: calc(100% - 300px);
 }
 
-/* JEDNA SLIKA */
-
-.tree-wrapper{
-    position:relative;
-    max-width:100%;
-    margin:0 auto;
-}
-
-.tree-wrapper img{
-    width:100%;
-    height:auto;
-    display:block;
-}
-
-/* HOTSPOTI */
-
-.hotspot{
-    position:absolute;
-    cursor:pointer;
-    z-index:10;
-    border:2px solid red; /* makni kad završimo */
-    box-sizing:border-box;
-}
-
-/* PRIVREMENE POZICIJE – SAMO DA RADI */
-#hs-jurina {
-    top: 28%;
-    left: 7%;
-    width: 32%;
-    height: 12%;
-}
-
-#hs-petrova {
-    top: 28%;
-    left: 55%;
-    width: 32%;
-    height: 12%;
-}
-
-#hs-antina {
-    top: 55%;
-    left: 7%;
-    width: 32%;
-    height: 12%;
-}
-
-#hs-matina {
-    top: 55%;
-    left: 55%;
-    width: 32%;
-    height: 12%;
-}
-
 .page{
     display:none;
 }
 
 .page.active{
     display:block;
+}
+
+.pdf-viewer{
+    width:100%;
+    height:90vh;
+    border:none;
 }
 
 @media(max-width:900px){
@@ -149,6 +100,10 @@ body{
         max-width: 100%;
         width: 100%;
         padding: 10px;
+    }
+
+    .pdf-viewer{
+        height:80vh;
     }
 }
 </style>
@@ -199,47 +154,54 @@ window.onload = function(){
         </div>
 
         <div class="separator"></div>
+
+        <div class="menu-item" onclick="showPage('mr1', this)">
+            <div class="menu-text">MR1</div>
+        </div>
+
+        <div class="menu-item" onclick="showPage('mr2', this)">
+            <div class="menu-text">MR2</div>
+        </div>
+
+        <div class="menu-item" onclick="showPage('mr3', this)">
+            <div class="menu-text">MR3</div>
+        </div>
+
+        <div class="menu-item" onclick="showPage('mr4', this)">
+            <div class="menu-text">MR4</div>
+        </div>
+
     </div>
 
     <div class="content">
 
-        <!-- POČETNA – JEDNA SLIKA -->
-
         <div id="home" class="page">
-            <div class="tree-wrapper">
-                <img src="family-tree.png?v=1" alt="Family Tree Tandara">
-
-                <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
-                <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
-                <div id="hs-antina"  class="hotspot" onclick="showPage('antina')"></div>
-                <div id="hs-matina"  class="hotspot" onclick="showPage('matina')"></div>
-            </div>
+            <h2>Dobrodošli</h2>
+            <p>Odaberite sadržaj iz izbornika.</p>
         </div>
 
-        <!-- OSTALO -->
-
         <div id="hr" class="page">
-            <h2>Hrvatski sadržaj</h2>
+            <iframe class="pdf-viewer" src="MR1.pdf"></iframe>
         </div>
 
         <div id="en" class="page">
-            <h2>English content</h2>
+            <iframe class="pdf-viewer" src="MR2.pdf"></iframe>
         </div>
 
-        <div id="jurina" class="page">
-            <h2>Jurina grana</h2>
+        <div id="mr1" class="page">
+            <iframe class="pdf-viewer" src="MR1.pdf"></iframe>
         </div>
 
-        <div id="petrova" class="page">
-            <h2>Petrova grana</h2>
+        <div id="mr2" class="page">
+            <iframe class="pdf-viewer" src="MR2.pdf"></iframe>
         </div>
 
-        <div id="antina" class="page">
-            <h2>Antina grana</h2>
+        <div id="mr3" class="page">
+            <iframe class="pdf-viewer" src="MR3.pdf"></iframe>
         </div>
 
-        <div id="matina" class="page">
-            <h2>Matina grana</h2>
+        <div id="mr4" class="page">
+            <iframe class="pdf-viewer" src="MR4.pdf"></iframe>
         </div>
 
     </div>
@@ -248,6 +210,3 @@ window.onload = function(){
 
 </body>
 </html>
-
-
-    
