@@ -73,28 +73,43 @@ body{
     max-width: calc(100% - 300px);
 }
 
-/* SLIKA KAO REFERENCA */
-.tree-wrapper{
-    position:relative;
-    width:100%;
-    display:inline-block;
+/* SLIKE U DVA STUPCA */
+
+.two-columns{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
 }
 
-.tree-wrapper img{
-    max-width:100%;
+.left-img{
+    flex:1;
+    max-width:50%;
+    position:relative;
+}
+
+.right-img{
+    flex:1;
+    max-width:50%;
+}
+
+.left-img img,
+.right-img img{
+    width:100%;
     height:auto;
     display:block;
 }
 
 /* HOTSPOTI */
+
 .hotspot{
     position:absolute;
     cursor:pointer;
     z-index:10;
-    border:2px solid red; /* DEBUG – makni kad završiš */
+    border:2px solid red; /* makni kad završiš */
     box-sizing:border-box;
 }
-/* TVOJE KOORDINATE – FINALNE */
+
+/* KOORDINATE – prilagođene novoj slici */
 
 #hs-jurina {
     top: 31.9%;
@@ -124,8 +139,6 @@ body{
     height: 11.0%;
 }
 
-
-
 .page{
     display:none;
 }
@@ -151,9 +164,12 @@ body{
         padding: 10px;
     }
 
-    iframe {
-        width: 100% !important;
-        height: 80vh;
+    .two-columns{
+        flex-direction:column;
+    }
+
+    .left-img, .right-img{
+        max-width:100%;
     }
 }
 </style>
@@ -208,57 +224,53 @@ window.onload = function(){
 
     <div class="content">
 
-        <!-- POČETNA – SLIKA + HOTSPOTI -->
+        <!-- POČETNA – DVIJE SLIKE JEDNA DO DRUGE -->
 
         <div id="home" class="page">
-            <div class="tree-wrapper">
-                <img src="family-tree-tandara.png?v=3" alt="Family Tree Tandara">
+            <div class="two-columns">
 
-                <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
-                <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
-                <div id="hs-antina"  class="hotspot" onclick="showPage('antina')"></div>
-                <div id="hs-matina"  class="hotspot" onclick="showPage('matina')"></div>
+                <!-- LIJEVA SLIKA S HOTSPOTOVIMA -->
+                <div class="left-img">
+                    <img src="famili-tree-tandara.png?v=4" alt="Family Tree Tandara">
+
+                    <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
+                    <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
+                    <div id="hs-antina"  class="hotspot" onclick="showPage('antina')"></div>
+                    <div id="hs-matina"  class="hotspot" onclick="showPage('matina')"></div>
+                </div>
+
+                <!-- DESNA SLIKA -->
+                <div class="right-img">
+                    <img src="pocetno-stablo-tandara.png?v=1" alt="Početno stablo">
+                </div>
+
             </div>
         </div>
 
-        <!-- HRVATSKI -->
+        <!-- OSTALI SADRŽAJI -->
 
         <div id="hr" class="page">
-            <div onclick="showPage('home')">
-                <img src="home.png" style="width:40px; cursor:pointer;">
-            </div>
-            <iframe src="tandararod.pdf?v=3" style="width:100%; height:90vh; border:none;"></iframe>
+            <h2>Hrvatski sadržaj</h2>
         </div>
-
-        <!-- ENGLESKI -->
 
         <div id="en" class="page">
-            <div onclick="showPage('home')">
-                <img src="home.png" style="width:40px; cursor:pointer;">
-            </div>
-            <iframe src="genealogy.pdf?v=3" style="width:100%; height:90vh; border:none;"></iframe>
+            <h2>English content</h2>
         </div>
-
-        <!-- STRANICE GRANA -->
 
         <div id="jurina" class="page">
             <h2>Jurina grana</h2>
-            <p>Ovdje će ići sadržaj.</p>
         </div>
 
         <div id="petrova" class="page">
             <h2>Petrova grana</h2>
-            <p>Ovdje će ići sadržaj.</p>
         </div>
 
         <div id="antina" class="page">
             <h2>Antina grana</h2>
-            <p>Ovdje će ići sadržaj.</p>
         </div>
 
         <div id="matina" class="page">
             <h2>Matina grana</h2>
-            <p>Ovdje će ići sadržaj.</p>
         </div>
 
     </div>
