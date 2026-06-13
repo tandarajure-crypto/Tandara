@@ -81,7 +81,7 @@ body{
 }
 
 .tree-wrapper img{
-    width:100%;
+    max-width:100%;
     height:auto;
     display:block;
 }
@@ -95,7 +95,7 @@ body{
     box-sizing:border-box;
 }
 
-/* TVOJE TOČNE KOORDINATE */
+/* TVOJE KOORDINATE */
 
 #hs-jurina {
     top: 32%;
@@ -111,15 +111,17 @@ body{
     height: 10.9%;
 }
 
+/* ANTINA – pomaknuto gore za 2% */
 #hs-antina {
-    top: 52%;
+    top: 50%;
     left: 4.55%;
     width: 34.1%;
     height: 11%;
 }
 
+/* MATINA – pomaknuto gore za 2% */
 #hs-matina {
-    top: 52%;
+    top: 50%;
     left: 63%;
     width: 30%;
     height: 11%;
@@ -211,7 +213,7 @@ window.onload = function(){
 
         <div id="home" class="page">
             <div class="tree-wrapper">
-                <img src="family-tree-tandara.png" alt="Family Tree Tandara">
+                <img src="family-tree-tandara.png?v=3" alt="Family Tree Tandara">
 
                 <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
                 <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
@@ -226,7 +228,7 @@ window.onload = function(){
             <div onclick="showPage('home')">
                 <img src="home.png" style="width:40px; cursor:pointer;">
             </div>
-            <iframe src="tandararod.pdf" style="width:100%; height:90vh; border:none;"></iframe>
+            <iframe src="tandararod.pdf?v=3" style="width:100%; height:90vh; border:none;"></iframe>
         </div>
 
         <!-- ENGLESKI -->
@@ -235,7 +237,7 @@ window.onload = function(){
             <div onclick="showPage('home')">
                 <img src="home.png" style="width:40px; cursor:pointer;">
             </div>
-            <iframe src="genealogy.pdf" style="width:100%; height:90vh; border:none;"></iframe>
+            <iframe src="genealogy.pdf?v=3" style="width:100%; height:90vh; border:none;"></iframe>
         </div>
 
         <!-- STRANICE GRANA -->
@@ -266,5 +268,7 @@ window.onload = function(){
 
 </body>
 </html>
+
+
 
 
