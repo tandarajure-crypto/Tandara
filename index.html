@@ -73,27 +73,15 @@ body{
     max-width: calc(100% - 300px);
 }
 
-/* SLIKE U DVA STUPCA */
+/* JEDNA SLIKA */
 
-.two-columns{
-    display:flex;
-    gap:20px;
-    align-items:flex-start;
-}
-
-.left-img{
-    flex:1;
-    max-width:50%;
+.tree-wrapper{
     position:relative;
+    max-width:100%;
+    margin:0 auto;
 }
 
-.right-img{
-    flex:1;
-    max-width:50%;
-}
-
-.left-img img,
-.right-img img{
+.tree-wrapper img{
     width:100%;
     height:auto;
     display:block;
@@ -105,38 +93,38 @@ body{
     position:absolute;
     cursor:pointer;
     z-index:10;
-    border:2px solid red; /* makni kad završiš */
+    border:2px solid red; /* makni kad završimo */
     box-sizing:border-box;
 }
 
-/* KOORDINATE – prilagođene novoj slici */
+/* PRIVREMENE GRUBE POZICIJE – SAMO DA RADI */
 
 #hs-jurina {
-    top: 31.9%;
-    left: 11.8%;
-    width: 27.5%;
-    height: 11.0%;
+    top: 28%;
+    left: 7%;
+    width: 32%;
+    height: 12%;
 }
 
 #hs-petrova {
-    top: 32.5%;
-    left: 58.9%;
-    width: 29.0%;
-    height: 10.9%;
+    top: 28%;
+    left: 55%;
+    width: 32%;
+    height: 12%;
 }
 
 #hs-antina {
-    top: 51.9%;
-    left: 6.2%;
-    width: 32.5%;
-    height: 11.0%;
+    top: 55%;
+    left: 7%;
+    width: 32%;
+    height: 12%;
 }
 
 #hs-matina {
-    top: 51.9%;
-    left: 64.2%;
-    width: 28.5%;
-    height: 11.0%;
+    top: 55%;
+    left: 55%;
+    width: 32%;
+    height: 12%;
 }
 
 .page{
@@ -162,14 +150,6 @@ body{
         max-width: 100%;
         width: 100%;
         padding: 10px;
-    }
-
-    .two-columns{
-        flex-direction:column;
-    }
-
-    .left-img, .right-img{
-        max-width:100%;
     }
 }
 </style>
@@ -224,30 +204,20 @@ window.onload = function(){
 
     <div class="content">
 
-        <!-- POČETNA – DVIJE SLIKE JEDNA DO DRUGE -->
+        <!-- POČETNA – JEDNA SLIKA -->
 
         <div id="home" class="page">
-            <div class="two-columns">
+            <div class="tree-wrapper">
+                <img src="family-tree-tandara.png?v=5" alt="Family Tree Tandara">
 
-                <!-- LIJEVA SLIKA S HOTSPOTOVIMA -->
-                <div class="left-img">
-                    <img src="famili-tree-tandara.png?v=4" alt="Family Tree Tandara">
-
-                    <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
-                    <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
-                    <div id="hs-antina"  class="hotspot" onclick="showPage('antina')"></div>
-                    <div id="hs-matina"  class="hotspot" onclick="showPage('matina')"></div>
-                </div>
-
-                <!-- DESNA SLIKA -->
-                <div class="right-img">
-                    <img src="pocetno-stablo-tandara.png?v=1" alt="Početno stablo">
-                </div>
-
+                <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
+                <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
+                <div id="hs-antina"  class="hotspot" onclick="showPage('antina')"></div>
+                <div id="hs-matina"  class="hotspot" onclick="showPage('matina')"></div>
             </div>
         </div>
 
-        <!-- OSTALI SADRŽAJI -->
+        <!-- OSTALO -->
 
         <div id="hr" class="page">
             <h2>Hrvatski sadržaj</h2>
@@ -280,6 +250,4 @@ window.onload = function(){
 </body>
 </html>
 
-
-
-
+    
