@@ -73,23 +73,20 @@ body{
     max-width: calc(100% - 300px);
 }
 
-.content img{
-    max-width:100%;
+/* SLIKA KAO REFERENCA */
+.tree-wrapper{
+    position:relative;
+    width:100%;
+    display:inline-block;
+}
+
+.tree-wrapper img{
+    width:100%;
     height:auto;
     display:block;
-    box-shadow:0 0 15px rgba(0,0,0,.3);
 }
 
-.page{
-    display:none;
-    width:100%;
-}
-
-.page.active{
-    display:block;
-}
-
-/* HOTSPOTI – klik zone */
+/* HOTSPOTI */
 .hotspot{
     position:absolute;
     cursor:pointer;
@@ -126,6 +123,14 @@ body{
     left: 63%;
     width: 30%;
     height: 11%;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
 }
 
 @media(max-width:900px){
@@ -204,13 +209,15 @@ window.onload = function(){
 
         <!-- POČETNA – SLIKA + HOTSPOTI -->
 
-        <div id="home" class="page" style="position:relative;">
-            <img src="family-tree-tandara.png" alt="Family Tree Tandara">
+        <div id="home" class="page">
+            <div class="tree-wrapper">
+                <img src="family-tree-tandara.png" alt="Family Tree Tandara">
 
-            <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
-            <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
-            <div id="hs-antina"  class="hotspot" onclick="showPage('antina')"></div>
-            <div id="hs-matina"  class="hotspot" onclick="showPage('matina')"></div>
+                <div id="hs-jurina"  class="hotspot" onclick="showPage('jurina')"></div>
+                <div id="hs-petrova" class="hotspot" onclick="showPage('petrova')"></div>
+                <div id="hs-antina"  class="hotspot" onclick="showPage('antina')"></div>
+                <div id="hs-matina"  class="hotspot" onclick="showPage('matina')"></div>
+            </div>
         </div>
 
         <!-- HRVATSKI -->
@@ -259,4 +266,5 @@ window.onload = function(){
 
 </body>
 </html>
+
 
