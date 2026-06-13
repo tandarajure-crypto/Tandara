@@ -1,3 +1,240 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obiteljsko stablo Tandara</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#e7c191;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* LIJEVI IZBORNIK */
+
+.sidebar{
+    width:300px;
+    background:#ddb274;
+    border-right:4px solid #7a7a7a;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.sidebar h3{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.menu-item{
+    text-align:center;
+    margin-bottom:25px;
+    cursor:pointer;
+    padding:10px;
+    border-radius:8px;
+}
+
+.menu-item:hover{
+    background:#cfa86a;
+}
+
+.menu-item.active{
+    background:#b98f4f;
+    color:white;
+}
+
+.menu-text{
+    margin-top:10px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.separator{
+    height:8px;
+    background:#bfbfbf;
+    border-radius:4px;
+    margin:30px 0;
+}
+
+.flag{
+    width:60px;
+}
+
+.content{
+    flex:1;
+    padding:20px;
+    display:block; /* ← stabilno, ne rasteže sliku */
+    max-width: calc(100% - 300px);
+}
+
+.content img{
+    max-width:100%;
+    height:auto;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+.page{
+    display:none;
+    width:100%;
+}
+
+.page.active{
+    display:block;
+}
+
+.text-content{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+    max-width:900px;
+    margin:auto;
+}
+
+@media(max-width:900px){
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        border-right:none;
+        border-bottom:4px solid #7a7a7a;
+    }
+
+    .content {
+        max-width: 100%;
+        width: 100%;
+        padding: 10px;
+    }
+
+    iframe {
+        width: 100% !important;
+        height: 80vh;
+    }
+}
+</style>
+
+<script>
+function showPage(id, el){
+
+    document.querySelectorAll('.page').forEach(page=>{
+        page.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.menu-item').forEach(item=>{
+        item.classList.remove('active');
+    });
+
+    if(el){
+        el.classList.add('active');
+    }
+}
+
+window.onload = function(){
+    showPage('home');
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LIJEVI STUPAC -->
+
+    <div class="sidebar">
+
+        <h3>Sadržaj</h3>
+
+        <div class="menu-item" onclick="showPage('home', this)">
+            <img src="home.png" alt="Home">
+            <div class="menu-text">početna</div>
+        </div>
+
+        <div class="menu-item" onclick="showPage('hr', this)">
+            <img src="flag-hr.png" class="flag" alt="Hrvatski">
+            <div class="menu-text">Rodoslovlje prezimena Tandara</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="menu-item" onclick="showPage('en', this)">
+            <img src="flag-uk.png" class="flag" alt="English">
+            <div class="menu-text">Genealogy of the Tandara surname</div>
+        </div>
+
+        <div class="separator"></div>
+
+    </div>
+
+    <!-- DESNI STUPAC -->
+
+    <div class="content">
+
+        <!-- POČETNA -->
+
+        <div id="home" class="page" style="position:relative;">
+            <img src="family-tree-tandara.png" alt="Family Tree Tandara" style="width:100%; height:auto; display:block;">
+
+            <!-- Jurina grana -->
+            <div onclick="showPage('jurina')" 
+                style="position:absolute; top:23%; left:29%; width:18%; height:9%; cursor:pointer; z-index:10;
+                       border:2px solid red;">
+            </div>
+
+            <!-- Petrova grana -->
+            <div onclick="showPage('petrova')" 
+                style="position:absolute; top:23%; left:53%; width:18%; height:9%; cursor:pointer; z-index:10;
+                       border:2px solid red;">
+            </div>
+
+            <!-- Antina grana -->
+            <div onclick="showPage('antina')" 
+                style="position:absolute; top:42%; left:29%; width:18%; height:9%; cursor:pointer; z-index:10;
+                       border:2px solid red;">
+            </div>
+
+            <!-- Matina grana -->
+            <div onclick="showPage('matina')" 
+                style="position:absolute; top:42%; left:53%; width:18%; height:9%; cursor:pointer; z-index:10;
+                       border:2px solid red;">
+            </div>
+        </div>
+
+        <!-- HRVATSKI -->
+
+        <div id="hr" class="page">
+            <div class="back-home" onclick="showPage('home')">
+                <img src="home.png" style="width:40px; cursor:pointer;">
+            </div>
+            <iframe src="tandararod.pdf" style="width:100%; height:90vh; border:none;"></iframe>
+        </div>
+
+        <!-- ENGLESKI -->
+
+        <div id="en" class="page">
+            <div class="back-home" onclick="showPage('home')">
+                <img src="home.png" style="width:40px; cursor:pointer;">
+            </div>
+            <iframe src="genealogy.pdf" style="width:100%; height:90vh; border:none;"></iframe>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
 
 
 
