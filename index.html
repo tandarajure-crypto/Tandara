@@ -2,100 +2,88 @@
 <html lang="hr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Obiteljsko stablo Tandara</title>
+<title>Tandara Family Tree</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#e7c191;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e7c191;
+    overflow: hidden;
 }
 
-.container{
-    display:flex;
-    min-height:100vh;
+/* Layout */
+.container {
+    display: flex;
+    height: 100vh;
 }
 
-.sidebar{
-    width:300px;
-    background:#ddb274;
-    border-right:4px solid #7a7a7a;
-    padding:20px;
-    box-sizing:border-box;
+/* Left menu */
+.menu {
+    width: 260px;
+    background: #5a3e1b;
+    color: white;
+    padding-top: 20px;
+    box-sizing: border-box;
 }
 
-.sidebar h3{
-    text-align:center;
-    margin-bottom:30px;
+.menu-item {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
-.menu-item{
-    text-align:center;
-    margin-bottom:25px;
-    cursor:pointer;
-    padding:10px;
-    border-radius:8px;
+.menu-item:hover {
+    background: #7a5325;
 }
 
-.menu-item:hover{
-    background:#cfa86a;
+.flag {
+    width: 40px;
+    margin-right: 10px;
 }
 
-.menu-item.active{
-    background:#b98f4f;
-    color:white;
+.menu-text {
+    font-size: 18px;
 }
 
-.menu-text{
-    margin-top:10px;
-    font-size:22px;
-    font-weight:bold;
+/* Right content */
+.content {
+    flex-grow: 1;
+    position: relative;
+    text-align: center;
 }
 
-.separator{
-    height:8px;
-    background:#bfbfbf;
-    border-radius:4px;
-    margin:30px 0;
+/* Pages */
+.page {
+    display: none;
+    width: 100%;
+    height: 100%;
 }
 
-.flag{
-    width:60px;
+/* PDF viewer */
+.pdf-viewer {
+    width: 100%;
+    height: calc(100% - 70px);
+    border: none;
 }
 
-.content{
-    flex:1;
-    padding:20px;
-    display:block;
-    max-width: calc(100% - 300px);
+/* Family tree image */
+#home img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.pdf-viewer{
-    width:100%;
-    height:90vh;
-    border:none;
-}
-
-/* HOTSPOTOVI – crveni prikaz uključen */
+/* Hotspots */
 .hs {
-    position:absolute;
-    cursor:pointer;
+    position: absolute;
+    cursor: pointer;
     border: 3px solid red !important;
     background-color: rgba(255, 0, 0, 0.25) !important;
 }
 
-/* SIMETRIČNE POZICIJE */
-
-/* Jurina – gore lijevo */
+/* Jurina – SAVRŠENO, NE DIRAMO */
 .hs-jurina {
     top: 27%;
     left: 6%;
@@ -103,15 +91,15 @@ body{
     height: 9%;
 }
 
-/* Petrova – gore desno */
+/* Petrova – pomaknuta lijevo */
 .hs-petrova {
-    top: 27%;
-    left: 32%;
+    top: 23%;
+    left: 48%;
     width: 18%;
     height: 9%;
 }
 
-/* Antina – dolje lijevo */
+/* Antina – SAVRŠENO, NE DIRAMO */
 .hs-antina {
     top: 42%;
     left: 6%;
@@ -119,119 +107,95 @@ body{
     height: 9%;
 }
 
-/* Matina – dolje desno */
+/* Matina – pomaknuta lijevo */
 .hs-matina {
     top: 42%;
-    left: 32%;
+    left: 48%;
     width: 18%;
     height: 9%;
-}
-
-@media(max-width:900px){
-    .container{
-        flex-direction:column;
-    }
-
-    .sidebar{
-        width:100%;
-        border-right:none;
-        border-bottom:4px solid #7a7a7a;
-    }
-
-    .content {
-        max-width: 100%;
-        width: 100%;
-        padding: 10px;
-    }
-
-    .pdf-viewer{
-        height:80vh;
-    }
 }
 </style>
 
 <script>
-function showPage(id, el){
-    document.querySelectorAll('.page').forEach(page=>{
-        page.classList.remove('active');
-    });
-    document.getElementById(id).classList.add('active');
-
-    document.querySelectorAll('.menu-item').forEach(item=>{
-        item.classList.remove('active');
-    });
-    if(el){
-        el.classList.add('active');
-    }
-}
-
-window.onload = function(){
-    showPage('home');
+function showPage(pageId, el) {
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    document.getElementById(pageId).style.display = 'block';
 }
 </script>
-</head>
 
+</head>
 <body>
 
 <div class="container">
 
-    <div class="sidebar">
-        <h3>Sadržaj</h3>
+    <!-- LEFT MENU -->
+    <div class="menu">
 
-        <div class="menu-item" onclick="showPage('home', this)">
-            <img src="home.png" alt="Home">
-            <div class="menu-text">početna</div>
-        </div>
-
-        <div class="menu-item" onclick="showPage('hr', this)">
-            <img src="flag-hr.png" class="flag" alt="Hrvatski">
+        <!-- HR PDF -->
+        <div class="menu-item" onclick="showPage('hr')">
+            <img src="flag-hr.png" class="flag">
             <div class="menu-text">Rodoslovlje prezimena Tandara</div>
         </div>
 
-        <div class="separator"></div>
-
-        <div class="menu-item" onclick="showPage('en', this)">
-            <img src="flag-uk.png" class="flag" alt="English">
+        <!-- EN PDF -->
+        <div class="menu-item" onclick="showPage('en')">
+            <img src="flag-uk.png" class="flag">
             <div class="menu-text">Genealogy of the Tandara surname</div>
         </div>
 
-        <div class="separator"></div>
     </div>
 
+    <!-- RIGHT CONTENT -->
     <div class="content">
 
-        <!-- POČETNA -->
-        <div id="home" class="page" style="position:relative;">
-            <img src="family-tree.png?v=1" style="width:100%; display:block;">
+        <!-- HOME PAGE -->
+        <div id="home" class="page" style="display:block;">
+            <img src="family-tree.png">
 
-            <!-- Jurina -->
-            <div class="hs hs-jurina" onclick="window.location.href='jurinagrana.png'"></div>
-
-            <!-- Petrova -->
-            <div class="hs hs-petrova" onclick="window.location.href='petrovagrana.png'"></div>
-
-            <!-- Antina -->
-            <div class="hs hs-antina" onclick="window.location.href='antinagrana.png'"></div>
-
-            <!-- Matina -->
-            <div class="hs hs-matina" onclick="window.location.href='matinagrana.png'"></div>
+            <!-- Hotspots -->
+            <div class="hs hs-jurina" onclick="window.location.href='jurina.html'"></div>
+            <div class="hs hs-petrova" onclick="window.location.href='petrova.html'"></div>
+            <div class="hs hs-antina" onclick="window.location.href='antina.html'"></div>
+            <div class="hs hs-matina" onclick="window.location.href='matina.html'"></div>
         </div>
 
-        <!-- HR PDF -->
+        <!-- HR PDF PAGE -->
         <div id="hr" class="page">
-            <iframe class="pdf-viewer" src="MR1.pdf"></iframe>
+            <div onclick="showPage('home')" style="cursor:pointer; margin:15px;">
+                <img src="home.png" style="width:40px;">
+            </div>
+            <iframe class="pdf-viewer" src="tandararod.pdf"></iframe>
         </div>
 
-        <!-- EN PDF -->
+        <!-- EN PDF PAGE -->
         <div id="en" class="page">
-            <iframe class="pdf-viewer" src="MR2.pdf"></iframe>
+            <div onclick="showPage('home')" style="cursor:pointer; margin:15px;">
+                <img src="home.png" style="width:40px;">
+            </div>
+            <iframe class="pdf-viewer" src="genealogy.pdf"></iframe>
         </div>
 
     </div>
-
 </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
