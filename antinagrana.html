@@ -17,9 +17,10 @@
         position: relative;
     }
 
+    /* HOME tipka spuštena da ne prekriva PDF */
     .home-btn {
         position: fixed;
-        top: 20px;
+        top: 120px;   /* OVO rješava tvoj problem */
         left: 20px;
         z-index: 9999;
     }
@@ -29,18 +30,18 @@
         height: 50px;
     }
 
-.image-wrapper img {
-    width: 100%;
-    height: auto;
-    max-height: 55vh;
-    object-fit: cover;
-}
-
+    .image-wrapper img {
+        width: 100%;
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
 </style>
 
 </head>
 
 <body>
+
 <!-- Lebdeća HOME tipka -->
 <a class="home-btn" href="index.html">
     <img src="home.png" alt="Home">
@@ -51,9 +52,9 @@
     <img src="antinagrana.png" alt="Antina grana">
 </div>
 
-<!-- PDF ispod slike -->
+<!-- PDF ispod slike, otvara se na 220% -->
 <iframe src="Krizan.pdf#zoom=220" style="width:100%; height:90vh; border:none;"></iframe>
-
 
 </body>
 </html>
+
