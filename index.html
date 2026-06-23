@@ -141,6 +141,32 @@ body{
     .hs-antina{ top: 41.5%; left: 5%; width: 40%; height: 10%; }
     .hs-matina{ top: 41.5%; left: 55%; width: 40%; height: 10%; }
 }
+/* MOBITEL – POČETNA SLIKA U PORTRETU */
+@media(max-width:600px){
+
+    #home {
+        overflow:hidden;
+        height:100vh;
+        position:relative;
+    }
+
+    #home img {
+        width:auto;
+        height:100vh;
+        transform:rotate(90deg);
+        transform-origin:center;
+        position:absolute;
+        left:50%;
+        top:50%;
+        translate:-50% -50%;
+    }
+
+    .hs {
+        transform:rotate(90deg);
+        transform-origin:center;
+    }
+}
+    
 </style>
 
 <script>
