@@ -9,50 +9,88 @@
 <meta http-equiv="Expires" content="0" />
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: #e7c191;
-        position: relative;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .home-btn {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 9999;
-    }
-
-    .home-btn img {
-        width: 50px;
-        height: 50px;
-    }
-
-  .image-wrapper img {
-    width: 50%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+body{
+    margin:0;
+    background:#e7c191;
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* 5% praznog prostora sa svake strane */
+.page-wrapper{
+    width:90%;
+    margin:0 auto;
+}
 
-    .gene-text {
-        font-size: 16px;
-        line-height: 1.5;
-        max-width: 700px;
-        margin: 20px auto;
-        padding: 10px;
-        background: #f7e7cf;
-        border-radius: 8px;
-    }
+/* HOME tipka */
+.home-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:9999;
+}
 
-    .gene-text .flag {
-        height: 32px;
-        vertical-align: middle;
-        margin: 10px 0;
+.home-btn img{
+    width:60px;
+    height:auto;
+}
+
+/* Slika stabla */
+.tree-image{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+/* Naslovi */
+h1 {
+    font-size: 2.2em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+h2, h3, h4 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Tekst */
+p {
+    margin-bottom: 15px;
+}
+
+/* Zastava */
+.flag {
+    display: block;
+    margin: 60px auto 125px;
+    max-width: 120px;
+    height: auto;
+}
+
+/* Suženi tekstualni stupac */
+.text-block {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* MOBITEL */
+@media (max-width: 600px) {
+    .text-block {
+        max-width: 90%;
     }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .text-block {
+        max-width: 80%;
+    }
+}
 </style>
+
 
 </head>
 
