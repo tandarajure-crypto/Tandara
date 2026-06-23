@@ -105,17 +105,14 @@ body{
 
 /* MOBITEL – sidebar gore */
 @media(max-width:900px){
-
     .container{
         flex-direction:column;
     }
-
     .sidebar{
         width:100%;
         border-right:none;
         border-bottom:4px solid #7a7a7a;
     }
-
     .content{
         max-width:100%;
         width:100%;
@@ -125,41 +122,33 @@ body{
 
 /* MOBITEL – HOTSPOTI + ROTACIJA KOJA JE PRIJE RADILA */
 @media(max-width:600px){
-
-    /* slika */
     #home {
         overflow:hidden;
         height:100vh;
         position:relative;
     }
-
     #home img{
         width:auto;
         height:100vh;
-        transform:rotate(-90deg); /* TVOJA STARA ISPRAVNA ROTACIJA */
+        transform:rotate(-90deg);
         transform-origin:center;
         position:absolute;
         left:50%;
         top:50%;
         translate:-50% -50%;
     }
-
-    /* hotspotovi */
     .hs{
         border-width:2px !important;
         background-color: rgba(255,0,0,0.18) !important;
-        transform:rotate(-90deg); /* rotacija hotspotova */
+        transform:rotate(-90deg);
         transform-origin:center;
     }
-
-    /* tvoje stare dobre pozicije koje su radile */
     .hs-jurina{ top: 23.5%; left: 5%; width: 40%; height: 10%; }
     .hs-petrova{ top: 23.5%; left: 55%; width: 40%; height: 10%; }
     .hs-antina{ top: 41.5%; left: 5%; width: 40%; height: 10%; }
     .hs-matina{ top: 41.5%; left: 55%; width: 40%; height: 10%; }
 }
 </style>
-
 
 <script>
 function showPage(id, el){
@@ -190,46 +179,35 @@ window.onload = function(){
         <h3>Sadržaj</h3>
         <div class="separator"></div>
 
-        <!-- HOME TIPKA (slika već sadrži EN/HR tekst) -->
+        <!-- HOME -->
         <div class="menu-item" onclick="showPage('home', this)">
             <img src="home.png" alt="Početna" style="width:80px;">
         </div>
 
         <div class="separator"></div>
 
-        <!-- HR ZASTAVA + NASLOV -->
-        <div class="menu-item" onclick="window.location.href='tandararod.pdf'">
+        <!-- HR PDF -->
+        <div class="menu-item" onclick="showPage('hr', this)">
             <img src="flag-hr.png" class="flag" alt="Hrvatski">
             <div class="menu-text">Rodoslovlje prezimena Tandara</div>
         </div>
 
         <div class="separator"></div>
 
-        <!-- UK ZASTAVA + NASLOV -->
-        <div class="menu-item" onclick="window.location.href='genealogy.pdf'">
+        <!-- EN PDF -->
+        <div class="menu-item" onclick="showPage('en', this)">
             <img src="flag-uk.png" class="flag" alt="English">
             <div class="menu-text">Genealogy of the Tandara surname</div>
         </div>
 
         <div class="separator"></div>
 
-        <!-- REZERVIRANA TRI NASLOVA (za kasnije) -->
-        <div class="menu-item">
-            <div class="menu-text">[naslov 1]</div>
-        </div>
-
+        <!-- REZERVIRANO -->
+        <div class="menu-item"><div class="menu-text">[naslov 1]</div></div>
         <div class="separator"></div>
-
-        <div class="menu-item">
-            <div class="menu-text">[naslov 2]</div>
-        </div>
-
+        <div class="menu-item"><div class="menu-text">[naslov 2]</div></div>
         <div class="separator"></div>
-
-        <div class="menu-item">
-            <div class="menu-text">[naslov 3]</div>
-        </div>
-
+        <div class="menu-item"><div class="menu-text">[naslov 3]</div></div>
         <div class="separator"></div>
     </div>
 
@@ -261,5 +239,6 @@ window.onload = function(){
 
 </body>
 </html>
+
 
 
