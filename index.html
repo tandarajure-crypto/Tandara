@@ -130,27 +130,50 @@ body{
     height: 9%;
 }
 
-@media(max-width:900px){
-    .container{
-        flex-direction:column;
-    }
+@media(max-width:600px){
 
-    .sidebar{
+    /* smanji cijelu sliku malo više */
+    #home img{
         width:100%;
-        border-right:none;
-        border-bottom:4px solid #7a7a7a;
+        max-width:100%;
     }
 
-    .content {
-        max-width: 100%;
-        width: 100%;
-        padding: 10px;
+    /* smanji hotspotove */
+    .hs{
+        border-width:2px !important;
+        background-color: rgba(255,0,0,0.18) !important;
     }
 
-    .pdf-viewer{
-        height:80vh;
+    /* nove pozicije za mobitel – zbijene i niže */
+    .hs-jurina{
+        top: 24%;
+        left: 5%;
+        width: 40%;
+        height: 10%;
+    }
+
+    .hs-petrova{
+        top: 24%;
+        left: 55%;
+        width: 40%;
+        height: 10%;
+    }
+
+    .hs-antina{
+        top: 42%;
+        left: 5%;
+        width: 40%;
+        height: 10%;
+    }
+
+    .hs-matina{
+        top: 42%;
+        left: 55%;
+        width: 40%;
+        height: 10%;
     }
 }
+
 </style>
 
 <script>
