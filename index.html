@@ -334,7 +334,21 @@ window.onload=function(){
     </div>
 
 </div>
+<!-- FULLSCREEN PDF VIEWER -->
+<div id="pdfOverlay" class="pdf-fullscreen">
 
+    <img src="home.png"
+         class="pdf-home-btn"
+         style="position:absolute; top:10px; left:10px;"
+         onclick="closePdf()">
+
+    <img src="close.png"
+         class="pdf-close"
+         onclick="closePdf()">
+
+    <iframe id="pdfFrame" src=""></iframe>
+
+</div>
 </body>
 </html>
 
