@@ -123,37 +123,20 @@ body{
     }
 }
 
-/* MOBITEL – hotspotovi manji i zbijeni */
+/* MOBITEL – HOTSPOTI + ROTACIJA KOJA JE PRIJE RADILA */
 @media(max-width:600px){
 
-    #home img{
-        width:100%;
-        max-width:100%;
-    }
-
-    .hs{
-        border-width:2px !important;
-        background-color: rgba(255,0,0,0.18) !important;
-    }
-
-    .hs-jurina{ top: 23.5%; left: 5%; width: 40%; height: 10%; }
-    .hs-petrova{ top: 23.5%; left: 55%; width: 40%; height: 10%; }
-    .hs-antina{ top: 41.5%; left: 5%; width: 40%; height: 10%; }
-    .hs-matina{ top: 41.5%; left: 55%; width: 40%; height: 10%; }
-}
-/* MOBITEL – POČETNA SLIKA U PORTRETU */
-@media(max-width:600px){
-
+    /* slika */
     #home {
         overflow:hidden;
         height:100vh;
         position:relative;
     }
 
-    #home img {
+    #home img{
         width:auto;
         height:100vh;
-        transform:rotate(90deg);
+        transform:rotate(-90deg); /* TVOJA STARA ISPRAVNA ROTACIJA */
         transform-origin:center;
         position:absolute;
         left:50%;
@@ -161,13 +144,22 @@ body{
         translate:-50% -50%;
     }
 
-    .hs {
-        transform:rotate(90deg);
+    /* hotspotovi */
+    .hs{
+        border-width:2px !important;
+        background-color: rgba(255,0,0,0.18) !important;
+        transform:rotate(-90deg); /* rotacija hotspotova */
         transform-origin:center;
     }
+
+    /* tvoje stare dobre pozicije koje su radile */
+    .hs-jurina{ top: 23.5%; left: 5%; width: 40%; height: 10%; }
+    .hs-petrova{ top: 23.5%; left: 55%; width: 40%; height: 10%; }
+    .hs-antina{ top: 41.5%; left: 5%; width: 40%; height: 10%; }
+    .hs-matina{ top: 41.5%; left: 55%; width: 40%; height: 10%; }
 }
-    
 </style>
+
 
 <script>
 function showPage(id, el){
