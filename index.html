@@ -17,6 +17,7 @@ body{
     min-height:100vh;
 }
 
+/* SIDEBAR */
 .sidebar{
     width:300px;
     background:#ddb274;
@@ -28,10 +29,9 @@ body{
 .sidebar h3{
     text-align:center;
     margin-bottom:10px;
-    font-size:28px; /* povećano */
+    font-size:28px;
     font-weight:bold;
 }
-
 
 .menu-item{
     text-align:center;
@@ -67,6 +67,7 @@ body{
     width:60px;
 }
 
+/* CONTENT */
 .content{
     flex:1;
     padding:20px;
@@ -88,7 +89,7 @@ body{
     border:none;
 }
 
-/* HOTSPOTOVI – crveni prikaz uključen */
+/* HOTSPOTOVI */
 .hs {
     position:absolute;
     cursor:pointer;
@@ -96,84 +97,50 @@ body{
     background-color: rgba(255, 0, 0, 0.25) !important;
 }
 
-/* SIMETRIČNE POZICIJE */
+/* POZICIJE – PC */
+.hs-jurina { top: 26.5%; left: 6%; width: 18%; height: 9%; }
+.hs-petrova { top: 26.5%; left: 32%; width: 18%; height: 9%; }
+.hs-antina { top: 42.5%; left: 6%; width: 18%; height: 9%; }
+.hs-matina { top: 42.5%; left: 32%; width: 18%; height: 9%; }
 
-/* Jurina – gore lijevo */
-.hs-jurina {
-    top: 27%;
-    left: 6%;
-    width: 18%;
-    height: 9%;
+/* MOBITEL – sidebar gore */
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        border-right:none;
+        border-bottom:4px solid #7a7a7a;
+    }
+
+    .content{
+        max-width:100%;
+        width:100%;
+        padding:10px;
+    }
 }
 
-/* Petrova – gore desno */
-.hs-petrova {
-    top: 27%;
-    left: 32%;
-    width: 18%;
-    height: 9%;
-}
-
-/* Antina – dolje lijevo */
-.hs-antina {
-    top: 42%;
-    left: 6%;
-    width: 18%;
-    height: 9%;
-}
-
-/* Matina – dolje desno */
-.hs-matina {
-    top: 42%;
-    left: 32%;
-    width: 18%;
-    height: 9%;
-}
-
+/* MOBITEL – hotspotovi manji i zbijeni */
 @media(max-width:600px){
 
-    /* smanji cijelu sliku malo više */
     #home img{
         width:100%;
         max-width:100%;
     }
 
-    /* smanji hotspotove */
     .hs{
         border-width:2px !important;
         background-color: rgba(255,0,0,0.18) !important;
     }
 
-    /* nove pozicije za mobitel – zbijene i niže */
-    .hs-jurina{
-        top: 24%;
-        left: 5%;
-        width: 40%;
-        height: 10%;
-    }
-
-    .hs-petrova{
-        top: 24%;
-        left: 55%;
-        width: 40%;
-        height: 10%;
-    }
-
-    .hs-antina{
-        top: 42%;
-        left: 5%;
-        width: 40%;
-        height: 10%;
-    }
-
-    .hs-matina{
-        top: 42%;
-        left: 55%;
-        width: 40%;
-        height: 10%;
-    }
+    .hs-jurina{ top: 23.5%; left: 5%; width: 40%; height: 10%; }
+    .hs-petrova{ top: 23.5%; left: 55%; width: 40%; height: 10%; }
+    .hs-antina{ top: 41.5%; left: 5%; width: 40%; height: 10%; }
+    .hs-matina{ top: 41.5%; left: 55%; width: 40%; height: 10%; }
 }
-
 </style>
 
 <script>
@@ -203,20 +170,17 @@ window.onload = function(){
 
     <div class="sidebar">
         <h3>Sadržaj</h3>
-       <div class="separator"></div>
- 
-<div class="menu-item" onclick="showPage('home', this)">
-    <img src="home.png" alt="Home" style="width:80px;">
-    
-</div>
+        <div class="separator"></div>
 
-<div class="menu-item" onclick="showPage('home', this)">
-    
-    <div class="menu-text">početna</div>
-</div>
+        <div class="menu-item" onclick="showPage('home', this)">
+            <img src="home.png" alt="Home" style="width:80px;">
+        </div>
+
+        <div class="menu-item" onclick="showPage('home', this)">
+            <div class="menu-text">početna</div>
+        </div>
 
         <div class="menu-item" onclick="window.location.href='tandararod.pdf'">
-
             <img src="flag-hr.png" class="flag" alt="Hrvatski">
             <div class="menu-text">Rodoslovlje prezimena Tandara</div>
         </div>
@@ -224,8 +188,6 @@ window.onload = function(){
         <div class="separator"></div>
 
         <div class="menu-item" onclick="window.location.href='genealogy.pdf'">
-
-            
             <img src="flag-uk.png" class="flag" alt="English">
             <div class="menu-text">Genealogy of the Tandara surname</div>
         </div>
@@ -239,30 +201,21 @@ window.onload = function(){
         <div id="home" class="page" style="position:relative;">
             <img src="family-tree.png?v=1" style="width:100%; display:block;">
 
-            <!-- Jurina -->
             <div class="hs hs-jurina" onclick="window.location.href='jurinagrana.html'"></div>
-
-            <!-- Petrova -->
             <div class="hs hs-petrova" onclick="window.location.href='petrovagrana.html'"></div>
-
-            <!-- Antina -->
             <div class="hs hs-antina" onclick="window.location.href='antinagrana.html'"></div>
-
-            <!-- Matina -->
             <div class="hs hs-matina" onclick="window.location.href='matinagrana.html'"></div>
         </div>
 
         <!-- HR PDF -->
-      <div id="hr" class="page">
-    <iframe class="pdf-viewer" src="tandararod.pdf"></iframe>
-</div>
-
+        <div id="hr" class="page">
+            <iframe class="pdf-viewer" src="tandararod.pdf"></iframe>
+        </div>
 
         <!-- EN PDF -->
-       <div id="en" class="page">
-    <iframe class="pdf-viewer" src="genealogy.pdf"></iframe>
-</div>
-
+        <div id="en" class="page">
+            <iframe class="pdf-viewer" src="genealogy.pdf"></iframe>
+        </div>
 
     </div>
 
@@ -270,3 +223,4 @@ window.onload = function(){
 
 </body>
 </html>
+
