@@ -10,6 +10,13 @@ body{
     margin:0;
     background:#e7c191;
     text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 5% praznog prostora sa svake strane */
+.page-wrapper{
+    width:90%;
+    margin:0 auto;
 }
 
 /* HOME tipka */
@@ -31,8 +38,75 @@ body{
     height:auto;
     display:block;
 }
+
+/* Naslovi */
+h1 {
+    font-size: 2.2em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+h2, h3, h4 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Tekst */
+p {
+    margin-bottom: 15px;
+}
+
+/* Zastava */
+.flag {
+    display: block;
+    margin: 60px auto 125px;
+    max-width: 120px;
+    height: auto;
+}
+
+/* Suženi tekstualni stupac */
+.text-block {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* MOBITEL */
+@media (max-width: 600px) {
+    .text-block {
+        max-width: 90%;
+    }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .text-block {
+        max-width: 80%;
+    }
+}
 </style>
 </head>
+
+<body>
+
+<!-- HOME -->
+<a href="index.html" class="home-btn" title="Povratak na početnu stranicu">
+    <img src="home.png" alt="Početna">
+</a>
+
+<div class="page-wrapper">
+
+    <!-- ZASTAVA -->
+    <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="flag">
+
+    <!-- NASLOVI -->
+    <h1>Četvrta grana prve obitelji TANDARA</h1>
+    <h2>Mate Tandara(c.1750-c.1806/19)</h2>
+
+    <!-- UVODNI TEKST -->
+    <div class="text-block">
 
 <body>
 
