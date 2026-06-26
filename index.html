@@ -206,7 +206,39 @@ body{
     width: 45px;
     cursor: pointer;
     z-index: 100000;
-}    
+}   
+   /* VISITORS BOX */
+
+.visitor-box{
+    width:100%;
+    background:#f3e2c3;
+    padding:20px 0;
+    box-sizing:border-box;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.visitor-box h4{
+    margin:0 0 12px 0;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.visitor-box a{
+    display:flex;
+    justify-content:center;
+    width:100%;
+}
+
+.visitor-box img{
+    display:block;
+    margin:0 auto;
+    max-width:100%;
+    height:auto;
+} 
 </style>
 
 <script>
@@ -297,16 +329,13 @@ gtag('config', 'G-S33NBEJQFD');
         <div class="menu-item">
         </div>
         
-<div style="text-align:center; padding:25px 15px; background:#f3e2c3; margin:0; box-sizing:border-box;">
+<div class="visitor-box">
 
-    <div style="font-size:20px; font-weight:bold; margin-bottom:10px;">
-        Posjetitelji
-    </div>
+    <h4>Posjetitelji</h4>
 
     <a href="https://info.flagcounter.com/OyvA">
         <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-             alt="Flag Counter"
-             style="display:block; margin:0 auto;">
+             alt="Flag Counter">
     </a>
 
 </div>
