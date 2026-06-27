@@ -1,1 +1,333 @@
+/* =====================================================
+   1. DIO - GLOBALNE POSTAVKE
+===================================================== */
 
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    background: #e7c191;
+
+    color: #3a2f1c;
+
+}
+
+/* =========================
+   GLAVNI KONTEJNER
+========================= */
+
+.container {
+
+    display: flex;
+
+    min-height: 100vh;
+
+    width: 100%;
+
+}
+
+/* =========================
+   SVE SLIKE
+========================= */
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+    display:block;
+
+}
+
+/* =========================
+   LINKOVI
+========================= */
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+/* =========================
+   BOX MODEL
+========================= */
+
+*{
+
+    box-sizing:border-box;
+
+}
+/* =====================================================
+   2. DIO - LIJEVA KOLONA (SIDEBAR)
+===================================================== */
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+
+    width:320px;
+
+    background:#f3e2c3;
+
+    border-right:3px solid #c8b38a;
+
+    padding:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* =========================
+   HOME / ENTER
+========================= */
+
+.home-button{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+}
+
+.home-button img{
+
+    width:60px;
+
+    cursor:pointer;
+
+    margin:0 auto;
+
+    transition:transform .2s;
+
+}
+
+.home-button img:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* =========================
+   ODABIR JEZIKA
+========================= */
+
+.language-switch{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.lang{
+
+    border:none;
+
+    background:#e7d2a5;
+
+    padding:6px 12px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    border-radius:5px;
+
+}
+
+.lang.active{
+
+    background:#c8b38a;
+
+    color:#ffffff;
+
+}
+
+/* =========================
+   NASLOV
+========================= */
+
+.sidebar-title{
+
+    text-align:center;
+
+    font-size:18px;
+
+    line-height:1.4;
+
+    margin:10px 0 20px;
+
+    font-weight:bold;
+
+    color:#3a2f1c;
+
+}
+
+/* =========================
+   GLAVNI IZBORNIK
+========================= */
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.menu-item{
+
+    padding:8px 10px;
+
+    border-radius:6px;
+
+    color:#3a2f1c;
+
+    transition:background .2s;
+
+}
+
+.menu-item:hover{
+
+    background:#e7d2a5;
+
+}
+
+/* =========================
+   POSJETITELJI
+========================= */
+
+.visitor-box{
+
+    margin-top:auto;
+
+    text-align:center;
+
+    padding-top:20px;
+
+}
+
+.visitor-title{
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+.visitor-box img{
+
+    margin:0 auto;
+
+}
+/* =====================================================
+   3. DIO - CONTENT I LANDING STRANICA
+===================================================== */
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+
+    flex:1;
+
+    padding:0;
+
+    overflow:hidden;
+
+    background:#e7c191;
+
+}
+
+/* =========================
+   LANDING STRANICA
+========================= */
+
+.landing-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+/* =========================
+   FOTOGRAFIJA AUTORA
+========================= */
+
+.author-photo{
+
+    width:180px;
+
+    border-radius:10px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.20);
+
+}
+
+/* =========================
+   NASLOV
+========================= */
+
+.landing-page h1{
+
+    margin:10px 0 20px;
+
+    font-size:34px;
+
+    color:#3a2f1c;
+
+}
+
+/* =========================
+   UVODNI TEKST
+========================= */
+
+.landing-page p{
+
+    max-width:850px;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    margin:10px 0;
+
+}
