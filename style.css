@@ -1,1 +1,218 @@
+/* =========================
+   GLOBAL
+========================= */
 
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #e7c191; /* nježna genealogijska bež */
+    color: #3a2f1c;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================
+   SIDEBAR (MyHeritage stil)
+========================= */
+
+.sidebar {
+    width: 320px;
+    background: #f3e2c3;
+    border-right: 3px solid #c8b38a;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ENTER / HOME */
+.home-button img {
+    width: 60px;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    transition: transform 0.2s;
+}
+
+.home-button img:hover {
+    transform: scale(1.05);
+}
+
+/* HR / EN */
+.language-switch {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.lang {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    background: #e7d2a5;
+    font-size: 12px;
+}
+
+.lang.active {
+    background: #c8b38a;
+    color: white;
+}
+
+/* NASLOV */
+.sidebar-title {
+    text-align: center;
+    font-size: 18px;
+    margin: 15px 0;
+    font-weight: normal;
+}
+
+.sidebar-title span {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* MENU */
+.menu {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: #3a2f1c;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.menu-item:hover {
+    background: #e7d2a5;
+}
+
+/* POSJETITELJI */
+.visitor-box {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.visitor-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* LANDING */
+.landing-page {
+    text-align: center;
+}
+
+.author-photo {
+    width: 180px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   TREE / STABLO
+========================= */
+
+.tree-page {
+    position: relative;
+}
+
+.tree-home img {
+    width: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+/* STABLO SLIKA */
+.tree-image {
+    width: 100%;
+    max-width: 900px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* HOTSPOTI */
+.branch {
+    position: absolute;
+    cursor: pointer;
+    border: 2px solid rgba(255,0,0,0.3);
+    background: rgba(255,0,0,0.1);
+    transition: 0.2s;
+}
+
+.branch:hover {
+    background: rgba(255,0,0,0.25);
+}
+
+/* POZICIJE (DESKTOP) */
+.hs-jurina  { top: 26%; left: 6%;  width: 18%; height: 9%; }
+.hs-petrova { top: 26%; left: 32%; width: 18%; height: 9%; }
+.hs-antina  { top: 42%; left: 6%;  width: 18%; height: 9%; }
+.hs-matina  { top: 42%; left: 32%; width: 18%; height: 9%; }
+
+/* =========================
+   MOBILE FIX
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 3px solid #c8b38a;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    /* ROTACIJA STABLA */
+    .tree-image {
+        width: auto;
+        height: 100vh;
+        transform: rotate(-90deg);
+        transform-origin: center;
+        display: block;
+        margin: auto;
+    }
+
+    /* HOTSPOT ROTACIJA */
+    .branch {
+        transform: rotate(-90deg);
+        transform-origin: center;
+        border: 2px solid rgba(255,0,0,0.2);
+    }
+
+    /* MOBILE POZICIJE */
+    .hs-jurina  { top: 23%; left: 5%;  width: 40%; height: 10%; }
+    .hs-petrova { top: 23%; left: 55%; width: 40%; height: 10%; }
+    .hs-antina  { top: 41%; left: 5%;  width: 40%; height: 10%; }
+    .hs-matina  { top: 41%; left: 55%; width: 40%; height: 10%; }
+}
