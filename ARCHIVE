@@ -229,8 +229,1109 @@ window.onload=function(){
 </body>
 </html>
 
-ANTINAGRANAHTML-backup files (234-
+ANTINAGRANAHTML-backup files (234-1333)
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<title>Antina grana</title>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<style>
+body{
+    margin:0;
+    background:#e7c191;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HOME tipka */
+.home-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:9999;
+}
+
+.home-btn img{
+    width:60px;
+    height:auto;
+}
+
+/* PNG slike – FULL WIDTH */
+.tree-image{
+    width:100%;
+    height:auto;
+    display:block;
+    margin:40px 0; /* normalan razmak */
+}
+
+/* Tekstualni okvir */
+.page-wrapper{
+    width:90%;
+    margin:0 auto;
+}
+
+/* Naslovi */
+h1 {
+    font-size: 2.2em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+h2, h3, h4 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+h1, h2, h3, h4 {
+    text-align:center;
+}
+
+/* Paragrafi */
+p {
+    margin-bottom: 15px;
+}
+
+/* Zastava */
+.flag {
+    display: block;
+    margin: 60px auto 125px;
+    max-width: 120px;
+    height: auto;
+}
+
+/* Suženi stupac teksta */
+.text-block {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* MOBITEL */
+@media (max-width: 600px) {
+    .text-block {
+        max-width: 90%;
+    }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .text-block {
+        max-width: 80%;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HOME -->
+<a href="index.html" class="home-btn" title="Povratak na početnu stranicu">
+    <img src="home.png" alt="Početna">
+</a>
+
+<div class="page-wrapper">
 
 
+    <!-- HR ZASTAVA -->
+    <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="flag">
+
+
+    <!-- HR NASLOVI -->
+    <h1>Treća grana prve obitelji TANDARA</h1>
+    <h2>Ante Tandara – Ivanov (rođen oko 1735 – )</h2>
+
+    <!-- HR TEKST -->
+    <div class="text-block">
+        <p>
+            Ante Tandara je vjerojatno treći ili četvrti Ivanov sin. Naime, pretpostavka je da bi i livanjski
+            Filip mogao biti jedan od Ivanovih sinova. Ante je bio otprilike godinu dana mlađi od Petra.
+            Oženio se Matijom Brnas, te su imali sinove Antu, Filipa i Pavla, te kćeri Jaku, Lucu i Ružu.
+            O Pavlu nema drugih podataka osim zapisa o rođenju što pretpostavlja da je mlad preminuo
+            ili je odselio iz Ričica.
+        </p>
+
+        <h2>Podgrana Ante Antina</h2>
+        <h3>Ante Antin</h3>
+
+        <p>
+            Ante kao najstariji sin Ante Ivanova, oženio se 1801. Matijom Jukić. Imali su sinove Lovru, Miju i Petra,
+            te kćeri Peru, Ružu, Anticu, Ivu i Mariju.
+            O Petru nema drugih podataka osim zapisa o rođenju.
+        </p>
+
+<p>
+Prema popisu stanovništva iz 1819., Ante je živio u Zavelimu, a njegov brat Filip u Ričicima.
+Njihovi potomci kasnije su se proširili po cijeloj Hrvatskoj, Europi i Kanadi.
+</p>
+
+<h3>Lovro Antin</h3>
+<p>Oženio se Matijom Sičenica. Imali su sinove Marijana i Križana.</p>
+
+<h3>Marijan Lovrin</h3>
+<p>Oženio se Matijom Kovač. Imali su sinove Juru, Marka, Stipana i Jozu, te kćeri Ivu, Maru i Matiju. 
+    Za Stipana nema podataka osim za rođenje pa se pretpostavlja da je umro mlad ili se odselio. Marijanovi potomci, po njegovim sinovima Marku
+    i Juri nose nadimak Lovrinovići. Nadimak potječe od od Marijanova oca Lovre. Lovrinovići danas žive u Popovači, Sarajevu i Stobreču.
+</p>
+
+<h3>Marko Marijanov</h3>
+<p>Oženio se Božicom Pušić. Imali su sina Mirka i kćer Ivu.</p>
+
+<h3>Mirko Markov</h3>
+<p>Oženio se Anicom Kliić. Imali su sinove Milana i Vladimira koji je umro sa 14 godina, te kćeri Dragicu, Mariju i Nediljku.</p>
+
+<h3>Milan Markov</h3>
+<p>Oženio se Svjetlanom Trifunović. Dobili su sinove Vladimira i Dalibora.</p>
+
+<p>
+Vladimir Milanov oženio se sa Claire Tacher, imaju sina Alexandra jamesa i živi u Londonu. Drugi sin Dalibor se oženio Amelom Nezirović i
+    imaju sina Damira i kćer Teu. Žive u Sarajevu.
+</p>
+
+<h3>Križan Lovrin</h3>
+<p>Oženio se Perom Budimir. Imali su 15 djece, od toga sedmero djece je umrlo u dobi do desete godine. Zanimljivost je da je drugi Križanov sin Ilija  je da Ilija poginuo od uboda vola.
+    Križanovi potomci po sinovima Mati, Anti, Ivanu i Juri nose nadimak Križanovići i žive u Zagrebu, Đakovu, Kutjevu, Bektežu, Strizivojni, Vrpolju i više država Europe.
+</p>
+
+<h3>Mate Križanov</h3>
+<p> Najstariji Križanov sin, oženio se Ivom Pirić. Imali su sinove Miju, Marijana i Jozu, te kćeri Maru i Matiju. Mijo se nije ženio.</p>
+
+<h3>Marijan Matin</h3>
+<p> Oženio se Anicom Maras, sa njom imao sinove Antu, Jozu, Matu i Ivana, te kćer Maru.</p>
+
+<h3>Ante Marijanov</h3>
+<p> U prvom braku sa Elizabetom Miletić dobio je sina Darka i kćer Gordanu.  U drugom braku sa Anom Kajtar nema djece. Darko sa obitelji živi u Njemačkoj.
+</p>
+
+<h3>Jozo Marijanov</h3>
+<p>Nije se ženio.</p>
+
+<h3>Mato Marijanov</h3>
+<p>
+U braku s Anicom Bogdanović dobio je sina Alena i kćer Lauru.
+Alen s obitelji živi u Slavonskom Brodu.
+</p>
+
+<h3>Ivan Marijanov</h3>
+<p>
+Četvrti Marijanov sin, oženio se Ljiljanom Cobović.
+Imaju sina Marijana, te kćeri Lanu i Paulinu.
+Žive u Đakovu, gdje Ivan vodi vlastiti odvjetnički ured.
+</p>
+
+<h3>Jozo Matin</h3>
+<p>
+Najmlađi sin Mate i Ive Pirić, oženio se Jakom Kliić.
+Imali su sinove Miju, Jozu i Ivana te kćer Maru.
+Jozo je poginuo u Drugom svjetskom ratu, a Mijina obitelj danas je u Bektežu kod Kutjeva.
+</p>
+
+<h3>Mijo Jozin</h3>
+<p>Živi u Bektežu kod Kutjeva i ima tri kćeri.</p>
+
+<h3>Jozo Jozin</h3>
+<p>
+Živi u Sloveniji. Ima sina Marijana i kćer Romanu.
+Marijan ima sina Martina te kćeri Tamaru i Petriciju.
+</p>
+
+<h3>Ante Križanov</h3>
+<p>
+Treći Križanov sin, oženio se Ivom Trogrlić.
+Imali su sina Stipana, te kćeri Jelu i Maru.
+Stipan je odselio u Srbiju i nije poznato je li imao potomke.
+</p>
+
+<h3>Ivan Križanov</h3>
+<p>
+Osmi Križanov sin, oženio se Ružom Serdarušić.
+Imali su sinove Antu (umro s pet godina), Križana i Marijana (umro kao dijete), te kćeri Maru i Anu.
+</p>
+
+<h3>Križan Ivanov</h3>
+<p>
+U braku s Maricom Pušić imao je sina Ivana.
+Križan je 1944. godine ubijen u Zagrebu.
+</p>
+
+<h3>Ivan Križanov</h3>
+<p>
+Ženio se dva puta.
+</p>
+
+<p>
+Iz prvog braka s Dragicom Dragun imao je sina Križana.
+</p>
+
+<p>
+Križan Ivanov i supruga Ljerka Maričić imaju sinove Tonija i Dinka te žive u Vrpolju.
+</p>
+
+<p>
+Iz drugog braka s Ankom Nikolić dobio je kćeri Biljanu i Belinu.
+</p>
+
+<h3>Jure Križanov</h3>
+<p>Deveti Križanov sin, ženio se tri puta.  </p>
+
+<p>
+Prvi brak bio je s Perom Matišić, koja je iz poznate hrvatske glazbene obitelji, a s kojom je imao sina Josipa.
+Pera je umrla 1919. godine od španjolske gripe. Drugi brak Jure Križanova bio je s djevojkom iz roda Budić. Imali su sina Martina koji je poginuo 1942 kod Bihaća i nije se ženio.
+Treći brak bio je s Jozom Dragun, bez djece.
+</p>
+
+<h3>Josip Jurin</h3>
+<p>
+U braku s Anicom Dragun dobio je sinove Ivana i Milana, te kćeri Slavu, Maru, Nedu i Macu.
+</p>
+
+<h3>Ivan Josipov</h3>
+<p>Ženio se dva puta.</p>
+
+<p>
+Iz prvog braka s Matijom Pušić dobio je sinove Juru i Vladimira, te kćer Mihaelu (krsno Milena).
+</p>
+
+<p>
+Jure se oženio Ružom Kosić i imaju sinove Ivicu Julia i Marina Tina.
+Vladimir se oženio Ljubicom Kosić, imaju sinove Filipa i Lea. Dakle, ovdje se radi o braku dva brata i dvije sestre.
+</p>
+
+<p>
+Iz drugog braka s Verkom Nikolovski Ivan nije imao djece. Ivan je umro u Zagrebu 2025.g. u 93 godini života. Laka ti zemlja dragi moj oče!
+</p>
+
+<h3>Mijo Antin</h3>
+<p>
+Mijo, drugi Antin sin, oženio se Mandom Martinović.
+Imali su devetero djece: Jozu, Antu, Matu, Miju, Petra te Ivu, Matiju, Ružu i Anticu.
+</p>
+
+<p>
+O sinu Miji nema drugih podataka osim zapisa o rođenju. Pretpostavka je da je umro mlad ili odselio u nepoznatom smjeru.
+Potomci po sinovima Jozi, Mati i Petru nose nadimak Tucići, nadimak dobiven zbog sklonosti članova obitelji za ljubavnim avanturama.
+</p>
+
+<h3>Jozo Mijin</h3>
+<p>
+Oženio se Ivom Bilojelić.
+Imali su sinove Matu, Jozu i Nikolu (umro s 6 godina), te kćeri Matiju, Jelu, Maru i Ivu.
+</p>
+
+<h3>Jozo Jozin</h3>
+<p>Nije se ženio.</p>
+
+<h3>Ante Jozin</h3>
+<p>
+Oženio se Jelom Škorić.
+Imali su sinove Marijana, Matu, Pilipa i Nikolu, te kćeri Jelu, Maru, Katu i Milu.
+</p>
+
+<h3>Marijan Antin (Đika)</h3>
+<p>
+Oženio se Ivom Čorbić.
+Imali su sinove Ivana i Milana, te kćeri Maru, Dragicu, Katu i Mariju.
+</p>
+
+<h3>Ivan Marijanov (Đikin)</h3>
+<p>
+Oženio se Anom Pušić. Imaju sina Zdenka i kćer Kristinu.
+</p>
+
+<p>
+Zdenko se ženio dva puta. Iz prvog braka ima sina Tomislava, a iz drugog braka sa Kristinom Topić ima kćer Anu.
+</p>
+
+<h3>Milan Marijanov (Đikin)</h3>
+<p>Ženio se dva puta.</p>
+
+<p>
+Iz prvog braka s Marijom Pušić ima sina Nedjeljka, te kćeri Dragicu, Ljubicu i Tanju.
+</p>
+
+<p>
+Nedjeljko sa Ivanom Božičević imaju kćeri Mariju i Tinu.
+</p>
+
+<p>U drugom braku Milan nema djece.</p>
+
+<h3>Mate Antin</h3>
+<p>Mate je drugi Antin sin, oženio se Matijom Gudelj. Nije imao djece.</p>
+
+<h3>Marijan Antin</h3>
+<p>
+Najmlađi Antin sin, oženio se Mašom Gudelj sa kojom je dobio sina Antu.
+</p>
+
+<p>
+Ante je u braku s Renatom Nagy dobio sina Antu. Ante Antin je u braku s Valentinom Juriša također dobio sina Antu.
+    Neobično je da su tri generacije davale svojim sinovima ista imena Ante.
+</p>
+
+<h3>Ante Mijin</h3>
+<p>Nije se ženio. Umro je u 26. godini života.</p>
+
+<h3>Mate Mijin</h3>
+<p>Ženio se dva puta.</p>
+
+<p>
+Iz prvog braka s Tomicom Kovač imao je sina Ivana koji je umro u sedmoj godini.
+</p>
+
+<p>
+Iz drugog braka s Ivom Vlajčić imao je sinove Martina (umro u 24. godini) i Juru, te kćer Ivu.
+</p>
+
+<h3>Jure Matin (Đuka)</h3>
+<p>
+Oženio se Matijom Škorić. Imali su sinove Antu i Matu, te kćeri Milu, Stanu i Ivu.
+</p>
+
+<h3>Ante Jurin</h3>
+<p>
+Oženio se Milom Đikić. Imali su sinove Ivana, Milana i Srećka, te kćer Matiju.
+Milan i Srećko su oženjeni, svaki ima po dva sina. Žive u Đakovu.
+</p>
+
+<h3>Mate Jurin</h3>
+<p>
+Oženio se Danicom Malenica. Imaju  sina Tomislava, te kćeri Mariju, Milu i Anu.
+</p>
+
+<p>
+Tomislav je u braku s Vlatkom Dolić. Imaju sina Mateja i kćer Danijelu, te žive u Podstrani kod Splita.
+</p>
+
+<h3>Petar Mijin</h3>
+<p>
+Najmlađi Mijin sin, oženio se Matijom Tandara. Imali su sinove Matu, Stipana, Antu (umro kao dijete) i Iliju te kćer Anđu.
+</p>
+
+<h3>Mate Petrov</h3>
+<p>
+Oženio se Katom Cimerman. Imali su sina Ivana i kćer Ankicu.
+</p>
+
+<h3>Ivan Matin</h3>
+<p>
+Oženio se Pavicom Kralik. Dobili su sina Emila i kćer Ivanu.
+</p>
+
+<p>
+Emil je u braku sa Zoricom Nađ. Imaju kćeri Marijanu i Nikolinu. Žive u Kutjevu i poznati su po proizvodnji vina.
+</p>
+
+<h3>Stipan Petrov</h3>
+<p>
+Oženio se Jozom Malenica. Imali su sina Ivana i kćer Ankicu.
+</p>
+
+<h3>Ivan Stipanov</h3>
+<p>
+Oženio se Anom Budimir. Imali su sina Mirka, te kćeri Mirjanu, Mariju i Ankicu.
+</p>
+
+<p>
+Mirko je u braku s Dragicom Čamber. Imaju sinove Ivana i Josipa, te kćer Anu Mariju. Žive u Dugom Selu.
+</p>
+
+<h3>Ilija Petrov (Grabunjaš)</h3>
+<p>
+Najmlađi Petrov sin, oženio se Anicom Škorić. Imali su sinove Marijana i Mirka, te kćeri Macu, Nedu i Dragicu.
+</p>
+
+<h3>Marijan Ilijin (zvani Marinko Grabunjašev)</h3>
+<p>
+Oženio se Frankom Kovač. Dobili su sinove Nediljka (umro kao dijete) i Mirču, te kćeri Ivanku, Mariju i Nedu.
+</p>
+
+<p>
+Mirčo i supruga Vesna Zetović imaju sina Miroslava i kćer Sonju. Žive u Đakovu.
+</p>
+
+<h3>Mirko Ilijin (Grabunjašev)</h3>
+<p>
+Oženio se Katom Kovač. Dobili su sinove Marinka, Ivicu i Antu, te kćeri Anku i Mariju.
+Marinko, Ivica i Ante žive u Zagrebu i imaju obitelji.
+</p>
+    
+     <h2>Podgrana Filip Antin</h2>
+    <h3>Filip Antin</h3>
+<p>
+Drugi Antin sin Filip, ostao je živjeti u Ričicama. 1802. oženio se Matijom Parlov.
+Imali su sinove Martina, Matu i Ivana, te kćeri Jozu, Jelu, Jurku, Anticu i Ružu. Za Matu i Ivana postoji samo datum rođenje
+    pa se pretpostavlja da su umrli mladi ili odselili.
+</p>
+
+<h3>Martin Filipov</h3>
+<p>
+Oženio se Mandom Manenica. Imali su sinove Jerka, Iliju, Ivana, Martina i Ivana, te kćeri Tomicu, Luciju i Ivu.
+Stariji Ivan i Martin umrli su kao djeca. Za drugog sina Ivana mlađeg ne postoje podaci. Ili je umro mlad ili je odselio.
+</p>
+
+<h3>Jerko Martinov</h3>
+<p>
+Oženio se Ivom Topalušić. Imali su sinove Martina, Luku (umro kao dijete) i Ivana.
+</p>
+
+<h3>Martin Jerkov</h3>
+<p>
+Oženio se Ivom Kovač. Imali su kćeri Matiju, Maru i Ivu.
+</p>
+
+<h3>Ivan Jerkov</h3>
+<p>
+Oženio se Jakom Martinović. Imali su sinove Matu i Martina, te kćeri Anu i Tomicu.
+</p>
+
+<h3>Mate Ivanov (Pikić)</h3>
+<p>
+Rođen 1898. godine, prešao je živjeti na materino imanje u Martinoviće. Oženio se Matijom Ležeta, a njegovi potomci nose nadimak Pikići. 
+Za Matu Ivanova govorilo se: „Takvoga ne piki niti rađa majka.“
+Po tome je dobio nadimak Piko, a njegovi potomci nadimak Pikići.
+Mate i Matija Lažeta imali su sinove Nikolu, Mirka i Marijana, te kćeri Milicu i Dragicu.
+</p>
+
+<h3>Nikola Matin</h3>
+<p>
+Oženio se Matijom Kilić. Imali su sinove Damira i Željka, te kćeri Veru i Mariju.
+</p>
+
+<h3>Damir Nikolin</h3>
+<p>Ženio se dva puta.</p>
+
+<p>
+Iz prvog braka s Marinom Čelan ima sina Tina.
+</p>
+
+<p>
+Iz drugog braka s Lucijom Modrić ima sina Lea, te kćeri Žanu i Doris.
+</p>
+
+<p>
+Damir s obitelji živi u Njemačkoj.
+</p>
+
+<h3>Željko Nikolin</h3>
+<p>
+Oženio se Anitom Košćak. Imaju sinove Nikolu i Marka. Žive u Splitu.
+</p>
+
+<h3>Mirko Matin</h3>
+<p>
+Drugi Matin sin, oženio se Anđelkom Dragicom Mršić. Imali su sinove Nedjeljka, Zdravka i Miroslava.
+</p>
+
+<h3>Nedjeljko Mirkov</h3>
+<p>
+Oženio se Danicom Jaginović. Dobili su sinove Mirka, Ivana i Križana.
+</p>
+
+<h3>Zdravko Mirkov</h3>
+<p>
+Oženio se Dubravkom Brajković. Dobili su sinove Antu i Vedrana
+<p>
+<h3>Miroslav Mirkov</h3>
+<p>
+Najmlađi Mirkov sin oženio se Ružicom Krajinović. Imaju sina Josipa, te kćeri Ines,i Anu. Obitelj živi u Splitu.
+<h3>Marijan, treći Matin sin</h3>
+<p>
+Marijan se oženio Marom Tandara. Imaju sina Matu i kćer Snježanu.
+</p>
+
+<p>
+Mate je uzeo za ženu Zdravku Guić. Odgajaju sinove Marijana, Ivana i Antu. Marijanova obitelj živi u Splitu.
+</p>
+
+<h3>Martin, mlađi Ivanov sin</h3>
+<p>
+Martin se oženio Anicom Lekić. Imali su sinove Ivana, Jerka i Marijana (koji je umro kao malo dijete), te kćeri Maru (koja je u dobi od pet godina umrla od opeklina) i Matiju.
+</p>
+
+<p>
+Ivan Martinov oženio se Anom Radmanić. Imaju sina Darka koji je u braku s Dragicom rođ. Sabolović i ima sina Ivana i kćer Moniku. Žive u Bjelovaru.
+</p>
+
+<p>
+Jerko, mlađi Martinov sin, vjenčao se s Ružicom Sekulić. Imaju sina Renata koji se oženio Tanjom Lancoš i dobio kćer Leu. Žive u Zagrebu.
+</p>
+
+<h3>Ilija, drugi sin Martina i Mande rođ. Manenica</h3>
+<p>
+Ilija je bio oženjen Lucom Tavra. Imali su sinove Matu, Ivana i Šimuna, te kćeri Tomicu, Ivu i Maru.
+</p>
+
+<p>
+Ivan je umro u dobi od šest godina, a Šimun kao malo dijete.
+</p>
+
+<h3>Mate Ilijin (Rumić)</h3>
+<p>
+Mate je, navodno, imao izrazito rumeno lice pa je dobio nadimak Rumić, a njegovi potomci su postali i do današnjih dana ostali Rumići.
+</p>
+
+<p>
+Mate se vjenčao s Marom Topalušić. Dobili su sinove Ivana, Božu, Miju i Tomu, te kćeri Tomicu i Maru.
+</p>
+
+<p>
+Za Matine sinove Ivana i Božu nisu pronađeni podaci osim zapisa o njihovu rođenju. Ili su umrli mladi ili su nekamo odselili.
+</p>
+
+<h3>Mijo Matin</h3>
+<p>
+Mijo se oženio Jozom Štrljić i s njom dobio sinove Vinka i Milana.
+</p>
+
+<h3>Vinko, stariji Mijin sin</h3>
+<p>
+Vinko se ženio dva puta. Iz prvog braka s Krstom rođ. Mršić ima pet sinova: Miju, Antu, Milana, Zdravka i Vinka.
+</p>
+
+<p>
+Iz drugog braka s Matijom rođ. Sičenica Vinko nije imao djece.
+</p>
+
+<h3>Mijo, najstariji Vinkov sin</h3>
+<p>
+Mijo se oženio Jelenom Krezo i s njom ima sinove Ivicu i Zorana.
+</p>
+
+<p>
+Zoran je vjenčao Vesnu Belan. Imaju sina Luku i kćer Miju. Mijina obitelj živi u Njemačkoj.
+</p>
+
+<h3>Ante, drugi Vinkov sin</h3>
+<p>
+Ante se oženio Vesnom Topalušić. Imaju kćeri Kristinu, Marinu i Nikolinu. Žive u Njemačkoj.
+</p>
+
+<h3>Milan, treći Vinkov sin</h3>
+<p>
+Milan se vjenčao s Nediljkom Matušić. Imaju sinove Kristijana, Antonija i Dina, te kćer Valentinu. Žive u Predavcu kod Bjelovara.
+</p>
+
+<h3>Zdravko, četvrti Vinkov sin</h3>
+<p>
+Zdravko je uzeo za ženu Brigitu Horvatinčić i s njom dobio sinove Matu i Brunu, te kćeri Anitu i Petru. Žive u Predavcu kod Bjelovara.
+</p>
+
+<h3>Vinko, peti Vinkov sin</h3>
+<p>
+Vinko se oženio Slavicon Matišić. Imaju sina Marija i kćer Marinu. Žive u Predavcu kod Bjelovara.
+</p>
+
+<h3>Milan, mlađi Mijin sin</h3>
+<p>
+Milan je uzeo za ženu Ivu Lukić i s njom dobio sinove Željka i Dragana, te kćeri Rosu i Dragicu.
+</p>
+    
+<h3>Toma Matin</h3>
+<p>
+Najmlađi sin Mate i Mare Topalušić, oženio se Tomicom Tandara.
+Imali su sinove Petra, Marijana (poginuo u Drugom svjetskom ratu), Slavka, Antu i Matu, te kćeri Milu, Dragicu, Anu i Nevenku.
+</p>
+
+<h3>Petar Tomin</h3>
+<p>
+Najstariji Tomin sin, oženio se Katom Novosel. Dobili su sina Ivicu.
+</p>
+
+<p>
+Ivica je u braku s Ljubicom Kozić i dobili su sina Hrvoja i kćer Sabinu. Sabina je poznata hrvatska novinarka, trenutačno angažirana na RTL.
+    Obitelj živi u Zagrebu.
+</p>
+
+<h3>Slavko Tomin</h3>
+<p>
+Treći Tomin sin iz braka sa Savkom Vukobratović dobio je sina Marka. Žive u Zagrebu.
+</p>
+
+<h3>Ante Tomin</h3>
+<p>
+Četvrti Tomin sin, oženio se Zlatom Vučemil i sa njom diobio sina Draženka.
+</p>
+
+<p>
+Draženko je u braku s Nadom Medić. Imaju sina Luku, te kćeri Maju i Mateju. Žive u Bjelovaru.
+</p>
+
+<h3>Mate Tomin</h3>
+<p>
+Najmlađi Tomin sin, oženio se Tonkom Vukičević i dobili su sina Željka.
+</p>
+
+<p>
+Željko je u braku sa Ankicom Šitum sa kojom je dobio dva sina, sa kojima žive u Kanadi.
+</p>   
+    
+    <img src="flag-uk.png?v=3" alt="UK zastava" class="flag">
+    <p>
+   <h2>The Third Branch of the First TANDARA Family</h2>
+
+<h3>Ante Tandara Ivanov (born c. 1730 – ...)</h3>
+
+<p>Ante Tandara, probably about one year younger than Petar, was the son of Ivan Tandara. He married Matija Brnas, and they had three sons: Ante, Filip, and Pavao, and three daughters: Jaka, Luca, and Ruža. There is no additional information about Pavao apart from his birth record.</p>
+
+<h2>Sub-branch of Ante, son of Ante</h2>
+
+<h3>Ante Antin</h3>
+
+<p>Ante, the eldest son of Ante Ivanov, married Matija Jukić in 1801. They had three sons: Lovro, Mijo, and Petar, and five daughters: Pera, Ruža, Antica, Iva, and Marija. There is no additional information about Petar apart from his birth record.</p>
+
+<p>According to the 1819 population census, Ante lived in Zavelim, while his brother Filip lived in Ričice. Their descendants later spread across Croatia, Europe, and Canada.</p>
+
+<h3>Lovro Antin</h3>
+
+<p>He married Matija Sičenica. They had two sons: Marijan and Križan.</p>
+
+<h3>Marijan Lovrin</h3>
+
+<p>He married Matija Kovač. They had four sons: Jure, Marko, Stipan, and Jozo, and three daughters: Iva, Mara, and Matija.</p>
+
+<p>There is no record of Stipan apart from his birth entry, so it is assumed he either died young or moved away.</p>
+
+<p>The descendants of Marijan through his sons Marko and Jure are known by the nickname <strong>Lovrinovići</strong>. The nickname comes from Marijan’s father Lovro. Today they live in Popovača, Sarajevo, and Stobreč.</p>
+
+<h3>Marko Marijanov</h3>
+
+<p>He married Božica Pušić. They had one son, Mirko, and one daughter, Iva.</p>
+
+<h3>Mirko Markov</h3>
+
+<p>He married Anica Kliić. They had two sons, Milan and Vladimir, who died at the age of 14, and three daughters: Dragica, Marija, and Nediljka.</p>
+
+<h3>Milan Markov</h3>
+
+<p>He married Svjetlana Trifunović. They had two sons: Vladimir and Dalibor.</p>
+
+<p>Vladimir Milanov married Claire Tacher. They have a son, Alexander James, and live in London.</p>
+
+<p>Dalibor married Amela Nezirović. They have a son, Damir, and a daughter, Tea. They live in Sarajevo.</p>
+
+<h3>Križan Lovrin</h3>
+
+<p>He married Pera Budimir. They had 15 children, seven of whom died before the age of ten.</p>
+
+<p>An interesting fact is that Križan’s second son Ilija was killed by a bull.</p>
+
+<p>Descendants of Križan through his sons Mate, Ante, Ivan, and Jure are known as <strong>Križanovići</strong>, and today live in Zagreb, Đakovo, Kutjevo, Bektež, Strizivojna, Vrpolje, and several European countries.</p>
+
+<h3>Mate Križanov</h3>
+
+<p>The eldest son of Križan, he married Iva Pirić. They had three sons: Mijo, Marijan, and Jozo, and two daughters: Mara and Matija. Mijo never married.</p> 
+<h3>Marijan Matin</h3>
+
+<p>Marijan married Anica Maras. They had four sons: Ante, Jozo, Mate, and Ivan, and one daughter, Mara.</p>
+
+<h3>Ante Marijanov</h3>
+
+<p>From his first marriage to Elizabeta Miletić, Ante had a son, Darko, and a daughter, Gordana. In his second marriage to Ana Kajtar, he had no children.</p>
+
+<p>Darko and his family live in Germany.</p>
+
+<h3>Jozo Marijanov</h3>
+
+<p>Jozo never married.</p>
+
+<h3>Mate Marijanov</h3>
+
+<p>Mate married Anica Bogdanović. They had a son, Alen, and a daughter, Laura.</p>
+
+<p>Alen and his family live in Slavonski Brod.</p>
+
+<h3>Ivan Marijanov</h3>
+
+<p>The fourth son of Marijan, Ivan married Ljiljana Cobović. They have a son, Marijan, and two daughters, Lana and Paulina.</p>
+
+<p>The family lives in Đakovo, where Ivan runs his own law office.</p>
+
+<h3>Jozo Matin</h3>
+
+<p>The youngest son of Mate and Iva Pirić, Jozo married Jaka Kliić. They had three sons: Mijo, Jozo, and Ivan, and one daughter, Mara.</p>
+
+<p>Jozo was killed during the Second World War. The family of his son Mijo now lives in Bektež near Kutjevo.</p>
+
+<h3>Mijo Jozin</h3>
+
+<p>Mijo lives in Bektež near Kutjevo and has three daughters.</p>
+
+<h3>Jozo Jozin</h3>
+
+<p>Jozo lives in Slovenia. He has a son, Marijan, and a daughter, Romana.</p>
+
+<p>Marijan has a son, Martin, and two daughters, Tamara, and Petricija.</p>
+
+<h3>Ante Križanov</h3>
+
+<p>The third son of Križan, Ante married Iva Trogrlić. They had one son, Stipan, and two daughters, Jela and Mara.</p>
+
+<p>Stipan moved to Serbia, and it is unknown whether he had descendants.</p>
+
+<h3>Ivan Križanov</h3>
+
+<p>Ivan, the eighth son of Križan, married Ruža Serdarušić. They had three sons: Ante (who died at age five), Križan, and Marijan (who died in childhood), and two daughters, Mara and Ana.</p>
+
+<h3>Križan Ivanov</h3>
+
+<p>Križan married Marica Pušić. They had one son, Ivan.</p>
+
+<p>Križan was killed in Zagreb in 1944.</p>
+
+<h3>Ivan Križanov</h3>
+
+<p>Ivan married twice.</p>
+
+<p>From his first marriage to Dragica Dragun, he had a son named Križan.</p>
+
+<h3>Križan Ivanov (Vrpolje branch)</h3>
+
+<p>Križan married Ljerka Maričić. They have two sons, Toni and Dinko, and live in Vrpolje.</p>
+
+<p>From his second marriage to Anka Nikolić, Ivan had two daughters, Biljana and Belina.</p>
+
+<h3>Jure Križanov</h3>
+
+<p>Jure, the ninth son of Križan, married three times.</p>
+
+<p>His first wife was Pera Matišić, from a well-known Croatian musical family, with whom he had a son, Josip. Pera died in 1919 from the Spanish flu.</p>
+
+<p>His second marriage was to a woman from the Budić family. They had a son, Martin, who was killed near Bihać in 1942 and never married.</p>
+
+<p>His third marriage was to Joza Dragun, with no children.</p>
+
+<h3>Josip Jurin</h3>
+
+<p>Josip married Anica Dragun. They had two sons, Ivan and Milan, and four daughters: Slava, Mara, Neda, and Maca.</p>
+
+<h3>Ivan Josipov</h3>
+
+<p>Ivan married twice.</p>
+
+<p>From his first marriage to Matija Pušić, he had two sons, Jure and Vladimir, and a daughter, Mihaela (baptized Milena).</p>
+
+<p>Jure married Ruža Kosić and they have two sons: Ivica Julio and Marin Tin.</p>
+
+<p>Vladimir married Ljubica Kosić and they have two sons: Filip and Leo.</p>
+
+<p>This is an example of two brothers marrying two sisters.</p>
+
+<p>From his second marriage to Verka Nikolovski, Ivan had no children.</p>
+
+<p>Ivan died in Zagreb in 2025 at the age of 93.</p>
+
+<p><em>May he rest in peace.</em></p>
+
+<h3>Mijo Antin</h3>
+
+<p>Mijo, the second son of Ante, married Manda Martinović. They had nine children: Jozo, Ante, Mate, Mijo, Petar, Iva, Matija, Ruža, and Antica.</p>
+
+<p>No further information exists about his son Mijo beyond the birth record. It is assumed he either died young or moved away.</p>
+
+<p>Descendants through Jozo, Mate, and Petar are known as <strong>Tucići</strong>, a nickname given due to the family’s reputation for romantic adventures.</p>    
+  
+<h3>Jozo Mijin</h3>
+
+<p>Jozo married Iva Bilojelić. They had three sons: Mate, Jozo, and Nikola (who died at age six), and four daughters: Matija, Jela, Mara, and Iva.</p>
+
+<h3>Jozo Jozin</h3>
+
+<p>Jozo never married.</p>
+
+<h3>Ante Jozin</h3>
+
+<p>Ante married Jela Škorić. They had four sons: Marijan, Mate, Pilip, and Nikola, and four daughters: Jela, Mara, Kata, and Mila.</p>
+
+<h3>Marijan Antin (Đika)</h3>
+
+<p>Marijan married Iva Čorbić. They had two sons, Ivan and Milan, and four daughters: Mara, Dragica, Kata, and Marija.</p>
+
+<h3>Ivan Marijanov (Đikin)</h3>
+
+<p>Ivan married Ana Pušić. They have a son, Zdenko, and a daughter, Kristina.</p>
+
+<p>Zdenko married twice. From his first marriage he has a son, Tomislav.</p>
+
+<p>From his second marriage to Kristina Topić, he has a daughter, Ana.</p>
+
+<h3>Milan Marijanov (Đikin)</h3>
+
+<p>Milan married twice.</p>
+
+<p>From his first marriage to Marija Pušić, he has a son, Nedjeljko, and three daughters: Dragica, Ljubica, and Tanja.</p>
+
+<p>Nedjeljko and Ivana Božičević have two daughters, Marija and Tina.</p>
+
+<p>Milan had no children from his second marriage.</p>
+
+<h3>Mate Antin</h3>
+
+<p>Mate, another son of Ante, married Matija Gudelj. They had no children.</p>
+
+<h3>Marijan Antin</h3>
+
+<p>The youngest son of Ante, Marijan married Maša Gudelj and had one son, Ante.</p>
+
+<p>Ante married Renata Nagy and had a son also named Ante.</p>
+
+<p>Ante Antin and his wife Valentina Juriša also had a son named Ante.</p>
+
+<p>It is notable that three consecutive generations gave their sons the same name, Ante.</p>
+
+<h3>Ante Mijin</h3>
+
+<p>Ante never married and died at the age of 26.</p>
+
+<h3>Mate Mijin</h3>
+
+<p>Mate married twice.</p>
+
+<p>From his first marriage to Tomica Kovač, he had a son Ivan, who died at age seven.</p>
+
+<p>From his second marriage to Iva Vlajčić, he had two sons, Martin and Jure, and a daughter, Iva.</p>
+
+<p>Martin died at the age of 24.</p>
+
+<h3>Jure Matin (Đuka)</h3>
+
+<p>Jure married Matija Škorić. They had two sons, Ante and Mate, and three daughters: Mila, Stana, and Iva.</p>
+
+<h3>Ante Jurin</h3>
+
+<p>Ante married Mila Đikić. They had three sons: Ivan, Milan, and Srećko, and one daughter, Matija.</p>
+
+<p>Milan and Srećko are married, each with two sons. They live in Đakovo.</p>
+
+<h3>Mate Jurin</h3>
+
+<p>Mate married Danica Malenica. They have one son, Tomislav, and three daughters: Marija, Mila, and Ana.</p>
+
+<p>Tomislav married Vlatka Dolić. They have a son Matej and a daughter Danijela. They live in Podstrana near Split.</p>
+
+<h3>Petar Mijin</h3>
+
+<p>Petar, the youngest son of Mijo, married Matija Tandara. They had four sons: Mate, Stipan, Ante (who died as a child), and Ilija, and one daughter, Anđa.</p>
+
+<h3>Mate Petrov</h3>
+
+<p>Mate married Kata Cimerman. They had one son, Ivan, and one daughter, Ankica.</p>
+
+<h3>Ivan Matin</h3>
+
+<p>Ivan married Pavica Kralik. They had a son Emil and a daughter Ivana.</p>
+
+<p>Emil married Zorica Nađ. They have two daughters, Marijana and Nikolina. They live in Kutjevo and are known for wine production.</p>
+
+<h3>Stipan Petrov</h3>
+
+<p>Stipan married Joza Malenica. They had one son Ivan and one daughter Ankica.</p>
+
+<h3>Ivan Stipanov</h3>
+
+<p>Ivan married Ana Budimir. They had one son Mirko and three daughters: Mirjana, Marija, and Ankica.</p>
+
+<p>Mirko married Dragica Čamber. They have two sons, Ivan and Josip, and one daughter, Ana Marija. They live in Dugo Selo.</p>
+
+<h3>Ilija Petrov (Grabunjaš)</h3>
+
+<p>Ilija, the youngest son of Petar, married Anica Škorić. They had two sons, Marijan and Mirko, and three daughters: Maca, Neda, and Dragica.</p>
+
+<h3>Marijan Ilijin (Marinko Grabunjašev)</h3>
+
+<p>Marijan married Franka Kovač. They had two sons, Nediljko (who died as a child) and Mirčo, and three daughters: Ivanka, Marija, and Neda.</p>
+
+<p>Mirčo and his wife Vesna Zetović have a son, Miroslav, and a daughter, Sonja. They live in Đakovo.</p>
+
+<h3>Mirko Ilijin (Grabunjašev)</h3>
+
+<p>Mirko married Kata Kovač. They had three sons, Marinko, Ivica, and Ante, and two daughters, Anka and Marija.</p>
+
+<p>Marinko, Ivica, and Ante live in Zagreb and have families.</p>   
+    
+<h2>Sub-branch of Filip, son of Ante</h2>
+
+<h3>Filip Antin</h3>
+
+<p>Filip, the second son of Ante, remained living in Ričice. In 1802 he married Matija Parlov. They had three sons: Martin, Mate, and Ivan, and five daughters: Joza, Jela, Jurka, Antica, and Ruža. For Mate and Ivan, only birth records exist, suggesting they either died young or moved away.</p>
+
+<h3>Martin Filipov</h3>
+
+<p>Martin married Manda Manenica. They had five sons: Jerko, Ilija, Ivan, Martin, and Ivan (younger), and three daughters: Tomica, Lucija, and Iva.</p>
+
+<p>The elder Ivan and Martin died in childhood. No records exist for the younger Ivan, suggesting he either died young or emigrated.</p>
+
+<h3>Jerko Martinov</h3>
+
+<p>Jerko married Iva Topalušić. They had three sons: Martin, Luka (who died as a child), and Ivan.</p>
+
+<h3>Martin Jerkov</h3>
+
+<p>Martin married Iva Kovač. They had three daughters: Matija, Mara, and Iva.</p>
+
+<h3>Ivan Jerkov</h3>
+
+<p>Ivan married Jaka Martinović. They had two sons, Mate and Martin, and two daughters, Ana and Tomica.</p>
+
+<h3>Mate Ivanov (Pikić)</h3>
+
+<p>Born in 1898, Mate moved to his mother’s estate in Martinovići. He married Matija Ležeta, and his descendants are known by the nickname <strong>Pikići</strong>.</p>
+
+<p>It is said of Mate: “Such a man could not even be born from a mother who did not try hard.” From this saying, he earned the nickname Piko, and his descendants became known as Pikići.</p>
+
+<p>Mate and Matija had three sons: Nikola, Mirko, and Marijan, and two daughters: Milica and Dragica.</p>
+
+<h3>Nikola Matin</h3>
+
+<p>Nikola married Matija Kilić. They had two sons, Damir and Željko, and two daughters, Vera and Marija.</p>
+
+<h3>Damir Nikolin</h3>
+
+<p>Damir married twice.</p>
+
+<p>From his first marriage to Marina Čelan, he had a son, Tin.</p>
+
+<p>From his second marriage to Lucija Modrić, he had a son, Leo, and two daughters, Žana and Doris.</p>
+
+<p>Damir and his family live in Germany.</p>
+
+<h3>Željko Nikolin</h3>
+
+<p>Željko married Anita Košćak. They have two sons, Nikola and Marko. They live in Split.</p>
+
+<h3>Mirko Matin</h3>
+
+<p>Mirko, the second son of Mate, married Anđelka Dragica Mršić. They had three sons: Nedjeljko, Zdravko, and Miroslav.</p>
+
+<h3>Nedjeljko Mirkov</h3>
+
+<p>Nedjeljko married Danica Jaginović. They had three sons: Mirko, Ivan, and Križan.</p>
+
+<h3>Zdravko Mirkov</h3>
+
+<p>Zdravko married Dubravka Brajković. They had two sons: Ante and Vedran.</p>
+
+<h3>Miroslav Mirkov</h3>
+
+<p>Miroslav, the youngest son of Mirko, married Ružica Krajinović. They have a son Josip and two daughters, Ines and Ana. The family lives in Split.</p>
+
+<h3>Marijan (third son of Mate)</h3>
+
+<p>Marijan married Mara Tandara. They had a son, Mate, and a daughter, Snježana.</p>
+
+<p>Mate married Zdravka Guić. They have three sons: Marijan, Ivan, and Ante. The family lives in Split.</p>
+
+<h3>Martin (younger son of Ivan)</h3>
+
+<p>Martin married Anica Lekić. They had three sons: Ivan, Jerko, and Marijan (who died as a child), and two daughters: Mara (who died at the age of five from burns) and Matija.</p>
+
+<h3>Ivan Martinov</h3>
+
+<p>Ivan married Ana Radmanić. They have a son, Darko, who is married to Dragica (née Sabolović). They have a son Ivan and a daughter Monika. They live in Bjelovar.</p>
+
+<h3>Jerko (younger son of Martin)</h3>
+
+<p>Jerko married Ružica Sekulić. They have a son, Renato, who married Tanja Lancoš and has a daughter, Lea. They live in Zagreb.</p>
+
+<h3>Ilija (second son of Martin and Manda Manenica)</h3>
+
+<p>Ilija was married to Luca Tavra. They had three sons: Mate, Ivan, and Šimun, and three daughters: Tomica, Iva, and Mara.</p>
+
+<p>Ivan died at the age of six, and Šimun died as a small child.</p>
+
+<h3>Mate Ilijin (Rumić branch)</h3>
+
+<p>Mate reportedly had a very reddish complexion and was therefore nicknamed <strong>Rumić</strong>, and his descendants became known as Rumići.</p>
+
+<p>Mate married Mara Topalušić. They had four sons: Ivan, Božo, Mijo, and Toma, and two daughters: Tomica and Mara.</p>
+
+<p>No further records exist for Ivan and Božo apart from their birth entries, suggesting they either died young or moved away.</p>
+
+<h3>Mijo Matin</h3>
+
+<p>Mijo married Joza Štrljić. They had two sons, Vinko and Milan.</p>
+
+<h3>Vinko (older son of Mijo)</h3>
+
+<p>Vinko married twice. From his first marriage to Krsta Mršić, he had five sons: Mijo, Ante, Milan, Zdravko, and Vinko.</p>
+
+<p>From his second marriage to Matija Sičenica, Vinko had no children.</p>
+
+<h3>Mijo (eldest son of Vinko)</h3>
+
+<p>Mijo married Jelena Krezo. They had two sons: Ivica and Zoran.</p>
+
+<p>Zoran married Vesna Belan. They have a son, Luka, and a daughter, Mija. The family lives in Germany.</p>
+
+<h3>Ante (second son of Vinko)</h3>
+
+<p>Ante married Vesna Topalušić. They have three daughters: Kristina, Marina, and Nikolina. They live in Germany.</p>
+
+<h3>Milan (third son of Vinko)</h3>
+
+<p>Milan married Nediljka Matušić. They had three sons: Kristijan, Antonio, and Dino, and one daughter, Valentina. They live in Predavac near Bjelovar.</p>
+
+<h3>Zdravko (fourth son of Vinko)</h3>
+
+<p>Zdravko married Brigita Horvatinčić. They had two sons, Mate and Bruno, and two daughters, Anita and Petra. They live in Predavac near Bjelovar.</p>
+
+<h3>Vinko (fifth son of Vinko)</h3>
+
+<p>Vinko married Slavica Matišić. They had a son, Mario, and a daughter, Marina. They live in Predavac near Bjelovar.</p>
+
+<h3>Milan (younger son of Mijo)</h3>
+
+<p>Milan married Iva Lukić. They had two sons, Željko and Dragan, and two daughters, Rosa and Dragica.</p>
+
+<h3>Toma Matin</h3>
+
+<p>The youngest son of Mate and Mara Topalušić, Toma married Tomica Tandara. They had five sons: Petar, Marijan (killed in WWII), Slavko, Ante, and Mate, and four daughters: Mila, Dragica, Ana, and Nevenka.</p>
+
+<h3>Petar Tomin</h3>
+
+<p>Petar, the eldest son of Toma, married Kata Novosel. They had one son, Ivica.</p>
+
+<p>Ivica married Ljubica Kozić. They have a son, Hrvoje, and a daughter, Sabina, a well-known Croatian journalist working at RTL. The family lives in Zagreb.</p>
+
+<h3>Slavko Tomin</h3>
+
+<p>Slavko, the third son of Toma, from his marriage to Savka Vukobratović, had a son, Marko. They live in Zagreb.</p>
+
+<h3>Ante Tomin</h3>
+
+<p>Ante, the fourth son of Toma, married Zlata Vučemil. They had a son, Draženko.</p>
+
+<p>Draženko married Nada Medić. They have a son, Luka, and two daughters, Maja and Mateja. They live in Bjelovar.</p>
+
+<h3>Mate Tomin</h3>
+
+<p>Mate, the youngest son of Toma, married Tonka Vukičević. They had a son, Željko.</p>
+
+<p>Željko married Ankica Šitum. They have two sons and live in Canada.</p>    
+
+</div> <!-- kraj text-block -->
+
+<!-- SLIKE – FULL WIDTH -->
+<img src="krizan.png?v=3" class="tree-image">
+<img src="antinajure.png?v=3" class="tree-image">
+<img src="antinagrana.png?v=3" class="tree-image">
+ 
+</div> <!-- kraj page-wrapper -->
+<div class="visitor-box">
+    <h4>Posjetitelji</h4>
+    <a href="https://info.flagcounter.com/OyvA">
+        <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+             alt="Flag Counter">
+    </a>
+</div>
+</body>
+</html>
+
+JURINAGRANAHTML-backup files(1337-
 
 
