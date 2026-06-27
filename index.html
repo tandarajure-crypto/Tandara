@@ -1,1 +1,304 @@
+<!DOCTYPE html>
+<html lang="hr">
 
+<head>
+
+    <!-- =========================
+         OSNOVNE POSTAVKE
+    ========================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Digitalni arhiv roda Tandara</title>
+
+    <meta name="description"
+          content="Digitalni arhiv roda Tandara. Genealogija, podrijetlo prezimena, rodoslovlje, migracije i obiteljske grane.">
+
+    <meta name="author"
+          content="Jure Tandara">
+
+    <link rel="icon"
+          href="home.png">
+
+    <!-- GLAVNI CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <!-- =========================
+         GOOGLE ANALYTICS
+    ========================== -->
+
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD">
+    </script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-S33NBEJQFD');
+
+    </script>
+
+    <!-- =========================
+         JAVASCRIPT NAVIGACIJA
+    ========================== -->
+
+    <script>
+
+        function showLanding() {
+
+            document.getElementById("landing").style.display = "block";
+            document.getElementById("tree").style.display = "none";
+
+        }
+
+        function showTree() {
+
+            document.getElementById("landing").style.display = "none";
+            document.getElementById("tree").style.display = "block";
+
+        }
+
+        window.onload = function () {
+
+            showLanding();
+
+        };
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- =====================================================
+     2. DIO - LIJEVA KOLONA (SIDEBAR)
+====================================================== -->
+
+<div class="sidebar">
+
+    <!-- HOME / ENTER -->
+    <div class="home-button">
+
+        <img src="home.png"
+             alt="Početna"
+             title="Ulaz u obiteljsko stablo"
+             onclick="showTree()">
+
+    </div>
+
+    <!-- ODABIR JEZIKA -->
+    <div class="language-switch">
+
+        <button class="lang active">
+            🇭🇷 HR
+        </button>
+
+        <button class="lang">
+            🇬🇧 EN
+        </button>
+
+    </div>
+
+    <!-- NASLOV -->
+    <h1 class="sidebar-title">
+        DIGITALNI ARHIV
+        <br>
+        RODA TANDARA
+    </h1>
+
+    <!-- GLAVNI IZBORNIK -->
+    <nav class="menu">
+
+        <a href="podrijetlo-hr.html"
+           class="menu-item">
+            Tandara – Podrijetlo prezimena
+        </a>
+
+        <a href="rodoslovlje-hr.html"
+           class="menu-item">
+            Tandara – Rodoslovlje roda
+        </a>
+
+        <a href="migracije-hr.html"
+           class="menu-item">
+            Tandara – Migracije i rasprostranjenost
+        </a>
+
+        <a href="autor-hr.html"
+           class="menu-item">
+            O autoru – Kontakti
+        </a>
+
+    </nav>
+
+    <!-- POSJETITELJI -->
+    <div class="visitor-box">
+
+        <div class="visitor-title">
+            Posjetitelji
+        </div>
+
+        <a href="https://info.flagcounter.com/OyvA"
+           target="_blank"
+           rel="noopener">
+
+            <img src="https://s01.flagcounter.com/countxl/OyvA/bg_F3E2C3/txt_3A2F1C/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+                 alt="Flag Counter">
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ===== KRAJ 2. DIJELA ===== -->  
+  <!-- =====================================================
+     3. DIO - CONTENT / POČETNA STRANICA
+====================================================== -->
+
+<div class="content">
+
+    <!-- ==========================================
+         LANDING PAGE
+    =========================================== -->
+
+    <div id="landing" class="landing-page">
+
+        <!-- FOTOGRAFIJA AUTORA -->
+
+        <img src="jure.png"
+             class="author-photo"
+             alt="Autor Digitalnog arhiva">
+
+        <!-- NASLOV -->
+
+        <h1>
+            Digitalni arhiv roda Tandara
+        </h1>
+
+        <!-- UVODNI TEKST -->
+
+        <p>
+            Dobro došli u Digitalni arhiv roda Tandara.
+        </p>
+
+        <p>
+            Ova internetska stranica predstavlja višegodišnje
+            genealogijsko istraživanje roda Tandara kroz
+            povijest, podrijetlo prezimena, migracije,
+            obiteljske grane i rodoslovlje.
+        </p>
+
+        <p>
+            Za ulazak u obiteljsko stablo kliknite
+            <strong>ENTER</strong> (HOME) u lijevom izborniku.
+        </p>
+
+    </div>
+
+    <!-- ==========================================
+         OBITELJSKO STABLO
+         (početno skriveno - slijedi u 4. dijelu)
+    =========================================== -->
+
+    <div id="tree"
+         class="tree-page"
+         style="display:none;">
+          <!-- =====================================================
+         4. DIO - OBITELJSKO STABLO
+    ====================================================== -->
+
+        <div class="family-tree">
+
+            <!-- OSNOVNA SLIKA STABLA -->
+
+            <img src="family-tree.png"
+                 class="tree-image"
+                 alt="Obiteljsko stablo roda Tandara">
+
+            <!-- ==========================
+                 HOTSPOTI OBITELJSKIH GRANA
+            =========================== -->
+
+            <!-- Jurina grana -->
+            <div class="branch hs-jurina"
+                 title="Jurina grana"
+                 onclick="window.location.href='jurinagrana.html'">
+            </div>
+
+            <!-- Petrova grana -->
+            <div class="branch hs-petrova"
+                 title="Petrova grana"
+                 onclick="window.location.href='petrovagrana.html'">
+            </div>
+
+            <!-- Antina grana -->
+            <div class="branch hs-antina"
+                 title="Antina grana"
+                 onclick="window.location.href='antinagrana.html'">
+            </div>
+
+            <!-- Matina grana -->
+            <div class="branch hs-matina"
+                 title="Matina grana"
+                 onclick="window.location.href='matinagrana.html'">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== KRAJ 4. DIJELA ===== -->
+ <!-- =====================================================
+     5. DIO - ZAVRŠNI JAVASCRIPT
+====================================================== -->
+
+<script>
+
+    /* PRIKAŽI POČETNU STRANICU */
+
+    function showLanding() {
+
+        document.getElementById("landing").style.display = "block";
+        document.getElementById("tree").style.display = "none";
+
+    }
+
+    /* PRIKAŽI OBITELJSKO STABLO */
+
+    function showTree() {
+
+        document.getElementById("landing").style.display = "none";
+        document.getElementById("tree").style.display = "block";
+
+    }
+
+    /* POČETNO UČITAVANJE */
+
+    window.onload = function () {
+
+        showLanding();
+
+    };
+
+</script>
+
+</body>
+
+</html> 
