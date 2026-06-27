@@ -1,4 +1,251 @@
+<!DOCTYPE html>
+<html lang="hr">
 
+<head>
 
+<meta charset="UTF-8">
 
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
+<title>Digitalni arhiv roda Tandara</title>
+
+<meta name="description"
+      content="Digitalni arhiv roda Tandara. Genealogija, podrijetlo prezimena, rodoslovlje, migracije i obiteljske grane.">
+
+<meta name="author"
+      content="Jure Tandara">
+
+<link rel="icon" href="home.png">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Google Analytics -->
+
+<script async
+src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD">
+</script>
+
+<script>
+
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+
+gtag('config', 'G-S33NBEJQFD');
+
+</script>
+
+<!-- ===== 2. DIO - JAVASCRIPT NAVIGACIJA ===== -->
+
+<script>
+
+function showLanding(){
+
+document.getElementById("landing").style.display="block";
+
+document.getElementById("tree").style.display="none";
+
+}
+
+function showTree(){
+
+document.getElementById("landing").style.display="none";
+
+document.getElementById("tree").style.display="block";
+
+}
+
+window.onload=function(){
+
+showLanding();
+
+}
+
+</script>
+
+</head>
+
+<body>
+<div class="container">  
+
+<!-- ===== 3. DIO - SIDEBAR ===== -->
+
+<div class="sidebar">
+
+    <!-- HOME / ENTER -->
+    <div class="home-button" onclick="showTree()">
+        <img src="home.png"
+             alt="ENTER"
+             title="Ulaz u obiteljsko stablo">
+    </div>
+
+    <!-- HR / EN -->
+    <div class="language-switch">
+
+        <button class="lang active">
+            🇭🇷 HR
+        </button>
+
+        <button class="lang">
+            🇬🇧 EN
+        </button>
+
+    </div>
+
+    <!-- GLAVNI NASLOV -->
+
+    <h1 class="sidebar-title">
+
+        DIGITALNI ARHIV
+
+        <span>RODA TANDARA</span>
+
+    </h1>
+
+    <!-- IZBORNIK -->
+
+    <div class="menu">
+
+        <a href="podrijetlo-hr.html" class="menu-item">
+
+            Tandara – Podrijetlo prezimena
+
+        </a>
+
+        <a href="rodoslovlje-hr.html" class="menu-item">
+
+            Tandara – Rodoslovlje roda
+
+        </a>
+
+        <a href="migracije-hr.html" class="menu-item">
+
+            Tandara – Migracije i rasprostranjenost
+
+        </a>
+
+        <a href="autor-hr.html" class="menu-item">
+
+            O autoru – kontakti
+
+        </a>
+
+    </div>
+
+    <!-- POSJETITELJI -->
+
+    <div class="visitor-box">
+
+        <div class="visitor-title">
+
+            Posjetitelji
+
+        </div>
+
+        <a href="https://info.flagcounter.com/OyvA">
+
+            <img src="https://s01.flagcounter.com/countxl/OyvA/bg_F3E2C3/txt_3A2F1C/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+                 alt="Flag Counter">
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ===== KRAJ 3. DIJELA ===== -->
+<!-- ===== 4. DIO - CONTENT ===== -->
+
+<div class="content">
+
+    <!-- LANDING STRANICA (POČETNI PRIKAZ) -->
+    <div id="landing" class="landing-page">
+
+        <img src="jure.png"
+             class="author-photo"
+             alt="Autor">
+
+        <h1>Digitalni arhiv roda Tandara</h1>
+
+        <p>
+            Dobro došli u Digitalni arhiv roda Tandara.
+        </p>
+
+        <p>
+            Ova stranica predstavlja genealogijsko istraživanje
+            obitelji Tandara kroz povijest, migracije i rodoslovne grane.
+        </p>
+
+        <p>
+            Pritisnite <strong>ENTER</strong> za ulazak u obiteljsko stablo.
+        </p>
+
+    </div>
+
+    <!-- OBITELJSKO STABLO (POČETNO SAKRIVENO) -->
+    <div id="tree" class="tree-page" style="display:none;">
+
+        <!-- ENTER POVRATAK NA STABLO -->
+        <div class="tree-home">
+            <img src="home.png"
+                 alt="ENTER"
+                 title="Povratak na stablo"
+                 onclick="showTree()">
+        </div>
+
+        <!-- STABLO -->
+        <div class="family-tree">
+
+            <img src="family-tree.png"
+                 class="tree-image"
+                 alt="Obiteljsko stablo">
+
+            <div class="branch hs-jurina"
+                 onclick="window.location.href='jurinagrana.html'"></div>
+
+            <div class="branch hs-petrova"
+                 onclick="window.location.href='petrovagrana.html'"></div>
+
+            <div class="branch hs-antina"
+                 onclick="window.location.href='antinagrana.html'"></div>
+
+            <div class="branch hs-matina"
+                 onclick="window.location.href='matinagrana.html'"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== KRAJ 4. DIJELA ===== --> 
+ <!-- ===== 5. DIO - FINAL SCRIPT ===== -->
+
+<script>
+
+function showLanding(){
+    document.getElementById("landing").style.display = "block";
+    document.getElementById("tree").style.display = "none";
+}
+
+function showTree(){
+    document.getElementById("landing").style.display = "none";
+    document.getElementById("tree").style.display = "block";
+}
+
+/* POČETNO UČITAVANJE */
+window.onload = function(){
+    showLanding();
+}
+
+</script>
+
+</body>
+</html>
+
+<!-- ===== KRAJ INDEX.HTML ===== --> 
