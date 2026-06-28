@@ -2,27 +2,31 @@ body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;
     background:#e7c191;
+    overflow-x:auto;
 }
 
 .container{
     display:flex;
     justify-content:center;
+    min-height:100vh;
 }
 
+/* Skaliranje cijelog sadržaja */
 .content{
     position:relative;
-    width:100%;
-    max-width:1440px;
+    width:1694px;              /* ORIGINALNA širina slike */
+    transform:scale(0.85);     /* mijenjaj npr. 0.90, 0.80... */
+    transform-origin:top center;
+    margin-bottom:-450px;      /* kompenzira prazni prostor */
 }
 
 .full-img{
     display:block;
-    width:100%;
+    width:1694px;
     height:auto;
 }
 
 /* HOTSPOTOVI */
-
 .hs{
     position:absolute;
     cursor:pointer;
@@ -32,46 +36,41 @@ body{
 }
 
 /* Jurina */
-
 .hs-jurina{
-    top:380px;
+    top:435px;
     left:392px;
     width:208px;
     height:102px;
 }
 
 /* Petrova */
-
 .hs-petrova{
-    top:380px;
+    top:435px;
     left:658px;
     width:208px;
     height:102px;
 }
 
 /* Antina */
-
 .hs-antina{
-    top:852px;
+    top:907px;
     left:392px;
     width:208px;
     height:102px;
 }
 
 /* Matina */
-
 .hs-matina{
-    top:852px;
+    top:907px;
     left:658px;
     width:208px;
     height:102px;
 }
 
 /* FLAGCOUNTER */
-
 .flagbox{
     position:absolute;
-    top:1052px;
+    top:1468px;
     left:0;
     width:360px;
     text-align:center;
