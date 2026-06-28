@@ -11,7 +11,7 @@ body{
 
 /* SIDEBAR */
 .sidebar{
-    width:302px;
+    width:360px;
     background:#ddb274;
     border-right:4px solid #7a7a7a;
     box-sizing:border-box;
