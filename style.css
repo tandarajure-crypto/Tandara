@@ -1,32 +1,38 @@
+/* OSNOVNO */
 body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;
     background:#e7c191;
-    overflow-x:auto;
+    overflow-x:hidden;
 }
 
+/* ORIGINALNA širina slike */
+:root{
+    --img-width:1694;
+}
+
+/* KONTEJNER */
 .container{
     display:flex;
     justify-content:center;
-    min-height:100vh;
+    width:100%;
 }
 
-/* Skaliranje cijelog sadržaja */
+/* SADRŽAJ */
 .content{
     position:relative;
-    width:1694px;              
-    transform:scale(0.85);
-    transform-origin:top center;
-    margin-bottom:-450px;
+    width:100%;
+    max-width:1694px;
 }
 
+/* SLIKA – skalira se do punog ekrana */
 .full-img{
-    display:block;
-    width:1694px;
+    width:100%;
     height:auto;
+    display:block;
 }
 
-/* HOTSPOTOVI */
+/* HOTSPOTOVI – automatsko skaliranje */
 .hs{
     position:absolute;
     cursor:pointer;
@@ -37,40 +43,40 @@ body{
 
 /* Jurina */
 .hs-jurina{
-    top:435px;
-    left:392px;
-    width:208px;
-    height:102px;
+    top: calc(435px * (100vw / var(--img-width)));
+    left: calc(392px * (100vw / var(--img-width)));
+    width: calc(208px * (100vw / var(--img-width)));
+    height: calc(102px * (100vw / var(--img-width)));
 }
 
 /* Petrova */
 .hs-petrova{
-    top:435px;
-    left:658px;
-    width:208px;
-    height:102px;
+    top: calc(435px * (100vw / var(--img-width)));
+    left: calc(658px * (100vw / var(--img-width)));
+    width: calc(208px * (100vw / var(--img-width)));
+    height: calc(102px * (100vw / var(--img-width)));
 }
 
 /* Antina */
 .hs-antina{
-    top:907px;
-    left:392px;
-    width:208px;
-    height:102px;
+    top: calc(907px * (100vw / var(--img-width)));
+    left: calc(392px * (100vw / var(--img-width)));
+    width: calc(208px * (100vw / var(--img-width)));
+    height: calc(102px * (100vw / var(--img-width)));
 }
 
 /* Matina */
 .hs-matina{
-    top:907px;
-    left:658px;
-    width:208px;
-    height:102px;
+    top: calc(907px * (100vw / var(--img-width)));
+    left: calc(658px * (100vw / var(--img-width)));
+    width: calc(208px * (100vw / var(--img-width)));
+    height: calc(102px * (100vw / var(--img-width)));
 }
 
 /* FLAGCOUNTER */
 .flagbox{
     position:absolute;
-    top:1468px;
+    bottom:20px;
     left:0;
     width:360px;
     text-align:center;
@@ -79,6 +85,7 @@ body{
 .flagbox img{
     width:360px;
 }
+
 
 
 
