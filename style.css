@@ -129,7 +129,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    padding:20px;
+    padding:0px;
     box-sizing:border-box;
 }
 
