@@ -6,82 +6,80 @@ body{
 
 .container{
     display:flex;
-    min-height:100vh;
+    justify-content:center;
 }
 
 .content{
-    flex:1;
-    padding:0;
-    margin:0;
     position:relative;
+    width:100%;
+    max-width:1440px;
 }
 
 .full-img{
-    width:100%;
     display:block;
-    transform: scale(0.85);   /* smanjuje visinu za ~12 cm */
-    transform-origin: top;    /* slika se smanjuje prema gore */
+    width:100%;
+    height:auto;
 }
 
+/* HOTSPOTOVI */
 
-/* HOTSPOTOVI – crveno vidljivi za testiranje */
 .hs{
     position:absolute;
     cursor:pointer;
     background:rgba(255,0,0,0.25);
     border:2px solid red;
+    box-sizing:border-box;
 }
 
-/* HOTSPOT DIMENZIJE – 208 × 102 px */
-
 /* Jurina */
+
 .hs-jurina{
-    top:435px;
+    top:380px;
     left:392px;
     width:208px;
     height:102px;
 }
 
 /* Petrova */
+
 .hs-petrova{
-    top:435px;
+    top:380px;
     left:658px;
     width:208px;
     height:102px;
 }
 
 /* Antina */
+
 .hs-antina{
-    top:907px;
+    top:852px;
     left:392px;
     width:208px;
     height:102px;
 }
 
 /* Matina */
+
 .hs-matina{
-    top:907px;
+    top:852px;
     left:658px;
     width:208px;
     height:102px;
 }
 
-/* FLAGCOUNTER – dignuto gore za 2 cm */
+/* FLAGCOUNTER */
+
 .flagbox{
     position:absolute;
-    top:1052px;   /* podignuto gore za 11 cm */
-    left:0px;
+    top:1052px;
+    left:0;
     width:360px;
     text-align:center;
-    padding:10px 0;
-    background:rgba(255,0,0,0.25);
-    border:2px solid red;
 }
 
 .flagbox img{
     width:360px;
 }
-
 
 
 
