@@ -61,87 +61,58 @@ window.onload=function(){
 
 <div class="container">
 
-<!-- SIDEBAR -->
-
 <div class="sidebar">
 
-<div class="home-button">
+    <!-- HOME -->
+    <div class="home-button">
+        <img src="home.png"
+             alt="Početna"
+             title="Ulaz u obiteljsko stablo"
+             onclick="showTree()">
+    </div>
 
-<img src="home.png"
-alt="Početna"
-title="Ulaz u obiteljsko stablo"
-onclick="showTree()">
+    <!-- JEZIK -->
+    <div class="language-switch">
+        <button class="lang active">🇭🇷 HR</button>
+        <button class="lang">🇬🇧 EN</button>
+    </div>
 
-</div>
+    <!-- NASLOV -->
+    <h1 class="sidebar-title">
+        DIGITALNI ARHIV<br>RODA TANDARA
+    </h1>
 
-<div class="language-switch">
+    <!-- GLAVNI IZBORNIK -->
+    <nav class="menu">
+        <a href="podrijetlo-hr.html" class="menu-item">
+            Tandara – Podrijetlo prezimena
+        </a>
+        <a href="rodoslovlje-hr.html" class="menu-item">
+            Tandara – Rodoslovlje roda
+        </a>
+        <a href="migracije-hr.html" class="menu-item">
+            Tandara – Migracije i rasprostranjenost
+        </a>
+        <a href="autor-hr.html" class="menu-item">
+            O autoru – Kontakti
+        </a>
+    </nav>
 
-<button class="lang active">🇭🇷 HR</button>
-
-<button class="lang">🇬🇧 EN</button>
-
-</div>
-
-<h1 class="sidebar-title">
-
-DIGITALNI ARHIV
-<br>
-RODA TANDARA
-
-</h1>
-
-<nav class="menu">
-
-<a href="podrijetlo-hr.html"
-class="menu-item">
-
-Tandara – Podrijetlo prezimena
-
-</a>
-
-<a href="rodoslovlje-hr.html"
-class="menu-item">
-
-Tandara – Rodoslovlje roda
-
-</a>
-
-<a href="migracije-hr.html"
-class="menu-item">
-
-Tandara – Migracije i rasprostranjenost
-
-</a>
-
-<a href="autor-hr.html"
-class="menu-item">
-
-O autoru – Kontakti
-
-</a>
-
-</nav>
-
-<div class="visitor-box">
-
-<div class="visitor-title">
-
-Posjetitelji
+    <!-- POSJETITELJI / FLAGCOUNTER -->
+    <div class="visitor-box">
+        <div class="visitor-title">
+            Posjetitelji
+        </div>
+        <a href="https://info.flagcounter.com/OyvA"
+           target="_blank"
+           rel="noopener">
+            <img src="https://s01.flagcounter.com/countxl/OyvA/bg_F3E2C3/txt_3A2F1C/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+                 alt="Flag Counter">
+        </a>
+    </div>
 
 </div>
 
-<a href="https://info.flagcounter.com/OyvA"
-target="_blank"
-rel="noopener">
-
-<img src="https://s01.flagcounter.com/countxl/OyvA/bg_F3E2C3/txt_3A2F1C/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-alt="Flag Counter">
-
-</a>
-
-</div>
-
-</div>
 
 <!-- CONTENT -->
 
