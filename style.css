@@ -67,7 +67,7 @@ body{
 /* FLAGCOUNTER – dignuto gore za 2 cm */
 .flagbox{
     position:absolute;
-    top:1468px;
+    top:1052px;   /* podignuto gore za 11 cm */
     left:0px;
     width:360px;
     text-align:center;
