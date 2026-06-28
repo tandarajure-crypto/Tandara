@@ -118,8 +118,11 @@ body{
 }
 
 .flagbox{
-    text-align:center;
+    text-align:left;
+    padding:0;
+    margin:0;
 }
+
 
 /* ============================
    DESNI STUPAC – SLIKA
