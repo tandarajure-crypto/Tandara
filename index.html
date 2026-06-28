@@ -30,18 +30,36 @@ body{
     display:block;
 }
 
-/* HOTSPOTOVI – nevidljivi klikabilni okviri */
+/* HOTSPOTOVI – crveno vidljivi za testiranje */
 .hs{
     position:absolute;
     cursor:pointer;
-    background:rgba(0,0,0,0);
+    background:rgba(255,0,0,0.25);   /* poluprozirno crveno */
+    border:2px solid red;            /* crveni rub */
 }
 
+/* POZICIJE HOTSPOTOVA */
 .hs-jurina{ top:26.5%; left:6%; width:18%; height:9%; }
 .hs-petrova{ top:26.5%; left:32%; width:18%; height:9%; }
 .hs-antina{ top:42.5%; left:6%; width:18%; height:9%; }
 .hs-matina{ top:42.5%; left:32%; width:18%; height:9%; }
 
+/* FLAGCOUNTER OVERLAY – poravnano na 360 px lijeve kolone */
+.flag-overlay{
+    position:absolute;
+    top:81%;          /* 1.5 cm ispod naslova “Posjetitelji” */
+    left:-4%;         /* prelazi lijevu marginu */
+    width:108%;       /* pokriva cijelu širinu PNG-a */
+    text-align:center;
+    padding:10px 0;
+    background:rgba(255,0,0,0.25);   /* crveno vidljivo za test */
+    border:2px solid red;            /* crveni rub */
+}
+
+/* FLAGCOUNTER SLIKA – širina 360 px */
+.flag-overlay img{
+    width:360px;
+}
 </style>
 
 </head>
@@ -51,13 +69,22 @@ body{
 <div class="container">
 
     <div class="content">
-        <img src="family-tree.png?v=1" class="full-img">
+        <img src="family-tree.png" class="full-img">
 
-        <!-- NEVIDLJIVI KLIKABILNI OKVIRI -->
+        <!-- NEVIDLJIVI (sad vidljivi crveni) KLIKABILNI OKVIRI -->
         <div class="hs hs-jurina" onclick="window.location.href='jurinagrana.html'"></div>
         <div class="hs hs-petrova" onclick="window.location.href='petrovagrana.html'"></div>
         <div class="hs hs-antina" onclick="window.location.href='antinagrana.html'"></div>
         <div class="hs hs-matina" onclick="window.location.href='matinagrana.html'"></div>
+
+        <!-- FLAGCOUNTER U PRAVOKUTNIKU -->
+        <div class="flag-overlay">
+            <a href="https://info.flagcounter.com/OyvA">
+                <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+                     alt="Flag Counter">
+            </a>
+        </div>
+
     </div>
 
 </div>
