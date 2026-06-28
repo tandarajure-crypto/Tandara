@@ -154,31 +154,30 @@ body{
     background-color:rgba(255,0,0,0.25);
 }
 
-/* GORNJI */
 .hs-jurina{
-    top:31.2%;
+    top:32.0%;
     left:6%;
     width:18%;
     height:9%;
 }
 
 .hs-petrova{
-    top:31.2%;
+    top:32.0%;
     left:32%;
     width:18%;
     height:9%;
 }
 
-/* DONJI */
+/* DONJI OKVIRI – spušteni još malo */
 .hs-antina{
-    top:46.7%;
+    top:47.5%;
     left:6%;
     width:18%;
     height:9%;
 }
 
 .hs-matina{
-    top:46.7%;
+    top:47.5%;
     left:32%;
     width:18%;
     height:9%;
