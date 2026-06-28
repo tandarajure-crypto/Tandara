@@ -31,17 +31,18 @@ body{
 }
 
 /* POZICIJE HOTSPOTOVA – smanjeni na 5×3 cm (185×111 px) */
-/* Jurina +302 px */
-.hs-jurina{ top:26.5%; left:392px; width:208px; height:102px; }
+/* Jurina gore 2,5 cm (−95 px) */
+.hs-jurina{ top:calc(26.5% - 95px); left:392px; width:208px; height:102px; }
 
-/* Petrova +178 px */
-.hs-petrova{ top:26.5%; left:658px; width:208px; height:102px; }
+/* Petrova gore 2,5 cm (−95 px) */
+.hs-petrova{ top:calc(26.5% - 95px); left:658px; width:208px; height:102px; }
 
-/* Antina +302 px */
-.hs-antina{ top:42.5%; left:392px; width:208px; height:102px; }
+/* Antina dolje 1,5 cm (+57 px) */
+.hs-antina{ top:calc(42.5% + 57px); left:392px; width:208px; height:102px; }
 
-/* Matina +178 px */
-.hs-matina{ top:42.5%; left:658px; width:208px; height:102px; }
+/* Matina dolje 1,5 cm (+57 px) */
+.hs-matina{ top:calc(42.5% + 57px); left:658px; width:208px; height:102px; }
+
 
 
 
