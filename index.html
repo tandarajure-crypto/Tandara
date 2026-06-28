@@ -10,32 +10,36 @@
 
 <div class="layout">
 
-    <!-- LIJEVI STUPAC -->
+    <!-- LIJEVI STUPAC – IDENTIČAN HERITAGE PNG-u -->
     <div class="left-menu">
 
         <!-- HOME -->
-        <div class="home-btn">
-            <img src="home.png" alt="Home" style="width:70px;">
+        <div class="home-button">
+            <div class="home-circle">
+                <span class="home-icon">🏠</span>
+            </div>
+            <span class="enter-text">ENTER</span>
         </div>
 
         <!-- HR / EN -->
         <div class="lang-switch">
-            <a href="index.html">HR</a> |
-            <a href="index-en.html">EN</a>
+            <a href="index.html" class="lang-btn">HR</a>
+            <a href="index-en.html" class="lang-btn">EN</a>
         </div>
 
         <!-- NASLOV -->
         <h2>DIGITALNI ARHIV RODA TANDARA</h2>
 
         <!-- IZBORNIK -->
-        <ul>
-            <li><a href="podrijetlo.html">Tandara – Podrijetlo prezimena</a></li>
-            <li><a href="rodoslovlje.html">Tandara – Rodoslovlje roda</a></li>
-            <li><a href="migracije.html">Tandara – Migracije i rasprostranjenost</a></li>
-            <li><a href="autor.html">O autoru – kontakti</a></li>
+        <ul class="heritage-menu">
+            <li><span class="tree-icon">🌳</span><a href="podrijetlo.html">Tandara – Podrijetlo prezimena</a></li>
+            <li><span class="tree-icon">🌳</span><a href="rodoslovlje.html">Tandara – Rodoslovlje roda</a></li>
+            <li><span class="tree-icon">🌳</span><a href="migracije.html">Tandara – Migracije i rasprostranjenost</a></li>
+            <li><span class="tree-icon">🌳</span><a href="autor.html">O autoru – kontakti</a></li>
         </ul>
 
-        <!-- FLAGCOUNTER -->
+        <!-- POSJETITELJI + FLAGCOUNTER -->
+        <div class="visitors-title">Posjetitelji</div>
         <div class="flagbox">
             <a href="https://info.flagcounter.com/OyvA">
                 <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/" 
@@ -45,14 +49,13 @@
 
     </div>
 
-    <!-- DESNI STUPAC -->
+    <!-- DESNI STUPAC – FAMILY TREE PNG -->
     <div class="right-image">
         <div class="image-wrapper">
 
-            <!-- SLIKA -->
             <img src="family-tree.png" class="bg" alt="Obiteljsko stablo">
 
-            <!-- HOTSPOTOVI (spušteni 1.4 cm) -->
+            <!-- HOTSPOTOVI (spušteni 1.4 cm = 2.7%) -->
             <div class="hs hs-jurina" onclick="location.href='jurinagrana.html'"></div>
             <div class="hs hs-petrova" onclick="location.href='petrovagrana.html'"></div>
             <div class="hs hs-antina" onclick="location.href='antinagrana.html'"></div>
@@ -65,6 +68,7 @@
 
 </body>
 </html>
+
 
 
 
