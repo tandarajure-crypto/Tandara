@@ -17,35 +17,11 @@ body{
     min-height:100vh;
 }
 
-/* SIDEBAR */
-.sidebar{
-    width:302px;
-    background:#ddb274;
-    border-right:4px solid #7a7a7a;
-    box-sizing:border-box;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding-top:10px;
-}
-
-.menu-item{
-    text-align:center;
-    cursor:pointer;
-    padding:5px;
-    font-size:20px;
-}
-
-.menu-item:hover{
-    background:#cfa86a;
-    border-radius:8px;
-}
-
-/* CONTENT */
 .content{
     flex:1;
     padding:0;
     margin:0;
+    position:relative;
 }
 
 .full-img{
@@ -54,7 +30,7 @@ body{
     display:block;
 }
 
-/* HOTSPOTOVI – nevidljivi, samo klikabilni */
+/* HOTSPOTOVI – nevidljivi klikabilni okviri */
 .hs{
     position:absolute;
     cursor:pointer;
@@ -74,34 +50,7 @@ body{
 
 <div class="container">
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-
-        <div class="menu-item" onclick="window.location.href='index.html'">
-            <img src="home.png" alt="Početna" style="width:80px;">
-        </div>
-
-        <div class="menu-item" onclick="window.location.href='hr.html'">HR</div>
-        <div class="menu-item" onclick="window.location.href='en.html'">EN</div>
-
-        <div class="menu-item" onclick="window.location.href='jurinagrana.html'">Jurina grana</div>
-        <div class="menu-item" onclick="window.location.href='petrovagrana.html'">Petrova grana</div>
-        <div class="menu-item" onclick="window.location.href='antinagrana.html'">Antina grana</div>
-        <div class="menu-item" onclick="window.location.href='matinagrana.html'">Matina grana</div>
-        <div class="menu-item" onclick="window.location.href='povijest.html'">Povijest roda</div>
-
-        <div class="visitor-box">
-            <h4>Posjetitelji</h4>
-            <a href="https://info.flagcounter.com/OyvA">
-                <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-                     alt="Flag Counter">
-            </a>
-        </div>
-
-    </div>
-
-    <!-- CONTENT -->
-    <div class="content" style="position:relative;">
+    <div class="content">
         <img src="family-tree.png?v=1" class="full-img">
 
         <!-- NEVIDLJIVI KLIKABILNI OKVIRI -->
@@ -109,13 +58,13 @@ body{
         <div class="hs hs-petrova" onclick="window.location.href='petrovagrana.html'"></div>
         <div class="hs hs-antina" onclick="window.location.href='antinagrana.html'"></div>
         <div class="hs hs-matina" onclick="window.location.href='matinagrana.html'"></div>
-
     </div>
 
 </div>
 
 </body>
 </html>
+
 
 
 
