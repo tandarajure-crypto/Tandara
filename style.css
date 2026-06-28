@@ -14,10 +14,10 @@ body{
 /* Skaliranje cijelog sadržaja */
 .content{
     position:relative;
-    width:1694px;              /* ORIGINALNA širina slike */
-    transform:scale(0.85);     /* mijenjaj npr. 0.90, 0.80... */
+    width:1694px;              
+    transform:scale(0.85);
     transform-origin:top center;
-    margin-bottom:-450px;      /* kompenzira prazni prostor */
+    margin-bottom:-450px;
 }
 
 .full-img{
@@ -79,6 +79,7 @@ body{
 .flagbox img{
     width:360px;
 }
+
 
 
 
