@@ -2,192 +2,41 @@
 <html lang="hr">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitalni arhiv roda Tandara</title>
 
-<title>Digitalni arhiv roda Tandara</title>
+    <meta name="description"
+          content="Digitalni arhiv roda Tandara. Genealogija, podrijetlo prezimena, rodoslovlje, migracije i obiteljske grane.">
 
-<meta name="description"
-content="Digitalni arhiv roda Tandara. Genealogija, podrijetlo prezimena, rodoslovlje, migracije i obiteljske grane.">
+    <meta name="author" content="Jure Tandara">
 
-<meta name="author" content="Jure Tandara">
+    <link rel="icon" href="home.png">
+    <link rel="stylesheet" href="style.css">
 
-<link rel="icon" href="home.png">
-
-<link rel="stylesheet" href="style.css">
-
-<!-- Google Analytics -->
-<script async
-src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD">
-</script>
-
-<script>
-
-window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-    dataLayer.push(arguments);
-}
-
-gtag('js', new Date());
-gtag('config','G-S33NBEJQFD');
-
-function showLanding(){
-
-    document.getElementById("landing").style.display="block";
-    document.getElementById("tree").style.display="none";
-
-}
-
-function showTree(){
-
-    document.getElementById("landing").style.display="none";
-    document.getElementById("tree").style.display="block";
-
-}
-
-window.onload=function(){
-
-    showLanding();
-
-};
-
-</script>
-
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S33NBEJQFD');
+    </script>
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="sidebar">
-
-    <!-- HOME -->
-    <div class="home-button">
-        <img src="home.png"
-             alt="Početna"
-             title="Ulaz u obiteljsko stablo"
-             onclick="showTree()">
+    <div class="content">
+        <img src="tandara-layout.png"
+             alt="Digitalni arhiv roda Tandara – kompletan layout"
+             class="full-layout">
     </div>
-
-    <!-- JEZIK -->
-    <div class="language-switch">
-        <button class="lang active">🇭🇷 HR</button>
-        <button class="lang">🇬🇧 EN</button>
-    </div>
-
-    <!-- NASLOV -->
-    <h1 class="sidebar-title">
-        DIGITALNI ARHIV<br>RODA TANDARA
-    </h1>
-
-    <!-- GLAVNI IZBORNIK -->
-    <nav class="menu">
-        <a href="podrijetlo-hr.html" class="menu-item">
-            Tandara – Podrijetlo prezimena
-        </a>
-        <a href="rodoslovlje-hr.html" class="menu-item">
-            Tandara – Rodoslovlje roda
-        </a>
-        <a href="migracije-hr.html" class="menu-item">
-            Tandara – Migracije i rasprostranjenost
-        </a>
-        <a href="autor-hr.html" class="menu-item">
-            O autoru – Kontakti
-        </a>
-    </nav>
-
-    <!-- POSJETITELJI / FLAGCOUNTER -->
-    <div class="visitor-box">
-        <div class="visitor-title">
-            Posjetitelji
-        </div>
-        <a href="https://info.flagcounter.com/OyvA"
-           target="_blank"
-           rel="noopener">
-            <img src="https://s01.flagcounter.com/countxl/OyvA/bg_F3E2C3/txt_3A2F1C/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-                 alt="Flag Counter">
-        </a>
-    </div>
-
-</div>
-
-
-<!-- CONTENT -->
-
-<div class="content">
-
-<!-- LANDING -->
-
-<div id="landing"
-class="landing-page">
-
-<img src="jure.png"
-class="author-photo"
-alt="Autor">
-
-<h1>
-
-Digitalni arhiv roda Tandara
-
-</h1>
-
-<p>
-
-Dobro došli u Digitalni arhiv roda Tandara.
-
-</p>
-
-<p>
-
-Ova internetska stranica predstavlja višegodišnje genealogijsko istraživanje roda Tandara kroz povijest, podrijetlo prezimena, migracije, obiteljske grane i rodoslovlje.
-
-</p>
-
-<p>
-
-Za ulazak u obiteljsko stablo kliknite
-<strong>ENTER</strong>
-(HOME) u lijevom izborniku.
-
-</p>
-
-</div>
-
-<!-- STABLO -->
-
-<div id="tree"
-class="tree-page"
-style="display:none;">
-
-<img src="family-tree.png"
-class="tree-image"
-alt="Obiteljsko stablo">
-
-<div class="branch hs-jurina"
-onclick="window.location.href='jurinagrana.html'">
-</div>
-
-<div class="branch hs-petrova"
-onclick="window.location.href='petrovagrana.html'">
-</div>
-
-<div class="branch hs-antina"
-onclick="window.location.href='antinagrana.html'">
-</div>
-
-<div class="branch hs-matina"
-onclick="window.location.href='matinagrana.html'">
-</div>
-
-</div>
-
-</div>
 
 </div>
 
 </body>
-
 </html>
-```
+
