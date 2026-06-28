@@ -71,7 +71,192 @@ INDEXHTML-backup files (1-69)
 
 CSS-BACKUP
 
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#e7c191;
+}
 
+.layout{
+    max-width:1920px;
+    margin:0 auto;
+    display:flex;
+    gap:20px;
+    padding:4px; /* minimalni rub */
+    box-sizing:border-box;
+    align-items:flex-start;
+}
+
+/* LEFT */
+.left-menu{
+    width:300px;
+    background:#e7d3b0;
+    border-right:4px solid #7a7a7a;
+    padding:20px 0;
+    box-sizing:border-box;
+    color:#4a3b2a;
+    margin-top:0; /* PORAVNANO S PNG */
+}
+
+/* HOME */
+.home-button{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    margin-bottom:40px;
+    text-decoration:none;
+}
+
+.home-circle{
+    width:110px;
+    height:110px;
+    background:#c9a46d;
+    border-radius:50%;
+    box-shadow:0 0 4px rgba(0,0,0,0.3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.home-svg{
+    width:42px;
+    height:42px;
+}
+
+.home-text{
+    font-size:20px;
+    font-weight:bold;
+    color:#4a3b2a;
+}
+
+/* LANG */
+.lang-switch{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:60px;
+}
+
+.lang-btn{
+    background:#c9a46d;
+    padding:8px 18px;
+    border-radius:6px;
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    box-shadow:0 0 3px rgba(0,0,0,0.3);
+}
+
+.lang-btn:hover{
+    background:#b89255;
+}
+
+/* TITLE — 1cm do menija */
+.left-menu h2{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:38px;
+    color:#3b2f22;
+}
+
+/* MENU */
+.heritage-menu{
+    list-style:none;
+    padding:0 20px;
+    margin:0;
+}
+
+.heritage-menu li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(0,0,0,0.08);
+}
+
+.heritage-menu li:last-child{
+    border-bottom:none;
+}
+
+.heritage-menu a{
+    text-decoration:none;
+    color:#4a3b2a;
+    font-size:17px;
+}
+
+.heritage-menu a:hover{
+    color:#7a5e3a;
+}
+
+/* VISITORS */
+.visitors-title{
+    margin-top:20px;
+    margin-bottom:10px;
+    font-weight:bold;
+    color:#3b2f22;
+    text-align:center;
+}
+
+.flagbox img{
+    width:auto;
+    max-width:none;
+    height:auto;
+    display:block;
+    border:0;
+}
+
+/* RIGHT */
+.right-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:0;
+}
+
+.image-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+.bg{
+    width:100%;
+    height:auto;
+    display:block;
+    border:0;
+}
+
+/* HOTSPOTS */
+.hs{
+    position:absolute;
+    cursor:pointer;
+    background:transparent;
+    border:none;
+}
+.hs:hover{
+    outline:2px solid rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.08);
+}
+
+.hs-jurina,
+.hs-petrova{
+    top:32%;
+    width:18%;
+    height:9%;
+}
+
+.hs-antina,
+.hs-matina{
+    top:47.5%;
+    width:18%;
+    height:9%;
+}
+
+.hs-jurina{ left:6%; }
+.hs-antina{ left:6%; }
+.hs-petrova{ left:32%; }
+.hs-matina{ left:32%; }
 
 
 
