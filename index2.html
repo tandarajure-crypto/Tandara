@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obiteljsko stablo Tandara – TEST</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#e7c191;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+.content{
+    flex:1;
+    padding:0;
+    margin:0;
+    position:relative;
+}
+
+.full-img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+/* HOTSPOTOVI – crveno vidljivi za testiranje */
+.hs{
+    position:absolute;
+    cursor:pointer;
+    background:rgba(255,0,0,0.25);
+    border:2px solid red;
+}
+
+/* HOTSPOT DIMENZIJE – 208 × 102 px */
+
+/* Jurina */
+.hs-jurina{
+    top:435px;
+    left:392px;
+    width:208px;
+    height:102px;
+}
+
+/* Petrova */
+.hs-petrova{
+    top:435px;
+    left:658px;
+    width:208px;
+    height:102px;
+}
+
+/* Antina */
+.hs-antina{
+    top:907px;
+    left:392px;
+    width:208px;
+    height:102px;
+}
+
+/* Matina */
+.hs-matina{
+    top:907px;
+    left:658px;
+    width:208px;
+    height:102px;
+}
+
+/* FLAGCOUNTER */
+.flagbox{
+    position:absolute;
+    top:1468px;
+    left:0px;
+    width:360px;
+    text-align:center;
+    padding:10px 0;
+    background:rgba(255,0,0,0.25);
+    border:2px solid red;
+}
+
+.flagbox img{
+    width:360px;
+}
+</style>
+
+</head>
+<body>
+
+<p style="color:red; font-size:40px;">INDEX2 TEST</p>
+
+<div class="container">
+  <div class="content">
+    <img src="family-tree.png?v=3" class="full-img">
+
+    <!-- HOTSPOTOVI -->
+    <div class="hs hs-jurina" onclick="window.location.href='jurinagrana.html'"></div>
+    <div class="hs hs-petrova" onclick="window.location.href='petrovagrana.html'"></div>
+    <div class="hs hs-antina" onclick="window.location.href='antinagrana.html'"></div>
+    <div class="hs hs-matina" onclick="window.location.href='matinagrana.html'"></div>
+
+    <!-- FLAGCOUNTER -->
+    <div class="flagbox">
+      <a href="https://info.flagcounter.com/OyvA">
+        <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+             alt="Flag Counter">
+      </a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
 
