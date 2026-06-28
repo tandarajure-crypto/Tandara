@@ -1,34 +1,33 @@
 body{
     margin:0;
-    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
     background:#e7c191;
-    overflow-x:hidden;
+    overflow-x:auto;
 }
 
-/* ORIGINALNA širina slike */
-:root{
-    --img-width:1694;
-    --scale-x:1.0891; /* proširenje 2 cm sa svake strane */
-    --scale-y:0.7101; /* smanjenje visine za 13 cm */
+.container{
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
 }
 
+/* SADRŽAJ – proširenje slike za 2 cm sa svake strane */
 .content{
     position:relative;
-    width:calc(100vw * var(--scale-x));
-    height:auto;
-    transform:scale(var(--scale-x), var(--scale-y));
-    transform-origin:top left;
+    width:1694px;
+    padding-left:2cm;
+    padding-right:2cm;
 }
 
+/* SLIKA – smanjenje visine za 8 cm, bez rezanja */
 .full-img{
-    width:100vw;
-    height:auto;
     display:block;
-    transform:scale(var(--scale-x), var(--scale-y));
-    transform-origin:top left;
+    width:1694px;
+    max-height:calc(1694px - 8cm);
+    height:auto;
 }
 
-/* HOTSPOTOVI */
+/* HOTSPOTOVI – crveni kvadrati */
 .hs{
     position:absolute;
     cursor:pointer;
@@ -39,41 +38,42 @@ body{
 
 /* Jurina */
 .hs-jurina{
-    top: calc(435px * (100vw / var(--img-width)) * var(--scale-y));
-    left: calc(392px * (100vw / var(--img-width)) * var(--scale-x));
-    width: calc(208px * (100vw / var(--img-width)) * var(--scale-x));
-    height: calc(102px * (100vw / var(--img-width)) * var(--scale-y));
+    top:435px;
+    left:392px;
+    width:208px;
+    height:102px;
 }
 
 /* Petrova */
 .hs-petrova{
-    top: calc(435px * (100vw / var(--img-width)) * var(--scale-y));
-    left: calc(658px * (100vw / var(--img-width)) * var(--scale-x));
-    width: calc(208px * (100vw / var(--img-width)) * var(--scale-x));
-    height: calc(102px * (100vw / var(--img-width)) * var(--scale-y));
+    top:435px;
+    left:658px;
+    width:208px;
+    height:102px;
 }
 
 /* Antina */
 .hs-antina{
-    top: calc(907px * (100vw / var(--img-width)) * var(--scale-y));
-    left: calc(392px * (100vw / var(--img-width)) * var(--scale-x));
-    width: calc(208px * (100vw / var(--img-width)) * var(--scale-x));
-    height: calc(102px * (100vw / var(--img-width)) * var(--scale-y));
+    top:907px;
+    left:392px;
+    width:208px;
+    height:102px;
 }
 
 /* Matina */
 .hs-matina{
-    top: calc(907px * (100vw / var(--img-width)) * var(--scale-y));
-    left: calc(658px * (100vw / var(--img-width)) * var(--scale-x));
-    width: calc(208px * (100vw / var(--img-width)) * var(--scale-x));
-    height: calc(102px * (100vw / var(--img-width)) * var(--scale-y));
+    top:907px;
+    left:658px;
+    width:208px;
+    height:102px;
 }
 
-/* FLAGCOUNTER */
+/* FLAGCOUNTER – centriran ispod “posjetitelji” */
 .flagbox{
     position:absolute;
-    bottom:20px;
-    left:0;
+    top:1480px; /* po potrebi pomakni 1460 / 1500 */
+    left:50%;
+    transform:translateX(-50%);
     width:360px;
     text-align:center;
 }
@@ -81,6 +81,7 @@ body{
 .flagbox img{
     width:360px;
 }
+
 
 
 
