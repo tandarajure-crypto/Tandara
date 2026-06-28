@@ -72,6 +72,17 @@ body{
     padding-top:15px;
 }
 
+/* FLAGCOUNTER U LIJEVOJ KOLONI */
+.left-menu .flagbox{
+    margin-top:25px;
+    text-align:center;
+}
+
+.left-menu .flagbox img{
+    width:260px;
+    border:1px solid #b79a6b;
+}
+
 /* ============================
    DESNA KOLONA – SLIKA
    ============================ */
@@ -110,67 +121,34 @@ body{
     box-sizing:border-box;
 }
 
-/* ============================
-   GORNJA DVA – podignuta 4 cm (151 px)
-   širina +2 cm (284 px)
-   Jurina pomaknuta 7 cm lijevo (265 px)
-   Petrova pomaknuta 4.6 cm lijevo (174 px)
-   ============================ */
-
-/* Jurina */
+/* GORNJA DVA – podignuta 4 cm, proširena 2 cm */
 .hs-jurina{
-    top:284px;          /* 435 - 151 */
-    left:127px;         /* 392 - 265 */
+    top:284px;
+    left:127px;
     width:284px;
     height:102px;
 }
 
-/* Petrova */
 .hs-petrova{
-    top:284px;          /* 435 - 151 */
-    left:484px;         /* 658 - 174 */
+    top:284px;
+    left:484px;
     width:284px;
     height:102px;
 }
 
-/* ============================
-   DONJA DVA – podignuta 13.5 cm (510 px)
-   širina +2 cm (284 px)
-   Antina pomaknuta 7 cm lijevo (265 px)
-   Matina pomaknuta 4.6 cm lijevo (174 px)
-   ============================ */
-
-/* Antina */
+/* DONJA DVA – podignuta 13.5 cm, proširena 2 cm, sada spuštena 1 cm */
 .hs-antina{
-    top:397px;          /* 907 - 510 */
-    left:127px;         /* 392 - 265 */
+    top:435px;      /* 397 + 38 */
+    left:127px;
     width:284px;
     height:102px;
 }
 
-/* Matina */
 .hs-matina{
-    top:397px;          /* 907 - 510 */
-    left:484px;         /* 658 - 174 */
+    top:435px;      /* 397 + 38 */
+    left:484px;
     width:284px;
     height:102px;
-}
-
-/* ============================
-   FLAGCOUNTER
-   ============================ */
-
-.flagbox{
-    position:absolute;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    width:360px;
-    text-align:center;
-}
-
-.flagbox img{
-    width:360px;
 }
 
 
