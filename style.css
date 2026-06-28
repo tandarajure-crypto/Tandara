@@ -1,14 +1,9 @@
-/* ============================
-   GLOBALNO
-   ============================ */
-
 body{
     margin:0;
     font-family:Georgia, "Times New Roman", serif;
     background:#e7c191;
 }
 
-/* GLAVNI LAYOUT */
 .layout{
     max-width:1920px;
     margin:0 auto;
@@ -17,10 +12,6 @@ body{
     padding:20px;
     box-sizing:border-box;
 }
-
-/* ============================
-   LIJEVA KOLONA – HERITAGE
-   ============================ */
 
 .left-menu{
     width:360px;
@@ -72,7 +63,6 @@ body{
     padding-top:15px;
 }
 
-/* FLAGCOUNTER U LIJEVOJ KOLONI */
 .left-menu .flagbox{
     margin-top:25px;
     text-align:center;
@@ -82,10 +72,6 @@ body{
     width:260px;
     border:1px solid #b79a6b;
 }
-
-/* ============================
-   DESNA KOLONA – SLIKA
-   ============================ */
 
 .right-image{
     flex:1;
@@ -108,10 +94,7 @@ body{
     display:block;
 }
 
-/* ============================
-   HOTSPOTOVI – CRVENI OKVIRI
-   ============================ */
-
+/* HOTSPOTOVI – OVO NE DIRAMO */
 .hs{
     position:absolute;
     cursor:pointer;
@@ -120,32 +103,30 @@ body{
     box-sizing:border-box;
 }
 
-/* GORNJA DVA – podignuta 4 cm, proširena 2 cm, sada pomaknuta 1.5 cm lijevo */
 .hs-jurina{
     top:284px;
-    left:70px;        /* 127 - 57 */
+    left:70px;
     width:284px;
     height:102px;
 }
 
 .hs-petrova{
     top:284px;
-    left:427px;       /* 484 - 57 */
+    left:427px;
     width:284px;
     height:102px;
 }
 
-/* DONJA DVA – podignuta 13.5 cm, spuštena 1 cm, proširena 2 cm, sada pomaknuta 1.5 cm lijevo */
 .hs-antina{
     top:435px;
-    left:70px;        /* 127 - 57 */
+    left:70px;
     width:284px;
     height:102px;
 }
 
 .hs-matina{
     top:435px;
-    left:427px;       /* 484 - 57 */
+    left:427px;
     width:284px;
     height:102px;
 }
