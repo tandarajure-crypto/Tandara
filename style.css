@@ -96,7 +96,6 @@ body{
     box-sizing:border-box;
 }
 
-/* PNG – originalna veličina */
 .image-wrapper{
     position:relative;
     display:inline-block;
@@ -121,35 +120,36 @@ body{
     box-sizing:border-box;
 }
 
-/* GORNJA DVA – podignuta 4 cm, proširena 2 cm */
+/* GORNJA DVA – podignuta 4 cm, proširena 2 cm, sada pomaknuta 1.5 cm lijevo */
 .hs-jurina{
     top:284px;
-    left:127px;
+    left:70px;        /* 127 - 57 */
     width:284px;
     height:102px;
 }
 
 .hs-petrova{
     top:284px;
-    left:484px;
+    left:427px;       /* 484 - 57 */
     width:284px;
     height:102px;
 }
 
-/* DONJA DVA – podignuta 13.5 cm, proširena 2 cm, sada spuštena 1 cm */
+/* DONJA DVA – podignuta 13.5 cm, spuštena 1 cm, proširena 2 cm, sada pomaknuta 1.5 cm lijevo */
 .hs-antina{
-    top:435px;      /* 397 + 38 */
-    left:127px;
+    top:435px;
+    left:70px;        /* 127 - 57 */
     width:284px;
     height:102px;
 }
 
 .hs-matina{
-    top:435px;      /* 397 + 38 */
-    left:484px;
+    top:435px;
+    left:427px;       /* 484 - 57 */
     width:284px;
     height:102px;
 }
+
 
 
 
