@@ -44,19 +44,18 @@ body{
 .hs-matina{ top:calc(42.5% + 57px); left:658px; width:208px; height:102px; }
 
 
-
-
 /* FLAGCOUNTER OVERLAY – točno 360 px širine */
 .flag-overlay{
     position:absolute;
-    top:81%;          /* 1.5 cm ispod naslova “Posjetitelji” */
-    left:0px;         /* poravnano s lijevom kolonom */
-    width:360px;      /* širina lijeve kolone = širina flagcountera */
+    top:1544px;      /* dignuto gore za 2 cm */
+    left:0px;
+    width:360px;
     text-align:center;
     padding:10px 0;
-    background:rgba(255,0,0,0.25);   /* crveno vidljivo za test */
-    border:2px solid red;            /* crveni rub */
+    background:rgba(255,0,0,0.25);
+    border:2px solid red;
 }
+
 
 /* FLAGCOUNTER SLIKA – širina 360 px */
 .flag-overlay img{
