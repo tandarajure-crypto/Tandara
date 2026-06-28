@@ -26,28 +26,49 @@ body{
 .hs{
     position:absolute;
     cursor:pointer;
-    background:rgba(255,0,0,0.25);   /* poluprozirno crveno */
-    border:2px solid red;            /* crveni rub */
+    background:rgba(255,0,0,0.25);
+    border:2px solid red;
 }
 
-/* POZICIJE HOTSPOTOVA – smanjeni na 5×3 cm (185×111 px) */
-/* Jurina gore 2,5 cm (−95 px) */
-.hs-jurina{ top:calc(26.5% - 95px); left:392px; width:208px; height:102px; }
+/* HOTSPOT DIMENZIJE – 208 × 102 px */
 
-/* Petrova gore 2,5 cm (−95 px) */
-.hs-petrova{ top:calc(26.5% - 95px); left:658px; width:208px; height:102px; }
+/* Jurina */
+.hs-jurina{
+    top:435px;
+    left:392px;
+    width:208px;
+    height:102px;
+}
 
-/* Antina dolje 1,5 cm (+57 px) */
-.hs-antina{ top:calc(42.5% + 57px); left:392px; width:208px; height:102px; }
+/* Petrova */
+.hs-petrova{
+    top:435px;
+    left:658px;
+    width:208px;
+    height:102px;
+}
 
-/* Matina dolje 1,5 cm (+57 px) */
-.hs-matina{ top:calc(42.5% + 57px); left:658px; width:208px; height:102px; }
+/* Antina */
+.hs-antina{
+    top:907px;
+    left:392px;
+    width:208px;
+    height:102px;
+}
 
+/* Matina */
+.hs-matina{
+    top:907px;
+    left:658px;
+    width:208px;
+    height:102px;
+}
 
-/* FLAGCOUNTER OVERLAY – točno 360 px širine */
-.flag-overlay{
+/* FLAGCOUNTER – dignuto gore za 2 cm */
+/* promijenjeno ime klase da GitHub učita CSS */
+.flagbox{
     position:absolute;
-    top:1544px;      /* dignuto gore za 2 cm */
+    top:1468px;
     left:0px;
     width:360px;
     text-align:center;
@@ -56,10 +77,9 @@ body{
     border:2px solid red;
 }
 
-
-/* FLAGCOUNTER SLIKA – širina 360 px */
-.flag-overlay img{
+.flagbox img{
     width:360px;
 }
+
 
 
