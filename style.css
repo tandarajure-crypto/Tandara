@@ -1,44 +1,82 @@
+/* ============================
+   GLOBALNO
+   ============================ */
+
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#e7c191;
+    font-family:Georgia, "Times New Roman", serif;
+    background:#e7c191; /* topla zemljana pozadina */
 }
 
-/* GLAVNI LAYOUT – ciljamo okvir ~1920x1200 */
+/* GLAVNI LAYOUT */
 .layout{
     max-width:1920px;
-    height:1200px;
+    height:auto;
     margin:0 auto;
     display:flex;
+    gap:20px;
+    padding:20px;
+    box-sizing:border-box;
 }
 
-/* LIJEVA KOLONA */
+/* ============================
+   LIJEVA KOLONA – HERITAGE
+   ============================ */
+
 .left-menu{
     width:360px;
     padding:20px;
-    background:#f4e3c0;
+    background:#f3e7d3;              /* pergament */
+    border:2px solid #b79a6b;        /* starinski rub */
+    box-shadow:0 0 12px rgba(0,0,0,0.15);
     box-sizing:border-box;
+    color:#4a3b2a;
 }
 
 .left-menu h2{
     margin-top:0;
+    font-size:22px;
+    text-align:center;
+    color:#3b2f22;
+    border-bottom:2px solid #b79a6b;
+    padding-bottom:10px;
 }
 
 .left-menu ul{
     list-style:none;
     padding:0;
+    margin-top:20px;
 }
 
 .left-menu li{
     margin-bottom:8px;
+    padding:8px 0;
+    border-bottom:1px solid #d2c2a5;
 }
 
 .left-menu a{
     text-decoration:none;
-    color:#333;
+    color:#4a3b2a;
+    font-size:17px;
 }
 
-/* DESNA KOLONA */
+.left-menu a:hover{
+    color:#7a5e3a;
+}
+
+.left-menu p{
+    margin-top:25px;
+    font-style:italic;
+    font-size:15px;
+    color:#3b2f22;
+    border-top:1px solid #b79a6b;
+    padding-top:15px;
+}
+
+/* ============================
+   DESNA KOLONA – SLIKA + HOTSPOTOVI
+   ============================ */
+
 .right-image{
     flex:1;
     display:flex;
@@ -48,21 +86,24 @@ body{
     box-sizing:border-box;
 }
 
-/* PODLOGA SLIKE */
+/* PODLOGA SLIKE – ORIGINALNA VELIČINA */
 .image-wrapper{
     position:relative;
-    width:1694px;
-    height:1694px;
+    display:inline-block;
 }
 
-/* PNG PODLOGA – NE DIRAMO DIMENZIJE */
+/* PNG PODLOGA – automatska originalna veličina */
 .bg{
-    width:1694px;
-    height:1694px;
+    width:auto;
+    height:auto;
+    max-width:100%;
     display:block;
 }
 
-/* HOTSPOTOVI – CRVENI KVADRATI */
+/* ============================
+   HOTSPOTOVI
+   ============================ */
+
 .hs{
     position:absolute;
     cursor:pointer;
@@ -103,10 +144,13 @@ body{
     height:102px;
 }
 
-/* FLAGCOUNTER – centriran dolje na slici */
+/* ============================
+   FLAGCOUNTER
+   ============================ */
+
 .flagbox{
     position:absolute;
-    top:1480px;
+    bottom:20px;
     left:50%;
     transform:translateX(-50%);
     width:360px;
