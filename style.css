@@ -65,7 +65,6 @@ body{
 }
 
 /* FLAGCOUNTER – dignuto gore za 2 cm */
-/* promijenjeno ime klase da GitHub učita CSS */
 .flagbox{
     position:absolute;
     top:1468px;
@@ -80,6 +79,7 @@ body{
 .flagbox img{
     width:360px;
 }
+
 
 
 
