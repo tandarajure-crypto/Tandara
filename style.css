@@ -11,6 +11,7 @@ body{
     gap:20px;
     padding:20px;
     box-sizing:border-box;
+    align-items:flex-start;
 }
 
 /* ============================
@@ -23,14 +24,16 @@ body{
     padding:20px;
     box-sizing:border-box;
     color:#4a3b2a;
+    margin-top:40px; /* spušteno */
 }
 
-/* HOME BUTTON */
+/* HOME TIPKA – centrirana */
 .home-button{
     display:flex;
+    flex-direction:column;
     align-items:center;
     gap:12px;
-    margin-bottom:20px;
+    margin-bottom:40px; /* 2 cm razmak */
 }
 
 .home-circle{
@@ -38,15 +41,7 @@ body{
     height:55px;
     background:#c9a46d;
     border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     box-shadow:0 0 4px rgba(0,0,0,0.3);
-}
-
-.home-icon{
-    font-size:26px;
-    color:white;
 }
 
 .enter-text{
@@ -55,16 +50,17 @@ body{
     color:#4a3b2a;
 }
 
-/* HR / EN */
+/* HR / EN – spušteno 2 cm */
 .lang-switch{
     display:flex;
-    gap:10px;
-    margin-bottom:25px;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:60px; /* 2 cm */
 }
 
 .lang-btn{
     background:#c9a46d;
-    padding:6px 14px;
+    padding:8px 18px;
     border-radius:6px;
     color:white;
     font-weight:bold;
@@ -76,15 +72,15 @@ body{
     background:#b89255;
 }
 
-/* NASLOV */
+/* NASLOV – spušten 3 cm */
 .left-menu h2{
     text-align:center;
-    font-size:22px;
-    margin-bottom:25px;
+    font-size:24px;
+    margin-bottom:90px; /* 3 cm */
     color:#3b2f22;
 }
 
-/* MENU */
+/* PODNASLOVI – spušteni 3 cm ispod naslova */
 .heritage-menu{
     list-style:none;
     padding:0;
@@ -92,10 +88,10 @@ body{
 }
 
 .heritage-menu li{
-    margin-bottom:12px;
+    margin-bottom:30px; /* 1 cm razmak */
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
 }
 
 .tree-icon{
