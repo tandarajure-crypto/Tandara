@@ -2,32 +2,67 @@ body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;
     background:#e7c191;
-    overflow-x:auto;
 }
 
-.container{
+/* GLAVNI LAYOUT – ciljamo okvir ~1920x1200 */
+.layout{
+    max-width:1920px;
+    height:1200px;
+    margin:0 auto;
+    display:flex;
+}
+
+/* LIJEVA KOLONA */
+.left-menu{
+    width:360px;
+    padding:20px;
+    background:#f4e3c0;
+    box-sizing:border-box;
+}
+
+.left-menu h2{
+    margin-top:0;
+}
+
+.left-menu ul{
+    list-style:none;
+    padding:0;
+}
+
+.left-menu li{
+    margin-bottom:8px;
+}
+
+.left-menu a{
+    text-decoration:none;
+    color:#333;
+}
+
+/* DESNA KOLONA */
+.right-image{
+    flex:1;
     display:flex;
     justify-content:center;
-    min-height:100vh;
+    align-items:flex-start;
+    padding:20px;
+    box-sizing:border-box;
 }
 
-/* SADRŽAJ – proširenje slike za 2 cm sa svake strane */
-.content{
+/* PODLOGA SLIKE */
+.image-wrapper{
     position:relative;
     width:1694px;
-    padding-left:2cm;
-    padding-right:2cm;
+    height:1694px;
 }
 
-/* SLIKA – smanjenje visine za 8 cm, bez rezanja */
-.full-img{
-    display:block;
+/* PNG PODLOGA – NE DIRAMO DIMENZIJE */
+.bg{
     width:1694px;
-    max-height:calc(1694px - 8cm);
-    height:auto;
+    height:1694px;
+    display:block;
 }
 
-/* HOTSPOTOVI – crveni kvadrati */
+/* HOTSPOTOVI – CRVENI KVADRATI */
 .hs{
     position:absolute;
     cursor:pointer;
@@ -68,10 +103,10 @@ body{
     height:102px;
 }
 
-/* FLAGCOUNTER – centriran ispod “posjetitelji” */
+/* FLAGCOUNTER – centriran dolje na slici */
 .flagbox{
     position:absolute;
-    top:1480px; /* po potrebi pomakni 1460 / 1500 */
+    top:1480px;
     left:50%;
     transform:translateX(-50%);
     width:360px;
@@ -81,6 +116,7 @@ body{
 .flagbox img{
     width:360px;
 }
+
 
 
 
