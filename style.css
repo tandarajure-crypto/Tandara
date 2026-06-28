@@ -14,7 +14,7 @@ body{
     align-items:flex-start;
 }
 
-/* LIJEVI STUPAC */
+/* LEFT */
 .left-menu{
     width:300px;
     background:#e7d3b0;
@@ -30,19 +30,30 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:12px;
+    gap:14px;
     margin-bottom:40px;
+    text-decoration:none;
 }
 
 .home-circle{
-    width:55px;
-    height:55px;
+    width:110px;
+    height:110px;
     background:#c9a46d;
     border-radius:50%;
     box-shadow:0 0 4px rgba(0,0,0,0.3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.enter-text{
+.home-icon{
+    font-size:18px;
+    font-weight:bold;
+    color:#4a3b2a;
+    text-transform:lowercase;
+}
+
+.home-text{
     font-size:20px;
     font-weight:bold;
     color:#4a3b2a;
@@ -70,7 +81,7 @@ body{
     background:#b89255;
 }
 
-/* NASLOV */
+/* TITLE */
 .left-menu h2{
     text-align:center;
     font-size:24px;
@@ -92,10 +103,6 @@ body{
     gap:10px;
 }
 
-.tree-icon{
-    font-size:18px;
-}
-
 .heritage-menu a{
     text-decoration:none;
     color:#4a3b2a;
@@ -106,7 +113,7 @@ body{
     color:#7a5e3a;
 }
 
-/* POSJETITELJI */
+/* VISITORS */
 .visitors-title{
     margin-top:20px;
     margin-bottom:10px;
@@ -115,15 +122,16 @@ body{
     text-align:center;
 }
 
+/* FLAGCOUNTER FIX */
 .flagbox img{
-    width:100%;
+    width:auto;
+    max-width:none;
     height:auto;
-    border:0;        /* <-- OVO rješava Copilot okvir */
-    outline:none;
     display:block;
+    border:0;
 }
 
-/* DESNI STUPAC */
+/* RIGHT SIDE */
 .right-image{
     flex:1;
     display:flex;
@@ -137,16 +145,14 @@ body{
     display:inline-block;
 }
 
-/* BITNO: uklonjen svaki border sa slike */
 .bg{
     width:100%;
     height:auto;
     display:block;
     border:0;
-    outline:none;
 }
 
-/* HOTSPOTOVI */
+/* HOTSPOTS */
 .hs{
     position:absolute;
     cursor:pointer;
@@ -154,6 +160,7 @@ body{
     background-color:rgba(255,0,0,0.25);
 }
 
+/* TOP */
 .hs-jurina{
     top:32.0%;
     left:6%;
@@ -168,7 +175,7 @@ body{
     height:9%;
 }
 
-/* DONJI OKVIRI – spušteni još malo */
+/* BOTTOM */
 .hs-antina{
     top:47.5%;
     left:6%;
@@ -182,8 +189,6 @@ body{
     width:18%;
     height:9%;
 }
-
-
 
 
 
