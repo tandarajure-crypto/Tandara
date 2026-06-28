@@ -30,19 +30,18 @@ body{
     border:2px solid red;            /* crveni rub */
 }
 
-/* POZICIJE HOTSPOTOVA */
+/* POZICIJE HOTSPOTOVA – smanjeni na 5×3 cm (185×111 px) */
 .hs-jurina{ top:26.5%; left:6%; width:185px; height:111px; }
 .hs-petrova{ top:26.5%; left:32%; width:185px; height:111px; }
 .hs-antina{ top:42.5%; left:6%; width:185px; height:111px; }
 .hs-matina{ top:42.5%; left:32%; width:185px; height:111px; }
 
-
-/* FLAGCOUNTER OVERLAY – poravnano na 360 px lijeve kolone */
+/* FLAGCOUNTER OVERLAY – točno 360 px širine */
 .flag-overlay{
     position:absolute;
     top:81%;          /* 1.5 cm ispod naslova “Posjetitelji” */
-    left:-4%;         /* prelazi lijevu marginu */
-    width:108%;       /* pokriva cijelu širinu PNG-a */
+    left:0px;         /* poravnano s lijevom kolonom */
+    width:360px;      /* širina lijeve kolone = širina flagcountera */
     text-align:center;
     padding:10px 0;
     background:rgba(255,0,0,0.25);   /* crveno vidljivo za test */
