@@ -112,37 +112,38 @@ body{
     box-sizing:border-box;
 }
 
-/* Jurina */
+/* Jurina – podignuto za 4 cm */
 .hs-jurina{
-    top:435px;
+    top: calc(435px - 151px);
     left:392px;
     width:208px;
     height:102px;
 }
 
-/* Petrova */
+/* Petrova – podignuto za 4 cm */
 .hs-petrova{
-    top:435px;
+    top: calc(435px - 151px);
     left:658px;
     width:208px;
     height:102px;
 }
 
-/* Antina */
+/* Antina – podignuto za 13.5 cm */
 .hs-antina{
-    top:907px;
+    top: calc(907px - 510px);
     left:392px;
     width:208px;
     height:102px;
 }
 
-/* Matina */
+/* Matina – podignuto za 13.5 cm */
 .hs-matina{
-    top:907px;
+    top: calc(907px - 510px);
     left:658px;
     width:208px;
     height:102px;
 }
+
 
 /* ============================
    FLAGCOUNTER
