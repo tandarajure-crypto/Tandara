@@ -21,11 +21,12 @@ body{
     width:300px;
     background:#e7d3b0;
     border-right:4px solid #7a7a7a;
-    padding:20px;
+    padding:0 20px 20px 0; /* lijevo 0, ostalo ostaje */
     box-sizing:border-box;
     color:#4a3b2a;
-    margin-top:40px; /* spušteno */
+    margin-top:40px;
 }
+
 
 /* HOME TIPKA – centrirana */
 .home-button{
