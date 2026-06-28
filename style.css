@@ -24,19 +24,16 @@ body{
     padding:20px;
     box-sizing:border-box;
     color:#4a3b2a;
-
-    /* SPUŠTANJE CIJELOG STUPCA ZA 1 cm */
-    margin-top:160px;
+    margin-top:40px; /* spušteno */
 }
 
-/* HOME TIPKA – centrirana + spuštena 2 cm */
+/* HOME TIPKA – centrirana */
 .home-button{
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:12px;
-    margin-top:80px; /* 2 cm */
-    margin-bottom:80px; /* razmak do HR/EN */
+    margin-bottom:40px; /* 2 cm razmak */
 }
 
 .home-circle{
@@ -45,10 +42,6 @@ body{
     background:#c9a46d;
     border-radius:50%;
     box-shadow:0 0 4px rgba(0,0,0,0.3);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
 }
 
 .enter-text{
@@ -57,12 +50,12 @@ body{
     color:#4a3b2a;
 }
 
-/* HR / EN – spušteno 2 cm ispod HOME */
+/* HR / EN – spušteno 2 cm */
 .lang-switch{
     display:flex;
     justify-content:center;
     gap:15px;
-    margin-bottom:80px; /* 2 cm */
+    margin-bottom:60px; /* 2 cm */
 }
 
 .lang-btn{
@@ -79,11 +72,11 @@ body{
     background:#b89255;
 }
 
-/* NASLOV – spušten 3 cm ispod HR/EN */
+/* NASLOV – spušten 3 cm */
 .left-menu h2{
     text-align:center;
     font-size:24px;
-    margin-bottom:120px; /* 3 cm */
+    margin-bottom:90px; /* 3 cm */
     color:#3b2f22;
 }
 
@@ -95,7 +88,7 @@ body{
 }
 
 .heritage-menu li{
-    margin-bottom:50px; /* 2 cm razmak */
+    margin-bottom:30px; /* 1 cm razmak */
     display:flex;
     align-items:center;
     gap:10px;
@@ -117,8 +110,8 @@ body{
 
 /* POSJETITELJI */
 .visitors-title{
-    margin-top:40px; /* +2 cm */
-    margin-bottom:20px;
+    margin-top:20px;
+    margin-bottom:10px;
     font-weight:bold;
     color:#3b2f22;
     text-align:center;
@@ -163,7 +156,6 @@ body{
 .hs-petrova{ top:29.2%; left:32%; width:18%; height:9%; }
 .hs-antina{ top:45.2%; left:6%; width:18%; height:9%; }
 .hs-matina{ top:45.2%; left:32%; width:18%; height:9%; }
-
 
 
 
