@@ -38,9 +38,9 @@ body{
     border:2px solid red;
 }
 
-/* DIMENZIJE HOTSPOTOVA – 208 × 102 px */
+/* HOTSPOT DIMENZIJE – 208 × 102 px */
 
-/* Jurina – gore 2,5 cm, desno 8 cm */
+/* Jurina */
 .hs-jurina{
     top:435px;
     left:392px;
@@ -48,7 +48,7 @@ body{
     height:102px;
 }
 
-/* Petrova – gore 2,5 cm, desno 4,7 cm */
+/* Petrova */
 .hs-petrova{
     top:435px;
     left:658px;
@@ -56,7 +56,7 @@ body{
     height:102px;
 }
 
-/* Antina – dolje 1,5 cm, desno 8 cm */
+/* Antina */
 .hs-antina{
     top:907px;
     left:392px;
@@ -64,7 +64,7 @@ body{
     height:102px;
 }
 
-/* Matina – dolje 1,5 cm, desno 4,7 cm */
+/* Matina */
 .hs-matina{
     top:907px;
     left:658px;
@@ -73,7 +73,7 @@ body{
 }
 
 /* FLAGCOUNTER – dignuto gore za 2 cm */
-.flag-overlay{
+.flagbox{
     position:absolute;
     top:1468px;
     left:0px;
@@ -84,7 +84,7 @@ body{
     border:2px solid red;
 }
 
-.flag-overlay img{
+.flagbox img{
     width:360px;
 }
 </style>
@@ -92,18 +92,20 @@ body{
 </head>
 <body>
 
+<p style="color:red; font-size:40px;">TEST</p>
+
 <div class="container">
   <div class="content">
-<img src="family-tree.png?v=2" class="full-img">
+    <img src="family-tree.png?v=2" class="full-img">
 
-    <!-- HOTSPOTOVI GRANA (SAMO OVI 4!) -->
+    <!-- HOTSPOTOVI GRANA -->
     <div class="hs hs-jurina" onclick="window.location.href='jurinagrana.html'"></div>
     <div class="hs hs-petrova" onclick="window.location.href='petrovagrana.html'"></div>
     <div class="hs hs-antina" onclick="window.location.href='antinagrana.html'"></div>
     <div class="hs hs-matina" onclick="window.location.href='matinagrana.html'"></div>
 
     <!-- FLAGCOUNTER -->
-    <div class="flag-overlay">
+    <div class="flagbox">
       <a href="https://info.flagcounter.com/OyvA">
         <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
              alt="Flag Counter">
