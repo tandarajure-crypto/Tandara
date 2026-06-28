@@ -9,7 +9,7 @@ body{
     margin:0 auto;
     display:flex;
     gap:20px;
-    padding:20px;
+    padding:4px; /* minimalni rub */
     box-sizing:border-box;
     align-items:flex-start;
 }
@@ -22,7 +22,7 @@ body{
     padding:20px 0;
     box-sizing:border-box;
     color:#4a3b2a;
-    margin-top:40px;
+    margin-top:0; /* PORAVNANO S PNG */
 }
 
 /* HOME */
@@ -79,15 +79,15 @@ body{
     background:#b89255;
 }
 
-/* TITLE */
+/* TITLE — 1cm do menija */
 .left-menu h2{
     text-align:center;
     font-size:24px;
-    margin-bottom:90px;
+    margin-bottom:38px;
     color:#3b2f22;
 }
 
-/* MENU — JEDNAKI RAZMAK */
+/* MENU */
 .heritage-menu{
     list-style:none;
     padding:0 20px;
@@ -180,7 +180,6 @@ body{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
-
 
 
 
