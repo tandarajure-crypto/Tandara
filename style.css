@@ -20,7 +20,10 @@ body{
     width:100%;
     height:auto;
     display:block;
+    max-height: calc(100vh - 454px); /* smanjuje visinu slike za 12 cm */
+    object-fit: contain;             /* slika se ne reže */
 }
+
 
 /* HOTSPOTOVI – crveno vidljivi za testiranje */
 .hs{
