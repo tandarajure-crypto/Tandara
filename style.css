@@ -31,10 +31,11 @@ body{
 }
 
 /* POZICIJE HOTSPOTOVA */
-.hs-jurina{ top:26.5%; left:6%; width:18%; height:9%; }
-.hs-petrova{ top:26.5%; left:32%; width:18%; height:9%; }
-.hs-antina{ top:42.5%; left:6%; width:18%; height:9%; }
-.hs-matina{ top:42.5%; left:32%; width:18%; height:9%; }
+.hs-jurina{ top:26.5%; left:6%; width:185px; height:111px; }
+.hs-petrova{ top:26.5%; left:32%; width:185px; height:111px; }
+.hs-antina{ top:42.5%; left:6%; width:185px; height:111px; }
+.hs-matina{ top:42.5%; left:32%; width:185px; height:111px; }
+
 
 /* FLAGCOUNTER OVERLAY – poravnano na 360 px lijeve kolone */
 .flag-overlay{
