@@ -126,6 +126,8 @@ body{
 
 /* VISITORS */
 
+
+/* VISITORS TITLE (HR ostaje standard) */
 .visitors-title{
     margin-top:40px;
     margin-bottom:12px;
@@ -136,6 +138,7 @@ body{
     gap:10px;
 }
 
+/* FLAG BASE */
 .flagbox{
     text-align:center;
 }
@@ -145,6 +148,16 @@ body{
     width:auto;
     height:auto;
     border:0;
+}
+
+/* 🔧 HR POZICIJA (~2.5 cm niže) */
+.hr .flagbox{
+    margin-top:90px;
+}
+
+/* 🔧 EN POZICIJA (~4.5 cm niže) */
+.en .flagbox{
+    margin-top:160px;
 }
 
 /* RIGHT SIDE (NE DIRAMO) */
