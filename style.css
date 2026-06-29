@@ -112,10 +112,6 @@ body{
     border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
-.heritage-menu li:last-child{
-    border-bottom:none;
-}
-
 .heritage-menu a{
     text-decoration:none;
     color:#4a3b2a;
@@ -131,8 +127,8 @@ body{
 
 /* POSJETITELJI */
 .visitors-title{
-    margin:78px 0 12px 0;
-    padding-left:20px;
+    margin:0 20px;
+    padding:28px 0 14px 0;
 
     display:flex;
     align-items:center;
@@ -144,17 +140,15 @@ body{
     font-family:Georgia, serif;
     color:#4a3b2a;
     line-height:1.2;
+
+    border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
 /* FLAG */
 .flagbox{
     text-align:center;
-    margin-top:12px;
-}
-
-/* EN VERZIJA NEMA NASLOV POSJETITELJI */
-body.en .flagbox{
-    margin-top:107px;
+    margin-top:auto;
+    padding-top:12px;
 }
 
 .flagbox img{
@@ -217,4 +211,3 @@ body.en .flagbox{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
-
