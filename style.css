@@ -82,7 +82,7 @@ body{
     background:#b89255;
 }
 
-/* TITLE */
+/* GLAVNI NASLOV (OSTAJE VEĆI) */
 
 .left-menu h2{
     text-align:center;
@@ -90,13 +90,12 @@ body{
     margin-bottom:38px;
     color:#3b2f22;
 }
-
 /* MENU */
 
-.heritage-menu a{
-    text-decoration:none;
-    color:#4a3b2a;
-    font-size:14px;   /* isto kao Posjetitelji */
+.heritage-menu{
+    list-style:none;
+    padding:0 20px;
+    margin:0;
 }
 
 .heritage-menu li{
@@ -114,14 +113,14 @@ body{
 .heritage-menu a{
     text-decoration:none;
     color:#4a3b2a;
-    font-size:17px;
+    font-size:16px;   /* UJEDNAČENO */
+    font-weight:400;
+    font-family:Georgia, serif;
 }
 
 .heritage-menu a:hover{
     color:#7a5e3a;
 }
-
-/* VISITORS */
 
 /* VISITORS */
 
@@ -134,7 +133,7 @@ body{
     align-items:center;
     gap:10px;
 
-    font-size:14px;
+    font-size:16px;   /* ISTO KAO MENU */
     font-weight:400;
     font-family:Georgia, serif;
     color:#4a3b2a;
@@ -150,6 +149,7 @@ body{
     height:auto;
     border:0;
 }
+
 /* RIGHT */
 
 .right-image{
@@ -179,7 +179,6 @@ body{
     cursor:pointer;
     background:transparent;
     border:none;
-
     transform: translateY(8px);
 }
 
