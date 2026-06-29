@@ -131,9 +131,11 @@ body{
     align-items:center;
     gap:10px;
 
-    font-size:17px;
+    font-size:16px;
     font-weight:400;
+    font-family:Georgia, serif;
     color:#4a3b2a;
+    line-height:1.2;
 }
 
 /* FLAG */
