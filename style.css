@@ -230,3 +230,22 @@ body{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
+/* HITNI POPRAVAK SLIKE JURE */
+
+.left-menu .author-photo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:28px 0 24px 0;
+    padding:0;
+}
+
+.left-menu .author-photo img{
+    width:220px !important;
+    max-width:220px !important;
+    height:auto !important;
+    display:block;
+    border:3px solid #b99867;
+    border-radius:12px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.25);
+}
