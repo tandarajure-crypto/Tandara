@@ -126,7 +126,7 @@ body{
 /* VISITORS */
 
 .visitors-title{
-    margin-top:71px;  /* dodatno podignuto ~2 cm */
+    margin-top:200px;
     margin-bottom:12px;
     padding-left:20px;
 
@@ -134,7 +134,7 @@ body{
     align-items:center;
     gap:10px;
 
-    font-size:17px;
+    font-size:16px;   /* smanjeno za 1 broj kako tražiš */
     font-weight:400;
     font-family:Georgia, serif;
     color:#4a3b2a;
