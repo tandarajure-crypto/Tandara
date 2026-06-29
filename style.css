@@ -78,11 +78,7 @@ body{
     box-shadow:0 0 3px rgba(0,0,0,0.3);
 }
 
-.lang-btn:hover{
-    background:#b89255;
-}
-
-/* GLAVNI NASLOV (OSTAJE VEĆI) */
+/* MAIN TITLE (OSTAJE VEĆI) */
 
 .left-menu h2{
     text-align:center;
@@ -90,7 +86,17 @@ body{
     margin-bottom:38px;
     color:#3b2f22;
 }
-/* MENU */
+/* MENU LINKS + POSJETITELJI (UJEDNAČENO) */
+
+.heritage-menu a,
+.visitors-title{
+    font-size:16px !important;
+    font-weight:400;
+    font-family:Georgia, serif;
+    color:#4a3b2a;
+}
+
+/* MENU STRUCTURE */
 
 .heritage-menu{
     list-style:none;
@@ -112,10 +118,6 @@ body{
 
 .heritage-menu a{
     text-decoration:none;
-    color:#4a3b2a;
-    font-size:16px;   /* UJEDNAČENO */
-    font-weight:400;
-    font-family:Georgia, serif;
 }
 
 .heritage-menu a:hover{
@@ -132,11 +134,6 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
-
-    font-size:16px;   /* ISTO KAO MENU */
-    font-weight:400;
-    font-family:Georgia, serif;
-    color:#4a3b2a;
 }
 
 .flagbox{
@@ -150,7 +147,7 @@ body{
     border:0;
 }
 
-/* RIGHT */
+/* RIGHT SIDE (NE DIRAMO) */
 
 .right-image{
     flex:1;
@@ -172,7 +169,7 @@ body{
     border:0;
 }
 
-/* HOTSPOTS */
+/* HOTSPOTS (OSTAJE KAKO JE) */
 
 .hs{
     position:absolute;
@@ -201,22 +198,10 @@ body{
     height:9%;
 }
 
-.hs-jurina{
-    left:6%;
-}
-
-.hs-antina{
-    left:6%;
-}
-
-.hs-petrova{
-    left:32%;
-}
-
-.hs-matina{
-    left:32%;
-}
-
+.hs-jurina{ left:6%; }
+.hs-antina{ left:6%; }
+.hs-petrova{ left:32%; }
+.hs-matina{ left:32%; }
 
 
 
