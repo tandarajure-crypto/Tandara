@@ -1,9 +1,11 @@
+
 body{
     margin:0;
     font-family:Georgia, serif;
     background:#e7c191;
 }
 
+/* LAYOUT */
 .layout{
     max-width:1920px;
     margin:0 auto;
@@ -14,8 +16,7 @@ body{
     align-items:flex-start;
 }
 
-/* LEFT */
-
+/* LEFT MENU */
 .left-menu{
     width:300px;
     background:#e7d3b0;
@@ -26,8 +27,15 @@ body{
     margin-top:0;
 }
 
-/* HOME */
+/* RESET (KLJUČ ZA STABILNOST) */
+.left-menu h2,
+.left-menu ul,
+.left-menu li{
+    margin:0;
+    padding:0;
+}
 
+/* HOME */
 .home-button{
     display:flex;
     flex-direction:column;
@@ -59,8 +67,7 @@ body{
     color:#4a3b2a;
 }
 
-/* LANG */
-
+/* LANGUAGE */
 .lang-switch{
     display:flex;
     justify-content:center;
@@ -78,26 +85,15 @@ body{
     box-shadow:0 0 3px rgba(0,0,0,0.3);
 }
 
-/* MAIN TITLE (OSTAJE VEĆI) */
-
+/* MAIN TITLE */
 .left-menu h2{
     text-align:center;
     font-size:24px;
-    margin-bottom:38px;
+    margin:0 0 38px 0;
     color:#3b2f22;
 }
-/* MENU LINKS + POSJETITELJI (UJEDNAČENO) */
 
-.heritage-menu a,
-.visitors-title{
-    font-size:16px !important;
-    font-weight:400;
-    font-family:Georgia, serif;
-    color:#4a3b2a;
-}
-
-/* MENU STRUCTURE */
-
+/* MENU */
 .heritage-menu{
     list-style:none;
     padding:0 20px;
@@ -118,6 +114,8 @@ body{
 
 .heritage-menu a{
     text-decoration:none;
+    color:#4a3b2a;
+    font-size:17px;
 }
 
 .heritage-menu a:hover{
@@ -125,22 +123,23 @@ body{
 }
 
 /* VISITORS */
-
-
-/* VISITORS TITLE (HR ostaje standard) */
 .visitors-title{
-    margin-top:40px;
-    margin-bottom:12px;
+    margin:40px 0 12px 0;
     padding-left:20px;
 
     display:flex;
     align-items:center;
     gap:10px;
+
+    font-size:17px;
+    font-weight:400;
+    color:#4a3b2a;
 }
 
-/* FLAG BASE */
+/* FLAG */
 .flagbox{
     text-align:center;
+    margin-top:40px;
 }
 
 .flagbox img{
@@ -150,18 +149,7 @@ body{
     border:0;
 }
 
-/* 🔧 HR POZICIJA (~2.5 cm niže) */
-.hr .flagbox{
-    margin-top:90px;
-}
-
-/* 🔧 EN POZICIJA (~4.5 cm niže) */
-.en .flagbox{
-    margin-top:160px;
-}
-
 /* RIGHT SIDE (NE DIRAMO) */
-
 .right-image{
     flex:1;
     display:flex;
@@ -182,8 +170,7 @@ body{
     border:0;
 }
 
-/* HOTSPOTS (OSTAJE KAKO JE) */
-
+/* HOTSPOTS */
 .hs{
     position:absolute;
     cursor:pointer;
@@ -215,7 +202,6 @@ body{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
-
 
 
 
