@@ -225,3 +225,69 @@ body{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
+/* CONTENT PAGES */
+
+.content-page{
+    flex:1;
+    padding:36px 42px;
+    box-sizing:border-box;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.content-card{
+    width:100%;
+    max-width:1050px;
+    background:#f3dfbd;
+    border:1px solid rgba(80,60,35,0.25);
+    border-radius:14px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.18);
+    padding:42px 54px;
+    box-sizing:border-box;
+    color:#3b2f22;
+}
+
+.content-card h1{
+    margin:0 0 34px 0;
+    text-align:center;
+    font-size:34px;
+    font-weight:bold;
+    color:#3b2f22;
+}
+
+.content-card section{
+    margin-bottom:34px;
+    padding-bottom:26px;
+    border-bottom:1px solid rgba(0,0,0,0.12);
+}
+
+.content-card section:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:0;
+}
+
+.content-card h2{
+    margin:0 0 14px 0;
+    font-size:23px;
+    color:#4a3b2a;
+}
+
+.content-card p{
+    margin:0 0 14px 0;
+    font-size:18px;
+    line-height:1.65;
+    text-align:justify;
+}
+
+.content-card ul{
+    margin:8px 0 18px 28px;
+    padding:0;
+}
+
+.content-card li{
+    font-size:18px;
+    line-height:1.55;
+    margin-bottom:6px;
+}
