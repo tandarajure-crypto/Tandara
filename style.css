@@ -13,7 +13,7 @@ body{
     gap:20px;
     padding:4px;
     box-sizing:border-box;
-    align-items:flex-start;
+    align-items:stretch;
 }
 
 /* LEFT MENU */
@@ -27,7 +27,7 @@ body{
     margin-top:0;
 }
 
-/* RESET (KLJUČ ZA STABILNOST) */
+/* RESET */
 .left-menu h2,
 .left-menu ul,
 .left-menu li{
@@ -86,9 +86,10 @@ body{
 }
 
 /* MAIN TITLE */
-.left-menu h2{
+.left-menu > h2{
     text-align:center;
     font-size:24px;
+    font-weight:bold;
     margin:0 0 38px 0;
     color:#3b2f22;
 }
@@ -116,6 +117,9 @@ body{
     text-decoration:none;
     color:#4a3b2a;
     font-size:17px;
+    font-weight:400;
+    font-family:Georgia, serif;
+    line-height:1.2;
 }
 
 .heritage-menu a:hover{
@@ -124,26 +128,15 @@ body{
 
 /* VISITORS */
 .visitors-title{
-    margin:56px 0 12px 0;
+    margin:78px 0 12px 0;
     padding-left:20px;
 
     display:flex;
     align-items:center;
     gap:10px;
 
+    text-align:left;
     font-size:17px;
-    font-weight:400;
-    font-family:Georgia, serif;
-    color:#4a3b2a;
-    line-height:1.2;
-}
-    padding-left:20px;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    font-size:16px;
     font-weight:400;
     font-family:Georgia, serif;
     color:#4a3b2a;
@@ -153,7 +146,7 @@ body{
 /* FLAG */
 .flagbox{
     text-align:center;
-    margin-top:40px;
+    margin-top:12px;
 }
 
 .flagbox img{
@@ -163,7 +156,7 @@ body{
     border:0;
 }
 
-/* RIGHT SIDE (NE DIRAMO) */
+/* RIGHT SIDE */
 .right-image{
     flex:1;
     display:flex;
@@ -190,7 +183,7 @@ body{
     cursor:pointer;
     background:transparent;
     border:none;
-    transform: translateY(8px);
+    transform:translateY(8px);
 }
 
 .hs:hover{
@@ -216,6 +209,5 @@ body{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
-
 
 
