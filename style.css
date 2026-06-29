@@ -179,6 +179,8 @@ body{
     cursor:pointer;
     background:transparent;
     border:none;
+
+    transform: translateY(8px);
 }
 
 .hs:hover{
