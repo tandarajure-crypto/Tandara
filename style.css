@@ -93,10 +93,10 @@ body{
 
 /* MENU */
 
-.heritage-menu{
-    list-style:none;
-    padding:0 20px;
-    margin:0;
+.heritage-menu a{
+    text-decoration:none;
+    color:#4a3b2a;
+    font-size:14px;   /* isto kao Posjetitelji */
 }
 
 .heritage-menu li{
