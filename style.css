@@ -12,10 +12,11 @@ body{
    ========================= */
 .layout{
     display:flex;
-    align-items:flex-start;   /* 🔥 važno: ne stretch */
-    gap:40px;
-    padding:20px;
+    align-items:stretch;
+    gap:0;
+    padding:0;
     box-sizing:border-box;
+    width:100%;
 }
 
 /* =========================
@@ -28,12 +29,16 @@ body{
 
     background:#e7d3b0;
     border-right:4px solid #7a7a7a;
+
     padding:20px 0;
     box-sizing:border-box;
 
     color:#4a3b2a;
 
-    flex-shrink:0; /* 🔥 ne smije se stisnuti */
+    display:flex;
+    flex-direction:column;
+
+    flex-shrink:0;
 }
 
 /* =========================
@@ -150,20 +155,26 @@ body{
 .flagbox{
     display:flex;
     justify-content:center;
+    margin-top:auto;
+    overflow:hidden;
+    padding-bottom:10px;
 }
 
 .flagbox img{
+    max-width:100%;
     width:auto;
-    max-width:none;
     height:auto;
     display:block;
-    border:0;
 }
 
 /* =========================
    RIGHT SIDE (IMAGE AREA)
    ========================= */
 .right-image{
+    flex:1;
+    padding:0;
+    box-sizing:border-box;
+}
     flex:1;
     padding-left:20px;
     box-sizing:border-box;
