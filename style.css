@@ -126,20 +126,17 @@ body{
 /* VISITORS */
 
 .visitors-title{
-    text-align:center;
-    font-size:24px;
-    margin-top:200px;
+    margin-top:147px; /* 260px - 113px ≈ 147px */
     margin-bottom:12px;
-    color:#3b2f22;
-    font-weight:normal;
-}
+    padding-left:20px;
 
     display:flex;
     align-items:center;
     gap:10px;
 
     font-size:17px;
-    font-weight:normal;
+    font-weight:400;
+    font-family:Georgia, serif;
     color:#4a3b2a;
 }
 
