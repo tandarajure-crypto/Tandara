@@ -1,49 +1,31 @@
-/* =========================
-   BASE
-   ========================= */
 body{
     margin:0;
     font-family:Georgia, serif;
     background:#e7c191;
 }
 
-/* =========================
-   MAIN LAYOUT
-   ========================= */
 .layout{
+    max-width:1920px;
+    margin:0 auto;
     display:flex;
-    align-items:stretch;
-    gap:0;
-    padding:0;
+    gap:20px;
+    padding:4px; /* minimalni rub */
     box-sizing:border-box;
-    width:100%;
+    align-items:flex-start;
 }
 
-/* =========================
-   LEFT SIDEBAR (LOCKED WIDTH)
-   ========================= */
+/* LEFT */
 .left-menu{
     width:300px;
-    min-width:300px;
-    max-width:300px;
-
     background:#e7d3b0;
     border-right:4px solid #7a7a7a;
-
     padding:20px 0;
     box-sizing:border-box;
-
     color:#4a3b2a;
-
-    display:flex;
-    flex-direction:column;
-
-    flex-shrink:0;
+    margin-top:0; /* PORAVNANO S PNG */
 }
 
-/* =========================
-   HOME BUTTON
-   ========================= */
+/* HOME */
 .home-button{
     display:flex;
     flex-direction:column;
@@ -59,7 +41,6 @@ body{
     background:#c9a46d;
     border-radius:50%;
     box-shadow:0 0 4px rgba(0,0,0,0.3);
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -76,9 +57,7 @@ body{
     color:#4a3b2a;
 }
 
-/* =========================
-   LANGUAGE SWITCH
-   ========================= */
+/* LANG */
 .lang-switch{
     display:flex;
     justify-content:center;
@@ -100,22 +79,18 @@ body{
     background:#b89255;
 }
 
-/* =========================
-   TITLE
-   ========================= */
+/* TITLE — 1cm do menija */
 .left-menu h2{
     text-align:center;
     font-size:24px;
-    margin-bottom:60px;
+    margin-bottom:38px;
     color:#3b2f22;
 }
 
-/* =========================
-   MENU
-   ========================= */
+/* MENU */
 .heritage-menu{
     list-style:none;
-    padding:0 10px;
+    padding:0 20px;
     margin:0;
 }
 
@@ -141,52 +116,37 @@ body{
     color:#7a5e3a;
 }
 
-/* =========================
-   VISITORS / FLAGCOUNTER
-   ========================= */
+/* VISITORS */
 .visitors-title{
-    margin-top:25px;
+    margin-top:20px;
     margin-bottom:10px;
     font-weight:bold;
     color:#3b2f22;
     text-align:center;
 }
 
-.flagbox{
-    display:flex;
-    justify-content:center;
-    margin-top:auto;
-    overflow:hidden;
-    padding-bottom:10px;
-}
-
 .flagbox img{
-    max-width:100%;
     width:auto;
+    max-width:none;
     height:auto;
     display:block;
+    border:0;
 }
 
-/* =========================
-   RIGHT SIDE (IMAGE AREA)
-   ========================= */
+/* RIGHT */
 .right-image{
     flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
     padding:0;
-    box-sizing:border-box;
-}
-    flex:1;
-    padding-left:20px;
-    box-sizing:border-box;
 }
 
-/* IMAGE WRAPPER */
 .image-wrapper{
     position:relative;
     display:inline-block;
 }
 
-/* MAIN IMAGE */
 .bg{
     width:100%;
     height:auto;
@@ -194,18 +154,18 @@ body{
     border:0;
 }
 
-/* =========================
-   HOTSPOTS
-   ========================= */
+/* HOTSPOTS */
 .hs{
     position:absolute;
     cursor:pointer;
-    border:3px solid red;
-    background-color:rgba(255,0,0,0.25);
-    z-index:10;
+    background:transparent;
+    border:none;
+}
+.hs:hover{
+    outline:2px solid rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.08);
 }
 
-/* TOP ROW */
 .hs-jurina,
 .hs-petrova{
     top:32%;
@@ -213,7 +173,6 @@ body{
     height:9%;
 }
 
-/* BOTTOM ROW */
 .hs-antina,
 .hs-matina{
     top:47.5%;
@@ -221,7 +180,6 @@ body{
     height:9%;
 }
 
-/* POSITIONS */
 .hs-jurina{ left:6%; }
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
