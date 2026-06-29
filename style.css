@@ -13,7 +13,7 @@ body{
     gap:20px;
     padding:4px;
     box-sizing:border-box;
-    align-items:stretch;
+    align-items:flex-start;
 }
 
 /* LEFT MENU */
@@ -85,8 +85,8 @@ body{
     box-shadow:0 0 3px rgba(0,0,0,0.3);
 }
 
-/* MAIN TITLE */
-.left-menu > h2{
+/* GLAVNI NASLOV - SAMO PRVI NASLOV */
+.left-menu > h2:not(.visitors-title){
     text-align:center;
     font-size:24px;
     font-weight:bold;
@@ -126,7 +126,7 @@ body{
     color:#7a5e3a;
 }
 
-/* VISITORS */
+/* POSJETITELJI - ISTO KAO MENU NASLOVI */
 .visitors-title{
     margin:78px 0 12px 0;
     padding-left:20px;
@@ -147,6 +147,11 @@ body{
 .flagbox{
     text-align:center;
     margin-top:12px;
+}
+
+/* EN NEMA POSEBAN NASLOV, ZATO FLAG IDE NIŽE */
+body.en .flagbox{
+    margin-top:78px;
 }
 
 .flagbox img{
@@ -209,5 +214,4 @@ body{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
-
 
