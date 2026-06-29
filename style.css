@@ -13,7 +13,7 @@ body{
     gap:20px;
     padding:4px;
     box-sizing:border-box;
-    align-items:flex-start;
+    align-items:stretch;
 }
 
 /* LEFT MENU */
@@ -25,6 +25,9 @@ body{
     box-sizing:border-box;
     color:#4a3b2a;
     margin-top:0;
+
+    display:flex;
+    flex-direction:column;
 }
 
 /* RESET */
@@ -85,7 +88,7 @@ body{
     box-shadow:0 0 3px rgba(0,0,0,0.3);
 }
 
-/* GLAVNI NASLOV - SAMO PRVI NASLOV */
+/* GLAVNI NASLOV */
 .left-menu > h2:not(.visitors-title){
     text-align:center;
     font-size:24px;
@@ -126,7 +129,7 @@ body{
     color:#7a5e3a;
 }
 
-/* POSJETITELJI - ISTO KAO MENU NASLOVI */
+/* POSJETITELJI */
 .visitors-title{
     margin:78px 0 12px 0;
     padding-left:20px;
@@ -149,9 +152,9 @@ body{
     margin-top:12px;
 }
 
-/* EN NEMA POSEBAN NASLOV, ZATO FLAG IDE NIŽE */
+/* EN VERZIJA NEMA NASLOV POSJETITELJI */
 body.en .flagbox{
-    margin-top:78px;
+    margin-top:107px;
 }
 
 .flagbox img{
