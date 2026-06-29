@@ -126,11 +126,9 @@ body{
 }
 
 /* POSJETITELJI */
-/* POSJETITELJI */
 .visitors-title{
-    margin-top:auto;
-    margin-bottom:12px;
-    padding-left:20px;
+    margin:80px 20px 0 20px;
+    padding:28px 0 14px 0;
 
     display:flex;
     align-items:center;
@@ -143,14 +141,22 @@ body{
     color:#4a3b2a;
     line-height:1.2;
 
-    border-top:1px solid rgba(0,0,0,0.08);
-    padding-top:18px;
+    border-bottom:1px solid rgba(0,0,0,0.08);
 }
+
 /* FLAG */
 .flagbox{
     text-align:center;
+    margin-top:auto;
+    padding-top:12px;
+}
+
+body.hr .flagbox{
     margin-top:12px;
-    margin-bottom:0;
+}
+
+body.en .flagbox{
+    margin-top:auto;
 }
 
 .flagbox img{
