@@ -8,7 +8,7 @@ body{
 }
 
 /* =========================
-   MAIN LAYOUT
+   LAYOUT
    ========================= */
 .layout{
     display:flex;
@@ -19,13 +19,13 @@ body{
 }
 
 /* =========================
-   LEFT SIDEBAR (STICKY)
+   LEFT SIDEBAR (ORIGINAL WIDTH)
    ========================= */
 .left-menu{
-    width:300px;
+    width:300px;                 /* 🔥 VRATILI ORIGINAL */
     background:#e7d3b0;
     border-right:4px solid #7a7a7a;
-    padding:20px 15px;
+    padding:20px 0;              /* 🔥 ORIGINAL */
     box-sizing:border-box;
 
     position:sticky;
@@ -105,7 +105,7 @@ body{
 }
 
 /* =========================
-   MENU LINKS
+   MENU
    ========================= */
 .heritage-menu{
     list-style:none;
@@ -147,72 +147,7 @@ body{
 }
 
 .flagbox{
-    display:flex;
-    justify-content:center;
-}
-
-.flagbox img{
-    max-width:100%;
-    height:auto;
-    border:0;
-}
-
-/* =========================
-   RIGHT CONTENT AREA
-   ========================= */
-.right-image{
-    flex:1;
-    padding-left:25px; /* 🔥 DIŠE OD SIDEBARA */
-    box-sizing:border-box;
-}
-
-.image-wrapper{
-    position:relative;
-    display:inline-block;
-    max-width:100%;
-}
-
-/* PNG */
-.bg{
-    width:100%;
-    height:auto;
-    display:block;
-    border:0;
-}
-
-/* =========================
-   HOTSPOTS (MAP CLICK AREAS)
-   ========================= */
-.hs{
-    position:absolute;
-    cursor:pointer;
-    border:3px solid red;
-    background-color:rgba(255,0,0,0.25);
-    z-index:10; /* 🔥 KLJUČNO ZA KLIK */
-}
-
-/* GORNJI RED */
-.hs-jurina,
-.hs-petrova{
-    top:32%;
-    width:18%;
-    height:9%;
-}
-
-/* DONJI RED */
-.hs-antina,
-.hs-matina{
-    top:47.5%;
-    width:18%;
-    height:9%;
-}
-
-/* LEFT / RIGHT POSITION */
-.hs-jurina{ left:6%; }
-.hs-antina{ left:6%; }
-.hs-petrova{ left:32%; }
-.hs-matina{ left:32%; }
-
+    display
 
 
 
