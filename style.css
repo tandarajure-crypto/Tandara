@@ -24,7 +24,6 @@ body{
     padding:20px 0;
     box-sizing:border-box;
     color:#4a3b2a;
-    margin-top:0;
 
     display:flex;
     flex-direction:column;
@@ -125,10 +124,29 @@ body{
     color:#7a5e3a;
 }
 
+/* AUTHOR PHOTO */
+.author-photo{
+    margin-top:auto;
+    padding:34px 0 22px 0;
+
+    display:flex;
+    justify-content:center;
+}
+
+.author-photo img{
+    width:210px;
+    height:auto;
+    display:block;
+
+    border:3px solid #b99867;
+    border-radius:12px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.25);
+}
+
 /* POSJETITELJI */
 .visitors-title{
-    margin:80px 20px 0 20px;
-    padding:28px 0 14px 0;
+    margin:0 20px;
+    padding:16px 0 14px 0;
 
     display:flex;
     align-items:center;
@@ -141,22 +159,15 @@ body{
     color:#4a3b2a;
     line-height:1.2;
 
+    border-top:1px solid rgba(0,0,0,0.08);
     border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
 /* FLAG */
 .flagbox{
     text-align:center;
-    margin-top:auto;
-    padding-top:12px;
-}
-
-body.hr .flagbox{
     margin-top:12px;
-}
-
-body.en .flagbox{
-    margin-top:auto;
+    padding-top:0;
 }
 
 .flagbox img{
