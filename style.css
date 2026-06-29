@@ -11,7 +11,7 @@ body{
     gap:20px;
     padding:4px; /* minimalni rub */
     box-sizing:border-box;
-    align-items:flex-start;
+    align-items:stretch;
 }
 
 /* LEFT */
@@ -22,7 +22,10 @@ body{
     padding:20px 0;
     box-sizing:border-box;
     color:#4a3b2a;
-    margin-top:0; /* PORAVNANO S PNG */
+    margin-top:0;
+    display:flex;
+    flex-direction:column;
+    min-height:100%;
 }
 
 /* HOME */
@@ -117,6 +120,13 @@ body{
 }
 
 /* VISITORS */
+.flagbox{
+    margin-top:auto;
+    display:flex;
+    justify-content:center;
+    padding-bottom:10px;
+}
+
 .visitors-title{
     margin-top:20px;
     margin-bottom:10px;
@@ -138,7 +148,7 @@ body{
     flex:1;
     display:flex;
     justify-content:center;
-    align-items:flex-start;
+    align-items:stretch;
     padding:0;
 }
 
@@ -184,5 +194,8 @@ body{
 .hs-antina{ left:6%; }
 .hs-petrova{ left:32%; }
 .hs-matina{ left:32%; }
+
+
+
 
 
