@@ -37,18 +37,18 @@ body{
 }
 
 /* HOME */
+/* HOME */
 .home-button{
     display:flex;
-    flex-direction:column;
+    justify-content:center;
     align-items:center;
-    gap:0;
-    margin-bottom:18px;
+    margin-bottom:8px;
     text-decoration:none;
 }
 
 .home-circle{
-    width:78px;
-    height:78px;
+    width:66px;
+    height:66px;
     background:#c9a46d;
     border-radius:50%;
     box-shadow:0 0 4px rgba(0,0,0,.30);
@@ -58,16 +58,17 @@ body{
 }
 
 .home-svg{
-    width:32px;
-    height:32px;
+    width:28px;
+    height:28px;
 }
 
+/* LANGUAGE */
 /* LANGUAGE */
 .lang-switch{
     display:flex;
     justify-content:center;
-    gap:15px;
-    margin-bottom:32px;
+    gap:14px;
+    margin-bottom:16px;
 }
 
 .lang-btn{
@@ -251,6 +252,9 @@ body{
 /* ----------------------------------------------------------
    DESNI DIJAGRAM - DEBUG VERZIJA - NE DIRANO
 ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+   DESNI DIJAGRAM - ZAVRŠNA VERZIJA
+---------------------------------------------------------- */
 .hs-box1,
 .hs-box2,
 .hs-box3,
@@ -260,11 +264,25 @@ body{
 .hs-box7,
 .hs-box8{
     position:absolute;
-    left:83.3%;      /* pomak 1 cm u desno */
-    width:11.0%;     /* malo šire da rubovi sjednu točno */
-    border:2px solid red;
-    background:rgba(255,0,0,.12);
+    left:83.3%;
+    width:11.0%;
+    border:2px solid transparent;
+    background:transparent;
     box-sizing:border-box;
+    border-radius:4px;
+    transition:all .15s ease;
+}
+
+.hs-box1:hover,
+.hs-box2:hover,
+.hs-box3:hover,
+.hs-box4:hover,
+.hs-box5:hover,
+.hs-box6:hover,
+.hs-box7:hover,
+.hs-box8:hover{
+    border:2px solid #d4af37;
+    background:rgba(212,175,55,.12);
 }
 
 
