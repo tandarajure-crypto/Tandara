@@ -180,6 +180,8 @@ body{
     position:relative;
     display:inline-block;
     height:100vh;
+
+    left:-1cm;
 }
 
 .bg{
