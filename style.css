@@ -369,3 +369,8 @@ body{
     margin-bottom:6px;
 }
 
+/* TEST UČITAVANJA NOVOG CSS-a */
+body{
+    outline:10px solid lime !important;
+}
+
