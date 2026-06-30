@@ -261,13 +261,13 @@ body{
 .hs-box8{
     position:absolute;
     left:83.7%;
-    width:11.6%;
+    width:14%;
     border:2px solid red;
     background:rgba(255,0,0,.12);
     box-sizing:border-box;
 }
 
- /* VERTIKALNI POLOŽAJI */
+/* VERTIKALNI POLOŽAJI */
 
 .hs-box1{
     top:-0.85%;
