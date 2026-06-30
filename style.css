@@ -72,13 +72,21 @@ body{
 }
 
 .lang-btn{
-    background:#c9a46d;
-    padding:8px 18px;
-    border-radius:6px;
-    color:white;
-    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    padding:2px;
+    border:2px solid transparent;
+    border-radius:4px;
     text-decoration:none;
-    box-shadow:0 0 3px rgba(0,0,0,.30);
+    box-shadow:none;
+    transition:all .15s ease;
+}
+
+.lang-btn:hover{
+    border-color:#d4af37;
+    background:rgba(212,175,55,.12);
 }
 
 /* NASLOV */
