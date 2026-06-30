@@ -334,39 +334,56 @@ body{
 .hs-box6,
 .hs-box7,
 .hs-box8{
+
     position:absolute;
 
     left:83.7%;
+
     width:14%;
+
     height:5.8%;
 
     border:2px solid red;
+
     background:rgba(255,0,0,.12);
 
     box-sizing:border-box;
 }
 
+
 /* VERTIKALNI POLOŽAJI */
 
-.hs-box1{ top:3%; }
+.hs-box1{
+    top:3%;
+}
 
-.hs-box2{ top:17%; }
+.hs-box2{
+    top:17%;
+}
 
-.hs-box3{ top:28%; }
+.hs-box3{
+    top:28%;
+}
 
-.hs-box4{ top:39%; }
+.hs-box4{
+    top:39%;
+}
 
-/* Ante - gore 5 mm */
-.hs-box5{ top:53.5%; }
+.hs-box5{
+    top:54.2%;
+}
 
-/* Filip - gore 1 mm */
-.hs-box6{ top:65.7%; }
+.hs-box6{
+    top:65.8%;
+}
 
-/* Ivan gornji - gore 2,5 mm */
-.hs-box7{ top:81.2%; }
+.hs-box7{
+    top:81.6%;
+}
 
-/* Ivan donji - bez promjene */
-.hs-box8{ top:93%; }
+.hs-box8{
+    top:93%;
+}
 /* ======================================================
    CONTENT PAGES
 ====================================================== */
