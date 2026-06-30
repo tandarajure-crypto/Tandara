@@ -336,7 +336,7 @@ body{
 .hs-box8{
     position:absolute;
 
-    left:83.7%;          /* pomaknuto 2 mm ulijevo */
+    left:83.7%;
     width:14%;
     height:5.8%;
 
@@ -348,7 +348,7 @@ body{
 
 /* VERTIKALNI POLOŽAJI */
 
-.hs-box1{ top:3%;  }
+.hs-box1{ top:3%; }
 
 .hs-box2{ top:17%; }
 
@@ -358,11 +358,14 @@ body{
 
 .hs-box5{ top:55%; }
 
-.hs-box6{ top:66%; }
+/* Filip - gore oko 1 cm */
+.hs-box6{ top:63.2%; }
 
-.hs-box7{ top:82%; }
+/* Ivan gornji - gore oko 8 mm */
+.hs-box7{ top:79.8%; }
 
-.hs-box8{ top:93%; }
+/* Ivan donji - gore oko 7 mm */
+.hs-box8{ top:90.9%; }
 /* ======================================================
    CONTENT PAGES
 ====================================================== */
