@@ -24,13 +24,11 @@ body{
     padding:14px 0 20px 0;
     box-sizing:border-box;
     color:#4a3b2a;
-
     display:flex;
     flex-direction:column;
 }
 
 /* RESET */
-
 .left-menu h2,
 .left-menu ul,
 .left-menu li{
@@ -39,7 +37,6 @@ body{
 }
 
 /* HOME */
-
 .home-button{
     display:flex;
     flex-direction:column;
@@ -50,214 +47,152 @@ body{
 }
 
 .home-circle{
-
     width:78px;
     height:78px;
-
     background:#c9a46d;
-
     border-radius:50%;
-
     box-shadow:0 0 4px rgba(0,0,0,.30);
-
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
 .home-svg{
-
     width:32px;
     height:32px;
 }
 
 /* LANGUAGE */
-
 .lang-switch{
-
     display:flex;
     justify-content:center;
     gap:15px;
-
     margin-bottom:32px;
 }
 
 .lang-btn{
-
     background:#c9a46d;
-
     padding:8px 18px;
-
     border-radius:6px;
-
     color:white;
-
     font-weight:bold;
-
     text-decoration:none;
-
     box-shadow:0 0 3px rgba(0,0,0,.30);
 }
 
 /* NASLOV */
-
 .left-menu > h2:not(.visitors-title){
-
     text-align:center;
-
     font-size:24px;
-
     font-weight:bold;
-
     margin:0 0 30px 0;
-
     color:#3b2f22;
 }
 
 /* MENU */
-
 .heritage-menu{
-
     list-style:none;
-
     padding:0 20px;
-
     margin:0;
 }
 
 .heritage-menu li{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
     padding:13px 0;
-
     border-bottom:1px solid rgba(0,0,0,.08);
 }
 
 .heritage-menu a{
-
     text-decoration:none;
-
     color:#4a3b2a;
-
     font-size:17px;
-
     font-weight:400;
-
     line-height:1.2;
 }
 
 .heritage-menu a:hover{
-
     color:#7a5e3a;
 }
+
 /* POSJETITELJI */
-
 .visitors-title{
-
     margin:46px 20px 0 20px;
     padding:15px 0 13px 0;
-
     display:flex;
     align-items:center;
     gap:10px;
-
     text-align:left;
     font-size:17px;
     font-weight:400;
     font-family:Georgia, serif;
     color:#4a3b2a;
     line-height:1.2;
-
     border-top:1px solid rgba(0,0,0,0.08);
     border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
-
 /* AUTHOR PHOTO */
-
 .author-photo{
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     margin:22px 0 18px 0;
     padding:0;
 }
 
 .author-photo img{
-
     width:190px !important;
     max-width:190px !important;
     height:auto !important;
-
     display:block;
-
     border:3px solid #b99867;
     border-radius:12px;
-
     box-shadow:0 3px 8px rgba(0,0,0,0.25);
 }
 
-
 /* FLAG */
-
 .flagbox{
-
     text-align:center;
     margin-top:12px;
     padding-top:0;
 }
 
 .flagbox img{
-
     display:inline-block;
     max-width:260px;
     height:auto;
     border:0;
 }
 
-
-/* RIGHT SIDE */
-
+/* RIGHT SIDE - KORIGIRANO: slika se sada ravna po visini ekrana */
 .right-image{
-
     flex:1;
-
     display:flex;
-
     justify-content:center;
-
     align-items:flex-start;
-
     padding:0;
+    overflow:hidden;
 }
 
 .image-wrapper{
-
     position:relative;
-
     display:inline-block;
+    height:100vh;
 }
 
 .bg{
-
-    width:100%;
-    height:auto;
-
+    height:100vh;
+    width:auto;
+    max-width:none;
     display:block;
-
     border:0;
 }
+
 /* ==========================================================
    HOTSPOTS
 ========================================================== */
-
 .hs{
     position:absolute;
     cursor:pointer;
@@ -266,20 +201,14 @@ body{
 
 /* ----------------------------------------------------------
    4 GLAVNE GRANE
-   (nevidljive, zlatni okvir na hover)
 ---------------------------------------------------------- */
-
 .hs-jurina,
 .hs-petrova,
 .hs-antina,
 .hs-matina{
-
     background:transparent;
-
     border:2px solid transparent;
-
     border-radius:4px;
-
     transition:all .15s ease;
 }
 
@@ -287,17 +216,11 @@ body{
 .hs-petrova:hover,
 .hs-antina:hover,
 .hs-matina:hover{
-
     border:2px solid #d4af37;
-
     background:rgba(212,175,55,.12);
 }
 
-
-/* KOORDINATE 4 GRANE */
-
-/* KOORDINATE 4 GRANE */
-
+/* KOORDINATE 4 GRANE - NE DIRANO */
 .hs-jurina,
 .hs-petrova{
     top:32.9%;
@@ -321,9 +244,9 @@ body{
 .hs-matina{
     left:32%;
 }
+
 /* ----------------------------------------------------------
-   DESNI DIJAGRAM
-   DEBUG VERZIJA
+   DESNI DIJAGRAM - DEBUG VERZIJA - NE DIRANO
 ---------------------------------------------------------- */
 .hs-box1,
 .hs-box2,
@@ -333,25 +256,16 @@ body{
 .hs-box6,
 .hs-box7,
 .hs-box8{
-
     position:absolute;
-
     left:83.7%;
-
     width:14%;
-
     height:5.8%;
-
     border:2px solid red;
-
     background:rgba(255,0,0,.12);
-
     box-sizing:border-box;
 }
 
-
-/* VERTIKALNI POLOŽAJI */
-
+/* VERTIKALNI POLOŽAJI - NE DIRANO */
 .hs-box1{
     top:3%;
 }
@@ -383,10 +297,10 @@ body{
 .hs-box8{
     top:89.9%;
 }
+
 /* ======================================================
    CONTENT PAGES
 ====================================================== */
-
 .content-page{
     flex:1;
     padding:36px 42px;
@@ -451,3 +365,4 @@ body{
     line-height:1.55;
     margin-bottom:6px;
 }
+
