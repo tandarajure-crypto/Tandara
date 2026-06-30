@@ -189,7 +189,7 @@ body{
     display:block;
     border:0;
 
-    transform:scaleX(0.94);
+    transform:scaleX(0.92);
     transform-origin:center;
 }
 
@@ -240,12 +240,12 @@ body{
 
 .hs-jurina,
 .hs-antina{
-    left:10%;
+    left:6%;
 }
 
 .hs-petrova,
 .hs-matina{
-    left:36%;
+    left:32%;
 }
 /* ----------------------------------------------------------
    DESNI DIJAGRAM - DEBUG VERZIJA - NE DIRANO
