@@ -209,8 +209,8 @@ body{
 .hs-petrova,
 .hs-antina,
 .hs-matina{
-    background:rgba(255,0,0,.15);
-    border:2px solid red;
+    background:transparent;
+    border:2px solid transparent;
     border-radius:4px;
     transition:all .15s ease;
 }
@@ -219,24 +219,24 @@ body{
 .hs-petrova:hover,
 .hs-antina:hover,
 .hs-matina:hover{
-    border:2px solid red;
-    background:rgba(255,0,0,.15);
+    border:2px solid #d4af37;
+    background:rgba(212,175,55,.12);
 }
 
 /* KOORDINATE 4 GRANE */
 
 .hs-jurina,
 .hs-petrova{
-    top:32.13%;
+    top:32.9%;
     width:18%;
-    height:9.77%;
+    height:9%;
 }
 
 .hs-antina,
 .hs-matina{
-    top:48.10%;
+    top:48.1%;
     width:18%;
-    height:9.77%;
+    height:9%;
 }
 
 .hs-jurina,
