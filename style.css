@@ -341,7 +341,6 @@ body{
     height:5.8%;
 
     border:2px solid red;
-
     background:rgba(255,0,0,.12);
 
     box-sizing:border-box;
@@ -357,17 +356,17 @@ body{
 
 .hs-box4{ top:39%; }
 
-/* Ante - ostaje kako je bio */
-.hs-box5{ top:55%; }
+/* Ante - gore 5 mm */
+.hs-box5{ top:53.5%; }
 
-/* Filip - gore 1 cm */
-.hs-box6{ top:63.2%; }
+/* Filip - gore 1 mm */
+.hs-box6{ top:65.7%; }
 
-/* Ivan gornji - gore 8 mm */
-.hs-box7{ top:79.8%; }
+/* Ivan gornji - gore 2,5 mm */
+.hs-box7{ top:81.2%; }
 
-/* Ivan donji - gore 7 mm */
-.hs-box8{ top:90.9%; }
+/* Ivan donji - bez promjene */
+.hs-box8{ top:93%; }
 /* ======================================================
    CONTENT PAGES
 ====================================================== */
