@@ -271,11 +271,13 @@ body{
 /* VERTIKALNI POLOŽAJI */
 
 .hs-box1{
-    top:3%;
+    top:-0.85%;
+    height:9.65%;
 }
 
 .hs-box2{
-    top:17%;
+    top:14.69%;
+    height:8.11%;
 }
 
 .hs-box3{
