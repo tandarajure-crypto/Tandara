@@ -192,18 +192,18 @@ body{
     border:0;
 }
 
-/* HOTSPOTS */
+/* HOTSPOTS — DEBUG MODE (VIDLJIVI OKVIRI) */
 .hs{
     position:absolute;
     cursor:pointer;
-    background:transparent;
-    border:none;
-    transition:all 0.15s ease-in-out;
+    background:rgba(255,255,255,0.25);   /* vidi se */
+    border:2px solid rgba(255,0,0,0.8);  /* crveni rub */
+    box-sizing:border-box;
 }
 
 .hs:hover{
-    outline:2px solid rgba(255,255,255,0.7);
-    background:rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.45);
+    border-color:rgba(255,0,0,1);
 }
 
 /* 4 GRANE */
