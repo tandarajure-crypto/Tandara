@@ -260,7 +260,7 @@ body{
 .hs-box7,
 .hs-box8{
     position:absolute;
-    left:85.5%;      /* pomak 1 cm u desno */
+    left:84.2%;      /* pomak 1 cm u desno */
     width:12.2%;     /* malo šire da rubovi sjednu točno */
     border:2px solid red;
     background:rgba(255,0,0,.12);
