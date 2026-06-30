@@ -1,4 +1,4 @@
-
+INDEX:HTML_BUCKUP(2-130)
 <!DOCTYPE html>
 <html lang="hr">
 
@@ -130,105 +130,12 @@
 </html>
 
 
-INDEX-EN.HTML BUCKUP
 
 
 
+style-CSS- BUCKUP (140-522)
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Tandara – Digital Archive</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body class="en">
-
-<div class="layout">
-
-    <!-- LEFT SIDEBAR -->
-    <div class="left-menu">
-
-        <!-- HOME -->
-        <a href="./index-en.html" class="home-button">
-
-            <div class="home-circle">
-                <svg class="home-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <path d="M3 10.5L12 3l9 7.5"></path>
-                    <path d="M5 10v10h14V10"></path>
-                    <path d="M10 20v-6h4v6"></path>
-                </svg>
-            </div>
-
-            <span class="home-text">HOME</span>
-            <small style="color:#4a3b2a; font-size:12px;">enter</small>
-
-        </a>
-
-        <!-- LANGUAGE SWITCH -->
-        <div class="lang-switch">
-            <a href="index.html" class="lang-btn">HR</a>
-            <a href="index-en.html" class="lang-btn">EN</a>
-        </div>
-
-        <!-- TITLE -->
-        <h2>DIGITAL ARCHIVE OF THE TANDARA FAMILY LINE</h2>
-
-        <!-- MENU -->
-        <ul class="heritage-menu">
-            <li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the surname</a></li>
-            <li><span>🌳</span><a href="./rodoslovlje-en.html">Family genealogy</a></li>
-            <li><span>🌳</span><a href="./migracije-en.html">Migration and distribution</a></li>
-            <li><span>🌳</span><a href="./autor-en.html">About the author</a></li>
-            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Contact</a></li>
-        </ul>
-
-        <!-- AUTHOR PHOTO -->
-        <div class="author-photo">
-            <img src="./jure.png" alt="Jure Tandara">
-        </div>
-
-        <!-- FLAG COUNTER -->
-        <div class="flagbox">
-            <a href="https://info.flagcounter.com/OyvA">
-                <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-                     alt="Flag Counter">
-            </a>
-        </div>
-
-    </div>
-
-    <!-- RIGHT CONTENT -->
-    <div class="right-image">
-
-        <div class="image-wrapper">
-
-            <img src="./family-tree.png" class="bg" alt="Family tree">
-
-            <div class="hs hs-jurina" onclick="location.href='./jurinagrana.html'"></div>
-            <div class="hs hs-petrova" onclick="location.href='./petrovagrana.html'"></div>
-            <div class="hs hs-antina" onclick="location.href='./antinagrana.html'"></div>
-            <div class="hs hs-matina" onclick="location.href='./matinagrana.html'"></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-CSS-BACKUP (193-484)
 
 body{
     margin:0;
@@ -255,13 +162,11 @@ body{
     padding:14px 0 20px 0;
     box-sizing:border-box;
     color:#4a3b2a;
-
     display:flex;
     flex-direction:column;
 }
 
 /* RESET */
-
 .left-menu h2,
 .left-menu ul,
 .left-menu li{
@@ -270,7 +175,6 @@ body{
 }
 
 /* HOME */
-
 .home-button{
     display:flex;
     flex-direction:column;
@@ -281,214 +185,155 @@ body{
 }
 
 .home-circle{
-
     width:78px;
     height:78px;
-
     background:#c9a46d;
-
     border-radius:50%;
-
     box-shadow:0 0 4px rgba(0,0,0,.30);
-
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
 .home-svg{
-
     width:32px;
     height:32px;
 }
 
 /* LANGUAGE */
-
 .lang-switch{
-
     display:flex;
     justify-content:center;
     gap:15px;
-
     margin-bottom:32px;
 }
 
 .lang-btn{
-
     background:#c9a46d;
-
     padding:8px 18px;
-
     border-radius:6px;
-
     color:white;
-
     font-weight:bold;
-
     text-decoration:none;
-
     box-shadow:0 0 3px rgba(0,0,0,.30);
 }
 
 /* NASLOV */
-
 .left-menu > h2:not(.visitors-title){
-
     text-align:center;
-
     font-size:24px;
-
     font-weight:bold;
-
     margin:0 0 30px 0;
-
     color:#3b2f22;
 }
 
 /* MENU */
-
 .heritage-menu{
-
     list-style:none;
-
     padding:0 20px;
-
     margin:0;
 }
 
 .heritage-menu li{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
     padding:13px 0;
-
     border-bottom:1px solid rgba(0,0,0,.08);
 }
 
 .heritage-menu a{
-
     text-decoration:none;
-
     color:#4a3b2a;
-
     font-size:17px;
-
     font-weight:400;
-
     line-height:1.2;
 }
 
 .heritage-menu a:hover{
-
     color:#7a5e3a;
 }
+
 /* POSJETITELJI */
-
 .visitors-title{
-
     margin:46px 20px 0 20px;
     padding:15px 0 13px 0;
-
     display:flex;
     align-items:center;
     gap:10px;
-
     text-align:left;
     font-size:17px;
     font-weight:400;
     font-family:Georgia, serif;
     color:#4a3b2a;
     line-height:1.2;
-
     border-top:1px solid rgba(0,0,0,0.08);
     border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
-
 /* AUTHOR PHOTO */
-
 .author-photo{
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     margin:22px 0 18px 0;
     padding:0;
 }
 
 .author-photo img{
-
     width:190px !important;
     max-width:190px !important;
     height:auto !important;
-
     display:block;
-
     border:3px solid #b99867;
     border-radius:12px;
-
     box-shadow:0 3px 8px rgba(0,0,0,0.25);
 }
 
-
 /* FLAG */
-
 .flagbox{
-
     text-align:center;
     margin-top:12px;
     padding-top:0;
 }
 
 .flagbox img{
-
     display:inline-block;
     max-width:260px;
     height:auto;
     border:0;
 }
 
-
-/* RIGHT SIDE */
-
+/* RIGHT SIDE - KORIGIRANO: slika se sada ravna po visini ekrana */
 .right-image{
-
     flex:1;
-
     display:flex;
-
     justify-content:center;
-
     align-items:flex-start;
-
     padding:0;
+    overflow:hidden;
 }
 
 .image-wrapper{
-
     position:relative;
-
     display:inline-block;
+    height:100vh;
 }
 
 .bg{
-
-    width:100%;
-    height:auto;
-
+    height:100vh;
+    width:auto;
+    max-width:none;
     display:block;
-
     border:0;
+
+    transform:scaleX(0.92);
+    transform-origin:center;
 }
+
 /* ==========================================================
    HOTSPOTS
 ========================================================== */
-
 .hs{
     position:absolute;
     cursor:pointer;
@@ -497,20 +342,14 @@ body{
 
 /* ----------------------------------------------------------
    4 GLAVNE GRANE
-   (nevidljive, zlatni okvir na hover)
 ---------------------------------------------------------- */
-
 .hs-jurina,
 .hs-petrova,
 .hs-antina,
 .hs-matina{
-
     background:transparent;
-
     border:2px solid transparent;
-
     border-radius:4px;
-
     transition:all .15s ease;
 }
 
@@ -518,43 +357,37 @@ body{
 .hs-petrova:hover,
 .hs-antina:hover,
 .hs-matina:hover{
-
     border:2px solid #d4af37;
-
     background:rgba(212,175,55,.12);
 }
-
-
-/* KOORDINATE 4 GRANE */
 
 /* KOORDINATE 4 GRANE */
 
 .hs-jurina,
 .hs-petrova{
-    top:32.9%;
+    top:31.75%;
     width:18%;
-    height:9%;
+    height:10.15%;
 }
 
 .hs-antina,
 .hs-matina{
-    top:48.1%;
+    top:48.10%;
     width:18%;
-    height:9%;
+    height:10.15%;
 }
 
 .hs-jurina,
 .hs-antina{
-    left:6%;
+    left:12.48%;
 }
 
 .hs-petrova,
 .hs-matina{
-    left:32%;
+    left:36.08%;
 }
 /* ----------------------------------------------------------
-   DESNI DIJAGRAM
-   DEBUG VERZIJA
+   DESNI DIJAGRAM - DEBUG VERZIJA - NE DIRANO
 ---------------------------------------------------------- */
 .hs-box1,
 .hs-box2,
@@ -564,19 +397,11 @@ body{
 .hs-box6,
 .hs-box7,
 .hs-box8{
-
     position:absolute;
-
-    left:83.7%;
-
-    width:14%;
-
-    height:5.8%;
-
+    left:83.3%;      /* pomak 1 cm u desno */
+    width:11.0%;     /* malo šire da rubovi sjednu točno */
     border:2px solid red;
-
     background:rgba(255,0,0,.12);
-
     box-sizing:border-box;
 }
 
@@ -584,40 +409,48 @@ body{
 /* VERTIKALNI POLOŽAJI */
 
 .hs-box1{
-    top:3%;
+    top:2.80%;
+    height:9.65%;
 }
 
 .hs-box2{
-    top:17%;
+    top:15.30%;
+    height:9.01%;
 }
 
 .hs-box3{
     top:28%;
+    height:8.88%;
 }
 
 .hs-box4{
-    top:39%;
+    top:39.0%;
+    height:9.4%;
 }
 
 .hs-box5{
-    top:52.8%;
+    top:51.72%;
+    height:8.63%;
 }
 
 .hs-box6{
-    top:62.9%;
+    top:63.36%;
+    height:8.8%;
 }
 
 .hs-box7{
-    top:78.8%;
+    top:75.83%;
+    height:8.49%;
 }
 
 .hs-box8{
-    top:89.9%;
+    top:87.65%;
+    height:8.89%;
 }
+
 /* ======================================================
    CONTENT PAGES
 ====================================================== */
-
 .content-page{
     flex:1;
     padding:36px 42px;
@@ -682,6 +515,25 @@ body{
     line-height:1.55;
     margin-bottom:6px;
 }
+
+/* TEST UČITAVANJA NOVOG CSS-a */
+body{
+    outline:10px solid lime !important;
+}
+
+
+
+
+
+
+
+INDEX:EN:HTML-BACKUP
+
+
+
+
+
+
 
 
 
