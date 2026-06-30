@@ -529,7 +529,90 @@ body{
 
 INDEX:EN:HTML-BACKUP
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tandara – Digital Archive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body class="en">
+
+<div class="layout">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="left-menu">
+
+        <!-- HOME -->
+        <a href="./index-en.html" class="home-button">
+
+            <div class="home-circle">
+                <svg class="home-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M3 10.5L12 3l9 7.5"></path>
+                    <path d="M5 10v10h14V10"></path>
+                    <path d="M10 20v-6h4v6"></path>
+                </svg>
+            </div>
+
+            <span class="home-text">HOME</span>
+            <small style="color:#4a3b2a; font-size:12px;">enter</small>
+
+        </a>
+
+        <!-- LANGUAGE SWITCH -->
+        <div class="lang-switch">
+            <a href="index.html" class="lang-btn">HR</a>
+            <a href="index-en.html" class="lang-btn">EN</a>
+        </div>
+
+        <!-- TITLE -->
+        <h2>DIGITAL ARCHIVE OF THE TANDARA FAMILY LINE</h2>
+
+        <!-- MENU -->
+        <ul class="heritage-menu">
+            <li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the surname</a></li>
+            <li><span>🌳</span><a href="./rodoslovlje-en.html">Family genealogy</a></li>
+            <li><span>🌳</span><a href="./migracije-en.html">Migration and distribution</a></li>
+            <li><span>🌳</span><a href="./autor-en.html">About the author</a></li>
+            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Contact</a></li>
+        </ul>
+
+        <!-- AUTHOR PHOTO -->
+        <div class="author-photo">
+            <img src="./jure.png" alt="Jure Tandara">
+        </div>
+
+        <!-- FLAG COUNTER -->
+        <div class="flagbox">
+            <a href="https://info.flagcounter.com/OyvA">
+                <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+                     alt="Flag Counter">
+            </a>
+        </div>
+
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="right-image">
+
+        <div class="image-wrapper">
+
+            <img src="./family-tree.png" class="bg" alt="Family tree">
+
+            <div class="hs hs-jurina" onclick="location.href='./jurinagrana.html'"></div>
+            <div class="hs hs-petrova" onclick="location.href='./petrovagrana.html'"></div>
+            <div class="hs hs-antina" onclick="location.href='./antinagrana.html'"></div>
+            <div class="hs hs-matina" onclick="location.href='./matinagrana.html'"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
 
 
 
