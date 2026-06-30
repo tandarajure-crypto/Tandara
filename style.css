@@ -188,6 +188,9 @@ body{
     max-width:none;
     display:block;
     border:0;
+
+    transform: scaleX(0.94);
+    transform-origin:center;
 }
 
 /* ==========================================================
