@@ -170,9 +170,9 @@ body{
 .right-image{
     flex:1;
     display:flex;
-    justify-content:flex-start;
+    justify-content:center;
     align-items:flex-start;
-    padding-left:1.5cm;
+    padding:0;
     overflow:hidden;
 }
 
@@ -180,8 +180,6 @@ body{
     position:relative;
     display:inline-block;
     height:100vh;
-
-    left:-1cm;
 }
 
 .bg{
@@ -191,7 +189,7 @@ body{
     display:block;
     border:0;
 
-    transform: scaleX(0.94);
+    transform:scaleX(0.94);
     transform-origin:center;
 }
 
