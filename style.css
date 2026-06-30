@@ -70,7 +70,6 @@ body{
 }
 
 /* LANGUAGE */
-/* LANGUAGE */
 .lang-switch{
     display:flex;
     justify-content:center;
@@ -94,6 +93,13 @@ body{
 .lang-btn:hover{
     border-color:#d4af37;
     background:rgba(212,175,55,.12);
+}
+.flag-btn img{
+    display:block;
+    width:30px;
+    height:20px;
+    object-fit:cover;
+    border-radius:3px;
 }
 
 /* NASLOV */
