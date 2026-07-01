@@ -4,125 +4,85 @@
 <meta charset="UTF-8">
 <title>Antina grana</title>
 
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-
-<style>
-body{
-    margin:0;
-    background:#e7c191;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* HOME tipka */
-.home-btn{
-    position:fixed;
-    top:20px;
-    left:20px;
-    z-index:9999;
-}
-
-.home-btn img{
-    width:60px;
-    height:auto;
-}
-
-/* PNG slike – FULL WIDTH */
-.tree-image{
-    width:100%;
-    height:auto;
-    display:block;
-    margin:40px 0; /* normalan razmak */
-}
-
-/* Tekstualni okvir */
-.page-wrapper{
-    width:90%;
-    margin:0 auto;
-}
-
-/* Naslovi */
-h1 {
-    font-size: 2.2em;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-h2, h3, h4 {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-h1, h2, h3, h4 {
-    text-align:center;
-}
-
-/* Paragrafi */
-p {
-    margin-bottom: 15px;
-}
-
-/* Zastava */
-.flag {
-    display: block;
-    margin: 60px auto 125px;
-    max-width: 120px;
-    height: auto;
-}
-
-/* Suženi stupac teksta */
-.text-block {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-/* MOBITEL */
-@media (max-width: 600px) {
-    .text-block {
-        max-width: 90%;
-    }
-}
-
-/* TABLET */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .text-block {
-        max-width: 80%;
-    }
-}
-</style>
+<link rel="stylesheet" href="style.css?v=4">
 
 </head>
 
-<body>
+<body class="hr">
 
-<!-- HOME -->
-<a href="index.html" class="home-btn" title="Povratak na početnu stranicu">
-    <img src="home.png" alt="Početna">
-</a>
+<div class="layout">
 
-<div class="page-wrapper">
+    <!-- LIJEVI STUPAC -->
+    <aside class="left-menu">
 
+        <a href="index.html" class="home-button">
+            <div class="home-circle">
+                <svg class="home-svg" viewBox="0 0 24 24" fill="none"
+                     stroke="white" stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M3 10.5L12 3l9 7.5"></path>
+                    <path d="M5 10v10h14V10"></path>
+                    <path d="M10 20v-6h4v6"></path>
+                </svg>
+            </div>
+        </a>
 
-    <!-- HR ZASTAVA -->
-    <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="flag">
+        <div class="lang-switch">
+            <a href="antinagrana.html" class="lang-btn flag-btn">
+                <img src="flag-hr.png" alt="HR">
+            </a>
 
+            <a href="antinagrana-en.html" class="lang-btn flag-btn">
+                <img src="flag-uk.png" alt="EN">
+            </a>
+        </div>
 
-    <!-- HR NASLOVI -->
-    <h1>Treća grana prve obitelji TANDARA</h1>
-    <h2>Ante Tandara – Ivanov (rođen oko 1735 – )</h2>
+        <h2>DIGITALNI ARHIV RODA TANDARA</h2>
 
-    <!-- HR TEKST -->
-    <div class="text-block">
-        <p>
-            Ante Tandara je vjerojatno treći ili četvrti Ivanov sin. Naime, pretpostavka je da bi i livanjski
-            Filip mogao biti jedan od Ivanovih sinova. Ante je bio otprilike godinu dana mlađi od Petra.
-            Oženio se Matijom Brnas, te su imali sinove Antu, Filipa i Pavla, te kćeri Jaku, Lucu i Ružu.
-            O Pavlu nema drugih podataka osim zapisa o rođenju što pretpostavlja da je mlad preminuo
-            ili je odselio iz Ričica.
-        </p>
+        <ul class="heritage-menu">
+            <li><span>🌳</span><a href="podrijetlo-hr.html">Podrijetlo prezimena</a></li>
+            <li><span>🌳</span><a href="rodoslovlje-hr.html">Rodoslovlje roda</a></li>
+            <li><span>🌳</span><a href="migracije-hr.html">Migracije i rasprostranjenost</a></li>
+            <li><span>🌳</span><a href="autor-hr.html">O autoru</a></li>
+            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Kontakti</a></li>
+        </ul>
+
+        <div class="author-photo">
+            <img src="jure.png" alt="Jure Tandara">
+        </div>
+
+        <h2 class="visitors-title">🌳 Posjetitelji</h2>
+
+        <div class="flagbox">
+            <a href="https://info.flagcounter.com/OyvA">
+                <img
+                    src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+                    alt="Flag Counter">
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- DESNI SADRŽAJ -->
+    <main class="branch-content">
+
+        <div class="branch-card">
+
+            <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="branch-flag">
+
+ <h1>Treća grana prve obitelji TANDARA</h1>
+<h3>Ante Tandara – Ivanov (rođen oko 1735. – )</h3>
+
+<div class="branch-text-block">
+    <p>
+        Ante Tandara je vjerojatno treći ili četvrti Ivanov sin. Naime, pretpostavka je da bi i livanjski
+        Filip mogao biti jedan od Ivanovih sinova. Ante je bio otprilike godinu dana mlađi od Petra.
+        Oženio se Matijom Brnas, te su imali sinove Antu, Filipa i Pavla, te kćeri Jaku, Lucu i Ružu.
+        O Pavlu nema drugih podataka osim zapisa o rođenju, što pretpostavlja da je mlad preminuo
+        ili je odselio iz Ričica.
+    </p>
+</div>
 
         <h2>Podgrana Ante Antina</h2>
         <h3>Ante Antin</h3>
@@ -1081,14 +1041,15 @@ Najmlađi Tomin sin, oženio se Tonkom Vukičević i dobili su sina Željka.
 
 <p>Željko married Ankica Šitum. They have two sons and live in Canada.</p>    
 
-</div> <!-- kraj text-block -->
+    </div> <!-- kraj branch-text-block -->
 
-<!-- SLIKE – FULL WIDTH -->
-<img src="krizan.png?v=3" class="tree-image">
-<img src="antinajure.png?v=3" class="tree-image">
-<img src="antinagrana.png?v=3" class="tree-image">
- 
+    <!-- SLIKE – FULL WIDTH -->
+    <img src="krizan.png?v=3" alt="Križan" class="tree-image">
+    <img src="antinajure.png?v=3" alt="Antina grana – Jure Tandara" class="tree-image">
+    <img src="antinagrana.png?v=3" alt="Rodoslovno stablo Antine grane" class="tree-image">
+
 </div> <!-- kraj page-wrapper -->
+
 <div class="visitor-box">
     <h4>Posjetitelji</h4>
     <a href="https://info.flagcounter.com/OyvA">
@@ -1096,9 +1057,9 @@ Najmlađi Tomin sin, oženio se Tonkom Vukičević i dobili su sina Željka.
              alt="Flag Counter">
     </a>
 </div>
+
 </body>
 </html>
-
 
 
 
