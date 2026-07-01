@@ -9,11 +9,11 @@ body{
 .layout{
     max-width:1920px;
     margin:0 auto;
-    display:flex;
+    display:grid;
+    grid-template-columns:300px 1fr;
     gap:20px;
     padding:4px;
     box-sizing:border-box;
-    align-items:stretch;
 }
 
 /* LEFT MENU */
