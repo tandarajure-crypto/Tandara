@@ -4,97 +4,57 @@
 <meta charset="UTF-8">
 <title>Matina Branch</title>
 
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-
-<style>
-body{
-    margin:0;
-    background:#e7c191;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.home-btn{
-    position:fixed;
-    top:20px;
-    left:20px;
-    z-index:9999;
-}
-
-.home-btn img{
-    width:60px;
-    height:auto;
-}
-
-.tree-image{
-    width:100%;
-    height:auto;
-    display:block;
-    margin:40px 0;
-}
-
-.page-wrapper{
-    width:90%;
-    margin:0 auto;
-}
-
-h1{
-    font-size:2.2em;
-    margin-top:25px;
-    margin-bottom:15px;
-}
-
-h2,h3,h4{
-    font-size:1.4em;
-    font-weight:bold;
-    margin-top:25px;
-    margin-bottom:10px;
-}
-
-h1,h2,h3,h4{
-    text-align:center;
-}
-
-p{
-    margin-bottom:15px;
-}
-
-.flag{
-    display:block;
-    margin:60px auto 125px;
-    max-width:120px;
-    height:auto;
-}
-
-.text-block{
-    max-width:700px;
-    margin:0 auto;
-    text-align:left;
-}
-
-@media (max-width:600px){
-    .text-block{
-        max-width:90%;
-    }
-}
-
-@media (min-width:601px) and (max-width:1024px){
-    .text-block{
-        max-width:80%;
-    }
-}
-</style>
+<link rel="stylesheet" href="style.css?v=4">
 
 </head>
 
-<body>
+<body class="en">
 
-<a href="index-en.html" class="home-btn" title="Back to Home">
-    <img src="home.png" alt="Home">
-</a>
+<div class="layout">
 
-<div class="page-wrapper">
+    <aside class="left-menu">
+
+        <a href="index-en.html" class="home-button">
+            <div class="home-circle">
+                <svg class="home-svg" viewBox="0 0 24 24" fill="none"
+                     stroke="white" stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M3 10.5L12 3l9 7.5"></path>
+                    <path d="M5 10v10h14V10"></path>
+                    <path d="M10 20v-6h4v6"></path>
+                </svg>
+            </div>
+        </a>
+
+        <div class="lang-switch">
+            <a href="matinagrana.html" class="lang-btn flag-btn">
+                <img src="flag-hr.png" alt="HR">
+            </a>
+            <a href="matinagrana-en.html" class="lang-btn flag-btn">
+                <img src="flag-uk.png" alt="EN">
+            </a>
+        </div>
+
+        <h2>DIGITAL ARCHIVE OF THE TANDARA FAMILY LINE</h2>
+
+        <ul class="heritage-menu">
+            <li><span>🌳</span><a href="podrijetlo-en.html">Origin of the surname</a></li>
+            <li><span>🌳</span><a href="rodoslovlje-en.html">Family genealogy</a></li>
+            <li><span>🌳</span><a href="migracije-en.html">Migration and distribution</a></li>
+            <li><span>🌳</span><a href="autor-en.html">About the author</a></li>
+            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Contacts</a></li>
+        </ul>
+
+        <div class="author-photo">
+            <img src="jure.png" alt="Jure Tandara">
+        </div>
+
+    </aside>
+
+    <main class="branch-content">
+
+        <div class="branch-card">
 
     <img src="flag-uk.png?v=3" alt="United Kingdom Flag" class="flag">
 
@@ -270,27 +230,23 @@ p{
 <h3>Ivan, Son of Mate and Filipa Kopač</h3>
 
 <p>
+  <p>
     Ivan’s second marriage was to Jela Parlov. They had a daughter, Ruža.
 </p>
-    
-    </div> <!-- end text-block -->
 
-    <!-- FULL WIDTH IMAGES -->
-    <img src="matinajure.png?v=3" alt="Matina Branch – Jure Tandara" class="tree-image">
-    <img src="matinagrana.png?v=3" alt="Genealogical Tree of the Matina Branch" class="tree-image">
+            </div>
 
-</div> <!-- end page-wrapper -->
+            <img src="matinajure.png?v=3" alt="Matina Branch – Jure Tandara" class="branch-tree-image">
+            <img src="matinagrana.png?v=3" alt="Genealogical Tree of the Matina Branch" class="branch-tree-image">
 
-<div class="visitor-box">
-    <h4>Visitors</h4>
-    <a href="https://info.flagcounter.com/OyvA">
-        <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-             alt="Flag Counter">
-    </a>
+        </div>
+
+    </main>
+
 </div>
 
 </body>
-</html>
+</html> 
 
 
 
