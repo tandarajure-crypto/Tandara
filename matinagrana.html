@@ -4,105 +4,65 @@
 <meta charset="UTF-8">
 <title>Matina grana</title>
 
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-
-<style>
-body{
-    margin:0;
-    background:#e7c191;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.home-btn{
-    position:fixed;
-    top:20px;
-    left:20px;
-    z-index:9999;
-}
-
-.home-btn img{
-    width:60px;
-    height:auto;
-}
-
-.tree-image{
-    width:100%;
-    height:auto;
-    display:block;
-    margin:40px 0;
-}
-
-.page-wrapper{
-    width:90%;
-    margin:0 auto;
-}
-
-h1{
-    font-size:2.2em;
-    margin-top:25px;
-    margin-bottom:15px;
-}
-
-h2,h3,h4{
-    font-size:1.4em;
-    font-weight:bold;
-    margin-top:25px;
-    margin-bottom:10px;
-}
-
-h1,h2,h3,h4{
-    text-align:center;
-}
-
-p{
-    margin-bottom:15px;
-}
-
-.flag{
-    display:block;
-    margin:60px auto 125px;
-    max-width:120px;
-    height:auto;
-}
-
-.text-block{
-    max-width:700px;
-    margin:0 auto;
-    text-align:left;
-}
-
-@media (max-width:600px){
-    .text-block{
-        max-width:90%;
-    }
-}
-
-@media (min-width:601px) and (max-width:1024px){
-    .text-block{
-        max-width:80%;
-    }
-}
-</style>
+<link rel="stylesheet" href="style.css?v=4">
 
 </head>
 
-<body>
+<body class="hr">
 
-<a href="index.html" class="home-btn" title="Povratak na početnu stranicu">
-    <img src="home.png" alt="Početna">
-</a>
+<div class="layout">
 
-<div class="page-wrapper">
+    <aside class="left-menu">
 
-    <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="flag">
+        <a href="index.html" class="home-button">
+            <div class="home-circle">
+                <svg class="home-svg" viewBox="0 0 24 24" fill="none"
+                     stroke="white" stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M3 10.5L12 3l9 7.5"></path>
+                    <path d="M5 10v10h14V10"></path>
+                    <path d="M10 20v-6h4v6"></path>
+                </svg>
+            </div>
+        </a>
 
-    <h1>Četvrta grana prve obitelji TANDARA</h1>
-    <h2>Mate Tandara – Ivanov (rođen oko 1740. – )</h2>
+        <div class="lang-switch">
+            <a href="matinagrana.html" class="lang-btn flag-btn">
+                <img src="flag-hr.png" alt="HR">
+            </a>
+            <a href="matinagrana-en.html" class="lang-btn flag-btn">
+                <img src="flag-uk.png" alt="EN">
+            </a>
+        </div>
 
-    <div class="text-block">
-        <p>
+        <h2>DIGITALNI ARHIV RODA TANDARA</h2>
+
+        <ul class="heritage-menu">
+            <li><span>🌳</span><a href="podrijetlo-hr.html">Podrijetlo prezimena</a></li>
+            <li><span>🌳</span><a href="rodoslovlje-hr.html">Rodoslovlje roda</a></li>
+            <li><span>🌳</span><a href="migracije-hr.html">Migracije i rasprostranjenost</a></li>
+            <li><span>🌳</span><a href="autor-hr.html">O autoru</a></li>
+            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Kontakti</a></li>
+        </ul>
+
+        <div class="author-photo">
+            <img src="jure.png" alt="Jure Tandara">
+        </div>
+
+    </aside>
+
+    <main class="branch-content">
+
+        <div class="branch-card">
+
+            <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="branch-flag">
+
+            <h1>Četvrta grana prve obitelji TANDARA</h1>
+            <h3>Mate Tandara – Ivanov (rođen oko 1740. – )</h3>
+
+            <div class="branch-text-block">
+                <p>
 
     Mate Tandara i njegova supruga Filipa Kopač imali su petero djece: sina Ivana te kćeri Matiju, Mandu, Jaku i Ceciliju.
     Muška loza nastavila se isključivo preko sina Ivana. Ivan se ženio dva puta. U prvom braku s Pavom Sičenica dobio je sina Antu,
@@ -267,203 +227,18 @@ p{
 <p>
     Oženio se drugi put Jelom Parlov. Imali su kćer Ružu.
 </p>
-        
-  <!-- ZASTAVA -->
-   <img src="flag-uk.png?v=3" alt="UK zastava" class="flag">
-    
-<!-- HEADINGS -->
 
-<h1>The Fourth Branch of the First TANDARA Family</h1>
-<h2>Mate Tandara (c. 1750 – c. 1806/1819)</h2>
-<!-- INTRODUCTORY TEXT -->
+            </div>
 
+            <img src="matinajure.png?v=3" alt="Matina grana – Jure Tandara" class="branch-tree-image">
+            <img src="matinagrana.png?v=3" alt="Rodoslovno stablo Matine grane" class="branch-tree-image">
 
-<p>
-    Mate Tandara and his wife, Filipa Kopač, had five children: a son, Ivan, and four daughters, Matija, Manda, Jaka, and Cecilija.
-    The male line of descent continued exclusively through Ivan. He married twice. In his first marriage, to Pava Sičenica,
-    he had a son, Ante, the only male descendant through whom Mate’s line continued.
-    In his second marriage, to Jela Parlov, he had a daughter, Ruža, and therefore that branch did not continue through the male line.
-</p>
+        </div>
 
-<p>
-    An interesting tradition concerning the origin of this family branch’s nickname has been preserved among its living descendants.
-    According to local tradition, some of Mate’s descendants worked on the farms of the Lažeta family.
-    When relatives and neighbors later asked them, <em>“How was the food at the Lažeta household?”</em>,
-    they replied: <em>“Fit for an emperor!”</em>
-</p>
-
-<p>
-    Whether the original word was pronounced <em>cesar</em> or <em>sesar</em> remains uncertain to this day.
-    Although both forms appear on old gravestones and in oral tradition, most descendants of this branch are now known as the Cesarović family.
-</p>
-
-<h3>Ivan, Son of Mate</h3>
-
-<p>
-    Ivan married twice. In 1817 he married Pava Sičenica, and they had a son, Ante.
-    In his second marriage, to Jela Parlov, he had a daughter, Ruža.
-</p>
-
-<h3>Ante, Son of Ivan</h3>
-
-<p>
-    In 1853, Ante married Joza Pušić. They had four sons—Ivan, Jure, Marko, and Mate—and four daughters:
-    Iva, Tomica, Mara, and Jela. I have found no records of Jure and Marko beyond their birth entries.
-    They may have died young or moved elsewhere.
-</p>
-
-<h3>Ivan, Ante’s Eldest Son</h3>
-
-<p>
-    Ivan married Ruža Matišić. They had three sons—Marijan, Jozo, and Ivan—and three daughters:
-    Anica, Iva, and Jela. I have found no records of Marijan beyond his birth entry.
-    He may have died young or moved away.
-</p>
-
-<h3>Jozo, Son of Ivan</h3>
-
-<p>
-    Jozo married Iva Bilić. They had two sons, Marijan and Mirko, who died in early childhood,
-    and two daughters, Joza and Ana.
-</p>
-
-<h3>Marijan, Son of Jozo</h3>
-
-<p>
-    Marijan married Matija Mršić. They had a son, Josip, and six daughters: Nada, Danica,
-    Branka, Ana, Dragica, and Mirjana. Josip later married Dragica Pavić.
-    They had three sons—Marijan, Ante, and Kristijan—and a daughter, Silvija.
-</p>
-
-<h3>Ivan, Youngest Son of Ivan and Ruža Matišić</h3>
-
-<p>
-    Ivan married twice. His first wife was Jaka Tavra, with whom he had two sons, Frane and Stanko.
-    Stanko died at the age of fourteen.
-</p>
-
-<h3>Frane, Son of Ivan</h3>
-
-<p>
-    Frane married Tomica Pavić. They had four sons—Stanko, Cvjetko, Miroslav, and Dragomir—
-    and four daughters: Marija, Roza, Miroslava, and Anita. Miroslav died in early childhood.
-    Stanko married Ankica Kovačević, and they have two daughters, Tatjana and Tamara. They live in Zagreb.
-    Cvjetko and Dragomir never married and live in Klokočevac near Bjelovar.
-</p>
-
-<h3>Mate, Ante’s Youngest Son</h3>
-
-<p>
-    Mate married Ruža Manenica. They had five sons—Ante (who died in infancy), Josip,
-    Cvitan, Ante (named again after the death of the first child), and Nikola—and two daughters,
-    Tomica and Mara. I have found no records of Josip beyond his birth entry.
-    He may have died young or moved elsewhere.
-</p>
-
-<h3>Cvitan, Son of Mate</h3>
-
-<p>
-    Cvitan married Tomica Pavić. They had two sons, Mate and Nikola, and six daughters:
-    Lucija, Ana, Ruža, Stana, Nevenka, and Branka. Mate died in infancy.
-    I have found no records of Nikola beyond his birth entry.
-    He may have died young or moved elsewhere.
-</p>
-
-<h3>Ante, Fourth Son of Mate</h3>
-
-<p>
-    Ante married Ana Pavić. They had five sons—Marijan, Dinko, Mirko, Mate, and Cvitan—
-    and three daughters: Ana, Mara, and Tonka. Dinko died in infancy.
-</p>
-
-<h3>Marijan, Son of Ante</h3>
-
-<p>
-    Marijan married Pava Pušić. They raised two sons, Ante and Dinko, and a daughter, Neda.
-    Marijan was killed in Germany in 1963.
-</p>
-
-<h3>Ante Tandara, Son of Marijan</h3>
-
-<p>
-    Ante Marijanov was born in 1961 in Ričice. From 1964 onward, he lived with his mother Pava,
-    his sister Neda, and his brother Dinko in the village of Klokočevac near Bjelovar.
-    He married Mirjana Čeh, and they had two sons, Marijan and Marko.
-</p>
-
-<p>
-    In the early 1990s, he joined the defense of Croatia during the Croatian War of Independence.
-</p>
-
-<p>
-    Ante served from August 1991 as a member of the 105th Brigade of the Croatian Army.
-    In September of that year, he and nineteen other Croatian defenders, most of them from Bjelovar,
-    were captured in Kusonje near Pakrac, tortured, and brutally executed.
-    Their remains were recovered from the Rakov Potok mass grave in January 1992.
-</p>
-
-<p>
-    Ante’s remains were laid to rest on 5 February 1992 at the cemetery in Bjelovar.
-    May his memory endure, and may he be remembered for his contribution to the creation of the Republic of Croatia.
-    Rest in peace.
-</p>
-
-<h3>Dinko, Marijan’s Younger Son</h3>
-
-<p>
-    Dinko married Dubravka Lončar. They have two sons, Luka and Pavao, and live in Zagreb.
-</p>
-
-<h3>Mirko, Third Son of Ante and Ana Pavić</h3>
-
-<p>
-    Mirko married Anđa Parlov. They had two sons, Marijan and Ivica.
-    Marijan never married. Mirko, Anđa, and Marijan live in Split.
-</p>
-
-<h3>Ivica, Son of Mirko</h3>
-
-<p>
-    Ivica married Matija Bilobrk. They have a son, Ivan, and a daughter, Ivana.
-    The family lives in the United States.
-</p>
-
-<h3>Cvitan, Fourth Son of Ante</h3>
-
-<p>
-    Cvitan married Katica Kršinić. They have a son, Marijan, and a daughter, Zrinka.
-    Marijan married Leida Kezele, and they have two sons, Luka and Lovro.
-    Cvitan’s family lives in Split.
-</p>
-
-<h3>Mate, Youngest Son of Ante</h3>
-
-<p>
-    Mate married Zlata Mihoci. They raised a son, Dario, and a daughter, Danijela.
-    Dario married Ivana Tomić. They have no children.
-</p>
-
-<h3>Ivan, Son of Mate and Filipa Kopač</h3>
-
-<p>
-    Ivan’s second marriage was to Jela Parlov. They had a daughter, Ruža.
-</p>
-
-    </div>
-
-    <div class="tree-container">
-        <img src="matinagrana.png" alt="Matina grana" class="tree-image">
-    </div>
+    </main>
 
 </div>
-<!-- FLAG COUNTER -->
-<div class="visitor-box">
-    <h4>Posjetitelji</h4>
-    <a href="https://info.flagcounter.com/OyvA">
-        <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-             alt="Flag Counter">
-    </a>
-</div>
-    
+
 </body>
 </html>
+
