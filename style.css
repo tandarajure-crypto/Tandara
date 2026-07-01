@@ -453,3 +453,65 @@ body{
     outline-offset:3px;
     border-radius:6px;
 }
+/* ======================================================
+   STRANICE GRANA - DESNI SADRŽAJ UZ STALNI LIJEVI SIDEBAR
+====================================================== */
+
+.branch-content{
+    flex:1;
+    padding:36px 42px;
+    box-sizing:border-box;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.branch-card{
+    width:100%;
+    max-width:1200px;
+    background:#f3dfbd;
+    border:1px solid rgba(80,60,35,0.25);
+    border-radius:14px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.18);
+    padding:36px 48px;
+    box-sizing:border-box;
+    color:#3b2f22;
+    text-align:center;
+}
+
+.branch-card h1{
+    font-size:34px;
+    margin:20px 0 16px 0;
+}
+
+.branch-card h3{
+    font-size:22px;
+    margin:12px 0 20px 0;
+}
+
+.branch-text-block{
+    max-width:760px;
+    margin:0 auto;
+    text-align:left;
+}
+
+.branch-text-block p{
+    font-size:18px;
+    line-height:1.65;
+    text-align:justify;
+}
+
+.branch-flag{
+    display:block;
+    margin:36px auto 28px auto;
+    max-width:120px;
+    height:auto;
+}
+
+.branch-tree-image{
+    width:100%;
+    height:auto;
+    display:block;
+    margin-top:38px;
+    border-radius:10px;
+}
