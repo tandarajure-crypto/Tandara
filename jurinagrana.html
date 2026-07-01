@@ -4,156 +4,116 @@
 <meta charset="UTF-8">
 <title>Jurina grana</title>
 
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-
-<style>
-body{
-    margin:0;
-    background:#e7c191;
-    text-align:center;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* 5% praznog prostora sa svake strane */
-.page-wrapper{
-    width:90%;
-    margin:0 auto;
-}
-
-/* HOME tipka */
-.home-btn{
-    position:fixed;
-    top:20px;
-    left:20px;
-    z-index:9999;
-}
-
-.home-btn img{
-    width:60px;
-    height:auto;
-}
-
-/* Slika stabla – FULL WIDTH, ISPOD TEKSTA */
-.tree-image{
-    width:100%;
-    height:auto;
-    display:block;
-    margin-top:40px; /* normalan razmak ispod teksta */
-}
-
-/* Naslovi */
-h1 {
-    font-size: 2.2em;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-h2, h3, h4 {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-
-/* Tekst */
-p {
-    margin-bottom: 15px;
-}
-
-/* Zastava */
-.flag {
-    display: block;
-    margin: 60px auto 125px;
-    max-width: 120px;
-    height: auto;
-}
-
-/* Suženi tekstualni stupac */
-.text-block {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-/* MOBITEL */
-@media (max-width: 600px) {
-    .text-block {
-        max-width: 90%;
-    }
-}
-
-/* TABLET */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .text-block {
-        max-width: 80%;
-    }
-}
-</style>
+<link rel="stylesheet" href="style.css?v=4">
 
 </head>
 
-<body>
+<body class="hr">
 
-<div class="page-wrapper">
+<div class="layout">
 
-    <!-- HR ZASTAVA -->
-    <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="flag">
+    <!-- LIJEVI STUPAC -->
+    <aside class="left-menu">
 
-    <!-- HR NASLOVI -->
-    <h1>Prva grana prve obitelji TANDARA</h1>
-    <h3>Jure Tandara – Ivanov (rođen oko 1725 – )</h3>
+        <a href="index.html" class="home-button">
+            <div class="home-circle">
+                <svg class="home-svg" viewBox="0 0 24 24" fill="none"
+                     stroke="white" stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M3 10.5L12 3l9 7.5"></path>
+                    <path d="M5 10v10h14V10"></path>
+                    <path d="M10 20v-6h4v6"></path>
+                </svg>
+            </div>
+        </a>
 
-    <!-- HR TEKST -->
-    <div class="text-block">
-        <p>
-            Jure Tandara, rođen između 1720. i 1725., bio je najstariji sin Ivana Tandarića koji je kasnije
-            ustalio obiteljsko prezime u Tandara. Oženio se s Matijom Lekić i imali su sina Franu
-            i dvije kćeri, Anđu i Anu.<br><br>
+        <div class="lang-switch">
+            <a href="index.html" class="lang-btn flag-btn">
+                <img src="flag-hr.png" alt="HR">
+            </a>
+            <a href="index-en.html" class="lang-btn flag-btn">
+                <img src="flag-uk.png" alt="EN">
+            </a>
+        </div>
 
-            Frane je bio oženjen s Božom Ćosić i 1792. godine su dobili sina Nikolu.<br><br>
+        <h2>DIGITALNI ARHIV RODA TANDARA</h2>
 
-            Kod popisa stanovništva u Ričicama iz 1806. godine nije zabilježen niti jedan član Jurine
-            obitelji i nije poznato što se dogodilo s njegovom lozom. Pretpostavka je da su odselili,
-            nakon čega im se do danas izgubio svaki trag.
-        </p>
-    </div>
+        <ul class="heritage-menu">
+            <li><span>🌳</span><a href="podrijetlo-hr.html">Podrijetlo prezimena</a></li>
+            <li><span>🌳</span><a href="rodoslovlje-hr.html">Rodoslovlje roda</a></li>
+            <li><span>🌳</span><a href="migracije-hr.html">Migracije i rasprostranjenost</a></li>
+            <li><span>🌳</span><a href="autor-hr.html">O autoru</a></li>
+            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Kontakti</a></li>
+        </ul>
 
-    <!-- UK ZASTAVA -->
-    <img src="flag-uk.png?v=3" alt="UK zastava" class="flag">
+        <div class="author-photo">
+            <img src="jure.png" alt="Jure Tandara">
+        </div>
 
-    <!-- EN NASLOVI -->
-    <h1>The First Branch of the TANDARA Family Tree</h1>
-    <h3>Jure Tandara, son of Ivan (born around 1725 – )</h3>
+        <h2 class="visitors-title">🌳 Posjetitelji</h2>
 
-    <!-- EN TEKST -->
-    <div class="text-block">
-        <p>
-            According to archival records, Jure Tandara (born between 1720–1725) was the eldest son of 
-            Ivan Tandarić, who later established the family surname as Tandara. He was married to 
-            Matija Lekić and they had a son, Frane, and two daughters, Anđa and Ana.<br><br>
+        <div class="flagbox">
+            <a href="https://info.flagcounter.com/OyvA">
+                <img
+                    src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
+                    alt="Flag Counter">
+            </a>
+        </div>
 
-            Frane was married to Boža Ćosić and in 1792 they had a son, Nikola.<br><br>
+    </aside>
 
-            In the 1806 census of Ričice, no member of Jure’s family was recorded, and it is not 
-            known what happened to his family. It is assumed that they moved away, after which 
-            all trace of them was lost.
-        </p>
-    </div>
+    <!-- DESNI SADRŽAJ -->
+    <main class="branch-content">
 
-    <!-- SLIKA ISPOD TEKSTA -->
-    <img src="jurinagrana.png?v=3" alt="Jurina grana" class="tree-image">
+        <div class="branch-card">
+
+            <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="branch-flag">
+
+            <h1>Prva grana prve obitelji TANDARA</h1>
+            <h3>Jure Tandara – Ivanov (rođen oko 1725 – )</h3>
+
+            <div class="branch-text-block">
+                <p>
+                    Jure Tandara, rođen između 1720. i 1725., bio je najstariji sin Ivana Tandarića koji je kasnije
+                    ustalio obiteljsko prezime u Tandara. Oženio se s Matijom Lekić i imali su sina Franu
+                    i dvije kćeri, Anđu i Anu.<br><br>
+
+                    Frane je bio oženjen s Božom Ćosić i 1792. godine su dobili sina Nikolu.<br><br>
+
+                    Kod popisa stanovništva u Ričicama iz 1806. godine nije zabilježen niti jedan član Jurine
+                    obitelji i nije poznato što se dogodilo s njegovom lozom. Pretpostavka je da su odselili,
+                    nakon čega im se do danas izgubio svaki trag.
+                </p>
+            </div>
+
+            <img src="flag-uk.png?v=3" alt="UK zastava" class="branch-flag">
+
+            <h1>The First Branch of the TANDARA Family Tree</h1>
+            <h3>Jure Tandara, son of Ivan (born around 1725 – )</h3>
+
+            <div class="branch-text-block">
+                <p>
+                    According to archival records, Jure Tandara (born between 1720–1725) was the eldest son of
+                    Ivan Tandarić, who later established the family surname as Tandara. He was married to
+                    Matija Lekić and they had a son, Frane, and two daughters, Anđa and Ana.<br><br>
+
+                    Frane was married to Boža Ćosić and in 1792 they had a son, Nikola.<br><br>
+
+                    In the 1806 census of Ričice, no member of Jure’s family was recorded, and it is not
+                    known what happened to his family. It is assumed that they moved away, after which
+                    all trace of them was lost.
+                </p>
+            </div>
+
+            <img src="jurinagrana.png?v=3" alt="Jurina grana" class="branch-tree-image">
+
+        </div>
+
+    </main>
 
 </div>
-<!-- FLAG COUNTER -->
-<div class="visitor-box">
-    <h4>Posjetitelji</h4>
-    <a href="https://info.flagcounter.com/OyvA">
-        <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-             alt="Flag Counter">
-    </a>
-</div>
+
 </body>
 </html>
 
