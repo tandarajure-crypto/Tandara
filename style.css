@@ -515,3 +515,36 @@ body{
     margin-top:38px;
     border-radius:10px;
 }
+.hs-livanjske {
+    position: absolute;
+    top: 64%;
+    left: 53%;
+    width: 15%;
+    height: 5.5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(248, 232, 190, 0.92);
+    border: 2px solid #7a5a2f;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.28);
+
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.1;
+    text-align: center;
+    color: #3b2a1a;
+
+    cursor: pointer;
+    z-index: 20;
+}
+
+.hs-livanjske:hover {
+    background: #d4af37;
+    color: white;
+    transform: scale(1.04);
+}
+
