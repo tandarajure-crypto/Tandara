@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-    <meta charset="UTF-8">
-    <title>Livanjske Tandare</title>
-    <link rel="stylesheet" href="style.css?v=3">
+<meta charset="UTF-8">
+<title>Livanjske Tandare</title>
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body class="hr">
 
 <div class="layout">
 
-    <div class="left-menu">
+    <aside class="left-menu">
 
-        <a href="./index.html" class="home-button">
+        <a href="index.html" class="home-button">
             <div class="home-circle">
-                <svg class="home-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <svg class="home-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 10.5L12 3l9 7.5"></path>
                     <path d="M5 10v10h14V10"></path>
                     <path d="M10 20v-6h4v6"></path>
@@ -23,33 +23,59 @@
         </a>
 
         <div class="lang-switch">
-            <a href="livanjsketandare.html">HR</a>
-            <a href="livanjsketandare-en.html">EN</a>
+            <a href="livanjsketandare.html" class="lang-btn flag-btn">
+                <img src="flag-hr.png" alt="HR">
+            </a>
+            <a href="livanjsketandare-en.html" class="lang-btn flag-btn">
+                <img src="flag-uk.png" alt="EN">
+            </a>
         </div>
 
-        <h1>DIGITALNI<br>ARHIV<br>RODA<br>TANDARA</h1>
+        <h2>TANDARA-PREZIME</h2>
 
-        <nav>
-            <a href="podrijetlo.html">🌳 Podrijetlo prezimena</a>
-            <a href="rodoslovlje.html">🌳 Rodoslovlje roda</a>
-            <a href="migracije.html">🌳 Migracije i rasprostranjenost</a>
-            <a href="autor-hr.html">🌳 O autoru</a>
-            <a href="kontakti.html">🌳 Kontakti</a>
-        </nav>
+        <ul class="heritage-menu">
+            <li><span>🌳</span><a href="autor-hr.html">O autoru i projektu</a></li>
+            <li><span>🌳</span><a href="podrijetlo-hr.html">Podrijetlo prezimena</a></li>
+            <li><span>🌳</span><a href="rodoslovlje-hr.html">Rodoslovlje roda</a></li>
+            <li><span>🌳</span><a href="migracije-hr.html">Migracije i rasprostranjenost</a></li>
+            <li><span>🌳</span><a href="zanimljivosti.html">Zanimljivosti</a></li>
+            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Kontakti</a></li>
+        </ul>
 
-    </div>
+        <div class="author-photo">
+            <img src="jure.png" alt="Jure Tandara">
+        </div>
 
-    <main class="content-page">
-        <h2>Livanjske Tandare</h2>
+        <h2 class="visitors-title">🌳 Posjetitelji</h2>
 
-        <p>
-            Ova stranica bit će posvećena dijelu loze Tandara povezane s livanjskim krajem.
-        </p>
+        <div class="flagbox">
+            <a href="https://info.flagcounter.com/OyvA">
+                <img src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/" alt="Flag Counter">
+            </a>
+        </div>
 
-        <p>
-            Ovdje se mogu dodati povijesni podaci, obiteljske grane, migracije,
-            fotografije, dokumenti i druga građa vezana uz Livanjske Tandare.
-        </p>
+    </aside>
+
+    <main class="branch-content">
+
+        <div class="branch-card">
+
+            <img src="flag-hr.png?v=3" alt="Hrvatska zastava" class="branch-flag">
+
+            <h1>Livanjske Tandare</h1>
+            <h3>Poseban dio loze roda Tandara</h3>
+
+            <div class="branch-text-block">
+                <p>
+                    Ova stranica posvećena je dijelu loze Tandara povezane s livanjskim krajem.<br><br>
+
+                    Ovdje će se postupno dodavati povijesni podaci, obiteljske veze, migracije,
+                    dokumenti, fotografije i druga građa koja se odnosi na Livanjske Tandare.
+                </p>
+            </div>
+
+        </div>
+
     </main>
 
 </div>
