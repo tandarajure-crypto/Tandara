@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Box 1 – TANDARA-PREZIME</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
@@ -16,41 +17,44 @@
     <link rel="stylesheet" href="style.css?v=3">
 
     <style>
+        .image-wrapper{
+            position:relative;
+        }
+
         .box-overlay-content{
             position:absolute;
-            top:6%;
-            left:62%;
-            width:26%;
-            min-height:22%;
-            z-index:40;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:9999;
             background:rgba(243,223,189,0.96);
-            border:2px solid #7a5a2f;
-            border-radius:14px;
-            padding:22px;
+            padding:55px;
             box-sizing:border-box;
+            overflow-y:auto;
             color:#3b2f22;
             text-align:center;
-            pointer-events:none;
+            font-family:Georgia, serif;
         }
 
         .box-overlay-content h1{
-            margin:0 0 14px 0;
-            font-size:26px;
+            margin-top:0;
+            font-size:38px;
         }
 
         .box-overlay-content p{
-            font-size:18px;
-            line-height:1.5;
+            font-size:24px;
+            line-height:1.6;
             font-weight:bold;
         }
 
         .box-back-link{
             display:inline-block;
-            margin-top:16px;
+            margin-top:30px;
+            font-size:20px;
             font-weight:bold;
             color:#3b2f22;
             text-decoration:none;
-            pointer-events:auto;
         }
     </style>
 </head>
@@ -113,38 +117,26 @@
     </aside>
 
     <main class="right-image">
-
         <div class="image-wrapper">
 
-            <img src="family-tree.png?v=5" alt="Obiteljsko stablo" class="bg">
-
-            <div class="hs hs-jurina" onclick="location.href='jurinagrana.html'"></div>
-            <div class="hs hs-petrova" onclick="location.href='petrovagrana.html'"></div>
-            <div class="hs hs-antina" onclick="location.href='antinagrana.html'"></div>
-            <div class="hs hs-matina" onclick="location.href='matinagrana.html'"></div>
-
-            <div class="hs-livanjske" onclick="window.location.href='livanjsketandare.html'">
-                LIVANJSKE<br>TANDARE
-            </div>
-
-            <div class="hs hs-box1" onclick="location.href='box1.html'"></div>
-            <div class="hs hs-box2" onclick="location.href='box2.html'"></div>
-            <div class="hs hs-box3" onclick="location.href='box3.html'"></div>
-            <div class="hs hs-box4" onclick="location.href='box4.html'"></div>
-            <div class="hs hs-box5" onclick="location.href='box5.html'"></div>
-            <div class="hs hs-box6" onclick="location.href='box6.html'"></div>
-            <div class="hs hs-box7" onclick="location.href='box7.html'"></div>
-            <div class="hs hs-box8" onclick="location.href='box8.html'"></div>
+            <img src="family-tree.png?v=5"
+                 alt="Obiteljsko stablo"
+                 class="bg">
 
             <section class="box-overlay-content">
                 <h1>Box 1</h1>
+
                 <p>OVO JE TESTIRANJE.</p>
-                <p>Ako vidiš ovu poruku, Box 1 prikazuje sadržaj.</p>
+
+                <p>
+                    Ako vidiš ovu poruku preko cijele površine osnovne slike
+                    <strong>family-tree.png</strong>, Box 1 radi ispravno.
+                </p>
+
                 <a href="index.html" class="box-back-link">← Povratak na početnu</a>
             </section>
 
         </div>
-
     </main>
 
 </div>
