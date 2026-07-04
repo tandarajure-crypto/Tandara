@@ -2,36 +2,113 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
-    <title>Grana – Box 4</title>
-      <!-- Google Analytics -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Box 1 – TANDARA-PREZIME</title>
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-S33NBEJQFD');
     </script>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body class="hr">
 
-<div class="content">
-    <h1>Box 4</h1>
-    <p>Ovdje ide sadržaj za četvrti okvir.</p>
+<div class="layout">
 
-    <a href="./index.html" class="back-link">← Povratak na početnu</a>
+    <!-- LIJEVI STUPAC -->
+    <aside class="left-menu">
 
-    <div class="flagbox" style="margin-top:40px; text-align:center;">
-        <a href="https://info.flagcounter.com/OyvA">
-            <img
-                src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"
-                alt="Flag Counter"
-                border="0">
+        <!-- HOME -->
+        <a href="index.html" class="home-button">
+            <div class="home-circle">
+                <svg class="home-svg" viewBox="0 0 24 24" fill="none"
+                     stroke="white" stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M3 10.5L12 3l9 7.5"></path>
+                    <path d="M5 10v10h14V10"></path>
+                    <path d="M10 20v-6h4v6"></path>
+                </svg>
+            </div>
         </a>
-    </div>
+
+        <!-- HR / EN -->
+        <div class="lang-switch">
+            <a href="index.html" class="lang-btn flag-btn">
+                <img src="flag-hr.png" alt="HR">
+            </a>
+            <a href="index-en.html" class="lang-btn flag-btn">
+                <img src="flag-uk.png" alt="EN">
+            </a>
+        </div>
+
+        <h2>TANDARA-PREZIME</h2>
+
+        <ul class="heritage-menu">
+            <li><span>🌳</span><a href="autor-hr.html">O autoru i projektu</a></li>
+            <li><span>🌳</span><a href="podrijetlo-hr.html">Podrijetlo prezimena</a></li>
+            <li><span>🌳</span><a href="rodoslovlje-hr.html">Rodoslovlje roda</a></li>
+            <li><span>🌳</span><a href="migracije-hr.html">Migracije i rasprostranjenost</a></li>
+            <li><span>🌳</span><a href="zanimljivosti.html">Zanimljivosti</a></li>
+            <li><span>🌳</span><a href="mailto:tandarajure@gmail.com">Kontakt i suradnja</a></li>
+        </ul>
+
+        <div class="author-photo">
+            <a href="./autor-hr.html">
+                <img src="./jure.png" alt="Jure Tandara">
+            </a>
+        </div>
+
+        <h3 class="visitor-title">Posjetitelji</h3>
+
+        <div class="flagbox">
+            <a href="https://info.flagcounter.com/OyvA">
+                <img
+                    src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"
+                    alt="Flag Counter">
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- DESNI STUPAC: OSNOVNA SLIKA + SADRŽAJ BOXA PREKO SLIKE -->
+    <main class="right-image">
+
+        <div class="image-wrapper">
+
+            <img src="family-tree.png?v=5"
+                 alt="Obiteljsko stablo"
+                 class="bg">
+
+            <section class="box-overlay-content">
+                <h1>Box 1</h1>
+
+                <p>
+                    Ovdje ide sadržaj za prvi okvir. Ovaj tekst se sada prikazuje
+                    samo na desnoj strani, preko osnovne slike <strong>family-tree.png</strong>,
+                    a lijevi stupac ostaje isti kao na početnoj stranici.
+                </p>
+
+                <p>
+                    Kada ovo bude izgledalo dobro, za ostale boxove kopiraj isti raspored,
+                    promijeni samo naslov, tekst i naziv datoteke.
+                </p>
+
+                <a href="index.html" class="box-back-link">← Povratak na početnu</a>
+            </section>
+
+        </div>
+
+    </main>
 
 </div>
 
 </body>
-</html> 
+</html>
