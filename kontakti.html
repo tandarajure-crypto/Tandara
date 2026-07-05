@@ -36,10 +36,10 @@
 </a>
 <!-- HR / EN -->
 <div class="lang-switch">
-<a class="lang-btn flag-btn" href="index.html">
+<a class="lang-btn flag-btn" href="kontakti.html">
 <img alt="HR" src="flag-hr.png"/>
 </a>
-<a class="lang-btn flag-btn" href="index-en.html">
+<a class="lang-btn flag-btn" href="contacts.html">
 <img alt="EN" src="flag-uk.png"/>
 </a>
 </div>
@@ -87,6 +87,64 @@
                     Na ovu adresu možete poslati podatke o obitelji, rodoslovne dopune, fotografije, dokumente,
                     pitanja, prijedloge i poruke za buduću knjigu poruka.
                 </p>
+</section>
+
+<section id="kontakt-obrazac">
+<h2>Kontakt obrazac</h2>
+<p>
+                    Poruku možete poslati izravno preko ovog obrasca. Poruka stiže na službenu e-mail adresu
+                    Digitalnog arhiva roda Tandara: <strong>tandarajure@outlook.com</strong>.
+                </p>
+<form class="archive-contact-form" action="https://formsubmit.co/tandarajure@outlook.com" method="POST">
+<input type="hidden" name="_subject" value="[TANDARA] Kontakt poruka sa web stranice">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_autoresponse" value="Poštovani, zahvaljujemo što ste kontaktirali Digitalni arhiv roda Tandara. Vaša poruka je uspješno zaprimljena. Odgovorit ćemo Vam u najkraćem mogućem roku. Srdačan pozdrav, Digitalni arhiv roda Tandara.">
+<input type="text" name="_honey" style="display:none">
+<div class="form-row">
+<div>
+<label for="ime">Ime i prezime *</label>
+<input id="ime" name="Ime i prezime" type="text" required>
+</div>
+<div>
+<label for="mjesto">Mjesto i država *</label>
+<input id="mjesto" name="Mjesto i država" type="text" required>
+</div>
+</div>
+<div class="form-row">
+<div>
+<label for="email-posiljatelja">E-mail za odgovor *</label>
+<input id="email-posiljatelja" name="email" type="email" required>
+</div>
+<div>
+<label for="grana">Grana roda, ako je poznata</label>
+<select id="grana" name="Grana roda">
+<option value="Nije poznato">Nije poznato</option>
+<option value="Jurina grana">Jurina grana</option>
+<option value="Petrova grana">Petrova grana</option>
+<option value="Antina grana">Antina grana</option>
+<option value="Matina grana">Matina grana</option>
+<option value="Drugo / potrebno provjeriti">Drugo / potrebno provjeriti</option>
+</select>
+</div>
+</div>
+<label for="povezanost">Povezanost s rodom Tandara</label>
+<input id="povezanost" name="Povezanost s rodom Tandara" type="text" placeholder="npr. nosim prezime Tandara, potomak sam roda Tandara, istražujem obitelj...">
+<label for="poruka">Poruka *</label>
+<textarea id="poruka" name="Poruka" required></textarea>
+<label class="checkbox-line">
+<input type="checkbox" name="Dopuštenje za objavu poruke" value="DA">
+<span>Dopuštam da se moja poruka, nakon pregleda i odobrenja, može objaviti u knjizi poruka.</span>
+</label>
+<label class="checkbox-line">
+<input type="checkbox" name="Dopuštenje za objavu imena i mjesta" value="DA">
+<span>Dopuštam objavu imena i mjesta uz poruku. E-mail adresa se ne objavljuje.</span>
+</label>
+<p class="form-note">
+                        Polja označena zvjezdicom su obavezna. Fotografije i dokumente pošaljite naknadno kao privitak u odgovoru na e-mail komunikaciju.
+                    </p>
+<button type="submit">Pošalji poruku</button>
+</form>
 </section>
 <section id="kako-pomoci">
 <h2>Kako možete pomoći</h2>
