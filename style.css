@@ -653,3 +653,13 @@ body{
         gap:0;
     }
 }
+.contact-success-large {
+  max-width: 620px;
+  margin: 20px auto 30px auto;
+  padding: 28px 34px;
+  border: 1px solid #b7d7b7;
+  border-radius: 12px;
+  background: #f4fff4;
+  text-align: center;
+  font-size: 1.08rem;
+}
