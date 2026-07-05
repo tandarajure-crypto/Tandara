@@ -1,655 +1,310 @@
-
-body{
-    margin:0;
-    font-family:Georgia, serif;
-    background:#e7c191;
-}
-
-/* LAYOUT */
-.layout{
-    max-width:1920px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:300px 1fr;
-    gap:20px;
-    padding:4px;
-    box-sizing:border-box;
-}
-
-/* LEFT MENU */
-.left-menu{
-    width:300px;
-    background:#e7d3b0;
-    border-right:4px solid #7a7a7a;
-    padding:14px 0 20px 0;
-    box-sizing:border-box;
-    color:#4a3b2a;
-    display:flex;
-    flex-direction:column;
-
-    position:sticky;
-    top:0;
-    height:100vh;
-    overflow-y:auto;
-}
-
-/* RESET */
-.left-menu h2,
-.left-menu ul,
-.left-menu li{
-    margin:0;
-    padding:0;
-}
-
-/* HOME */
-/* HOME */
-.home-button{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:8px;
-    text-decoration:none;
-}
-
-.home-circle{
-    width:66px;
-    height:66px;
-    background:#c9a46d;
-    border-radius:50%;
-    border:2px solid transparent;
-    box-shadow:0 0 4px rgba(0,0,0,.30);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:all .15s ease;
-}
-
-.home-button:hover .home-circle{
-    border-color:#d4af37;
-    background:#d3b07a;
-}
-
-.home-svg{
-    width:28px;
-    height:28px;
-}
-
-/* LANGUAGE */
-.lang-switch{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    margin-bottom:16px;
-}
-
-.lang-btn{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:transparent;
-    padding:2px;
-    border:2px solid transparent;
-    border-radius:4px;
-    text-decoration:none;
-    box-shadow:none;
-    transition:all .15s ease;
-}
-
-.lang-btn:hover{
-    border-color:#d4af37;
-    background:rgba(212,175,55,.12);
-}
-.flag-btn img{
-    display:block;
-    width:30px;
-    height:20px;
-    object-fit:cover;
-    border-radius:3px;
-}
-
-/* NASLOV */
-.left-menu > h2:not(.visitors-title){
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    margin:-6px 0 14px 0;
-    color:#3b2f22;
-}
-
-/* MENU */
-.heritage-menu{
-    list-style:none;
-    padding:0 20px;
-    margin:0;
-}
-
-.heritage-menu li{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:7px 0;
-    border-bottom:1px solid rgba(0,0,0,.08);
-    border-left:2px solid transparent;
-    transition:all .15s ease;
-}
-
-.heritage-menu li:hover{
-    border-left:2px solid #d4af37;
-    background:rgba(212,175,55,.10);
-    padding-left:6px;
-}
-
-.heritage-menu a{
-    text-decoration:none;
-    color:#4a3b2a;
-    font-size:17px;
-    font-weight:400;
-    line-height:1.2;
-}
-
-.heritage-menu a:hover{
-    color:#7a5e3a;
-}
-
-/* POSJETITELJI */
-.visitors-title{
-   margin:16px 20px 0 20px;
-    padding:15px 0 13px 0;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-align:left;
-    font-size:17px;
-    font-weight:400;
-    font-family:Georgia, serif;
-    color:#4a3b2a;
-    line-height:1.2;
-    border-top:1px solid rgba(0,0,0,0.08);
-    border-bottom:1px solid rgba(0,0,0,0.08);
-}
-
-/* AUTHOR PHOTO */
-.author-photo{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin:10px 0 12px 0;
-    padding:0;
-}
-
-.author-photo img{
-    width:190px !important;
-    max-width:190px !important;
-    height:auto !important;
-    display:block;
-    border:3px solid #b99867;
-    border-radius:12px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.25);
-    transition:all .15s ease;
-}
-
-.author-photo img:hover{
-    border-color:#d4af37;
-    box-shadow:0 0 10px rgba(212,175,55,.45);
-}
-
-/* FLAG */
-.flagbox{
-    text-align:center;
-    margin-top:4px;
-    padding-top:0;
-}
-
-.flagbox img{
-    display:inline-block;
-    max-width:260px;
-    height:auto;
-    border:0;
-}
-
-/* RIGHT SIDE - KORIGIRANO: slika se sada ravna po visini ekrana */
-.right-image{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:0;
-    overflow:hidden;
-}
-
-.image-wrapper{
-    position:relative;
-    display:inline-block;
-    height:100vh;
-}
-
-.bg{
-    height:100vh;
-    width:auto;
-    max-width:none;
-    display:block;
-    border:0;
-
-    transform:scaleX(0.92);
-    transform-origin:center;
-}
-
-/* ==========================================================
-   HOTSPOTS
-========================================================== */
-.hs{
-    position:absolute;
-    cursor:pointer;
-    box-sizing:border-box;
-}
-
-/* ----------------------------------------------------------
-   4 GLAVNE GRANE
----------------------------------------------------------- */
-.hs-jurina,
-.hs-petrova,
-.hs-antina,
-.hs-matina{
-    background:transparent;
-    border:2px solid transparent;
-    border-radius:4px;
-    transition:all .15s ease;
-}
-
-.hs-jurina:hover,
-.hs-petrova:hover,
-.hs-antina:hover,
-.hs-matina:hover{
-    border:2px solid #d4af37;
-    background:rgba(212,175,55,.12);
-}
-
-/* KOORDINATE 4 GRANE */
-
-.hs-jurina,
-.hs-petrova{
-    top:31.75%;
-    width:18%;
-    height:10.15%;
-}
-
-.hs-antina,
-.hs-matina{
-    top:48.10%;
-    width:18%;
-    height:10.15%;
-}
-
-.hs-jurina,
-.hs-antina{
-    left:12.48%;
-}
-
-.hs-petrova,
-.hs-matina{
-    left:36.08%;
-}
-/* ----------------------------------------------------------
-   DESNI DIJAGRAM - DEBUG VERZIJA - NE DIRANO
----------------------------------------------------------- */
-/* ----------------------------------------------------------
-   DESNI DIJAGRAM - ZAVRŠNA VERZIJA
----------------------------------------------------------- */
-.hs-box1,
-.hs-box2,
-.hs-box3,
-.hs-box4,
-.hs-box5,
-.hs-box6,
-.hs-box7,
-.hs-box8{
-    position:absolute;
-    left:83.3%;
-    width:11.0%;
-    border:2px solid transparent;
-    background:transparent;
-    box-sizing:border-box;
-    border-radius:4px;
-    transition:all .15s ease;
-}
-
-.hs-box1:hover,
-.hs-box2:hover,
-.hs-box3:hover,
-.hs-box4:hover,
-.hs-box5:hover,
-.hs-box6:hover,
-.hs-box7:hover,
-.hs-box8:hover{
-    border:2px solid #d4af37;
-    background:rgba(212,175,55,.12);
-}
-
-
-/* VERTIKALNI POLOŽAJI */
-
-.hs-box1{
-    top:2.80%;
-    height:9.65%;
-}
-
-.hs-box2{
-    top:15.30%;
-    height:9.01%;
-}
-
-.hs-box3{
-    top:28%;
-    height:8.88%;
-}
-
-.hs-box4{
-    top:39.0%;
-    height:9.4%;
-}
-
-.hs-box5{
-    top:51.72%;
-    height:8.63%;
-}
-
-.hs-box6{
-    top:63.36%;
-    height:8.8%;
-}
-
-.hs-box7{
-    top:75.83%;
-    height:8.49%;
-}
-
-.hs-box8{
-    top:87.65%;
-    height:8.89%;
-}
-
-/* ======================================================
-   CONTENT PAGES
-====================================================== */
-.content-page{
-    flex:1;
-    padding:36px 42px;
-    box-sizing:border-box;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-}
-
-.content-card{
-    width:100%;
-    max-width:1050px;
-    background:#f3dfbd;
-    border:1px solid rgba(80,60,35,0.25);
-    border-radius:14px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.18);
-    padding:42px 54px;
-    box-sizing:border-box;
-    color:#3b2f22;
-}
-
-.content-card h1{
-    margin:0 0 34px 0;
-    text-align:center;
-    font-size:34px;
-    font-weight:bold;
-    color:#3b2f22;
-}
-
-.content-card section{
-    margin-bottom:34px;
-    padding-bottom:26px;
-    border-bottom:1px solid rgba(0,0,0,0.12);
-}
-
-.content-card section:last-child{
-    border-bottom:none;
-    margin-bottom:0;
-    padding-bottom:0;
-}
-
-.content-card h2{
-    margin:0 0 14px 0;
-    font-size:23px;
-    color:#4a3b2a;
-}
-
-.content-card p{
-    margin:0 0 14px 0;
-    font-size:18px;
-    line-height:1.65;
-    text-align:justify;
-}
-
-.content-card ul{
-    margin:8px 0 18px 28px;
-    padding:0;
-}
-
-.content-card li{
-    font-size:18px;
-    line-height:1.55;
-    margin-bottom:6px;
-}
-/* ==========================================
-   ZAJEDNIČKI HOVER ZA SVE KLIKABILNO
-========================================== */
-
-.home-button,
-.lang-btn,
-.heritage-menu a,
-.author-photo img,
-.flagbox a{
-    transition:all .15s ease;
-}
-
-.flagbox a:hover{
-    display:inline-block;
-    outline:2px solid #d4af37;
-    outline-offset:3px;
-    border-radius:6px;
-}
-/* ======================================================
-   STRANICE GRANA - DESNI SADRŽAJ UZ STALNI LIJEVI SIDEBAR
-====================================================== */
-
-.branch-content{
-    flex:1;
-    padding:36px 42px;
-    box-sizing:border-box;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-}
-
-.branch-card{
-    width:100%;
-    max-width:1200px;
-    background:#f3dfbd;
-    border:1px solid rgba(80,60,35,0.25);
-    border-radius:14px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.18);
-    padding:36px 48px;
-    box-sizing:border-box;
-    color:#3b2f22;
-    text-align:center;
-}
-
-.branch-card h1{
-    font-size:34px;
-    margin:20px 0 16px 0;
-}
-
-.branch-card h3{
-    font-size:22px;
-    margin:12px 0 20px 0;
-}
-
-.branch-text-block{
-    max-width:760px;
-    margin:0 auto;
-    text-align:left;
-}
-
-.branch-text-block p{
-    font-size:18px;
-    line-height:1.65;
-    text-align:justify;
-}
-
-.branch-flag{
-    display:block;
-    margin:36px auto 28px auto;
-    max-width:120px;
-    height:auto;
-}
-
-.branch-tree-image{
-    width:100%;
-    height:auto;
-    display:block;
-    margin-top:38px;
-    border-radius:10px;
-}
-.hs-livanjske {
-    position: absolute;
-    top: 68%;
-    left: 45%;
-    width: 8%;
-    height: 5.2%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(248, 232, 190, 0.92);
-    border: 2px solid #7a5a2f;
-    border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.28);
-
-    font-family: Georgia, serif;
-    font-size: 13px;
-    font-weight: bold;
-    line-height: 1.05;
-    text-align: center;
-    color: #3b2a1a;
-
-    cursor: pointer;
-    z-index: 20;
-}
-
-.hs-livanjske:hover {
-    background: #d4af37;
-    color: white;
-    transform: scale(1.04);
-}
-
-
-/* ======================================================
-   CONTACT FORM - Digitalni arhiv roda Tandara
-====================================================== */
-.form-success-message{
-    display:none;
-    margin:22px 0 0 0;
-    padding:16px 20px;
-    border:1px solid rgba(55,120,55,0.35);
-    border-radius:10px;
-    background:rgba(230,248,230,0.75);
-    color:#244f24;
-    font-size:18px;
-    font-weight:bold;
-    line-height:1.45;
-}
-
-.archive-contact-form{
-    margin-top:24px;
-    padding:28px;
-    background:rgba(255,255,255,0.28);
-    border:1px solid rgba(80,60,35,0.25);
-    border-radius:12px;
-}
-
-.archive-contact-form .form-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-.archive-contact-form label{
-    display:block;
-    margin:0 0 8px 0;
-    font-size:17px;
-    font-weight:bold;
-    color:#3b2f22;
-}
-
-.archive-contact-form input,
-.archive-contact-form select,
-.archive-contact-form textarea{
-    width:100%;
-    box-sizing:border-box;
-    padding:12px 14px;
-    margin-bottom:18px;
-    border:1px solid rgba(80,60,35,0.35);
-    border-radius:8px;
-    background:#fffaf0;
-    font-family:Georgia, 'Times New Roman', serif;
-    font-size:17px;
-    color:#2f2418;
-}
-
-.archive-contact-form textarea{
-    min-height:170px;
-    resize:vertical;
-}
-
-.archive-contact-form .checkbox-line{
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-    margin:8px 0 14px 0;
-    font-size:16px;
-    line-height:1.45;
-}
-
-.archive-contact-form .checkbox-line input{
-    width:auto;
-    margin:4px 0 0 0;
-}
-
-.archive-contact-form button{
-    display:block;
-    margin:24px auto 0 auto;
-    padding:13px 34px;
-    border:none;
-    border-radius:999px;
-    background:#6b4b25;
-    color:white;
-    font-family:Georgia, 'Times New Roman', serif;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 3px 8px rgba(0,0,0,0.25);
-}
-
-.archive-contact-form button:hover{
-    background:#8a652f;
-}
-
-.form-note{
-    font-size:16px !important;
-    line-height:1.55 !important;
-    text-align:left !important;
-    color:#4a3b2a;
-}
-
-@media (max-width: 900px){
-    .archive-contact-form .form-row{
-        grid-template-columns:1fr;
-        gap:0;
-    }
-}
+<!DOCTYPE html>
+
+<html lang="hr">
+<head>
+<meta charset="utf-8"/>
+<title>Antina grana</title>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-S33NBEJQFD');
+    </script>
+<link href="style.css?v=4" rel="stylesheet"/>
+</head>
+<body class="hr">
+<div class="layout">
+<!-- LIJEVI STUPAC -->
+<aside class="left-menu">
+<!-- HOME -->
+<a class="home-button" href="index.html">
+<div class="home-circle">
+<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 10.5L12 3l9 7.5"></path>
+<path d="M5 10v10h14V10"></path>
+<path d="M10 20v-6h4v6"></path>
+</svg>
+</div>
+</a>
+<!-- HR / EN -->
+<div class="lang-switch">
+<a class="lang-btn flag-btn" href="index.html">
+<img alt="HR" src="flag-hr.png"/>
+</a>
+<a class="lang-btn flag-btn" href="index-en.html">
+<img alt="EN" src="flag-uk.png"/>
+</a>
+</div>
+<h2>TANDARA-PREZIME</h2>
+<ul class="heritage-menu"><li><span>🌳</span><a href="./autor-hr.html">O autoru i projektu</a></li><li><span>🌳</span><a href="./podrijetlo-hr.html">Podrijetlo prezimena</a></li><li><span>🌳</span><a href="./rodoslovlje-hr.html">Rodoslovlje roda</a></li><li><span>🌳</span><a href="./migracije-hr.html">Migracije i rasprostranjenost</a></li><li><span>🌳</span><a href="./zanimljivosti.html">Zanimljivosti</a></li><li><span>🌳</span><a href="./kontakti.html">Kontakt i suradnja</a></li><li><span>🌳</span><a href="./knjiga-poruka.html">Knjiga poruka</a></li></ul>
+<div class="author-photo">
+<a href="./autor-hr.html">
+<img alt="Jure Tandara" src="./jure.png"/>
+</a>
+</div>
+<h3 class="visitor-title">Posjetitelji</h3>
+<div class="flagbox">
+<a href="https://info.flagcounter.com/OyvA">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
+</a>
+</div>
+</aside>
+<!-- DESNI SADRŽAJ -->
+<main class="branch-content">
+<div class="branch-card">
+<img alt="Hrvatska zastava" class="branch-flag" src="flag-hr.png?v=3"/>
+<h1>Treća grana prve obitelji TANDARA</h1>
+<h3>Ante Tandara – Ivanov (rođen oko 1735. – )</h3>
+<div class="branch-text-block">
+<p>
+                    Ante Tandara je vjerojatno treći ili četvrti Ivanov sin. Naime, pretpostavka je da bi i livanjski
+                    Filip mogao biti jedan od Ivanovih sinova. Ante je bio otprilike godinu dana mlađi od Petra.
+                    Oženio se Matijom Brnas, te su imali sinove Antu, Filipa i Pavla, te kćeri Jaku, Lucu i Ružu.
+                    O Pavlu nema drugih podataka osim zapisa o rođenju, što pretpostavlja da je mlad preminuo
+                    ili je odselio iz Ričica.
+                </p>
+<h2>Podgrana Ante Antina</h2>
+<h3>Ante Antin</h3>
+<p>
+                    Ante kao najstariji sin Ante Ivanova, oženio se 1801. Matijom Jukić. Imali su sinove Lovru, Miju i Petra,
+                    te kćeri Peru, Ružu, Anticu, Ivu i Mariju.
+                    O Petru nema drugih podataka osim zapisa o rođenju.
+                </p>
+<p>
+                    Prema popisu stanovništva iz 1819., Ante je živio u Zavelimu, a njegov brat Filip u Ričicima.
+                    Njihovi potomci kasnije su se proširili po cijeloj Hrvatskoj, Europi i Kanadi.
+                </p>
+<h3>Lovro Antin</h3>
+<p>Oženio se Matijom Sičenica. Imali su sinove Marijana i Križana.</p>
+<h3>Marijan Lovrin</h3>
+<p>
+                    Oženio se Matijom Kovač. Imali su sinove Juru, Marka, Stipana i Jozu, te kćeri Ivu, Maru i Matiju.
+                    Za Stipana nema podataka osim za rođenje pa se pretpostavlja da je umro mlad ili se odselio.
+                    Marijanovi potomci, po njegovim sinovima Marku i Juri, nose nadimak Lovrinovići.
+                    Nadimak potječe od Marijanova oca Lovre. Lovrinovići danas žive u Popovači, Sarajevu i Stobreču.
+                </p>
+<h3>Marko Marijanov</h3>
+<p>Oženio se Božicom Pušić. Imali su sina Mirka i kćer Ivu.</p>
+<h3>Mirko Markov</h3>
+<p>Oženio se Anicom Kliić. Imali su sinove Milana i Vladimira koji je umro sa 14 godina, te kćeri Dragicu, Mariju i Nediljku.</p>
+<h3>Milan Markov</h3>
+<p>Oženio se Svjetlanom Trifunović. Dobili su sinove Vladimira i Dalibora.</p>
+<p>
+                    Vladimir Milanov oženio se sa Claire Tacher, imaju sina Alexandra Jamesa i živi u Londonu.
+                    Drugi sin Dalibor se oženio Amelom Nezirović i imaju sina Damira i kćer Teu. Žive u Sarajevu.
+                </p>
+<h3>Križan Lovrin</h3>
+<p>
+                    Oženio se Perom Budimir. Imali su 15 djece, od toga sedmero djece je umrlo u dobi do desete godine.
+                    Zanimljivost je da je drugi Križanov sin Ilija poginuo od uboda vola.
+                    Križanovi potomci po sinovima Mati, Anti, Ivanu i Juri nose nadimak Križanovići i žive u Zagrebu,
+                    Đakovu, Kutjevu, Bektežu, Strizivojni, Vrpolju i više država Europe.
+                </p>
+<h3>Mate Križanov</h3>
+<p>
+                    Najstariji Križanov sin, oženio se Ivom Pirić. Imali su sinove Miju, Marijana i Jozu,
+                    te kćeri Maru i Matiju. Mijo se nije ženio.
+                </p>
+<h3>Marijan Matin</h3>
+<p>Oženio se Anicom Maras, sa njom imao sinove Antu, Jozu, Matu i Ivana, te kćer Maru.</p>
+<h3>Ante Marijanov</h3>
+<p>
+                    U prvom braku sa Elizabetom Miletić dobio je sina Darka i kćer Gordanu.
+                    U drugom braku sa Anom Kajtar nema djece. Darko sa obitelji živi u Njemačkoj.
+                </p>
+<h3>Jozo Marijanov</h3>
+<p>Nije se ženio.</p>
+<h3>Mato Marijanov</h3>
+<p>
+                    U braku s Anicom Bogdanović dobio je sina Alena i kćer Lauru.
+                    Alen s obitelji živi u Slavonskom Brodu.
+                </p>
+<h3>Ivan Marijanov</h3>
+<p>
+                    Četvrti Marijanov sin, oženio se Ljiljanom Cobović.
+                    Imaju sina Marijana, te kćeri Lanu i Paulinu.
+                    Žive u Đakovu, gdje Ivan vodi vlastiti odvjetnički ured.
+                </p>
+<h3>Jozo Matin</h3>
+<p>
+                    Najmlađi sin Mate i Ive Pirić, oženio se Jakom Kliić.
+                    Imali su sinove Miju, Jozu i Ivana te kćer Maru.
+                    Jozo je poginuo u Drugom svjetskom ratu, a Mijina obitelj danas je u Bektežu kod Kutjeva.
+                </p>
+<h3>Mijo Jozin</h3>
+<p>Živi u Bektežu kod Kutjeva i ima tri kćeri.</p>
+<h3>Jozo Jozin</h3>
+<p>
+                    Živi u Sloveniji. Ima sina Marijana i kćer Romanu.
+                    Marijan ima sina Martina te kćeri Tamaru i Petriciju.
+                </p>
+<h3>Ante Križanov</h3>
+<p>
+                    Treći Križanov sin, oženio se Ivom Trogrlić.
+                    Imali su sina Stipana, te kćeri Jelu i Maru.
+                    Stipan je odselio u Srbiju i nije poznato je li imao potomke.
+                </p>
+<h3>Ivan Križanov</h3>
+<p>
+                    Osmi Križanov sin, oženio se Ružom Serdarušić.
+                    Imali su sinove Antu koji je umro s pet godina, Križana i Marijana koji je umro kao dijete,
+                    te kćeri Maru i Anu.
+                </p>
+<h3>Križan Ivanov</h3>
+<p>
+                    U braku s Maricom Pušić imao je sina Ivana.
+                    Križan je 1944. godine ubijen u Zagrebu.
+                </p>
+<h3>Ivan Križanov</h3>
+<p>
+                    Ženio se dva puta.
+                </p>
+<p>
+                    Iz prvog braka s Dragicom Dragun imao je sina Križana.
+                </p>
+<p>
+                    Križan Ivanov i supruga Ljerka Maričić imaju sinove Tonija i Dinka te žive u Vrpolju.
+                </p>
+<p>
+                    Iz drugog braka s Ankom Nikolić dobio je kćeri Biljanu i Belinu.
+                </p>
+<h3>Jure Križanov</h3>
+<p>
+                    Deveti Križanov sin, ženio se tri puta.
+                </p>
+<p>
+                    Prvi brak bio je s Perom Matišić, koja je iz poznate hrvatske glazbene obitelji,
+                    a s kojom je imao sina Josipa. Pera je umrla 1919. godine od španjolske gripe.
+                    Drugi brak Jure Križanova bio je s djevojkom iz roda Budić. Imali su sina Martina
+                    koji je poginuo 1942. kod Bihaća i nije se ženio. Treći brak bio je s Jozom Dragun,
+                    bez djece.
+                </p>
+<h3>Josip Jurin</h3>
+<p>
+                    U braku s Anicom Dragun dobio je sinove Ivana i Milana, te kćeri Slavu, Maru, Nedu i Macu.
+                </p>
+<h3>Ivan Josipov</h3>
+<p>
+                    Ženio se dva puta.
+                </p>
+<p>
+                    Iz prvog braka s Matijom Pušić dobio je sinove Juru i Vladimira, te kćer Mihaelu
+                    (krsno Milena).
+                </p>
+<p>
+                    Jure se oženio Ružom Kosić i imaju sinove Ivicu Julia i Marina Tina.
+                    Vladimir se oženio Ljubicom Kosić, imaju sinove Filipa i Lea.
+                    Dakle, ovdje se radi o braku dva brata i dvije sestre.
+                </p>
+<p>
+                    Iz drugog braka s Verkom Nikolovski Ivan nije imao djece.
+                    Ivan je umro u Zagrebu 2025. g. u 93. godini života.
+                    Laka ti zemlja dragi moj oče!
+                </p>
+<h3>Mijo Antin</h3>
+<p>
+                    Mijo, drugi Antin sin, oženio se Mandom Martinović.
+                    Imali su devetero djece: Jozu, Antu, Matu, Miju, Petra te Ivu, Matiju, Ružu i Anticu.
+                </p>
+<p>
+                    O sinu Miji nema drugih podataka osim zapisa o rođenju.
+                    Pretpostavka je da je umro mlad ili odselio u nepoznatom smjeru.
+                    Potomci po sinovima Jozi, Mati i Petru nose nadimak Tucići,
+                    nadimak dobiven zbog sklonosti članova obitelji za ljubavnim avanturama.
+                </p>
+<h3>Jozo Mijin</h3>
+<p>
+                    Oženio se Ivom Bilojelić.
+                    Imali su sinove Matu, Jozu i Nikolu, koji je umro sa 6 godina,
+                    te kćeri Matiju, Jelu, Maru i Ivu.
+                </p>
+<h3>Jozo Jozin</h3>
+<p>
+                    Nije se ženio.
+                </p>
+<h3>Ante Jozin</h3>
+<p>
+                    Oženio se Jelom Škorić.
+                    Imali su sinove Marijana, Matu, Pilipa i Nikolu, te kćeri Jelu, Maru, Katu i Milu.
+                </p>
+<h3>Marijan Antin (Đika)</h3>
+<p>
+                    Oženio se Ivom Čorbić.
+                    Imali su sinove Ivana i Milana, te kćeri Maru, Dragicu, Katu i Mariju.
+                </p>
+<h3>Ivan Marijanov (Đikin)</h3>
+<p>
+                    Oženio se Anom Pušić. Imaju sina Zdenka i kćer Kristinu.
+                </p>
+<p>
+                    Zdenko se ženio dva puta. Iz prvog braka ima sina Tomislava,
+                    a iz drugog braka s Kristinom Topić ima kćer Anu.
+                </p>
+<h3>Milan Marijanov (Đikin)</h3>
+<p>
+                    Ženio se dva puta.
+                </p>
+<p>
+                    Iz prvog braka s Marijom Pušić ima sina Nedjeljka, te kćeri Dragicu, Ljubicu i Tanju.
+                </p>
+<p>
+                    Nedjeljko s Ivanom Božičević ima kćeri Mariju i Tinu.
+                </p>
+<p>
+                    U drugom braku Milan nema djece.
+                </p>
+<h3>Mate Antin</h3>
+<p>
+                    Treći sin Ante Mijina, oženio se Ivom Kliić.
+                    Imali su sinove Matu, Tomu, Ivana i Antu, te kćeri Maru i Anđu.
+                </p>
+<h3>Mate Matin</h3>
+<p>
+                    Oženio se Ivom Galić.
+                    Imali su sina Antu te kćeri Mariju, Matu i Maru.
+                </p>
+<h3>Ante Matin</h3>
+<p>
+                    Oženio se Ljubicom Sičenica.
+                    Imali su sina Ivana i kćer Mariju.
+                </p>
+<p>
+                    Ivan je oženio Mirjanu Topić.
+                    Imaju sinove Marka i Antu te kćer Mariju.
+                    Žive u Zagrebu.
+                </p>
+<h3>Tomo Matin</h3>
+<p>
+                    Oženio se Mandom Vučemil.
+                    Imali su sinove Antu, Matu i Ivana, te kćeri Mariju i Ružu.
+                </p>
+<h3>Ante Tomin</h3>
+<p>
+                    Oženio se Zlatom Vučemil.
+                    Imaju sina Draženka.
+                </p>
+<p>
+                    Draženko se oženio Nadom Medić.
+                    Imaju sina Luku te kćeri Maju i Mateju.
+                    Žive u Bjelovaru.
+                </p>
+<h3>Mate Tomin</h3>
+<p>
+                    Najmlađi Tomov sin, oženio se Tonkom Vukičević.
+                    Imaju sina Željka.
+                </p>
+<p>
+                    Željko se oženio Ankicom Šitum.
+                    Imaju dva sina i žive u Kanadi.
+                </p>
+</div>
+<img alt="Križan" class="branch-tree-image" src="krizan.png?v=3"/>
+<img alt="Antina grana – Jure Tandara" class="branch-tree-image" src="antinajure.png?v=3"/>
+<img alt="Rodoslovno stablo Antine grane" class="branch-tree-image" src="antinagrana.png?v=3"/>
+</div>
+</main>
+</div>
+</body>
+</html>
