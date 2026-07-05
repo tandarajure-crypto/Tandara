@@ -547,3 +547,96 @@ body{
     color: white;
     transform: scale(1.04);
 }
+
+
+/* ======================================================
+   CONTACT FORM - Digitalni arhiv roda Tandara
+====================================================== */
+.archive-contact-form{
+    margin-top:24px;
+    padding:28px;
+    background:rgba(255,255,255,0.28);
+    border:1px solid rgba(80,60,35,0.25);
+    border-radius:12px;
+}
+
+.archive-contact-form .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.archive-contact-form label{
+    display:block;
+    margin:0 0 8px 0;
+    font-size:17px;
+    font-weight:bold;
+    color:#3b2f22;
+}
+
+.archive-contact-form input,
+.archive-contact-form select,
+.archive-contact-form textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px 14px;
+    margin-bottom:18px;
+    border:1px solid rgba(80,60,35,0.35);
+    border-radius:8px;
+    background:#fffaf0;
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:17px;
+    color:#2f2418;
+}
+
+.archive-contact-form textarea{
+    min-height:170px;
+    resize:vertical;
+}
+
+.archive-contact-form .checkbox-line{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin:8px 0 14px 0;
+    font-size:16px;
+    line-height:1.45;
+}
+
+.archive-contact-form .checkbox-line input{
+    width:auto;
+    margin:4px 0 0 0;
+}
+
+.archive-contact-form button{
+    display:block;
+    margin:24px auto 0 auto;
+    padding:13px 34px;
+    border:none;
+    border-radius:999px;
+    background:#6b4b25;
+    color:white;
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.25);
+}
+
+.archive-contact-form button:hover{
+    background:#8a652f;
+}
+
+.form-note{
+    font-size:16px !important;
+    line-height:1.55 !important;
+    text-align:left !important;
+    color:#4a3b2a;
+}
+
+@media (max-width: 900px){
+    .archive-contact-form .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+}
