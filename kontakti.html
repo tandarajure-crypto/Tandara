@@ -95,8 +95,10 @@
                     Poruku možete poslati izravno preko ovog obrasca. Poruka stiže na službenu e-mail adresu
                     Digitalnog arhiva roda Tandara: <strong>tandarajure@outlook.com</strong>.
                 </p>
+<div id="form-success" class="form-success-message" role="status" aria-live="polite">✓ Hvala! Vaša poruka je uspješno poslana. Odgovorit ćemo Vam u najkraćem mogućem roku.</div>
 <form class="archive-contact-form" action="https://formsubmit.co/tandarajure@outlook.com" method="POST">
 <input type="hidden" name="_subject" value="[TANDARA] Kontakt poruka sa web stranice">
+<input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/kontakti.html?sent=1#kontakt-obrazac">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_autoresponse" value="Poštovani, zahvaljujemo što ste kontaktirali Digitalni arhiv roda Tandara. Vaša poruka je uspješno zaprimljena. Odgovorit ćemo Vam u najkraćem mogućem roku. Srdačan pozdrav, Digitalni arhiv roda Tandara.">
@@ -217,5 +219,13 @@
 </article>
 </main>
 </div>
+<script>
+(function(){
+  var successBox = document.getElementById('form-success');
+  if (successBox && new URLSearchParams(window.location.search).get('sent') === '1') {
+    successBox.style.display = 'block';
+  }
+})();
+</script>
 </body>
 </html>
