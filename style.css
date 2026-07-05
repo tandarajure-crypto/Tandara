@@ -547,3 +547,305 @@ body{
     color: white;
     transform: scale(1.04);
 }
+
+/* ======================================================
+   CONTACT / MESSAGE BOOK PAGES
+====================================================== */
+.contact-card a{
+    color:#6b4d25;
+    font-weight:bold;
+}
+
+.notice-box{
+    background:rgba(255,255,255,0.25);
+    border:1px solid rgba(80,60,35,0.18);
+    border-radius:12px;
+    padding:22px 26px;
+}
+
+.contact-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:22px;
+}
+
+.contact-button{
+    display:inline-block;
+    background:#c9a46d;
+    color:#fff !important;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    padding:13px 18px;
+    border-radius:10px;
+    border:2px solid rgba(80,60,35,0.25);
+    box-shadow:0 2px 6px rgba(0,0,0,0.18);
+    transition:all .15s ease;
+}
+
+.contact-button:hover{
+    background:#d4af37;
+    transform:translateY(-1px);
+}
+
+.message-entry{
+    background:rgba(255,255,255,0.25);
+    border-left:5px solid #c9a46d;
+    border-radius:10px;
+    padding:20px 24px;
+    margin-top:12px;
+}
+
+.message-entry h3{
+    margin:0 0 6px 0;
+    font-size:22px;
+    color:#3b2f22;
+}
+
+.message-meta,
+.permission-note{
+    font-size:16px !important;
+    color:#6b5942;
+    font-style:italic;
+    text-align:left !important;
+}
+
+.workflow-list{
+    margin:8px 0 18px 28px;
+    padding:0;
+}
+
+.workflow-list li{
+    font-size:18px;
+    line-height:1.55;
+    margin-bottom:8px;
+}
+
+@media (max-width: 900px){
+    .layout{
+        display:block;
+        padding:0;
+    }
+
+    .left-menu{
+        position:relative;
+        width:100%;
+        height:auto;
+        border-right:none;
+        border-bottom:4px solid #7a7a7a;
+    }
+
+    .content-page{
+        padding:20px 14px;
+    }
+
+    .content-card{
+        padding:28px 22px;
+    }
+
+    .contact-actions{
+        flex-direction:column;
+    }
+
+    .contact-button{
+        text-align:center;
+    }
+}
+
+/* ======================================================
+   KONTAKTI I KNJIGA PORUKA - PROFESIONALNI KOMUNIKACIJSKI DIO
+====================================================== */
+.eyebrow{
+    text-align:center !important;
+    text-transform:uppercase;
+    letter-spacing:1.6px;
+    font-size:14px !important;
+    color:#7a5e3a;
+    margin:0 0 10px 0 !important;
+    font-weight:bold;
+}
+
+.lead-text{
+    font-size:20px !important;
+    line-height:1.7 !important;
+    text-align:center !important;
+    max-width:900px;
+    margin:0 auto 34px auto !important;
+}
+
+.notice-box,
+.privacy-box{
+    background:rgba(255,255,255,0.28);
+    border:1px solid rgba(122,94,58,0.28);
+    border-left:6px solid #b99867;
+    border-radius:12px;
+    padding:24px 28px !important;
+}
+
+.project-mail{
+    text-align:center;
+}
+
+.mail-display{
+    text-align:center !important;
+    font-size:26px !important;
+    font-weight:bold;
+    margin:12px 0 14px 0 !important;
+}
+
+.content-card a{
+    color:#6b4f2a;
+    font-weight:bold;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:18px;
+    margin-top:18px;
+}
+
+.info-box{
+    background:rgba(255,255,255,0.22);
+    border:1px solid rgba(80,60,35,0.18);
+    border-radius:12px;
+    padding:20px 22px;
+    box-shadow:0 2px 7px rgba(0,0,0,0.08);
+}
+
+.info-box h3{
+    margin:0 0 9px 0;
+    font-size:20px;
+    color:#3b2f22;
+}
+
+.info-box p{
+    margin:0 !important;
+    font-size:17px !important;
+    line-height:1.55 !important;
+    text-align:left !important;
+}
+
+.contact-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:22px;
+}
+
+.contact-button{
+    display:inline-block;
+    background:#8a6738;
+    color:#fff !important;
+    text-decoration:none;
+    border:1px solid #6f512b;
+    border-radius:9px;
+    padding:13px 18px;
+    font-size:17px;
+    font-weight:bold;
+    box-shadow:0 3px 7px rgba(0,0,0,0.18);
+    transition:all .15s ease;
+}
+
+.contact-button:hover{
+    background:#a77a42;
+    border-color:#d4af37;
+    transform:translateY(-1px);
+}
+
+.inline-button{
+    margin-top:12px;
+}
+
+.workflow-list{
+    margin:12px 0 0 24px;
+    padding:0;
+}
+
+.workflow-list li{
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:8px;
+}
+
+.message-entry{
+    background:rgba(255,255,255,0.30);
+    border:1px solid rgba(80,60,35,0.22);
+    border-radius:12px;
+    padding:24px 28px;
+    margin:18px 0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.message-header{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    margin-bottom:12px;
+}
+
+.message-country{
+    font-size:34px;
+    line-height:1;
+}
+
+.message-entry h3{
+    margin:0 0 4px 0;
+    font-size:21px;
+    color:#3b2f22;
+}
+
+.message-meta{
+    font-size:15px !important;
+    color:#765d3d;
+    margin:0 !important;
+    text-align:left !important;
+}
+
+.permission-note{
+    font-size:15px !important;
+    font-style:italic;
+    color:#6d583c;
+    margin-top:16px !important;
+}
+
+.placeholder-entry{
+    border-style:dashed;
+}
+
+@media (max-width: 900px){
+    .layout{
+        display:block;
+    }
+    .left-menu{
+        position:relative;
+        width:100%;
+        height:auto;
+        border-right:none;
+        border-bottom:4px solid #7a7a7a;
+    }
+    .content-page{
+        padding:18px 12px;
+    }
+    .content-card{
+        padding:28px 20px;
+    }
+    .content-card h1{
+        font-size:28px;
+    }
+    .lead-text{
+        font-size:18px !important;
+    }
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+    .contact-actions{
+        display:block;
+    }
+    .contact-button{
+        display:block;
+        text-align:center;
+        margin:10px 0;
+    }
+}
