@@ -60,45 +60,43 @@
 <main class="content-page">
 <article class="content-card">
 <h1>Kontakt i suradnja</h1>
-<section id="uvod">
-<h2>Centar za suradnju Digitalnog arhiva roda Tandara</h2>
+<section id="uvod" class="contact-intro-compact">
+<h2>Kontakt i suradnja</h2>
 <p>
-                    Ako nosite prezime <strong>Tandara</strong>, potječete iz roda Tandara ili istražujete
-                    povijest ove obitelji, pozivamo Vas da svojim znanjem, dokumentima i obiteljskim
-                    pričama postanete dio zajedničkog arhiva.
+                    Ako nosite prezime <strong>Tandara</strong>, potječete iz roda Tandara ili imate
+                    fotografije, dokumente, obiteljske podatke ili ispravke, javite se putem obrasca.
                 </p>
-<p>
-                    Cilj ove stranice nije samo uspostaviti kontakt, nego omogućiti povezivanje prezimenjaka,
-                    potomaka i istraživača iz Hrvatske, Bosne i Hercegovine, Europe i cijeloga svijeta.
-                    Svaka fotografija, dokument, obiteljsko sjećanje ili ispravak podataka može pomoći da se
-                    povijest roda Tandara sačuva za buduće naraštaje.
-                </p>
-</section>
-<section id="email">
-<h2>Projektna e-mail adresa</h2>
-<p>
-                    Za sve poruke vezane uz ovaj projekt otvorena je posebna adresa kako se pošta Digitalnog
-                    arhiva roda Tandara ne bi miješala s osobnom poštom:
-                </p>
-<p style="font-size:22px; font-weight:bold; text-align:center; margin:26px 0;">
-<a href="mailto:tandarajure@outlook.com">tandarajure@outlook.com</a>
-</p>
-<p>
-                    Na ovu adresu možete poslati podatke o obitelji, rodoslovne dopune, fotografije, dokumente,
-                    pitanja, prijedloge i poruke za buduću knjigu poruka.
+<p class="project-email-line">
+                    Službena e-mail adresa arhiva: <a href="mailto:tandarajure@outlook.com">tandarajure@outlook.com</a>
                 </p>
 </section>
 
-<section id="kontakt-obrazac">
+<section id="kontakt-obrazac" class="contact-form-section">
 <h2>Kontakt obrazac</h2>
+<div id="form-success" class="form-success-message" role="status" aria-live="polite">
+<div class="success-icon">✓</div>
+<div class="success-content">
+<h2>Hvala! Vaša poruka je uspješno zaprimljena.</h2>
 <p>
-                    Poruku možete poslati izravno preko ovog obrasca. Poruka stiže na službenu e-mail adresu
-                    Digitalnog arhiva roda Tandara: <strong>tandarajure@outlook.com</strong>.
+                        Poruka je poslana u <strong>Digitalni arhiv roda Tandara</strong>.
+                        Nakon pregleda odgovorit ćemo Vam u najkraćem mogućem roku.
+                    </p>
+<p>
+                        Zahvaljujemo na Vašem doprinosu očuvanju povijesti roda Tandara.
+                    </p>
+<div class="success-actions">
+<a href="kontakti.html#kontakt-obrazac">Natrag na kontakt obrazac</a>
+<a href="index.html">Povratak na početnu stranicu</a>
+<a href="knjiga-poruka.html">Otvori Knjigu poruka</a>
+</div>
+</div>
+</div>
+<p class="form-short-note">
+                    Ispunite osnovne podatke i poruku. Fotografije i dokumente možete poslati naknadno kao privitak u e-mail komunikaciji.
                 </p>
-<div id="form-success" class="form-success-message" role="status" aria-live="polite">✓ Hvala! Vaša poruka je uspješno poslana. Odgovorit ćemo Vam u najkraćem mogućem roku.</div>
 <form class="archive-contact-form" action="https://formsubmit.co/tandarajure@outlook.com" method="POST">
 <input type="hidden" name="_subject" value="[TANDARA] Kontakt poruka sa web stranice">
-<input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/kontakti.html?sent=1#kontakt-obrazac">
+<input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/kontakti.html?sent=1#form-success">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_autoresponse" value="Poštovani, zahvaljujemo što ste kontaktirali Digitalni arhiv roda Tandara. Vaša poruka je uspješno zaprimljena. Odgovorit ćemo Vam u najkraćem mogućem roku. Srdačan pozdrav, Digitalni arhiv roda Tandara.">
@@ -221,9 +219,11 @@
 </div>
 <script>
 (function(){
+  var sent = new URLSearchParams(window.location.search).get('sent') === '1';
   var successBox = document.getElementById('form-success');
-  if (successBox && new URLSearchParams(window.location.search).get('sent') === '1') {
-    successBox.style.display = 'block';
+  if (sent) {
+    document.body.classList.add('message-sent');
+    if (successBox) { successBox.style.display = 'flex'; }
   }
 })();
 </script>
