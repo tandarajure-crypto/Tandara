@@ -552,6 +552,19 @@ body{
 /* ======================================================
    CONTACT FORM - Digitalni arhiv roda Tandara
 ====================================================== */
+.form-success-message{
+    display:none;
+    margin:22px 0 0 0;
+    padding:16px 20px;
+    border:1px solid rgba(55,120,55,0.35);
+    border-radius:10px;
+    background:rgba(230,248,230,0.75);
+    color:#244f24;
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.45;
+}
+
 .archive-contact-form{
     margin-top:24px;
     padding:28px;
