@@ -74,8 +74,10 @@ gtag('config', 'G-S33NBEJQFD');
 <section id="contact-form">
 <h2>Contact form</h2>
 <p>You can send your message directly through this form. The message will be delivered to the official e-mail address of the Digital Archive of the Tandara Family: <strong>tandarajure@outlook.com</strong>.</p>
+<div id="form-success" class="form-success-message" role="status" aria-live="polite">✓ Thank you! Your message has been sent successfully. We will reply as soon as possible.</div>
 <form class="archive-contact-form" action="https://formsubmit.co/tandarajure@outlook.com" method="POST">
 <input type="hidden" name="_subject" value="[TANDARA] Contact message from the website">
+<input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/contacts.html?sent=1#contact-form">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_autoresponse" value="Dear sender, thank you for contacting the Digital Archive of the Tandara Family. Your message has been received successfully. We will reply as soon as possible. Kind regards, Digital Archive of the Tandara Family.">
@@ -153,5 +155,13 @@ gtag('config', 'G-S33NBEJQFD');
 </article>
 </main>
 </div>
+<script>
+(function(){
+  var successBox = document.getElementById('form-success');
+  if (successBox && new URLSearchParams(window.location.search).get('sent') === '1') {
+    successBox.style.display = 'block';
+  }
+})();
+</script>
 </body>
 </html>
