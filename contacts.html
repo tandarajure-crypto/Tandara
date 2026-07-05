@@ -59,31 +59,25 @@ gtag('config', 'G-S33NBEJQFD');
 <main class="content-page">
 <article class="content-card">
 <h1>Contact &amp; Collaboration</h1>
-<section id="intro" class="contact-intro-compact">
-<h2>Contact &amp; Collaboration</h2>
-<p>If you bear the surname <strong>Tandara</strong>, descend from the Tandara family line, or have photographs, documents, family data or corrections, please contact us through the form.</p>
-<p class="project-email-line">Official archive e-mail address: <a href="mailto:tandarajure@outlook.com">tandarajure@outlook.com</a></p>
+<section id="intro">
+<h2>Collaboration Centre of the Digital Archive of the Tandara Family</h2>
+<p>If you bear the surname <strong>Tandara</strong>, descend from the Tandara family line, or are researching the history of this family, you are warmly invited to contribute your knowledge, documents and family stories to this shared archive.</p>
+<p>The purpose of this page is not only to establish contact, but also to connect surname bearers, descendants and researchers from Croatia, Bosnia and Herzegovina, Europe and the wider world.</p>
+</section>
+<section id="email">
+<h2>Project e-mail address</h2>
+<p>For all messages related to this project, please use the dedicated e-mail address:</p>
+<p style="font-size:22px; font-weight:bold; text-align:center; margin:26px 0;"><a href="mailto:tandarajure@outlook.com">tandarajure@outlook.com</a></p>
+<p>This address is used only for the Digital Archive of the Tandara Family, so that project messages can be followed, reviewed and preserved separately from personal correspondence.</p>
 </section>
 
-<section id="contact-form" class="contact-form-section">
+<section id="contact-form">
 <h2>Contact form</h2>
-<div id="form-success" class="form-success-message" role="status" aria-live="polite">
-<div class="success-icon">✓</div>
-<div class="success-content">
-<h2>Thank you! Your message has been received successfully.</h2>
-<p>Your message has been sent to the <strong>Digital Archive of the Tandara Family</strong>. After review, we will reply as soon as possible.</p>
-<p>Thank you for contributing to the preservation of the Tandara family history.</p>
-<div class="success-actions">
-<a href="contacts.html#contact-form">Back to contact form</a>
-<a href="index-en.html">Return to home page</a>
-<a href="visitors-messages.html">Open Visitors' messages</a>
-</div>
-</div>
-</div>
-<p class="form-short-note">Enter your basic information and message. Photographs and documents can be sent later as attachments in e-mail communication.</p>
+<p>You can send your message directly through this form. The message will be delivered to the official e-mail address of the Digital Archive of the Tandara Family: <strong>tandarajure@outlook.com</strong>.</p>
+<div id="form-success" class="form-success-message" role="status" aria-live="polite">✓ Thank you! Your message has been sent successfully. We will reply as soon as possible.</div>
 <form class="archive-contact-form" action="https://formsubmit.co/tandarajure@outlook.com" method="POST">
 <input type="hidden" name="_subject" value="[TANDARA] Contact message from the website">
-<input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/contacts.html?sent=1#form-success">
+<input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/contacts.html?sent=1#contact-form">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_autoresponse" value="Dear sender, thank you for contacting the Digital Archive of the Tandara Family. Your message has been received successfully. We will reply as soon as possible. Kind regards, Digital Archive of the Tandara Family.">
@@ -163,11 +157,9 @@ gtag('config', 'G-S33NBEJQFD');
 </div>
 <script>
 (function(){
-  var sent = new URLSearchParams(window.location.search).get('sent') === '1';
   var successBox = document.getElementById('form-success');
-  if (sent) {
-    document.body.classList.add('message-sent');
-    if (successBox) { successBox.style.display = 'flex'; }
+  if (successBox && new URLSearchParams(window.location.search).get('sent') === '1') {
+    successBox.style.display = 'block';
   }
 })();
 </script>
