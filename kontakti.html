@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html lang="hr">
-<head>
+<head><meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/><meta content="nosniff" http-equiv="X-Content-Type-Options"/><meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <title>TANDARA – Prezime | Kontakt i suradnja</title>
 <!-- Google Analytics -->
@@ -52,7 +52,7 @@
 </div>
 <h3 class="visitor-title">Posjetitelji</h3>
 <div class="flagbox">
-<a href="https://info.flagcounter.com/OyvA">
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
 <img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
 </a>
 </div>
@@ -67,36 +67,34 @@
                     ovdje možete poslati podatke, dopune, fotografije, dokumente, pitanja ili prijedloge za
                     <strong>Digitalni arhiv roda Tandara. Isto tako možete zatražiti da se određeni objavljeni podaci uklone, prekriju  ili zamjene sa drugim.</strong>.
                 </p>
-
 </section>
-
 <section id="kontakt-obrazac">
 <h2>Kontakt obrazac</h2>
 <p>
     Poruku možete poslati izravno preko ovog obrasca.
 </p>
-<div id="form-success" aria-live="polite"></div>
-<form class="archive-contact-form" action="https://formsubmit.co/tandarajure@outlook.com" method="POST">
-<input type="hidden" name="_subject" value="[TANDARA] Kontakt poruka sa web stranice">
-<input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/kontakti.html?sent=1&v=3#kontakt-obrazac">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_autoresponse" value="Poštovani, zahvaljujemo što ste kontaktirali Digitalni arhiv roda Tandara. Vaša poruka je uspješno zaprimljena. Odgovorit ćemo Vam u najkraćem mogućem roku. Srdačan pozdrav, Digitalni arhiv roda Tandara.">
-<input type="text" name="_honey" style="display:none">
+<div aria-live="polite" id="form-success"></div>
+<form accept-charset="UTF-8" action="https://formsubmit.co/tandarajure@outlook.com" class="archive-contact-form" method="POST">
+<input name="_subject" type="hidden" value="[TANDARA] Kontakt poruka sa web stranice"/>
+<input name="_next" type="hidden" value="https://tandarajure-crypto.github.io/Tandara/kontakti.html?sent=1&amp;v=3#kontakt-obrazac"/>
+<input name="_template" type="hidden" value="table"/>
+<input name="_captcha" type="hidden" value="true"/><input name="_blacklist" type="hidden" value="http,https,www,casino,crypto,bitcoin,viagra,loan,porn,sex,seo,backlink"/>
+<input name="_autoresponse" type="hidden" value="Poštovani, zahvaljujemo što ste kontaktirali Digitalni arhiv roda Tandara. Vaša poruka je uspješno zaprimljena. Odgovorit ćemo Vam u najkraćem mogućem roku. Srdačan pozdrav, Digitalni arhiv roda Tandara."/>
+<input aria-hidden="true" autocomplete="off" name="_honey" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" tabindex="-1" type="text"/>
 <div class="form-row">
 <div>
 <label for="ime">Ime i prezime *</label>
-<input id="ime" name="Ime i prezime" type="text" required>
+<input id="ime" maxlength="80" name="Ime i prezime" required="" type="text"/>
 </div>
 <div>
 <label for="mjesto">Mjesto i država *</label>
-<input id="mjesto" name="Mjesto i država" type="text" required>
+<input id="mjesto" maxlength="100" name="Mjesto i država" required="" type="text"/>
 </div>
 </div>
 <div class="form-row">
 <div>
 <label for="email-posiljatelja">E-mail za odgovor *</label>
-<input id="email-posiljatelja" name="email" type="email" required>
+<input id="email-posiljatelja" maxlength="120" name="email" required="" type="email"/>
 </div>
 <div>
 <label for="grana">Grana roda, ako je poznata</label>
@@ -111,18 +109,18 @@
 </div>
 </div>
 <label for="povezanost">Povezanost s rodom Tandara</label>
-<input id="povezanost" name="Povezanost s rodom Tandara" type="text" placeholder="npr. nosim prezime Tandara, potomak sam roda Tandara, istražujem obitelj...">
+<input id="povezanost" maxlength="250" name="Povezanost s rodom Tandara" placeholder="npr. nosim prezime Tandara, potomak sam roda Tandara, istražujem obitelj..." type="text"/>
 <label for="poruka">Poruka *</label>
-<textarea id="poruka" name="Poruka" required></textarea>
+<textarea id="poruka" maxlength="3000" name="Poruka" required=""></textarea>
 <label class="checkbox-line">
-<input type="checkbox" name="Dopuštenje za objavu poruke" value="DA">
+<input name="Dopuštenje za objavu poruke" type="checkbox" value="DA"/>
 <span>Dopuštam da se moja poruka, nakon pregleda i odobrenja, može objaviti u knjizi poruka.</span>
 </label>
 <label class="checkbox-line">
-<input type="checkbox" name="Dopuštenje za objavu imena i mjesta" value="DA">
+<input name="Dopuštenje za objavu imena i mjesta" type="checkbox" value="DA"/>
 <span>Dopuštam objavu imena i mjesta uz poruku. E-mail adresa se ne objavljuje.</span>
 </label>
-<p class="form-note">
+<label class="checkbox-line required-consent"><input name="Suglasnost s pravilima privatnosti" required="required" type="checkbox" value="DA"/><span>Potvrđujem da sam pročitao/la <a href="privatnost.html">pravila privatnosti</a> i suglasan/na sam da se podaci koriste samo za odgovor i rodoslovnu provjeru.</span></label><p class="form-note">
                         Polja označena zvjezdicom su obavezna. Fotografije i dokumente pošaljite naknadno kao privitak u odgovoru na e-mail komunikaciju.
                     </p>
 <button type="submit">Pošalji poruku</button>
