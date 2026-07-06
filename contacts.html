@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
+<head><meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/><meta content="nosniff" http-equiv="X-Content-Type-Options"/><meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>TANDARA – Surname | Contact &amp; Collaboration</title>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
@@ -52,7 +53,7 @@
 </div>
 
 <div class="flagbox">
-<a href="https://info.flagcounter.com/OyvA">
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer">
 <img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"/>
 </a>
 </div>
@@ -77,27 +78,28 @@
     You can send your message directly using the form below.
 </p>
 <div id="form-success" aria-live="polite"></div>
-<form class="archive-contact-form" action="https://formsubmit.co/" method="POST">
+<form accept-charset="UTF-8" action="https://formsubmit.co/tandarajure@outlook.com" class="archive-contact-form" method="POST">
 <input type="hidden" name="_subject" value="[TANDARA] Contact message from the website">
 <input type="hidden" name="_next" value="https://tandarajure-crypto.github.io/Tandara/contacts.html?sent=1&v=3#contact-form">
 <input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_captcha" value="true">
+<input type="hidden" name="_blacklist" value="http,https,www,casino,crypto,bitcoin,viagra,loan,porn,sex,seo,backlink">
 <input type="hidden" name="_autoresponse" value="Dear sender, thank you for contacting the Digital Archive of the Tandara Family. Your message has been received successfully. We will reply as soon as possible. Kind regards, Digital Archive of the Tandara Family.">
-<input type="text" name="_honey" style="display:none">
+<input aria-hidden="true" autocomplete="off" name="_honey" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" tabindex="-1" type="text">
 <div class="form-row">
 <div>
 <label for="name">Name and surname *</label>
-<input id="name" name="Name and surname" type="text" required>
+<input id="name" maxlength="80" name="Name and surname" type="text" required>
 </div>
 <div>
 <label for="place">City and country *</label>
-<input id="place" name="City and country" type="text" required>
+<input id="place" maxlength="100" name="City and country" type="text" required>
 </div>
 </div>
 <div class="form-row">
 <div>
 <label for="sender-email">E-mail for reply *</label>
-<input id="sender-email" name="email" type="email" required>
+<input id="sender-email" maxlength="120" name="email" type="email" required>
 </div>
 <div>
 <label for="branch">Family branch, if known</label>
@@ -112,9 +114,9 @@
 </div>
 </div>
 <label for="connection">Connection with the Tandara family line</label>
-<input id="connection" name="Connection with the Tandara family line" type="text" placeholder="e.g. I bear the surname Tandara, I am a descendant, I am researching the family...">
+<input id="connection" maxlength="250" name="Connection with the Tandara family line" type="text" placeholder="e.g. I bear the surname Tandara, I am a descendant, I am researching the family...">
 <label for="message">Message *</label>
-<textarea id="message" name="Message" required></textarea>
+<textarea id="message" maxlength="3000" name="Message" required></textarea>
 <label class="checkbox-line">
 <input type="checkbox" name="Permission to publish message" value="YES">
 <span>I allow my message, after review and approval, to be published in the visitors' messages section.</span>
@@ -122,6 +124,10 @@
 <label class="checkbox-line">
 <input type="checkbox" name="Permission to publish name and place" value="YES">
 <span>I allow my name and place to be published with the message. The e-mail address will not be published.</span>
+</label>
+<label class="checkbox-line required-consent">
+<input type="checkbox" name="Consent to privacy rules" value="YES" required>
+<span>I confirm that I understand the data will be used only for reply, communication and genealogical verification.</span>
 </label>
 <p class="form-note">
                         Fields marked with an asterisk are required. Photographs and documents can be sent later as attachments in e-mail communication.
