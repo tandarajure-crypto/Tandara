@@ -287,7 +287,75 @@ body{
 .hs-matina{
     left:36.08%;
 }
+/* ==========================================================
+   IVAN + 4 NOVE GRANE
+========================================================== */
 
+.hs-ivanov,
+.hs-jurin,
+.hs-petrov,
+.hs-antin,
+.hs-matin{
+
+    position:absolute;
+    cursor:pointer;
+
+    border:2px solid red;
+    background:rgba(255,0,0,.30);
+
+    border-radius:4px;
+    box-sizing:border-box;
+}
+
+.hs-ivanov:hover,
+.hs-jurin:hover,
+.hs-petrov:hover,
+.hs-antin:hover,
+.hs-matin:hover{
+
+    background:rgba(255,0,0,.60);
+}
+/* KOORDINATE NOVIH OKVIRA */
+
+.hs-ivanov{
+
+    left:62%;
+    top:45%;
+    width:12%;
+    height:9%;
+}
+
+.hs-jurin{
+
+    left:74%;
+    top:3%;
+    width:11%;
+    height:9%;
+}
+
+.hs-petrov{
+
+    left:74%;
+    top:27%;
+    width:11%;
+    height:9%;
+}
+
+.hs-antin{
+
+    left:74%;
+    top:60%;
+    width:11%;
+    height:9%;
+}
+
+.hs-matin{
+
+    left:74%;
+    top:83%;
+    width:11%;
+    height:9%;
+}
 /* ----------------------------------------------------------
    DESNI DIJAGRAM - ZAVRŠNA VERZIJA
 ---------------------------------------------------------- */
