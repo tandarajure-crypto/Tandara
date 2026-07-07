@@ -319,10 +319,8 @@ body{
 
 /* Ivan Tandara */
 
-/* Ivan Tandara */
-
 .hs-ivanov{
-    left:61.3%;
+    left:61.0%;      /* bilo 61.3%  ← još 3 mm ulijevo */
     top:44.4%;
     width:12%;
     height:9.6%;
@@ -331,7 +329,7 @@ body{
 /* Jure */
 
 .hs-jurin{
-    left:72.2%;
+    left:71.4%;      /* bilo 72.2%  ← još 7 mm ulijevo */
     top:3.0%;
     width:11%;
     height:9%;
@@ -340,7 +338,7 @@ body{
 /* Petar */
 
 .hs-petrov{
-    left:72.2%;
+    left:71.4%;      /* bilo 72.2% */
     top:26.8%;
     width:11%;
     height:9%;
@@ -349,7 +347,7 @@ body{
 /* Ante */
 
 .hs-antin{
-    left:72.2%;
+    left:71.4%;      /* bilo 72.2% */
     top:59.6%;
     width:11%;
     height:9%;
@@ -358,7 +356,7 @@ body{
 /* Mate */
 
 .hs-matin{
-    left:72.2%;
+    left:71.4%;      /* bilo 72.2% */
     top:82.6%;
     width:11%;
     height:9%;
