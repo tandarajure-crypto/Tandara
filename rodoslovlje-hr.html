@@ -4,7 +4,6 @@
 <html lang="hr">
 <head><meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/><meta content="nosniff" http-equiv="X-Content-Type-Options"/><meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
-
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Tandara – Rodoslovlje roda</title>
 <link href="style.css?v=3" rel="stylesheet"/>
@@ -13,7 +12,12 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
-
+gtag('consent', 'default', {
+  'analytics_storage': 'granted',
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied'
+});
   gtag('js', new Date());
   gtag('config', 'G-S33NBEJQFD', {
     send_page_view: true,
