@@ -8,14 +8,57 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Tandara – Rodoslovlje roda</title>
 <link href="style.css?v=3" rel="stylesheet"/>
-<!-- Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
 <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-S33NBEJQFD');
-    </script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  gtag('js', new Date());
+  gtag('config', 'G-S33NBEJQFD', {
+    send_page_view: true,
+    page_title: document.title,
+    page_location: window.location.href,
+    page_path: window.location.pathname,
+    language: document.documentElement.lang || navigator.language || 'hr'
+  });
+
+  // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a');
+    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    var href = link.href;
+    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
+    var isMail = href.indexOf('mailto:') === 0;
+    var isTel = href.indexOf('tel:') === 0;
+    var isExternal = link.hostname && link.hostname !== window.location.hostname;
+    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
+
+    if (isMail || isTel) {
+      gtag('event', 'contact_click', {
+        contact_type: isMail ? 'email' : 'phone',
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isExternal) {
+      gtag('event', 'external_link_click', {
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isDownload) {
+      gtag('event', 'file_download', {
+        file_name: (link.pathname || '').split('/').pop(),
+        link_text: text,
+        link_url: href
+      });
+    }
+  });
+</script>
 </head>
 <body class="hr">
 <div class="layout">
