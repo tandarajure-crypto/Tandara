@@ -897,7 +897,6 @@ body{
    Cilj: početna slika i hotspotovi se skaliraju po širini ekrana,
    a "LIVANJSKE TANDARE" ostaje unutar okvira.
 ====================================================== */
-
 img, video, iframe{
     max-width:100%;
 }
@@ -983,6 +982,48 @@ img, video, iframe{
         white-space:normal;
     }
 
+
+    /* MOBITEL: korekcija klikabilnih okvira bez utjecaja na PC.
+       Pomaci su uneseni prema opažanju na mobitelu:
+       - glavne grane: Jurina/Antina ulijevo 10% širine okvira; Petrova/Matina ulijevo 5%
+       - desni dijagram: Ivan udesno 10% širine; 4 okvira udesno 20%; 8 boxova udesno 30%
+    */
+    .hs-jurina,
+    .hs-antina{
+        left:calc(12.48% - 1.8%);
+    }
+
+    .hs-petrova,
+    .hs-matina{
+        left:calc(36.08% - 0.9%);
+    }
+
+    .hs-ivanov{
+        left:calc(60.9% + 1.17%);
+    }
+
+    .hs-jurin,
+    .hs-petrov,
+    .hs-antin,
+    .hs-matin{
+        left:calc(71.2% + 2.04%);
+    }
+
+    .hs-jurin{
+        left:calc(71% + 2.04%);
+    }
+
+    .hs-box1,
+    .hs-box2,
+    .hs-box3,
+    .hs-box4,
+    .hs-box5,
+    .hs-box6,
+    .hs-box7,
+    .hs-box8{
+        left:calc(83.3% + 3.3%);
+    }
+
     .branch-content,
     .content-page{
         padding:20px 12px;
@@ -1044,3 +1085,4 @@ img, video, iframe{
         letter-spacing:-0.2px;
     }
 }
+
