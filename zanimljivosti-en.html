@@ -1,31 +1,39 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head><meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/><meta content="nosniff" http-equiv="X-Content-Type-Options"/><meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<head>
+<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TANDARA – SURNAME | Interesting Facts</title>
-<!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
+
+<title>Interesting Facts About the Tandara Surname</title>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
-gtag('consent', 'default', {
-  'analytics_storage': 'granted',
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied'
-});
+
+  gtag('consent', 'default', {
+    'analytics_storage': 'granted',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+
   gtag('js', new Date());
+
   gtag('config', 'G-S33NBEJQFD', {
     send_page_view: true,
     page_title: document.title,
     page_location: window.location.href,
     page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'hr'
+    language: document.documentElement.lang || navigator.language || 'en'
   });
 
-  // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
   document.addEventListener('click', function(event) {
     var link = event.target.closest('a');
     if (!link || !link.href || typeof gtag !== 'function') return;
@@ -61,29 +69,143 @@ gtag('consent', 'default', {
     }
   });
 </script>
-<!-- OPEN GRAPH FOR LINK PREVIEW -->
-<meta content="TANDARA – SURNAME | Interesting Facts" property="og:title"/>
-<meta content="Interesting facts related to the history, genealogy and origin of the Tandara surname." property="og:description"/>
-<meta content="https://tandarajure-crypto.github.io/Tandara/zanimljivosti-en.html" property="og:url"/>
-<meta content="https://tandarajure-crypto.github.io/Tandara/family-tree.png" property="og:image"/>
-<meta content="website" property="og:type"/>
+
 <link href="style.css?v=5" rel="stylesheet"/>
+
+<style>
+.content-card h2{
+  margin-top: 42px;
+  padding-top: 22px;
+  padding-bottom: 10px;
+  border-top: 2px solid rgba(120, 88, 45, 0.32);
+  color: #4b351c;
+}
+
+.content-card h3{
+  margin-top: 30px;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  border-top: 1px solid rgba(120, 88, 45, 0.24);
+  color: #5a3f21;
+}
+
+.content-card h1 + h2{
+  margin-top: 26px;
+}
+
+.audio-pronunciation-box{
+  margin: 22px 0 30px 0;
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: rgba(245, 238, 220, 0.75);
+  border: 1px solid rgba(120, 88, 45, 0.25);
+}
+
+.audio-pronunciation-title{
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #4b351c;
+}
+
+.audio-icon-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.audio-icon-button{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(75, 53, 28, 0.35);
+  background: #ffffff;
+  color: #3d2a16;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.audio-icon-button:hover{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.18);
+  background: #fff8ec;
+}
+
+.audio-icon-button.playing{
+  background: #e8f4df;
+  border-color: rgba(56, 110, 43, 0.55);
+}
+
+.audio-icon-button.playing .speaker-icon{
+  background: #24582f;
+  box-shadow: 0 0 0 4px rgba(47, 109, 59, 0.18);
+}
+
+.speaker-icon{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #2f6d3b;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.audio-label-small{
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+@keyframes speakerPulse{
+  0%{ transform: scale(1); }
+  50%{ transform: scale(1.08); }
+  100%{ transform: scale(1); }
+}
+
+.audio-icon-button.playing .speaker-icon{
+  animation: speakerPulse 1.2s ease-in-out infinite;
+}
+
+@media (max-width: 600px){
+  .audio-icon-row{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .audio-icon-button{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+</style>
 </head>
+
 <body class="en">
+
 <div class="layout">
-<!-- LEFT SIDEBAR -->
+
 <aside class="left-menu">
-<!-- HOME -->
+
 <a class="home-button" href="index-en.html">
 <div class="home-circle">
-<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
 <path d="M10 20v-6h4v6"></path>
 </svg>
 </div>
 </a>
-<!-- HR / EN -->
+
 <div class="lang-switch">
 <a class="lang-btn flag-btn" href="zanimljivosti.html">
 <img alt="HR" src="flag-hr.png"/>
@@ -92,115 +214,204 @@ gtag('consent', 'default', {
 <img alt="EN" src="flag-uk.png"/>
 </a>
 </div>
+
 <h2>TANDARA-SURNAME</h2>
 
-<ul class="heritage-menu"><li><span>🌳</span><a href="./autor-en.html">About the Author &amp; Project</a></li><li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the Surname</a></li><li><span>🌳</span><a href="./rodoslovlje-en.html">Family Genealogy</a></li><li><span>🌳</span><a href="./migracije-en.html">Migration &amp; Distribution</a></li><li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting Facts</a></li><li><span>🌳</span><a href="./contacts.html">Contact &amp; Collaboration</a></li><li><span>🌳</span><a href="./visitors-messages.html">Visitors' Messages</a></li><li><span>🌳</span><a href="./privacy.html">Privacy Policy</a></li></ul>
+<ul class="heritage-menu">
+<li><span>🌳</span><a href="./autor-en.html">About the Author and Project</a></li>
+<li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the Surname</a></li>
+<li><span>🌳</span><a href="./rodoslovlje-en.html">Family Genealogy</a></li>
+<li><span>🌳</span><a href="./migracije-en.html">Migrations and Distribution</a></li>
+<li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting Facts</a></li>
+<li><span>🌳</span><a href="./contacts.html">Contact and Collaboration</a></li>
+<li><span>🌳</span><a href="./visitors-messages.html">Guestbook</a></li>
+<li><span>🌳</span><a href="./privacy.html">Privacy Policy</a></li>
+</ul>
+
 <div class="author-photo">
 <a href="./autor-en.html">
 <img alt="Jure Tandara" src="./jure.png"/>
 </a>
 </div>
+
 <div class="flagbox">
 <a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"/>
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
 </a>
 </div>
+
 </aside>
-<!-- MAIN CONTENT -->
+
 <main class="content-page">
+
 <article class="content-card">
 <h1>Interesting Facts About the Tandara Surname</h1>
-<p class="lead">
-                Every surname has its own story.
-            </p>
-<h2>Every Surname Has a Story</h2>
+
+<h2>Every surname carries its own story</h2>
 <p>
-                A surname is not just a word recorded in a civil registry. It is part of a family identity, a link between past and future generations, and a lasting reminder of our ancestors.
-                Every generation leaves a new trace through its life, which is why genealogy is not just a list of names and dates, but a story about people, their families, customs, work and homeland.
-            </p>
-<h2>A Name That Is Easy to Remember</h2>
-<p>
-                The name Tandara consists of three simple syllables: <strong>Tan – da – ra</strong>.
-                Because of its rhythm and simple pronunciation, it is easy to remember and distinctive.
-            </p>
-<h2>A Rare and Distinctive Surname</h2>
-<p>
-                The surname Tandara is among the rare Croatian surnames. Because of its rarity, it is possible to trace family branches across several centuries with a high degree of certainty and connect them reliably.
-                Unlike very common surnames, most present-day bearers of the surname Tandara can trace their origin back to common ancestors.
-            </p>
-<h2>More Than Three Centuries of Family History</h2>
-<p>
-                Research shows that the surname Tandara appears in historical sources as early as the late 17th century.
-                Despite wars, migrations and major social changes, the surname has remained almost unchanged for more than three hundred years. Such continuity reflects the long and rich history of the family.
-            </p>
-<h2>The Name Tandara in the World</h2>
-<p>
-                Although the origin of the Croatian surname Tandara has not yet been fully clarified, it is interesting that the word <strong>Tandara</strong> or very similar forms appear in different parts of the world as a surname, place name, personal name, or a term with special cultural meaning.
-            </p>
-<p>
-                In many languages and cultures, the name is associated with togetherness, dwelling, gathering, hospitality, home and belonging.
-            </p>
-<h2>Croatia and Romania – The Only Two Countries with a Dual Occurrence of the Name</h2>
-<p>
-                According to current research, Croatia and Romania are the only two countries in the world where the name Tandara appears both as a surname and as a place name (hamlet or rural locality).
-            </p>
-<p>
-                However, despite this similarity, the Croatian and Romanian Tandara are not believed to share a common origin.
-                The Romanian surname, although similarly written, is pronounced differently and has a distinct development path.
-            </p>
-<h2>Bosnia and Herzegovina – Migration from Ričice</h2>
-<p>
-                For Bosnia and Herzegovina, there is a clear historical sequence.
-                It is known that between 1806 and 1819, Martin and Ante, grandsons of Ivan Tandara (born around 1695), moved from Ričice to Zavelim, where they formed the hamlet of Tandare.
-            </p>
-<p>
-                Their branch is not connected to Duvno and Livno.
-                For Duvno and Livno, there is another assumed lineage: it is believed that one of Ivan’s descendants may have moved to Duvno and later from Duvno to Livno.
-                This assumption can only be confirmed or rejected through DNA analysis.
-            </p>
-<h2>Slovakia – Romanian Influence and Possible Croatian Connection</h2>
-<p>
-                In Slovakia, the surname appears most likely as a transferred form from Romanian territory.
-                However, it cannot be completely ruled out that someone from the Tandara family from Ričice, through trade or migration, may have ended up in Slovakia.
-                Such individual migration cases were not uncommon in the 18th and 19th centuries, although this remains unconfirmed.
-            </p>
-<h2>Australia – Aboriginal Meaning and Tourism Use</h2>
-<p>
-                In some Aboriginal Australian languages, forms similar to Tandara or Tandarra refer to a dwelling place, camp, gathering space, and place of belonging.
-            </p>
-<p>
-                Because of these positive meanings, the name is often used in tourism contexts such as:
-                camp sites, eco-lodges, glamping facilities and tourist retreats.
-            </p>
-<h2>Brazil – A Female Given Name</h2>
-<p>
-                In Brazil, Tandara is a modern female given name, made popular by the volleyball player Tandara Caixeta.
-                The name is associated with energy, strength and modern identity.
-            </p>
-<h2>The Family’s Journey Through Time</h2>
-<p>
-                Like many Croatian families, members of the Tandara family migrated over the centuries in search of safer and better lives.
-                Today, descendants live in different parts of Croatia, as well as in other countries around the world, preserving the memory of their origins.
-            </p>
-<h2>Still Under Research</h2>
-<p>
-                Despite many collected documents, family history is never fully complete.
-                Every new parish record, old photograph, letter or family story can bring new information and complete the mosaic of the past.
-                That is why this digital archive is designed as a permanent project that will continue to grow with new discoveries.
-            </p>
-<h2>Are You a Tandara?</h2>
-<p>
-                Do you carry the surname Tandara or have ancestors from the Tandara family?
-                Feel free to contact me. Perhaps your family photographs, documents or memories can help expand and enrich the shared history of the Tandara family.
-            </p>
-<p>
-                Every piece of information, no matter how small it may seem, can be a valuable part of our shared family heritage that we preserve for future generations.
-            </p>
-<p>
-<strong>Welcome to the Digital Archive of the Tandara Family.</strong>
+A surname is not merely a word written in a registry book. It is part of a family identity, a link between past and future generations, and a lasting reminder of our ancestors.
+Each generation leaves a new trace through its life, which is why genealogy is not only a list of names and dates, but a story about people, their families, customs, work and homeland.
 </p>
-</article>
-</main>
+
+<h2>A rare and distinctive surname</h2>
+<p>
+The surname Tandara belongs among rare Croatian surnames. Precisely because of its rarity, it is possible to follow family branches through several centuries and connect them with a high degree of certainty.
+Unlike very common surnames, most present-day bearers of the Tandara surname can trace their origin back to common ancestors.
+</p>
+
+<h2>A surname that is easy to remember</h2>
+<p>
+Tandara consists of three simple syllables – <strong>Tan – da – ra</strong>.
+Because of its rhythm and simple pronunciation, it is easy to remember and leaves a distinctive impression.
+</p>
+<h2>How is the surname pronounced?</h2>
+
+<div class="audio-pronunciation-box">
+
+<div class="audio-pronunciation-title">
+Listen to the pronunciation of the surname Tandara
 </div>
+
+<div class="audio-icon-row">
+
+<button class="audio-icon-button" data-audio="audio/tandara-hr.mp3">
+<span class="speaker-icon">🔊</span>
+<span>
+<strong>Croatian pronunciation</strong><br>
+<span class="audio-label-small">Tan-da-ra</span>
+</span>
+</button>
+
+<button class="audio-icon-button" data-audio="audio/tandara-en.mp3">
+<span class="speaker-icon">🔊</span>
+<span>
+<strong>English pronunciation</strong><br>
+<span class="audio-label-small">TAN-da-ra</span>
+</span>
+</button>
+
+</div>
+
+</div>
+
+<h2>The value of preserving family heritage</h2>
+
+<p>
+Many family histories disappear because nobody writes them down.
+Photographs remain in drawers, letters fade, and memories vanish with the passing of generations.
+Every family archive that is preserved becomes a valuable historical source for future descendants.
+</p>
+
+<p>
+The purpose of this digital archive is therefore not only to collect genealogical data but also to preserve photographs, stories, documents and memories connected with the Tandara family.
+</p>
+
+<h2>Every family can create its own archive</h2>
+
+<p>
+Creating a family archive does not require professional historians.
+It begins with conversations with parents, grandparents and relatives, collecting photographs, preserving birth, marriage and death certificates, and recording family stories while people still remember them.
+</p>
+
+<p>
+Today's digital technology makes it possible to preserve this heritage permanently and make it accessible to future generations.
+</p>
+
+<h2>The importance of oral tradition</h2>
+
+<p>
+Before written records became common, family history was preserved through oral tradition.
+Grandparents passed stories on to children and grandchildren, allowing important events, migrations, customs and family relationships to survive for centuries.
+</p>
+
+<p>
+Many details included in this archive originate precisely from such family memories, later confirmed through parish registers and historical documents whenever possible.
+</p>
+
+<h2>Genealogy is never completely finished</h2>
+
+<p>
+Every family tree is a living document.
+New documents appear, unknown relatives are discovered, family photographs emerge from private collections, and descendants contribute new information.
+Therefore this archive will continue to grow and improve over time.
+</p>
+
+<h2>A project open to cooperation</h2>
+
+<p>
+If you possess documents, photographs, family stories or any information related to the Tandara surname, your contribution would be greatly appreciated.
+Every verified piece of information helps complete the historical mosaic of the Tandara family.
+</p>
+
+<p>
+The goal is to create the most accurate and comprehensive digital archive possible for future generations.
+</p>
+
+<hr>
+
+<p style="text-align:center; font-style:italic; margin-top:40px;">
+"By preserving the memory of our ancestors, we preserve a part of ourselves."
+</p>
+
+<script>
+(() => {
+
+let currentAudio = null;
+let currentButton = null;
+
+document.querySelectorAll('.audio-icon-button').forEach(button => {
+
+button.addEventListener('click', () => {
+
+const src = button.dataset.audio;
+
+if(currentAudio){
+currentAudio.pause();
+currentAudio.currentTime = 0;
+if(currentButton){
+currentButton.classList.remove('playing');
+}
+}
+
+if(currentAudio && currentAudio.src.includes(src)){
+currentAudio = null;
+currentButton = null;
+return;
+}
+
+const audio = new Audio(src);
+
+currentAudio = audio;
+currentButton = button;
+
+button.classList.add('playing');
+
+audio.play();
+
+audio.onended = () => {
+button.classList.remove('playing');
+currentAudio = null;
+currentButton = null;
+};
+
+audio.onerror = () => {
+button.classList.remove('playing');
+currentAudio = null;
+currentButton = null;
+alert("Audio file is not available.");
+};
+
+});
+
+});
+
+})();
+</script>
+</article>
+
+</main>
+
+</div>
+
 </body>
 </html>
