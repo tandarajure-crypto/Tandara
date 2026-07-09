@@ -159,6 +159,27 @@ height: 42px;
     justify-content: flex-start;
   }
 }
+  @keyframes speakerPulse{
+
+  0%{
+    transform: scale(1);
+  }
+
+  50%{
+    transform: scale(1.08);
+  }
+
+  100%{
+    transform: scale(1);
+  }
+
+}
+
+.audio-icon-button.playing .speaker-icon{
+
+  animation: speakerPulse 1.2s ease-in-out infinite;
+
+}
 </style>
 
 </head>
