@@ -470,9 +470,11 @@ function pauseAllButtons(){
       btnRO.classList.remove("playing");
     }
   });
+audioHR.addEventListener("ended", pauseAllButtons);
+audioRO.addEventListener("ended", pauseAllButtons);
 
-  audioHR.addEventListener("ended", resetButtons);
-  audioRO.addEventListener("ended", resetButtons);
+audioHR.addEventListener("pause", pauseAllButtons);
+audioRO.addEventListener("pause", pauseAllButtons);
 })();
 </script>
 
