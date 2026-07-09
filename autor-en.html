@@ -1,1 +1,208 @@
 
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/><meta content="nosniff" http-equiv="X-Content-Type-Options"/><meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About the Author – Jure Tandara</title>
+<!-- Google Analytics – GA4 basic tracking + useful clicks -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'analytics_storage': 'granted',
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied'
+});
+  gtag('js', new Date());
+  gtag('config', 'G-S33NBEJQFD', {
+    send_page_view: true,
+    page_title: document.title,
+    page_location: window.location.href,
+    page_path: window.location.pathname,
+    language: document.documentElement.lang || navigator.language || 'en'
+  });
+
+  // GA4 events: contact, external links and downloads.
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a');
+    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    var href = link.href;
+    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
+    var isMail = href.indexOf('mailto:') === 0;
+    var isTel = href.indexOf('tel:') === 0;
+    var isExternal = link.hostname && link.hostname !== window.location.hostname;
+    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
+
+    if (isMail || isTel) {
+      gtag('event', 'contact_click', {
+        contact_type: isMail ? 'email' : 'phone',
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isExternal) {
+      gtag('event', 'external_link_click', {
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isDownload) {
+      gtag('event', 'file_download', {
+        file_name: (link.pathname || '').split('/').pop(),
+        link_text: text,
+        link_url: href
+      });
+    }
+  });
+</script>
+<!-- OPEN GRAPH -->
+<meta content="About the Author – Jure Tandara" property="og:title"/>
+<meta content="Author of the Digital Archive of the Tandara Family Line project." property="og:description"/>
+<meta content="https://tandarajure-crypto.github.io/Tandara/autor-en.html" property="og:url"/>
+<meta content="https://tandarajure-crypto.github.io/Tandara/jure.png" property="og:image"/>
+<meta content="website" property="og:type"/>
+<link href="./style.css?v=5" rel="stylesheet"/>
+</head>
+<body class="hr">
+<div class="layout">
+<div class="left-menu">
+<a class="home-button" href="index-en.html">
+<div class="home-circle">
+<svg class="home-svg" fill="none" stroke="white" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 10.5L12 3l9 7.5"></path>
+<path d="M5 10v10h14V10"></path>
+<path d="M10 20v-6h4v6"></path>
+</svg>
+</div>
+</a>
+<div class="lang-switch">
+<a class="lang-btn flag-btn" href="autor-hr.html">
+<img alt="HR" src="./flag-hr.png"/>
+</a>
+<a class="lang-btn flag-btn" href="autor-en.html">
+<img alt="EN" src="./flag-uk.png"/>
+</a>
+</div>
+<h2>TANDARA SURNAME</h2>
+
+<ul class="heritage-menu"><li><span>🌳</span><a href="autor-en.html">About the Author and the Project</a></li><li><span>🌳</span><a href="podrijetlo-en.html">Origin of the Surname</a></li><li><span>🌳</span><a href="rodoslovlje-en.html">Family Genealogy</a></li><li><span>🌳</span><a href="migracije-en.html">Migrations and Distribution</a></li><li><span>🌳</span><a href="zanimljivosti-en.html">Interesting Facts</a></li><li><span>🌳</span><a href="kontakti-en.html">Contact and Cooperation</a></li><li><span>🌳</span><a href="knjiga-poruka-en.html">Guestbook</a></li><li><span>🌳</span><a href="privatnost-en.html">Privacy Policy</a></li></ul>
+<div class="author-photo">
+<a href="autor-en.html">
+<img alt="Jure Tandara" src="./jure.png"/>
+</a>
+</div>
+<h3 class="visitor-title">Visitors</h3>
+<div class="flagbox">
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
+</a>
+</div>
+</div>
+<main class="content-page">
+<article class="content-card">
+<h1>About the Author</h1>
+<section id="uvod">
+<h2>Personal Introduction</h2>
+<p>Dear visitor, welcome to the web pages dedicated to the history,
+    origin and heritage of the surname <strong>Tandara</strong>.</p>
+<p>My name is <strong>Jure Tandara</strong>, a road traffic engineer. I am 70 years old
+    and have been retired for six years. I live in Zagreb with my wife Ruža, I am the father
+    of two sons — <strong>Ivica Julio</strong> and <strong>Marin Tino</strong> — and the grandfather
+    of five grandchildren: <strong>Vigo</strong>, <strong>David</strong>, <strong>Jakov</strong>,
+    <strong>Kaia</strong> and <strong>Laura</strong>.</p>
+<p>After a long working life, today I dedicate myself to my family, to researching our
+    roots, and to everything that connects me with nature and creativity.</p>
+</section>
+<section id="profesionalni-put">
+<h2>Professional Career</h2>
+
+<p>I began my professional career as the <strong>Head of the Croatian Railways Rolling Stock Repair and Maintenance Facility</strong>
+in Zagreb, where I was responsible for the organisation, supervision and quality of maintenance, as well as for the reliability of the railway fleet. This first appointment provided me with a strong technical and organisational foundation for my future work in the field of transport systems.</p>
+
+<p>I then worked as the <strong>Head of the Container Terminal in Zagreb</strong>,
+where I was responsible for managing terminal operations, organising freight flows and coordinating logistics processes.</p>
+
+<p>Afterwards, I assumed the position of <strong>Head of the Traffic Safety Department</strong>
+at the Rijeka–Zagreb Motorway. Together with my colleague, the <strong>Head of the Maintenance Department</strong>,
+Mr Dinko Pešut, we laid the foundations of a modern motorway maintenance and traffic safety management system, the first of its kind in the Republic of Croatia.</p>
+
+<p>Our work was recognised by the European Commission, which awarded the Tuhobić Tunnel the distinction of being the safest tunnel in Europe in 2009, as the tunnel that achieved the greatest improvement in safety after receiving a poor rating during the first European tunnel safety assessment in 2004.</p>
+
+<p>An important part of my professional career was also the
+<strong>management of the implementation project of the RDS–TMC traffic information system</strong>
+in the Republic of Croatia. This project established the foundations of modern traffic information services and enabled the integration of Croatian road traffic information into the European dynamic traffic management network.</p>
+
+</section>
+
+<section id="sport-i-stvaralastvo">
+<h2>Sport and Technical Creativity</h2>
+
+<p>Alongside my professional career, I devoted a significant part of my life to sport and technical creativity. I hold a black belt in karate and was a former member of the national team of Karate Club Tempo. For many years I was also actively involved in skiing, mountaineering and cycling.</p>
+
+<p>I found particular enjoyment in building models of historic ships, replicas of Roman and ancient military machines, as well as handcrafted wooden toys for my grandchildren.</p>
+
+</section>
+
+<section id="obitelj">
+<h2>Family and Everyday Life</h2>
+
+<p>Today I find the greatest joy in nature and in spending time with my grandchildren, creating memories that will outlive generations. My family, my children, grandchildren and friends remain my greatest source of inspiration and happiness in life.</p>
+
+</section>
+<h2>About the Project</h2>
+
+<p>This web project is currently in its initial stage of development. A considerable amount of material has already been collected, while new information continues to be added on a regular basis. It will therefore require a significant amount of time to organise, process and present everything as a comprehensive digital archive of the Tandara family line. The website has been made publicly available so that visitors can follow its gradual development and expansion and gain an understanding of how the archive is continuously enriched and improved.</p>
+
+<p><strong>This website is primarily intended for viewing on a laptop or desktop computer</strong>, because the initial presentation of the family tree and other graphical elements contains a large amount of detailed information that cannot be displayed properly on the screen of a mobile phone or tablet. On smaller devices, visitors need to scroll in multiple directions, zoom in, and in some cases even rotate the screen by 90 degrees, which many users do not find intuitive or convenient. To avoid possible misinterpretation of data or overlooking important information, it is recommended to use a desktop or laptop computer where the entire presentation is clear, stable and fully visible.</p>
+
+<p>This project was created from a desire to collect, preserve and systematically present, in one place, information about our ancestors, family branches, the places where they lived, and the events that shaped the history of the Tandara family line.</p>
+
+<p>Over time, many valuable records have been lost, forgotten or scattered among various archives and private collections. The purpose of this website is therefore to preserve our family heritage, historical identity and collective memory for both present and future generations.</p>
+
+<p>The family trees and genealogical data published on these pages are the result of many years of research carried out in parish archives, civil registers, historical sources, archival documents and testimonies provided by members of the Tandara family.</p>
+
+<p>A particularly important place in this research belongs to the work of Milan Lažeta, whose publication <em>"Genealogy of the Tandara Clan"</em> established the foundation for further study of the history and origin of our family and remains one of the most valuable sources for understanding the heritage of the Tandara family line.</p>
+
+<p>Every newly discovered record represents a small but significant piece of the mosaic that, when combined, tells the story of our origins.</p>
+
+<p>These are the first web pages ever dedicated to the Tandara surname. Their purpose is to establish a common family genealogy and to encourage future generations to continue researching, expanding and preserving the history of our family line.</p>
+<p>
+As part of the further development of this project, plans include producing T-shirts in various sizes featuring the logo from the home page – the family tree with its four main branches together with the diagram on the right showing the earliest known Tandara families. Since the entire project is financed exclusively from my retirement pension, the number of T-shirts will be limited. A small number of them will be presented as gifts to the first or distinguished members of our family line, to those who will proudly wear the Tandara surname on their chest.
+</p>
+
+<p>
+Should there be sufficient interest in producing a large wall poster – whether as a decorative display or as a detailed family genealogy for the wall – I kindly invite you to contact me using the information provided on the Contact page. I will gladly consider the possibilities of production and discuss the details with everyone who would like to own such a presentation of our family's history.
+</p>
+
+</section>
+
+<section id="zahvala">
+
+<h2>Acknowledgements</h2>
+
+<p>This digital archive would never have come into existence without the people whose knowledge, dedication and love for our family heritage laid its solid foundations.</p>
+
+<p>I owe special gratitude to my cousin and friend <strong>Vice Tandara</strong>, whose enthusiasm and vision inspired the creation of the publication <em>"Genealogy of the Tandara Clan"</em>. His idea of researching, preserving and permanently recording the history of our family line marked the beginning of a project that has left a lasting legacy for future generations.</p>
+
+<p>I also extend my sincere and heartfelt gratitude to our mutual friend <strong>Milan Lažeta</strong>, the author of the publication <em>"Genealogy of the Tandara Clan"</em>. For many years he devoted himself to researching church and state archives, parish registers and numerous historical sources, patiently collecting and connecting information about the many branches and lineages of the large Tandara family. The result of his many years of work is this exceptionally valuable publication, which represents an invaluable contribution to preserving the history and heritage of our family line.</p>
+
+<p>The publication <em>"Genealogy of the Tandara Clan"</em> forms the foundation and principal source of information upon which this digital archive has been built. Without the vision of Vice Tandara and the dedicated research of Milan Lažeta, this project would never have been possible.</p>
+
+<p>To both of them I express my heartfelt gratitude and deepest respect for their immeasurable contribution to preserving the shared heritage of the Tandara family.</p>
+
+<p style="margin-top:40px;"><strong>Jure Tandara</strong></p>
+
+</section>
+
+</article>
+</main>
+</div>
+</body>
+</html>
