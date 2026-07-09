@@ -432,11 +432,16 @@ Svaki podatak, bez obzira koliko se na prvi pogled činio malenim, može biti vr
   const btnHR = document.getElementById("playHR");
   const btnRO = document.getElementById("playRO");
 
-  function resetButtons(){
-    btnHR.classList.remove("playing");
-    btnRO.classList.remove("playing");
-  }
+function resetButtons(){
+  btnHR.classList.remove("playing");
+  btnRO.classList.remove("playing");
+}
 
+function pauseAllButtons(){
+  if(audioHR.paused && audioRO.paused){
+    resetButtons();
+  }
+}
   function stopAudio(audio){
     audio.pause();
     audio.currentTime = 0;
