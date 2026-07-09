@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="hr">
 <head>
 <meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
@@ -75,6 +74,26 @@
 <link href="style.css?v=5" rel="stylesheet"/>
 
 <style>
+.content-card h2{
+  margin-top: 42px;
+  padding-top: 22px;
+  padding-bottom: 10px;
+  border-top: 2px solid rgba(120, 88, 45, 0.32);
+  color: #4b351c;
+}
+
+.content-card h3{
+  margin-top: 30px;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  border-top: 1px solid rgba(120, 88, 45, 0.24);
+  color: #5a3f21;
+}
+
+.content-card h1 + h2{
+  margin-top: 26px;
+}
+
 .audio-pronunciation-box{
   margin: 22px 0 30px 0;
   padding: 20px 24px;
@@ -84,7 +103,7 @@
 }
 
 .audio-pronunciation-title{
-margin: 0 0 16px 0;
+  margin: 0 0 16px 0;
   font-size: 18px;
   font-weight: 700;
   color: #4b351c;
@@ -112,9 +131,9 @@ margin: 0 0 16px 0;
   box-shadow: 0 3px 8px rgba(0,0,0,0.12);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
-  
+
 .audio-icon-button:hover{
-transform: translateY(-2px) scale(1.02);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 5px 12px rgba(0,0,0,0.18);
   background: #fff8ec;
 }
@@ -130,8 +149,8 @@ transform: translateY(-2px) scale(1.02);
 }
 
 .speaker-icon{
-width: 42px;
-height: 42px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #2f6d3b;
   color: #ffffff;
@@ -148,6 +167,16 @@ height: 42px;
   opacity: 0.85;
 }
 
+@keyframes speakerPulse{
+  0%{ transform: scale(1); }
+  50%{ transform: scale(1.08); }
+  100%{ transform: scale(1); }
+}
+
+.audio-icon-button.playing .speaker-icon{
+  animation: speakerPulse 1.2s ease-in-out infinite;
+}
+
 @media (max-width: 600px){
   .audio-icon-row{
     flex-direction: column;
@@ -159,29 +188,7 @@ height: 42px;
     justify-content: flex-start;
   }
 }
-  @keyframes speakerPulse{
-
-  0%{
-    transform: scale(1);
-  }
-
-  50%{
-    transform: scale(1.08);
-  }
-
-  100%{
-    transform: scale(1);
-  }
-
-}
-
-.audio-icon-button.playing .speaker-icon{
-
-  animation: speakerPulse 1.2s ease-in-out infinite;
-
-}
 </style>
-
 </head>
 
 <body class="hr">
@@ -190,10 +197,9 @@ height: 42px;
 
 <aside class="left-menu">
 
-<!-- HOME -->
 <a class="home-button" href="index.html">
 <div class="home-circle">
-<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
 <path d="M10 20v-6h4v6"></path>
@@ -201,7 +207,6 @@ height: 42px;
 </div>
 </a>
 
-<!-- HR / EN -->
 <div class="lang-switch">
 <a class="lang-btn flag-btn" href="zanimljivosti.html">
 <img alt="HR" src="flag-hr.png"/>
@@ -243,8 +248,7 @@ height: 42px;
 <main class="content-page">
 
 <article class="content-card">
- <h1>Zanimljivosti o prezimenu Tandara</h1>
-
+<h1>Zanimljivosti o prezimenu Tandara</h1>
 <h2>Svako prezime krije svoju priču</h2>
 <p>
 Prezime nije samo riječ zapisana u matičnoj knjizi. Ono je dio obiteljskog identiteta, poveznica između prošlih i budućih naraštaja te trajni podsjetnik na naše pretke.
@@ -262,7 +266,7 @@ Za razliku od vrlo čestih prezimena, većina današnjih nositelja prezimena Tan
 Tandara se sastoji od tri jednostavna sloga – <strong>Tan – da – ra</strong>.
 Zbog svoje ritmičnosti i jednostavnog izgovora lako se pamti i ostavlja prepoznatljiv dojam.
 </p>
-  
+
 <h2>Više od tri stoljeća obiteljske povijesti</h2>
 <p>
 Dosadašnja istraživanja pokazuju da se prezime Tandara u povijesnim izvorima pojavljuje već krajem 17. stoljeća.
@@ -282,10 +286,10 @@ Ta podudarnost ne znači nužno zajedničko podrijetlo. U većini slučajeva rij
 <h2>Tandara i Țândără – hrvatska i rumunjska inačica naziva</h2>
 
 <p>
-Prezime <strong>Tandara</strong> pojavljuje se kao autohtono u dvije europske države – 
+Prezime <strong>Tandara</strong> pojavljuje se kao autohtono u dvije europske države –
 <strong>Hrvatskoj</strong> i <strong>Rumunjskoj</strong> – i u obje se javlja dvostruko:
 kao prezime i kao naziv lokaliteta, zaseoka, predjela ili manjih ruralnih područja.
-Unatoč toj zanimljivoj podudarnosti, hrvatska i rumunjska inačica nemaju 
+Unatoč toj zanimljivoj podudarnosti, hrvatska i rumunjska inačica nemaju
 zajedničku povijest niti zajedničko podrijetlo.
 </p>
 
@@ -295,8 +299,8 @@ zajedničku povijest niti zajedničko podrijetlo.
 <strong>Izgovor:</strong> TÀn-da-ra, naglasak na prvom slogu<br>
 <strong>Fonetske značajke:</strong> tvrdo t, kratki vokali, ravnomjeran ritam.<br>
 <strong>Povijesni kontekst:</strong> prezime se pojavljuje u dalmatinskom i hercegovačkom području.<br>
-<strong>Etimologija:</strong> najčešće se povezuje s nazivom <em>tandir</em> – limenom peći 
-korištenom u vrijeme osmanske vladavine. Prezime je moglo nastati po zanimanju 
+<strong>Etimologija:</strong> najčešće se povezuje s nazivom <em>tandir</em> – limenom peći
+korištenom u vrijeme osmanske vladavine. Prezime je moglo nastati po zanimanju
 izrade ili održavanja limenih peći, po predmetu, odnosno tandiru kao prepoznatljivom objektu,
 ili po lokalitetu gdje se takva peć koristila.
 </p>
@@ -305,11 +309,11 @@ ili po lokalitetu gdje se takva peć koristila.
 <p>
 <strong>Pisanje:</strong> Țândără<br>
 <strong>Izgovor:</strong> tsân-DĂ-rə, naglasak na drugom slogu<br>
-<strong>Fonetske značajke:</strong> početno slovo Ț izgovara se kao “ts”, a vokal ă je 
+<strong>Fonetske značajke:</strong> početno slovo Ț izgovara se kao “ts”, a vokal ă je
 neutralni šva-zvuk.<br>
-<strong>Etimologija:</strong> rumunjski naziv potječe od riječi <em>țândără</em> 
-u značenju treščica, iver ili komadić drveta. Prezime je najvjerojatnije nastalo po zanimanju 
-vezanom uz drvodjelstvo, po osobini osobe koja radi s iverjem, ili po lokalnom 
+<strong>Etimologija:</strong> rumunjski naziv potječe od riječi <em>țândără</em>
+u značenju treščica, iver ili komadić drveta. Prezime je najvjerojatnije nastalo po zanimanju
+vezanom uz drvodjelstvo, po osobini osobe koja radi s iverjem, ili po lokalnom
 nazivu koji se odnosi na drvene ostatke.
 </p>
 
@@ -337,7 +341,7 @@ Kliknite na zvučnik i poslušajte izgovor
 <path fill="currentColor" d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"/>
 </svg>
 </span>
-  <span>
+<span>
 Poslušajte hrvatski izgovor<br>
 <span class="audio-label-small">Tandara</span>
 </span>
@@ -349,7 +353,7 @@ Poslušajte hrvatski izgovor<br>
 <path fill="currentColor" d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"/>
 </svg>
 </span>
-  <span>
+<span>
 Poslušajte rumunjski izgovor<br>
 <span class="audio-label-small">Țândără</span>
 </span>
@@ -363,23 +367,30 @@ Poslušajte rumunjski izgovor<br>
 </div>
 
 </section>
-
 <h2>Tandara prezime u Slovačkoj</h2>
 
-<p>Prezime <strong>Tandara</strong> u Slovačkoj pojavljuje se ponajprije u području <strong>Žiline</strong> i <strong>Košica</strong>, gdje je zabilježeno u više suvremenih obitelji. Današnja prisutnost prezimena u tim krajevima najvjerojatnije je posljedica <strong>migracija stanovništva iz Transilvanije</strong> tijekom 18. i 19. stoljeća. Genealoške baze i raspored prezimena upućuju da <strong>Tandara nije autohtono slovačko prezime</strong>, nego je u Slovačku stiglo iz rumunjskog prostora, gdje postoji srodni oblik <strong>Țândără</strong>.</p>
+<p>
+Prezime <strong>Tandara</strong> u Slovačkoj pojavljuje se ponajprije u području <strong>Žiline</strong> i <strong>Košica</strong>, gdje je zabilježeno u više suvremenih obitelji. Današnja prisutnost prezimena u tim krajevima najvjerojatnije je posljedica <strong>migracija stanovništva iz Transilvanije</strong> tijekom 18. i 19. stoljeća. Genealoške baze i raspored prezimena upućuju da <strong>Tandara nije autohtono slovačko prezime</strong>, nego je u Slovačku stiglo iz rumunjskog prostora, gdje postoji srodni oblik <strong>Țândără</strong>.
+</p>
 
-<p>U Slovačkoj postoje i poznati suvremeni nositelji prezimena, što dodatno potvrđuje njegovu prisutnost:</p>
+<p>
+U Slovačkoj postoje i poznati suvremeni nositelji prezimena, što dodatno potvrđuje njegovu prisutnost:
+</p>
 
 <ul>
-  <li><strong>Lukáš Tandara</strong> — profesionalni lutkar, glumac i improvizator iz Žilina</strong> Clowndoctors</strong>
-  <li><strong>Marián Tandara</strong> — nogometaš iz <strong>Žilina</strong>, igrao za 21 reprezentaciju, te nastupa kao desni branič u slovačkoj drugoj ligi>
+<li><strong>Lukáš Tandara</strong> — profesionalni lutkar, glumac i improvizator iz Žilina, Clowndoctors.</li>
+<li><strong>Marián Tandara</strong> — nogometaš iz <strong>Žilina</strong>, igrao za U21 reprezentaciju, te nastupa kao desni branič u slovačkoj drugoj ligi.</li>
 </ul>
 
-<p>Ovi primjeri pokazuju da se prezime <strong>Tandara</strong> u Slovačkoj održalo i razvilo u različitim područjima — od kazališta do sporta — ali ne mijenjaju osnovnu činjenicu: <strong>najvjerojatnije je riječ o prezimenu koje je u Slovačku stiglo iz rumunjskog područja</strong>, gdje postoji snažna jezična i povijesna podloga za njegov nastanak.</p>
+<p>
+Ovi primjeri pokazuju da se prezime <strong>Tandara</strong> u Slovačkoj održalo i razvilo u različitim područjima — od kazališta do sporta — ali ne mijenjaju osnovnu činjenicu: <strong>najvjerojatnije je riječ o prezimenu koje je u Slovačku stiglo iz rumunjskog područja</strong>, gdje postoji snažna jezična i povijesna podloga za njegov nastanak.
+</p>
 
-<p>Ipak, iako je rumunjsko podrijetlo najvjerojatnije, <strong>ne može se potpuno isključiti</strong> mogućnost da je pojedini hrvatski nositelj prezimena <strong>Tandara</strong> tijekom 18. ili 19. stoljeća doselio na slovačko područje. Hrvatski oblik prezimena ima drukčiju etimologiju i povijesni razvoj, pa bi se takva mogućnost mogla <strong>jasno potvrditi ili isključiti jedino DNA analizom</strong>, usporedbom hrvatskih, slovačkih i rumunjskih genetskih linija.</p>
+<p>
+Ipak, iako je rumunjsko podrijetlo najvjerojatnije, <strong>ne može se potpuno isključiti</strong> mogućnost da je pojedini hrvatski nositelj prezimena <strong>Tandara</strong> tijekom 18. ili 19. stoljeća doselio na slovačko područje. Hrvatski oblik prezimena ima drukčiju etimologiju i povijesni razvoj, pa bi se takva mogućnost mogla <strong>jasno potvrditi ili isključiti jedino DNA analizom</strong>, usporedbom hrvatskih, slovačkih i rumunjskih genetskih linija.
+</p>
 
- <h2>Australija – naziv povezan sa zajedništvom</h2>
+<h2>Australija – naziv povezan sa zajedništvom</h2>
 <p>
 U pojedinim australskim aboridžanskim jezicima postoje riječi slične nazivu Tandara koje označavaju boravište, kamp, zajedništvo ili mjesto pripadnosti.
 Zbog tih pozitivnih značenja naziv se često koristi za kampove, eco-lodge objekte, glamping naselja i turistička odmorišta.
@@ -423,16 +434,17 @@ Svaki podatak, bez obzira koliko se na prvi pogled činio malenim, može biti vr
   const btnHR = document.getElementById("playHR");
   const btnRO = document.getElementById("playRO");
 
-function resetButtons(){
-  btnHR.classList.remove("playing");
-  btnRO.classList.remove("playing");
-}
-
-function pauseAllButtons(){
-  if(audioHR.paused && audioRO.paused){
-    resetButtons();
+  function resetButtons(){
+    btnHR.classList.remove("playing");
+    btnRO.classList.remove("playing");
   }
-}
+
+  function pauseAllButtons(){
+    if(audioHR.paused && audioRO.paused){
+      resetButtons();
+    }
+  }
+
   function stopAudio(audio){
     audio.pause();
     audio.currentTime = 0;
@@ -461,13 +473,13 @@ function pauseAllButtons(){
       btnRO.classList.remove("playing");
     }
   });
-audioHR.addEventListener("ended", pauseAllButtons);
-audioRO.addEventListener("ended", pauseAllButtons);
 
-audioHR.addEventListener("pause", pauseAllButtons);
-audioRO.addEventListener("pause", pauseAllButtons);
+  audioHR.addEventListener("ended", pauseAllButtons);
+  audioRO.addEventListener("ended", pauseAllButtons);
+  audioHR.addEventListener("pause", pauseAllButtons);
+  audioRO.addEventListener("pause", pauseAllButtons);
 })();
 </script>
 
 </body>
-</html> 
+</html>
