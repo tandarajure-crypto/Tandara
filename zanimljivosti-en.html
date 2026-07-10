@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
-<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
-<meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
 <title>Interesting Facts About the Tandara Surname</title>
 
+<meta
+  content="Interesting facts, historical notes and international occurrences of the Tandara surname."
+  name="description"
+/>
+
+<meta
+  content="geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+  http-equiv="Permissions-Policy"
+/>
+
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+
+<meta
+  content="default-src 'self';
+  base-uri 'self';
+  object-src 'none';
+  frame-src 'none';
+  img-src 'self' https://s01.flagcounter.com data:;
+  media-src 'self';
+  script-src 'self' 'unsafe-inline'
+  https://www.googletagmanager.com
+  https://www.google-analytics.com;
+  connect-src 'self'
+  https://www.google-analytics.com
+  https://analytics.google.com
+  https://region1.google-analytics.com;
+  style-src 'self' 'unsafe-inline';
+  form-action 'self' https://formsubmit.co;
+  upgrade-insecure-requests;
+  block-all-mixed-content"
+  http-equiv="Content-Security-Policy"
+/>
+
 <!-- Google Analytics – GA4 basic tracking + useful clicks -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"
+></script>
 
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
+
+  function gtag(){
+    dataLayer.push(arguments);
+  }
 
   gtag('consent', 'default', {
-    'analytics_storage': 'granted',
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied'
+    analytics_storage: 'granted',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
   });
 
   gtag('js', new Date());
@@ -32,21 +68,39 @@
     page_title: document.title,
     page_location: window.location.href,
     page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'en'
+    language:
+      document.documentElement.lang ||
+      navigator.language ||
+      'en'
   });
 
-  document.addEventListener('click', function(event) {
+  document.addEventListener('click', function(event){
     var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    if (!link || !link.href || typeof gtag !== 'function'){
+      return;
+    }
 
     var href = link.href;
-    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
+
+    var text = (
+      link.innerText ||
+      link.textContent ||
+      ''
+    ).trim().substring(0, 120);
+
     var isMail = href.indexOf('mailto:') === 0;
     var isTel = href.indexOf('tel:') === 0;
-    var isExternal = link.hostname && link.hostname !== window.location.hostname;
-    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
 
-    if (isMail || isTel) {
+    var isExternal =
+      link.hostname &&
+      link.hostname !== window.location.hostname;
+
+    var isDownload =
+      /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i
+        .test(link.pathname || '');
+
+    if (isMail || isTel){
       gtag('event', 'contact_click', {
         contact_type: isMail ? 'email' : 'phone',
         link_text: text,
@@ -54,16 +108,17 @@
       });
     }
 
-    if (isExternal) {
+    if (isExternal){
       gtag('event', 'external_link_click', {
         link_text: text,
         link_url: href
       });
     }
 
-    if (isDownload) {
+    if (isDownload){
       gtag('event', 'file_download', {
-        file_name: (link.pathname || '').split('/').pop(),
+        file_name:
+          (link.pathname || '').split('/').pop(),
         link_text: text,
         link_url: href
       });
@@ -74,6 +129,35 @@
 <link href="style.css?v=5" rel="stylesheet"/>
 
 <style>
+.skip-link{
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  z-index: 9999;
+  padding: 10px 14px;
+  border: 2px solid #2f6d3b;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #2f2418;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus{
+  top: 12px;
+  left: 12px;
+}
+
+.home-button:focus-visible,
+.lang-btn:focus-visible,
+.heritage-menu a:focus-visible,
+.author-photo a:focus-visible,
+.flagbox a:focus-visible,
+.audio-icon-button:focus-visible{
+  outline: 3px solid #2f6d3b;
+  outline-offset: 3px;
+}
+
 .content-card h2{
   margin-top: 42px;
   padding-top: 22px;
@@ -95,18 +179,18 @@
 }
 
 .audio-pronunciation-box{
-  margin: 22px 0 30px 0;
+  margin: 22px 0 30px;
   padding: 20px 24px;
+  border: 1px solid rgba(120, 88, 45, 0.25);
   border-radius: 14px;
   background: rgba(245, 238, 220, 0.75);
-  border: 1px solid rgba(120, 88, 45, 0.25);
 }
 
 .audio-pronunciation-title{
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
+  color: #4b351c;
   font-size: 18px;
   font-weight: 700;
-  color: #4b351c;
 }
 
 .audio-icon-row{
@@ -121,44 +205,53 @@
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  border-radius: 999px;
   border: 1px solid rgba(75, 53, 28, 0.35);
+  border-radius: 999px;
   background: #ffffff;
   color: #3d2a16;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 .audio-icon-button:hover{
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.18);
   background: #fff8ec;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
 }
 
 .audio-icon-button.playing{
-  background: #e8f4df;
   border-color: rgba(56, 110, 43, 0.55);
+  background: #e8f4df;
 }
 
 .audio-icon-button.playing .speaker-icon{
   background: #24582f;
   box-shadow: 0 0 0 4px rgba(47, 109, 59, 0.18);
+  animation: speakerPulse 1.2s ease-in-out infinite;
 }
 
 .speaker-icon{
+  display: inline-flex;
   width: 42px;
   height: 42px;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background: #2f6d3b;
   color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-size: 18px;
   line-height: 1;
+}
+
+.speaker-icon svg{
+  width: 24px;
+  height: 24px;
 }
 
 .audio-label-small{
@@ -167,20 +260,31 @@
   opacity: 0.85;
 }
 
-@keyframes speakerPulse{
-  0%{ transform: scale(1); }
-  50%{ transform: scale(1.08); }
-  100%{ transform: scale(1); }
+.audio-status{
+  min-height: 1.4em;
+  margin: 14px 0 0;
+  color: #4b351c;
+  font-size: 14px;
 }
 
-.audio-icon-button.playing .speaker-icon{
-  animation: speakerPulse 1.2s ease-in-out infinite;
+@keyframes speakerPulse{
+  0%{
+    transform: scale(1);
+  }
+
+  50%{
+    transform: scale(1.08);
+  }
+
+  100%{
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 600px){
   .audio-icon-row{
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .audio-icon-button{
@@ -188,109 +292,256 @@
     justify-content: flex-start;
   }
 }
+
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 </style>
+
 </head>
 
 <body class="en">
 
+<a class="skip-link" href="#main-content">
+Skip to main content
+</a>
+
 <div class="layout">
 
-<aside class="left-menu">
+<aside class="left-menu" aria-label="Sidebar navigation">
 
-<a class="home-button" href="index-en.html">
+<a
+  aria-label="Return to the home page"
+  class="home-button"
+  href="index-en.html"
+>
 <div class="home-circle">
-<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+
+<svg
+  aria-hidden="true"
+  class="home-svg"
+  fill="none"
+  focusable="false"
+  stroke="white"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  viewBox="0 0 24 24"
+>
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
 <path d="M10 20v-6h4v6"></path>
 </svg>
+
 </div>
 </a>
 
-<div class="lang-switch">
-<a class="lang-btn flag-btn" href="zanimljivosti.html">
-<img alt="HR" src="flag-hr.png"/>
+<div class="lang-switch" aria-label="Language selection">
+
+<a
+  aria-label="Croatian version of the page"
+  class="lang-btn flag-btn"
+  href="zanimljivosti.html"
+>
+<img
+  alt="Croatian language"
+  src="flag-hr.png"
+/>
 </a>
-<a class="lang-btn flag-btn" href="zanimljivosti-en.html">
-<img alt="EN" src="flag-uk.png"/>
+
+<a
+  aria-current="page"
+  aria-label="English version of the page"
+  class="lang-btn flag-btn"
+  href="zanimljivosti-en.html"
+>
+<img
+  alt="English language"
+  src="flag-uk.png"
+/>
 </a>
+
 </div>
 
-<h2>TANDARA-SURNAME</h2>
+<h2>TANDARA SURNAME</h2>
+
+<nav aria-label="Main navigation">
 
 <ul class="heritage-menu">
-<li><span>🌳</span><a href="./autor-en.html">About the Author and Project</a></li>
-<li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the Surname</a></li>
-<li><span>🌳</span><a href="./rodoslovlje-en.html">Family Genealogy</a></li>
-<li><span>🌳</span><a href="./migracije-en.html">Migrations and Distribution</a></li>
-<li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting Facts</a></li>
-<li><span>🌳</span><a href="./contacts.html">Contact and Collaboration</a></li>
-<li><span>🌳</span><a href="./visitors-messages.html">Guestbook</a></li>
-<li><span>🌳</span><a href="./privacy.html">Privacy Policy</a></li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./autor-en.html">About the author and the project</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./podrijetlo-en.html">Origin of the surname</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./rodoslovlje-en.html">Family genealogy</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./migracije-en.html">
+Migration and distribution
+</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a
+  aria-current="page"
+  href="./zanimljivosti-en.html"
+>
+Interesting facts
+</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./kontakti-en.html">Contact and cooperation</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./knjiga-poruka-en.html">Guestbook</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./privatnost-en.html">Privacy Policy</a>
+</li>
+
 </ul>
 
+</nav>
+
 <div class="author-photo">
-<a href="./autor-en.html">
-<img alt="Jure Tandara" src="./jure.png"/>
+
+<a
+  aria-label="Learn more about the author, Jure Tandara"
+  href="./autor-en.html"
+>
+<img
+  alt="Jure Tandara"
+  decoding="async"
+  loading="lazy"
+  src="./jure.png"
+/>
 </a>
+
 </div>
 
 <h3 class="visitor-title">Visitors</h3>
 
 <div class="flagbox">
-<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
+
+<a
+  aria-label="Open visitor statistics"
+  href="https://info.flagcounter.com/OyvA"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+<img
+  alt="Visitor counter by country"
+  decoding="async"
+  loading="lazy"
+  src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"
+/>
 </a>
+
 </div>
 
 </aside>
 
-<main class="content-page">
+<main
+  class="content-page"
+  id="main-content"
+  tabindex="-1"
+>
 
 <article class="content-card">
+
 <h1>Interesting Facts About the Tandara Surname</h1>
-<h2>Every surname hides its own story</h2>
+
+<h2>Every surname has a story to tell</h2>
+
 <p>
-A surname is not just a word written in a registry book. It is part of family identity, a connection between past and future generations, and a lasting reminder of our ancestors.
-Each generation leaves a new trace through its life, and precisely for that reason genealogy is not merely a list of names and dates, but a story about people, their families, customs, work and homeland.
+A surname is not merely a word recorded in a civil register. It is part of a
+family's identity, a link between past and future generations, and a lasting
+reminder of our ancestors. Each generation leaves a new mark through the lives
+of its members, which is why genealogy is not simply a list of names and dates,
+but a story about people, their families, customs, work and homeland.
 </p>
 
-<h2>A rare and recognizable surname</h2>
+<h2>A rare and distinctive surname</h2>
+
 <p>
-The surname Tandara belongs among rare Croatian surnames. Precisely because of its rarity, it is possible to follow family branches through several centuries and connect them with great certainty.
-Unlike very common surnames, most present-day bearers of the Tandara surname can trace their origin back to common ancestors.
+The surname Tandara belongs among the rare Croatian surnames. Its rarity makes
+it possible to trace family branches across several centuries and connect them
+with a high degree of certainty. Unlike very common surnames, most present-day
+bearers of the Tandara surname can trace their origins back to common ancestors.
 </p>
 
 <h2>A surname that is easy to remember</h2>
+
 <p>
-Tandara consists of three simple syllables – <strong>Tan – da – ra</strong>.
-Because of its rhythm and simple pronunciation, it is easy to remember and leaves a recognizable impression.
+Tandara consists of three simple syllables –
+<strong>Tan – da – ra</strong>. Its rhythm and straightforward pronunciation
+make it easy to remember and give it a distinctive character.
 </p>
 
 <h2>More than three centuries of family history</h2>
+
 <p>
-Research carried out so far shows that the surname Tandara appears in historical sources as early as the end of the 17th century.
-Despite wars, migrations and major social changes, the surname has been preserved almost unchanged for more than three hundred years. Such continuity testifies to the long and rich history of the family.
+Research carried out so far indicates that the Tandara surname appeared in
+historical records as early as the late 17th century. Despite wars, migrations
+and major social changes, the surname has remained almost unchanged for more
+than three hundred years. Such continuity reflects the family's long and rich
+history.
 </p>
 
 <h2>The name Tandara around the world</h2>
+
 <p>
-Although the origin of the Croatian surname Tandara has not yet been clarified with certainty, it is interesting that the word <strong>Tandara</strong>, or its very similar forms, appears in different parts of the world – as a surname, personal name, name of a locality, or a word with a special cultural meaning.
+Although the origin of the Croatian surname Tandara has not yet been established
+with certainty, it is interesting that the word <strong>Tandara</strong>, or
+very similar forms of it, appears in different parts of the world – as a surname,
+a personal name, the name of a locality, or a word with a particular cultural
+meaning.
 </p>
 
 <p>
-This coincidence does not necessarily mean a common origin. In most cases, these are names that developed independently of one another.
+This similarity does not necessarily indicate a common origin. In most cases,
+these names developed independently of one another.
 </p>
 
-<section>
-<h2>Tandara and Țândără – the Croatian and Romanian variants of the name</h2>
+<section aria-labelledby="tandara-romania">
+
+<h2 id="tandara-romania">
+Tandara and Țândără – Croatian and Romanian forms of the name
+</h2>
 
 <p>
-The surname <strong>Tandara</strong> appears as a native surname in two European countries –
-<strong>Croatia</strong> and <strong>Romania</strong> – and in both it appears in two ways:
-as a surname and as the name of a locality, hamlet, area or smaller rural place.
-Despite this interesting coincidence, the Croatian and Romanian variants do not share the same
-history or the same origin. According to available data, the Croatian surname Tandara dates from the end of the 17th century, while there is no such information for the Romanian surname Țândără.
+The surname <strong>Tandara</strong> appears as an indigenous surname in two
+European countries – <strong>Croatia</strong> and <strong>Romania</strong> –
+and in both countries it occurs in two forms: as a surname and as the name of
+a locality, hamlet, district or smaller rural area. Despite this interesting
+similarity, the Croatian and Romanian forms do not share a common history or
+a common origin. According to the available information, the Croatian surname
+Tandara dates back to the late 17th century, while no comparable historical
+information is available for the Romanian surname Țândără.
 </p>
 
 <div class="subsection">
@@ -299,10 +550,17 @@ history or the same origin. According to available data, the Croatian surname Ta
 
 <p>
 <strong>Spelling:</strong> Tandara<br>
-<strong>Pronunciation:</strong> TÀn-da-ra, stress on the first syllable<br>
-<strong>Phonetic features:</strong> hard t, short vowels, even rhythm.<br>
-<strong>Historical context:</strong> the surname appears in the Dalmatian and Herzegovinian area.<br>
-<strong>Etymology:</strong> it is most often connected with the term <em>tandir</em> – a sheet-metal stove used during the period of Ottoman rule. The surname may have arisen from the occupation of making or maintaining sheet-metal stoves, from the object itself, that is, the tandir as a recognizable object, or from a locality where such a stove was used.
+<strong>Pronunciation:</strong> TÀN-da-ra, with the stress on the first
+syllable<br>
+<strong>Phonetic characteristics:</strong> a hard t sound, short vowels and an
+even rhythm.<br>
+<strong>Historical context:</strong> the surname appears in Dalmatia and
+Herzegovina.<br>
+<strong>Etymology:</strong> it is most commonly associated with the word
+<em>tandir</em> – a metal stove used during the period of Ottoman rule.
+The surname may have originated from the occupation of making or maintaining
+metal stoves, from the object itself, namely the tandir as a recognisable
+feature, or from a locality where such a stove was used.
 </p>
 
 </div>
@@ -312,22 +570,31 @@ history or the same origin. According to available data, the Croatian surname Ta
 
 <p>
 <strong>Spelling:</strong> Țândără<br>
-<strong>Pronunciation:</strong> tsân-DĂ-rə, stress on the second syllable<br>
-<strong>Phonetic features:</strong> the initial letter <strong>Ț</strong> is pronounced as <em>ts</em>, while the vowel <strong>ă</strong> represents the neutral schwa sound.<br>
-<strong>Etymology:</strong> the Romanian name derives from the word <em>țândără</em>, meaning a splinter, wood chip or small piece of wood. The surname most likely originated from an occupation related to woodworking, from a person working with wood splinters, or from a local name referring to wooden remains.
+<strong>Pronunciation:</strong> tsân-DĂ-rə, with the stress on the second
+syllable<br>
+<strong>Phonetic characteristics:</strong> the initial letter Ț is pronounced
+like “ts”, while the vowel ă is a neutral schwa sound.<br>
+<strong>Etymology:</strong> the Romanian name derives from the word
+<em>țândără</em>, meaning a splinter, wood chip or small piece of wood.
+The surname most likely originated from an occupation connected with
+woodworking, from a characteristic of a person who worked with wood chips,
+or from a local name referring to wood remnants.
 </p>
 
 </div>
 
 <div class="subsection">
 
-<h3>Difference in spelling and pronunciation</h3>
+<h3>Differences in spelling and pronunciation</h3>
 
 <ul>
 <li><strong>Spelling:</strong> HR: Tandara / RO: Țândără</li>
 <li><strong>Pronunciation:</strong> HR: TÀN-da-ra / RO: tsân-DĂ-rə</li>
-<li><strong>Stress:</strong> HR: first syllable / RO: second syllable</li>
-<li><strong>Origin:</strong> HR: <em>tandir</em>, sheet-metal stove / RO: splinter, wood chip, woodworking</li>
+<li><strong>Stress:</strong> HR: beginning / RO: middle</li>
+<li>
+<strong>Origin:</strong> HR: tandir, metal stove / RO: splinter, wood chip,
+woodworking
+</li>
 </ul>
 
 </div>
@@ -344,153 +611,249 @@ Click the speaker icon to hear the pronunciation
 
 <div class="audio-icon-row">
 
-<button class="audio-icon-button" id="playHR" type="button" aria-label="Listen to the Croatian pronunciation of the surname Tandara">
+<button
+  aria-label="Listen to the Croatian pronunciation of the surname Tandara"
+  aria-pressed="false"
+  class="audio-icon-button"
+  id="playHR"
+  type="button"
+>
 <span class="speaker-icon">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path fill="currentColor" d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"/>
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"
+  fill="currentColor"
+></path>
 </svg>
+
 </span>
+
 <span>
 Listen to the Croatian pronunciation<br>
 <span class="audio-label-small">Tandara</span>
 </span>
+
 </button>
 
-<button class="audio-icon-button" id="playRO" type="button" aria-label="Listen to the Romanian pronunciation of the name Țândără">
+<button
+  aria-label="Listen to the Romanian pronunciation of the name Țândără"
+  aria-pressed="false"
+  class="audio-icon-button"
+  id="playRO"
+  type="button"
+>
 <span class="speaker-icon">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path fill="currentColor" d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"/>
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"
+  fill="currentColor"
+></path>
 </svg>
+
 </span>
+
 <span>
 Listen to the Romanian pronunciation<br>
 <span class="audio-label-small">Țândără</span>
 </span>
+
 </button>
 
 </div>
 
-<audio id="audioHR" preload="none" src="audio/MP3-hr.mp3"></audio>
-<audio id="audioRO" preload="none" src="audio/MP3-ro.mp3"></audio>
+<audio
+  id="audioHR"
+  preload="none"
+  src="audio/MP3-hr.mp3"
+></audio>
+
+<audio
+  id="audioRO"
+  preload="none"
+  src="audio/MP3-ro.mp3"
+></audio>
+
+<p
+  aria-live="polite"
+  class="audio-status"
+  id="audioStatus"
+  role="status"
+></p>
+
+</div>
 
 </div>
 
 </section>
 
-<h2>Slovakia – the Tandara surname</h2>
+<h2>The Tandara surname in Slovakia</h2>
 
 <p>
-The surname <strong>Tandara</strong> in Slovakia appears mainly in the regions of <strong>Žilina</strong> and <strong>Košice</strong>, where it is recorded in several contemporary families. Its present-day presence in these areas is most likely the result of <strong>population migrations from Transylvania</strong> during the 18th and 19th centuries. Genealogical databases and surname distribution indicate that <strong>Tandara is not an indigenous Slovak surname</strong>, but rather one that reached Slovakia from Romanian territory, where the related form <strong>Țândără</strong> exists.
+In Slovakia, the surname <strong>Tandara</strong> appears primarily in the
+areas of <strong>Žilina</strong> and <strong>Košice</strong>, where it has
+been recorded among several modern families. Its present-day presence in
+these regions is most likely the result of <strong>population migrations from
+Transylvania</strong> during the 18th and 19th centuries. Genealogical
+databases and the geographical distribution of the surname suggest that
+<strong>Tandara is not an indigenous Slovak surname</strong>, but was brought
+to Slovakia from the Romanian area, where the related form
+<strong>Țândără</strong> exists.
 </p>
 
 <p>
-Slovakia also has several well-known contemporary bearers of the surname, further confirming its presence:
+There are also well-known contemporary bearers of the surname in Slovakia,
+which further confirms its presence:
 </p>
 
 <ul>
-<li><strong>Lukáš Tandara</strong> – professional puppeteer, actor and improviser from Žilina, member of Clowndoctors.</li>
-<li><strong>Marián Tandara</strong> – football player from <strong>Žilina</strong>, former member of the Slovak U21 national team, currently playing as a right-back in the Slovak Second League.</li>
+
+<li>
+<strong>Lukáš Tandara</strong> — a professional puppeteer, actor and
+improviser from Žilina, associated with Clowndoctors.
+</li>
+
+<li>
+<strong>Marián Tandara</strong> — a footballer from <strong>Žilina</strong>
+who played for the U21 national team and plays as a right-back in the Slovak
+second division.
+</li>
+
 </ul>
 
 <p>
-These examples show that the surname <strong>Tandara</strong> has remained present in Slovakia and developed in different fields – from theatre to sport – but they do not change the basic conclusion: <strong>it is most likely a surname that entered Slovakia from Romanian territory</strong>, where there is strong linguistic and historical evidence supporting its origin.
+These examples show that the surname <strong>Tandara</strong> has survived
+and developed in various fields in Slovakia — from theatre to sport — but
+they do not alter the basic conclusion: <strong>it is most likely a surname
+that reached Slovakia from the Romanian area</strong>, where there is a
+strong linguistic and historical basis for its origin.
 </p>
 
 <p>
-Nevertheless, although Romanian origin appears to be the most probable explanation, <strong>it cannot be completely ruled out</strong> that an individual Croatian bearer of the surname <strong>Tandara</strong> migrated to Slovakia during the 18th or 19th century. The Croatian form has a different etymology and historical development, so this possibility could <strong>only be confirmed or excluded through DNA analysis</strong>, comparing Croatian, Slovak and Romanian genetic lineages.
+Nevertheless, although Romanian origin is the most likely explanation,
+<strong>the possibility cannot be completely excluded</strong> that an
+individual Croatian bearer of the surname <strong>Tandara</strong> settled in
+Slovakia during the 18th or 19th century. The Croatian form of the surname
+has a different etymology and historical development, so such a possibility
+could be <strong>clearly confirmed or ruled out only through DNA analysis</strong>,
+by comparing Croatian, Slovak and Romanian genetic lines.
 </p>
 
 <h2>Australia – a name associated with community</h2>
 
 <p>
-In certain Australian Aboriginal languages there are words similar to <strong>Tandara</strong> referring to a camp, dwelling place, community or place of belonging. Because of these positive meanings, the name is often used for camps, eco-lodges, glamping sites and tourist resorts.
+In some Australian Aboriginal languages, words similar to the name Tandara
+refer to a dwelling place, camp, community or place of belonging. Because of
+these positive meanings, the name is often used for camps, eco-lodges,
+glamping resorts and tourist retreats.
 </p>
 
-<h2>Brazil – a feminine given name</h2>
+<h2>Brazil – a female personal name</h2>
 
 <p>
-In Brazil, <strong>Tandara</strong> is used as a feminine given name, and its international recognition has been greatly increased by the famous Brazilian volleyball player <strong>Tandara Caixeta</strong>. Although there is no single official explanation for why this name became popular, its phonetic and aesthetic qualities have most likely contributed to its appeal.
-</p>
-
-<p>
-The name <strong>Tandara</strong> gives the impression of being <strong>melodic, rhythmic, harmonious and easy to remember</strong>. It consists of three clearly separated syllables – <strong>Tan – da – ra</strong> – creating a natural rhythm and pleasant harmony when pronounced. This syllabic structure makes it easy and comfortable to pronounce in many languages around the world.
-</p>
-<p>
-Its special appeal also comes from its phonetic balance. The initial sound
-<strong>T</strong> conveys clarity and determination, the middle syllable
-<strong>da</strong> introduces movement and energy, while the final
-<strong>ra</strong> provides warmth, openness and a pleasant ending. The entire
-name sounds energetic yet harmonious, elegant and memorable.
+In Brazil, <strong>Tandara</strong> is used as a female personal name, and its
+international recognition was further increased by the well-known Brazilian
+volleyball player <strong>Tandara Caixeta</strong>. Although there is no
+single official explanation for why this particular name became popular, its
+phonetic and aesthetic qualities very likely contributed to its appeal.
 </p>
 
 <p>
-The name <strong>Tandara</strong> possesses a number of qualities commonly regarded
-as desirable in personal names:
+The name <strong>Tandara</strong> gives the impression of being
+<strong>melodic, rhythmic, sonorous and easy to remember</strong>. It consists
+of three clearly separated syllables – <strong>Tan – da – ra</strong> – which
+create a natural rhythm and harmonious flow when spoken. This type of syllabic
+structure makes the name simple and pleasant to pronounce in many languages
+around the world.
+</p>
+
+<p>
+Its phonetic balance gives it additional appeal. The initial sound
+<strong>T</strong> conveys decisiveness and clarity, the middle syllable
+<strong>da</strong> introduces movement and energy, while the ending
+<strong>ra</strong> adds warmth, openness and a pleasant final sound. The
+entire name sounds energetic, yet at the same time harmonious, elegant and
+easy to remember.
+</p>
+
+<p>
+The name Tandara possesses a number of qualities that are often considered
+desirable in personal names:
 </p>
 
 <ul>
-<li>melodic sound and natural rhythm</li>
-<li>excellent sonority and ease of pronunciation</li>
-<li>harmonious syllabic structure</li>
+<li>melodic quality and natural rhythm</li>
+<li>exceptional sonority and ease of pronunciation</li>
+<li>a harmonious syllabic structure</li>
 <li>dynamism and a sense of movement</li>
-<li>easy memorability</li>
+<li>ease of memorisation</li>
 <li>distinctiveness among other names</li>
-<li>easy international pronunciation</li>
+<li>easy pronunciation in different languages</li>
 <li>originality and rarity</li>
 <li>a modern yet timeless character</li>
 <li>phonetic balance and harmony</li>
-<li>a warm and pleasant ending sound</li>
+<li>a warm and pleasant final sound</li>
 <li>elegance without complexity</li>
 <li>a positive first impression when spoken</li>
-<li>easy spelling in different languages</li>
+<li>ease of spelling in different languages</li>
 <li>universality across different cultures.</li>
 </ul>
-
 <p>
-Because of these characteristics, the name <strong>Tandara</strong> easily attracts
-attention and creates a positive impression from the very first encounter. This is
-why it is not unusual to find it used in different parts of the world as a
-personal name, surname or place name. Its harmonious sound transcends language
-barriers, making it equally attractive to speakers of many different languages
-and cultures.
+Because of these qualities, the name <strong>Tandara</strong> easily attracts
+attention and leaves a positive first impression. It is therefore not
+surprising that it appears in different parts of the world as a personal name,
+a surname or a place name. Its pleasant sound transcends language barriers,
+making it equally appealing to speakers of different languages and cultures.
 </p>
 
 <p>
-Although the reasons for choosing a personal name vary from family to family,
-from a linguistic perspective the name <strong>Tandara</strong> belongs to the group
-of names whose <strong>melody, rhythm, sonority, harmony, ease of pronunciation,
-distinctiveness and originality</strong> create a strong aesthetic impression.
-These qualities may explain why the name Tandara is perceived as attractive and
-why it has found its place in different cultures around the world.
+Although the reasons for choosing a personal name vary from one family to
+another, from a linguistic point of view the name
+<strong>Tandara</strong> belongs to a group of names that leave a strong
+aesthetic impression because of their <strong>melody, rhythm, pleasant sound,
+harmonious structure, ease of pronunciation, recognisability and originality</strong>.
+These qualities help explain why the name Tandara is perceived as attractive
+and why it has found its place in different cultures around the world.
 </p>
 
-<h2>Research is still ongoing</h2>
+<h2>Our research continues</h2>
 
 <p>
-Despite the large number of collected documents, family history is never truly
-finished. Every newly discovered parish register, old photograph, letter or
-family story can reveal new information and complete another part of the family
-mosaic. For this reason, the <strong>Digital Archive of the Tandara Family</strong>
-has been conceived as a permanent project that will continue to grow with new
-discoveries.
+Despite the large number of documents collected so far, family history is never
+completely finished. Every newly discovered parish register, old photograph,
+letter or family story can provide valuable new information and help complete
+the mosaic of the past. That is why the Digital Archive of the Tandara Family
+Line has been conceived as a permanent project that will continue to grow with
+new discoveries.
 </p>
 
 <h2>Are you also a Tandara?</h2>
 
 <p>
-Do you bear the surname <strong>Tandara</strong>, or do you have members of the
-Tandara family among your ancestors? I warmly invite you to get in touch.
-Perhaps your family photographs, documents or memories can help expand and enrich
-our shared history of the Tandara family.
+Do you bear the Tandara surname, or do you have members of the Tandara family
+among your ancestors? I warmly invite you to get in touch. Your family
+photographs, documents or personal memories may help expand and enrich the
+shared history of the Tandara family line.
 </p>
 
 <p>
-Every piece of information, no matter how small it may seem at first glance, can
-become a valuable part of the common family heritage that we preserve together
-for future generations.
+Every piece of information, no matter how small it may seem at first glance,
+can become a valuable part of our common family heritage that we preserve
+together for future generations.
 </p>
 
-<p><strong>Welcome to the Digital Archive of the Tandara Family.</strong></p>
+<p>
+<strong>Welcome to the Digital Archive of the Tandara Family Line.</strong>
+</p>
 
 </article>
 
@@ -500,55 +863,201 @@ for future generations.
 
 <script>
 (function(){
-  const audioHR = document.getElementById("audioHR");
-  const audioRO = document.getElementById("audioRO");
-  const btnHR = document.getElementById("playHR");
-  const btnRO = document.getElementById("playRO");
+  'use strict';
 
-  function resetButtons(){
-    btnHR.classList.remove("playing");
-    btnRO.classList.remove("playing");
+  var audioHR = document.getElementById('audioHR');
+  var audioRO = document.getElementById('audioRO');
+  var btnHR = document.getElementById('playHR');
+  var btnRO = document.getElementById('playRO');
+  var audioStatus = document.getElementById('audioStatus');
+
+  if (!audioHR || !audioRO || !btnHR || !btnRO){
+    return;
   }
 
-  function pauseAllButtons(){
-    if(audioHR.paused && audioRO.paused){
-      resetButtons();
+  function setStatus(message){
+    if(audioStatus){
+      audioStatus.textContent = message || '';
     }
+  }
+
+  function setButtonState(button, playing){
+    button.classList.toggle('playing', playing);
+    button.setAttribute(
+      'aria-pressed',
+      playing ? 'true' : 'false'
+    );
+  }
+
+  function resetButtons(){
+    setButtonState(btnHR, false);
+    setButtonState(btnRO, false);
   }
 
   function stopAudio(audio){
+    if(!audio){
+      return;
+    }
+
     audio.pause();
-    audio.currentTime = 0;
+
+    try{
+      audio.currentTime = 0;
+    }catch(e){}
   }
 
-  btnHR.addEventListener("click", function(){
-    if(audioHR.paused){
-      stopAudio(audioRO);
-      resetButtons();
-      audioHR.play();
-      btnHR.classList.add("playing");
-    }else{
-      audioHR.pause();
-      btnHR.classList.remove("playing");
+  function stopAllAudio(){
+    stopAudio(audioHR);
+    stopAudio(audioRO);
+    resetButtons();
+  }
+
+  function playAudio(audio, button, otherAudio, label){
+
+    if(!audio.paused){
+      audio.pause();
+      setButtonState(button, false);
+      setStatus('Playback stopped.');
+      return;
     }
+
+    stopAudio(otherAudio);
+    resetButtons();
+
+    var promise = audio.play();
+
+    if(promise && typeof promise.then === 'function'){
+
+      promise.then(function(){
+
+        setButtonState(button, true);
+
+        setStatus(
+          'Now playing: ' + label + '.'
+        );
+
+      }).catch(function(){
+
+        resetButtons();
+
+        setStatus(
+          'The audio recording cannot be played.'
+        );
+
+      });
+
+    }else{
+
+      setButtonState(button, true);
+
+      setStatus(
+        'Now playing: ' + label + '.'
+      );
+
+    }
+
+  }
+
+  btnHR.addEventListener('click', function(){
+
+    playAudio(
+      audioHR,
+      btnHR,
+      audioRO,
+      'Croatian pronunciation of Tandara'
+    );
+
   });
 
-  btnRO.addEventListener("click", function(){
-    if(audioRO.paused){
-      stopAudio(audioHR);
-      resetButtons();
-      audioRO.play();
-      btnRO.classList.add("playing");
-    }else{
-      audioRO.pause();
-      btnRO.classList.remove("playing");
-    }
+  btnRO.addEventListener('click', function(){
+
+    playAudio(
+      audioRO,
+      btnRO,
+      audioHR,
+      'Romanian pronunciation of Țândără'
+    );
+
   });
 
-  audioHR.addEventListener("ended", pauseAllButtons);
-  audioRO.addEventListener("ended", pauseAllButtons);
-  audioHR.addEventListener("pause", pauseAllButtons);
-  audioRO.addEventListener("pause", pauseAllButtons);
+  audioHR.addEventListener('ended', function(){
+
+    setButtonState(btnHR, false);
+
+    setStatus(
+      'Croatian pronunciation finished.'
+    );
+
+  });
+
+  audioRO.addEventListener('ended', function(){
+
+    setButtonState(btnRO, false);
+
+    setStatus(
+      'Romanian pronunciation finished.'
+    );
+
+  });
+
+  audioHR.addEventListener('pause', function(){
+
+    if(audioHR.ended){
+      return;
+    }
+
+    setButtonState(btnHR, false);
+
+  });
+
+  audioRO.addEventListener('pause', function(){
+
+    if(audioRO.ended){
+      return;
+    }
+
+    setButtonState(btnRO, false);
+
+  });
+
+  audioHR.addEventListener('error', function(){
+
+    setButtonState(btnHR, false);
+
+    setStatus(
+      'Croatian audio file could not be loaded.'
+    );
+
+  });
+
+  audioRO.addEventListener('error', function(){
+
+    setButtonState(btnRO, false);
+
+    setStatus(
+      'Romanian audio file could not be loaded.'
+    );
+
+  });
+
+  document.addEventListener('visibilitychange', function(){
+
+    if(document.hidden){
+
+      stopAllAudio();
+
+      setStatus('');
+
+    }
+
+  });
+
+  window.addEventListener('pagehide', function(){
+
+    stopAllAudio();
+
+  });
+
 })();
 </script>
 
