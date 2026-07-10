@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
-<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
-<meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
 <title>Zanimljivosti o prezimenu Tandara</title>
 
+<meta
+  content="Zanimljivosti, povijesne bilješke i međunarodne pojavnosti prezimena Tandara."
+  name="description"
+/>
+
+<meta
+  content="geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+  http-equiv="Permissions-Policy"
+/>
+
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+
+<meta
+  content="default-src 'self';
+  base-uri 'self';
+  object-src 'none';
+  frame-src 'none';
+  img-src 'self' https://s01.flagcounter.com data:;
+  media-src 'self';
+  script-src 'self' 'unsafe-inline'
+  https://www.googletagmanager.com
+  https://www.google-analytics.com;
+  connect-src 'self'
+  https://www.google-analytics.com
+  https://analytics.google.com
+  https://region1.google-analytics.com;
+  style-src 'self' 'unsafe-inline';
+  form-action 'self' https://formsubmit.co;
+  upgrade-insecure-requests;
+  block-all-mixed-content"
+  http-equiv="Content-Security-Policy"
+/>
+
 <!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"
+></script>
 
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
+
+  function gtag(){
+    dataLayer.push(arguments);
+  }
 
   gtag('consent', 'default', {
-    'analytics_storage': 'granted',
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied'
+    analytics_storage: 'granted',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
   });
 
   gtag('js', new Date());
@@ -32,21 +68,39 @@
     page_title: document.title,
     page_location: window.location.href,
     page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'hr'
+    language:
+      document.documentElement.lang ||
+      navigator.language ||
+      'hr'
   });
 
-  document.addEventListener('click', function(event) {
+  document.addEventListener('click', function(event){
     var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    if (!link || !link.href || typeof gtag !== 'function'){
+      return;
+    }
 
     var href = link.href;
-    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
+
+    var text = (
+      link.innerText ||
+      link.textContent ||
+      ''
+    ).trim().substring(0, 120);
+
     var isMail = href.indexOf('mailto:') === 0;
     var isTel = href.indexOf('tel:') === 0;
-    var isExternal = link.hostname && link.hostname !== window.location.hostname;
-    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
 
-    if (isMail || isTel) {
+    var isExternal =
+      link.hostname &&
+      link.hostname !== window.location.hostname;
+
+    var isDownload =
+      /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i
+        .test(link.pathname || '');
+
+    if (isMail || isTel){
       gtag('event', 'contact_click', {
         contact_type: isMail ? 'email' : 'phone',
         link_text: text,
@@ -54,16 +108,17 @@
       });
     }
 
-    if (isExternal) {
+    if (isExternal){
       gtag('event', 'external_link_click', {
         link_text: text,
         link_url: href
       });
     }
 
-    if (isDownload) {
+    if (isDownload){
       gtag('event', 'file_download', {
-        file_name: (link.pathname || '').split('/').pop(),
+        file_name:
+          (link.pathname || '').split('/').pop(),
         link_text: text,
         link_url: href
       });
@@ -74,6 +129,35 @@
 <link href="style.css?v=5" rel="stylesheet"/>
 
 <style>
+.skip-link{
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  z-index: 9999;
+  padding: 10px 14px;
+  border: 2px solid #2f6d3b;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #2f2418;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus{
+  top: 12px;
+  left: 12px;
+}
+
+.home-button:focus-visible,
+.lang-btn:focus-visible,
+.heritage-menu a:focus-visible,
+.author-photo a:focus-visible,
+.flagbox a:focus-visible,
+.audio-icon-button:focus-visible{
+  outline: 3px solid #2f6d3b;
+  outline-offset: 3px;
+}
+
 .content-card h2{
   margin-top: 42px;
   padding-top: 22px;
@@ -95,18 +179,18 @@
 }
 
 .audio-pronunciation-box{
-  margin: 22px 0 30px 0;
+  margin: 22px 0 30px;
   padding: 20px 24px;
+  border: 1px solid rgba(120, 88, 45, 0.25);
   border-radius: 14px;
   background: rgba(245, 238, 220, 0.75);
-  border: 1px solid rgba(120, 88, 45, 0.25);
 }
 
 .audio-pronunciation-title{
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
+  color: #4b351c;
   font-size: 18px;
   font-weight: 700;
-  color: #4b351c;
 }
 
 .audio-icon-row{
@@ -121,44 +205,53 @@
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  border-radius: 999px;
   border: 1px solid rgba(75, 53, 28, 0.35);
+  border-radius: 999px;
   background: #ffffff;
   color: #3d2a16;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 .audio-icon-button:hover{
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.18);
   background: #fff8ec;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
 }
 
 .audio-icon-button.playing{
-  background: #e8f4df;
   border-color: rgba(56, 110, 43, 0.55);
+  background: #e8f4df;
 }
 
 .audio-icon-button.playing .speaker-icon{
   background: #24582f;
   box-shadow: 0 0 0 4px rgba(47, 109, 59, 0.18);
+  animation: speakerPulse 1.2s ease-in-out infinite;
 }
 
 .speaker-icon{
+  display: inline-flex;
   width: 42px;
   height: 42px;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background: #2f6d3b;
   color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-size: 18px;
   line-height: 1;
+}
+
+.speaker-icon svg{
+  width: 24px;
+  height: 24px;
 }
 
 .audio-label-small{
@@ -167,20 +260,31 @@
   opacity: 0.85;
 }
 
-@keyframes speakerPulse{
-  0%{ transform: scale(1); }
-  50%{ transform: scale(1.08); }
-  100%{ transform: scale(1); }
+.audio-status{
+  min-height: 1.4em;
+  margin: 14px 0 0;
+  color: #4b351c;
+  font-size: 14px;
 }
 
-.audio-icon-button.playing .speaker-icon{
-  animation: speakerPulse 1.2s ease-in-out infinite;
+@keyframes speakerPulse{
+  0%{
+    transform: scale(1);
+  }
+
+  50%{
+    transform: scale(1.08);
+  }
+
+  100%{
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 600px){
   .audio-icon-row{
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .audio-icon-button{
@@ -188,109 +292,255 @@
     justify-content: flex-start;
   }
 }
+
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 </style>
+
 </head>
 
 <body class="hr">
 
+<a class="skip-link" href="#glavni-sadrzaj">
+Preskoči na glavni sadržaj
+</a>
+
 <div class="layout">
 
-<aside class="left-menu">
+<aside class="left-menu" aria-label="Bočni izbornik">
 
-<a class="home-button" href="index.html">
+<a
+  aria-label="Povratak na početnu stranicu"
+  class="home-button"
+  href="index.html"
+>
 <div class="home-circle">
-<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+
+<svg
+  aria-hidden="true"
+  class="home-svg"
+  fill="none"
+  focusable="false"
+  stroke="white"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  viewBox="0 0 24 24"
+>
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
 <path d="M10 20v-6h4v6"></path>
 </svg>
+
 </div>
 </a>
 
-<div class="lang-switch">
-<a class="lang-btn flag-btn" href="zanimljivosti.html">
-<img alt="HR" src="flag-hr.png"/>
+<div class="lang-switch" aria-label="Odabir jezika">
+
+<a
+  aria-current="page"
+  aria-label="Hrvatska verzija stranice"
+  class="lang-btn flag-btn"
+  href="zanimljivosti.html"
+>
+<img
+  alt="Hrvatski jezik"
+  src="flag-hr.png"
+/>
 </a>
-<a class="lang-btn flag-btn" href="zanimljivosti-en.html">
-<img alt="EN" src="flag-uk.png"/>
+
+<a
+  aria-label="English version of the page"
+  class="lang-btn flag-btn"
+  href="zanimljivosti-en.html"
+>
+<img
+  alt="English language"
+  src="flag-uk.png"
+/>
 </a>
+
 </div>
 
 <h2>TANDARA-PREZIME</h2>
 
+<nav aria-label="Glavni izbornik">
+
 <ul class="heritage-menu">
-<li><span>🌳</span><a href="./autor-hr.html">O autoru i projektu</a></li>
-<li><span>🌳</span><a href="./podrijetlo-hr.html">Podrijetlo prezimena</a></li>
-<li><span>🌳</span><a href="./rodoslovlje-hr.html">Rodoslovlje roda</a></li>
-<li><span>🌳</span><a href="./migracije-hr.html">Migracije i rasprostranjenost</a></li>
-<li><span>🌳</span><a href="./zanimljivosti.html">Zanimljivosti</a></li>
-<li><span>🌳</span><a href="./kontakti.html">Kontakt i suradnja</a></li>
-<li><span>🌳</span><a href="./knjiga-poruka.html">Knjiga poruka</a></li>
-<li><span>🌳</span><a href="./privatnost.html">Politika privatnosti</a></li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./autor-hr.html">O autoru i projektu</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./podrijetlo-hr.html">Podrijetlo prezimena</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./rodoslovlje-hr.html">Rodoslovlje roda</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./migracije-hr.html">
+Migracije i rasprostranjenost
+</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a
+  aria-current="page"
+  href="./zanimljivosti.html"
+>
+Zanimljivosti
+</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./kontakti.html">Kontakt i suradnja</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./knjiga-poruka.html">Knjiga poruka</a>
+</li>
+
+<li>
+<span aria-hidden="true">🌳</span>
+<a href="./privatnost.html">Politika privatnosti</a>
+</li>
+
 </ul>
 
+</nav>
+
 <div class="author-photo">
-<a href="./autor-hr.html">
-<img alt="Jure Tandara" src="./jure.png"/>
+
+<a
+  aria-label="Više o autoru Juri Tandari"
+  href="./autor-hr.html"
+>
+<img
+  alt="Jure Tandara"
+  decoding="async"
+  loading="lazy"
+  src="./jure.png"
+/>
 </a>
+
 </div>
 
 <h3 class="visitor-title">Posjetitelji</h3>
 
 <div class="flagbox">
-<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
+
+<a
+  aria-label="Otvori statistiku posjetitelja"
+  href="https://info.flagcounter.com/OyvA"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+<img
+  alt="Brojač posjetitelja prema državama"
+  decoding="async"
+  loading="lazy"
+  src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"
+/>
 </a>
+
 </div>
 
 </aside>
 
-<main class="content-page">
+<main
+  class="content-page"
+  id="glavni-sadrzaj"
+  tabindex="-1"
+>
 
 <article class="content-card">
+
 <h1>Zanimljivosti o prezimenu Tandara</h1>
+
 <h2>Svako prezime krije svoju priču</h2>
+
 <p>
-Prezime nije samo riječ zapisana u matičnoj knjizi. Ono je dio obiteljskog identiteta, poveznica između prošlih i budućih naraštaja te trajni podsjetnik na naše pretke.
-Svaka generacija svojim životom ostavlja novi trag, a upravo zbog toga rodoslovlje nije samo popis imena i datuma, nego priča o ljudima, njihovim obiteljima, običajima, radu i zavičaju.
+Prezime nije samo riječ zapisana u matičnoj knjizi. Ono je dio obiteljskog
+identiteta, poveznica između prošlih i budućih naraštaja te trajni podsjetnik
+na naše pretke. Svaka generacija svojim životom ostavlja novi trag, a upravo
+zbog toga rodoslovlje nije samo popis imena i datuma, nego priča o ljudima,
+njihovim obiteljima, običajima, radu i zavičaju.
 </p>
 
 <h2>Rijetko i prepoznatljivo prezime</h2>
+
 <p>
-Prezime Tandara ubraja se među rijetka hrvatska prezimena. Upravo zbog njegove rijetkosti moguće je pratiti obiteljske grane kroz više stoljeća i povezivati ih s velikom sigurnošću.
-Za razliku od vrlo čestih prezimena, većina današnjih nositelja prezimena Tandara može svoje podrijetlo pratiti do zajedničkih predaka.
+Prezime Tandara ubraja se među rijetka hrvatska prezimena. Upravo zbog njegove
+rijetkosti moguće je pratiti obiteljske grane kroz više stoljeća i povezivati
+ih s velikom sigurnošću. Za razliku od vrlo čestih prezimena, većina današnjih
+nositelja prezimena Tandara može svoje podrijetlo pratiti do zajedničkih
+predaka.
 </p>
 
 <h2>Prezime koje se lako pamti</h2>
+
 <p>
-Tandara se sastoji od tri jednostavna sloga – <strong>Tan – da – ra</strong>.
-Zbog svoje ritmičnosti i jednostavnog izgovora lako se pamti i ostavlja prepoznatljiv dojam.
+Tandara se sastoji od tri jednostavna sloga –
+<strong>Tan – da – ra</strong>. Zbog svoje ritmičnosti i jednostavnog izgovora
+lako se pamti i ostavlja prepoznatljiv dojam.
 </p>
 
 <h2>Više od tri stoljeća obiteljske povijesti</h2>
+
 <p>
-Dosadašnja istraživanja pokazuju da se prezime Tandara u povijesnim izvorima pojavljuje već krajem 17. stoljeća.
-Unatoč ratovima, seobama i velikim društvenim promjenama, prezime se sačuvalo gotovo nepromijenjeno više od tristo godina. Takav kontinuitet svjedoči o dugoj i bogatoj povijesti obitelji.
+Dosadašnja istraživanja pokazuju da se prezime Tandara u povijesnim izvorima
+pojavljuje već krajem 17. stoljeća. Unatoč ratovima, seobama i velikim
+društvenim promjenama, prezime se sačuvalo gotovo nepromijenjeno više od
+tristo godina. Takav kontinuitet svjedoči o dugoj i bogatoj povijesti
+obitelji.
 </p>
 
 <h2>Naziv Tandara u svijetu</h2>
+
 <p>
-Iako podrijetlo hrvatskog prezimena Tandara još nije sa sigurnošću razjašnjeno, zanimljivo je da se riječ <strong>Tandara</strong> ili njezini vrlo slični oblici pojavljuju u različitim dijelovima svijeta – kao prezime, osobno ime, naziv lokaliteta ili riječ s posebnim kulturnim značenjem.
+Iako podrijetlo hrvatskog prezimena Tandara još nije sa sigurnošću
+razjašnjeno, zanimljivo je da se riječ <strong>Tandara</strong> ili njezini
+vrlo slični oblici pojavljuju u različitim dijelovima svijeta – kao prezime,
+osobno ime, naziv lokaliteta ili riječ s posebnim kulturnim značenjem.
 </p>
 
 <p>
-Ta podudarnost ne znači nužno zajedničko podrijetlo. U većini slučajeva riječ je o nazivima koji su nastali neovisno jedni o drugima.
+Ta podudarnost ne znači nužno zajedničko podrijetlo. U većini slučajeva riječ
+je o nazivima koji su nastali neovisno jedni o drugima.
 </p>
 
-<section>
-<h2>Tandara i Țândără – hrvatska i rumunjska inačica naziva</h2>
+<section aria-labelledby="tandara-rumunjska">
+
+<h2 id="tandara-rumunjska">
+Tandara i Țândără – hrvatska i rumunjska inačica naziva
+</h2>
 
 <p>
-Prezime <strong>Tandara</strong> pojavljuje se kao autohtono u dvije europske države –
-<strong>Hrvatskoj</strong> i <strong>Rumunjskoj</strong> – i u obje se javlja dvostruko:
-kao prezime i kao naziv lokaliteta, zaseoka, predjela ili manjih ruralnih područja.
-Unatoč toj zanimljivoj podudarnosti, hrvatska i rumunjska inačica nemaju zajedničku
-povijest niti zajedničko podrijetlo. Prema dostupnim podacima hrvatsko prezime Tandara datira od kraja 17 stoljeća dok za rumunjsko prezime Țândără nema takvih podataka.
+Prezime <strong>Tandara</strong> pojavljuje se kao autohtono u dvije europske
+države – <strong>Hrvatskoj</strong> i <strong>Rumunjskoj</strong> – i u obje
+se javlja dvostruko: kao prezime i kao naziv lokaliteta, zaseoka, predjela
+ili manjih ruralnih područja. Unatoč toj zanimljivoj podudarnosti, hrvatska
+i rumunjska inačica nemaju zajedničku povijest niti zajedničko podrijetlo.
+Prema dostupnim podacima, hrvatsko prezime Tandara datira od kraja
+17. stoljeća, dok za rumunjsko prezime Țândără nema takvih podataka.
 </p>
 
 <div class="subsection">
@@ -299,14 +549,19 @@ povijest niti zajedničko podrijetlo. Prema dostupnim podacima hrvatsko prezime 
 
 <p>
 <strong>Pisanje:</strong> Tandara<br>
-<strong>Izgovor:</strong> TÀn-da-ra, naglasak na prvom slogu<br>
-<strong>Fonetske značajke:</strong> tvrdo t, kratki vokali, ravnomjeran ritam.<br>
-<strong>Povijesni kontekst:</strong> prezime se pojavljuje u dalmatinskom i hercegovačkom području.<br>
-<strong>Etimologija:</strong> najčešće se povezuje s nazivom <em>tandir</em> – limenom peći korištenom u vrijeme osmanske vladavine. Prezime je moglo nastati po zanimanju izrade ili održavanja limenih peći, po predmetu odnosno tandiru kao prepoznatljivom objektu ili po lokalitetu gdje se takva peć koristila.
+<strong>Izgovor:</strong> TÀN-da-ra, naglasak na prvom slogu<br>
+<strong>Fonetske značajke:</strong> tvrdo t, kratki vokali i ravnomjeran
+ritam.<br>
+<strong>Povijesni kontekst:</strong> prezime se pojavljuje na dalmatinskom
+i hercegovačkom području.<br>
+<strong>Etimologija:</strong> najčešće se povezuje s nazivom
+<em>tandir</em> – limenom peći korištenom u vrijeme osmanske vladavine.
+Prezime je moglo nastati po zanimanju izrade ili održavanja limenih peći,
+po predmetu, odnosno tandiru kao prepoznatljivom objektu, ili po lokalitetu
+gdje se takva peć koristila.
 </p>
 
 </div>
-
 <div class="subsection">
 
 <h3>Rumunjski oblik: Țândără</h3>
@@ -314,7 +569,7 @@ povijest niti zajedničko podrijetlo. Prema dostupnim podacima hrvatsko prezime 
 <p>
 <strong>Pisanje:</strong> Țândără<br>
 <strong>Izgovor:</strong> tsân-DĂ-rə, naglasak na drugom slogu<br>
-<strong>Fonetske značajke:</strong> početno slovo Ț izgovara se kao „ts”, a vokal ă je neutralni šva-zvuk.<br>
+<strong>Fonetske značajke:</strong> početno slovo Ț izgovara se kao „ts”, a vokal ă neutralni je šva-zvuk.<br>
 <strong>Etimologija:</strong> rumunjski naziv potječe od riječi <em>țândără</em> u značenju treščica, iver ili komadić drveta. Prezime je najvjerojatnije nastalo po zanimanju vezanom uz drvodjelstvo, po osobini osobe koja radi s iverjem ili po lokalnom nazivu koji se odnosi na drvene ostatke.
 </p>
 
@@ -342,44 +597,98 @@ povijest niti zajedničko podrijetlo. Prema dostupnim podacima hrvatsko prezime 
 <p class="audio-pronunciation-title">
 Kliknite na zvučnik i poslušajte izgovor
 </p>
+
 <div class="audio-icon-row">
 
-<button class="audio-icon-button" id="playHR" type="button" aria-label="Poslušajte hrvatski izgovor prezimena Tandara">
+<button
+  aria-label="Poslušajte hrvatski izgovor prezimena Tandara"
+  aria-pressed="false"
+  class="audio-icon-button"
+  id="playHR"
+  type="button"
+>
 <span class="speaker-icon">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path fill="currentColor" d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"/>
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"
+  fill="currentColor"
+></path>
 </svg>
+
 </span>
+
 <span>
 Poslušajte hrvatski izgovor<br>
 <span class="audio-label-small">Tandara</span>
 </span>
+
 </button>
 
-<button class="audio-icon-button" id="playRO" type="button" aria-label="Poslušajte rumunjski izgovor naziva Țândără">
+<button
+  aria-label="Poslušajte rumunjski izgovor naziva Țândără"
+  aria-pressed="false"
+  class="audio-icon-button"
+  id="playRO"
+  type="button"
+>
 <span class="speaker-icon">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path fill="currentColor" d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"/>
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.74 2.5-2.26 2.5-4.02zm2.5 0c0 3.04-1.72 5.64-4.25 6.92v-1.83c1.58-1.09 2.62-2.91 2.62-5.09s-1.04-4-2.62-5.09V5.08C18.28 6.36 20 8.96 20 12z"
+  fill="currentColor"
+></path>
 </svg>
+
 </span>
+
 <span>
 Poslušajte rumunjski izgovor<br>
 <span class="audio-label-small">Țândără</span>
 </span>
+
 </button>
 
 </div>
 
-<audio id="audioHR" preload="none" src="audio/MP3-hr.mp3"></audio>
-<audio id="audioRO" preload="none" src="audio/MP3-ro.mp3"></audio>
+<audio
+  id="audioHR"
+  preload="none"
+  src="audio/MP3-hr.mp3"
+></audio>
+
+<audio
+  id="audioRO"
+  preload="none"
+  src="audio/MP3-ro.mp3"
+></audio>
+
+<p
+  aria-live="polite"
+  class="audio-status"
+  id="audioStatus"
+  role="status"
+></p>
+
+</div>
 
 </div>
 
 </section>
-<h2>Tandara prezime u Slovačkoj</h2>
+
+<h2>Prezime Tandara u Slovačkoj</h2>
 
 <p>
-Prezime <strong>Tandara</strong> u Slovačkoj pojavljuje se ponajprije u području <strong>Žiline</strong> i <strong>Košica</strong>, gdje je zabilježeno u više suvremenih obitelji. Današnja prisutnost prezimena u tim krajevima najvjerojatnije je posljedica <strong>migracija stanovništva iz Transilvanije</strong> tijekom 18. i 19. stoljeća. Genealoške baze i raspored prezimena upućuju da <strong>Tandara nije autohtono slovačko prezime</strong>, nego je u Slovačku stiglo iz rumunjskog prostora, gdje postoji srodni oblik <strong>Țândără</strong>.
+Prezime <strong>Tandara</strong> u Slovačkoj pojavljuje se ponajprije na području <strong>Žiline</strong> i <strong>Košica</strong>, gdje je zabilježeno u više suvremenih obitelji. Današnja prisutnost prezimena u tim krajevima najvjerojatnije je posljedica <strong>migracija stanovništva iz Transilvanije</strong> tijekom 18. i 19. stoljeća. Genealoške baze i raspored prezimena upućuju na to da <strong>Tandara nije autohtono slovačko prezime</strong>, nego je u Slovačku stiglo iz rumunjskog prostora, gdje postoji srodni oblik <strong>Țândără</strong>.
 </p>
 
 <p>
@@ -387,8 +696,15 @@ U Slovačkoj postoje i poznati suvremeni nositelji prezimena, što dodatno potvr
 </p>
 
 <ul>
-<li><strong>Lukáš Tandara</strong> — profesionalni lutkar, glumac i improvizator iz Žilina, Clowndoctors.</li>
-<li><strong>Marián Tandara</strong> — nogometaš iz <strong>Žilina</strong>, igrao za U21 reprezentaciju, te nastupa kao desni branič u slovačkoj drugoj ligi.</li>
+
+<li>
+<strong>Lukáš Tandara</strong> — profesionalni lutkar, glumac i improvizator iz Žiline, Clowndoctors.
+</li>
+
+<li>
+<strong>Marián Tandara</strong> — nogometaš iz <strong>Žiline</strong>, igrao je za reprezentaciju U21 te nastupa kao desni branič u slovačkoj drugoj ligi.
+</li>
+
 </ul>
 
 <p>
@@ -400,39 +716,27 @@ Ipak, iako je rumunjsko podrijetlo najvjerojatnije, <strong>ne može se potpuno 
 </p>
 
 <h2>Australija – naziv povezan sa zajedništvom</h2>
+
 <p>
-U pojedinim australskim aboridžanskim jezicima postoje riječi slične nazivu Tandara koje označavaju boravište, kamp, zajedništvo ili mjesto pripadnosti.
-Zbog tih pozitivnih značenja naziv se često koristi za kampove, eco-lodge objekte, glamping naselja i turistička odmorišta.
+U pojedinim australskim aboridžanskim jezicima postoje riječi slične nazivu Tandara koje označavaju boravište, kamp, zajedništvo ili mjesto pripadnosti. Zbog tih pozitivnih značenja naziv se često koristi za kampove, eco-lodge objekte, glamping naselja i turistička odmorišta.
 </p>
 
 <h2>Brazil – žensko osobno ime</h2>
+
 <p>
-U Brazilu se <strong>Tandara</strong> koristi kao žensko osobno ime, a njegovu međunarodnu
-prepoznatljivost dodatno je povećala poznata brazilska odbojkašica
-<strong>Tandara Caixeta</strong>. Iako ne postoji jedno službeno objašnjenje zbog čega je upravo
-ovo ime postalo popularno, njegova fonetska i estetska obilježja vrlo su
-vjerojatno pridonijela njegovoj privlačnosti.
+U Brazilu se <strong>Tandara</strong> koristi kao žensko osobno ime, a njegovu međunarodnu prepoznatljivost dodatno je povećala poznata brazilska odbojkašica <strong>Tandara Caixeta</strong>. Iako ne postoji jedno službeno objašnjenje zbog čega je upravo ovo ime postalo popularno, njegova fonetska i estetska obilježja vrlo su vjerojatno pridonijela njegovoj privlačnosti.
 </p>
 
 <p>
-Naziv <strong>Tandara</strong> ostavlja dojam imena koje je istodobno
-<strong>melodično, ritmično, zvučno i lako pamtljivo</strong>. Sastoji se od tri jasno
-odvojena sloga – <strong>Tan – da – ra</strong> – koji stvaraju prirodan ritam i skladnu
-harmoniju pri izgovoru. Upravo takva slogovna struktura omogućuje jednostavan
-i ugodan izgovor na mnogim svjetskim jezicima.
+Naziv <strong>Tandara</strong> ostavlja dojam imena koje je istodobno <strong>melodično, ritmično, zvučno i lako pamtljivo</strong>. Sastoji se od tri jasno odvojena sloga – <strong>Tan – da – ra</strong> – koji stvaraju prirodan ritam i skladnu harmoniju pri izgovoru. Upravo takva slogovna struktura omogućuje jednostavan i ugodan izgovor na mnogim svjetskim jezicima.
 </p>
 
 <p>
-Posebnu privlačnost daje i njegova fonetska ravnoteža. Početni glas
-<strong>T</strong> ostavlja dojam odlučnosti i jasnoće, srednji slog
-<strong>da</strong> unosi dinamiku i osjećaj pokreta, dok završetak
-<strong>ra</strong> daje toplinu, otvorenost i ugodan završni zvuk. Cijelo ime zvuči
-energično, ali istodobno skladno, elegantno i lako pamtljivo.
+Posebnu privlačnost daje i njegova fonetska ravnoteža. Početni glas <strong>T</strong> ostavlja dojam odlučnosti i jasnoće, srednji slog <strong>da</strong> unosi dinamiku i osjećaj pokreta, dok završetak <strong>ra</strong> daje toplinu, otvorenost i ugodan završni zvuk. Cijelo ime zvuči energično, ali istodobno skladno, elegantno i lako pamtljivo.
 </p>
 
 <p>
-Naziv Tandara posjeduje niz osobina koje se često smatraju poželjnima kod
-osobnih imena:
+Naziv Tandara posjeduje niz osobina koje se često smatraju poželjnima kod osobnih imena:
 </p>
 
 <ul>
@@ -452,42 +756,52 @@ osobnih imena:
 <li>jednostavnost zapisivanja na različitim jezicima</li>
 <li>univerzalnost u različitim kulturama.</li>
 </ul>
-
 <p>
-Zbog tih osobina naziv <strong>Tandara</strong> lako privlači pozornost i ostavlja
-pozitivan dojam već pri prvom susretu. Upravo zato nije neobično da se u
-različitim dijelovima svijeta pojavljuje kao osobno ime, prezime ili naziv
-mjesta. Njegova zvučna skladnost nadilazi jezične granice te ga čini jednako
-privlačnim govornicima različitih jezika i kultura.
+Zbog tih osobina naziv <strong>Tandara</strong> lako privlači pozornost i
+ostavlja pozitivan dojam već pri prvom susretu. Upravo zato nije neobično da
+se u različitim dijelovima svijeta pojavljuje kao osobno ime, prezime ili
+naziv mjesta. Njegova zvučna skladnost nadilazi jezične granice te ga čini
+jednako privlačnim govornicima različitih jezika i kultura.
 </p>
 
 <p>
 Iako se razlozi odabira osobnog imena razlikuju od obitelji do obitelji,
-lingvistički gledano naziv <strong>Tandara</strong> pripada skupini imena koja zbog
-<strong>melodičnosti, ritmičnosti, zvučnosti, harmonije, jednostavnog izgovora,
-prepoznatljivosti i originalnosti</strong> ostavljaju snažan estetski dojam. Upravo
-te osobine mogu objasniti zašto se ime Tandara doživljava privlačnim i zašto je
-pronašlo svoje mjesto u različitim kulturama diljem svijeta.
+lingvistički gledano naziv <strong>Tandara</strong> pripada skupini imena koja
+zbog <strong>melodičnosti, ritmičnosti, zvučnosti, harmonije, jednostavnog
+izgovora, prepoznatljivosti i originalnosti</strong> ostavljaju snažan
+estetski dojam. Upravo te osobine mogu objasniti zašto se ime Tandara
+doživljava privlačnim i zašto je pronašlo svoje mjesto u različitim kulturama
+diljem svijeta.
 </p>
 
 <h2>Još uvijek istražujemo</h2>
+
 <p>
-Unatoč brojnim prikupljenim dokumentima, obiteljska povijest nikada nije potpuno završena.
-Svaka nova matična knjiga, stara fotografija, pismo ili obiteljska priča može donijeti novi podatak i upotpuniti mozaik prošlosti.
-Upravo je zato Digitalni arhiv roda Tandara zamišljen kao trajni projekt koji će se nadopunjavati novim spoznajama.
+Unatoč brojnim prikupljenim dokumentima, obiteljska povijest nikada nije
+potpuno završena. Svaka nova matična knjiga, stara fotografija, pismo ili
+obiteljska priča može donijeti novi podatak i upotpuniti mozaik prošlosti.
+Upravo je zato Digitalni arhiv roda Tandara zamišljen kao trajni projekt koji
+će se nadopunjavati novim spoznajama.
 </p>
 
 <h2>Jeste li i vi Tandara?</h2>
+
 <p>
 Nosite prezime Tandara ili među svojim precima imate članove roda Tandara?
-Pozivam vas da mi se javite. Možda upravo vaše obiteljske fotografije, dokumenti ili sjećanja mogu pomoći u proširenju i dopuni zajedničke povijesti roda Tandara.
+Pozivam vas da mi se javite. Možda upravo vaše obiteljske fotografije,
+dokumenti ili sjećanja mogu pomoći u proširenju i dopuni zajedničke povijesti
+roda Tandara.
 </p>
 
 <p>
-Svaki podatak, bez obzira koliko se na prvi pogled činio malenim, može biti vrijedan dio zajedničke obiteljske baštine koju zajedno čuvamo za buduće naraštaje.
+Svaki podatak, bez obzira na to koliko se na prvi pogled činio malenim, može
+biti vrijedan dio zajedničke obiteljske baštine koju zajedno čuvamo za buduće
+naraštaje.
 </p>
 
-<p><strong>Dobro došli u Digitalni arhiv roda Tandara.</strong></p>
+<p>
+<strong>Dobro došli u Digitalni arhiv roda Tandara.</strong>
+</p>
 
 </article>
 
@@ -497,55 +811,159 @@ Svaki podatak, bez obzira koliko se na prvi pogled činio malenim, može biti vr
 
 <script>
 (function(){
-  const audioHR = document.getElementById("audioHR");
-  const audioRO = document.getElementById("audioRO");
-  const btnHR = document.getElementById("playHR");
-  const btnRO = document.getElementById("playRO");
+  'use strict';
 
-  function resetButtons(){
-    btnHR.classList.remove("playing");
-    btnRO.classList.remove("playing");
+  var audioHR = document.getElementById('audioHR');
+  var audioRO = document.getElementById('audioRO');
+  var btnHR = document.getElementById('playHR');
+  var btnRO = document.getElementById('playRO');
+  var audioStatus = document.getElementById('audioStatus');
+
+  if (!audioHR || !audioRO || !btnHR || !btnRO){
+    return;
   }
 
-  function pauseAllButtons(){
-    if(audioHR.paused && audioRO.paused){
-      resetButtons();
+  function setStatus(message){
+    if (audioStatus){
+      audioStatus.textContent = message || '';
     }
+  }
+
+  function setButtonState(button, isPlaying){
+    button.classList.toggle('playing', isPlaying);
+    button.setAttribute(
+      'aria-pressed',
+      isPlaying ? 'true' : 'false'
+    );
+  }
+
+  function resetButtons(){
+    setButtonState(btnHR, false);
+    setButtonState(btnRO, false);
   }
 
   function stopAudio(audio){
+    if (!audio){
+      return;
+    }
+
     audio.pause();
-    audio.currentTime = 0;
+
+    try{
+      audio.currentTime = 0;
+    }catch(error){
+      /*
+       * Pojedini preglednici ne dopuštaju promjenu vremena
+       * prije nego što se zvučna datoteka učita.
+       */
+    }
   }
 
-  btnHR.addEventListener("click", function(){
-    if(audioHR.paused){
-      stopAudio(audioRO);
-      resetButtons();
-      audioHR.play();
-      btnHR.classList.add("playing");
+  function stopAllAudio(){
+    stopAudio(audioHR);
+    stopAudio(audioRO);
+    resetButtons();
+  }
+
+  function playSelectedAudio(audio, button, otherAudio, label){
+    if (!audio.paused){
+      audio.pause();
+      setButtonState(button, false);
+      setStatus('Reprodukcija je zaustavljena.');
+      return;
+    }
+
+    stopAudio(otherAudio);
+    resetButtons();
+
+    var playPromise = audio.play();
+
+    if (playPromise && typeof playPromise.then === 'function'){
+      playPromise
+        .then(function(){
+          setButtonState(button, true);
+          setStatus('Reproducira se ' + label + '.');
+        })
+        .catch(function(){
+          resetButtons();
+          setStatus(
+            'Zvučni zapis trenutačno nije moguće reproducirati.'
+          );
+        });
     }else{
-      audioHR.pause();
-      btnHR.classList.remove("playing");
+      setButtonState(button, true);
+      setStatus('Reproducira se ' + label + '.');
+    }
+  }
+
+  btnHR.addEventListener('click', function(){
+    playSelectedAudio(
+      audioHR,
+      btnHR,
+      audioRO,
+      'hrvatski izgovor prezimena Tandara'
+    );
+  });
+
+  btnRO.addEventListener('click', function(){
+    playSelectedAudio(
+      audioRO,
+      btnRO,
+      audioHR,
+      'rumunjski izgovor naziva Țândără'
+    );
+  });
+
+  audioHR.addEventListener('ended', function(){
+    setButtonState(btnHR, false);
+    setStatus('Hrvatski zvučni zapis je završen.');
+  });
+
+  audioRO.addEventListener('ended', function(){
+    setButtonState(btnRO, false);
+    setStatus('Rumunjski zvučni zapis je završen.');
+  });
+
+  audioHR.addEventListener('pause', function(){
+    if (audioHR.ended){
+      return;
+    }
+
+    setButtonState(btnHR, false);
+  });
+
+  audioRO.addEventListener('pause', function(){
+    if (audioRO.ended){
+      return;
+    }
+
+    setButtonState(btnRO, false);
+  });
+
+  audioHR.addEventListener('error', function(){
+    setButtonState(btnHR, false);
+    setStatus(
+      'Hrvatski zvučni zapis nije pronađen ili se ne može učitati.'
+    );
+  });
+
+  audioRO.addEventListener('error', function(){
+    setButtonState(btnRO, false);
+    setStatus(
+      'Rumunjski zvučni zapis nije pronađen ili se ne može učitati.'
+    );
+  });
+
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden){
+      stopAllAudio();
+      setStatus('');
     }
   });
 
-  btnRO.addEventListener("click", function(){
-    if(audioRO.paused){
-      stopAudio(audioHR);
-      resetButtons();
-      audioRO.play();
-      btnRO.classList.add("playing");
-    }else{
-      audioRO.pause();
-      btnRO.classList.remove("playing");
-    }
+  window.addEventListener('pagehide', function(){
+    stopAllAudio();
   });
-
-  audioHR.addEventListener("ended", pauseAllButtons);
-  audioRO.addEventListener("ended", pauseAllButtons);
-  audioHR.addEventListener("pause", pauseAllButtons);
-  audioRO.addEventListener("pause", pauseAllButtons);
 })();
 </script>
 
