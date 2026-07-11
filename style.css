@@ -185,7 +185,9 @@ body{
     box-sizing:border-box;
     text-align:left;
 }
-
+.flagbox{
+    position:relative;
+}
 .flagbox a{
     display:block;
     width:100%;
