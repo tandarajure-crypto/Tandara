@@ -107,7 +107,7 @@ body{
 }
 
 /* NASLOV */
-.left-menu > h2:not(.visitors-title){
+.left-menu > h2:not(.visitor-title){
     text-align:center;
     font-size:24px;
     font-weight:bold;
@@ -151,7 +151,7 @@ body{
 }
 
 /* POSJETITELJI */
-.visitors-title{
+.visitor-title{
    margin:16px 20px 0 20px;
     padding:15px 0 13px 0;
     display:flex;
