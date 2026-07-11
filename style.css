@@ -194,14 +194,22 @@ body{
 
 /* FLAG */
 .flagbox{
-    text-align:center;
-    margin-top:4px;
-    padding-top:0;
+    margin:4px 0 0 20px;
+    padding:0;
+    width:calc(100% - 20px);
+    box-sizing:border-box;
+    text-align:left;
+}
+
+.flagbox a{
+    display:block;
+    width:100%;
 }
 
 .flagbox img{
-    display:inline-block;
-    max-width:260px;
+    display:block;
+    width:100%;
+    max-width:none;
     height:auto;
     border:0;
 }
@@ -1054,9 +1062,10 @@ img, video, iframe{
         text-align:left;
     }
 
-    .flagbox img{
-        max-width:240px;
-    }
+.flagbox img{
+    width:100%;
+    max-width:none;
+}
 }
 
 @media (max-width: 480px){
