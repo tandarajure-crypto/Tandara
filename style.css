@@ -1074,7 +1074,7 @@ img, video, iframe{
         height:56px;
     }
 
-    .left-menu > h2:not(.visitors-title){
+    .left-menu > h2:not(.visitor-title){
         font-size:22px;
     }
 
