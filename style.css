@@ -1081,4 +1081,18 @@ img, video, iframe{
         letter-spacing:-0.2px;
     }
 }
+.flag-title{
+    position:absolute;
+    top:6px;
+    left:22px;
 
+    background:#ffffff;
+
+    padding:0 4px;
+
+    font-family:Georgia, serif;
+    font-size:17px;
+    color:#4a3b2a;
+
+    z-index:10;
+}
