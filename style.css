@@ -177,10 +177,11 @@ body{
     box-shadow:0 0 10px rgba(212,175,55,.45);
 }
 /* FLAG */
+
 .flagbox{
-    margin:4px 0 0 0;
-    padding:0 0 0 20px;
-    width:100%;
+    margin:4px 0 0 20px;
+    padding:0;
+    width:calc(100% - 20px);
     box-sizing:border-box;
     text-align:left;
 }
