@@ -152,19 +152,29 @@ body{
 
 /* POSJETITELJI */
 .visitor-title{
-   margin:16px 20px 0 20px;
-    padding:15px 0 13px 0;
     display:flex;
     align-items:center;
-    gap:10px;
-    text-align:left;
+
+    margin:16px 20px 0 20px;
+    padding:7px 0;
+
     font-size:17px;
     font-weight:400;
     font-family:Georgia, serif;
     color:#4a3b2a;
     line-height:1.2;
-    border-top:1px solid rgba(0,0,0,0.08);
-    border-bottom:1px solid rgba(0,0,0,0.08);
+
+    border-top:1px solid rgba(0,0,0,.08);
+    border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.visitor-title::before{
+    content:"🌳";
+    display:inline-block;
+    width:22px;
+    margin-right:10px;
+    text-align:center;
+    flex-shrink:0;
 }
 
 /* AUTHOR PHOTO */
@@ -194,9 +204,9 @@ body{
 
 /* FLAG */
 .flagbox{
-    margin:4px 0 0 15px;
+    margin:4px 0 0 20px;
     padding:0;
-    width:calc(100% - 15px);
+    width:calc(100% - 20px);
     box-sizing:border-box;
     text-align:left;
 }
