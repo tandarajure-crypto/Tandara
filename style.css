@@ -1084,15 +1084,16 @@ img, video, iframe{
 }
 .flag-title{
     position:absolute;
-    top:6px;
-    left:22px;
+    top:0px;
+    left:0px;
 
     background:#ffffff;
 
     padding:0 4px;
 
     font-family:Georgia, serif;
-    font-size:17px;
+    font-size:15px;
+    font-weight:bold;
     color:#4a3b2a;
 
     z-index:10;
