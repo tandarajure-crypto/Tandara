@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head><meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/><meta content="nosniff" http-equiv="X-Content-Type-Options"/><meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<html lang="hr">
+<head>
+<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Guestbook | TANDARA-SURNAME</title>
-<meta name="description" content="Guestbook and messages from visitors to the TANDARA-SURNAME digital family archive."/>
-<link rel="canonical" href="https://tandarajure-crypto.github.io/Tandara/visitors-messages.html"/>
-<link rel="alternate" hreflang="hr" href="https://tandarajure-crypto.github.io/Tandara/knjiga-poruka.html"/>
-<link rel="alternate" hreflang="en" href="https://tandarajure-crypto.github.io/Tandara/visitors-messages.html"/>
-<link rel="alternate" hreflang="x-default" href="https://tandarajure-crypto.github.io/Tandara/knjiga-poruka.html"/>
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Guestbook | TANDARA-SURNAME"/>
-<meta property="og:description" content="Guestbook and messages from visitors to the TANDARA-SURNAME digital family archive."/>
-<meta property="og:url" content="https://tandarajure-crypto.github.io/Tandara/visitors-messages.html"/>
-<meta property="og:image" content="https://tandarajure-crypto.github.io/Tandara/family-tree.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
 
+<title>TANDARA – Prezime | Knjiga poruka</title>
+
+<meta content="Poruke, svjedočanstva i obiteljske priče za Digitalni arhiv roda Tandara." name="description"/>
 
 <!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-gtag('consent', 'default', {
-  'analytics_storage': 'granted',
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied'
-});
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('consent', 'default', {
+    'analytics_storage': 'granted',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+
   gtag('js', new Date());
+
   gtag('config', 'G-S33NBEJQFD', {
     send_page_view: true,
     page_title: document.title,
@@ -41,7 +44,10 @@ gtag('consent', 'default', {
   // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
   document.addEventListener('click', function(event) {
     var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    if (!link || !link.href || typeof gtag !== 'function') {
+      return;
+    }
 
     var href = link.href;
     var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
@@ -75,116 +81,119 @@ gtag('consent', 'default', {
   });
 </script>
 
-
-
-
+<meta content="TANDARA – Prezime | Knjiga poruka" property="og:title"/>
+<meta content="Poruke, svjedočanstva i obiteljske priče za Digitalni arhiv roda Tandara." property="og:description"/>
+<meta content="https://tandarajure-crypto.github.io/Tandara/knjiga-poruka.html" property="og:url"/>
+<meta content="https://tandarajure-crypto.github.io/Tandara/family-tree.png" property="og:image"/>
+<meta content="website" property="og:type"/>
 
 <link href="./style.css?v=5" rel="stylesheet"/>
-
-<style>
-/* Mobile top bar: visible only on phones and tablets. */
-.mobile-box-topbar{display:none;}
-@media (max-width:768px){
-  .mobile-box-topbar{display:flex;position:sticky;top:0;z-index:9999;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:rgba(255,255,255,.96);border-bottom:1px solid rgba(0,0,0,.12);box-shadow:0 2px 8px rgba(0,0,0,.08);backdrop-filter:blur(6px);}
-  .mobile-box-home{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 12px;border-radius:999px;text-decoration:none;font-weight:700;color:#fff;background:#5a3b1f;font-size:15px;line-height:1;}
-  .mobile-box-flags{display:inline-flex;align-items:center;gap:10px;}
-  .mobile-box-flags a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:38px;border-radius:10px;background:#fff;border:1px solid rgba(0,0,0,.12);}
-  .mobile-box-flags img{width:30px;height:auto;display:block;}
-}
-</style>
-<style>
-/* Two-column navigation only on tablets and phones; desktop remains unchanged. */
-@media (max-width:900px){
-  body.box-mobile-split .layout{display:grid;grid-template-columns:minmax(150px,34vw) minmax(0,1fr);align-items:start;gap:0;width:100%;max-width:100%;padding:0;}
-  body.box-mobile-split .left-menu{position:sticky;top:59px;width:100%;height:calc(100vh - 59px);max-height:calc(100vh - 59px);overflow-y:auto;overflow-x:hidden;border-right:3px solid #7a7a7a;border-bottom:0;padding:10px 0 14px;z-index:20;}
-  body.box-mobile-split .left-menu .home-button,body.box-mobile-split .left-menu .lang-switch,body.box-mobile-split .left-menu>h2,body.box-mobile-split .left-menu .author-photo,body.box-mobile-split .left-menu .flagbox{display:none;}
-  body.box-mobile-split .heritage-menu{padding:0 9px;}
-  body.box-mobile-split .heritage-menu li{align-items:flex-start;gap:5px;padding:9px 2px;}
-  body.box-mobile-split .heritage-menu li span{flex:0 0 auto;font-size:12px;line-height:1.35;}
-  body.box-mobile-split .heritage-menu a{display:block;min-width:0;font-size:clamp(12px,2.15vw,16px);line-height:1.25;overflow-wrap:anywhere;}
-  body.box-mobile-split .content-page{min-width:0;width:100%;padding:12px 8px;}
-  body.box-mobile-split .content-card{min-width:0;width:100%;padding:20px 12px;border-radius:10px;}
-}
-@media (max-width:480px){
-  body.box-mobile-split .layout{grid-template-columns:minmax(128px,42vw) minmax(0,1fr);}
-  body.box-mobile-split .heritage-menu{padding:0 6px;}
-  body.box-mobile-split .heritage-menu li{gap:3px;padding:8px 1px;}
-  body.box-mobile-split .heritage-menu a{font-size:12px;}
-  body.box-mobile-split .content-page{padding:8px 5px;}
-  body.box-mobile-split .content-card{padding:16px 9px;}
-}
-</style>
-
 </head>
-<body class="en box-mobile-split">
-<nav class="mobile-box-topbar" aria-label="Mobile navigation">
-  <a class="mobile-box-home" href="index-en.html">🏠 Home</a>
-  <div class="mobile-box-flags" aria-label="Language selection">
-    <a href="knjiga-poruka.html" aria-label="Hrvatski"><img src="flag-hr.png" alt="HR"/></a>
-    <a href="visitors-messages.html" aria-label="English"><img src="flag-uk.png" alt="EN"/></a>
-  </div>
-</nav>
+
+<body class="hr">
 
 <div class="layout">
+
 <aside class="left-menu">
+
 <!-- HOME -->
-<a class="home-button" href="index-en.html">
-<div class="home-circle">
-<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
-<path d="M3 10.5L12 3l9 7.5"></path>
-<path d="M5 10v10h14V10"></path>
-<path d="M10 20v-6h4v6"></path>
-</svg>
-</div>
+<a class="home-button" href="index.html">
+  <div class="home-circle">
+    <svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5"></path>
+      <path d="M5 10v10h14V10"></path>
+      <path d="M10 20v-6h4v6"></path>
+    </svg>
+  </div>
 </a>
+
 <!-- HR / EN -->
 <div class="lang-switch">
-<a class="lang-btn flag-btn" href="knjiga-poruka.html">
-<img alt="HR" src="flag-hr.png"/>
-</a>
-<a class="lang-btn flag-btn" href="visitors-messages.html">
-<img alt="EN" src="flag-uk.png"/>
-</a>
-</div>
-<h2>TANDARA-SURNAME</h2>
+  <a class="lang-btn flag-btn" href="knjiga-poruka.html">
+    <img alt="HR" src="flag-hr.png"/>
+  </a>
 
-<ul class="heritage-menu"><li><span>🌳</span><a href="./autor-en.html">About the Author &amp; Project</a></li><li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the Surname</a></li><li><span>🌳</span><a href="./rodoslovlje-en.html">Family Genealogy</a></li><li><span>🌳</span><a href="./migracije-en.html">Migration &amp; Distribution</a></li><li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting Facts</a></li><li><span>🌳</span><a href="./contacts.html">Contact &amp; Collaboration</a></li><li><span>🌳</span><a href="./visitors-messages.html">Visitors' Messages</a></li><li><span>🌳</span><a href="./privacy.html">Privacy Policy</a></li></ul>
+  <a class="lang-btn flag-btn" href="visitors-messages.html">
+    <img alt="EN" src="flag-uk.png"/>
+  </a>
+</div>
+
+<h2>TANDARA-PREZIME</h2>
+
+<ul class="heritage-menu">
+  <li><span>🌳</span><a href="./autor-hr.html">O autoru i projektu</a></li>
+  <li><span>🌳</span><a href="./podrijetlo-hr.html">Podrijetlo prezimena</a></li>
+  <li><span>🌳</span><a href="./rodoslovlje-hr.html">Rodoslovlje roda</a></li>
+  <li><span>🌳</span><a href="./migracije-hr.html">Migracije i rasprostranjenost</a></li>
+  <li><span>🌳</span><a href="./zanimljivosti.html">Zanimljivosti</a></li>
+  <li><span>🌳</span><a href="./kontakti.html">Kontakt i suradnja</a></li>
+  <li><span>🌳</span><a href="./knjiga-poruka.html">Knjiga poruka</a></li>
+  <li><span>🌳</span><a href="./privatnost.html">Politika privatnosti</a></li>
+</ul>
+
 <div class="author-photo">
-<a href="./autor-en.html">
-<img alt="Jure Tandara" src="./jure.png"/>
-</a>
+  <a href="./autor-hr.html">
+    <img alt="Jure Tandara" src="./jure.png"/>
+  </a>
 </div>
+
 <div class="flagbox">
-<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"/>
-</a>
+  <a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
+    <img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"/>
+  </a>
 </div>
+
 </aside>
+
 <main class="content-page">
+
 <article class="content-card">
-<h1>Visitors’ Messages</h1>
+
+<h1>Knjiga poruka</h1>
+
 <section id="intro">
-<h2>Messages, testimonies and family stories</h2>
-<p>This page is intended for messages, testimonies and family stories from members of the Tandara family and researchers of the Tandara surname around the world.</p>
+  <h2>Poruke, svjedočanstva i obiteljske priče</h2>
+
+  <p>Ova stranica namijenjena je porukama, svjedočanstvima i obiteljskim pričama članova roda Tandara te istraživača prezimena Tandara iz Hrvatske, Bosne i Hercegovine i drugih dijelova svijeta.</p>
 </section>
+
 <section id="permission">
-<h2>Published only with permission</h2>
-<p>Messages are published only when the sender has clearly granted permission. Private data, e-mail addresses and information about living persons will not be published without separate consent.</p>
+  <h2>Objavljivanje samo uz dopuštenje</h2>
+
+  <p>Poruke se objavljuju samo kada je pošiljatelj jasno dao dopuštenje za njihovu objavu. Privatni podaci, adrese elektroničke pošte i informacije o živim osobama neće se objavljivati bez posebne suglasnosti.</p>
 </section>
+
 <section id="sample">
-<h2>How will published messages look?</h2>
-<p><strong>Sample entry · Croatia / Bosnia and Herzegovina</strong></p>
-<p>“A message from a member of the Tandara family or a family-history researcher will be published here after review and with the author’s permission.”</p>
-<p><strong>Published with the author’s permission.</strong></p>
+  <h2>Kako će izgledati objavljene poruke?</h2>
+
+  <p><strong>Primjer zapisa · Hrvatska / Bosna i Hercegovina</strong></p>
+
+  <p>„Na ovom će mjestu, nakon pregleda i uz dopuštenje autora, biti objavljena poruka člana roda Tandara ili istraživača obiteljske povijesti.”</p>
+
+  <p><strong>Objavljeno uz dopuštenje autora.</strong></p>
 </section>
+
 <section id="send">
-<h2>Send a message for publication</h2>
-<p>To submit a message for possible publication, please use the Contact form available on the Contacts page. <strong></strong>.</p>
-<p style="text-align:center; margin-top:24px;"></p>
-<p style="text-align:center;"><a href="./contacts.html">Contact &amp; Collaboration</a> · <a href="./index-en.html">Back to home</a> · <a href="./knjiga-poruka.html">Hrvatska verzija</a></p>
+  <h2>Pošaljite poruku za objavu</h2>
+
+  <p>Za slanje poruke koja bi se mogla objaviti u Knjizi poruka koristite obrazac za kontakt dostupan na stranici Kontakt i suradnja.</p>
+
+  <p style="text-align:center; margin-top:24px;"></p>
+
+  <p style="text-align:center;">
+    <a href="./kontakti.html">Kontakt i suradnja</a>
+    ·
+    <a href="./index.html">Povratak na početnu stranicu</a>
+    ·
+    <a href="./visitors-messages.html">English version</a>
+  </p>
 </section>
+
 </article>
+
 </main>
+
 </div>
+
 </body>
 </html>
