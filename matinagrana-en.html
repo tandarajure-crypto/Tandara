@@ -52,7 +52,7 @@ gtag('consent', 'default', {
         link_url: href
       });
     }
-
+    
     if (isDownload) {
       gtag('event', 'file_download', {
         file_name: (link.pathname || '').split('/').pop(),
