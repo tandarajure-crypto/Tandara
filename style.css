@@ -551,7 +551,7 @@ body{
 
 .branch-card h3{
     font-size:22px;
-    margin:12px 0 20px 0;
+margin:28px 0 10px 0;
 }
 
 .branch-text-block{
@@ -564,6 +564,7 @@ body{
     font-size:18px;
     line-height:1.65;
     text-align:justify;
+    margin:0 0 16px 0;
 }
 
 .branch-flag{
