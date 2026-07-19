@@ -250,6 +250,28 @@ gtag('consent', 'default', {
   }
 }
 </style>
+
+<style>
+.required-choice {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(90, 59, 31, 0.35);
+  border-radius: 10px;
+}
+.required-choice legend {
+  padding: 0 6px;
+  font-weight: 700;
+}
+.required-choice .checkbox-line {
+  margin: 10px 0;
+}
+.archive-contact-form input:invalid,
+.archive-contact-form select:invalid,
+.archive-contact-form textarea:invalid {
+  border-color: #a94442;
+}
+</style>
+
 </head>
 <body class="hr box-mobile-split">
 <nav class="mobile-box-topbar" aria-label="Mobilna navigacija">
@@ -322,11 +344,11 @@ gtag('consent', 'default', {
 <div class="form-row">
 <div>
 <label for="ime">Ime i prezime *</label>
-<input id="ime" maxlength="80" name="Ime i prezime" required="" type="text"/>
+<input id="ime" minlength="3" maxlength="80" name="Ime i prezime" required type="text"/>
 </div>
 <div>
 <label for="mjesto">Mjesto i država *</label>
-<input id="mjesto" maxlength="100" name="Mjesto i država" required="" type="text"/>
+<input id="mjesto" minlength="2" maxlength="100" name="Mjesto i država" required type="text"/>
 </div>
 </div>
 <div class="form-row">
@@ -336,7 +358,8 @@ gtag('consent', 'default', {
 </div>
 <div>
 <label for="grana">Grana roda, ako je poznata</label>
-<select id="grana" name="Grana roda">
+<select id="grana" name="Grana roda" required>
+<option value="" selected disabled>Odaberite jednu mogućnost *</option>
 <option value="Nije poznato">Nije poznato</option>
 <option value="Jurina grana">Jurina grana</option>
 <option value="Petrova grana">Petrova grana</option>
@@ -346,18 +369,33 @@ gtag('consent', 'default', {
 </select>
 </div>
 </div>
-<label for="povezanost">Povezanost s rodom Tandara</label>
-<input id="povezanost" maxlength="250" name="Povezanost s rodom Tandara" placeholder="npr. nosim prezime Tandara, potomak sam roda Tandara, istražujem obitelj..." type="text"/>
+<label for="povezanost">Povezanost s rodom Tandara *</label>
+<input id="povezanost" minlength="3" maxlength="250" name="Povezanost s rodom Tandara" placeholder="npr. nosim prezime Tandara, potomak sam roda Tandara, istražujem obitelj..." required type="text"/>
 <label for="poruka">Poruka *</label>
-<textarea id="poruka" maxlength="3000" name="Poruka" required=""></textarea>
+<textarea id="poruka" minlength="10" maxlength="3000" name="Poruka" required></textarea>
+<fieldset class="required-choice">
+<legend>Želite li dopustiti javnu objavu poruke? *</legend>
 <label class="checkbox-line">
-<input name="Dopuštenje za objavu poruke" type="checkbox" value="DA"/>
-<span>Dopuštam da se moja poruka, nakon pregleda i odobrenja, može objaviti u knjizi poruka.</span>
+<input name="Dopuštenje za objavu poruke" type="radio" value="DA" required/>
+<span>DA – dopuštam da se moja poruka, nakon pregleda i odobrenja, može objaviti u knjizi poruka.</span>
 </label>
 <label class="checkbox-line">
-<input name="Dopuštenje za objavu imena i mjesta" type="checkbox" value="DA"/>
-<span>Dopuštam objavu imena i mjesta uz poruku. E-mail adresa se ne objavljuje.</span>
+<input name="Dopuštenje za objavu poruke" type="radio" value="NE" required/>
+<span>NE – poruka je samo za istraživačke potrebe i nije za javnu objavu.</span>
 </label>
+</fieldset>
+
+<fieldset class="required-choice">
+<legend>Ako se poruka objavi, dopuštate li objavu imena i mjesta? *</legend>
+<label class="checkbox-line">
+<input name="Dopuštenje za objavu imena i mjesta" type="radio" value="DA" required/>
+<span>DA – dopuštam objavu imena i mjesta uz poruku. E-mail adresa se ne objavljuje.</span>
+</label>
+<label class="checkbox-line">
+<input name="Dopuštenje za objavu imena i mjesta" type="radio" value="NE" required/>
+<span>NE – ne dopuštam objavu imena i mjesta.</span>
+</label>
+</fieldset>
 <label class="checkbox-line required-consent"><input name="Suglasnost s pravilima privatnosti" required="required" type="checkbox" value="DA"/><span>Potvrđujem da sam pročitao/la <a href="privatnost.html">pravila privatnosti</a> i suglasan/na sam da se podaci koriste samo za odgovor i rodoslovnu provjeru.</span></label><p class="form-note">
                         Polja označena zvjezdicom su obavezna. Fotografije i dokumente pošaljite naknadno kao privitak u odgovoru na e-mail komunikaciju.
                     </p>
@@ -435,6 +473,59 @@ gtag('consent', 'default', {
 </article>
 </main>
 </div>
+
+<script>
+(function () {
+  var form = document.querySelector('.archive-contact-form');
+  if (!form) return;
+
+  var textFields = form.querySelectorAll(
+    'input[type="text"][required], input[type="email"][required], textarea[required]'
+  );
+
+  textFields.forEach(function (field) {
+    field.addEventListener('input', function () {
+      field.setCustomValidity('');
+    });
+  });
+
+  form.addEventListener('submit', function (event) {
+    var firstInvalid = null;
+
+    textFields.forEach(function (field) {
+      var value = field.value.trim();
+      field.value = value;
+
+      if (!value) {
+        field.setCustomValidity('Ovo polje je obavezno i ne može sadržavati samo razmake.');
+      } else if (field.minLength > 0 && value.length < field.minLength) {
+        field.setCustomValidity('Upišite najmanje ' + field.minLength + ' znakova.');
+      } else {
+        field.setCustomValidity('');
+      }
+
+      if (!field.checkValidity() && !firstInvalid) {
+        firstInvalid = field;
+      }
+    });
+
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (!firstInvalid) {
+        firstInvalid = form.querySelector(':invalid');
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        firstInvalid.reportValidity();
+      }
+    }
+  });
+})();
+</script>
+
 <script>
 (function(){
   var params = new URLSearchParams(window.location.search);
