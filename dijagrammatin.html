@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=()">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; block-all-mixed-content">
+<title>Rodoslovno stablo Mate Ivanova</title>
+<meta name="description" content="Interaktivni dijagram Matine grane roda Tandara.">
+<link rel="canonical" href="https://tandarajure-crypto.github.io/Tandara/dijagrammatin.html">
+<link rel="alternate" hreflang="hr" href="https://tandarajure-crypto.github.io/Tandara/dijagrammatin.html">
+<link rel="alternate" hreflang="en" href="https://tandarajure-crypto.github.io/Tandara/dijagrammate-en.html">
+<link rel="alternate" hreflang="x-default" href="https://tandarajure-crypto.github.io/Tandara/dijagrammatin.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Rodoslovno stablo Mate Ivanova"><meta property="og:description" content="Interaktivni dijagram Matine grane roda Tandara."><meta property="og:url" content="https://tandarajure-crypto.github.io/Tandara/dijagrammatin.html"><meta property="og:image" content="https://tandarajure-crypto.github.io/Tandara/matinagrana.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'analytics_storage':'granted','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});
+gtag('js',new Date());gtag('config','G-S33NBEJQFD',{send_page_view:true,page_title:document.title,page_location:window.location.href,page_path:window.location.pathname,language:document.documentElement.lang||navigator.language||'hr'});
+</script>
+<style>
+:root{
+  --green:#174f39; --paper:#fbfaf6; --ink:#22302a; --muted:#68736d;
+  --blue-bg:#e8f2fb; --blue-line:#4d82aa; --orange-bg:#fff1df; --orange-line:#bb8144;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper)}
+body{overflow:hidden}
+header{min-height:104px;display:flex;align-items:center;gap:18px;padding:10px 18px;background:#fff;border-bottom:1px solid #dcded9;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.nav-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.back-link,.lang-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;min-height:36px;padding:7px 10px;font-size:13px;font-weight:700}
+.back-link:hover,.lang-link:hover{background:#f0f4f1}
+.lang-switch{display:flex;gap:6px}
+.lang-link{width:42px;padding:5px}
+.lang-link.active{border-color:var(--green);box-shadow:0 0 0 2px rgba(23,79,57,.13)}
+.lang-link img{display:block;width:27px;height:18px;object-fit:cover;border-radius:2px}
+.title-wrap{min-width:250px}
+h1{font-size:23px;margin:0 0 4px;color:var(--green)}
+.subtitle{font-size:13px;color:var(--muted)}
+.toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+button,input{border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;padding:8px 10px;font-size:13px}
+button{cursor:pointer} button:hover{background:#f0f4f1} button.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.search-wrap{display:flex;gap:6px} #search{width:230px}
+#workspace{position:relative;height:calc(100% - 104px);overflow:hidden;background:linear-gradient(180deg,#fbfaf6,#f5f3ec)}
+#treeSvg{width:100%;height:100%;display:block;cursor:grab;user-select:none;touch-action:none}
+#treeSvg.dragging{cursor:grabbing}
+.connector{fill:none;stroke:#a9ada8;stroke-width:2}
+.node rect{stroke-width:2;filter:drop-shadow(0 2px 2px rgba(0,0,0,.07))}
+.node text{pointer-events:none}.node .code{font-size:12px;font-weight:700;letter-spacing:.4px}.node .label{font-size:14px;font-weight:600}.node .hint{font-size:12px}
+.node{cursor:pointer}.node:hover rect{stroke-width:3}.node.selected rect{stroke:#c63030!important;stroke-width:4}.node.match rect{stroke:#be8b00!important;stroke-width:4}
+#details{position:absolute;right:14px;top:14px;width:min(430px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;background:rgba(255,255,255,.97);border:1px solid #d3d7d2;border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.16);padding:16px;display:none;z-index:4}
+#details.open{display:block}#details h2{font-size:17px;margin:0 32px 3px 0;color:var(--green)}#details .detail-code{font-size:12px;font-weight:700;color:#6c756f;margin-bottom:12px}#details p{font-size:14px;line-height:1.5;white-space:pre-line;margin:0}
+#closeDetails{position:absolute;right:10px;top:9px;border:0;background:transparent;font-size:20px;padding:3px 7px}
+.legend{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border:1px solid #d3d7d2;border-radius:10px;padding:9px 12px;font-size:12px;display:flex;gap:14px;box-shadow:0 4px 18px rgba(0,0,0,.08);z-index:3}
+.legend span{display:flex;align-items:center;gap:6px}.swatch{width:14px;height:14px;border-radius:4px;border:2px solid}.help{position:absolute;right:15px;bottom:12px;color:#6d756f;font-size:12px;background:rgba(251,250,246,.9);padding:4px 7px;border-radius:6px;z-index:3}
+@media(max-width:1120px){header{min-height:154px;align-items:flex-start;flex-direction:column;gap:8px}#workspace{height:calc(100% - 154px)}.title-wrap{min-width:0}}
+@media(max-width:700px){header{min-height:205px;padding:9px 10px}#workspace{height:calc(100% - 205px)}#search{width:165px}.legend,.help{display:none}h1{font-size:20px}}
+@media print{header,#details,.legend,.help{display:none!important}body{overflow:visible}#workspace{height:auto}#treeSvg{width:100%;height:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav-area">
+    <a class="back-link" href="matinagrana.html">← Matina grana</a>
+    <div class="lang-switch" aria-label="Language">
+      <a class="lang-link active" href="dijagrammatin.html" title="Hrvatski"><img src="./flag-hr.png" alt="HR"></a>
+      <a class="lang-link" href="dijagrammate-en.html" title="English"><img src="./flag-uk.png" alt="EN"></a>
+    </div>
+  </div>
+  <div class="title-wrap"><h1>Rodoslovno stablo Mate Ivanova</h1><div class="subtitle"><strong>22</strong> numerirane osobe · <strong>7</strong> naraštaja · klik na osobu otvara detalje</div></div>
+  <div class="toolbar">
+    <button class="primary" id="expandAll">Raširi sve</button><button id="collapse">Sažmi</button><button id="threeLevels">Do 3. koljena</button><button id="fit">Uklopi</button><button id="zoomIn" aria-label="Zoom in">＋</button><button id="zoomOut" aria-label="Zoom out">−</button>
+    <div class="search-wrap"><input id="search" type="search" placeholder="Ime, šifra ili podatak…"><button id="findBtn">Pronađi</button></div>
+  </div>
+</header>
+<div id="workspace">
+  <svg id="treeSvg" aria-label="Interaktivno rodoslovno stablo Matine grane"><g id="viewport"><g id="links"></g><g id="nodes"></g></g></svg>
+  <aside id="details"><button id="closeDetails" aria-label="Zatvori">×</button><h2 id="detailTitle"></h2><div class="detail-code" id="detailCode"></div><p id="detailText"></p></aside>
+  <div class="legend"><span><i class="swatch" style="background:#174f39;border-color:#0d3425"></i>Zajednička loza Mate–Ivan–Ante</span><span><i class="swatch" style="background:#e8f2fb;border-color:#4d82aa"></i>Podgrana Ivana Antina</span><span><i class="swatch" style="background:#fff1df;border-color:#bb8144"></i>Podgrana Mate Antina</span></div>
+  <div class="help">Kotačić: povećanje · povlačenje: pomicanje · klik na čvor: detalji i grananje</div>
+</div>
+<script>
+const DATA={"code":"4.0","label":"Mate Tandara – Ivanov (rođen c. 1740.)","detail":"Mate Tandara bio je četvrti sin Ivana Tandare. Sa suprugom Filipom Kopač imao je petero djece: sina Ivana te kćeri Matiju, Mandu, Jaku i Ceciliju. Muška loza nastavila se isključivo preko sina Ivana. Ivan se ženio dva puta. U prvom braku s Pavom Sičenica dobio je sina Antu, jedinog muškog nasljednika Matine loze. U drugom braku s Jelom Parlov dobio je kćer Ružu. Ova je grana poznata po nadimku Cesarovići.\n\nO podrijetlu toga nadimka sačuvala se zanimljiva predaja. Prema njoj, neki su Matini potomci radili poljoprivredne poslove kod obitelji iz roda Lažeta. Kada su ih ukućani i susjedi upitali kakva im je bila hrana u Lažeta, odgovorili su: ‘Ko' u cesara!’ Nije posve razjašnjeno je li izgovorena riječ cesar ili sesar. Iako se oba oblika mogu pronaći na starijim nadgrobnim spomenicima i u predaji, danas se većina potomaka ove grane naziva Cesarovićima.","children":[{"code":"4.1","label":"Ivan Matin (–1870.)","detail":"Ivan Matin ženio se dvaput. Prvi put se 1817. godine oženio Pavom Sičenica i s njom imao sina Antu. U drugom braku s Jelom Parlov dobio je kćer Ružu.","children":[{"code":"4.1.1","label":"Ante Ivanov (1832.–)","detail":"Ante se 1853. vjenčao s Jozom Pušić. Imali su sinove Ivana, Juru, Marka i Matu te kćeri Ivu, Tomicu, Maru i Jelu. Za Juru i Marka nema drugih zapisa osim onih o njihovu rođenju. Ili su umrli mladi ili su se nekamo odselili.","children":[{"code":"4.1.1.1","label":"Ivan Antin (1855.–1928.)","detail":"Ivan Antin oženio se Ružom Matišić i s njom imao sinove Marijana, Jozu i Ivana te kćeri Anicu, Ivu i Jelu. Za Marijana ne postoje drugi zapisi osim onoga o njegovu rođenju. Ili je umro mlad ili se nekamo odselio.","children":[{"code":"4.1.1.1.1","label":"Jozo Ivanov (1890.–1947.)","detail":"Jozo, drugi Ivanov sin, uzeo je za ženu Ivu Bilić. Imali su sinove Marijana i Mirka, koji je umro kao malo dijete, te kćeri Jozu i Anu.","children":[{"code":"4.1.1.1.1.1","label":"Marijan Jozin (1929.–1977.)","detail":"Marijan Jozin oženio se Matijom Mršić i s njom dobio sina Josipa te kćeri Nadu, Danicu, Branku, Anu, Dragicu i Mirjanu. Josip je uzeo za ženu Dragicu Pavić. Imaju sinove Marijana, Antu i Kristijana te kćer Silviju.","children":[{"code":"4.1.1.1.1.1.1","label":"Josip Marijanov (1962.–)","detail":"Josip je oženio Dragicu Pavić, s kojom je dobio sinove Marijana (1991.–), Antu (1996.–) i Kristijana (1998.–) te kćer Silviju (1994.–). Obitelj živi u Ričicama.","children":[]}]}]},{"code":"4.1.1.1.2","label":"Ivan Ivanov (1903.–1965.)","detail":"Ivan se ženio dvaput. Prvi put oženio se Jakom Tavra i s njom dobio sinove Franu i Stanka, koji je umro u dobi od četrnaest godina. U drugom braku s Anom Capia nije imao djece.","children":[{"code":"4.1.1.1.2.1","label":"Frane Ivanov (1933.–)","detail":"Frane Ivanov uzeo je za ženu Tomicu Pavić i s njom dobio sinove Stanka, Cvjetka, Miroslava, koji je umro kao malo dijete, i Dragomira te kćeri Mariju, Rozu, Miroslavu i Anitu. Stanko je u braku s Ankicom Kovačević. Imaju kćeri Tatjanu i Tamaru i žive u Zagrebu. Cvjetko i Dragomir nisu se ženili. Žive u Klokočevcu kod Bjelovara.","children":[{"code":"4.1.1.1.2.1.1","label":"Stanko Franin (1956.–)","detail":"Stanko je oženio Ankicu Kovačević, s kojom je dobio kćeri Tatjanu i Tamaru. Obitelj živi u Zagrebu.","children":[]}]}]}]},{"code":"4.1.1.2","label":"Mate Antin (1873.–1927.)","detail":"Mate Antin oženio se Ružom Manenica. Imali su sinove Antu, koji je umro kao malo dijete, Josipa, Cvitana, ponovno Antu i Nikolu te kćeri Tomicu i Maru. Za Josipa nema drugih zapisa osim onoga o njegovu rođenju. Ili je umro mlad ili se nekamo odselio.","children":[{"code":"4.1.1.2.1","label":"Cvitan Matin (1945.–)","detail":"Cvitan, treći Matin sin, uzeo je za ženu Tomicu Pavić. Imali su sinove Matu, koji je umro kao malo dijete, i Nikolu te kćeri Luciju, Anu, Ružu, Stanu, Nevenku i Branku. Za Nikolu nema drugih zapisa osim onoga o njegovu rođenju. Ili je umro mlad ili se nekamo odselio. Cvitanova loza je izumrla.","children":[]},{"code":"4.1.1.2.2","label":"Ante Matin (1908.–)","detail":"Ante Matin oženio se Anom Pavić. Dobili su sinove Marijana, Dinka, koji je umro kao malo dijete, Mirka, Matu i Cvitana te kćeri Anu, Maru i Tonku.","children":[{"code":"4.1.1.2.2.1","label":"Marijan Antin (1934.–1963.)","detail":"Marijan je uzeo za ženu Pavu Pušić. Odgojili su sinove Antu i Dinka te kćer Nedu. Marijan je 1963. poginuo u Njemačkoj. Obitelj živi u Klokočevcu.","children":[{"code":"4.1.1.2.2.1.1","label":"Ante Marijanov (1961.–1991.)","detail":"Ante je oženio Mirjanu Čeh i s njom dobio sinove Marijana i Marka. Početkom devedesetih godina uključio se u obranu Hrvatske od agresije bivše Jugoslavenske narodne armije i srpskih paravojnih skupina.\n\nU Domovinskom ratu sudjelovao je od kolovoza 1991. kao pripadnik 105. brigade Hrvatske vojske. U rujnu iste godine Ante i devetnaest drugih hrvatskih branitelja, većinom iz Bjelovara, zarobljeni su u Kusonjama kod Pakraca, mučeni i pogubljeni. Njihovi posmrtni ostaci ekshumirani su iz masovne grobnice Rakov Potok u siječnju 1992.","children":[]},{"code":"4.1.1.2.2.1.2","label":"Dinko Marijanov (1963.–)","detail":"Dinko je uzeo za ženu Dubravku Lončar, s kojom je dobio sinove Luku i Pavla. Bio je pomoćnik ministra Tomislava Medveda. Obitelj živi u Zagrebu.","children":[]}]},{"code":"4.1.1.2.2.2","label":"Mirko Antin","detail":"Mirko je oženio Anđu Parlov i s njom dobio sinove Marijana i Ivicu. Marijan se nije ženio. Mirko, Anđa i Marijan žive u Splitu.","children":[{"code":"4.1.1.2.2.2.1","label":"Ivica Mirkov (1969.–)","detail":"Ivica se vjenčao s Matijom Bilobrk. Imaju sina Ivana (1992.–) i kćer Ivanu (1985.–). Žive u SAD-u.","children":[]}]},{"code":"4.1.1.2.2.3","label":"Cvitan Antin (1945.–)","detail":"Cvitan je uzeo za ženu Katicu Kršinić. Imaju sina Marijana i kćer Zrinku. Cvitanova obitelj živi u Splitu.","children":[{"code":"4.1.1.2.2.3.1","label":"Marijan Cvitanov (1945.–)","detail":"Marijan je oženio Leidu Kezele, s kojom je dobio sinove Luku (1996.–) i Lovru (1999.–). Obitelj živi u Splitu.","children":[]}]},{"code":"4.1.1.2.2.4","label":"Mate Antin (1947.–)","detail":"Mate je uzeo za ženu Zlatu Mihoci. Odgojili su sina Daria i kćer Danijelu. Obitelj živi u Splitu.","children":[{"code":"4.1.1.2.2.4.1","label":"Dario Matin (1973.–)","detail":"Dario je oženio Ivanu Tomić. Nemaju djece. Obitelj živi u Splitu.","children":[]}]}]}]}]}]}]};
+const UI={"codeLabel":"Šifra","noDetails":"Za ovu osobu nema dodatnog opisa.","notFound":"Nema rezultata za: ","locale":"hr"};
+
+const svg = document.getElementById("treeSvg");
+const viewport = document.getElementById("viewport");
+const linksLayer = document.getElementById("links");
+const nodesLayer = document.getElementById("nodes");
+const details = document.getElementById("details");
+const BOX_W = 300, BOX_H = 64, X_STEP = 330, ROW_STEP = 84, MARGIN = 50;
+let scale = 1, panX = 20, panY = 20, selectedCode = null, matchCode = null;
+let dragging = false, dragStart = null;
+let bounds = {width:1000,height:900};
+function walk(node, callback, parent=null, depth=0){callback(node,parent,depth);(node.children||[]).forEach(child=>walk(child,callback,node,depth+1));}
+function setExpandedToDepth(maxDepth){walk(DATA,(node,parent,depth)=>{node.expanded=depth<maxDepth;});}
+function visibleNodes(){const result=[];function visit(node,parent=null,depth=0){result.push({node,parent,depth});if(node.expanded)(node.children||[]).forEach(child=>visit(child,node,depth+1));}visit(DATA);return result;}
+function colors(code){if(code==="4.0"||code==="4.1"||code==="4.1.1")return {fill:"#174f39",text:"#fff",stroke:"#0d3425"};if(code.startsWith("4.1.1.1"))return {fill:"#e8f2fb",text:"#173a57",stroke:"#4d82aa"};return {fill:"#fff1df",text:"#553719",stroke:"#bb8144"};}
+function wrapText(text,max=35){const words=text.split(/\s+/),lines=[];let line="";for(const word of words){const test=(line+" "+word).trim();if(test.length>max&&line){lines.push(line);line=word}else line=test;}if(line)lines.push(line);if(lines.length>2)lines[1]=lines.slice(1).join(" ").slice(0,max-1)+"…";return lines.slice(0,2);}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+function render(){const visible=visibleNodes(),pos=new Map();visible.forEach((item,index)=>pos.set(item.node.code,{x:MARGIN+item.depth*X_STEP,y:MARGIN+index*ROW_STEP}));const maxDepth=Math.max(...visible.map(v=>v.depth),0);bounds.width=MARGIN*2+maxDepth*X_STEP+BOX_W;bounds.height=MARGIN*2+visible.length*ROW_STEP;let links="";visible.forEach(({node,parent})=>{if(!parent||!pos.has(parent.code))return;const p=pos.get(parent.code),c=pos.get(node.code),x1=p.x+BOX_W,y1=p.y+BOX_H/2,x2=c.x,y2=c.y+BOX_H/2,elbow=x1+(x2-x1)/2;links+=`<path class="connector" d="M${x1},${y1} H${elbow} V${y2} H${x2}"/>`;});linksLayer.innerHTML=links;let markup="";visible.forEach(({node})=>{const p=pos.get(node.code),color=colors(node.code),lines=wrapText(node.label),hasChildren=(node.children||[]).length>0,indicator=hasChildren?(node.expanded?"−":"+"):"",classes=["node"];if(node.code===selectedCode)classes.push("selected");if(node.code===matchCode)classes.push("match");markup+=`<g class="${classes.join(" ")}" data-code="${esc(node.code)}" transform="translate(${p.x},${p.y})"><rect width="${BOX_W}" height="${BOX_H}" rx="9" fill="${color.fill}" stroke="${color.stroke}"></rect><text class="code" x="13" y="19" fill="${color.text}">${esc(node.code)}</text>${lines.map((line,i)=>`<text class="label" x="13" y="${40+i*16}" fill="${color.text}">${esc(line)}</text>`).join("")}${hasChildren?`<circle cx="${BOX_W-18}" cy="18" r="11" fill="rgba(255,255,255,.72)" stroke="${color.stroke}"></circle><text class="hint" x="${BOX_W-18}" y="22" text-anchor="middle" fill="${color.stroke}">${indicator}</text>`:""}</g>`;});nodesLayer.innerHTML=markup;nodesLayer.querySelectorAll(".node").forEach(group=>group.addEventListener("click",event=>{event.stopPropagation();const node=findNode(group.dataset.code);selectedCode=node.code;showDetails(node);if((node.children||[]).length)node.expanded=!node.expanded;render();}));applyTransform();}
+function findNode(code){let result=null;walk(DATA,node=>{if(node.code===code)result=node;});return result;}
+function showDetails(node){document.getElementById("detailTitle").textContent=node.label;document.getElementById("detailCode").textContent=UI.codeLabel+" "+node.code;document.getElementById("detailText").textContent=node.detail||UI.noDetails;details.classList.add("open");}
+function applyTransform(){viewport.setAttribute("transform",`translate(${panX},${panY}) scale(${scale})`);}
+function fitTree(){const rect=svg.getBoundingClientRect();scale=Math.min((rect.width-50)/bounds.width,(rect.height-50)/bounds.height,1.15);panX=(rect.width-bounds.width*scale)/2;panY=(rect.height-bounds.height*scale)/2;applyTransform();}
+function zoomAt(factor,cx,cy){const old=scale;scale=Math.max(.14,Math.min(3,scale*factor));panX=cx-(cx-panX)*(scale/old);panY=cy-(cy-panY)*(scale/old);applyTransform();}
+function expandAncestors(code){const parts=code.split(".");DATA.expanded=true;for(let i=2;i<parts.length;i++){const ancestor=parts.slice(0,i).join("."),node=findNode(ancestor);if(node)node.expanded=true;}}
+function search(){const q=document.getElementById("search").value.trim().toLocaleLowerCase(UI.locale);if(!q)return;let found=null;walk(DATA,node=>{const hay=(node.code+" "+node.label+" "+node.detail).toLocaleLowerCase(UI.locale);if(!found&&hay.includes(q))found=node;});if(!found){alert(UI.notFound+q);return;}expandAncestors(found.code);selectedCode=found.code;matchCode=found.code;render();showDetails(found);requestAnimationFrame(()=>{const target=nodesLayer.querySelector('[data-code="'+found.code.replace(/"/g,'\\"')+'"]');if(target){const matrix=target.getCTM(),rect=svg.getBoundingClientRect(),tx=matrix.e+BOX_W*scale/2,ty=matrix.f+BOX_H*scale/2;panX+=rect.width/2-tx;panY+=rect.height/2-ty;applyTransform();}});}
+document.getElementById("expandAll").onclick=()=>{walk(DATA,n=>n.expanded=true);render();fitTree();};
+document.getElementById("collapse").onclick=()=>{walk(DATA,n=>n.expanded=false);DATA.expanded=true;render();fitTree();};
+document.getElementById("threeLevels").onclick=()=>{setExpandedToDepth(3);render();fitTree();};
+document.getElementById("fit").onclick=fitTree;document.getElementById("zoomIn").onclick=()=>zoomAt(1.22,svg.clientWidth/2,svg.clientHeight/2);document.getElementById("zoomOut").onclick=()=>zoomAt(.82,svg.clientWidth/2,svg.clientHeight/2);document.getElementById("findBtn").onclick=search;document.getElementById("search").addEventListener("keydown",e=>{if(e.key==="Enter")search();});document.getElementById("closeDetails").onclick=()=>details.classList.remove("open");
+svg.addEventListener("wheel",e=>{e.preventDefault();const rect=svg.getBoundingClientRect();zoomAt(e.deltaY<0?1.12:.89,e.clientX-rect.left,e.clientY-rect.top);},{passive:false});
+svg.addEventListener("pointerdown",e=>{if(e.target.closest&&e.target.closest(".node"))return;dragging=true;svg.classList.add("dragging");svg.setPointerCapture(e.pointerId);dragStart={x:e.clientX,y:e.clientY,panX,panY};});
+svg.addEventListener("pointermove",e=>{if(!dragging)return;panX=dragStart.panX+(e.clientX-dragStart.x);panY=dragStart.panY+(e.clientY-dragStart.y);applyTransform();});
+svg.addEventListener("pointerup",()=>{dragging=false;svg.classList.remove("dragging");});svg.addEventListener("pointercancel",()=>{dragging=false;svg.classList.remove("dragging");});window.addEventListener("resize",fitTree);
+setExpandedToDepth(3);render();requestAnimationFrame(fitTree);
+
+</script>
+</body>
+</html>
