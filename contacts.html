@@ -116,6 +116,32 @@ gtag('consent', 'default', {
 }
 </style>
 
+
+<style>
+.form-required-notice {
+  margin: 14px 0 20px;
+  padding: 14px 16px;
+  border: 2px solid #b99867;
+  border-radius: 10px;
+  background: #fff8ec;
+  color: #3b2f22;
+  line-height: 1.55;
+}
+.required-choice {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(90, 59, 31, 0.35);
+  border-radius: 10px;
+}
+.required-choice legend {
+  padding: 0 6px;
+  font-weight: 700;
+}
+.required-choice .checkbox-line {
+  margin: 10px 0;
+}
+</style>
+
 </head>
 <body class="en box-mobile-split">
 <nav class="mobile-box-topbar" aria-label="Mobile navigation">
@@ -181,6 +207,10 @@ gtag('consent', 'default', {
 <p>
     You can send your message directly using the form below.
 </p>
+<div class="form-required-notice" role="note">
+  <strong>Important:</strong> All required fields must be completed, including the publication permission choices.
+  The form cannot be submitted until all required information has been entered.
+</div>
 <div id="form-success" aria-live="polite"></div>
 <form accept-charset="UTF-8" action="https://formsubmit.co/tandarajure@outlook.com" class="archive-contact-form" method="POST">
 <input type="hidden" name="_subject" value="[TANDARA] Contact message from the website">
@@ -193,11 +223,11 @@ gtag('consent', 'default', {
 <div class="form-row">
 <div>
 <label for="name">Name and surname *</label>
-<input id="name" maxlength="80" name="Name and surname" type="text" required>
+<input id="name" minlength="3" maxlength="80" name="Name and surname" type="text" required>
 </div>
 <div>
 <label for="place">City and country *</label>
-<input id="place" maxlength="100" name="City and country" type="text" required>
+<input id="place" minlength="2" maxlength="100" name="City and country" type="text" required>
 </div>
 </div>
 <div class="form-row">
@@ -206,8 +236,9 @@ gtag('consent', 'default', {
 <input id="sender-email" maxlength="120" name="email" type="email" required>
 </div>
 <div>
-<label for="branch">Family branch, if known</label>
-<select id="branch" name="Family branch">
+<label for="branch">Family branch *</label>
+<select id="branch" name="Family branch" required>
+<option value="" selected disabled>Select one option *</option>
 <option value="Not known">Not known</option>
 <option value="Jurina branch">Jurina branch</option>
 <option value="Petrova branch">Petrova branch</option>
@@ -217,24 +248,39 @@ gtag('consent', 'default', {
 </select>
 </div>
 </div>
-<label for="connection">Connection with the Tandara family line</label>
-<input id="connection" maxlength="250" name="Connection with the Tandara family line" type="text" placeholder="e.g. I bear the surname Tandara, I am a descendant, I am researching the family...">
+<label for="connection">Connection with the Tandara family line *</label>
+<input id="connection" minlength="3" maxlength="250" name="Connection with the Tandara family line" type="text" placeholder="e.g. I bear the surname Tandara, I am a descendant, I am researching the family..." required>
 <label for="message">Message *</label>
-<textarea id="message" maxlength="3000" name="Message" required></textarea>
+<textarea id="message" minlength="10" maxlength="3000" name="Message" required></textarea>
+<fieldset class="required-choice">
+<legend>Do you allow your message to be published publicly? *</legend>
 <label class="checkbox-line">
-<input type="checkbox" name="Permission to publish message" value="YES">
-<span>I allow my message, after review and approval, to be published in the visitors' messages section.</span>
+<input type="radio" name="Permission to publish message" value="YES" required>
+<span>YES – I allow my message, after review and approval, to be published in the visitors' messages section.</span>
 </label>
 <label class="checkbox-line">
-<input type="checkbox" name="Permission to publish name and place" value="YES">
-<span>I allow my name and place to be published with the message. The e-mail address will not be published.</span>
+<input type="radio" name="Permission to publish message" value="NO" required>
+<span>NO – the message is for research purposes only and must not be published publicly.</span>
 </label>
+</fieldset>
+
+<fieldset class="required-choice">
+<legend>If the message is published, do you allow your name and place to be published? *</legend>
+<label class="checkbox-line">
+<input type="radio" name="Permission to publish name and place" value="YES" required>
+<span>YES – I allow my name and place to be published with the message. The e-mail address will not be published.</span>
+</label>
+<label class="checkbox-line">
+<input type="radio" name="Permission to publish name and place" value="NO" required>
+<span>NO – I do not allow my name and place to be published.</span>
+</label>
+</fieldset>
 <label class="checkbox-line required-consent">
 <input type="checkbox" name="Consent to privacy rules" value="YES" required>
 <span>I confirm that I understand the data will be used only for reply, communication and genealogical verification.</span>
 </label>
 <p class="form-note">
-                        Fields marked with an asterisk are required. Photographs and documents can be sent later as attachments in e-mail communication.
+                        All fields marked with an asterisk are required. The form cannot be submitted until every required field and publication choice has been completed. Photographs and documents can be sent later as attachments in e-mail communication.
                     </p>
 <button type="submit">Send message</button>
 </form>
@@ -309,6 +355,59 @@ gtag('consent', 'default', {
 </article>
 </main>
 </div>
+
+<script>
+(function () {
+  var form = document.querySelector('.archive-contact-form');
+  if (!form) return;
+
+  var textFields = form.querySelectorAll(
+    'input[type="text"][required], input[type="email"][required], textarea[required]'
+  );
+
+  textFields.forEach(function (field) {
+    field.addEventListener('input', function () {
+      field.setCustomValidity('');
+    });
+  });
+
+  form.addEventListener('submit', function (event) {
+    var firstInvalid = null;
+
+    textFields.forEach(function (field) {
+      var value = field.value.trim();
+      field.value = value;
+
+      if (!value) {
+        field.setCustomValidity('This field is required and cannot contain only spaces.');
+      } else if (field.minLength > 0 && value.length < field.minLength) {
+        field.setCustomValidity('Please enter at least ' + field.minLength + ' characters.');
+      } else {
+        field.setCustomValidity('');
+      }
+
+      if (!field.checkValidity() && !firstInvalid) {
+        firstInvalid = field;
+      }
+    });
+
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (!firstInvalid) {
+        firstInvalid = form.querySelector(':invalid');
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        firstInvalid.reportValidity();
+      }
+    }
+  });
+})();
+</script>
+
 <script>
 (function(){
   var params = new URLSearchParams(window.location.search);
