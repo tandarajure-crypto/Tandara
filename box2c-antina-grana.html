@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cijela Antina grana</title>
+<title>Antina grana – Ante Tandara Ivanov i Matija Brnas</title>
 <style>
 :root{
   --green:#174f39; --paper:#fbfaf6; --ink:#22302a; --muted:#68736d;
@@ -19,7 +19,7 @@ header{
 .title-wrap{min-width:285px}
 h1{font-size:23px;margin:0 0 4px;color:var(--green)}
 .subtitle{font-size:13px;color:var(--muted)}
-.toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:11px}
 button,input{
   border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;
   padding:8px 10px;font-size:13px;
@@ -29,7 +29,7 @@ button:hover{background:#f0f4f1}
 button.primary{background:var(--green);color:#fff;border-color:var(--green)}
 .search-wrap{display:flex;gap:6px}
 #search{width:240px}
-#workspace{position:relative;height:calc(100% - 92px);overflow:hidden}
+#workspace{position:relative;flex:1 1 auto;min-height:0;overflow:hidden}
 #treeSvg{width:100%;height:100%;display:block;cursor:grab;user-select:none}
 #treeSvg.dragging{cursor:grabbing}
 .connector{fill:none;stroke:#a9ada8;stroke-width:2}
@@ -58,16 +58,17 @@ button.primary{background:var(--green);color:#fff;border-color:var(--green)}
 }
 .legend span{display:flex;align-items:center;gap:6px}
 .swatch{width:14px;height:14px;border-radius:4px;border:2px solid}
-.help{position:absolute;right:15px;bottom:12px;color:#6d756f;font-size:12px;background:rgba(251,250,246,.9);padding:4px 7px;border-radius:6px}
 @media(max-width:900px){
-  header{height:142px;align-items:flex-start;flex-direction:column;gap:8px}
-  #workspace{height:calc(100% - 142px)}
-  .title-wrap{min-width:0}
+  header{padding:10px 12px}
+  .intro-row{grid-template-columns:50px minmax(0,1fr);gap:10px}
+  .branch-flag{width:46px}
+  h1{font-size:19px}
+  .life-line,.intro-text,.instructions{font-size:12px}
   #search{width:185px}
   .legend{display:none}
 }
 @media print{
-  header,#details,.legend,.help{display:none!important}
+  header,#details,.legend{display:none!important}
   body{overflow:visible}
   #workspace{height:auto}
   #treeSvg{width:100%;height:auto}
@@ -76,10 +77,36 @@ button.primary{background:var(--green);color:#fff;border-color:var(--green)}
 </head>
 <body>
 <header>
-  <div class="title-wrap">
-    <h1>Cijela Antina grana</h1>
-    <div class="subtitle"><strong>119</strong> numeriranih osoba · <strong>9</strong> naraštaja · klik na osobu otvara detalje</div>
+  <div class="intro-row">
+    <img class="branch-flag" src="flag-hr.png" alt="Hrvatska zastava">
+
+    <div class="title-wrap">
+      <h1>Antina grana – Ante Tandara Ivanov i Matija Brnas</h1>
+
+      <div class="life-line">
+        <strong>Ante Tandara – Ivanov:</strong> ★ oko 1735. · † godina nepoznata
+      </div>
+      <div class="life-line">
+        <strong>Matija Brnas:</strong> ★ godina nepoznata · † godina nepoznata
+      </div>
+
+      <p class="intro-text">
+        Ante Tandara bio je treći sin Ivana Tandare. Sa suprugom Matijom Brnas
+        imao je sinove Antu, Filipa i Pavla te kćeri Jaku, Lucu i Ružu.
+      </p>
+
+      <p class="instructions">
+        <strong>Upute:</strong> kliknite na znak <strong>+</strong> uz ime za otvaranje potomaka.
+        Klikom na okvir osobe otvara se njezin opis. Dijagram se povećava kotačićem miša,
+        a pomiče povlačenjem.
+      </p>
+
+      <div class="subtitle">
+        <strong>119</strong> numeriranih osoba · <strong>9</strong> naraštaja
+      </div>
+    </div>
   </div>
+
   <div class="toolbar">
     <button class="primary" id="expandAll">Raširi sve</button>
     <button id="collapse">Sažmi</button>
@@ -110,7 +137,6 @@ button.primary{background:var(--green);color:#fff;border-color:var(--green)}
   </aside>
 
   <div class="legend"><span><i class="swatch" style="background:#174f39;border-color:#0d3425"></i>Ante Ivanov</span><span><i class="swatch" style="background:#e8f2fb;border-color:#4d82aa"></i>Prvi sin Ante</span><span><i class="swatch" style="background:#fff1df;border-color:#bb8144"></i>Drugi sin Filip</span></div>
-  <div class="help">Kotačić: povećanje · povlačenje: pomicanje · klik na čvor: detalji i grananje</div>
 </div>
 
 <script>
