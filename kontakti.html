@@ -270,6 +270,16 @@ gtag('consent', 'default', {
 .archive-contact-form textarea:invalid {
   border-color: #a94442;
 }
+ .form-required-notice{
+    margin:14px 0 20px;
+    padding:14px 16px;
+    border:2px solid #b99867;
+    border-radius:10px;
+    background:#fff8ec;
+    color:#3b2f22;
+    line-height:1.6;
+} 
+  
 </style>
 
 </head>
@@ -333,6 +343,12 @@ gtag('consent', 'default', {
 <p>
     Poruku možete poslati izravno preko ovog obrasca.
 </p>
+
+<div class="form-required-notice" role="note">
+    <strong>⚠️ Važna napomena:</strong><br>
+    Molimo ispunite sva obavezna polja te obavezno odaberite odgovore na pitanja o javnoj objavi poruke i objavi imena i mjesta.
+    <strong>Obrazac neće biti poslan dok sva obavezna polja nisu ispunjena.</strong>
+</div>
 <div aria-live="polite" id="form-success"></div>
 <form accept-charset="UTF-8" action="https://formsubmit.co/tandarajure@outlook.com" class="archive-contact-form" method="POST">
 <input name="_subject" type="hidden" value="[TANDARA] Kontakt poruka sa web stranice"/>
