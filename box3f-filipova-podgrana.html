@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filipova podgrana</title>
+<style>
+:root{
+  --green:#174f39; --paper:#fbfaf6; --ink:#22302a; --muted:#68736d;
+  --blue-bg:#e8f2fb; --blue-line:#4d82aa; --orange-bg:#fff1df; --orange-line:#bb8144;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper)}
+body{overflow:hidden}
+header{
+  height:92px;display:flex;align-items:center;gap:22px;padding:12px 18px;
+  background:#fff;border-bottom:1px solid #dcded9;box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.title-wrap{min-width:285px}
+h1{font-size:23px;margin:0 0 4px;color:var(--green)}
+.subtitle{font-size:13px;color:var(--muted)}
+.toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+button,input{
+  border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;
+  padding:8px 10px;font-size:13px;
+}
+button{cursor:pointer}
+button:hover{background:#f0f4f1}
+button.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.search-wrap{display:flex;gap:6px}
+#search{width:240px}
+#workspace{position:relative;height:calc(100% - 92px);overflow:hidden}
+#treeSvg{width:100%;height:100%;display:block;cursor:grab;user-select:none}
+#treeSvg.dragging{cursor:grabbing}
+.connector{fill:none;stroke:#a9ada8;stroke-width:2}
+.node rect{stroke-width:2;filter:drop-shadow(0 2px 2px rgba(0,0,0,.07))}
+.node text{pointer-events:none}
+.node .code{font-size:12px;font-weight:700;letter-spacing:.4px}
+.node .label{font-size:14px;font-weight:600}
+.node .hint{font-size:12px}
+.node{cursor:pointer}
+.node:hover rect{stroke-width:3}
+.node.selected rect{stroke:#c63030!important;stroke-width:4}
+.node.match rect{stroke:#be8b00!important;stroke-width:4}
+#details{
+  position:absolute;right:14px;top:14px;width:min(390px,calc(100% - 28px));max-height:calc(100% - 28px);
+  overflow:auto;background:rgba(255,255,255,.97);border:1px solid #d3d7d2;border-radius:12px;
+  box-shadow:0 10px 35px rgba(0,0,0,.16);padding:16px;display:none
+}
+#details.open{display:block}
+#details h2{font-size:17px;margin:0 32px 3px 0;color:var(--green)}
+#details .detail-code{font-size:12px;font-weight:700;color:#6c756f;margin-bottom:12px}
+#details p{font-size:14px;line-height:1.5;white-space:pre-line;margin:0}
+#closeDetails{position:absolute;right:10px;top:9px;border:0;background:transparent;font-size:20px;padding:3px 7px}
+.legend{
+  position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border:1px solid #d3d7d2;
+  border-radius:10px;padding:9px 12px;font-size:12px;display:flex;gap:14px;box-shadow:0 4px 18px rgba(0,0,0,.08)
+}
+.legend span{display:flex;align-items:center;gap:6px}
+.swatch{width:14px;height:14px;border-radius:4px;border:2px solid}
+.help{position:absolute;right:15px;bottom:12px;color:#6d756f;font-size:12px;background:rgba(251,250,246,.9);padding:4px 7px;border-radius:6px}
+@media(max-width:900px){
+  header{height:142px;align-items:flex-start;flex-direction:column;gap:8px}
+  #workspace{height:calc(100% - 142px)}
+  .title-wrap{min-width:0}
+  #search{width:185px}
+  .legend{display:none}
+}
+@media print{
+  header,#details,.legend,.help{display:none!important}
+  body{overflow:visible}
+  #workspace{height:auto}
+  #treeSvg{width:100%;height:auto}
+}
+
+#zoomIn,#zoomOut{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <div class="title-wrap">
+    <h1>Filipova podgrana</h1>
+    <div class="subtitle"><strong>42</strong> numeriranih osoba · <strong>8</strong> naraštaja · klik na osobu otvara detalje</div>
+  </div>
+  <div class="toolbar">
+    <button class="primary" id="expandAll">Raširi</button>
+    <button id="collapse">Sažmi</button>
+    <button id="threeLevels">Do 3. koljena</button>
+    <button id="fit">Uklopi</button>
+    <button id="zoomIn">＋</button>
+    <button id="zoomOut">−</button>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Ime ili šifra">
+      <button id="findBtn">Pronađi</button>
+    </div>
+  </div>
+</header>
+
+<div id="workspace">
+  <svg id="treeSvg" aria-label="Interaktivno rodoslovno stablo Filipove podgrane">
+    <g id="viewport">
+      <g id="links"></g>
+      <g id="nodes"></g>
+    </g>
+  </svg>
+
+  <aside id="details">
+    <button id="closeDetails" aria-label="Zatvori">×</button>
+    <h2 id="detailTitle"></h2>
+    <div class="detail-code" id="detailCode"></div>
+    <p id="detailText"></p>
+  </aside>
+
+  <div class="legend"><span><i class="swatch" style="background:#174f39;border-color:#0d3425"></i>Filip Antin</span><span><i class="swatch" style="background:#dfeee7;border-color:#174f39"></i>Sin Martin</span><span><i class="swatch" style="background:#e8f2fb;border-color:#4d82aa"></i>Jerkin ogranak</span><span><i class="swatch" style="background:#fff1df;border-color:#bb8144"></i>Ilijin ogranak</span></div>
+  <div class="help">Kotačić: povećanje · povlačenje: pomicanje · klik na čvor: detalji i grananje</div>
+</div>
+
+<script>
+const DATA = {"code":"3.2","label":"Filip Antin","detail":"Filip je bio drugi sin Ante Ivanova. Za razliku od njegova brata Ante, Filip je ostao i nastavio život u Ričicama. Bio je oženjen Matijom Parlov sa kojom je imao sinove Martina, Matu i Ivana, te kćeri Jozu, Jelu, Jurku, Anticu i Ružu. Za Ivana i Matu postoje samo podaci o rođenju pa se pretpostavlja da su mladi umrli ili su odselili iz Ričica.","children":[{"code":"3.2.1","label":"Martin Filipov (1811.–)","detail":"Martin je bio oženjen Mandom Manenica sa kojom je imao sinove Jerku, Iliju, Ivana, Martina i ponovo drugog Ivana, te kćeri Tomicu, Luciju, drugu Luciju i Ivu. Lozu su nastavili samo sinovi Jerko i Ilija.","children":[{"code":"3.2.1.1","label":"Jerko Martinov (1811.–)","detail":"Jerko je bio oženjen Ivom Topalušić s kojom je dobio sinove Martina, Luku i Ivana. Luka je nakon rođenja umro.","children":[{"code":"3.2.1.1.1","label":"Martin Jerkin (1865.–)","detail":"Martin je bio oženjen Ivom Kovač s kojom je imao kćeri Matiju, Maru i Ivu.","children":[]},{"code":"3.2.1.1.2","label":"Ivan Jerkin (1872.–)","detail":"Ivan je bio oženjen Jakom Martinović s kojom je imao sinove Matu i Martina, te kćeri Anu, Tomicu i drugu Tomicu, nakon što je prva kćer Tomica preminula u drugoj godini života. Bio je čest slučaj da su roditelji nakon prvog preminulog djeteta drugom istog spola davali ista imena.","children":[{"code":"3.2.1.1.2.1","label":"Mate Ivanov (1898.–) – nadimak Pikići","detail":"Mate je bio oženjen Matijom Lažeta sa kojom je imao sinove Nikolu, Mirka i Marijana, te kćeri Milicu i Dragicu. Obitelj se preselila u Split.","children":[{"code":"3.2.1.1.2.1.1","label":"Nikola Matin (1927.–1990.)","detail":"Nikola je bio oženjen Matijom Kilić s kojom je dobio sinove Damira i Željka, te kćeri Veru i Mariju. Obitelj je u Splitu.","children":[{"code":"3.2.1.1.2.1.1.1","label":"Damir Nikolin (1960.–)","detail":"Damir se dva puta ženio. Iz prvog braka s Marinom Čelan ima sina Tina (1981.-) koji živi u Njemačkoj. U drugom braku sa Lucijom Modrić ima sina Lea (2003.- ) i kćeri Žanu i Doris. Obitelj je u Splitu.","children":[]},{"code":"3.2.1.1.2.1.1.2","label":"Željko Nikolin (1963.–)","detail":"Željko je oženjen Anitom Košćak s kojom ima sinove Nikolu (1992.-) i Marka (1996.- ). Žive u Splitu.","children":[]}]},{"code":"3.2.1.1.2.1.2","label":"Mirko Matin (1932.–2005.)","detail":"Mirko je bio oženjen Anđelkom Dragicom Mršić s kojom je dobio sinove Nedjeljka, Zdravka i Miroslava. Obitelj živi u Splitu.","children":[{"code":"3.2.1.1.2.1.2.1","label":"Nedjeljko Mirkin (1957.–)","detail":"Nedjeljko je oženjen Danicom Jaginović s kojom ima sinove Mirka (1991.-), Ivana (1996.-) i Križana (2003.-). Obitelj živi u Splitu.","children":[]},{"code":"3.2.1.1.2.1.2.2","label":"Zdravko Mirkin (1960.–)","detail":"Zdravko je oženjen Dubravkom Brajković s kojom ima sinove Antu (1993.-) i Vedrana (1995.-). Obitelj živi u Splitu.","children":[]},{"code":"3.2.1.1.2.1.2.3","label":"Miroslav Mirkin (1963.–)","detail":"Miroslav je oženjen Ružicom Krajinović s kojom ima sina Josipa (1995.-) i kćeri Ines i Anu. Obitelj živi u Splitu.","children":[]}]},{"code":"3.2.1.1.2.1.3","label":"Marijan Matin (1936.–)","detail":"Marijan je oženio Maru Tandara s kojom ima sina Matu i kćer Snježanu. Obitelj živi u Splitu.","children":[{"code":"3.2.1.1.2.1.3.1","label":"Mate Marijanov (1961.–)","detail":"Mate je oženio Zdravku Guć s kojom je dobio sinove Marijana (1985.-), Ivana (1987.-) i Antu (1998.-). Obitelj živi u Splitu.","children":[]}]}]},{"code":"3.2.1.1.2.2","label":"Martin Ivanov (1904.–)","detail":"Martin je bio oženjen Anicom Lekić s kojom je dobio sinove Ivana, Jerku i Marijana, te kćeri Maru i Matiju. Marijan je preminuo u trećoj godini života. Obitelj je preselila u Bjelovar.","children":[{"code":"3.2.1.1.2.2.1","label":"Ivan Martinov (1932.–1996.)","detail":"Ivan je bio oženjen Anom Radmanić s kojom je dobio sina Darka. Obitelj živi u Bjelovaru.","children":[{"code":"3.2.1.1.2.2.1.1","label":"Darko Ivanov (1955.–)","detail":"Darko je oženio Dragicu Sabolović s kojom je dobio sina Ivana (1983.-) i kćer Moniku. Obitelj živi u Bjelovaru.","children":[]}]},{"code":"3.2.1.1.2.2.2","label":"Jerko Martinov (1935.-)","detail":"Jerko je oženio Ružicu Seketić s kojom je dobio sina Renata. Obitelj živi u Borovu Naselju.","children":[{"code":"3.2.1.1.2.2.2.1","label":"Renato Jerkin (1964.-)","detail":"Renato je oženio Tanju Lancoš s kojom ima kćer Leu. Obitelj je preselila u Zagreb.","children":[]}]}]}]}]},{"code":"3.2.1.2","label":"Ilija Martinov (1843.-)","detail":"Ilija je bio oženjen Lucom Tavra s kojom je imao sinove Matu, Ivana i Šimuna, te kćeri Tomicu, drugu Tomicu, Ivu i Maru. Ivan je preminuo u šestoj godini života, a Šimun nakon poroda.","children":[{"code":"3.2.1.2.1","label":"Mate Ilijin (1875.-)-nadimak Rumići","detail":"Mate je bio oženjen Marom Topalušić sa kojom je imao sinove Ivana, Božu, Miju i Tomu, te kćeri Tomicu, Maru i drugu Maru. Ivan i Božo imaju samo podatke o godini rođenja i ne zna se da li su umrli mladi ili su odselili iz Ričica.","children":[{"code":"3.2.1.2.1.1","label":"Mijo Matin (1909.-1945.)- Rumići","detail":"Mijo je bio oženjen Jozom Štrljić s kojom je dobio sinove Vinka i Milana. Obitelj je preselila u Predavac kod Bjelovara","children":[{"code":"3.2.1.2.1.1.1","label":"Vinko Mijin (1932.-)","detail":"Vinko se ženio dva puta. U prvom braku s Krstom Mršić dobio je sinove Miju, Antu, Milana, Zdravka i Vinka. U drugom braku sa Matijom Sičenica nije imao djece. Obitelj živi u Predavcu kod Bjelovara.","children":[{"code":"3.2.1.2.1.1.1.1","label":"Mijo Vinkov (1952.-)","detail":"Mijo je oženio Jelu Krezo s kojom ima sinove Ivicu i Zorana. Zoran se nije ženio. Mijo živi s obitelji u Njemačkoj.","children":[{"code":"3.2.1.2.1.1.1.1.1","label":"Ivica Mijin (1975.-)","detail":"Ivica je oženio Vesnu Belan s kojom ima sina Luku (2002.-) i kćer Miju. Obitelj živi u Njemačkoj.","children":[]}]},{"code":"3.2.1.2.1.1.1.2","label":"Ante Vinkov (1954.-)","detail":"Ante je oženio Vesnu Topalušić s kojom ima kćeri Kristinu, Marinu i Nikolinu. Muških potomaka nema. Obitelj živi u Njemačkoj.","children":[]},{"code":"3.2.1.2.1.1.1.3","label":"Milan Vinkov (1957.-)","detail":"Milan je oženio Nediljku Matešić s kojom ima sinove Kristijana (1985.-), Antonia (1987.-) i Dina (1991.-), te kćer Valentinu. Obitelj živi u Predavcu.","children":[]},{"code":"3.2.1.2.1.1.1.4","label":"Zdravko Vinkov (1960.-)","detail":"Zdravko je oženio Brigitu Horvatinčić s kojom ima sinove Matu (1997.-) i Brunu (1999.-), te kćeri Anitu i Petru. Obitelj živi u Predavcu.","children":[]},{"code":"3.2.1.2.1.1.1.5","label":"Vinko Vinkov (1961.-)","detail":"Vinko je oženio Slavicu Matišić s kojom ima sina Maria (1984.-) i kćer Marinu. Obitelj živi u Predavcu.","children":[]}]},{"code":"3.2.1.2.1.1.2","label":"Milan Mijin (1935.-)","detail":"Milan je oženio Ivu Lukić s kojom ima sinove Željka i Dragana, te kćeri Rosu i Dragicu. Obitelj živi u Predavcu.","children":[{"code":"3.2.1.2.1.1.2.1","label":"Željko Milanov (1962.-)","detail":"Željko je oženio Slađanu nepoznatog prezimena i s njom ima sina Ivana (nepoznata godina rođenja). Obitelj živi u Predavcu.","children":[]},{"code":"3.2.1.2.1.1.2.2","label":"Dragan Milanov (1965.-)","detail":"Dragan je oženio Zvijezdanu (nepoznatog prezimena) i s njom ima sina Gorana i kćeri Ivu i Danielu. Obitelj živi u Predavcu.","children":[{"code":"3.2.1.2.1.1.2.2.1","label":"Goran Draganov (nepoznata godina rođenja)","detail":"Goran ima sina Tina. Ostali podaci nedostaju. Ako netko može dati nedostajuće informacije, molio bih da mi se javi putem kontakt obrasca.","children":[]}]}]}]},{"code":"3.2.1.2.1.2","label":"Toma Matin (1909.-1945.)-nadimak Rumići","detail":"Toma je bio oženjen Tomicom Tandara s kojom je dobio sinove Petra, Marijana, Slavka, Antu i Matu, te kćeri Milu, Dragicu, Anu i Nevenku. Marijan se nije ženio.","children":[{"code":"3.2.1.2.1.2.1","label":"Petar Tomin (1925.-1985.)","detail":"Petar je bio oženjen Katom Novosel s kojom je dobio sina Ivicu.","children":[{"code":"3.2.1.2.1.2.1.1","label":"Ivica Petrov (1952.-)","detail":"Ivica je oženio Ljubicu Kozić s kojom ima sina Hrvoja (1983.-) i kćer Sabinu Tandara Knezović . Sabina je poznata TV novinarka koja radi na Novoj TV. Obitelj živi u Zagrebu.","children":[]}]},{"code":"3.2.1.2.1.2.2","label":"Slavko Tomin (1930.-2006.)","detail":"Slavko je bio oženjen Savkom Vukobratović s kojom je dobio sina Marka (1981.- ). Marko se nije ženio. Obitelj živi u Zagrebu.","children":[]},{"code":"3.2.1.2.1.2.3","label":"Ante Tomin (1942.-2011.)","detail":"Ante je bio oženjen Zlatom Vučemil s kojom je dobio sina Draženka. Obitelj živi u Sredicama kod Bjelovara.","children":[{"code":"3.2.1.2.1.2.3.1","label":"Draženko Antin (1967.-)","detail":"Draženko je oženio Nedu Medić s kojom ima sina Luku (1998.- ) i kćeri Maju i Mateu. Obitelj živi u Sredicama kod Bjelovara.","children":[]}]},{"code":"3.2.1.2.1.2.4","label":"Mate Tomin (1944.-2007.)","detail":"Mate je bio oženjen Tonkom Vukičević s kojom je dobio sina Željka. Obitelj živi u Zagrebu.","children":[{"code":"3.2.1.2.1.2.4.1","label":"Željko Matin (1953.-)","detail":"Željko je oženio Ankicu Šitum s kojom ima sinove Maria i Ivana Vanju. Željko sa obitelji živi u Kanadi.\n\nUz ovaj tekstualni dio nalazi se i grafički dio koji se otvara klikom na klikabilne pravokutnike dijagrama, na desnoj strani početne stranice.","children":[]}]}]}]}]}]}]};
+const svg = document.getElementById("treeSvg");
+const viewport = document.getElementById("viewport");
+const linksLayer = document.getElementById("links");
+const nodesLayer = document.getElementById("nodes");
+const details = document.getElementById("details");
+
+const BOX_W = 286, BOX_H = 60, X_STEP = 315, ROW_STEP = 76, MARGIN = 46;
+let scale = 1, panX = 20, panY = 20, selectedCode = null, matchCode = null;
+let dragging = false, dragStart = null;
+let bounds = {width:1000,height:800};
+
+function walk(node, callback, parent=null, depth=0){
+  callback(node,parent,depth);
+  (node.children || []).forEach(child => walk(child,callback,node,depth+1));
+}
+function depthFromCode(code){ return code === "3.2" ? 0 : code.split(".").length - 2; }
+function setExpandedToDepth(maxDepth){
+  walk(DATA,(node,parent,depth)=>{ node.expanded = depth < maxDepth; });
+}
+function visibleNodes(){
+  const result=[];
+  function visit(node,parent=null,depth=0){
+    result.push({node,parent,depth});
+    if(node.expanded) (node.children||[]).forEach(child=>visit(child,node,depth+1));
+  }
+  visit(DATA);
+  return result;
+}
+function colors(code){
+  if(code==="3.2") return {fill:"#174f39",text:"#fff",stroke:"#0d3425"};
+  if(code==="3.2.1") return {fill:"#dfeee7",text:"#174f39",stroke:"#174f39"};
+  if(code.startsWith("3.2.1.1")) return {fill:"#e8f2fb",text:"#173a57",stroke:"#4d82aa"};
+  return {fill:"#fff1df",text:"#553719",stroke:"#bb8144"};
+}
+function wrapText(text,max=34){
+  const words=text.split(/\s+/); const lines=[]; let line="";
+  for(const word of words){
+    const test=(line+" "+word).trim();
+    if(test.length>max && line){ lines.push(line); line=word; }
+    else line=test;
+  }
+  if(line) lines.push(line);
+  if(lines.length>2) lines[1]=lines.slice(1).join(" ").slice(0,max-1)+"…";
+  return lines.slice(0,2);
+}
+function esc(s){
+  return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+function render(){
+  const visible=visibleNodes();
+  const pos=new Map();
+  visible.forEach((item,index)=>{
+    pos.set(item.node.code,{x:MARGIN+item.depth*X_STEP,y:MARGIN+index*ROW_STEP});
+  });
+  const maxDepth=Math.max(...visible.map(v=>v.depth),0);
+  bounds.width=MARGIN*2+maxDepth*X_STEP+BOX_W;
+  bounds.height=MARGIN*2+visible.length*ROW_STEP;
+
+  let links="";
+  visible.forEach(({node,parent})=>{
+    if(!parent || !pos.has(parent.code)) return;
+    const p=pos.get(parent.code), c=pos.get(node.code);
+    const x1=p.x+BOX_W, y1=p.y+BOX_H/2, x2=c.x, y2=c.y+BOX_H/2;
+    const elbow=x1+(x2-x1)/2;
+    links += `<path class="connector" d="M${x1},${y1} H${elbow} V${y2} H${x2}"/>`;
+  });
+  linksLayer.innerHTML=links;
+
+  let nodeMarkup="";
+  visible.forEach(({node})=>{
+    const p=pos.get(node.code), color=colors(node.code), lines=wrapText(node.label);
+    const hasChildren=(node.children||[]).length>0;
+    const indicator=hasChildren ? (node.expanded ? "−" : "+") : "";
+    const classes=["node"];
+    if(node.code===selectedCode) classes.push("selected");
+    if(node.code===matchCode) classes.push("match");
+    nodeMarkup += `<g class="${classes.join(" ")}" data-code="${esc(node.code)}" transform="translate(${p.x},${p.y})">
+      <rect width="${BOX_W}" height="${BOX_H}" rx="9" fill="${color.fill}" stroke="${color.stroke}"></rect>
+      <text class="code" x="13" y="18" fill="${color.text}">${esc(node.code)}</text>
+      ${lines.map((line,i)=>`<text class="label" x="13" y="${38+i*16}" fill="${color.text}">${esc(line)}</text>`).join("")}
+      ${hasChildren?`<circle cx="${BOX_W-18}" cy="18" r="11" fill="rgba(255,255,255,.72)" stroke="${color.stroke}"></circle>
+      <text class="hint" x="${BOX_W-18}" y="22" text-anchor="middle" fill="${color.stroke}">${indicator}</text>`:""}
+    </g>`;
+  });
+  nodesLayer.innerHTML=nodeMarkup;
+
+  nodesLayer.querySelectorAll(".node").forEach(group=>{
+    group.addEventListener("click",event=>{
+      event.stopPropagation();
+      const code=group.dataset.code;
+      const node=findNode(code);
+      selectedCode=code;
+      showDetails(node);
+      if((node.children||[]).length){
+        node.expanded=!node.expanded;
+      }
+      render();
+    });
+  });
+  applyTransform();
+}
+function findNode(code){
+  let result=null;
+  walk(DATA,node=>{ if(node.code===code) result=node; });
+  return result;
+}
+function showDetails(node){
+  document.getElementById("detailTitle").textContent=node.label;
+  document.getElementById("detailCode").textContent="Šifra "+node.code;
+  document.getElementById("detailText").textContent=node.detail || "Za ovu osobu u izvornom HTML-u nema dodatnog opisa.";
+  details.classList.add("open");
+}
+function applyTransform(){
+  viewport.setAttribute("transform",`translate(${panX},${panY}) scale(${scale})`);
+}
+function fitTree(){
+  const rect=svg.getBoundingClientRect();
+  scale=Math.min((rect.width-50)/bounds.width,(rect.height-50)/bounds.height,1.15);
+  panX=(rect.width-bounds.width*scale)/2;
+  panY=(rect.height-bounds.height*scale)/2;
+  applyTransform();
+}
+function zoomAt(factor,cx,cy){
+  const old=scale;
+  scale=Math.max(.12,Math.min(3,scale*factor));
+  panX=cx-(cx-panX)*(scale/old);
+  panY=cy-(cy-panY)*(scale/old);
+  applyTransform();
+}
+function expandAncestors(code){
+  const parts=code.split(".");
+  DATA.expanded=true;
+  for(let i=2;i<parts.length;i++){
+    const ancestor=parts.slice(0,i).join(".");
+    const node=findNode(ancestor);
+    if(node) node.expanded=true;
+  }
+}
+function search(){
+  const q=document.getElementById("search").value.trim().toLocaleLowerCase("hr");
+  if(!q) return;
+  let found=null;
+  walk(DATA,node=>{
+    const hay=(node.code+" "+node.label+" "+node.detail).toLocaleLowerCase("hr");
+    if(!found && hay.includes(q)) found=node;
+  });
+  if(!found){ alert("Nema rezultata za: "+q); return; }
+  expandAncestors(found.code);
+  selectedCode=found.code; matchCode=found.code;
+  render(); showDetails(found);
+  requestAnimationFrame(()=>{
+    const target=nodesLayer.querySelector(`[data-code="${CSS.escape(found.code)}"]`);
+    if(target){
+      const matrix=target.getCTM(), rect=svg.getBoundingClientRect();
+      const tx=matrix.e+BOX_W*scale/2, ty=matrix.f+BOX_H*scale/2;
+      panX += rect.width/2-tx;
+      panY += rect.height/2-ty;
+      applyTransform();
+    }
+  });
+}
+document.getElementById("expandAll").onclick=()=>{walk(DATA,n=>n.expanded=true);render();fitTree()};
+document.getElementById("collapse").onclick=()=>{walk(DATA,n=>n.expanded=false);DATA.expanded=true;render();fitTree()};
+document.getElementById("threeLevels").onclick=()=>{setExpandedToDepth(3);render();fitTree()};
+document.getElementById("fit").onclick=fitTree;
+document.getElementById("zoomIn").onclick=()=>zoomAt(1.22,svg.clientWidth/2,svg.clientHeight/2);
+document.getElementById("zoomOut").onclick=()=>zoomAt(.82,svg.clientWidth/2,svg.clientHeight/2);
+document.getElementById("findBtn").onclick=search;
+document.getElementById("search").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
+document.getElementById("closeDetails").onclick=()=>details.classList.remove("open");
+
+svg.addEventListener("wheel",e=>{
+  e.preventDefault();
+  const rect=svg.getBoundingClientRect();
+  zoomAt(e.deltaY<0?1.12:.89,e.clientX-rect.left,e.clientY-rect.top);
+},{passive:false});
+svg.addEventListener("pointerdown",e=>{
+  if(e.target.closest && e.target.closest(".node")) return;
+  dragging=true; svg.classList.add("dragging"); svg.setPointerCapture(e.pointerId);
+  dragStart={x:e.clientX,y:e.clientY,panX,panY};
+});
+svg.addEventListener("pointermove",e=>{
+  if(!dragging) return;
+  panX=dragStart.panX+(e.clientX-dragStart.x);
+  panY=dragStart.panY+(e.clientY-dragStart.y);
+  applyTransform();
+});
+svg.addEventListener("pointerup",()=>{dragging=false;svg.classList.remove("dragging")});
+window.addEventListener("resize",fitTree);
+
+setExpandedToDepth(3);
+render();
+requestAnimationFrame(fitTree);
+</script>
+</body>
+</html>
