@@ -1102,23 +1102,23 @@ img, video, iframe{
 
 /* Fotografija Sabine Tandara Knezović */
 .sabina-photo {
-    width: 190px;
+    width: 65px;
     margin: 15px 0 25px 0;
     text-align: center;
 }
 
 .sabina-photo img {
     display: block;
-    width: 190px;
+    width: 65px;
     height: auto;
-    border: 3px solid #b99867;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    border: 2px solid #b99867;
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
 }
 
 .sabina-photo figcaption {
-    margin-top: 7px;
+    margin-top: 5px;
     color: #4a3927;
-    font-size: 15px;
+    font-size: 11px;
     font-style: italic;
 }
