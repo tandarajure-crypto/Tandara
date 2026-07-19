@@ -194,6 +194,52 @@
     font-size:14px;
   }
 }
+
+/* Antina grana: zaglavlje, obiteljski podaci i upute iznad dijagrama. */
+.branch-heading{
+  text-align:center;
+  margin:0 0 24px;
+}
+.branch-heading .branch-flag{
+  display:block;
+  width:46px;
+  height:auto;
+  margin:0 auto 10px;
+}
+.branch-heading h1{
+  margin:0;
+  text-transform:uppercase;
+}
+.branch-summary,
+.diagram-instructions{
+  margin:0 0 26px;
+}
+.branch-summary h2,
+.diagram-instructions h2{
+  margin:0 0 12px;
+}
+.branch-summary p{
+  margin:0 0 12px;
+}
+.family-data{
+  line-height:1.65;
+}
+.diagram-instructions ol{
+  margin:0;
+  padding-left:24px;
+}
+.diagram-instructions li{
+  margin:0 0 9px;
+}
+@media (max-width:480px){
+  .branch-heading .branch-flag{
+    width:38px;
+  }
+  .diagram-instructions ol{
+    padding-left:20px;
+  }
+}
+
 </style>
 
 </head>
@@ -279,23 +325,72 @@
 
 <!-- POČETAK SADRŽAJA / START OF CONTENT -->
 
-<h1>Ante</h1>
+<header class="branch-heading">
+  <img class="branch-flag" src="flag-hr.png" alt="Hrvatska zastava"/>
+  <h1>ANTINA GRANA</h1>
+</header>
 
-<!-- SEO UVOD POČETAK -->
-<p class="subtitle seo-intro">
-  <strong>TANDARA-PREZIME</strong> – Digitalni arhiv prezimena Tandara, rodoslovlja, obiteljskog stabla, povijesnih zapisa, podrijetla prezimena i migracija obitelji Tandara u Hrvatskoj te Bosni i Hercegovini.
-</p>
-<!-- SEO UVOD KRAJ -->
+<section class="branch-summary" aria-labelledby="ante-matija">
+  <h2 id="ante-matija">Ante Tandara i Matija rođ. Brnas</h2>
 
-<section>
-<h2>Ante &amp; Matija r. Brnas</h2>
+  <p class="family-data">
+    <strong>Ante Tandara:</strong>
+    ★ c. 1735. &nbsp;–&nbsp; ✝ nepoznato
+  </p>
 
-<p>Ova stranica je pripremljena za okvir na obiteljskom stablu. Namijenjena je za buduće dopune: životopisne podatke, potomke, dokumente, fotografije i obiteljske bilješke.</p>
+  <p class="family-data">
+    <strong>Supruga Matija rođ. Brnas:</strong>
+    ★ nepoznato &nbsp;–&nbsp; ✝ nepoznato
+  </p>
 
-<p>Sadržaj je u pripremi i bit će zamijenjen provjerenim, relevantnim tekstom kako se arhiv bude nadopunjavao.</p>
+  <p>
+    Imali su šestero djece: sinove <strong>Antu, Filipa i Pavla</strong>
+    te kćeri <strong>Jaku, Lucu i Ružu</strong>.
+  </p>
 
-<p>Klikom na kućicu vraćate se na početnu stranicu obiteljskog stabla.</p>
+  <p>
+    Pavle (★ 1777. – ✝ nepoznato) zabilježen je samo podatkom o rođenju,
+    pa se ne zna je li umro mlad ili se odselio. Obiteljsku lozu nastavili su najstariji sin
+    <strong>Ante</strong> i sin <strong>Filip</strong>. Njihovi potomci
+    prikazani su u dijagramu u nastavku.
+  </p>
 </section>
+
+<section class="diagram-instructions" aria-labelledby="upute-dijagram">
+  <h2 id="upute-dijagram">Upute za korištenje dijagrama</h2>
+
+  <ol>
+    <li>
+      Za pronalaženje osobe upišite njezino <strong>ime, šifru, nadimak
+      ili mjesto</strong> u polje za pretraživanje, a zatim pritisnite
+      <strong>Pronađi</strong>.
+    </li>
+    <li>
+      Gumb <strong>Obriši</strong> uklanja upisani pojam i rezultat
+      pretraživanja.
+    </li>
+    <li>
+      Kliknite na okvir s imenom osobe kako biste otvorili dostupne
+      podatke o toj osobi i njezinoj obitelji.
+    </li>
+    <li>
+      Gumb <strong>Raširi sve</strong> prikazuje cijelu Antinu granu,
+      <strong>Sažmi</strong> zatvara proširene ogranke, a
+      <strong>Do 3. koljena</strong> prikazuje prva tri naraštaja.
+    </li>
+    <li>
+      Gumb <strong>Uklopi</strong> prilagođava dijagram veličini prikaza.
+      Plavi gumbi <strong>+</strong> i <strong>−</strong> na desnoj strani
+      povećavaju ili smanjuju prikaz.
+    </li>
+    <li>
+      Svoju lozu pronađite tako da najprije potražite poznatog člana
+      obitelji, a zatim pratite spojne crte prema njegovim precima i
+      potomcima.
+    </li>
+  </ol>
+</section>
+
 <div style="width:100%; margin:30px 0;">
   <iframe
     src="box2c-antina-grana.html"
@@ -312,4 +407,3 @@
 </div>
 </body>
 </html>
-
