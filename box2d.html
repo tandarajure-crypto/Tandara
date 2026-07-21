@@ -1,1 +1,308 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<title>Matina loza – Interaktivni dijagram</title>
+
+<style>
+  body { font-family: Arial, sans-serif; }
+  .title-bar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #ccc;
+    padding:10px 0;
+    font-size:22px;
+    font-weight:bold;
+  }
+  .flags span {
+    cursor:pointer;
+    font-size:28px;
+    margin-left:10px;
+  }
+  .node {
+    cursor:pointer;
+    margin:6px 0;
+    padding:4px 6px;
+    border-radius:4px;
+  }
+  .node:hover {
+    background:#f0f0f0;
+  }
+  .children {
+    margin-left:25px;
+    border-left:1px dotted #aaa;
+    padding-left:12px;
+    display:none;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="title-bar">
+  <div id="title-text">Matina loza – interaktivni dijagram</div>
+  <div class="flags">
+    <span id="flag-hr">🇭🇷</span>
+    <span id="flag-en">🇬🇧</span>
+  </div>
+</div>
+
+<div id="tree">
+
+  <!-- 4.0 Mate Tandara -->
+  <div class="node"
+       data-hr="Mate Tandara – Ivanov (rođen oko 1740.)"
+       data-en="Mate Tandara, Ivan’s son (born c. 1740)">
+    Mate Tandara – Ivanov (rođen oko 1740.)
+  </div>
+
+  <div class="children">
+
+    <!-- Ivan Matin -->
+    <div class="node"
+         data-hr="Ivan Matin († 1870.)"
+         data-en="Ivan Matin, Mate’s son (d. 1870)">
+      Ivan Matin († 1870.)
+    </div>
+
+    <div class="children">
+
+      <!-- Ante Ivanov -->
+      <div class="node"
+           data-hr="Ante Ivanov (1832.– )"
+           data-en="Ante Ivanov, Ivan’s son (b. 1832)">
+        Ante Ivanov (1832.– )
+      </div>
+
+      <div class="children">
+
+        <!-- Ivan Antin -->
+        <div class="node"
+             data-hr="Ivan Antin (1855.–1928.)"
+             data-en="Ivan Antin, Ante’s son (1855–1928)">
+          Ivan Antin (1855.–1928.)
+        </div>
+
+        <div class="children">
+
+          <!-- Jozo Ivanov -->
+          <div class="node"
+               data-hr="Jozo Ivanov (1890.–1947.)"
+               data-en="Jozo Ivanov, Ivan’s son (1890–1947)">
+            Jozo Ivanov (1890.–1947.)
+          </div>
+
+          <div class="children">
+
+            <!-- Marijan Jozin -->
+            <div class="node"
+                 data-hr="Marijan Jozin (1929.–1977.)"
+                 data-en="Marijan Jozin, Jozo’s son (1929–1977)">
+              Marijan Jozin (1929.–1977.)
+            </div>
+
+            <div class="children">
+
+              <!-- Josip Marijanov -->
+              <div class="node"
+                   data-hr="Josip Marijanov (1962.– )"
+                   data-en="Josip Marijanov, Marijan’s son (b. 1962)">
+                Josip Marijanov (1962.– )
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Ivan Ivanov -->
+          <div class="node"
+               data-hr="Ivan Ivanov (1903.–1965.)"
+               data-en="Ivan Ivanov, Ivan’s son (1903–1965)">
+            Ivan Ivanov (1903.–1965.)
+          </div>
+
+          <div class="children">
+
+            <!-- Frane Ivanov -->
+            <div class="node"
+                 data-hr="Frane Ivanov (1933.– )"
+                 data-en="Frane Ivanov, Ivan’s son (b. 1933)">
+              Frane Ivanov (1933.– )
+            </div>
+
+            <div class="children">
+
+              <!-- Stanko Franin -->
+              <div class="node"
+                   data-hr="Stanko Franin (1956.– )"
+                   data-en="Stanko Franin, Frane’s son (b. 1956)">
+                Stanko Franin (1956.– )
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mate Antin -->
+        <div class="node"
+             data-hr="Mate Antin (1873.–1927.)"
+             data-en="Mate Antin, Ante’s son (1873–1927)">
+          Mate Antin (1873.–1927.)
+        </div>
+
+        <div class="children">
+
+          <!-- Cvitan Matin -->
+          <div class="node"
+               data-hr="Cvitan Matin (1945.– )"
+               data-en="Cvitan Matin, Mate’s son (b. 1945)">
+            Cvitan Matin (1945.– )
+          </div>
+
+          <!-- Ante Matin -->
+          <div class="node"
+               data-hr="Ante Matin (1908.– )"
+               data-en="Ante Matin, Mate’s son (b. 1908)">
+            Ante Matin (1908.– )
+          </div>
+
+          <div class="children">
+
+            <!-- Marijan Antin -->
+            <div class="node"
+                 data-hr="Marijan Antin (1934.–1963.)"
+                 data-en="Marijan Antin, Ante’s son (1934–1963)">
+              Marijan Antin (1934.–1963.)
+            </div>
+
+            <div class="children">
+
+              <div class="node"
+                   data-hr="Ante Marijanov (1961.–1991.)"
+                   data-en="Ante Marijanov, Marijan’s son (1961–1991)">
+                Ante Marijanov (1961.–1991.)
+              </div>
+
+              <div class="node"
+                   data-hr="Dinko Marijanov (1963.– )"
+                   data-en="Dinko Marijanov, Marijan’s son (b. 1963)">
+                Dinko Marijanov (1963.– )
+              </div>
+
+            </div>
+
+            <!-- Mirko Antin -->
+            <div class="node"
+                 data-hr="Mirko Antin"
+                 data-en="Mirko Antin, Ante’s son">
+              Mirko Antin
+            </div>
+
+            <div class="children">
+
+              <div class="node"
+                   data-hr="Ivica Mirkov (1969.– )"
+                   data-en="Ivica Mirkov, Mirko’s son (b. 1969)">
+                Ivica Mirkov (1969.– )
+              </div>
+
+            </div>
+
+            <!-- Cvitan Antin -->
+            <div class="node"
+                 data-hr="Cvitan Antin (1945.– )"
+                 data-en="Cvitan Antin, Ante’s son (b. 1945)">
+              Cvitan Antin (1945.– )
+            </div>
+
+            <div class="children">
+
+              <div class="node"
+                   data-hr="Marijan Cvitanov"
+                   data-en="Marijan Cvitanov, Cvitan’s son">
+                Marijan Cvitanov
+              </div>
+
+            </div>
+
+            <!-- Mate Antin -->
+            <div class="node"
+                 data-hr="Mate Antin (1947.– )"
+                 data-en="Mate Antin, Ante’s son (b. 1947)">
+              Mate Antin (1947.– )
+            </div>
+
+            <div class="children">
+
+              <div class="node"
+                   data-hr="Dario Matin (1973.– )"
+                   data-en="Dario Matin, Mate’s son (b. 1973)">
+                Dario Matin (1973.– )
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Nikola Matin -->
+          <div class="node"
+               data-hr="Nikola Matin (1911.–1980.)"
+               data-en="Nikola Matin, Mate’s son (1911–1980)">
+            Nikola Matin (1911.–1980.)
+          </div>
+
+          <div class="children">
+
+            <div class="node"
+                 data-hr="Vinko Nikolin (1947.–2010.)"
+                 data-en="Vinko Nikolin, Nikola’s son (1947–2010)">
+              Vinko Nikolin (1947.–2010.)
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // expand/collapse
+  document.querySelectorAll('.node').forEach(node => {
+    node.addEventListener('click', () => {
+      const next = node.nextElementSibling;
+      if (next && next.classList.contains('children')) {
+        next.style.display = next.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+  });
+
+  // language switch
+  const flagHR = document.getElementById('flag-hr');
+  const flagEN = document.getElementById('flag-en');
+  const titleText = document.getElementById('title-text');
+
+  flagHR.addEventListener('click', () => {
+    titleText.textContent = "Matina loza – interaktivni dijagram";
+    document.querySelectorAll('.node').forEach(n => {
+      n.textContent = n.getAttribute('data-hr');
+    });
+  });
+
+  flagEN.addEventListener('click', () => {
+    titleText.textContent = "Mate’s lineage – interactive diagram";
+    document.querySelectorAll('.node').forEach(n => {
+      n.textContent = n.getAttribute('data-en');
+    });
+  });
+</script>
+
+</body>
+</html>
 
