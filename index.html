@@ -357,8 +357,47 @@
 <link href="style.css?v=4" rel="stylesheet"/>
 </head>
 <body class="hr">
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-title"
+  aria-describedby="cookie-text"
+>
+  <h2 id="cookie-title">
+    Postavke privatnosti
+  </h2>
+
+  <p id="cookie-text">
+    Google Analytics i FlagCounter
+    aktiviraju se samo uz vašu privolu.
+    Cloudflare bilježi osnovnu statistiku
+    posjećenosti bez kolačića.
+    Više informacija pročitajte u
+    <a href="./privatnost.html">
+      Politici privatnosti
+    </a>.
+  </p>
+
+  <div class="cookie-buttons">
+    <button
+      type="button"
+      id="cookie-reject"
+    >
+      Odbijam
+    </button>
+
+    <button
+      type="button"
+      id="cookie-accept"
+    >
+      Prihvaćam
+    </button>
+  </div>
+</div>
+
 <div class="layout">
-<!-- LIJEVI STUPAC -->
+  <!-- LIJEVI STUPAC -->
 <aside class="left-menu">
 <!-- HOME -->
 <a class="home-button" href="index.html">
