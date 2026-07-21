@@ -25,12 +25,69 @@
     dataLayer.push(arguments);
   }
 
+  var consentKey = 'tandara_analytics_consent';
+  var savedConsent = null;
+
+  try {
+    savedConsent = localStorage.getItem(consentKey);
+  } catch (error) {
+    savedConsent = null;
+  }
+
   gtag('consent', 'default', {
-    'analytics_storage': 'denied',
+    'analytics_storage': savedConsent === 'granted' ? 'granted' : 'denied',
     'ad_storage': 'denied',
     'ad_user_data': 'denied',
     'ad_personalization': 'denied',
     'wait_for_update': 500
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var banner = document.getElementById('cookie-banner');
+    var acceptButton = document.getElementById('cookie-accept');
+    var rejectButton = document.getElementById('cookie-reject');
+
+    if (!banner || !acceptButton || !rejectButton) {
+      return;
+    }
+
+    if (savedConsent === 'granted' || savedConsent === 'denied') {
+      banner.style.display = 'none';
+    }
+
+    acceptButton.addEventListener('click', function () {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+
+      try {
+        localStorage.setItem(consentKey, 'granted');
+      } catch (error) {
+        /* Odluka vrijedi samo do zatvaranja stranice. */
+      }
+
+      banner.style.display = 'none';
+    });
+
+    rejectButton.addEventListener('click', function () {
+      gtag('consent', 'update', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+
+      try {
+        localStorage.setItem(consentKey, 'denied');
+      } catch (error) {
+        /* Odluka vrijedi samo do zatvaranja stranice. */
+      }
+
+      banner.style.display = 'none';
+    });
   });
 </script>
 
