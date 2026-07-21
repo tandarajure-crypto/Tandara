@@ -1,17 +1,24 @@
 <div class="mate-diagram">
+
+  <!-- HEADER -->
   <div class="diagram-header">
+
+    <!-- TITLE + FLAGS -->
     <div class="diagram-title">
-      <h2 id="diagramTitle">Rodoslovni dijagram Matine grane</h2>
+      <h2 id="diagramTitle">
+        Rodoslovni dijagram Matine grane
+        <span class="flags">
+          <button id="langHr" class="flag-btn">🇭🇷</button>
+          <button id="langEn" class="flag-btn">🇬🇧</button>
+        </span>
+      </h2>
+
       <div class="diagram-subtitle" id="diagramSubtitle">
         <strong>22</strong> numerirane osobe · <strong>7</strong> naraštaja · klik na osobu otvara detalje
       </div>
     </div>
 
-    <div class="diagram-lang" style="display:flex; gap:6px;">
-      <button id="langHr" type="button" style="font-size:20px;">🇭🇷</button>
-      <button id="langEn" type="button" style="font-size:20px;">🇬🇧</button>
-    </div>
-
+    <!-- TOOLBAR -->
     <div class="diagram-toolbar">
       <button class="primary" id="expandAll" type="button">Raširi sve</button>
       <button id="collapse" type="button">Sažmi</button>
@@ -19,13 +26,16 @@
       <button id="fit" type="button">Uklopi</button>
       <button id="zoomIn" type="button" aria-label="Povećaj">＋</button>
       <button id="zoomOut" type="button" aria-label="Smanji">−</button>
+
       <div class="search-wrap">
         <input id="treeSearch" type="search" placeholder="Ime, šifra ili podatak…">
         <button id="findBtn" type="button">Pronađi</button>
       </div>
     </div>
+
   </div>
 
+  <!-- WORKSPACE -->
   <div class="workspace">
     <svg id="treeSvg" aria-label="Interaktivno rodoslovno stablo Matine grane">
       <g id="viewport">
@@ -34,6 +44,7 @@
       </g>
     </svg>
 
+    <!-- DETAILS PANEL -->
     <aside class="details" id="details">
       <button class="close-details" id="closeDetails" type="button" aria-label="Zatvori">×</button>
       <h3 id="detailTitle"></h3>
@@ -41,6 +52,7 @@
       <p id="detailText"></p>
     </aside>
 
+    <!-- LEGEND -->
     <div class="legend">
       <span>
         <i class="swatch" style="background:#174f39;border-color:#0d3425"></i>
@@ -56,14 +68,20 @@
       </span>
     </div>
 
+    <!-- HELP -->
     <div class="help">
       Kotačić: povećanje · povlačenje: pomicanje · klik na čvor: detalji i grananje
     </div>
   </div>
+
 </div>
 
+<!-- SCRIPT START -->
 <script>
-/* HR DATA — Matina loza */
+/* ---------------------------
+   HR PODACI — Matina loza
+   --------------------------- */
+
 const DATA_HR = {
   "code": "4.0",
   "label": "Mate Tandara – Ivanov (★ c. 1750. g. – ✝ između 1806. i 1819.)",
@@ -223,65 +241,100 @@ const DATA_HR = {
     }
   ]
 };
+/* ---------------------------
+   UI — hrvatski tekstovi
+   --------------------------- */
 
-/* UI tekstovi */
 const UI = {
-  "codeLabel": "Šifra",
-  "noDetails": "Za ovu osobu nema dodatnog opisa.",
-  "notFound": "Nema rezultata za: ",
-  "locale": "hr"
+  codeLabel: "Šifra",
+  noDetails: "Za ovu osobu nema dodatnog opisa.",
+  notFound: "Nema rezultata za: ",
+  locale: "hr"
 };
 
-/* JEZIK — samo HR podaci */
+/* ---------------------------
+   JEZIK — koristi se samo DATA_HR
+   --------------------------- */
+
 let currentLang = "hr";
-let DATA = DATA_HR;
+let DATA = DATA_HR;   // uvijek HR podaci
 
 function switchLang(lang) {
   currentLang = lang;
 
   if (lang === "hr") {
     UI.locale = "hr";
+
     document.getElementById("diagramTitle").textContent =
       "Rodoslovni dijagram Matine grane";
+
     document.getElementById("diagramSubtitle").textContent =
       "22 numerirane osobe · 7 naraštaja · klik na osobu otvara detalje";
+
     document.getElementById("treeSearch").placeholder =
       "Ime, šifra ili podatak…";
+
     document.getElementById("findBtn").textContent = "Pronađi";
+
   } else {
+    // EN verzija koristi ISTE HR podatke — samo mijenja tekstove
     UI.locale = "en";
+
     document.getElementById("diagramTitle").textContent =
-      "Family diagram of Mate’s branch";
+      "Family-tree diagram of Mate’s branch";
+
     document.getElementById("diagramSubtitle").textContent =
       "22 numbered persons · 7 generations · click a person to see details";
+
     document.getElementById("treeSearch").placeholder =
-      "Name, code or keyword…";
-    document.getElementById("findBtn").textContent = "Search";
+      "Name, code or detail…";
+
+    document.getElementById("findBtn").textContent = "Find";
   }
 
   selectedCode = null;
   matchCode = null;
+
   walk(DATA, n => n.expanded = true);
+
   render();
   fitTree();
 }
 
+/* ZASTAVICE */
 document.getElementById("langHr").onclick = () => switchLang("hr");
 document.getElementById("langEn").onclick = () => switchLang("en");
 
-/* ENGINE */
+/* ---------------------------
+   SVG ENGINE — početni dio
+   --------------------------- */
+
 const svg = document.getElementById("treeSvg");
 const viewport = document.getElementById("viewport");
 const linksLayer = document.getElementById("links");
 const nodesLayer = document.getElementById("nodes");
 const details = document.getElementById("details");
 
-const BOX_W = 300, BOX_H = 64, X_STEP = 330, ROW_STEP = 84, MARGIN = 50;
+const BOX_W = 300;
+const BOX_H = 64;
+const X_STEP = 330;
+const ROW_STEP = 84;
+const MARGIN = 50;
 
-let scale = 1, panX = 20, panY = 20;
-let selectedCode = null, matchCode = null;
-let dragging = false, dragStart = null;
+let scale = 1;
+let panX = 20;
+let panY = 20;
+
+let selectedCode = null;
+let matchCode = null;
+
+let dragging = false;
+let dragStart = null;
+
 let bounds = { width: 1000, height: 900 };
+/* ---------------------------
+   WALK — obilazak stabla
+   --------------------------- */
 
 function walk(node, callback, parent = null, depth = 0) {
   callback(node, parent, depth);
@@ -290,39 +343,56 @@ function walk(node, callback, parent = null, depth = 0) {
   );
 }
 
-function setExpandedToDepth(maxDepth) {
-  walk(DATA, (node, parent, depth) => {
-    node.expanded = depth < maxDepth;
-  });
-}
+/* ---------------------------
+   VIDLJIVI ČVOROVI — GPT logika
+   --------------------------- */
 
 function visibleNodes() {
   const result = [];
+
   function visit(node, parent = null, depth = 0) {
     result.push({ node, parent, depth });
+
     if (node.expanded)
       (node.children || []).forEach(child =>
         visit(child, node, depth + 1)
       );
   }
+
   visit(DATA);
   return result;
 }
 
+/* ---------------------------
+   BOJE — identično GPT-u, samo HR grane
+   --------------------------- */
+
 function colors(code) {
+
+  // Glavna zajednička loza Mate–Ivan–Ante
   if (code === "4.0" || code === "4.1" || code === "4.1.1")
-    return { fill: "#174f39", text: "#fff", stroke: "#0d3425" };
+    return { fill: "#174f39", text: "#ffffff", stroke: "#0d3425" };
+
+  // Podgrana Ivana Antina
   if (code.startsWith("4.1.1.1"))
     return { fill: "#e8f2fb", text: "#173a57", stroke: "#4d82aa" };
+
+  // Podgrana Mate Antina
   return { fill: "#fff1df", text: "#553719", stroke: "#bb8144" };
 }
+
+/* ---------------------------
+   WRAP TEXT — prelom teksta u čvoru
+   --------------------------- */
 
 function wrapText(text, max = 35) {
   const words = text.split(/\s+/);
   const lines = [];
   let line = "";
+
   for (const word of words) {
     const test = (line + " " + word).trim();
+
     if (test.length > max && line) {
       lines.push(line);
       line = word;
@@ -330,11 +400,19 @@ function wrapText(text, max = 35) {
       line = test;
     }
   }
+
   if (line) lines.push(line);
+
+  // GPT stil — maksimalno 2 linije, druga skraćena
   if (lines.length > 2)
     lines[1] = lines.slice(1).join(" ").slice(0, max - 1) + "…";
+
   return lines.slice(0, 2);
 }
+
+/* ---------------------------
+   ESC — HTML escape
+   --------------------------- */
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({
@@ -345,11 +423,15 @@ function esc(s) {
     "'": "&#039;"
   })[c]);
 }
+/* ---------------------------
+   RENDER — glavni GPT engine
+   --------------------------- */
 
 function render() {
   const visible = visibleNodes();
   const pos = new Map();
 
+  /* POZICIONIRANJE ČVOROVA */
   visible.forEach((item, index) =>
     pos.set(item.node.code, {
       x: MARGIN + item.depth * X_STEP,
@@ -358,30 +440,49 @@ function render() {
   );
 
   const maxDepth = Math.max(...visible.map(v => v.depth), 0);
+
   bounds.width = MARGIN * 2 + maxDepth * X_STEP + BOX_W;
   bounds.height = MARGIN * 2 + visible.length * ROW_STEP;
 
+  /* ---------------------------
+     CRTANJE VEZA (LINKOVA)
+     --------------------------- */
+
   let links = "";
+
   visible.forEach(({ node, parent }) => {
     if (!parent || !pos.has(parent.code)) return;
+
     const p = pos.get(parent.code);
     const c = pos.get(node.code);
+
     const x1 = p.x + BOX_W;
     const y1 = p.y + BOX_H / 2;
+
     const x2 = c.x;
     const y2 = c.y + BOX_H / 2;
+
     const elbow = x1 + (x2 - x1) / 2;
+
     links += `<path class="connector" d="M${x1},${y1} H${elbow} V${y2} H${x2}"/>`;
   });
+
   linksLayer.innerHTML = links;
 
+  /* ---------------------------
+     CRTANJE ČVOROVA
+     --------------------------- */
+
   let markup = "";
+
   visible.forEach(({ node }) => {
     const p = pos.get(node.code);
     const color = colors(node.code);
+
     const lines = wrapText(node.label);
     const hasChildren = (node.children || []).length > 0;
     const indicator = hasChildren ? (node.expanded ? "−" : "+") : "";
+
     const classes = ["node"];
     if (node.code === selectedCode) classes.push("selected");
     if (node.code === matchCode) classes.push("match");
@@ -418,39 +519,50 @@ function render() {
       </g>
     `;
   });
+
   nodesLayer.innerHTML = markup;
+
+  /* ---------------------------
+     CLICK HANDLERI
+     --------------------------- */
 
   nodesLayer.querySelectorAll(".node").forEach(group =>
     group.addEventListener("click", event => {
       event.stopPropagation();
+
       const node = findNode(group.dataset.code);
       selectedCode = node.code;
+
       showDetails(node);
+
       if ((node.children || []).length)
         node.expanded = !node.expanded;
+
       render();
     })
   );
 
   applyTransform();
 }
-
-function findNode(code) {
-  let result = null;
-  walk(DATA, node => {
-    if (node.code === code) result = node;
-  });
-  return result;
-}
+/* ---------------------------
+   PRIKAZ DETALJA
+   --------------------------- */
 
 function showDetails(node) {
   document.getElementById("detailTitle").textContent = node.label;
+
   document.getElementById("detailCode").textContent =
     UI.codeLabel + " " + node.code;
+
   document.getElementById("detailText").textContent =
     node.detail || UI.noDetails;
+
   details.classList.add("open");
 }
+
+/* ---------------------------
+   TRANSFORMACIJE (zoom + pan)
+   --------------------------- */
 
 function applyTransform() {
   viewport.setAttribute(
@@ -459,46 +571,74 @@ function applyTransform() {
   );
 }
 
+/* ---------------------------
+   UKLOPI CIJELO STABLO
+   --------------------------- */
+
 function fitTree() {
   const rect = svg.getBoundingClientRect();
+
   scale = Math.min(
     (rect.width - 50) / bounds.width,
     (rect.height - 50) / bounds.height,
     1.15
   );
+
   panX = (rect.width - bounds.width * scale) / 2;
   panY = (rect.height - bounds.height * scale) / 2;
+
   applyTransform();
 }
+
+/* ---------------------------
+   ZOOM U TOČKU
+   --------------------------- */
 
 function zoomAt(factor, cx, cy) {
   const old = scale;
+
   scale = Math.max(0.14, Math.min(3, scale * factor));
+
   panX = cx - (cx - panX) * (scale / old);
   panY = cy - (cy - panY) * (scale / old);
+
   applyTransform();
 }
 
+/* ---------------------------
+   PROŠIRI SVE PRETKE
+   --------------------------- */
+
 function expandAncestors(code) {
   const parts = code.split(".");
+
   DATA.expanded = true;
+
   for (let i = 2; i < parts.length; i++) {
     const ancestor = parts.slice(0, i).join(".");
     const node = findNode(ancestor);
+
     if (node) node.expanded = true;
   }
 }
+
+/* ---------------------------
+   PRETRAŽIVANJE — GPT engine
+   --------------------------- */
 
 function search() {
   const q = document.getElementById("treeSearch")
     .value.trim()
     .toLocaleLowerCase(UI.locale);
+
   if (!q) return;
 
   let found = null;
+
   walk(DATA, node => {
     const hay = (node.code + " " + node.label + " " + node.detail)
       .toLocaleLowerCase(UI.locale);
+
     if (!found && hay.includes(q)) found = node;
   });
 
@@ -508,28 +648,37 @@ function search() {
   }
 
   expandAncestors(found.code);
+
   selectedCode = found.code;
   matchCode = found.code;
+
   render();
   showDetails(found);
 
+  /* centriranje na pronađeni čvor */
   requestAnimationFrame(() => {
     const target = nodesLayer.querySelector(
       '[data-code="' + found.code.replace(/"/g, '\\"') + '"]'
     );
+
     if (target) {
       const matrix = target.getCTM();
       const rect = svg.getBoundingClientRect();
+
       const tx = matrix.e + BOX_W * scale / 2;
       const ty = matrix.f + BOX_H * scale / 2;
+
       panX += rect.width / 2 - tx;
       panY += rect.height / 2 - ty;
+
       applyTransform();
     }
   });
 }
+/* ---------------------------
+   BUTTONI — identično GPT-u
+   --------------------------- */
 
-/* BUTTONI */
 document.getElementById("expandAll").onclick = () => {
   walk(DATA, n => (n.expanded = true));
   render();
@@ -566,12 +715,18 @@ document.getElementById("treeSearch").addEventListener("keydown", e => {
 document.getElementById("closeDetails").onclick = () =>
   details.classList.remove("open");
 
-/* PAN */
+
+/* ---------------------------
+   ZOOM KOTAČIĆ — GPT engine
+   --------------------------- */
+
 svg.addEventListener(
   "wheel",
   e => {
     e.preventDefault();
+
     const rect = svg.getBoundingClientRect();
+
     zoomAt(
       e.deltaY < 0 ? 1.12 : 0.89,
       e.clientX - rect.left,
@@ -581,11 +736,18 @@ svg.addEventListener(
   { passive: false }
 );
 
+
+/* ---------------------------
+   DRAG & PAN — GPT engine
+   --------------------------- */
+
 svg.addEventListener("pointerdown", e => {
   if (e.target.closest && e.target.closest(".node")) return;
+
   dragging = true;
   svg.classList.add("dragging");
   svg.setPointerCapture(e.pointerId);
+
   dragStart = {
     x: e.clientX,
     y: e.clientY,
@@ -596,8 +758,10 @@ svg.addEventListener("pointerdown", e => {
 
 svg.addEventListener("pointermove", e => {
   if (!dragging) return;
+
   panX = dragStart.panX + (e.clientX - dragStart.x);
   panY = dragStart.panY + (e.clientY - dragStart.y);
+
   applyTransform();
 });
 
@@ -611,10 +775,26 @@ svg.addEventListener("pointercancel", () => {
   svg.classList.remove("dragging");
 });
 
+
+/* ---------------------------
+   RESIZE — uklopi stablo
+   --------------------------- */
+
 window.addEventListener("resize", fitTree);
 
-/* INIT */
+
+/* ---------------------------
+   INIT — početno stanje
+   --------------------------- */
+
+function setExpandedToDepth(maxDepth) {
+  walk(DATA, (node, parent, depth) => {
+    node.expanded = depth < maxDepth;
+  });
+}
+
 setExpandedToDepth(3);
 render();
 requestAnimationFrame(fitTree);
+
 </script>
