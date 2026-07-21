@@ -162,13 +162,11 @@
         });
       }
 
-      if (isExternal) {
-        gtag('event', 'external_link_click', {
-          link_text: text,
-          link_url:
-            link.protocol + '//' + link.hostname + link.pathname
-        });
-      }
+    if (isExternal) {
+  gtag('event', 'external_link_click', {
+    link_domain: link.hostname
+  });
+}
 
       if (isDownload) {
         gtag('event', 'file_download', {
