@@ -142,10 +142,7 @@
       }
 
       var href = link.href;
-      var text = (link.innerText || link.textContent || '')
-        .trim()
-        .substring(0, 120);
-
+     
       var isMail = href.indexOf('mailto:') === 0;
       var isTel = href.indexOf('tel:') === 0;
       var isExternal =
