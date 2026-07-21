@@ -168,13 +168,12 @@
   });
 }
 
-      if (isDownload) {
-        gtag('event', 'file_download', {
-          file_name: (link.pathname || '').split('/').pop(),
-          link_text: text,
-          link_url: link.pathname
-        });
-      }
+if (isDownload) {
+  gtag('event', 'file_download', {
+    file_extension:
+      (link.pathname || '').split('.').pop().toLowerCase()
+  });
+}
     });
   }
 
