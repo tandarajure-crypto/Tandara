@@ -9,60 +9,223 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Politika privatnosti | Digitalni arhiv roda Tandara</title>
 <meta content="Politika privatnosti Digitalnog arhiva roda Tandara." name="description"/>
-<!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<!-- Google Analytics – učitavanje samo nakon privole -->
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-gtag('consent', 'default', {
-  'analytics_storage': 'granted',
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied'
-});
-  gtag('js', new Date());
-  gtag('config', 'G-S33NBEJQFD', {
-    send_page_view: true,
-    page_title: document.title,
-    page_location: window.location.href,
-    page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'hr'
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  var consentKey = 'tandara_analytics_consent';
+  var savedConsent = null;
+
+  try {
+    savedConsent = localStorage.getItem(consentKey);
+  } catch (error) {
+    savedConsent = null;
+  }
+
+  gtag('consent', 'default', {
+    'analytics_storage':
+      savedConsent === 'granted' ? 'granted' : 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
   });
 
-  // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
-  document.addEventListener('click', function(event) {
-    var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
+  document.addEventListener('DOMContentLoaded', function () {
+    var banner = document.getElementById('cookie-banner');
+    var acceptButton = document.getElementById('cookie-accept');
+    var rejectButton = document.getElementById('cookie-reject');
+    var flagCounterImage =
+      document.getElementById('flag-counter-image');
 
-    var href = link.href;
-    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
-    var isMail = href.indexOf('mailto:') === 0;
-    var isTel = href.indexOf('tel:') === 0;
-    var isExternal = link.hostname && link.hostname !== window.location.hostname;
-    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
+    function enableFlagCounter() {
+      if (!flagCounterImage) {
+        return;
+      }
 
-    if (isMail || isTel) {
-      gtag('event', 'contact_click', {
-        contact_type: isMail ? 'email' : 'phone',
-        link_text: text,
-        link_url: href
-      });
+      var flagSource =
+        flagCounterImage.getAttribute('data-src');
+
+      if (
+        flagSource &&
+        !flagCounterImage.getAttribute('src')
+      ) {
+        flagCounterImage.setAttribute('src', flagSource);
+      }
+
+      flagCounterImage.hidden = false;
     }
 
-    if (isExternal) {
-      gtag('event', 'external_link_click', {
-        link_text: text,
-        link_url: href
-      });
+    function disableFlagCounter() {
+      if (!flagCounterImage) {
+        return;
+      }
+
+      flagCounterImage.removeAttribute('src');
+      flagCounterImage.hidden = true;
     }
 
-    if (isDownload) {
-      gtag('event', 'file_download', {
-        file_name: (link.pathname || '').split('/').pop(),
-        link_text: text,
-        link_url: href
-      });
+    if (!banner || !acceptButton || !rejectButton) {
+      return;
     }
+
+    if (savedConsent === 'granted') {
+      banner.style.display = 'none';
+      enableFlagCounter();
+    } else if (savedConsent === 'denied') {
+      banner.style.display = 'none';
+      disableFlagCounter();
+    }
+
+    acceptButton.addEventListener('click', function () {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+
+      try {
+        localStorage.setItem(consentKey, 'granted');
+      } catch (error) {
+        /* Odluka vrijedi samo do zatvaranja stranice. */
+      }
+
+      enableFlagCounter();
+      banner.style.display = 'none';
+    });
+
+    rejectButton.addEventListener('click', function () {
+      gtag('consent', 'update', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+
+      try {
+        localStorage.setItem(consentKey, 'denied');
+      } catch (error) {
+        /* Odluka vrijedi samo do zatvaranja stranice. */
+      }
+
+      disableFlagCounter();
+      banner.style.display = 'none';
+    });
+  });
+</script>
+
+<script>
+  var analyticsLoaded = false;
+  var analyticsClickTrackingStarted = false;
+
+  function startAnalyticsClickTracking() {
+    if (analyticsClickTrackingStarted) {
+      return;
+    }
+
+    analyticsClickTrackingStarted = true;
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a');
+
+      if (
+        !link ||
+        !link.href ||
+        typeof gtag !== 'function'
+      ) {
+        return;
+      }
+
+      var href = link.href;
+
+      var isMail = href.indexOf('mailto:') === 0;
+      var isTel = href.indexOf('tel:') === 0;
+      var isExternal =
+        link.hostname &&
+        link.hostname !== window.location.hostname;
+
+      var isDownload =
+        /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i
+          .test(link.pathname || '');
+
+      if (isMail || isTel) {
+        gtag('event', 'contact_click', {
+          contact_type: isMail ? 'email' : 'phone'
+        });
+      }
+
+      if (isExternal) {
+        gtag('event', 'external_link_click', {
+          link_domain: link.hostname
+        });
+      }
+
+      if (isDownload) {
+        gtag('event', 'file_download', {
+          file_extension:
+            (link.pathname || '')
+              .split('.')
+              .pop()
+              .toLowerCase()
+        });
+      }
+    });
+  }
+
+  function loadGoogleAnalytics() {
+    if (analyticsLoaded) {
+      return;
+    }
+
+    analyticsLoaded = true;
+
+    var analyticsScript =
+      document.createElement('script');
+
+    analyticsScript.async = true;
+    analyticsScript.src =
+      'https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD';
+
+    document.head.appendChild(analyticsScript);
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-S33NBEJQFD', {
+      send_page_view: true,
+      page_title: document.title,
+      page_location:
+        window.location.origin + window.location.pathname,
+      page_path: window.location.pathname,
+      language:
+        document.documentElement.lang ||
+        navigator.language ||
+        'hr'
+    });
+
+    startAnalyticsClickTracking();
+  }
+
+  if (savedConsent === 'granted') {
+    loadGoogleAnalytics();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var acceptButton =
+      document.getElementById('cookie-accept');
+
+    if (!acceptButton) {
+      return;
+    }
+
+    acceptButton.addEventListener(
+      'click',
+      loadGoogleAnalytics
+    );
   });
 </script>
 <meta content="Politika privatnosti | Digitalni arhiv roda Tandara" property="og:title"/>
@@ -96,8 +259,48 @@ gtag('consent', 'default', {
 </div>
 <h2>TANDARA-PREZIME</h2>
 
-<ul class="heritage-menu"><li><span>🌳</span><a href="./autor-hr.html">O autoru i projektu</a></li><li><span>🌳</span><a href="./podrijetlo-hr.html">Podrijetlo prezimena</a></li><li><span>🌳</span><a href="./rodoslovlje-hr.html">Rodoslovlje roda</a></li><li><span>🌳</span><a href="./migracije-hr.html">Migracije i rasprostranjenost</a></li><li><span>🌳</span><a href="./zanimljivosti.html">Zanimljivosti</a></li><li><span>🌳</span><a href="./kontakti.html">Kontakt i suradnja</a></li><li><span>🌳</span><a href="./knjiga-poruka.html">Knjiga poruka</a></li><li><span>🌳</span><a href="./privatnost.html">Politika privatnosti</a></li></ul>
-<div class="author-photo">
+<ul class="heritage-menu">
+  <li>
+    <span>🌳</span>
+    <a href="./autor-hr.html">O autoru i projektu</a>
+  </li>
+
+  <li>
+    <span>🌳</span>
+    <a href="./podrijetlo-hr.html">Podrijetlo prezimena</a>
+  </li>
+
+  <li>
+    <span>🌳</span>
+    <a href="./rodoslovlje-hr.html">Rodoslovlje roda</a>
+  </li>
+
+  <li>
+    <span>🌳</span>
+    <a href="./migracije-hr.html">Migracije i rasprostranjenost</a>
+  </li>
+
+  <li>
+    <span>🌳</span>
+    <a href="./zanimljivosti.html">Zanimljivosti</a>
+  </li>
+
+  <li>
+    <span>🌳</span>
+    <a href="./kontakti.html">Kontakt i suradnja</a>
+  </li>
+
+  <li>
+    <span>🌳</span>
+    <a href="./knjiga-poruka.html">Knjiga poruka</a>
+  </li>
+
+  <li>
+    <span>🌳</span>
+    <a href="./privatnost.html">Politika privatnosti</a>
+  </li>
+</ul>
+  <div class="author-photo">
 <a href="./autor-hr.html">
 <img alt="Jure Tandara" src="./jure.png"/>
 </a>
