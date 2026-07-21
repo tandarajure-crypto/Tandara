@@ -45,59 +45,307 @@
 <title>TANDARA-PREZIME</title>
 <!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
 <!-- Google Analytics učitava se tek nakon privole -->
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-gtag('consent', 'default', {
-'analytics_storage': 'denied',
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied'
-});
-  gtag('js', new Date());
-  gtag('config', 'G-S33NBEJQFD', {
-    send_page_view: true,
-    page_title: document.title,
-    page_location: window.location.href,
-    page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'hr'
+<script>
+  window.dataLayer =
+    window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  var consentKey =
+    'tandara_analytics_consent';
+
+  var savedConsent = null;
+  var analyticsLoaded = false;
+  var clickTrackingStarted = false;
+
+  try {
+    savedConsent =
+      localStorage.getItem(consentKey);
+  } catch (error) {
+    savedConsent = null;
+  }
+
+  gtag('consent', 'default', {
+    analytics_storage:
+      savedConsent === 'granted'
+        ? 'granted'
+        : 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
   });
 
-  // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
-  document.addEventListener('click', function(event) {
-    var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
+  function enableFlagCounter() {
+    var image =
+      document.getElementById(
+        'flag-counter-image'
+      );
 
-    var href = link.href;
-    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
-    var isMail = href.indexOf('mailto:') === 0;
-    var isTel = href.indexOf('tel:') === 0;
-    var isExternal = link.hostname && link.hostname !== window.location.hostname;
-    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
-
-    if (isMail || isTel) {
-      gtag('event', 'contact_click', {
-        contact_type: isMail ? 'email' : 'phone',
-        link_text: text,
-        link_url: href
-      });
+    if (!image) {
+      return;
     }
 
-    if (isExternal) {
-      gtag('event', 'external_link_click', {
-        link_text: text,
-        link_url: href
-      });
+    var source =
+      image.getAttribute('data-src');
+
+    if (
+      source &&
+      !image.getAttribute('src')
+    ) {
+      image.setAttribute('src', source);
     }
 
-    if (isDownload) {
-      gtag('event', 'file_download', {
-        file_name: (link.pathname || '').split('/').pop(),
-        link_text: text,
-        link_url: href
-      });
+    image.hidden = false;
+  }
+
+  function disableFlagCounter() {
+    var image =
+      document.getElementById(
+        'flag-counter-image'
+      );
+
+    if (!image) {
+      return;
     }
-  });
+
+    image.removeAttribute('src');
+    image.hidden = true;
+  }
+
+  function startClickTracking() {
+    if (clickTrackingStarted) {
+      return;
+    }
+
+    clickTrackingStarted = true;
+
+    document.addEventListener(
+      'click',
+      function (event) {
+        var link =
+          event.target.closest('a');
+
+        if (!link || !link.href) {
+          return;
+        }
+
+        var href = link.href;
+
+        var isMail =
+          href.indexOf('mailto:') === 0;
+
+        var isTel =
+          href.indexOf('tel:') === 0;
+
+        var isExternal =
+          link.hostname &&
+          link.hostname !==
+            window.location.hostname;
+
+        var isDownload =
+          /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i
+            .test(link.pathname || '');
+
+        if (isMail || isTel) {
+          gtag(
+            'event',
+            'contact_click',
+            {
+              contact_type:
+                isMail
+                  ? 'email'
+                  : 'phone'
+            }
+          );
+        }
+
+        if (isExternal) {
+          gtag(
+            'event',
+            'external_link_click',
+            {
+              external_domain:
+                link.hostname
+            }
+          );
+        }
+
+        if (isDownload) {
+          var fileName =
+            (link.pathname || '')
+              .split('/')
+              .pop();
+
+          var fileExtension =
+            fileName.indexOf('.') > -1
+              ? fileName
+                  .split('.')
+                  .pop()
+                  .toLowerCase()
+              : '';
+
+          gtag(
+            'event',
+            'file_download',
+            {
+              file_extension:
+                fileExtension
+            }
+          );
+        }
+      }
+    );
+  }
+
+  function loadGoogleAnalytics() {
+    if (analyticsLoaded) {
+      return;
+    }
+
+    analyticsLoaded = true;
+
+    var analyticsScript =
+      document.createElement('script');
+
+    analyticsScript.async = true;
+
+    analyticsScript.src =
+      'https://www.googletagmanager.com/' +
+      'gtag/js?id=G-S33NBEJQFD';
+
+    document.head.appendChild(
+      analyticsScript
+    );
+
+    gtag('js', new Date());
+
+    gtag(
+      'config',
+      'G-S33NBEJQFD',
+      {
+        send_page_view: true,
+        page_title: document.title,
+        page_location:
+          window.location.origin +
+          window.location.pathname,
+        page_path:
+          window.location.pathname,
+        language:
+          document.documentElement.lang ||
+          navigator.language ||
+          'hr'
+      }
+    );
+
+    startClickTracking();
+  }
+
+  if (savedConsent === 'granted') {
+    loadGoogleAnalytics();
+  }
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+      var banner =
+        document.getElementById(
+          'cookie-banner'
+        );
+
+      var acceptButton =
+        document.getElementById(
+          'cookie-accept'
+        );
+
+      var rejectButton =
+        document.getElementById(
+          'cookie-reject'
+        );
+
+      if (savedConsent === 'granted') {
+        enableFlagCounter();
+
+        if (banner) {
+          banner.style.display = 'none';
+        }
+      } else {
+        disableFlagCounter();
+
+        if (
+          savedConsent === 'denied' &&
+          banner
+        ) {
+          banner.style.display = 'none';
+        }
+      }
+
+      if (
+        !banner ||
+        !acceptButton ||
+        !rejectButton
+      ) {
+        return;
+      }
+
+      acceptButton.addEventListener(
+        'click',
+        function () {
+          gtag('consent', 'update', {
+            analytics_storage:
+              'granted',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization:
+              'denied'
+          });
+
+          try {
+            localStorage.setItem(
+              consentKey,
+              'granted'
+            );
+          } catch (error) {
+            /* Privremena odluka. */
+          }
+
+          enableFlagCounter();
+          loadGoogleAnalytics();
+
+          banner.style.display = 'none';
+        }
+      );
+
+      rejectButton.addEventListener(
+        'click',
+        function () {
+          gtag('consent', 'update', {
+            analytics_storage:
+              'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization:
+              'denied'
+          });
+
+          try {
+            localStorage.setItem(
+              consentKey,
+              'denied'
+            );
+          } catch (error) {
+            /* Privremena odluka. */
+          }
+
+          disableFlagCounter();
+
+          banner.style.display = 'none';
+        }
+      );
+    }
+  );
 </script>
 <!-- OPEN GRAPH ZA LINK PREVIEW -->
 <meta content="TANDARA–PREZIME" property="og:title"/>
