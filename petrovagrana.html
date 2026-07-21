@@ -42,53 +42,83 @@
     'wait_for_update': 500
   });
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var banner = document.getElementById('cookie-banner');
-    var acceptButton = document.getElementById('cookie-accept');
-    var rejectButton = document.getElementById('cookie-reject');
+ document.addEventListener('DOMContentLoaded', function () {
+  var banner = document.getElementById('cookie-banner');
+  var acceptButton = document.getElementById('cookie-accept');
+  var rejectButton = document.getElementById('cookie-reject');
+  var flagCounterImage = document.getElementById('flag-counter-image');
 
-    if (!banner || !acceptButton || !rejectButton) {
+  function enableFlagCounter() {
+    if (!flagCounterImage) {
       return;
     }
 
-    if (savedConsent === 'granted' || savedConsent === 'denied') {
-      banner.style.display = 'none';
+    var flagSource = flagCounterImage.getAttribute('data-src');
+
+    if (flagSource && !flagCounterImage.getAttribute('src')) {
+      flagCounterImage.setAttribute('src', flagSource);
     }
 
-    acceptButton.addEventListener('click', function () {
-      gtag('consent', 'update', {
-        'analytics_storage': 'granted',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
-      });
+    flagCounterImage.hidden = false;
+  }
 
-      try {
-        localStorage.setItem(consentKey, 'granted');
-      } catch (error) {
-        /* Odluka vrijedi samo do zatvaranja stranice. */
-      }
+  function disableFlagCounter() {
+    if (!flagCounterImage) {
+      return;
+    }
 
-      banner.style.display = 'none';
+    flagCounterImage.removeAttribute('src');
+    flagCounterImage.hidden = true;
+  }
+
+  if (!banner || !acceptButton || !rejectButton) {
+    return;
+  }
+
+  if (savedConsent === 'granted') {
+    banner.style.display = 'none';
+    enableFlagCounter();
+  } else if (savedConsent === 'denied') {
+    banner.style.display = 'none';
+    disableFlagCounter();
+  }
+
+  acceptButton.addEventListener('click', function () {
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
     });
 
-    rejectButton.addEventListener('click', function () {
-      gtag('consent', 'update', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
-      });
+    try {
+      localStorage.setItem(consentKey, 'granted');
+    } catch (error) {
+      /* Odluka vrijedi samo do zatvaranja stranice. */
+    }
 
-      try {
-        localStorage.setItem(consentKey, 'denied');
-      } catch (error) {
-        /* Odluka vrijedi samo do zatvaranja stranice. */
-      }
-
-      banner.style.display = 'none';
-    });
+    enableFlagCounter();
+    banner.style.display = 'none';
   });
+
+  rejectButton.addEventListener('click', function () {
+    gtag('consent', 'update', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+
+    try {
+      localStorage.setItem(consentKey, 'denied');
+    } catch (error) {
+      /* Odluka vrijedi samo do zatvaranja stranice. */
+    }
+
+    disableFlagCounter();
+    banner.style.display = 'none';
+  });
+});
 </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
