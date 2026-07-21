@@ -116,13 +116,11 @@
     var isExternal = link.hostname && link.hostname !== window.location.hostname;
     var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
 
-    if (isMail || isTel) {
-      gtag('event', 'contact_click', {
-        contact_type: isMail ? 'email' : 'phone',
-        link_text: text,
-        link_url: href
-      });
-    }
+ if (isMail || isTel) {
+  gtag('event', 'contact_click', {
+    contact_type: isMail ? 'email' : 'phone'
+  });
+}
 
     if (isExternal) {
       gtag('event', 'external_link_click', {
