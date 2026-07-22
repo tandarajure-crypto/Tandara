@@ -2,479 +2,215 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Filip’s line — interactive family tree</title>
-<meta name="description" content="Interactive clickable family tree of Filip’s Livno branch of the Tandara family.">
-<script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Complete clickable interactive family tree of Filip’s Livno branch of the Tandara family.">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=()">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'none'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content">
+<link rel="canonical" href="filipova-loza-interaktivni-dijagram-en.html">
+<link rel="alternate" hreflang="hr" href="filipova-loza-interaktivni-dijagram.html">
+<link rel="alternate" hreflang="en" href="filipova-loza-interaktivni-dijagram-en.html">
+<title>Filip’s complete branch</title>
 <style>
 :root{
-  --bg:#f3efe6;--paper:#fffdf8;--ink:#2b2925;--muted:#6f685f;--line:#9f8f79;
-  --accent:#7b2f2f;--accent2:#b7894c;--shadow:0 10px 28px rgba(52,38,24,.14);
-  --node-w:230px;--gap-x:58px;--gap-y:18px;--scale:1;
+  --green:#174f39;--green-dark:#0d3425;--paper:#fbfaf6;--ink:#22302a;--muted:#68736d;
+  --blue-bg:#e8f2fb;--blue-line:#4d82aa;--orange-bg:#fff1df;--orange-line:#bb8144;
+  --border:#d3d7d2;--focus:#9b6b00;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(135deg,#eee6d7,#f8f5ee 55%,#ece2d2);color:var(--ink)}
-header{position:sticky;top:0;z-index:30;background:rgba(255,253,248,.94);backdrop-filter:blur(8px);border-bottom:1px solid #d8ccba;padding:14px 18px;box-shadow:0 3px 14px rgba(52,38,24,.08)}
-.header-row{max-width:1500px;margin:auto;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.brand h1{font-size:clamp(1.1rem,2.2vw,1.75rem);margin:0;color:#5b2323}.brand p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
-.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.diagram-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.nav-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;border:1px solid #cbbca8;background:#fffaf1;color:#3b342d;border-radius:9px;padding:6px 10px;text-decoration:none;box-shadow:0 2px 5px rgba(0,0,0,.05);font:700 13px Arial,sans-serif}
-.nav-link:hover,.nav-link:focus{background:#f3e7d6;outline:2px solid rgba(123,47,47,.18);outline-offset:1px}
-.nav-home{font-size:20px;line-height:1;padding:5px 10px}
-.nav-flag{padding:4px 6px;min-width:44px}
-.nav-flag img{display:block;width:34px;height:22px;object-fit:cover;border-radius:3px}
-.nav-flag.active{border:2px solid var(--accent);background:#f7ead7}
-.pan-hint{display:block;margin-top:5px;font:12px Arial,sans-serif;color:#746b60}
-button{font:inherit}
-.tool{border:1px solid #cbbca8;background:#fffaf1;color:#3b342d;border-radius:9px;padding:8px 11px;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.05)}
-.tool:hover{background:#f3e7d6}
-main{max-width:1800px;margin:auto;padding:18px}
-.intro{background:rgba(255,253,248,.88);border:1px solid #d8ccba;border-left:5px solid var(--accent2);border-radius:12px;padding:13px 16px;margin-bottom:14px;box-shadow:var(--shadow)}
-.intro strong{color:#5b2323}.intro span{color:var(--muted)}
-.workspace{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
-
-.canvas-wrap:focus{outline:3px solid rgba(123,47,47,.2);outline-offset:2px}
-.canvas-wrap.dragging{cursor:grabbing;user-select:none}
-
-
-.branch{display:flex;align-items:center;position:relative;min-height:88px}
-.branch>.node-wrap{position:relative;flex:0 0 var(--node-w)}
-.children{display:flex;flex-direction:column;gap:var(--gap-y);margin-left:var(--gap-x);position:relative;padding:5px 0}
-.children:before{content:"";position:absolute;left:calc(var(--gap-x) * -0.52);top:50%;width:calc(var(--gap-x) * .52);border-top:2px solid var(--line)}
-.children>.branch:before{content:"";position:absolute;left:calc(var(--gap-x) * -0.52);top:50%;width:calc(var(--gap-x) * .52);border-top:2px solid var(--line)}
-.children>.branch:not(:only-child):after{content:"";position:absolute;left:calc(var(--gap-x) * -0.52);width:2px;background:var(--line)}
-.children>.branch:first-child:not(:only-child):after{top:50%;bottom:-9px}
-.children>.branch:last-child:not(:only-child):after{top:-9px;bottom:50%}
-.children>.branch:not(:first-child):not(:last-child):after{top:-9px;bottom:-9px}
-.node{width:var(--node-w);min-height:76px;background:linear-gradient(180deg,#fffefb,#f6efe3);border:2px solid #bca98d;border-radius:12px;padding:10px 38px 10px 12px;cursor:pointer;text-align:left;box-shadow:0 5px 12px rgba(60,42,25,.11);transition:.18s ease;position:relative}
-.node:hover{transform:translateY(-2px);border-color:var(--accent2);box-shadow:0 9px 18px rgba(60,42,25,.16)}
-.node.selected{border-color:var(--accent);box-shadow:0 0 0 3px rgba(123,47,47,.16),0 9px 18px rgba(60,42,25,.16)}
-.node-code{font:700 .74rem/1.1 Arial,sans-serif;color:var(--accent);letter-spacing:.03em}.node-name{font-weight:700;font-size:1rem;line-height:1.18;margin-top:4px}.node-hint{font:italic .74rem/1.2 Arial,sans-serif;color:#756955;margin-top:5px}
-.toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:25px;height:25px;border-radius:50%;border:1px solid #b9a789;background:#fff8eb;color:#653434;cursor:pointer;font:700 17px/22px Arial,sans-serif;padding:0;text-align:center}.toggle:hover{background:#ecdcc2}.leaf .toggle{display:none}
-.children.collapsed{display:none}.branch.collapsed-branch>.node-wrap:after{content:"";position:absolute;right:-12px;top:50%;width:12px;border-top:2px dotted var(--line)}
-.panel{position:sticky;top:104px;background:var(--paper);border:1px solid #d8ccba;border-radius:14px;box-shadow:var(--shadow);padding:18px;height:calc(100vh - 190px);min-height:520px;max-height:900px;overflow:auto;scrollbar-gutter:stable}
-.panel.empty{color:var(--muted);font-style:italic}.panel h2{font-size:1.35rem;color:#5b2323;margin:0 0 6px}.panel .code{font:700 .82rem Arial,sans-serif;color:var(--accent);margin-bottom:6px}.panel p{line-height:1.56;margin:0 0 12px}.panel .close{display:none}
-.legend{font:12px Arial,sans-serif;color:#746b60;margin-top:10px}
-.search{min-width:230px;border:1px solid #cbbca8;border-radius:9px;padding:8px 10px;background:#fffdf8;font:14px Arial,sans-serif}
-.search:focus{outline:2px solid rgba(123,47,47,.18);border-color:var(--accent)}
-.search-status{font:12px Arial,sans-serif;color:#746b60;margin-top:8px;min-height:16px}
-@media(max-width:1000px){.workspace{grid-template-columns:1fr}.panel{position:fixed;z-index:50;left:12px;right:12px;bottom:12px;top:auto;width:auto;height:auto;min-height:0;max-height:62vh;display:none}.panel.open{display:block}.panel .close{display:block;position:absolute;right:10px;top:10px;border:0;background:#eee2d0;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:18px}.canvas-wrap{height:72vh;min-height:500px;max-height:none}.search{min-width:180px}}
-@media(max-width:600px){header{padding:10px}.brand p{display:none}main{padding:10px}.canvas-wrap{padding:18px}.tool{padding:7px 9px}.search{width:100%;order:3}.controls{width:100%}:root{--node-w:205px;--gap-x:45px}}
-@media print{header,.intro,.panel{display:none!important}.workspace{display:block}.canvas-wrap{overflow:visible;border:0;box-shadow:none}.canvas{transform:none!important}.node{break-inside:avoid}}
-
-
-/* Jedini pomični prozor dijagrama. Nema vanjskog i unutarnjeg skrolanja u isto vrijeme. */
-.canvas-wrap {
-  height:calc(100vh - 190px);
-  min-height:520px;
-  max-height:900px;
-  overflow:scroll;
-  scrollbar-gutter:stable both-edges;
-  overscroll-behavior:contain;
-  scroll-behavior:auto;
-  touch-action:none;
-  cursor:grab;
-  -webkit-overflow-scrolling:touch;
-}
-.canvas-wrap.dragging {
-  cursor:grabbing;
-  user-select:none;
-  -webkit-user-select:none;
-}
-.canvas-stage {
-  position:relative;
-  min-width:100%;
-  min-height:100%;
-}
-.canvas {
-  position:absolute;
-  left:20px;
-  top:0;
-  width:max-content;
-  min-width:max-content;
-  transform:scale(var(--scale));
-  transform-origin:top left;
-  padding:10px 30px 70px 10px;
-}
-
-html.embedded,
-html.embedded body {
-  width:100%;
-  height:100%;
-  overflow:hidden;
-}
-html.embedded body { background:#fffdf8; }
-html.embedded header,
-html.embedded .intro { display:none !important; }
-html.embedded main {
-  width:100%;
-  max-width:none;
-  height:100%;
-  margin:0;
-  padding:0;
-}
-html.embedded .workspace {
-  position:relative;
-  display:block;
-  width:100%;
-  height:100%;
-}
-html.embedded .canvas-wrap {
-  width:100%;
-  height:100%;
-  min-height:0;
-  max-height:none;
-  padding:28px;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-}
-html.embedded .panel {
-  position:absolute;
-  z-index:60;
-  left:14px;
-  right:14px;
-  bottom:14px;
-  top:auto;
-  width:auto;
-  height:auto;
-  min-height:0;
-  max-height:min(42vh, 380px);
-  display:none;
-  overflow:auto;
-}
-html.embedded .panel.open { display:block; }
-html.embedded .panel .close { display:block; }
-
+html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper)}
+body{overflow:hidden}
+header{min-height:112px;display:flex;align-items:center;gap:16px;padding:10px 16px;background:#fff;border-bottom:1px solid #dcded9;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.nav-area{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.back-link,.lang-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;min-height:36px;padding:7px 10px;font-size:13px;font-weight:700}
+.back-link:hover,.lang-link:hover{background:#f0f4f1}.back-link:focus-visible,.lang-link:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid rgba(155,107,0,.35);outline-offset:2px}
+.lang-switch{display:flex;gap:6px}.lang-link{width:42px;padding:5px}.lang-link.active{border-color:var(--green);box-shadow:0 0 0 2px rgba(23,79,57,.13)}
+.lang-link img{display:block;width:27px;height:18px;object-fit:cover;border-radius:2px}
+.title-wrap{min-width:260px;max-width:440px}h1{font-size:23px;margin:0 0 4px;color:var(--green)}.subtitle{font-size:13px;color:var(--muted);line-height:1.35}
+.toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-left:auto}
+button,input{border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;padding:8px 10px;font-size:13px}button{cursor:pointer;font-weight:600}button:hover{background:#f0f4f1}button.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.search-wrap{display:flex;gap:6px}#search{width:230px}
+#workspace{position:relative;height:calc(100% - 112px);overflow:hidden;background:radial-gradient(circle at center,rgba(23,79,57,.035),transparent 62%)}
+#treeSvg{width:100%;height:100%;display:block;cursor:grab;user-select:none;touch-action:none}#treeSvg.dragging{cursor:grabbing}.connector{fill:none;stroke:#a9ada8;stroke-width:2}
+.node{cursor:pointer}.node rect.main{stroke-width:2;filter:drop-shadow(0 2px 2px rgba(0,0,0,.07))}.node:hover rect.main,.node:focus rect.main{stroke-width:3}.node.selected rect.main{stroke:#c63030!important;stroke-width:4}.node.match rect.main{stroke:#9b6b00!important;stroke-width:4}
+.node text{pointer-events:none}.node .code{font-size:12px;font-weight:700;letter-spacing:.35px}.node .label{font-size:14px;font-weight:600}.node .toggle-circle{fill:rgba(255,255,255,.82)}.node .toggle-symbol{font-size:15px;font-weight:700}
+#details{position:absolute;right:14px;top:14px;width:min(455px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;background:rgba(255,255,255,.98);border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.16);padding:16px;display:none;z-index:4}
+#details.open{display:block}#details h2{font-size:18px;margin:0 34px 4px 0;color:var(--green)}#details .detail-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.detail-chip{font-size:12px;font-weight:700;color:#59645e;background:#f1f4f1;border-radius:999px;padding:4px 8px}
+#details p{font-size:14px;line-height:1.55;white-space:pre-line;margin:0 0 14px}#detailPage{display:none;text-decoration:none;background:var(--green);color:#fff;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:700}#detailPage.visible{display:inline-flex}
+#closeDetails{position:absolute;right:8px;top:7px;border:0;background:transparent;font-size:22px;padding:3px 8px}
+.legend{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.95);border:1px solid var(--border);border-radius:10px;padding:9px 12px;font-size:12px;display:flex;gap:14px;box-shadow:0 4px 18px rgba(0,0,0,.08);z-index:2}.legend span{display:flex;align-items:center;gap:6px}.swatch{width:14px;height:14px;border-radius:4px;border:2px solid}
+.help{position:absolute;right:15px;bottom:12px;color:#5d6862;font-size:12px;background:rgba(251,250,246,.92);padding:5px 8px;border-radius:6px;z-index:2}
+.status{position:absolute;left:50%;top:12px;transform:translateX(-50%);background:rgba(255,255,255,.95);border:1px solid var(--border);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--muted);display:none;z-index:3}.status.show{display:block}
+@media(max-width:1180px){header{min-height:166px;align-items:flex-start;flex-direction:column;gap:8px}.toolbar{margin-left:0}.title-wrap{min-width:0;max-width:none}#workspace{height:calc(100% - 166px)}}
+@media(max-width:720px){header{min-height:238px;padding:9px 10px}.toolbar{gap:5px}#workspace{height:calc(100% - 238px)}#search{width:155px}.legend,.help{display:none}h1{font-size:20px}button,input{padding:7px 8px;font-size:12px}.title-wrap{max-width:100%}}
+@media(max-width:420px){header{min-height:282px}#workspace{height:calc(100% - 282px)}#search{width:145px}.subtitle{font-size:12px}}
+@media print{header,#details,.legend,.help,.status{display:none!important}body{overflow:visible}#workspace{height:auto}#treeSvg{width:100%;height:auto}}
 </style>
 </head>
 <body>
 <header>
-  <div class="header-row">
-    <nav class="diagram-nav" aria-label="Diagram navigation">
-      <a class="nav-link" href="filipovagrana-en.html" title="Return to the Filip branch page">← Page</a>
-      <a class="nav-link nav-home" href="index-en.html" title="Home page" aria-label="Home page">⌂</a>
-      <a class="nav-link nav-flag" href="filipova-loza-interaktivni-dijagram.html" title="Hrvatski dijagram" aria-label="Hrvatski dijagram"><img src="flag-hr.png" alt="HR"></a>
-      <a class="nav-link nav-flag active" href="filipova-loza-interaktivni-dijagram-en.html" title="English diagram" aria-label="English diagram"><img src="flag-uk.png" alt="EN"></a>
-    </nav>
-    <div class="brand"><h1>Filip’s line — interactive family tree</h1><p>Click a person to view details. Use +/− to open or close descendants.</p></div>
-    <div class="controls">
-      <input class="search" id="search" type="search" placeholder="Search by name or number…" aria-label="Search by name or number">
-      <button class="tool" id="expandAll" type="button">Expand all</button>
-      <button class="tool" id="collapseAll" type="button">Collapse branches</button>
-      <button class="tool" id="zoomOut" type="button" aria-label="Zoom out">−</button>
-      <button class="tool" id="zoomReset" type="button">100%</button>
-      <button class="tool" id="zoomIn" type="button" aria-label="Zoom in">+</button>
-      <button class="tool" id="printBtn" type="button">Print / PDF</button>
+  <div class="nav-area">
+    <a class="back-link" href="filipovagrana-en.html#filip-diagram" target="_top">← Filip’s branch</a>
+    <div class="lang-switch" aria-label="Change language">
+      <a class="lang-link" href="filipovagrana.html#filipov-dijagram" target="_top" title="Hrvatski"><img src="./flag-hr.png" alt="HR"></a>
+      <a class="lang-link active" href="filipovagrana-en.html#filip-diagram" target="_top" title="English"><img src="./flag-uk.png" alt="EN"></a>
+    </div>
+  </div>
+  <div class="title-wrap">
+    <h1>Filip’s complete branch</h1>
+    <div class="subtitle">53 numbered people · 9 displayed generations · click a person to open the full record</div>
+  </div>
+  <div class="toolbar">
+    <button class="primary" id="expandAll" type="button">Expand all</button>
+    <button id="collapse" type="button">Collapse</button>
+    <button id="threeLevels" type="button">First 3 generations</button>
+    <button id="fit" type="button">Fit</button>
+    <button id="zoomIn" type="button" aria-label="Zoom in">＋</button>
+    <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Name, number, spouse or place…">
+      <button id="findBtn" type="button">Find</button>
     </div>
   </div>
 </header>
-<main>
-  <div class="intro"><strong>The fifth branch of the Tandara family — Filip’s Livno line</strong><br><span>The diagram includes all people and family relationships listed in the source text.</span><span class="pan-hint">Move the diagram by dragging with the mouse, swiping, or using the scroll bars. The selected person is automatically brought into view.</span></div>
-  <div class="workspace">
-    <section class="canvas-wrap" id="canvasWrap" tabindex="0" aria-label="Interactive family tree of Filip's branch; scrollable horizontally and vertically">
-      <div class="canvas-stage" id="canvasStage"><div class="canvas" id="tree"></div></div>
-    </section>
-    <aside class="panel" id="panel"><button class="close" id="closePanel" type="button" aria-label="Close">×</button><div id="panelContent"></div><div class="search-status" id="searchStatus"></div></aside>
+<div id="workspace">
+  <svg id="treeSvg" role="img" aria-label="Interactive family tree of Filip’s branch">
+    <g id="viewport"><g id="links"></g><g id="nodes"></g></g>
+  </svg>
+  <aside id="details" aria-live="polite">
+    <button id="closeDetails" type="button" aria-label="Close">×</button>
+    <h2 id="detailTitle"></h2>
+    <div class="detail-meta"><span class="detail-chip" id="detailCode"></span><span class="detail-chip" id="detailSection"></span></div>
+    <p id="detailText"></p>
+    <a id="detailPage" href="#" target="_top">Open the related page</a>
+  </aside>
+  <div class="legend">
+    <span><i class="swatch" style="background:#174f39;border-color:#0d3425"></i>Filip Tandara</span>
+    <span><i class="swatch" style="background:#e8f2fb;border-color:#4d82aa"></i>Filip’s sons</span>
+    <span><i class="swatch" style="background:#fff1df;border-color:#bb8144"></i>Descendants</span>
   </div>
-</main>
+  <div class="help">Mouse wheel: zoom · drag: move · click a box: details and branching</div>
+  <div class="status" id="status" aria-live="polite"></div>
+</div>
 <script>
-const DATA = [{"id":"5.0","parent":null,"name":"Filip Tandara","relation":"Founder of the Livno branch","details":["Filip Tandara is regarded as the founder of the Livno branch of the Tandara family.","He was married to Jela Bralić. They had four sons: Mate, Jure, Jakov and Ivan."]},{"id":"5.1","parent":"5.0","name":"Mate","relation":"son of Filip","details":["Mate, Filip’s eldest son, married Kata Jazvić.","They had a daughter, Jela."]},{"id":"5.1.1","parent":"5.1","name":"Jela","relation":"daughter of Mate","details":["Jela was the daughter of Mate and Kata, née Jazvić."]},{"id":"5.2","parent":"5.0","name":"Jure","relation":"son of Filip","details":["Jure, Filip’s second son, married Manda Matić.","They had a son, Josip."]},{"id":"5.2.1","parent":"5.2","name":"Josip","relation":"son of Jure","details":["Josip, Jure’s son, married Cvita Knežević in 1818.","They had three sons: Jakov, Ivan and Antun."]},{"id":"5.2.1.1","parent":"5.2.1","name":"Jakov","relation":"son of Josip","details":["Jakov, Josip’s eldest son, married Ruža Rimac.","They had a son, Josip."]},{"id":"5.2.1.1.1","parent":"5.2.1.1","name":"Josip","relation":"son of Jakov","details":["Josip, Jakov’s son, married Anđa Gabrić.","They had two sons, Jozo and Mato, and three daughters, Ana, Mara and Anđa."]},{"id":"5.2.1.1.1.1","parent":"5.2.1.1.1","name":"Jozo","relation":"son of Josip","details":["Jozo, Josip’s son, married twice.","In his first marriage, to Marica Mioč, he had a son, Ante Božidar.","In his second marriage, to Kata Pastuh, he had a son, Jakov, and a daughter, Ana."]},{"id":"5.2.1.1.1.1.1","parent":"5.2.1.1.1.1","name":"Ante Božidar","relation":"son of Jozo","details":["Ante Božidar was Jozo’s son from his first marriage to Marica Mioč."]},{"id":"5.2.1.1.1.1.2","parent":"5.2.1.1.1.1","name":"Jakov","relation":"son of Jozo","details":["Jakov was Jozo’s son from his second marriage to Kata Pastuh."]},{"id":"5.2.1.1.1.1.3","parent":"5.2.1.1.1.1","name":"Ana","relation":"daughter of Jozo","details":["Ana was Jozo’s daughter from his second marriage to Kata Pastuh."]},{"id":"5.2.1.1.1.2","parent":"5.2.1.1.1","name":"Mato","relation":"son of Josip","details":["Mato was the son of Josip and Anđa, née Gabrić."]},{"id":"5.2.1.1.1.3","parent":"5.2.1.1.1","name":"Ana","relation":"daughter of Josip","details":["Ana was the daughter of Josip and Anđa, née Gabrić."]},{"id":"5.2.1.1.1.4","parent":"5.2.1.1.1","name":"Mara","relation":"daughter of Josip","details":["Mara was the daughter of Josip and Anđa, née Gabrić."]},{"id":"5.2.1.1.1.5","parent":"5.2.1.1.1","name":"Anđa","relation":"daughter of Josip","details":["Anđa was the daughter of Josip and Anđa, née Gabrić."]},{"id":"5.2.1.2","parent":"5.2.1","name":"Ivan","relation":"son of Josip","details":["Ivan, the second son of Josip and Cvita, née Knežević, married twice.","He first married Ruža Laštrić in 1859. No record has been found that they had children.","He later married Anđa Erceg. They had two sons, Jakov and Stipo."]},{"id":"5.2.1.2.1","parent":"5.2.1.2","name":"Jakov","relation":"son of Ivan","details":["Jakov, Ivan’s son, married Ruža Meštrović in Livno in 1894.","They had eight children: Josip, Stipo, Ivo, Matko, Mara, Joza, Milka and Anđa."]},{"id":"5.2.1.2.1.1","parent":"5.2.1.2.1","name":"Josip","relation":"son of Jakov","details":["Josip was the eldest recorded son of Jakov and Ruža, née Meštrović."]},{"id":"5.2.1.2.1.2","parent":"5.2.1.2.1","name":"Stipo","relation":"son of Jakov","details":["Stipo was the son of Jakov and Ruža, née Meštrović."]},{"id":"5.2.1.2.1.3","parent":"5.2.1.2.1","name":"Ivo","relation":"son of Jakov","details":["Ivo was the son of Jakov and Ruža, née Meštrović."]},{"id":"5.2.1.2.1.4","parent":"5.2.1.2.1","name":"Matko","relation":"son of Jakov","details":["Matko, Jakov’s youngest son, married Anica Župčić.","They had a son, Krešimir, and a daughter, Davorka."]},{"id":"5.2.1.2.1.4.1","parent":"5.2.1.2.1.4","name":"Krešimir","relation":"son of Matko","details":["Krešimir, Matko’s son, married Biserka Kučak.","They had a son, Igor, and a daughter, Gordana."]},{"id":"5.2.1.2.1.4.1.1","parent":"5.2.1.2.1.4.1","name":"Igor","relation":"son of Krešimir","details":["Igor, Krešimir’s son, married Edina Hadžić.","They had two sons, Izidor and Edgar."]},{"id":"5.2.1.2.1.4.1.1.1","parent":"5.2.1.2.1.4.1.1","name":"Izidor","relation":"son of Igor","details":["Izidor was the son of Igor and Edina, née Hadžić."]},{"id":"5.2.1.2.1.4.1.1.2","parent":"5.2.1.2.1.4.1.1","name":"Edgar","relation":"son of Igor","details":["Edgar was the son of Igor and Edina, née Hadžić."]},{"id":"5.2.1.2.1.4.1.2","parent":"5.2.1.2.1.4.1","name":"Gordana","relation":"daughter of Krešimir","details":["Gordana was the daughter of Krešimir and Biserka, née Kučak."]},{"id":"5.2.1.2.1.4.2","parent":"5.2.1.2.1.4","name":"Davorka","relation":"daughter of Matko","details":["Davorka was the daughter of Matko and Anica, née Župčić."]},{"id":"5.2.1.2.1.5","parent":"5.2.1.2.1","name":"Mara","relation":"daughter of Jakov","details":["Mara was the daughter of Jakov and Ruža, née Meštrović."]},{"id":"5.2.1.2.1.6","parent":"5.2.1.2.1","name":"Joza","relation":"daughter of Jakov","details":["Joza was the daughter of Jakov and Ruža, née Meštrović."]},{"id":"5.2.1.2.1.7","parent":"5.2.1.2.1","name":"Milka","relation":"daughter of Jakov","details":["Milka was the daughter of Jakov and Ruža, née Meštrović."]},{"id":"5.2.1.2.1.8","parent":"5.2.1.2.1","name":"Anđa","relation":"daughter of Jakov","details":["Anđa was the daughter of Jakov and Ruža, née Meštrović."]},{"id":"5.2.1.2.2","parent":"5.2.1.2","name":"Stipo","relation":"son of Ivan","details":["Stipo, the younger son of Ivan and Anđa, née Erceg, married Ana Sučić.","They had three sons, Ivo, Pero and Zvonimir, and three daughters, Iva, Anđa and Ljubica."]},{"id":"5.2.1.2.2.1","parent":"5.2.1.2.2","name":"Ivo","relation":"son of Stipo","details":["Ivo was the son of Stipo and Ana, née Sučić."]},{"id":"5.2.1.2.2.2","parent":"5.2.1.2.2","name":"Pero","relation":"son of Stipo","details":["Pero was the son of Stipo and Ana, née Sučić."]},{"id":"5.2.1.2.2.3","parent":"5.2.1.2.2","name":"Zvonimir","relation":"son of Stipo","details":["Zvonimir, Stipo’s youngest son, married Adela Szepesi in Belgrade in 1930.","They had a son, Vladimir, and a daughter, Aneta."]},{"id":"5.2.1.2.2.3.1","parent":"5.2.1.2.2.3","name":"Vladimir","relation":"son of Zvonimir","details":["Vladimir, Zvonimir’s son, married Ingrid Schmarsch in Berlin in 1965.","They had a son, Milan-Aleksandar, and a daughter, Andrea."]},{"id":"5.2.1.2.2.3.1.1","parent":"5.2.1.2.2.3.1","name":"Milan-Aleksandar","relation":"son of Vladimir","details":["Milan-Aleksandar was the son of Vladimir and Ingrid, née Schmarsch."]},{"id":"5.2.1.2.2.3.1.2","parent":"5.2.1.2.2.3.1","name":"Andrea","relation":"daughter of Vladimir","details":["Andrea was the daughter of Vladimir and Ingrid, née Schmarsch."]},{"id":"5.2.1.2.2.3.2","parent":"5.2.1.2.2.3","name":"Aneta","relation":"daughter of Zvonimir","details":["Aneta was the daughter of Zvonimir and Adela, née Szepesi."]},{"id":"5.2.1.2.2.4","parent":"5.2.1.2.2","name":"Iva","relation":"daughter of Stipo","details":["Iva was the daughter of Stipo and Ana, née Sučić."]},{"id":"5.2.1.2.2.5","parent":"5.2.1.2.2","name":"Anđa","relation":"daughter of Stipo","details":["Anđa was the daughter of Stipo and Ana, née Sučić."]},{"id":"5.2.1.2.2.6","parent":"5.2.1.2.2","name":"Ljubica","relation":"daughter of Stipo","details":["Ljubica was the daughter of Stipo and Ana, née Sučić."]},{"id":"5.2.1.3","parent":"5.2.1","name":"Antun","relation":"son of Josip","details":["Antun was the youngest recorded son of Josip and Cvita, née Knežević."]},{"id":"5.3","parent":"5.0","name":"Jakov","relation":"son of Filip","details":["Jakov, Filip’s third son, married twice.","In his first marriage, to Luca, née Kuprešanin, he had two daughters, Josipa and Pera.","In his second marriage, to Kata, née Perić, he had a daughter, Kata."]},{"id":"5.3.1","parent":"5.3","name":"Josipa","relation":"daughter of Jakov","details":["Josipa was Jakov’s daughter from his first marriage to Luca, née Kuprešanin."]},{"id":"5.3.2","parent":"5.3","name":"Pera","relation":"daughter of Jakov","details":["Pera was Jakov’s daughter from his first marriage to Luca, née Kuprešanin."]},{"id":"5.3.3","parent":"5.3","name":"Kata","relation":"daughter of Jakov","details":["Kata was Jakov’s daughter from his second marriage to Kata, née Perić."]},{"id":"5.4","parent":"5.0","name":"Ivan","relation":"son of Filip","details":["Ivan, Filip’s youngest son, was married to Iva, née Knežević.","They had a daughter, Agata, and a son, Petar."]},{"id":"5.4.1","parent":"5.4","name":"Agata","relation":"daughter of Ivan","details":["Agata was the daughter of Ivan and Iva, née Knežević."]},{"id":"5.4.2","parent":"5.4","name":"Petar","relation":"son of Ivan","details":["Petar, Ivan’s son, married twice.","He first married Luca Smoljić. It is not known whether they had children.","In his second marriage, to Matija, née Čelan, he had a son, Nikola, and two daughters, Agata and Ana."]},{"id":"5.4.2.1","parent":"5.4.2","name":"Nikola","relation":"son of Petar","details":["Nikola was Petar’s son from his second marriage to Matija, née Čelan."]},{"id":"5.4.2.2","parent":"5.4.2","name":"Agata","relation":"daughter of Petar","details":["Agata was Petar’s daughter from his second marriage to Matija, née Čelan."]},{"id":"5.4.2.3","parent":"5.4.2","name":"Ana","relation":"daughter of Petar","details":["Ana was Petar’s daughter from his second marriage to Matija, née Čelan."]}];
-const byId = Object.fromEntries(DATA.map(n => [n.id, n]));
-const children = {};
-for (const n of DATA) (children[n.parent || 'root'] ??= []).push(n);
-let selected = '5.0';
-let scale = 1;
+const DATA = {"code":"5.0","label":"Filip Tandara — Founder of the Livno branch","detail":"Filip Tandara is regarded as the founder of the Livno branch of the Tandara family.
 
-function renderNode(n){
-  const kids = children[n.id] || [];
-  const branch = document.createElement('div');
-  branch.className = 'branch' + (kids.length ? '' : ' leaf');
-  branch.dataset.id = n.id;
+He was married to Jela Bralić. They had four sons: Mate, Jure, Jakov and Ivan.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":"filipovagrana-en.html","children":[{"code":"5.1","label":"Mate — son of Filip","detail":"Mate, Filip’s eldest son, married Kata Jazvić.
 
-  const wrap = document.createElement('div');
-  wrap.className = 'node-wrap';
+They had a daughter, Jela.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.1.1","label":"Jela — daughter of Mate","detail":"Jela was the daughter of Mate and Kata, née Jazvić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2","label":"Jure — son of Filip","detail":"Jure, Filip’s second son, married Manda Matić.
 
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'node' + (selected === n.id ? ' selected' : '');
-  btn.dataset.id = n.id;
-  btn.innerHTML = `<div class="node-code">${n.id}</div><div class="node-name">${n.name}</div><div class="node-hint">${n.relation}</div>`;
-  btn.addEventListener('click', () => selectNode(n.id));
-  wrap.appendChild(btn);
+They had a son, Josip.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1","label":"Josip — son of Jure","detail":"Josip, Jure’s son, married Cvita Knežević in 1818.
 
-  if (kids.length){
-    const tog = document.createElement('button');
-    tog.type = 'button';
-    tog.className = 'toggle';
-    tog.textContent = '−';
-    tog.title = 'Close or open descendants';
-    tog.setAttribute('aria-label', 'Close or open descendants');
-    tog.addEventListener('click', e => { e.stopPropagation(); toggleBranch(branch, tog); });
-    wrap.appendChild(tog);
+They had three sons: Jakov, Ivan and Antun.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.1","label":"Jakov — son of Josip","detail":"Jakov, Josip’s eldest son, married Ruža Rimac.
+
+They had a son, Josip.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.1.1","label":"Josip — son of Jakov","detail":"Josip, Jakov’s son, married Anđa Gabrić.
+
+They had two sons, Jozo and Mato, and three daughters, Ana, Mara and Anđa.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.1.1.1","label":"Jozo — son of Josip","detail":"Jozo, Josip’s son, married twice.
+
+In his first marriage, to Marica Mioč, he had a son, Ante Božidar.
+
+In his second marriage, to Kata Pastuh, he had a son, Jakov, and a daughter, Ana.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.1.1.1.1","label":"Ante Božidar — son of Jozo","detail":"Ante Božidar was Jozo’s son from his first marriage to Marica Mioč.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.1.1.1.2","label":"Jakov — son of Jozo","detail":"Jakov was Jozo’s son from his second marriage to Kata Pastuh.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.1.1.1.3","label":"Ana — daughter of Jozo","detail":"Ana was Jozo’s daughter from his second marriage to Kata Pastuh.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2.1.1.1.2","label":"Mato — son of Josip","detail":"Mato was the son of Josip and Anđa, née Gabrić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.1.1.3","label":"Ana — daughter of Josip","detail":"Ana was the daughter of Josip and Anđa, née Gabrić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.1.1.4","label":"Mara — daughter of Josip","detail":"Mara was the daughter of Josip and Anđa, née Gabrić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.1.1.5","label":"Anđa — daughter of Josip","detail":"Anđa was the daughter of Josip and Anđa, née Gabrić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]}]},{"code":"5.2.1.2","label":"Ivan — son of Josip","detail":"Ivan, the second son of Josip and Cvita, née Knežević, married twice.
+
+He first married Ruža Laštrić in 1859. No record has been found that they had children.
+
+He later married Anđa Erceg. They had two sons, Jakov and Stipo.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.1","label":"Jakov — son of Ivan","detail":"Jakov, Ivan’s son, married Ruža Meštrović in Livno in 1894.
+
+They had eight children: Josip, Stipo, Ivo, Matko, Mara, Joza, Milka and Anđa.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.1.1","label":"Josip — son of Jakov","detail":"Josip was the eldest recorded son of Jakov and Ruža, née Meštrović.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.1.2","label":"Stipo — son of Jakov","detail":"Stipo was the son of Jakov and Ruža, née Meštrović.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.1.3","label":"Ivo — son of Jakov","detail":"Ivo was the son of Jakov and Ruža, née Meštrović.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.1.4","label":"Matko — son of Jakov","detail":"Matko, Jakov’s youngest son, married Anica Župčić.
+
+They had a son, Krešimir, and a daughter, Davorka.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.1.4.1","label":"Krešimir — son of Matko","detail":"Krešimir, Matko’s son, married Biserka Kučak.
+
+They had a son, Igor, and a daughter, Gordana.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.1.4.1.1","label":"Igor — son of Krešimir","detail":"Igor, Krešimir’s son, married Edina Hadžić.
+
+They had two sons, Izidor and Edgar.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.1.4.1.1.1","label":"Izidor — son of Igor","detail":"Izidor was the son of Igor and Edina, née Hadžić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.1.4.1.1.2","label":"Edgar — son of Igor","detail":"Edgar was the son of Igor and Edina, née Hadžić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2.1.2.1.4.1.2","label":"Gordana — daughter of Krešimir","detail":"Gordana was the daughter of Krešimir and Biserka, née Kučak.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2.1.2.1.4.2","label":"Davorka — daughter of Matko","detail":"Davorka was the daughter of Matko and Anica, née Župčić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2.1.2.1.5","label":"Mara — daughter of Jakov","detail":"Mara was the daughter of Jakov and Ruža, née Meštrović.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.1.6","label":"Joza — daughter of Jakov","detail":"Joza was the daughter of Jakov and Ruža, née Meštrović.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.1.7","label":"Milka — daughter of Jakov","detail":"Milka was the daughter of Jakov and Ruža, née Meštrović.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.1.8","label":"Anđa — daughter of Jakov","detail":"Anđa was the daughter of Jakov and Ruža, née Meštrović.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2.1.2.2","label":"Stipo — son of Ivan","detail":"Stipo, the younger son of Ivan and Anđa, née Erceg, married Ana Sučić.
+
+They had three sons, Ivo, Pero and Zvonimir, and three daughters, Iva, Anđa and Ljubica.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.2.1","label":"Ivo — son of Stipo","detail":"Ivo was the son of Stipo and Ana, née Sučić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.2.2","label":"Pero — son of Stipo","detail":"Pero was the son of Stipo and Ana, née Sučić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.2.3","label":"Zvonimir — son of Stipo","detail":"Zvonimir, Stipo’s youngest son, married Adela Szepesi in Belgrade in 1930.
+
+They had a son, Vladimir, and a daughter, Aneta.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.2.3.1","label":"Vladimir — son of Zvonimir","detail":"Vladimir, Zvonimir’s son, married Ingrid Schmarsch in Berlin in 1965.
+
+They had a son, Milan-Aleksandar, and a daughter, Andrea.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.2.1.2.2.3.1.1","label":"Milan-Aleksandar — son of Vladimir","detail":"Milan-Aleksandar was the son of Vladimir and Ingrid, née Schmarsch.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.2.3.1.2","label":"Andrea — daughter of Vladimir","detail":"Andrea was the daughter of Vladimir and Ingrid, née Schmarsch.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2.1.2.2.3.2","label":"Aneta — daughter of Zvonimir","detail":"Aneta was the daughter of Zvonimir and Adela, née Szepesi.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.2.1.2.2.4","label":"Iva — daughter of Stipo","detail":"Iva was the daughter of Stipo and Ana, née Sučić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.2.5","label":"Anđa — daughter of Stipo","detail":"Anđa was the daughter of Stipo and Ana, née Sučić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.2.1.2.2.6","label":"Ljubica — daughter of Stipo","detail":"Ljubica was the daughter of Stipo and Ana, née Sučić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]}]},{"code":"5.2.1.3","label":"Antun — son of Josip","detail":"Antun was the youngest recorded son of Josip and Cvita, née Knežević.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]}]},{"code":"5.3","label":"Jakov — son of Filip","detail":"Jakov, Filip’s third son, married twice.
+
+In his first marriage, to Luca, née Kuprešanin, he had two daughters, Josipa and Pera.
+
+In his second marriage, to Kata, née Perić, he had a daughter, Kata.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.3.1","label":"Josipa — daughter of Jakov","detail":"Josipa was Jakov’s daughter from his first marriage to Luca, née Kuprešanin.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.3.2","label":"Pera — daughter of Jakov","detail":"Pera was Jakov’s daughter from his first marriage to Luca, née Kuprešanin.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.3.3","label":"Kata — daughter of Jakov","detail":"Kata was Jakov’s daughter from his second marriage to Kata, née Perić.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]},{"code":"5.4","label":"Ivan — son of Filip","detail":"Ivan, Filip’s youngest son, was married to Iva, née Knežević.
+
+They had a daughter, Agata, and a son, Petar.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.4.1","label":"Agata — daughter of Ivan","detail":"Agata was the daughter of Ivan and Iva, née Knežević.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.4.2","label":"Petar — son of Ivan","detail":"Petar, Ivan’s son, married twice.
+
+He first married Luca Smoljić. It is not known whether they had children.
+
+In his second marriage, to Matija, née Čelan, he had a son, Nikola, and two daughters, Agata and Ana.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[{"code":"5.4.2.1","label":"Nikola — son of Petar","detail":"Nikola was Petar’s son from his second marriage to Matija, née Čelan.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.4.2.2","label":"Agata — daughter of Petar","detail":"Agata was Petar’s daughter from his second marriage to Matija, née Čelan.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]},{"code":"5.4.2.3","label":"Ana — daughter of Petar","detail":"Ana was Petar’s daughter from his second marriage to Matija, née Čelan.","section":"The fifth branch of the Tandara family – Filip’s Livno line","page":null,"children":[]}]}]}]};
+const UI = {"lang":"en","title":"Filip’s complete branch","description":"Complete clickable interactive family tree of Filip’s Livno branch of the Tandara family.","back":"← Filip’s branch","back_href":"filipovagrana-en.html#filip-diagram","other_href":"filipovagrana.html#filipov-dijagram","subtitle":"{count} numbered people · {generations} displayed generations · click a person to open the full record","expand":"Expand all","collapse":"Collapse","three":"First 3 generations","fit":"Fit","search_ph":"Name, number, spouse or place…","find":"Find","aria":"Interactive family tree of Filip’s branch","close":"Close","code":"Number","section":"Section","open":"Open the related page","no_details":"No additional description is available for this person.","not_found":"No results for: ","root_legend":"Filip Tandara","sons_legend":"Filip’s sons","desc_legend":"Descendants","help":"Mouse wheel: zoom · drag: move · click a box: details and branching","toggle_open":"Show descendants","toggle_close":"Hide descendants","lang_label":"Change language","hr_title":"Hrvatski","en_title":"English","default_section":"The fifth branch of the Tandara family – Filip’s Livno line","locale":"en"};
+const svg=document.getElementById('treeSvg');
+const viewport=document.getElementById('viewport');
+const linksLayer=document.getElementById('links');
+const nodesLayer=document.getElementById('nodes');
+const details=document.getElementById('details');
+const detailPage=document.getElementById('detailPage');
+const statusBox=document.getElementById('status');
+const BOX_W=326,BOX_H=78,X_STEP=366,ROW_STEP=96,MARGIN=54;
+let scale=1,panX=20,panY=20,selectedCode=null,matchCode=null,dragging=false,dragStart=null,bounds={width:1000,height:700};
+function walk(node,cb,parent=null,depth=0){cb(node,parent,depth);(node.children||[]).forEach(ch=>walk(ch,cb,node,depth+1));}
+function findNode(code){let result=null;walk(DATA,n=>{if(n.code===code)result=n});return result;}
+function setExpandedToDepth(maxDepth){walk(DATA,(n,p,d)=>{n.expanded=d<maxDepth});}
+function visibleChildren(node){return node.expanded?(node.children||[]):[];}
+function computeLayout(){
+  const positions=new Map();let leafIndex=0,maxDepth=0,maxY=0;
+  function place(node,depth,parent=null){
+    maxDepth=Math.max(maxDepth,depth);const children=visibleChildren(node);let y;
+    if(children.length){const ys=children.map(ch=>place(ch,depth+1,node));y=(ys[0]+ys[ys.length-1])/2;}else{y=leafIndex*ROW_STEP;leafIndex++;}
+    positions.set(node.code,{x:MARGIN+depth*X_STEP,y:MARGIN+y,node,parent,depth});maxY=Math.max(maxY,y);return y;
   }
-
-  branch.appendChild(wrap);
-  if (kids.length){
-    const box = document.createElement('div');
-    box.className = 'children';
-    kids.forEach(k => box.appendChild(renderNode(k)));
-    branch.appendChild(box);
+  place(DATA,0,null);
+  bounds.width=MARGIN*2+maxDepth*X_STEP+BOX_W;
+  bounds.height=MARGIN*2+Math.max(maxY+BOX_H,BOX_H);
+  return positions;
+}
+function colors(depth){if(depth===0)return{fill:'#174f39',text:'#fff',stroke:'#0d3425'};if(depth===1)return{fill:'#e8f2fb',text:'#173a57',stroke:'#4d82aa'};return{fill:'#fff1df',text:'#553719',stroke:'#bb8144'};}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+function wrapText(text,max=38){const words=String(text).split(/\s+/),lines=[];let line='';for(const word of words){const test=(line+' '+word).trim();if(test.length>max&&line){lines.push(line);line=word}else line=test;}if(line)lines.push(line);if(lines.length>2){const rest=lines.slice(1).join(' ');lines[1]=rest.length>max?rest.slice(0,max-1)+'…':rest;}return lines.slice(0,2);}
+function render(){
+  const pos=computeLayout();let links='';
+  for(const p of pos.values()){if(!p.parent||!pos.has(p.parent.code))continue;const parent=pos.get(p.parent.code);const x1=parent.x+BOX_W,y1=parent.y+BOX_H/2,x2=p.x,y2=p.y+BOX_H/2,mid=x1+(x2-x1)/2;links+=`<path class="connector" d="M${x1},${y1} H${mid} V${y2} H${x2}"/>`;}
+  linksLayer.innerHTML=links;let markup='';
+  for(const p of pos.values()){const n=p.node,c=colors(p.depth),lines=wrapText(n.label),has=(n.children||[]).length>0,indicator=has?(n.expanded?'−':'+'):'';const cls=['node'];if(n.code===selectedCode)cls.push('selected');if(n.code===matchCode)cls.push('match');const toggleLabel=n.expanded?UI.toggle_close:UI.toggle_open;
+    markup+=`<g class="${cls.join(' ')}" data-code="${esc(n.code)}" transform="translate(${p.x},${p.y})" role="button" tabindex="0" aria-label="${esc(n.label)}${has?', '+toggleLabel:''}">
+      <rect class="main" width="${BOX_W}" height="${BOX_H}" rx="10" fill="${c.fill}" stroke="${c.stroke}"></rect>
+      <text class="code" x="14" y="20" fill="${c.text}">${esc(n.code)}</text>
+      ${lines.map((line,i)=>`<text class="label" x="14" y="${46+i*18}" fill="${c.text}">${esc(line)}</text>`).join('')}
+      ${has?`<circle class="toggle-circle" cx="${BOX_W-20}" cy="20" r="12" stroke="${c.stroke}"></circle><text class="toggle-symbol" x="${BOX_W-20}" y="25" text-anchor="middle" fill="${c.stroke}">${indicator}</text>`:''}
+    </g>`;
   }
-  return branch;
-}
-
-function renderTree(){
-  const tree = document.getElementById('tree');
-  tree.innerHTML = '';
-  (children.root || []).forEach(n => tree.appendChild(renderNode(n)));
-  applySearch();
-  updateCanvasBounds();
-}
-
-function toggleBranch(branch, tog){
-  autoFitInitial = false;
-  const c = branch.querySelector(':scope > .children');
-  if (!c) return;
-  const closed = c.classList.toggle('collapsed');
-  branch.classList.toggle('collapsed-branch', closed);
-  tog.textContent = closed ? '+' : '−';
-  updateCanvasBounds();
-  if (!closed) requestAnimationFrame(() => focusNode(branch.dataset.id, 'smooth'));
-}
-
-function selectNode(id){
-  selected = id;
-  document.querySelectorAll('.node').forEach(x => x.classList.toggle('selected', x.dataset.id === id));
-  showPanel(byId[id]);
-  requestAnimationFrame(() => focusNode(id, 'smooth'));
-}
-
-function showPanel(n){
-  const p = document.getElementById('panel');
-  const c = document.getElementById('panelContent');
-  p.classList.add('open');
-  p.scrollTop = 0;
-  const paras = n.details.map(x => `<p>${x}</p>`).join('');
-  c.innerHTML = `<div class="code">${n.id}</div><h2>${n.name}</h2>${paras}<div class="legend">Click another box to view a different person.</div>`;
-}
-
-function setInitialView(){
-  document.querySelectorAll('.branch').forEach(b => {
-    if (b.dataset.id === '5.0') return;
-    const c = b.querySelector(':scope > .children');
-    const tog = b.querySelector(':scope > .node-wrap > .toggle');
-    if (!c || !tog) return;
-    c.classList.add('collapsed');
-    b.classList.add('collapsed-branch');
-    tog.textContent = '+';
-  });  updateCanvasBounds();
-}
-
-function setAll(open){
-  autoFitInitial = false;
-  document.querySelectorAll('.branch').forEach(b => {
-    const c = b.querySelector(':scope > .children');
-    const tog = b.querySelector(':scope > .node-wrap > .toggle');
-    if (!c || !tog) return;
-    c.classList.toggle('collapsed', !open);
-    b.classList.toggle('collapsed-branch', !open);
-    tog.textContent = open ? '−' : '+';
+  nodesLayer.innerHTML=markup;
+  nodesLayer.querySelectorAll('.node').forEach(g=>{
+    const activate=()=>{const n=findNode(g.dataset.code);selectedCode=n.code;showDetails(n);if((n.children||[]).length)n.expanded=!n.expanded;render();};
+    g.addEventListener('click',e=>{e.stopPropagation();activate()});
+    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}});
   });
-  updateCanvasBounds();
-  requestAnimationFrame(() => focusNode(selected, 'smooth'));
+  applyTransform();
 }
-
-function openAncestors(id){
-  let n = byId[id];
-  while (n && n.parent){
-    const parentBranch = document.querySelector(`.branch[data-id="${CSS.escape(n.parent)}"]`);
-    if (parentBranch){
-      const c = parentBranch.querySelector(':scope > .children');
-      const tog = parentBranch.querySelector(':scope > .node-wrap > .toggle');
-      if (c) c.classList.remove('collapsed');
-      parentBranch.classList.remove('collapsed-branch');
-      if (tog) tog.textContent = '−';
-    }
-    n = byId[n.parent];
-  }  updateCanvasBounds();
-}
-
-function setScale(v){
-  autoFitInitial = false;
-  scale = Math.max(.55, Math.min(1.75, v));
-  document.documentElement.style.setProperty('--scale', scale);
-  document.getElementById('zoomReset').textContent = Math.round(scale * 100) + '%';
-  updateCanvasBounds();
-  requestAnimationFrame(() => focusNode(selected, 'auto'));
-}
-
-
-
-
-let boundsFrame = 0;
-let autoFitInitial = true;
-
-function notifyBounds(){
-  window.dispatchEvent(new Event('tandara-diagram-bounds'));
-}
-
-function updateCanvasBounds(){
-  cancelAnimationFrame(boundsFrame);
-  boundsFrame = requestAnimationFrame(() => {
-    const wrap = document.getElementById('canvasWrap');
-    const stage = document.getElementById('canvasStage');
-    const tree = document.getElementById('tree');
-    if (!wrap || !stage || !tree) return;
-
-    const naturalWidth = Math.max(1, tree.scrollWidth);
-    const naturalHeight = Math.max(1, tree.scrollHeight);
-    const scaledWidth = Math.ceil(naturalWidth * scale);
-    const scaledHeight = Math.ceil(naturalHeight * scale);
-    const horizontalRoom = Math.max(0, wrap.clientWidth - scaledWidth - 80);
-
-    stage.style.width = Math.max(wrap.clientWidth, scaledWidth + 80) + 'px';
-    stage.style.height = Math.max(wrap.clientHeight, scaledHeight + 100) + 'px';
-    tree.style.left = (20 + Math.floor(horizontalRoom / 2)) + 'px';
-    notifyBounds();
-  });
-}
-
-function fitInitialDiagram(){
-  const wrap = document.getElementById('canvasWrap');
-  const tree = document.getElementById('tree');
-  if (!wrap || !tree) return;
-  const naturalWidth = Math.max(1, tree.scrollWidth);
-  const available = Math.max(320, wrap.clientWidth - 90);
-  scale = Math.max(.75, Math.min(1.75, available / naturalWidth));
-  document.documentElement.style.setProperty('--scale', scale);
-  document.getElementById('zoomReset').textContent = Math.round(scale * 100) + '%';
-  updateCanvasBounds();
-}
-
-function focusNode(id, behavior = 'auto'){
-  const wrap = document.getElementById('canvasWrap');
-  const el = document.querySelector(`.node[data-id="${CSS.escape(id)}"]`);
-  if (!wrap || !el) return;
-  const wrapRect = wrap.getBoundingClientRect();
-  const nodeRect = el.getBoundingClientRect();
-  const targetLeft = wrap.scrollLeft + (nodeRect.left - wrapRect.left) - (wrap.clientWidth - nodeRect.width) / 2;
-  const targetTop = wrap.scrollTop + (nodeRect.top - wrapRect.top) - (wrap.clientHeight - nodeRect.height) / 2;
-  wrap.scrollTo({
-    left:Math.max(0, targetLeft),
-    top:Math.max(0, targetTop),
-    behavior
-  });
-}
-
-function enableCanvasPanning(){
-  const wrap = document.getElementById('canvasWrap');
-  if (!wrap) return;
-  let state = null;
-  let suppressClick = false;
-
-  wrap.addEventListener('pointerdown', event => {
-    if (!event.isPrimary) return;
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
-    if (event.target.closest('input, textarea, select, a')) return;
-    state = {
-      id:event.pointerId,
-      x:event.clientX,
-      y:event.clientY,
-      left:wrap.scrollLeft,
-      top:wrap.scrollTop,
-      dragging:false
-    };
-    try { wrap.setPointerCapture(event.pointerId); } catch (error) {}
-  });
-
-  wrap.addEventListener('pointermove', event => {
-    if (!state || event.pointerId !== state.id) return;
-    const dx = event.clientX - state.x;
-    const dy = event.clientY - state.y;
-    if (!state.dragging && Math.abs(dx) + Math.abs(dy) < 6) return;
-    state.dragging = true;
-    suppressClick = true;
-    wrap.classList.add('dragging');
-    wrap.scrollLeft = state.left - dx;
-    wrap.scrollTop = state.top - dy;
-    if (event.cancelable) event.preventDefault();
-  }, { passive:false });
-
-  function stop(event){
-    if (!state || (event.pointerId != null && event.pointerId !== state.id)) return;
-    try { if (wrap.hasPointerCapture(state.id)) wrap.releasePointerCapture(state.id); } catch (error) {}
-    state = null;
-    wrap.classList.remove('dragging');
-    notifyBounds();
-  }
-
-  wrap.addEventListener('pointerup', stop);
-  wrap.addEventListener('pointercancel', stop);
-  wrap.addEventListener('click', event => {
-    if (!suppressClick) return;
-    suppressClick = false;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-  }, true);
-
-  wrap.addEventListener('keydown', event => {
-    const step = event.shiftKey ? 180 : 70;
-    if (event.key === 'ArrowLeft') wrap.scrollBy({left:-step, behavior:'auto'});
-    else if (event.key === 'ArrowRight') wrap.scrollBy({left:step, behavior:'auto'});
-    else if (event.key === 'ArrowUp') wrap.scrollBy({top:-step, behavior:'auto'});
-    else if (event.key === 'ArrowDown') wrap.scrollBy({top:step, behavior:'auto'});
-    else return;
-    event.preventDefault();
-    notifyBounds();
-  });
-
-  wrap.addEventListener('scroll', notifyBounds, {passive:true});
-  if ('ResizeObserver' in window) new ResizeObserver(() => {
-    if (autoFitInitial) fitInitialDiagram();
-    else updateCanvasBounds();
-  }).observe(wrap);
-  else window.addEventListener('resize', () => autoFitInitial ? fitInitialDiagram() : updateCanvasBounds());
-}
-
-
-function applySearch(){
-  const raw = document.getElementById('search').value.trim();
-  const q = raw.toLocaleLowerCase('en');
-  const matches = [];
-  document.querySelectorAll('.node').forEach(btn => {
-    const n = byId[btn.dataset.id];
-    const txt = [n.id, n.name, ...n.details].join(' ').toLocaleLowerCase('en');
-    const hit = !q || txt.includes(q);
-    btn.style.opacity = hit ? '1' : '.25';
-    btn.style.filter = hit ? 'none' : 'grayscale(.65)';
-    if (q && hit) matches.push(n.id);
-  });
-  const status = document.getElementById('searchStatus');
-  if (!q){ status.textContent = ''; return; }
-  status.textContent = matches.length ? `Found: ${matches.length}` : 'No matching people found.';
-  if (matches.length === 1){
-    openAncestors(matches[0]);
-    selectNode(matches[0]);
-    requestAnimationFrame(() => focusNode(matches[0], 'smooth'));
-  }
-}
-
-document.getElementById('expandAll').onclick = () => setAll(true);
-document.getElementById('collapseAll').onclick = () => setAll(false);
-document.getElementById('zoomIn').onclick = () => setScale(scale + .1);
-document.getElementById('zoomOut').onclick = () => setScale(scale - .1);
-document.getElementById('zoomReset').onclick = () => setScale(1);
-document.getElementById('search').addEventListener('input', applySearch);
-document.getElementById('closePanel').onclick = () => document.getElementById('panel').classList.remove('open');
-document.getElementById('printBtn').onclick = () => window.print();
-
-renderTree();
-setInitialView();
-enableCanvasPanning();
-showPanel(byId[selected]);
-requestAnimationFrame(() => { fitInitialDiagram(); focusNode(selected, 'auto'); });
+function showDetails(n){document.getElementById('detailTitle').textContent=n.label;document.getElementById('detailCode').textContent=UI.code+' '+n.code;document.getElementById('detailSection').textContent=UI.section+': '+n.section;document.getElementById('detailText').textContent=n.detail||UI.no_details;if(n.page){detailPage.href=n.page;detailPage.classList.add('visible')}else{detailPage.removeAttribute('href');detailPage.classList.remove('visible')}details.classList.add('open');}
+function applyTransform(){viewport.setAttribute('transform',`translate(${panX},${panY}) scale(${scale})`);}
+function fitTree(){const r=svg.getBoundingClientRect();if(!r.width||!r.height)return;scale=Math.max(.12,Math.min((r.width-46)/bounds.width,(r.height-46)/bounds.height,1.15));panX=(r.width-bounds.width*scale)/2;panY=(r.height-bounds.height*scale)/2;applyTransform();}
+function zoomAt(factor,cx,cy){const old=scale;scale=Math.max(.12,Math.min(3.2,scale*factor));panX=cx-(cx-panX)*(scale/old);panY=cy-(cy-panY)*(scale/old);applyTransform();}
+function expandAncestors(code){const parts=code.split('.');for(let i=2;i<parts.length;i++){const n=findNode(parts.slice(0,i).join('.'));if(n)n.expanded=true;}}
+function centerNode(code){requestAnimationFrame(()=>{const p=computeLayout().get(code);if(!p)return;const r=svg.getBoundingClientRect();panX=r.width/2-(p.x+BOX_W/2)*scale;panY=r.height/2-(p.y+BOX_H/2)*scale;applyTransform();});}
+function flashStatus(text){statusBox.textContent=text;statusBox.classList.add('show');setTimeout(()=>statusBox.classList.remove('show'),2200);}
+function searchTree(){const input=document.getElementById('search'),q=input.value.trim().toLocaleLowerCase(UI.locale);if(!q)return;let found=null;walk(DATA,n=>{const hay=(n.code+' '+n.label+' '+n.detail+' '+n.section).toLocaleLowerCase(UI.locale);if(!found&&hay.includes(q))found=n});if(!found){flashStatus(UI.not_found+input.value.trim());return;}expandAncestors(found.code);selectedCode=found.code;matchCode=found.code;render();showDetails(found);centerNode(found.code);}
+document.getElementById('expandAll').addEventListener('click',()=>{walk(DATA,n=>n.expanded=true);render();fitTree()});
+document.getElementById('collapse').addEventListener('click',()=>{walk(DATA,n=>n.expanded=false);DATA.expanded=true;render();fitTree()});
+document.getElementById('threeLevels').addEventListener('click',()=>{setExpandedToDepth(3);render();fitTree()});
+document.getElementById('fit').addEventListener('click',fitTree);
+document.getElementById('zoomIn').addEventListener('click',()=>zoomAt(1.22,svg.clientWidth/2,svg.clientHeight/2));
+document.getElementById('zoomOut').addEventListener('click',()=>zoomAt(.82,svg.clientWidth/2,svg.clientHeight/2));
+document.getElementById('findBtn').addEventListener('click',searchTree);
+document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')searchTree()});
+document.getElementById('closeDetails').addEventListener('click',()=>details.classList.remove('open'));
+svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect();zoomAt(e.deltaY<0?1.12:.89,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+svg.addEventListener('pointerdown',e=>{if(e.target.closest&&e.target.closest('.node'))return;dragging=true;svg.classList.add('dragging');svg.setPointerCapture(e.pointerId);dragStart={x:e.clientX,y:e.clientY,panX,panY}});
+svg.addEventListener('pointermove',e=>{if(!dragging)return;panX=dragStart.panX+(e.clientX-dragStart.x);panY=dragStart.panY+(e.clientY-dragStart.y);applyTransform()});
+function endDrag(){dragging=false;svg.classList.remove('dragging')};svg.addEventListener('pointerup',endDrag);svg.addEventListener('pointercancel',endDrag);
+window.addEventListener('resize',fitTree);
+setExpandedToDepth(3);render();requestAnimationFrame(fitTree);
 </script>
 </body>
 </html>
