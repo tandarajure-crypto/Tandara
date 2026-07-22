@@ -101,9 +101,23 @@
 
 
 
+
+.branch-card { container-type:inline-size; }
+
+/* Dijagram se izvlači iz tekstnog bloka širine 760 px i zauzima cijelu
+   stvarnu unutarnju širinu pozadinske kartice. Točnu širinu dodatno
+   postavlja JavaScript prema izračunatom paddingu kartice. */
+.filip-diagram-section {
+  width:calc(100cqw - 96px);
+  max-width:none;
+  margin:42px 0 0 50%;
+  transform:translateX(-50%);
+  box-sizing:border-box;
+}
+
 .diagram-shell {
   width:100%;
-  margin:34px 0 0;
+  margin:0;
   border:1px solid #c9b99f;
   border-radius:12px;
   background:#fffdf8;
@@ -140,7 +154,6 @@
   text-decoration:none;
   box-sizing:border-box;
 }
-
 .diagram-home-link:hover,
 .diagram-home-link:focus-visible { background:#f5ecdf; }
 
@@ -159,7 +172,6 @@
   align-items:center;
   gap:10px;
 }
-
 .diagram-language-flags a { display:block; line-height:0; }
 .diagram-language-flags img {
   display:block;
@@ -214,44 +226,27 @@
 .diagram-control-button:focus-visible { background:#f5ecdf; }
 .diagram-fullscreen-button { min-width:auto; }
 
-/* Vanjski okvir je jedini pomični prozor. */
+/* Vanjska stranica više nije drugi pomični okvir. Jedini pomični prozor
+   nalazi se u samoj datoteci dijagrama unutar iframea. */
 .diagram-scroll {
   position:relative;
   width:100%;
-  max-width:100%;
-  height:clamp(560px, 74vh, 900px);
+  height:clamp(620px, 76vh, 900px);
   margin:0;
-  overflow:auto;
-  overscroll-behavior:contain;
-  scrollbar-gutter:stable both-edges;
-  touch-action:none;
-  cursor:grab;
+  overflow:hidden;
   background:#fffdf8;
-  -webkit-overflow-scrolling:touch;
 }
-.diagram-scroll.is-dragging {
-  cursor:grabbing;
-  user-select:none;
-  -webkit-user-select:none;
-}
-
 .diagram-canvas {
-  position:relative;
   width:100%;
-  min-width:100%;
-  min-height:100%;
+  height:100%;
   margin:0;
 }
-
 .diagram-frame {
   display:block;
   width:100%;
-  min-width:100%;
   height:100%;
-  min-height:100%;
   border:0;
   background:#fffdf8;
-  transform:none !important;
 }
 
 .diagram-sliders {
@@ -266,7 +261,7 @@
 }
 .diagram-slider-label {
   display:grid;
-  grid-template-columns:auto minmax(120px, 1fr);
+  grid-template-columns:auto minmax(120px,1fr);
   align-items:center;
   gap:10px;
   color:#6b3d1f;
@@ -289,13 +284,14 @@ body.diagram-page-locked { overflow:hidden !important; }
   z-index:2147483000;
   display:flex;
   flex-direction:column;
-  width:100vw;
+  width:100vw !important;
   height:100vh;
   max-width:none;
   margin:0;
   border:0;
   border-radius:0;
   background:#fffdf8;
+  transform:none !important;
 }
 .diagram-shell.diagram-maximized .diagram-header,
 .diagram-shell.diagram-maximized .diagram-help,
@@ -307,14 +303,17 @@ body.diagram-page-locked { overflow:hidden !important; }
   min-height:0;
 }
 
-@media (max-width:700px) {
+@media (max-width:800px) {
+  .filip-diagram-section {
+    width:calc(100cqw - 32px);
+  }
   .diagram-header { grid-template-columns:1fr auto; gap:10px; }
   .diagram-home-link { grid-column:1; grid-row:1; }
   .diagram-language-flags { grid-column:2; grid-row:1; }
   .diagram-header h2 { grid-column:1 / -1; grid-row:2; }
   .diagram-control-button { min-height:42px; }
   .diagram-sliders { grid-template-columns:1fr; }
-  .diagram-scroll { height:70vh; min-height:480px; }
+  .diagram-scroll { height:72vh; min-height:520px; }
 }
 
 </style>
@@ -736,9 +735,8 @@ Kako bi se ta pretpostavka mogla dokazati, bit će potrebno provesti DNA analizu
             <div class="diagram-canvas">
               <iframe
                 class="diagram-frame"
-                src="filipova-loza-interaktivni-dijagram.html?v=8"
+                src="filipova-loza-interaktivni-dijagram.html?embed=1&amp;v=10"
                 title="Interaktivni rodoslovni dijagram Filipove loze"
-                loading="lazy"
                 scrolling="no">
               </iframe>
             </div>
@@ -763,189 +761,90 @@ Kako bi se ta pretpostavka mogla dokazati, bit će potrebno provesti DNA analizu
 </main>
 </div>
 
+
 <script>
 (function() {
   'use strict';
 
+  var section = document.querySelector('.filip-diagram-section');
   var shell = document.querySelector('.diagram-shell');
-  var viewport = shell && shell.querySelector('.diagram-scroll');
-  var canvas = shell && shell.querySelector('.diagram-canvas');
   var iframe = shell && shell.querySelector('.diagram-frame');
-  if (!shell || !viewport || !canvas || !iframe) return;
-
-  var fullscreenButton = shell.querySelector('[data-diagram-action="fullscreen"]');
-  var sliderX = shell.querySelector('[data-diagram-slider="x"]');
-  var sliderY = shell.querySelector('[data-diagram-slider="y"]');
-  var step = 280;
-  var childDocument = null;
-  var childWindow = null;
+  var sliderX = shell && shell.querySelector('[data-diagram-slider="x"]');
+  var sliderY = shell && shell.querySelector('[data-diagram-slider="y"]');
+  var fullscreenButton = shell && shell.querySelector('[data-diagram-action="fullscreen"]');
+  var card = section && section.closest('.branch-card');
+  var childWrap = null;
+  var childStage = null;
   var childResizeObserver = null;
-  var childMutationObserver = null;
-  var frameInitializedDocument = null;
-  var updateScheduled = false;
-  var sizeScheduled = false;
-  var drag = null;
-  var suppressNextClick = false;
+  var step = 260;
 
-  function getChildDocument() {
-    try { return iframe.contentDocument || iframe.contentWindow.document || null; }
-    catch (error) { return null; }
+  if (!section || !shell || !iframe) return;
+
+  function setSectionWidth() {
+    if (!card) return;
+    var style = window.getComputedStyle(card);
+    var left = parseFloat(style.paddingLeft) || 0;
+    var right = parseFloat(style.paddingRight) || 0;
+    var width = Math.max(300, card.clientWidth - left - right);
+    section.style.width = width + 'px';
   }
 
-  function scheduleUpdate() {
-    if (updateScheduled) return;
-    updateScheduled = true;
-    window.requestAnimationFrame(function() {
-      updateScheduled = false;
-      updateSliders();
-    });
+  function getChildParts() {
+    try {
+      var doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (!doc) return false;
+      childWrap = doc.getElementById('canvasWrap');
+      childStage = doc.getElementById('canvasStage') || doc.getElementById('tree');
+      return !!childWrap;
+    } catch (error) {
+      childWrap = null;
+      childStage = null;
+      return false;
+    }
   }
 
-  function updateSliders() {
-    var maxX = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-    var maxY = Math.max(0, viewport.scrollHeight - viewport.clientHeight);
-
+  function updateControls() {
+    if (!childWrap) return;
+    var maxX = Math.max(0, childWrap.scrollWidth - childWrap.clientWidth);
+    var maxY = Math.max(0, childWrap.scrollHeight - childWrap.clientHeight);
     if (sliderX) {
       sliderX.max = String(Math.ceil(maxX));
-      sliderX.value = String(Math.min(Math.ceil(viewport.scrollLeft), Math.ceil(maxX)));
+      sliderX.value = String(Math.min(Math.ceil(childWrap.scrollLeft), Math.ceil(maxX)));
       sliderX.disabled = maxX < 1;
     }
     if (sliderY) {
       sliderY.max = String(Math.ceil(maxY));
-      sliderY.value = String(Math.min(Math.ceil(viewport.scrollTop), Math.ceil(maxY)));
+      sliderY.value = String(Math.min(Math.ceil(childWrap.scrollTop), Math.ceil(maxY)));
       sliderY.disabled = maxY < 1;
     }
   }
 
-  function stretchInitialDiagram(doc) {
-    if (!doc || !doc.body || !childWindow) return;
-    var viewportWidth = Math.max(320, viewport.clientWidth - 2);
-    var candidates = [];
-    Array.prototype.forEach.call(doc.body.children, function(el) {
-      if (!/^(SCRIPT|STYLE|LINK|META)$/i.test(el.tagName)) candidates.push(el);
-    });
-    ['#tree','#family-tree','#diagram','.tree','.family-tree','.genealogy-tree','.tree-container','.diagram','.diagram-container','.chart','.chart-container','main'].forEach(function(selector) {
-      try {
-        Array.prototype.forEach.call(doc.querySelectorAll(selector), function(el) {
-          if (candidates.indexOf(el) === -1) candidates.push(el);
-        });
-      } catch (error) {}
-    });
-
-    candidates.forEach(function(el) {
-      if (!el || !el.getBoundingClientRect) return;
-      var rect = el.getBoundingClientRect();
-      if (rect.width < 40 || rect.height < 20) return;
-      var computed = childWindow.getComputedStyle(el);
-      var transform = computed.transform || '';
-      var match = transform.match(/^matrix\(([-0-9.]+),\s*([-0-9.]+),\s*([-0-9.]+),\s*([-0-9.]+),/);
-      if (match) {
-        var scaleX = Math.sqrt(Number(match[1]) * Number(match[1]) + Number(match[2]) * Number(match[2]));
-        var scaleY = Math.sqrt(Number(match[3]) * Number(match[3]) + Number(match[4]) * Number(match[4]));
-        if (scaleX > 0 && scaleY > 0 && (scaleX < 0.90 || scaleY < 0.90)) {
-          el.style.setProperty('transform', 'none', 'important');
-          el.style.setProperty('zoom', '1', 'important');
-        }
-      }
-      rect = el.getBoundingClientRect();
-      if (rect.width < viewportWidth * 0.90) {
-        el.style.setProperty('width', '100%', 'important');
-        el.style.setProperty('min-width', '100%', 'important');
-        el.style.setProperty('max-width', 'none', 'important');
-        el.style.setProperty('margin-left', '0', 'important');
-        el.style.setProperty('margin-right', '0', 'important');
-        el.style.setProperty('box-sizing', 'border-box', 'important');
-      } else {
-        el.style.setProperty('min-width', '100%', 'important');
-        el.style.setProperty('max-width', 'none', 'important');
-      }
-    });
-  }
-
-  function injectFrameSupport() {
-    var doc = getChildDocument();
-    if (!doc || !doc.head || !doc.body) return false;
-    childDocument = doc;
-    childWindow = iframe.contentWindow;
-
-    if (!doc.getElementById('tandara-parent-frame-support-v2')) {
-      var style = doc.createElement('style');
-      style.id = 'tandara-parent-frame-support-v2';
-      style.textContent = [
-        'html, body { margin:0 !important; padding:0 !important; min-width:100% !important; width:100% !important; max-width:none !important; overflow:visible !important; box-sizing:border-box !important; }',
-        'body { min-height:100% !important; }',
-        'html, body, body * { touch-action:none !important; }',
-        'body > div, body > main, body > section { min-width:100% !important; max-width:none !important; box-sizing:border-box !important; }',
-        'html { scroll-behavior:auto !important; }',
-        'body.tandara-dragging, body.tandara-dragging * { cursor:grabbing !important; user-select:none !important; -webkit-user-select:none !important; }'
-      ].join('\n');
-      doc.head.appendChild(style);
+  function connectFrame() {
+    if (!getChildParts()) return;
+    if (childResizeObserver) childResizeObserver.disconnect();
+    childWrap.addEventListener('scroll', updateControls, { passive:true });
+    if ('ResizeObserver' in window) {
+      childResizeObserver = new ResizeObserver(updateControls);
+      childResizeObserver.observe(childWrap);
+      if (childStage) childResizeObserver.observe(childStage);
     }
-
-    stretchInitialDiagram(doc);
-    return true;
-  }
-
-  function measureContent() {
-    if (!childDocument || !childDocument.body) return;
-    stretchInitialDiagram(childDocument);
-
-    var docEl = childDocument.documentElement;
-    var body = childDocument.body;
-    var baseWidth = Math.max(320, viewport.clientWidth - 2);
-    var baseHeight = Math.max(480, viewport.clientHeight - 2);
-
-    /* Iframe počinje punom širinom okvira i nakon proširenja smije samo rasti. */
-    var currentWidth = Math.max(baseWidth, Math.ceil(iframe.getBoundingClientRect().width || 0));
-    iframe.style.width = currentWidth + 'px';
-    canvas.style.width = currentWidth + 'px';
-
-    window.requestAnimationFrame(function() {
-      if (!childDocument || !childDocument.body) return;
-      var contentWidth = Math.max(
-        baseWidth,
-        currentWidth,
-        docEl.scrollWidth || 0,
-        body.scrollWidth || 0,
-        docEl.offsetWidth || 0,
-        body.offsetWidth || 0
-      );
-      var contentHeight = Math.max(
-        baseHeight,
-        docEl.scrollHeight || 0,
-        body.scrollHeight || 0,
-        docEl.offsetHeight || 0,
-        body.offsetHeight || 0
-      );
-
-      iframe.style.width = Math.ceil(contentWidth) + 'px';
-      iframe.style.height = Math.ceil(contentHeight) + 'px';
-      canvas.style.width = Math.ceil(contentWidth) + 'px';
-      canvas.style.height = Math.ceil(contentHeight) + 'px';
-      scheduleUpdate();
-    });
-  }
-
-  function scheduleMeasure() {
-    if (sizeScheduled) return;
-    sizeScheduled = true;
-    window.requestAnimationFrame(function() {
-      sizeScheduled = false;
-      measureContent();
-    });
+    var childWindow = iframe.contentWindow;
+    if (childWindow) childWindow.addEventListener('tandara-diagram-bounds', updateControls);
+    updateControls();
+    window.setTimeout(updateControls, 100);
+    window.setTimeout(updateControls, 500);
   }
 
   function scrollDiagram(dx, dy) {
-    viewport.scrollBy({ left:dx, top:dy, behavior:'smooth' });
-    window.setTimeout(updateSliders, 220);
+    if (!childWrap && !getChildParts()) return;
+    childWrap.scrollBy({ left:dx, top:dy, behavior:'auto' });
+    updateControls();
   }
 
   function resetDiagram() {
-    viewport.scrollTo({ left:0, top:0, behavior:'smooth' });
-    window.setTimeout(function() {
-      scheduleMeasure();
-      updateSliders();
-    }, 220);
+    if (!childWrap && !getChildParts()) return;
+    childWrap.scrollTo({ left:0, top:0, behavior:'auto' });
+    updateControls();
   }
 
   function setMaximized(active) {
@@ -956,66 +855,10 @@ Kako bi se ta pretpostavka mogla dokazati, bit će potrebno provesti DNA analizu
       fullscreenButton.textContent = active ? 'Zatvori cijeli zaslon' : 'Prikaži preko cijelog zaslona';
       fullscreenButton.setAttribute('aria-pressed', active ? 'true' : 'false');
     }
-    window.setTimeout(scheduleMeasure, 80);
-  }
-
-  function beginDrag(event) {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
-    if (event.target && event.target.closest && event.target.closest('input, select, textarea')) return;
-    drag = {
-      pointerId:event.pointerId,
-      x:event.clientX,
-      y:event.clientY,
-      left:viewport.scrollLeft,
-      top:viewport.scrollTop,
-      moved:false,
-      captureTarget:event.target
-    };
-    suppressNextClick = false;
-    try {
-      if (event.target && event.target.setPointerCapture) event.target.setPointerCapture(event.pointerId);
-    } catch (error) {}
-  }
-
-  function moveDrag(event) {
-    if (!drag || event.pointerId !== drag.pointerId) return;
-    var dx = event.clientX - drag.x;
-    var dy = event.clientY - drag.y;
-    if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 5) return;
-    drag.moved = true;
-    suppressNextClick = true;
-    viewport.classList.add('is-dragging');
-    if (childDocument && childDocument.body) childDocument.body.classList.add('tandara-dragging');
-    viewport.scrollLeft = drag.left - dx;
-    viewport.scrollTop = drag.top - dy;
-    if (event.cancelable) event.preventDefault();
-    scheduleUpdate();
-  }
-
-  function endDrag(event) {
-    if (!drag || (event.pointerId != null && event.pointerId !== drag.pointerId)) return;
-    try {
-      if (drag.captureTarget && drag.captureTarget.releasePointerCapture) drag.captureTarget.releasePointerCapture(drag.pointerId);
-    } catch (error) {}
-    drag = null;
-    viewport.classList.remove('is-dragging');
-    if (childDocument && childDocument.body) childDocument.body.classList.remove('tandara-dragging');
-    scheduleUpdate();
-  }
-
-  function bindDragSurface(target) {
-    if (!target || target.__tandaraDragBound) return;
-    target.__tandaraDragBound = true;
-    target.addEventListener('pointerdown', beginDrag, true);
-    target.addEventListener('pointermove', moveDrag, { capture:true, passive:false });
-    target.addEventListener('pointerup', endDrag, true);
-    target.addEventListener('pointercancel', endDrag, true);
-    target.addEventListener('click', function(event) {
-      if (!suppressNextClick) return;
-      suppressNextClick = false;
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }, true);
+    window.setTimeout(function() {
+      if (iframe.contentWindow) iframe.contentWindow.dispatchEvent(new Event('resize'));
+      updateControls();
+    }, 80);
   }
 
   shell.addEventListener('click', function(event) {
@@ -1031,72 +874,33 @@ Kako bi se ta pretpostavka mogla dokazati, bit će potrebno provesti DNA analizu
   });
 
   if (sliderX) sliderX.addEventListener('input', function() {
-    viewport.scrollLeft = Number(sliderX.value) || 0;
-    updateSliders();
+    if (!childWrap && !getChildParts()) return;
+    childWrap.scrollLeft = Number(sliderX.value) || 0;
+    updateControls();
   });
   if (sliderY) sliderY.addEventListener('input', function() {
-    viewport.scrollTop = Number(sliderY.value) || 0;
-    updateSliders();
+    if (!childWrap && !getChildParts()) return;
+    childWrap.scrollTop = Number(sliderY.value) || 0;
+    updateControls();
   });
-
-  viewport.addEventListener('scroll', scheduleUpdate, { passive:true });
-  bindDragSurface(viewport);
 
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape' && shell.classList.contains('diagram-maximized')) setMaximized(false);
   });
 
-  function initializeFrame() {
-    var currentDocument = getChildDocument();
-    if (!currentDocument || frameInitializedDocument === currentDocument) return;
-    if (childResizeObserver) childResizeObserver.disconnect();
-    if (childMutationObserver) childMutationObserver.disconnect();
-    if (!injectFrameSupport()) return;
-    frameInitializedDocument = currentDocument;
+  iframe.addEventListener('load', connectFrame);
+  window.addEventListener('resize', function() {
+    setSectionWidth();
+    window.setTimeout(updateControls, 40);
+  });
+  if ('ResizeObserver' in window && card) new ResizeObserver(setSectionWidth).observe(card);
 
-    bindDragSurface(childDocument);
-    if (childWindow) {
-      childWindow.addEventListener('pointermove', moveDrag, { capture:true, passive:false });
-      childWindow.addEventListener('pointerup', endDrag, true);
-      childWindow.addEventListener('pointercancel', endDrag, true);
-      childWindow.addEventListener('wheel', function(event) {
-        if (!event.cancelable) return;
-        viewport.scrollLeft += event.deltaX;
-        viewport.scrollTop += event.deltaY;
-        event.preventDefault();
-        scheduleUpdate();
-      }, { passive:false, capture:true });
-    }
-
-    childDocument.addEventListener('click', function() {
-      window.setTimeout(scheduleMeasure, 30);
-      window.setTimeout(scheduleMeasure, 180);
-      window.setTimeout(scheduleMeasure, 500);
-    }, true);
-
-    if ('ResizeObserver' in window) {
-      childResizeObserver = new ResizeObserver(scheduleMeasure);
-      childResizeObserver.observe(childDocument.documentElement);
-      if (childDocument.body) childResizeObserver.observe(childDocument.body);
-    }
-    childMutationObserver = new MutationObserver(scheduleMeasure);
-    childMutationObserver.observe(childDocument.documentElement, {
-      childList:true, subtree:true, attributes:true, characterData:true
-    });
-
-    scheduleMeasure();
-    window.setTimeout(scheduleMeasure, 120);
-    window.setTimeout(scheduleMeasure, 500);
-  }
-
-  iframe.setAttribute('scrolling', 'no');
-  iframe.addEventListener('load', initializeFrame);
+  setSectionWidth();
   try {
-    if (iframe.contentDocument && iframe.contentDocument.readyState !== 'loading') initializeFrame();
+    if (iframe.contentDocument && iframe.contentDocument.readyState !== 'loading') connectFrame();
   } catch (error) {}
-
-  window.addEventListener('resize', scheduleMeasure);
 })();
 </script>
+
 </body>
 </html>

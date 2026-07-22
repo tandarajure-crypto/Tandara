@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Filip’s line — interactive family tree</title>
 <meta name="description" content="Interactive clickable family tree of Filip’s Livno branch of the Tandara family.">
+<script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('embedded');</script>
 <style>
 :root{
   --bg:#f3efe6;--paper:#fffdf8;--ink:#2b2925;--muted:#6f685f;--line:#9f8f79;
@@ -17,6 +18,14 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,253,248,.94);backdro
 .header-row{max-width:1500px;margin:auto;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .brand h1{font-size:clamp(1.1rem,2.2vw,1.75rem);margin:0;color:#5b2323}.brand p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
 .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.diagram-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;border:1px solid #cbbca8;background:#fffaf1;color:#3b342d;border-radius:9px;padding:6px 10px;text-decoration:none;box-shadow:0 2px 5px rgba(0,0,0,.05);font:700 13px Arial,sans-serif}
+.nav-link:hover,.nav-link:focus{background:#f3e7d6;outline:2px solid rgba(123,47,47,.18);outline-offset:1px}
+.nav-home{font-size:20px;line-height:1;padding:5px 10px}
+.nav-flag{padding:4px 6px;min-width:44px}
+.nav-flag img{display:block;width:34px;height:22px;object-fit:cover;border-radius:3px}
+.nav-flag.active{border:2px solid var(--accent);background:#f7ead7}
+.pan-hint{display:block;margin-top:5px;font:12px Arial,sans-serif;color:#746b60}
 button{font:inherit}
 .tool{border:1px solid #cbbca8;background:#fffaf1;color:#3b342d;border-radius:9px;padding:8px 11px;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.05)}
 .tool:hover{background:#f3e7d6}
@@ -24,8 +33,11 @@ main{max-width:1800px;margin:auto;padding:18px}
 .intro{background:rgba(255,253,248,.88);border:1px solid #d8ccba;border-left:5px solid var(--accent2);border-radius:12px;padding:13px 16px;margin-bottom:14px;box-shadow:var(--shadow)}
 .intro strong{color:#5b2323}.intro span{color:var(--muted)}
 .workspace{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
-.canvas-wrap{background:rgba(255,253,248,.78);border:1px solid #d8ccba;border-radius:14px;min-height:72vh;overflow:auto;box-shadow:var(--shadow);padding:28px;position:relative}
-.canvas{transform:scale(var(--scale));transform-origin:top left;width:max-content;min-width:100%;padding:10px 30px 50px 10px}
+
+.canvas-wrap:focus{outline:3px solid rgba(123,47,47,.2);outline-offset:2px}
+.canvas-wrap.dragging{cursor:grabbing;user-select:none}
+
+
 .branch{display:flex;align-items:center;position:relative;min-height:88px}
 .branch>.node-wrap{position:relative;flex:0 0 var(--node-w)}
 .children{display:flex;flex-direction:column;gap:var(--gap-y);margin-left:var(--gap-x);position:relative;padding:5px 0}
@@ -41,20 +53,111 @@ main{max-width:1800px;margin:auto;padding:18px}
 .node-code{font:700 .74rem/1.1 Arial,sans-serif;color:var(--accent);letter-spacing:.03em}.node-name{font-weight:700;font-size:1rem;line-height:1.18;margin-top:4px}.node-hint{font:italic .74rem/1.2 Arial,sans-serif;color:#756955;margin-top:5px}
 .toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:25px;height:25px;border-radius:50%;border:1px solid #b9a789;background:#fff8eb;color:#653434;cursor:pointer;font:700 17px/22px Arial,sans-serif;padding:0;text-align:center}.toggle:hover{background:#ecdcc2}.leaf .toggle{display:none}
 .children.collapsed{display:none}.branch.collapsed-branch>.node-wrap:after{content:"";position:absolute;right:-12px;top:50%;width:12px;border-top:2px dotted var(--line)}
-.panel{position:sticky;top:92px;background:var(--paper);border:1px solid #d8ccba;border-radius:14px;box-shadow:var(--shadow);padding:18px;max-height:calc(100vh - 112px);overflow:auto}
+.panel{position:sticky;top:104px;background:var(--paper);border:1px solid #d8ccba;border-radius:14px;box-shadow:var(--shadow);padding:18px;height:calc(100vh - 190px);min-height:520px;max-height:900px;overflow:auto;scrollbar-gutter:stable}
 .panel.empty{color:var(--muted);font-style:italic}.panel h2{font-size:1.35rem;color:#5b2323;margin:0 0 6px}.panel .code{font:700 .82rem Arial,sans-serif;color:var(--accent);margin-bottom:6px}.panel p{line-height:1.56;margin:0 0 12px}.panel .close{display:none}
 .legend{font:12px Arial,sans-serif;color:#746b60;margin-top:10px}
 .search{min-width:230px;border:1px solid #cbbca8;border-radius:9px;padding:8px 10px;background:#fffdf8;font:14px Arial,sans-serif}
 .search:focus{outline:2px solid rgba(123,47,47,.18);border-color:var(--accent)}
 .search-status{font:12px Arial,sans-serif;color:#746b60;margin-top:8px;min-height:16px}
-@media(max-width:1000px){.workspace{grid-template-columns:1fr}.panel{position:fixed;z-index:50;left:12px;right:12px;bottom:12px;top:auto;max-height:58vh;display:none}.panel.open{display:block}.panel .close{display:block;position:absolute;right:10px;top:10px;border:0;background:#eee2d0;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:18px}.canvas-wrap{min-height:75vh}.search{min-width:180px}}
+@media(max-width:1000px){.workspace{grid-template-columns:1fr}.panel{position:fixed;z-index:50;left:12px;right:12px;bottom:12px;top:auto;width:auto;height:auto;min-height:0;max-height:62vh;display:none}.panel.open{display:block}.panel .close{display:block;position:absolute;right:10px;top:10px;border:0;background:#eee2d0;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:18px}.canvas-wrap{height:72vh;min-height:500px;max-height:none}.search{min-width:180px}}
 @media(max-width:600px){header{padding:10px}.brand p{display:none}main{padding:10px}.canvas-wrap{padding:18px}.tool{padding:7px 9px}.search{width:100%;order:3}.controls{width:100%}:root{--node-w:205px;--gap-x:45px}}
 @media print{header,.intro,.panel{display:none!important}.workspace{display:block}.canvas-wrap{overflow:visible;border:0;box-shadow:none}.canvas{transform:none!important}.node{break-inside:avoid}}
+
+
+/* Jedini pomični prozor dijagrama. Nema vanjskog i unutarnjeg skrolanja u isto vrijeme. */
+.canvas-wrap {
+  height:calc(100vh - 190px);
+  min-height:520px;
+  max-height:900px;
+  overflow:scroll;
+  scrollbar-gutter:stable both-edges;
+  overscroll-behavior:contain;
+  scroll-behavior:auto;
+  touch-action:none;
+  cursor:grab;
+  -webkit-overflow-scrolling:touch;
+}
+.canvas-wrap.dragging {
+  cursor:grabbing;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.canvas-stage {
+  position:relative;
+  min-width:100%;
+  min-height:100%;
+}
+.canvas {
+  position:absolute;
+  left:20px;
+  top:0;
+  width:max-content;
+  min-width:max-content;
+  transform:scale(var(--scale));
+  transform-origin:top left;
+  padding:10px 30px 70px 10px;
+}
+
+html.embedded,
+html.embedded body {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+html.embedded body { background:#fffdf8; }
+html.embedded header,
+html.embedded .intro { display:none !important; }
+html.embedded main {
+  width:100%;
+  max-width:none;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+html.embedded .workspace {
+  position:relative;
+  display:block;
+  width:100%;
+  height:100%;
+}
+html.embedded .canvas-wrap {
+  width:100%;
+  height:100%;
+  min-height:0;
+  max-height:none;
+  padding:28px;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+}
+html.embedded .panel {
+  position:absolute;
+  z-index:60;
+  left:14px;
+  right:14px;
+  bottom:14px;
+  top:auto;
+  width:auto;
+  height:auto;
+  min-height:0;
+  max-height:min(42vh, 380px);
+  display:none;
+  overflow:auto;
+}
+html.embedded .panel.open { display:block; }
+html.embedded .panel .close { display:block; }
+
 </style>
 </head>
 <body>
 <header>
   <div class="header-row">
+    <nav class="diagram-nav" aria-label="Diagram navigation">
+      <a class="nav-link" href="filipovagrana-en.html" title="Return to the Filip branch page">← Page</a>
+      <a class="nav-link nav-home" href="index-en.html" title="Home page" aria-label="Home page">⌂</a>
+      <a class="nav-link nav-flag" href="filipova-loza-interaktivni-dijagram.html" title="Hrvatski dijagram" aria-label="Hrvatski dijagram"><img src="flag-hr.png" alt="HR"></a>
+      <a class="nav-link nav-flag active" href="filipova-loza-interaktivni-dijagram-en.html" title="English diagram" aria-label="English diagram"><img src="flag-uk.png" alt="EN"></a>
+    </nav>
     <div class="brand"><h1>Filip’s line — interactive family tree</h1><p>Click a person to view details. Use +/− to open or close descendants.</p></div>
     <div class="controls">
       <input class="search" id="search" type="search" placeholder="Search by name or number…" aria-label="Search by name or number">
@@ -68,10 +171,10 @@ main{max-width:1800px;margin:auto;padding:18px}
   </div>
 </header>
 <main>
-  <div class="intro"><strong>The fifth branch of the Tandara family — Filip’s Livno line</strong><br><span>The diagram includes all people and family relationships listed in the source text.</span></div>
+  <div class="intro"><strong>The fifth branch of the Tandara family — Filip’s Livno line</strong><br><span>The diagram includes all people and family relationships listed in the source text.</span><span class="pan-hint">Move the diagram by dragging with the mouse, swiping, or using the scroll bars. The selected person is automatically brought into view.</span></div>
   <div class="workspace">
-    <section class="canvas-wrap" id="canvasWrap" aria-label="Interactive family tree of Filip’s branch">
-      <div class="canvas" id="tree"></div>
+    <section class="canvas-wrap" id="canvasWrap" tabindex="0" aria-label="Interactive family tree of Filip's branch; scrollable horizontally and vertically">
+      <div class="canvas-stage" id="canvasStage"><div class="canvas" id="tree"></div></div>
     </section>
     <aside class="panel" id="panel"><button class="close" id="closePanel" type="button" aria-label="Close">×</button><div id="panelContent"></div><div class="search-status" id="searchStatus"></div></aside>
   </div>
@@ -127,26 +230,32 @@ function renderTree(){
   tree.innerHTML = '';
   (children.root || []).forEach(n => tree.appendChild(renderNode(n)));
   applySearch();
+  updateCanvasBounds();
 }
 
 function toggleBranch(branch, tog){
+  autoFitInitial = false;
   const c = branch.querySelector(':scope > .children');
   if (!c) return;
   const closed = c.classList.toggle('collapsed');
   branch.classList.toggle('collapsed-branch', closed);
   tog.textContent = closed ? '+' : '−';
+  updateCanvasBounds();
+  if (!closed) requestAnimationFrame(() => focusNode(branch.dataset.id, 'smooth'));
 }
 
 function selectNode(id){
   selected = id;
   document.querySelectorAll('.node').forEach(x => x.classList.toggle('selected', x.dataset.id === id));
   showPanel(byId[id]);
+  requestAnimationFrame(() => focusNode(id, 'smooth'));
 }
 
 function showPanel(n){
   const p = document.getElementById('panel');
   const c = document.getElementById('panelContent');
   p.classList.add('open');
+  p.scrollTop = 0;
   const paras = n.details.map(x => `<p>${x}</p>`).join('');
   c.innerHTML = `<div class="code">${n.id}</div><h2>${n.name}</h2>${paras}<div class="legend">Click another box to view a different person.</div>`;
 }
@@ -160,10 +269,11 @@ function setInitialView(){
     c.classList.add('collapsed');
     b.classList.add('collapsed-branch');
     tog.textContent = '+';
-  });
+  });  updateCanvasBounds();
 }
 
 function setAll(open){
+  autoFitInitial = false;
   document.querySelectorAll('.branch').forEach(b => {
     const c = b.querySelector(':scope > .children');
     const tog = b.querySelector(':scope > .node-wrap > .toggle');
@@ -172,6 +282,8 @@ function setAll(open){
     b.classList.toggle('collapsed-branch', !open);
     tog.textContent = open ? '−' : '+';
   });
+  updateCanvasBounds();
+  requestAnimationFrame(() => focusNode(selected, 'smooth'));
 }
 
 function openAncestors(id){
@@ -186,14 +298,146 @@ function openAncestors(id){
       if (tog) tog.textContent = '−';
     }
     n = byId[n.parent];
-  }
+  }  updateCanvasBounds();
 }
 
 function setScale(v){
-  scale = Math.max(.55, Math.min(1.45, v));
+  autoFitInitial = false;
+  scale = Math.max(.55, Math.min(1.75, v));
   document.documentElement.style.setProperty('--scale', scale);
   document.getElementById('zoomReset').textContent = Math.round(scale * 100) + '%';
+  updateCanvasBounds();
+  requestAnimationFrame(() => focusNode(selected, 'auto'));
 }
+
+
+
+
+let boundsFrame = 0;
+let autoFitInitial = true;
+
+function notifyBounds(){
+  window.dispatchEvent(new Event('tandara-diagram-bounds'));
+}
+
+function updateCanvasBounds(){
+  cancelAnimationFrame(boundsFrame);
+  boundsFrame = requestAnimationFrame(() => {
+    const wrap = document.getElementById('canvasWrap');
+    const stage = document.getElementById('canvasStage');
+    const tree = document.getElementById('tree');
+    if (!wrap || !stage || !tree) return;
+
+    const naturalWidth = Math.max(1, tree.scrollWidth);
+    const naturalHeight = Math.max(1, tree.scrollHeight);
+    const scaledWidth = Math.ceil(naturalWidth * scale);
+    const scaledHeight = Math.ceil(naturalHeight * scale);
+    const horizontalRoom = Math.max(0, wrap.clientWidth - scaledWidth - 80);
+
+    stage.style.width = Math.max(wrap.clientWidth, scaledWidth + 80) + 'px';
+    stage.style.height = Math.max(wrap.clientHeight, scaledHeight + 100) + 'px';
+    tree.style.left = (20 + Math.floor(horizontalRoom / 2)) + 'px';
+    notifyBounds();
+  });
+}
+
+function fitInitialDiagram(){
+  const wrap = document.getElementById('canvasWrap');
+  const tree = document.getElementById('tree');
+  if (!wrap || !tree) return;
+  const naturalWidth = Math.max(1, tree.scrollWidth);
+  const available = Math.max(320, wrap.clientWidth - 90);
+  scale = Math.max(.75, Math.min(1.75, available / naturalWidth));
+  document.documentElement.style.setProperty('--scale', scale);
+  document.getElementById('zoomReset').textContent = Math.round(scale * 100) + '%';
+  updateCanvasBounds();
+}
+
+function focusNode(id, behavior = 'auto'){
+  const wrap = document.getElementById('canvasWrap');
+  const el = document.querySelector(`.node[data-id="${CSS.escape(id)}"]`);
+  if (!wrap || !el) return;
+  const wrapRect = wrap.getBoundingClientRect();
+  const nodeRect = el.getBoundingClientRect();
+  const targetLeft = wrap.scrollLeft + (nodeRect.left - wrapRect.left) - (wrap.clientWidth - nodeRect.width) / 2;
+  const targetTop = wrap.scrollTop + (nodeRect.top - wrapRect.top) - (wrap.clientHeight - nodeRect.height) / 2;
+  wrap.scrollTo({
+    left:Math.max(0, targetLeft),
+    top:Math.max(0, targetTop),
+    behavior
+  });
+}
+
+function enableCanvasPanning(){
+  const wrap = document.getElementById('canvasWrap');
+  if (!wrap) return;
+  let state = null;
+  let suppressClick = false;
+
+  wrap.addEventListener('pointerdown', event => {
+    if (!event.isPrimary) return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (event.target.closest('input, textarea, select, a')) return;
+    state = {
+      id:event.pointerId,
+      x:event.clientX,
+      y:event.clientY,
+      left:wrap.scrollLeft,
+      top:wrap.scrollTop,
+      dragging:false
+    };
+    try { wrap.setPointerCapture(event.pointerId); } catch (error) {}
+  });
+
+  wrap.addEventListener('pointermove', event => {
+    if (!state || event.pointerId !== state.id) return;
+    const dx = event.clientX - state.x;
+    const dy = event.clientY - state.y;
+    if (!state.dragging && Math.abs(dx) + Math.abs(dy) < 6) return;
+    state.dragging = true;
+    suppressClick = true;
+    wrap.classList.add('dragging');
+    wrap.scrollLeft = state.left - dx;
+    wrap.scrollTop = state.top - dy;
+    if (event.cancelable) event.preventDefault();
+  }, { passive:false });
+
+  function stop(event){
+    if (!state || (event.pointerId != null && event.pointerId !== state.id)) return;
+    try { if (wrap.hasPointerCapture(state.id)) wrap.releasePointerCapture(state.id); } catch (error) {}
+    state = null;
+    wrap.classList.remove('dragging');
+    notifyBounds();
+  }
+
+  wrap.addEventListener('pointerup', stop);
+  wrap.addEventListener('pointercancel', stop);
+  wrap.addEventListener('click', event => {
+    if (!suppressClick) return;
+    suppressClick = false;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
+
+  wrap.addEventListener('keydown', event => {
+    const step = event.shiftKey ? 180 : 70;
+    if (event.key === 'ArrowLeft') wrap.scrollBy({left:-step, behavior:'auto'});
+    else if (event.key === 'ArrowRight') wrap.scrollBy({left:step, behavior:'auto'});
+    else if (event.key === 'ArrowUp') wrap.scrollBy({top:-step, behavior:'auto'});
+    else if (event.key === 'ArrowDown') wrap.scrollBy({top:step, behavior:'auto'});
+    else return;
+    event.preventDefault();
+    notifyBounds();
+  });
+
+  wrap.addEventListener('scroll', notifyBounds, {passive:true});
+  if ('ResizeObserver' in window) new ResizeObserver(() => {
+    if (autoFitInitial) fitInitialDiagram();
+    else updateCanvasBounds();
+  }).observe(wrap);
+  else window.addEventListener('resize', () => autoFitInitial ? fitInitialDiagram() : updateCanvasBounds());
+}
+
 
 function applySearch(){
   const raw = document.getElementById('search').value.trim();
@@ -213,8 +457,7 @@ function applySearch(){
   if (matches.length === 1){
     openAncestors(matches[0]);
     selectNode(matches[0]);
-    const el = document.querySelector(`.node[data-id="${CSS.escape(matches[0])}"]`);
-    if (el) el.scrollIntoView({behavior:'smooth', block:'center', inline:'center'});
+    requestAnimationFrame(() => focusNode(matches[0], 'smooth'));
   }
 }
 
@@ -229,8 +472,9 @@ document.getElementById('printBtn').onclick = () => window.print();
 
 renderTree();
 setInitialView();
+enableCanvasPanning();
 showPanel(byId[selected]);
-setScale(1);
+requestAnimationFrame(() => { fitInitialDiagram(); focusNode(selected, 'auto'); });
 </script>
 </body>
 </html>
