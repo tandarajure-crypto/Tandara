@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-71naR+tYh3A+SSiQNe32RBR5+XqjIKZ48PEJoDXg1/k=' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://s01.flagcounter.com https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; frame-src 'self'; font-src 'self' data:; media-src 'none'; worker-src 'none'; manifest-src 'self'; form-action 'none'; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://www.google-analytics.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources."/>
@@ -10,136 +12,83 @@
 <link rel="alternate" hreflang="hr" href="filipovagrana.html"/>
 <link rel="alternate" hreflang="en" href="filipovagrana-en.html"/>
 <link rel="alternate" hreflang="x-default" href="filipovagrana.html"/>
-<title> Tandara - Livno – Filip’s Branch</title>
-<!-- Google Analytics: active, with URL parameters and fragments removed -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD" referrerpolicy="strict-origin-when-cross-origin"></script>
-<script>(function () {
-  'use strict';
-
+<title>Tandaras of Livno – Filip’s Branch</title>
+<!-- Google Analytics – GA4 basic tracking and useful clicks -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script>
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function () {
-    window.dataLayer.push(arguments);
-  };
-
-  var safeLocation = window.location.protocol + '//' +
-    window.location.host + window.location.pathname;
-  var safeReferrer = '';
-
-  if (document.referrer) {
-    try {
-      var referrerUrl = new URL(document.referrer);
-      safeReferrer = referrerUrl.origin;
-    } catch (error) {
-      safeReferrer = '';
-    }
-  }
-
-  window.gtag('consent', 'default', {
-    analytics_storage: 'granted',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied'
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    'analytics_storage': 'granted',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
   });
-
-  window.gtag('js', new Date());
-  window.gtag('config', 'G-S33NBEJQFD', {
+  gtag('js', new Date());
+  gtag('config', 'G-S33NBEJQFD', {
     send_page_view: true,
     page_title: document.title,
-    page_location: safeLocation,
-    page_referrer: safeReferrer,
+    page_location: window.location.href,
     page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'en',
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false
+    language: document.documentElement.lang || navigator.language || 'en'
   });
-}());</script>
+
+  // GA4 events: contact, external links and downloads.
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a');
+    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    var href = link.href;
+    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
+    var isMail = href.indexOf('mailto:') === 0;
+    var isTel = href.indexOf('tel:') === 0;
+    var isExternal = link.hostname && link.hostname !== window.location.hostname;
+    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
+
+    if (isMail || isTel) {
+      gtag('event', 'contact_click', {
+        contact_type: isMail ? 'email' : 'phone',
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isExternal) {
+      gtag('event', 'external_link_click', {
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isDownload) {
+      gtag('event', 'file_download', {
+        file_name: (link.pathname || '').split('/').pop(),
+        link_text: text,
+        link_url: href
+      });
+    }
+  });
+</script>
 <link href="style.css?v=6" rel="stylesheet"/>
 
 <style>
-/* Keep the first headings and all lineage text safely inside the content frame */
-#filip-lineage {
-  text-align:left;
-  min-width:0;
-}
-
-.branch-card > h1,
-.branch-card > h2 {
-  width:100%;
-  max-width:100%;
-  box-sizing:border-box;
-  margin-left:0;
-  margin-right:0;
-  text-align:left;
-  overflow-wrap:anywhere;
-}
-
-.branch-card > h1 {
-  margin-top:0;
-  margin-bottom:16px;
-}
-
-.branch-card > h2 {
-  margin-top:0;
-  margin-bottom:24px;
-}
-
-#filip-lineage h2,
-#filip-lineage h3 {
-  max-width:100%;
-  margin-left:0;
-  margin-right:0;
+/* Clear separation between the individual families in Filip’s line */
+#filip-lineage h4 {
+  margin-top:48px;
+  margin-bottom:14px;
+  padding-top:20px;
+  border-top:2px solid rgba(107,61,31,0.25);
   color:#6b3d1f;
   line-height:1.4;
-  text-align:left;
-  overflow-wrap:anywhere;
 }
 
-#filip-lineage h2 {
-  margin-top:40px;
-  margin-bottom:14px;
-}
-
-#filip-lineage h3 {
-  margin-top:0;
-  margin-bottom:12px;
-}
-
-#filip-lineage h2 + p,
-#filip-lineage h3 + p {
-  margin-top:0;
-}
-
-#filip-lineage p {
-  margin-top:0;
-  margin-bottom:16px;
-  line-height:1.7;
-  text-align:left;
-  overflow-wrap:anywhere;
-}
-
-#filip-lineage ul {
-  margin-top:0;
-  margin-bottom:18px;
-  padding-left:1.6rem;
-  max-width:100%;
-  box-sizing:border-box;
-}
-
-#filip-lineage li {
-  margin-bottom:6px;
-  line-height:1.6;
-  overflow-wrap:anywhere;
-}
+#filip-lineage h4:first-of-type { margin-top:28px; }
+#filip-lineage h4 + p { margin-top:0; }
 
 .family-separator {
-  margin:32px 0 24px;
+  margin:34px 0 24px;
   border:0;
   border-top:1px solid rgba(107,61,31,0.30);
-}
-
-@media(max-width:700px){
-  .branch-card > h1{font-size:clamp(22px,7vw,30px)}
-  .branch-card > h2{font-size:clamp(17px,5vw,23px)}
 }
 
 
@@ -153,6 +102,84 @@
 .filip-tree-fullscreen-link:hover,.filip-tree-fullscreen-link:focus-visible{background:#4f2c17;color:#fff;outline:3px solid rgba(107,61,31,.22);outline-offset:2px}
 @media(max-width:700px){.filip-tree-embed{margin-top:28px;border-radius:9px}.filip-tree-embed iframe{height:72vh;min-height:620px}.filip-tree-actions{padding:10px}.filip-tree-fullscreen-link{width:100%;text-align:center}}
 
+/* Only the two introductory headings: same width and left edge as the text below. */
+.branch-text-block > #filip-branch,
+.branch-text-block > .filip-branch-subtitle {
+  display:block;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+  transform:none !important;
+  text-indent:0 !important;
+  text-align:left;
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+
+.branch-text-block > #filip-branch {
+  margin-top:0;
+  margin-bottom:16px;
+  font-size:clamp(26px, 4vw, 34px);
+  line-height:1.2;
+}
+
+.branch-text-block > .filip-branch-subtitle {
+  margin-top:0;
+  margin-bottom:24px;
+  font-size:clamp(20px, 3vw, 24px);
+  line-height:1.3;
+}
+
+
+/* Proširenje cijelog desnog sadržaja do unutarnjih granica pozadinskog okvira. */
+body.en .branch-card {
+  max-width:100%;
+}
+
+body.en .branch-text-block {
+  width:100%;
+  max-width:none;
+  margin-left:0;
+  margin-right:0;
+  box-sizing:border-box;
+}
+
+body.en .branch-text-block > section,
+body.en #filip-lineage,
+body.en .filip-tree-embed {
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
+}
+
+body.en #filip-lineage p,
+body.en #filip-lineage ul,
+body.en #filip-lineage ol,
+body.en #filip-lineage h2,
+body.en #filip-lineage h3,
+body.en #filip-lineage h4,
+body.en #data-sources {
+  max-width:none;
+  box-sizing:border-box;
+}
+
+@media (min-width:701px) {
+  body.en .branch-content {
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  body.en .branch-card {
+    padding-left:28px;
+    padding-right:28px;
+  }
+}
+
 </style>
 </head>
 <body class="en">
@@ -165,7 +192,7 @@
 <svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
-<path d="M10 20 V14 H14 V20"></path>
+<path d="M10 20v-6h4v6"></path>
 </svg>
 </div>
 </a>
@@ -178,17 +205,17 @@
 <img alt="EN" src="flag-uk.png"/>
 </a>
 </div>
-<h2>TANDARA-SURNAME</h2>
+<h2>TANDARA SURNAME</h2>
 
 <ul class="heritage-menu">
-<li><span>🌳</span><a href="./autor-en.html">About the Author &amp; Project</a></li>
-<li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the Surname</a></li>
-<li><span>🌳</span><a href="./rodoslovlje-en.html">Family Genealogy</a></li>
-<li><span>🌳</span><a href="./migracije-en.html">Migration &amp; Distribution</a></li>
-<li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting Facts</a></li>
-<li><span>🌳</span><a href="./contacts.html">Contact &amp; Collaboration</a></li>
-<li><span>🌳</span><a href="./visitors-messages.html">Visitors' Messages</a></li>
-<li><span>🌳</span><a href="./privacy.html">Privacy Policy</a></li>
+<li><span>🌳</span><a href="./autor-en.html">About the author and project</a></li>
+<li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the surname</a></li>
+<li><span>🌳</span><a href="./rodoslovlje-en.html">Family genealogy</a></li>
+<li><span>🌳</span><a href="./migracije-en.html">Migration and distribution</a></li>
+<li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting facts</a></li>
+<li><span>🌳</span><a href="./kontakti-en.html">Contact and cooperation</a></li>
+<li><span>🌳</span><a href="./knjiga-poruka-en.html">Guestbook</a></li>
+<li><span>🌳</span><a href="./privatnost-en.html">Privacy policy</a></li>
 </ul>
 <div class="author-photo">
 <a href="./autor-en.html">
@@ -198,8 +225,8 @@
 
 <div class="flagbox">
 <div class="flag-title">Visitors</div>
-<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer external" target="_blank" referrerpolicy="no-referrer">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/" referrerpolicy="strict-origin-when-cross-origin" decoding="async" loading="eager"/>
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
 </a>
 </div>
 </aside>
@@ -207,13 +234,14 @@
 <!-- RIGHT CONTENT -->
 <main class="branch-content">
 <div class="branch-card">
-<img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=4"/>
-<p class="branch-parent-link"><a href="index-en.html">← The Tandaras of Livno</a></p>
-<h1 id="filip-branch">TANDARA FROM LIVNO – FILIP’S BRANCH</h1>
-
-<h2>5.0. Filip Tandara – Founder of the Livno Branch</h2>
+<img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=3"/>
+<p class="branch-parent-link"><a href="index-en.html">← Tandaras of Livno</a></p>
 
 <div class="branch-text-block">
+<h1 id="filip-branch">TANDARA FROM LIVNO – FILIP’S BRANCH</h1>
+
+<h2 class="filip-branch-subtitle">5.0. Filip Tandara – Founder of the Livno Branch</h2>
+
 <section id="filip-lineage">
 
 <p>
@@ -225,7 +253,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 
 <p><em>Note:</em> The original text states that Jakov had daughters named Josipa, Pera and Kata. Therefore, the designation <strong>5.3.1</strong> is assigned to Josipa — daughter of Jakov, not to a male Josip — son of Jakov.</p>
 
-<h2>Origins of Filip’s Line</h2>
+<h3>Origin of Filip’s Line</h3>
 
 <p>Filip Tandarić is mentioned in 1768 as a resident of the village of Lipa in the Livno parish, where he lived with his family of eight. It is not known where he came from or when he arrived in Lipa, because no direct written records concerning this have yet been found.</p>
 
@@ -239,9 +267,9 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 
 <p>The parish registers for this period are incomplete. There were no records of Tandara births from 1797 to 1802, while no birth and baptism records for children have survived for the period from 1781 to 1797. Nevertheless, the marriage and death registers made it possible to reconstruct a large part of Filip’s genealogy.</p>
 
-<h2>Genealogy of Filip’s Line</h2>
+<h3>Genealogy of Filip’s Line</h3>
 
-<h2>5.0 Filip Tandara (dates unknown)</h2>
+<h4>5.0. Filip Tandara</h4>
 <p>Filip Tandara – 5.0 is regarded as the founder of the Livno branch of the Tandara family. He was married to Jela Bralić.</p>
 <p>They had four sons:</p>
 <ul>
@@ -251,14 +279,14 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.4. Ivan — son of Filip</li>
 </ul>
 
-<h3>5.1 Mate, son of Filip</h3>
+<h4>5.1. Mate — son of Filip</h4>
 <p>Mate – 5.1, Filip’s eldest son, married Kata Jazvić.</p>
 <p>They had a daughter:</p>
 <ul>
 <li>5.1.1. Jela — daughter of Mate</li>
 </ul>
 
-<h3>5.2 Jure, son of Filip (d. 1804)</h3>
+<h4>5.2. Jure — son of Filip</h4>
 <p>Jure – 5.2, Filip’s second son, married Manda Matić.</p>
 <p>They had a son:</p>
 <ul>
@@ -266,7 +294,6 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 </ul>
 <hr class="family-separator"/>
 
-<h3>5.2.1. Josip, son of Jure</h3>
 <p>In 1818, Josip, Jure’s son, married Cvita Knežević.</p>
 <p>They had three sons:</p>
 <ul>
@@ -275,7 +302,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.3. Antun — son of Josip</li>
 </ul>
 
-<h3>5.2.1.1. Jakov, son of Josip (no information available)</h3>
+<h4>5.2.1.1. Jakov — son of Josip</h4>
 <p>Jakov, Josip’s eldest son, married Ruža Rimac.</p>
 <p>They had a son:</p>
 <ul>
@@ -283,7 +310,6 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 </ul>
 <hr class="family-separator"/>
 
-<h3>5.2.1.1.1. Josip, son of Jakov</h3>
 <p>Josip, Jakov’s son, married Anđa Gabrić.</p>
 <p>They had two sons:</p>
 <ul>
@@ -297,7 +323,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.1.1.5. Anđa — daughter of Josip</li>
 </ul>
 
-<h3>5.2.1.1.1.1. Jozo, son of Josip (b. 1884)</h3>
+<h4>5.2.1.1.1.1. Jozo — son of Josip</h4>
 <p>Jozo, Josip’s son, married twice.</p>
 <p>In his first marriage, to Marica Mioč, he had a son:</p>
 <ul>
@@ -314,14 +340,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.1.1.1.3. Ana — daughter of Jozo</li>
 </ul>
 
-<hr class="family-separator"/>
-
-<h3>5.2.1.1.1.1.1. Ante Božidar, son of Jozo (1909–1933)</h3>
-<p>Ante Božidar was married to Slavka Perić Mandić. No information is available as to whether they had children.</p>
-
-<hr class="family-separator"/>
-
-<h3>5.2.1.2. Ivan, son of Josip</h3>
+<h4>5.2.1.2. Ivan — son of Josip</h4>
 <p>Ivan, the second son of Josip and Cvita, née Knežević, married twice.</p>
 <p>He first married Ruža Laštrić in 1859. There is no record that they had children.</p>
 <hr class="family-separator"/>
@@ -333,7 +352,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.2.2. Stipo — son of Ivan</li>
 </ul>
 
-<h3>5.2.1.2.1. Jakov, son of Ivan (no information available)</h3>
+<h4>5.2.1.2.1. Jakov — son of Ivan</h4>
 <p>Jakov, Ivan’s son, married Ruža Meštrović in Livno in 1894.</p>
 <p>They had four sons:</p>
 <ul>
@@ -350,14 +369,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.2.1.8. Anđa — daughter of Jakov</li>
 </ul>
 
-<hr class="family-separator"/>
-
-<h3>5.2.1.2.1.2. Stipo, son of Jakov</h3>
-<p>He was married to Elza Marjanović, with whom he had no children.</p>
-
-<hr class="family-separator"/>
-
-<h3>. Matko, son of Jakov (b. 1911)</h3>
+<h4>5.2.1.2.1.4. Matko — son of Jakov</h4>
 <p>Matko, Jakov’s youngest son, married Anica Župčić.</p>
 <p>They had a son:</p>
 <ul>
@@ -370,7 +382,6 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 
 <hr class="family-separator"/>
 
-<h3>5.2.1.2.1.4.1. Krešimir, son of Matko (b. 1953)</h3>
 <p>Krešimir, Matko’s son, married Biserka Kučak.</p>
 <p>They had a son:</p>
 <ul>
@@ -383,7 +394,6 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 
 <hr class="family-separator"/>
 
-<h3>5.2.1.2.1.4.1.1. Igor, son of Krešimir (b. 1974)</h3>
 <p>Igor, Krešimir’s son, married Edina Hadžić.</p>
 <p>They had two sons:</p>
 <ul>
@@ -391,7 +401,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.2.1.4.1.1.2. Edgar — son of Igor</li>
 </ul>
 
-<h3>5.2.1.2.2. Stipo, son of Ivan</h3>
+<h4>5.2.1.2.2. Stipo — son of Ivan</h4>
 <p>Stipo, the younger son of Ivan and Anđa, née Erceg, married Ana Sučić.</p>
 <p>They had three sons:</p>
 <ul>
@@ -406,7 +416,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.2.2.6. Ljubica — daughter of Stipo</li>
 </ul>
 
-<h3>5.2.1.2.2.3. Zvonimir, son of Stipo (1906–1944)</h3>
+<h4>5.2.1.2.2.3. Zvonimir — son of Stipo</h4>
 <p>Zvonimir, Stipo’s youngest son, married Adela Szepesi in Belgrade in 1930.</p>
 <p>They had a son:</p>
 <ul>
@@ -419,7 +429,6 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 
 <hr class="family-separator"/>
 
-<h3>5.2.1.2.2.3.1. Vladimir, son of Zvonimir (1936–1992)</h3>
 <p>Vladimir, Zvonimir’s son, married Ingrid Schmarsch in Berlin in 1965.</p>
 <p>They had a son:</p>
 <ul>
@@ -430,7 +439,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.2.1.2.2.3.1.2. Andrea — daughter of Vladimir</li>
 </ul>
 
-<h3>5.3 Jakov, son of Filip (d. 1815)</h3>
+<h4>5.3. Jakov — son of Filip</h4>
 <p>Jakov – 5.3, Filip’s third son, married twice.</p>
 <p>In his first marriage, to Luca, née Kuprešanin, he had two daughters:</p>
 <ul>
@@ -444,7 +453,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.3.3. Kata — daughter of Jakov</li>
 </ul>
 
-<h3>5.4 Ivan, son of Filip</h3>
+<h4>5.4. Ivan — son of Filip</h4>
 <p>Ivan – 5.4, Filip’s youngest son, was married to Iva, née Knežević.</p>
 <p>They had a son:</p>
 <ul>
@@ -455,7 +464,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.4.1. Agata — daughter of Ivan</li>
 </ul>
 
-<h3>5.4.2. Petar, son of Ivan</h3>
+<h4>5.4.2. Petar — son of Ivan</h4>
 <p>Petar, Ivan’s son, married twice.</p>
 <p>He first married Luca Smoljić. It is not known whether they had children.</p>
 <hr class="family-separator"/>
@@ -477,7 +486,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
     title="Interactive family tree of Filip’s line"
     loading="lazy"
     referrerpolicy="strict-origin-when-cross-origin"
-    allow="fullscreen; geolocation 'none'; microphone 'none'; camera 'none'; payment 'none'; usb 'none'"
+    allow="fullscreen"
     allowfullscreen>
   </iframe>
   <div class="filip-tree-actions">
@@ -489,7 +498,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 </section>
 
 <footer id="data-sources">
-<h3>Sources</h3>
+<h4>Sources</h4>
 <p>
 Milan Lažeta, <em>Rodoslovlje plemena Tandara</em>, Zagreb, 2012.<br/>
 Tomislav Perković, <em>Stanovništvo livanjskog polja u 18. i 19. stoljeću</em>.
