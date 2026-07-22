@@ -4,10 +4,14 @@
 <meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
 <meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://www.google-analytics.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources."/>
+<link rel="canonical" href="filipovagrana-en.html"/>
+<link rel="alternate" hreflang="hr" href="filipovagrana.html"/>
+<link rel="alternate" hreflang="en" href="filipovagrana-en.html"/>
+<link rel="alternate" hreflang="x-default" href="filipovagrana.html"/>
 <title>Tandaras of Livno – Filip’s Branch</title>
 <!-- Google Analytics – GA4 basic tracking and useful clicks -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
@@ -90,219 +94,13 @@
 
 
 
-.branch-card { container-type:inline-size; }
-
-/* Dijagram se izvlači iz tekstnog bloka širine 760 px i zauzima cijelu
-   stvarnu unutarnju širinu pozadinske kartice. Točnu širinu dodatno
-   postavlja JavaScript prema izračunatom paddingu kartice. */
-.filip-diagram-section {
-  width:calc(100cqw - 96px);
-  max-width:none;
-  margin:42px 0 0 50%;
-  transform:translateX(-50%);
-  box-sizing:border-box;
-}
-
-.diagram-shell {
-  width:100%;
-  margin:0;
-  border:1px solid #c9b99f;
-  border-radius:12px;
-  background:#fffdf8;
-  box-shadow:0 8px 24px rgba(70,48,30,0.15);
-  overflow:hidden;
-}
-
-.diagram-header {
-  position:relative;
-  z-index:5;
-  display:grid;
-  grid-template-columns:minmax(110px,auto) minmax(0,1fr) minmax(110px,auto);
-  align-items:center;
-  gap:14px;
-  width:100%;
-  box-sizing:border-box;
-  padding:14px 16px 12px;
-  border-bottom:1px solid #dfd1bd;
-  background:#fffdf8;
-}
-
-.diagram-home-link {
-  grid-column:1;
-  justify-self:start;
-  display:inline-flex;
-  align-items:center;
-  min-height:38px;
-  padding:7px 12px;
-  border:1px solid #6b3d1f;
-  border-radius:8px;
-  color:#6b3d1f;
-  background:#ffffff;
-  font-weight:bold;
-  text-decoration:none;
-  box-sizing:border-box;
-}
-.diagram-home-link:hover,
-.diagram-home-link:focus-visible { background:#f5ecdf; }
-
-.diagram-header h2 {
-  grid-column:2;
-  margin:0;
-  text-align:center;
-  color:#6b3d1f;
-  line-height:1.35;
-}
-
-.diagram-language-flags {
-  grid-column:3;
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  gap:10px;
-}
-.diagram-language-flags a { display:block; line-height:0; }
-.diagram-language-flags img {
-  display:block;
-  width:42px;
-  height:auto;
-  border-radius:4px;
-  border:1px solid #c9b99f;
-  box-sizing:border-box;
-}
-.diagram-language-flags a[aria-current="page"] img { border:2px solid #6b3d1f; }
-
-.diagram-help {
-  width:100%;
-  box-sizing:border-box;
-  margin:0;
-  padding:10px 18px 8px;
-  text-align:center;
-  line-height:1.55;
-  background:#fffdf8;
-}
-
-.diagram-controls {
-  position:relative;
-  z-index:5;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  padding:0 12px 12px;
-  border-bottom:1px solid #dfd1bd;
-  background:#fffdf8;
-}
-
-.diagram-control-button {
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  min-width:42px;
-  min-height:38px;
-  padding:7px 12px;
-  border:1px solid #6b3d1f;
-  border-radius:8px;
-  background:#ffffff;
-  color:#6b3d1f;
-  font:inherit;
-  font-weight:bold;
-  line-height:1;
-  cursor:pointer;
-}
-.diagram-control-button:hover,
-.diagram-control-button:focus-visible { background:#f5ecdf; }
-.diagram-fullscreen-button { min-width:auto; }
-
-/* Vanjska stranica više nije drugi pomični okvir. Jedini pomični prozor
-   nalazi se u samoj datoteci dijagrama unutar iframea. */
-.diagram-scroll {
-  position:relative;
-  width:100%;
-  height:clamp(620px, 76vh, 900px);
-  margin:0;
-  overflow:hidden;
-  background:#fffdf8;
-}
-.diagram-canvas {
-  width:100%;
-  height:100%;
-  margin:0;
-}
-.diagram-frame {
-  display:block;
-  width:100%;
-  height:100%;
-  border:0;
-  background:#fffdf8;
-}
-
-.diagram-sliders {
-  position:relative;
-  z-index:6;
-  display:grid;
-  grid-template-columns:repeat(2, minmax(220px, 1fr));
-  gap:10px 18px;
-  padding:10px 16px 12px;
-  border-bottom:1px solid #dfd1bd;
-  background:#fffdf8;
-}
-.diagram-slider-label {
-  display:grid;
-  grid-template-columns:auto minmax(120px,1fr);
-  align-items:center;
-  gap:10px;
-  color:#6b3d1f;
-  font-weight:bold;
-  line-height:1.2;
-}
-.diagram-slider {
-  width:100%;
-  min-width:0;
-  accent-color:#6b3d1f;
-  cursor:pointer;
-}
-
-html.diagram-page-locked,
-body.diagram-page-locked { overflow:hidden !important; }
-
-.diagram-shell.diagram-maximized {
-  position:fixed;
-  inset:0;
-  z-index:2147483000;
-  display:flex;
-  flex-direction:column;
-  width:100vw !important;
-  height:100vh;
-  max-width:none;
-  margin:0;
-  border:0;
-  border-radius:0;
-  background:#fffdf8;
-  transform:none !important;
-}
-.diagram-shell.diagram-maximized .diagram-header,
-.diagram-shell.diagram-maximized .diagram-help,
-.diagram-shell.diagram-maximized .diagram-controls,
-.diagram-shell.diagram-maximized .diagram-sliders { flex:0 0 auto; }
-.diagram-shell.diagram-maximized .diagram-scroll {
-  flex:1 1 auto;
-  height:auto;
-  min-height:0;
-}
-
-@media (max-width:800px) {
-  .filip-diagram-section {
-    width:calc(100cqw - 32px);
-  }
-  .diagram-header { grid-template-columns:1fr auto; gap:10px; }
-  .diagram-home-link { grid-column:1; grid-row:1; }
-  .diagram-language-flags { grid-column:2; grid-row:1; }
-  .diagram-header h2 { grid-column:1 / -1; grid-row:2; }
-  .diagram-control-button { min-height:42px; }
-  .diagram-sliders { grid-template-columns:1fr; }
-  .diagram-scroll { height:72vh; min-height:520px; }
-}
+/* Uklopljeni operativni dijagram Filipove loze */
+.filip-tree-embed{width:100%;margin:38px 0 8px;border:1px solid #c9b99f;border-radius:12px;background:#fffdf8;box-shadow:0 8px 24px rgba(70,48,30,.15);overflow:hidden}
+.filip-tree-embed iframe{display:block;width:100%;height:clamp(650px,78vh,900px);min-height:650px;border:0;background:#fbfaf6}
+.filip-tree-actions{display:flex;justify-content:center;align-items:center;padding:12px 16px 14px;border-top:1px solid #dfd1bd;background:#fffdf8}
+.filip-tree-fullscreen-link{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 16px;border:1px solid #6b3d1f;border-radius:8px;background:#6b3d1f;color:#fff;font-weight:bold;text-decoration:none}
+.filip-tree-fullscreen-link:hover,.filip-tree-fullscreen-link:focus-visible{background:#4f2c17;color:#fff;outline:3px solid rgba(107,61,31,.22);outline-offset:2px}
+@media(max-width:700px){.filip-tree-embed{margin-top:28px;border-radius:9px}.filip-tree-embed iframe{height:72vh;min-height:620px}.filip-tree-actions{padding:10px}.filip-tree-fullscreen-link{width:100%;text-align:center}}
 
 </style>
 </head>
@@ -602,60 +400,21 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 <li>5.4.2.3. Ana — daughter of Petar</li>
 </ul>
 
-<!-- START OF THE INTERACTIVE FAMILY TREE -->
-<div class="filip-diagram-section">
-  <div class="diagram-shell" id="filip-diagram">
-    <div class="diagram-header">
-      <a class="diagram-home-link" href="index-en.html" title="Return to the home page">← Home</a>
-
-      <h2>Interactive family tree of Filip’s line</h2>
-
-      <div class="diagram-language-flags" aria-label="Diagram language selection">
-        <a href="filipovagrana.html#filipov-dijagram" title="Hrvatska verzija" aria-label="Hrvatska verzija">
-          <img src="flag-hr.png?v=5" alt="Hrvatski"/>
-        </a>
-        <a href="filipovagrana-en.html#filip-diagram" title="English version" aria-label="English version" aria-current="page">
-          <img src="flag-uk.png?v=5" alt="English"/>
-        </a>
-      </div>
-    </div>
-
-    <p class="diagram-help">
-      Click a person’s name for details and use <strong>+</strong> or <strong>−</strong> for descendants.
-      Move the diagram by dragging with a mouse or finger, using the mouse wheel, or pressing the arrow buttons.
-    </p>
-
-    <div class="diagram-controls" aria-label="Diagram movement controls">
-      <button class="diagram-control-button" type="button" data-diagram-action="up" title="Move up" aria-label="Move diagram up">↑</button>
-      <button class="diagram-control-button" type="button" data-diagram-action="left" title="Move left" aria-label="Move diagram left">←</button>
-      <button class="diagram-control-button" type="button" data-diagram-action="reset" title="Return to the starting position">Starting position</button>
-      <button class="diagram-control-button" type="button" data-diagram-action="right" title="Move right" aria-label="Move diagram right">→</button>
-      <button class="diagram-control-button" type="button" data-diagram-action="down" title="Move down" aria-label="Move diagram down">↓</button>
-      <button class="diagram-control-button diagram-fullscreen-button" type="button" data-diagram-action="fullscreen" aria-pressed="false">View in full screen</button>
-    </div>
-    <div class="diagram-sliders" aria-label="Diagram position sliders">
-      <label class="diagram-slider-label">Horizontal
-        <input class="diagram-slider" type="range" min="0" max="0" value="0" step="1" data-diagram-slider="x" aria-label="Horizontal diagram position"/>
-      </label>
-      <label class="diagram-slider-label">Vertical
-        <input class="diagram-slider" type="range" min="0" max="0" value="0" step="1" data-diagram-slider="y" aria-label="Vertical diagram position"/>
-      </label>
-    </div>
-
-
-    <div class="diagram-scroll" tabindex="0" aria-label="Scrollable interactive family tree">
-      <div class="diagram-canvas">
-        <iframe
-          class="diagram-frame"
-          src="filipova-loza-interaktivni-dijagram-en.html?embed=1&amp;v=10"
-          title="Interactive family tree of Filip’s line"
-          scrolling="no">
-        </iframe>
-      </div>
-    </div>
+<!-- START OF THE EMBEDDED OPERATIONAL FAMILY TREE -->
+<div class="filip-tree-embed" id="filip-diagram">
+  <iframe
+    src="filipova-loza-interaktivni-dijagram-en.html"
+    title="Interactive family tree of Filip’s line"
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="fullscreen"
+    allowfullscreen>
+  </iframe>
+  <div class="filip-tree-actions">
+    <a class="filip-tree-fullscreen-link" href="filipova-loza-interaktivni-dijagram-en.html" target="_blank" rel="noopener noreferrer">Open the diagram in full screen</a>
   </div>
 </div>
-<!-- END OF THE INTERACTIVE FAMILY TREE -->
+<!-- END OF THE EMBEDDED OPERATIONAL FAMILY TREE -->
 
 </section>
 
@@ -673,146 +432,6 @@ Tomislav Perković, <em>Stanovništvo livanjskog polja u 18. i 19. stoljeću</em
 </main>
 </div>
 
-
-<script>
-(function() {
-  'use strict';
-
-  var section = document.querySelector('.filip-diagram-section');
-  var shell = document.querySelector('.diagram-shell');
-  var iframe = shell && shell.querySelector('.diagram-frame');
-  var sliderX = shell && shell.querySelector('[data-diagram-slider="x"]');
-  var sliderY = shell && shell.querySelector('[data-diagram-slider="y"]');
-  var fullscreenButton = shell && shell.querySelector('[data-diagram-action="fullscreen"]');
-  var card = section && section.closest('.branch-card');
-  var childWrap = null;
-  var childStage = null;
-  var childResizeObserver = null;
-  var step = 260;
-
-  if (!section || !shell || !iframe) return;
-
-  function setSectionWidth() {
-    if (!card) return;
-    var style = window.getComputedStyle(card);
-    var left = parseFloat(style.paddingLeft) || 0;
-    var right = parseFloat(style.paddingRight) || 0;
-    var width = Math.max(300, card.clientWidth - left - right);
-    section.style.width = width + 'px';
-  }
-
-  function getChildParts() {
-    try {
-      var doc = iframe.contentDocument || iframe.contentWindow.document;
-      if (!doc) return false;
-      childWrap = doc.getElementById('canvasWrap');
-      childStage = doc.getElementById('canvasStage') || doc.getElementById('tree');
-      return !!childWrap;
-    } catch (error) {
-      childWrap = null;
-      childStage = null;
-      return false;
-    }
-  }
-
-  function updateControls() {
-    if (!childWrap) return;
-    var maxX = Math.max(0, childWrap.scrollWidth - childWrap.clientWidth);
-    var maxY = Math.max(0, childWrap.scrollHeight - childWrap.clientHeight);
-    if (sliderX) {
-      sliderX.max = String(Math.ceil(maxX));
-      sliderX.value = String(Math.min(Math.ceil(childWrap.scrollLeft), Math.ceil(maxX)));
-      sliderX.disabled = maxX < 1;
-    }
-    if (sliderY) {
-      sliderY.max = String(Math.ceil(maxY));
-      sliderY.value = String(Math.min(Math.ceil(childWrap.scrollTop), Math.ceil(maxY)));
-      sliderY.disabled = maxY < 1;
-    }
-  }
-
-  function connectFrame() {
-    if (!getChildParts()) return;
-    if (childResizeObserver) childResizeObserver.disconnect();
-    childWrap.addEventListener('scroll', updateControls, { passive:true });
-    if ('ResizeObserver' in window) {
-      childResizeObserver = new ResizeObserver(updateControls);
-      childResizeObserver.observe(childWrap);
-      if (childStage) childResizeObserver.observe(childStage);
-    }
-    var childWindow = iframe.contentWindow;
-    if (childWindow) childWindow.addEventListener('tandara-diagram-bounds', updateControls);
-    updateControls();
-    window.setTimeout(updateControls, 100);
-    window.setTimeout(updateControls, 500);
-  }
-
-  function scrollDiagram(dx, dy) {
-    if (!childWrap && !getChildParts()) return;
-    childWrap.scrollBy({ left:dx, top:dy, behavior:'auto' });
-    updateControls();
-  }
-
-  function resetDiagram() {
-    if (!childWrap && !getChildParts()) return;
-    childWrap.scrollTo({ left:0, top:0, behavior:'auto' });
-    updateControls();
-  }
-
-  function setMaximized(active) {
-    shell.classList.toggle('diagram-maximized', active);
-    document.documentElement.classList.toggle('diagram-page-locked', active);
-    document.body.classList.toggle('diagram-page-locked', active);
-    if (fullscreenButton) {
-      fullscreenButton.textContent = active ? 'Close full screen' : 'Show full screen';
-      fullscreenButton.setAttribute('aria-pressed', active ? 'true' : 'false');
-    }
-    window.setTimeout(function() {
-      if (iframe.contentWindow) iframe.contentWindow.dispatchEvent(new Event('resize'));
-      updateControls();
-    }, 80);
-  }
-
-  shell.addEventListener('click', function(event) {
-    var button = event.target.closest('[data-diagram-action]');
-    if (!button) return;
-    var action = button.getAttribute('data-diagram-action');
-    if (action === 'left') scrollDiagram(-step, 0);
-    if (action === 'right') scrollDiagram(step, 0);
-    if (action === 'up') scrollDiagram(0, -step);
-    if (action === 'down') scrollDiagram(0, step);
-    if (action === 'reset') resetDiagram();
-    if (action === 'fullscreen') setMaximized(!shell.classList.contains('diagram-maximized'));
-  });
-
-  if (sliderX) sliderX.addEventListener('input', function() {
-    if (!childWrap && !getChildParts()) return;
-    childWrap.scrollLeft = Number(sliderX.value) || 0;
-    updateControls();
-  });
-  if (sliderY) sliderY.addEventListener('input', function() {
-    if (!childWrap && !getChildParts()) return;
-    childWrap.scrollTop = Number(sliderY.value) || 0;
-    updateControls();
-  });
-
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && shell.classList.contains('diagram-maximized')) setMaximized(false);
-  });
-
-  iframe.addEventListener('load', connectFrame);
-  window.addEventListener('resize', function() {
-    setSectionWidth();
-    window.setTimeout(updateControls, 40);
-  });
-  if ('ResizeObserver' in window && card) new ResizeObserver(setSectionWidth).observe(card);
-
-  setSectionWidth();
-  try {
-    if (iframe.contentDocument && iframe.contentDocument.readyState !== 'loading') connectFrame();
-  } catch (error) {}
-})();
-</script>
 
 </body>
 </html>
