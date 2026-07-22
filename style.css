@@ -1210,3 +1210,23 @@ img, video, iframe{
         width:100%;
     }
 }
+/* Jasno odvajanje nositelja Filipove loze */
+
+#filipova-loza h4 {
+    margin-top: 48px;
+    margin-bottom: 14px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(107, 61, 31, 0.25);
+    color: #6b3d1f;
+    line-height: 1.4;
+}
+
+/* Prvi naslov ne treba prevelik razmak */
+#filipova-loza h4:first-of-type {
+    margin-top: 28px;
+}
+
+/* Tekst odmah ispod imena ostaje povezan s naslovom */
+#filipova-loza h4 + p {
+    margin-top: 0;
+}
