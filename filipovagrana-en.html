@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources."/>
+<title>Tandaras of Livno – Filip’s Branch</title>
+<!-- Google Analytics – GA4 basic tracking and useful clicks -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    'analytics_storage': 'granted',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-S33NBEJQFD', {
+    send_page_view: true,
+    page_title: document.title,
+    page_location: window.location.href,
+    page_path: window.location.pathname,
+    language: document.documentElement.lang || navigator.language || 'en'
+  });
+
+  // GA4 events: contact, external links and downloads.
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a');
+    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    var href = link.href;
+    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
+    var isMail = href.indexOf('mailto:') === 0;
+    var isTel = href.indexOf('tel:') === 0;
+    var isExternal = link.hostname && link.hostname !== window.location.hostname;
+    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
+
+    if (isMail || isTel) {
+      gtag('event', 'contact_click', {
+        contact_type: isMail ? 'email' : 'phone',
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isExternal) {
+      gtag('event', 'external_link_click', {
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isDownload) {
+      gtag('event', 'file_download', {
+        file_name: (link.pathname || '').split('/').pop(),
+        link_text: text,
+        link_url: href
+      });
+    }
+  });
+</script>
+<link href="style.css?v=6" rel="stylesheet"/>
+
+<style>
+/* Clear separation between each bearer of Filip’s line */
+#filip-lineage h4 {
+  margin-top:48px;
+  margin-bottom:14px;
+  padding-top:20px;
+  border-top:2px solid rgba(107,61,31,0.25);
+  color:#6b3d1f;
+  line-height:1.4;
+}
+#filip-lineage h4:first-of-type { margin-top:28px; }
+#filip-lineage h4 + p { margin-top:0; }
+</style>
+</head>
+<body class="en">
+<div class="layout">
+<!-- LEFT COLUMN -->
+<aside class="left-menu">
+<!-- HOME -->
+<a class="home-button" href="index-en.html">
+<div class="home-circle">
+<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3 10.5L12 3l9 7.5"></path>
+<path d="M5 10v10h14V10"></path>
+<path d="M10 20v-6h4v6"></path>
+</svg>
+</div>
+</a>
+<!-- HR / EN -->
+<div class="lang-switch">
+<a class="lang-btn flag-btn" href="filipovagrana.html">
+<img alt="HR" src="flag-hr.png"/>
+</a>
+<a class="lang-btn flag-btn" href="filipovagrana-en.html" aria-current="page">
+<img alt="EN" src="flag-uk.png"/>
+</a>
+</div>
+<h2>TANDARA SURNAME</h2>
+
+<ul class="heritage-menu">
+<li><span>🌳</span><a href="./autor-en.html">About the author and project</a></li>
+<li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the surname</a></li>
+<li><span>🌳</span><a href="./rodoslovlje-en.html">Family genealogy</a></li>
+<li><span>🌳</span><a href="./migracije-en.html">Migration and distribution</a></li>
+<li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting facts</a></li>
+<li><span>🌳</span><a href="./kontakti-en.html">Contact and cooperation</a></li>
+<li><span>🌳</span><a href="./knjiga-poruka-en.html">Guestbook</a></li>
+<li><span>🌳</span><a href="./privatnost-en.html">Privacy policy</a></li>
+</ul>
+<div class="author-photo">
+<a href="./autor-en.html">
+<img alt="Jure Tandara" src="./jure.png"/>
+</a>
+</div>
+
+<div class="flagbox">
+<div class="flag-title">Visitors</div>
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
+</a>
+</div>
+</aside>
+
+<!-- RIGHT CONTENT -->
+<main class="branch-content">
+<div class="branch-card">
+<img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=3"/>
+<p class="branch-parent-link"><a href="index-en.html">← Tandaras of Livno</a></p>
+<h1 id="filip-branch">TANDARAS OF LIVNO – FILIP’S BRANCH</h1>
+
+<h3>5.0. Filip Tandara – founder of the Livno branch (no information is available about his years of birth and death)</h3>
+
+<div class="branch-text-block">
+<section id="filip-lineage">
+
+<p>
+The Filip branch may be connected with the family of Ivan Tandara from Ričice, but the available documents do not yet confirm such a relationship.
+To prove this assumption, DNA samples from descendants of both Tandara branches would need to be analysed.
+</p>
+
+<p>Filip is therefore assigned the designation <strong>5.0</strong> as a possible fifth son of Ivan Tandara, who was born around 1695 in Ričice. His children bear the designations <strong>5.1–5.4</strong>, and each subsequent generation receives an additional number based on its parent.</p>
+
+<p><em>Note:</em> The original text states that Jakov had daughters named Josipa, Pera and Kata. Therefore, the designation <strong>5.3.1</strong> is assigned to Josipa Jakovljeva, not to a male Josip Jakovljev.</p>
+
+<h3>Origin of Filip’s Line</h3>
+
+<p>Filip Tandarić is mentioned in 1768 as a resident of the village of Lipa in the Livno parish, where he lived with his family of eight. It is not known where he came from or when he arrived in Lipa, because no direct written records concerning this have yet been found.</p>
+
+<p>Nevertheless, several indications support the assumption that the Tandara families of Livno belong to the family tree of Ivan Tandara of Ričice, born around 1695.</p>
+
+<p>Ivan of Ričice had sons named Jure, Petar, Ante and Mate, while Filip of Livno named his sons Mate, Jure, Jakov and Ivan. Filip’s son Ivan may have been named after his possible grandfather Ivan of Ričice, and Filip’s son Mate may have been named after Mate of Ričice. The similarity continues in subsequent generations, in which the names Ivan, Petar and Filip recur.</p>
+
+<p>Because of these similarities, Filip is designated in this genealogical account as <strong>5.0</strong> – a possible fifth son of Ivan Tandara of Ričice. However, because no document has yet been found that directly connects Filip with Ivan Tandara, this relationship must be presented as a genealogical hypothesis rather than a fully confirmed fact.</p>
+
+<p>The first record of the Tandara family in the parish registers of Livno was found in 1773, when Frane, the son of Jakov Novokmet and Ivanica Tandara of Lipa, was baptised.</p>
+
+<p>The parish registers for this period are incomplete. There were no records of Tandara births from 1797 to 1802, while no birth and baptism records for children have survived for the period from 1781 to 1797. Nevertheless, the marriage and death registers made it possible to reconstruct a large part of Filip’s genealogy.</p>
+
+<h3>Genealogy of Filip’s Line</h3>
+
+<h4>5.0. Filip Tandara</h4>
+<p>Filip Tandara – 5.0 is regarded as the founder of the Livno branch of the Tandara family. He was married to Jela Bralić.</p>
+<p>They had four sons:</p>
+<ul>
+<li>5.1. Mate — son of Filip</li>
+<li>5.2. Jure — son of Filip</li>
+<li>5.3. Jakov — son of Filip</li>
+<li>5.4. Ivan — son of Filip</li>
+</ul>
+
+<h4>5.1. Mate — son of Filip</h4>
+<p>Mate – 5.1, Filip’s eldest son, married Kata Jazvić.</p>
+<p>They had a daughter:</p>
+<ul>
+<li>5.1.1. Jela — daughter of Mate</li>
+</ul>
+
+<h4>5.2. Jure — son of Filip</h4>
+<p>Jure – 5.2, Filip’s second son, married Manda Matić.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1. Josip — son of Jure</li>
+</ul>
+<p>In 1818, Josip, Jure’s son, married Cvita Knežević.</p>
+<p>They had three sons:</p>
+<ul>
+<li>5.2.1.1. Jakov — son of Josip</li>
+<li>5.2.1.2. Ivan — son of Josip</li>
+<li>5.2.1.3. Antun — son of Josip</li>
+</ul>
+
+<h4>5.2.1.1. Jakov — son of Josip</h4>
+<p>Jakov, Josip’s eldest son, married Ruža Rimac.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1.1.1. Josip — son of Jakov</li>
+</ul>
+<p>Josip, Jakov’s son, married Anđa Gabrić.</p>
+<p>They had two sons and three daughters:</p>
+<ul>
+<li>5.2.1.1.1.1. Jozo — son of Josip</li>
+<li>5.2.1.1.1.2. Mato — son of Josip</li>
+<li>5.2.1.1.1.3. Ana — daughter of Josip</li>
+<li>5.2.1.1.1.4. Mara — daughter of Josip</li>
+<li>5.2.1.1.1.5. Anđa — daughter of Josip</li>
+</ul>
+
+<h4>5.2.1.1.1.1. Jozo — son of Josip</h4>
+<p>Jozo, Josip’s son, married twice.</p>
+<p>In his first marriage, to Marica Mioč, he had a son:</p>
+<ul>
+<li>5.2.1.1.1.1.1. Ante Božidar — son of Jozo</li>
+</ul>
+<p>In his second marriage, to Kata Pastuh, he had:</p>
+<ul>
+<li>5.2.1.1.1.1.2. Jakov — son of Jozo</li>
+<li>5.2.1.1.1.1.3. Ana — daughter of Jozo</li>
+</ul>
+
+<h4>5.2.1.2. Ivan — son of Josip</h4>
+<p>Ivan, the second son of Josip and Cvita, née Knežević, married twice.</p>
+<p>He first married Ruža Laštrić in 1859. There is no record that they had children.</p>
+<p>He later married Anđa Erceg.</p>
+<p>They had two sons:</p>
+<ul>
+<li>5.2.1.2.1. Jakov — son of Ivan</li>
+<li>5.2.1.2.2. Stipo — son of Ivan</li>
+</ul>
+
+<h4>5.2.1.2.1. Jakov — son of Ivan</h4>
+<p>Jakov, Ivan’s son, married Ruža Meštrović in Livno in 1894.</p>
+<p>They had eight children:</p>
+<ul>
+<li>5.2.1.2.1.1. Josip — son of Jakov</li>
+<li>5.2.1.2.1.2. Stipo — son of Jakov</li>
+<li>5.2.1.2.1.3. Ivo — son of Jakov</li>
+<li>5.2.1.2.1.4. Matko — son of Jakov</li>
+<li>5.2.1.2.1.5. Mara — daughter of Jakov</li>
+<li>5.2.1.2.1.6. Joza — daughter of Jakov</li>
+<li>5.2.1.2.1.7. Milka — daughter of Jakov</li>
+<li>5.2.1.2.1.8. Anđa — daughter of Jakov</li>
+</ul>
+
+<h4>5.2.1.2.1.4. Matko — son of Jakov</h4>
+<p>Matko, Jakov’s youngest son, married Anica Župčić.</p>
+<p>They had a son and a daughter:</p>
+<ul>
+<li>5.2.1.2.1.4.1. Krešimir — son of Matko</li>
+<li>5.2.1.2.1.4.2. Davorka — daughter of Matko</li>
+</ul>
+<p>Krešimir, Matko’s son, married Biserka Kučak.</p>
+<p>They had a son and a daughter:</p>
+<ul>
+<li>5.2.1.2.1.4.1.1. Igor — son of Krešimir</li>
+<li>5.2.1.2.1.4.1.2. Gordana — daughter of Krešimir</li>
+</ul>
+<p>Igor, Krešimir’s son, married Edina Hadžić.</p>
+<p>They had two sons:</p>
+<ul>
+<li>5.2.1.2.1.4.1.1.1. Izidor — son of Igor</li>
+<li>5.2.1.2.1.4.1.1.2. Edgar — son of Igor</li>
+</ul>
+
+<h4>5.2.1.2.2. Stipo — son of Ivan</h4>
+<p>Stipo, the younger son of Ivan and Anđa, née Erceg, married Ana Sučić.</p>
+<p>They had three sons and three daughters:</p>
+<ul>
+<li>5.2.1.2.2.1. Ivo — son of Stipo</li>
+<li>5.2.1.2.2.2. Pero — son of Stipo</li>
+<li>5.2.1.2.2.3. Zvonimir — son of Stipo</li>
+<li>5.2.1.2.2.4. Iva — daughter of Stipo</li>
+<li>5.2.1.2.2.5. Anđa — daughter of Stipo</li>
+<li>5.2.1.2.2.6. Ljubica — daughter of Stipo</li>
+</ul>
+
+<h4>5.2.1.2.2.3. Zvonimir — son of Stipo</h4>
+<p>Zvonimir, Stipo’s youngest son, married Adela Szepesi in Belgrade in 1930.</p>
+<p>They had a son and a daughter:</p>
+<ul>
+<li>5.2.1.2.2.3.1. Vladimir — son of Zvonimir</li>
+<li>5.2.1.2.2.3.2. Aneta — daughter of Zvonimir</li>
+</ul>
+<p>Vladimir, Zvonimir’s son, married Ingrid Schmarsch in Berlin in 1965.</p>
+<p>They had a son and a daughter:</p>
+<ul>
+<li>5.2.1.2.2.3.1.1. Milan-Aleksandar — son of Vladimir</li>
+<li>5.2.1.2.2.3.1.2. Andrea — daughter of Vladimir</li>
+</ul>
+
+<h4>5.3. Jakov — son of Filip</h4>
+<p>Jakov – 5.3, Filip’s third son, married twice.</p>
+<p>In his first marriage, to Luca, née Kuprešanin, he had two daughters:</p>
+<ul>
+<li>5.3.1. Josipa — daughter of Jakov</li>
+<li>5.3.2. Pera — daughter of Jakov</li>
+</ul>
+<p>In his second marriage, to Kata, née Perić, he had a daughter:</p>
+<ul>
+<li>5.3.3. Kata — daughter of Jakov</li>
+</ul>
+
+<h4>5.4. Ivan — son of Filip</h4>
+<p>Ivan – 5.4, Filip’s youngest son, was married to Iva, née Knežević.</p>
+<p>They had a daughter and a son:</p>
+<ul>
+<li>5.4.1. Agata — daughter of Ivan</li>
+<li>5.4.2. Petar — son of Ivan</li>
+</ul>
+
+<h4>5.4.2. Petar — son of Ivan</h4>
+<p>Petar, Ivan’s son, married twice.</p>
+<p>He first married Luca Smoljić. It is not known whether they had children.</p>
+<p>In his second marriage, to Matija, née Čelan, he had:</p>
+<ul>
+<li>5.4.2.1. Nikola — son of Petar</li>
+<li>5.4.2.2. Agata — daughter of Petar</li>
+<li>5.4.2.3. Ana — daughter of Petar</li>
+</ul>
+
+<!-- START OF THE INTERACTIVE FAMILY TREE -->
+<div class="filip-diagram-section">
+
+  <!-- HR / EN LANGUAGE FLAGS -->
+  <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin:42px 0 18px 0;">
+    <a href="filipovagrana.html" title="Hrvatska verzija" aria-label="Hrvatska verzija">
+      <img src="flag-hr.png" alt="Hrvatski" style="width:44px;height:auto;display:block;border-radius:4px;border:1px solid #c9b99f;">
+    </a>
+    <a href="filipovagrana-en.html" title="English version" aria-label="English version" aria-current="page">
+      <img src="flag-uk.png" alt="English" style="width:44px;height:auto;display:block;border-radius:4px;border:2px solid #6b3d1f;">
+    </a>
+  </div>
+
+  <h2 style="text-align:center;color:#6b3d1f;">Interactive family tree of Filip’s line</h2>
+
+  <p style="text-align:center;line-height:1.6;margin-bottom:18px;">
+    Click a person’s name to view the details. Use the <strong>+</strong> and
+    <strong>−</strong> buttons to open or close descendants.
+  </p>
+
+  <div style="width:100%;margin:0 auto;overflow:hidden;border:1px solid #c9b99f;border-radius:12px;background:#fffdf8;box-shadow:0 8px 24px rgba(70,48,30,0.15);">
+    <iframe
+      src="filipova-loza-interaktivni-dijagram-en.html"
+      title="Interactive family tree of Filip’s line"
+      loading="lazy"
+      style="display:block;width:100%;height:900px;border:0;background:#fffdf8;">
+    </iframe>
+  </div>
+
+  <p style="text-align:center;margin-top:15px;">
+    <a href="filipova-loza-interaktivni-dijagram-en.html" target="_blank" rel="noopener"
+       style="display:inline-block;padding:10px 18px;border-radius:8px;background:#6b3d1f;color:#ffffff;font-weight:bold;text-decoration:none;">
+      Open the diagram in full screen
+    </a>
+  </p>
+</div>
+<!-- END OF THE INTERACTIVE FAMILY TREE -->
+
+</section>
+
+<footer id="data-sources">
+<h4>Sources</h4>
+<p>
+Milan Lažeta, <em>Rodoslovlje plemena Tandara</em>, Zagreb, 2012.<br/>
+Tomislav Perković, <em>Stanovništvo livanjskog polja u 18. i 19. stoljeću</em>.
+</p>
+</footer>
+
+<p class="branch-parent-link"><a href="index-en.html">← Return to Tandaras of Livno</a></p>
+</div>
+</div>
+</main>
+</div>
+</body>
+</html>
