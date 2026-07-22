@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources."/>
+<title>Tandaras of Livno – Filip’s Branch</title>
+<!-- Google Analytics – GA4 basic tracking and useful clicks -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    'analytics_storage': 'granted',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-S33NBEJQFD', {
+    send_page_view: true,
+    page_title: document.title,
+    page_location: window.location.href,
+    page_path: window.location.pathname,
+    language: document.documentElement.lang || navigator.language || 'en'
+  });
+
+  // GA4 events: contact, external links and downloads.
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a');
+    if (!link || !link.href || typeof gtag !== 'function') return;
+
+    var href = link.href;
+    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
+    var isMail = href.indexOf('mailto:') === 0;
+    var isTel = href.indexOf('tel:') === 0;
+    var isExternal = link.hostname && link.hostname !== window.location.hostname;
+    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
+
+    if (isMail || isTel) {
+      gtag('event', 'contact_click', {
+        contact_type: isMail ? 'email' : 'phone',
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isExternal) {
+      gtag('event', 'external_link_click', {
+        link_text: text,
+        link_url: href
+      });
+    }
+
+    if (isDownload) {
+      gtag('event', 'file_download', {
+        file_name: (link.pathname || '').split('/').pop(),
+        link_text: text,
+        link_url: href
+      });
+    }
+  });
+</script>
+<link href="style.css?v=6" rel="stylesheet"/>
+
+<style>
+/* Clear separation between the individual families in Filip’s line */
+#filip-lineage h4 {
+  margin-top:48px;
+  margin-bottom:14px;
+  padding-top:20px;
+  border-top:2px solid rgba(107,61,31,0.25);
+  color:#6b3d1f;
+  line-height:1.4;
+}
+
+#filip-lineage h4:first-of-type { margin-top:28px; }
+#filip-lineage h4 + p { margin-top:0; }
+
+.family-separator {
+  margin:34px 0 24px;
+  border:0;
+  border-top:1px solid rgba(107,61,31,0.30);
+}
+
+.diagram-scroll {
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  touch-action:pan-x pan-y;
+  height:clamp(560px, 78vh, 900px);
+  border:1px solid #c9b99f;
+  border-radius:12px;
+  background:#fffdf8;
+  box-shadow:0 8px 24px rgba(70,48,30,0.15);
+}
+
+/*
+  Platno ima stvarnu, skaliranu veličinu dijagrama.
+  Početni prikaz stane u cijeli okvir, a prošireni dijagram
+  ostaje moguće pomicati vodoravno i okomito.
+*/
+.diagram-canvas {
+  position:relative;
+  margin:0 auto;
+  min-width:1px;
+  min-height:1px;
+}
+
+.diagram-frame {
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  width:1180px;
+  height:900px;
+  border:0;
+  background:#fffdf8;
+  transform-origin:top left;
+}
+
+/* Zaglavlje interaktivnog dijagrama sa zastavicama */
+.diagram-header {
+  display:grid;
+  grid-template-columns:96px minmax(0,1fr) 96px;
+  align-items:center;
+  gap:14px;
+  width:100%;
+  box-sizing:border-box;
+  padding:16px 18px 12px;
+  border:1px solid #c9b99f;
+  border-bottom:0;
+  border-radius:12px 12px 0 0;
+  background:#fffdf8;
+  box-shadow:0 8px 24px rgba(70,48,30,0.15);
+}
+
+.diagram-header h2 {
+  grid-column:2;
+  margin:0;
+  text-align:center;
+  color:#6b3d1f;
+  line-height:1.35;
+}
+
+.diagram-language-flags {
+  grid-column:3;
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+}
+
+.diagram-language-flags a {
+  display:block;
+  line-height:0;
+}
+
+.diagram-language-flags img {
+  display:block;
+  width:42px;
+  height:auto;
+  border-radius:4px;
+  border:1px solid #c9b99f;
+  box-sizing:border-box;
+}
+
+.diagram-language-flags a[aria-current="page"] img {
+  border:2px solid #6b3d1f;
+}
+
+.diagram-help {
+  width:100%;
+  box-sizing:border-box;
+  margin:0;
+  padding:0 18px 16px;
+  text-align:center;
+  line-height:1.6;
+  border-right:1px solid #c9b99f;
+  border-left:1px solid #c9b99f;
+  background:#fffdf8;
+}
+
+.diagram-scroll {
+  border-radius:0 0 12px 12px;
+  box-shadow:0 8px 24px rgba(70,48,30,0.15);
+}
+
+@media (max-width:700px) {
+  .diagram-header {
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .diagram-header h2,
+  .diagram-language-flags {
+    grid-column:1;
+  }
+
+  .diagram-language-flags {
+    justify-content:center;
+  }
+}
+
+</style>
+</head>
+<body class="en">
+<div class="layout">
+<!-- LEFT COLUMN -->
+<aside class="left-menu">
+<!-- HOME -->
+<a class="home-button" href="index-en.html">
+<div class="home-circle">
+<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3 10.5L12 3l9 7.5"></path>
+<path d="M5 10v10h14V10"></path>
+<path d="M10 20v-6h4v6"></path>
+</svg>
+</div>
+</a>
+<!-- HR / EN -->
+<div class="lang-switch">
+<a class="lang-btn flag-btn" href="filipovagrana.html">
+<img alt="HR" src="flag-hr.png"/>
+</a>
+<a class="lang-btn flag-btn" href="filipovagrana-en.html" aria-current="page">
+<img alt="EN" src="flag-uk.png"/>
+</a>
+</div>
+<h2>TANDARA SURNAME</h2>
+
+<ul class="heritage-menu">
+<li><span>🌳</span><a href="./autor-en.html">About the author and project</a></li>
+<li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the surname</a></li>
+<li><span>🌳</span><a href="./rodoslovlje-en.html">Family genealogy</a></li>
+<li><span>🌳</span><a href="./migracije-en.html">Migration and distribution</a></li>
+<li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting facts</a></li>
+<li><span>🌳</span><a href="./kontakti-en.html">Contact and cooperation</a></li>
+<li><span>🌳</span><a href="./knjiga-poruka-en.html">Guestbook</a></li>
+<li><span>🌳</span><a href="./privatnost-en.html">Privacy policy</a></li>
+</ul>
+<div class="author-photo">
+<a href="./autor-en.html">
+<img alt="Jure Tandara" src="./jure.png"/>
+</a>
+</div>
+
+<div class="flagbox">
+<div class="flag-title">Visitors</div>
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
+</a>
+</div>
+</aside>
+
+<!-- RIGHT CONTENT -->
+<main class="branch-content">
+<div class="branch-card">
+<img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=3"/>
+<p class="branch-parent-link"><a href="index-en.html">← Tandaras of Livno</a></p>
+<h1 id="filip-branch">TANDARA OF LIVNO – FILIP’S BRANCH</h1>
+
+<h3>5.0. Filip Tandara – founder of the Livno branch (no year information)</h3>
+
+<div class="branch-text-block">
+<section id="filip-lineage">
+
+<p>
+The Filip branch may be connected with the family of Ivan Tandara from Ričice, but the available documents do not yet confirm such a relationship.
+To prove this assumption, DNA samples from descendants of both Tandara branches would need to be analysed.
+</p>
+
+<p>Filip is therefore assigned the designation <strong>5.0</strong> as a possible fifth son of Ivan Tandara, who was born around 1695 in Ričice. His children bear the designations <strong>5.1–5.4</strong>, and each subsequent generation receives an additional number based on its parent.</p>
+
+<p><em>Note:</em> The original text states that Jakov had daughters named Josipa, Pera and Kata. Therefore, the designation <strong>5.3.1</strong> is assigned to Josipa — daughter of Jakov, not to a male Josip — son of Jakov.</p>
+
+<h3>Origin of Filip’s Line</h3>
+
+<p>Filip Tandarić is mentioned in 1768 as a resident of the village of Lipa in the Livno parish, where he lived with his family of eight. It is not known where he came from or when he arrived in Lipa, because no direct written records concerning this have yet been found.</p>
+
+<p>Nevertheless, several indications support the assumption that the Tandara families of Livno belong to the family tree of Ivan Tandara of Ričice, born around 1695.</p>
+
+<p>Ivan of Ričice had sons named Jure, Petar, Ante and Mate, while Filip of Livno named his sons Mate, Jure, Jakov and Ivan. Filip’s son Ivan may have been named after his possible grandfather Ivan of Ričice, and Filip’s son Mate may have been named after Mate of Ričice. The similarity continues in subsequent generations, in which the names Ivan, Petar and Filip recur.</p>
+
+<p>Because of these similarities, Filip is designated in this genealogical account as <strong>5.0</strong> – a possible fifth son of Ivan Tandara of Ričice. However, because no document has yet been found that directly connects Filip with Ivan Tandara, this relationship must be presented as a genealogical hypothesis rather than a fully confirmed fact.</p>
+
+<p>The first record of the Tandara family in the parish registers of Livno was found in 1773, when Frane, the son of Jakov Novokmet and Ivanica Tandara of Lipa, was baptised.</p>
+
+<p>The parish registers for this period are incomplete. There were no records of Tandara births from 1797 to 1802, while no birth and baptism records for children have survived for the period from 1781 to 1797. Nevertheless, the marriage and death registers made it possible to reconstruct a large part of Filip’s genealogy.</p>
+
+<h3>Genealogy of Filip’s Line</h3>
+
+<h4>5.0. Filip Tandara</h4>
+<p>Filip Tandara – 5.0 is regarded as the founder of the Livno branch of the Tandara family. He was married to Jela Bralić.</p>
+<p>They had four sons:</p>
+<ul>
+<li>5.1. Mate — son of Filip</li>
+<li>5.2. Jure — son of Filip</li>
+<li>5.3. Jakov — son of Filip</li>
+<li>5.4. Ivan — son of Filip</li>
+</ul>
+
+<h4>5.1. Mate — son of Filip</h4>
+<p>Mate – 5.1, Filip’s eldest son, married Kata Jazvić.</p>
+<p>They had a daughter:</p>
+<ul>
+<li>5.1.1. Jela — daughter of Mate</li>
+</ul>
+
+<h4>5.2. Jure — son of Filip</h4>
+<p>Jure – 5.2, Filip’s second son, married Manda Matić.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1. Josip — son of Jure</li>
+</ul>
+<hr class="family-separator"/>
+
+<p>In 1818, Josip, Jure’s son, married Cvita Knežević.</p>
+<p>They had three sons:</p>
+<ul>
+<li>5.2.1.1. Jakov — son of Josip</li>
+<li>5.2.1.2. Ivan — son of Josip</li>
+<li>5.2.1.3. Antun — son of Josip</li>
+</ul>
+
+<h4>5.2.1.1. Jakov — son of Josip</h4>
+<p>Jakov, Josip’s eldest son, married Ruža Rimac.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1.1.1. Josip — son of Jakov</li>
+</ul>
+<hr class="family-separator"/>
+
+<p>Josip, Jakov’s son, married Anđa Gabrić.</p>
+<p>They had two sons:</p>
+<ul>
+<li>5.2.1.1.1.1. Jozo — son of Josip</li>
+<li>5.2.1.1.1.2. Mato — son of Josip</li>
+</ul>
+<p>They had three daughters:</p>
+<ul>
+<li>5.2.1.1.1.3. Ana — daughter of Josip</li>
+<li>5.2.1.1.1.4. Mara — daughter of Josip</li>
+<li>5.2.1.1.1.5. Anđa — daughter of Josip</li>
+</ul>
+
+<h4>5.2.1.1.1.1. Jozo — son of Josip</h4>
+<p>Jozo, Josip’s son, married twice.</p>
+<p>In his first marriage, to Marica Mioč, he had a son:</p>
+<ul>
+<li>5.2.1.1.1.1.1. Ante Božidar — son of Jozo</li>
+</ul>
+<hr class="family-separator"/>
+
+<p>In his second marriage, to Kata Pastuh, he had a son:</p>
+<ul>
+<li>5.2.1.1.1.1.2. Jakov — son of Jozo</li>
+</ul>
+<p>In the same marriage, he also had a daughter:</p>
+<ul>
+<li>5.2.1.1.1.1.3. Ana — daughter of Jozo</li>
+</ul>
+
+<h4>5.2.1.2. Ivan — son of Josip</h4>
+<p>Ivan, the second son of Josip and Cvita, née Knežević, married twice.</p>
+<p>He first married Ruža Laštrić in 1859. There is no record that they had children.</p>
+<hr class="family-separator"/>
+
+<p>He later married Anđa Erceg.</p>
+<p>They had two sons:</p>
+<ul>
+<li>5.2.1.2.1. Jakov — son of Ivan</li>
+<li>5.2.1.2.2. Stipo — son of Ivan</li>
+</ul>
+
+<h4>5.2.1.2.1. Jakov — son of Ivan</h4>
+<p>Jakov, Ivan’s son, married Ruža Meštrović in Livno in 1894.</p>
+<p>They had four sons:</p>
+<ul>
+<li>5.2.1.2.1.1. Josip — son of Jakov</li>
+<li>5.2.1.2.1.2. Stipo — son of Jakov</li>
+<li>5.2.1.2.1.3. Ivo — son of Jakov</li>
+<li>5.2.1.2.1.4. Matko — son of Jakov</li>
+</ul>
+<p>They had four daughters:</p>
+<ul>
+<li>5.2.1.2.1.5. Mara — daughter of Jakov</li>
+<li>5.2.1.2.1.6. Joza — daughter of Jakov</li>
+<li>5.2.1.2.1.7. Milka — daughter of Jakov</li>
+<li>5.2.1.2.1.8. Anđa — daughter of Jakov</li>
+</ul>
+
+<h4>5.2.1.2.1.4. Matko — son of Jakov</h4>
+<p>Matko, Jakov’s youngest son, married Anica Župčić.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1.2.1.4.1. Krešimir — son of Matko</li>
+</ul>
+<p>They had a daughter:</p>
+<ul>
+<li>5.2.1.2.1.4.2. Davorka — daughter of Matko</li>
+</ul>
+
+<hr class="family-separator"/>
+
+<p>Krešimir, Matko’s son, married Biserka Kučak.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1.2.1.4.1.1. Igor — son of Krešimir</li>
+</ul>
+<p>They had a daughter:</p>
+<ul>
+<li>5.2.1.2.1.4.1.2. Gordana — daughter of Krešimir</li>
+</ul>
+
+<hr class="family-separator"/>
+
+<p>Igor, Krešimir’s son, married Edina Hadžić.</p>
+<p>They had two sons:</p>
+<ul>
+<li>5.2.1.2.1.4.1.1.1. Izidor — son of Igor</li>
+<li>5.2.1.2.1.4.1.1.2. Edgar — son of Igor</li>
+</ul>
+
+<h4>5.2.1.2.2. Stipo — son of Ivan</h4>
+<p>Stipo, the younger son of Ivan and Anđa, née Erceg, married Ana Sučić.</p>
+<p>They had three sons:</p>
+<ul>
+<li>5.2.1.2.2.1. Ivo — son of Stipo</li>
+<li>5.2.1.2.2.2. Pero — son of Stipo</li>
+<li>5.2.1.2.2.3. Zvonimir — son of Stipo</li>
+</ul>
+<p>They had three daughters:</p>
+<ul>
+<li>5.2.1.2.2.4. Iva — daughter of Stipo</li>
+<li>5.2.1.2.2.5. Anđa — daughter of Stipo</li>
+<li>5.2.1.2.2.6. Ljubica — daughter of Stipo</li>
+</ul>
+
+<h4>5.2.1.2.2.3. Zvonimir — son of Stipo</h4>
+<p>Zvonimir, Stipo’s youngest son, married Adela Szepesi in Belgrade in 1930.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1.2.2.3.1. Vladimir — son of Zvonimir</li>
+</ul>
+<p>They had a daughter:</p>
+<ul>
+<li>5.2.1.2.2.3.2. Aneta — daughter of Zvonimir</li>
+</ul>
+
+<hr class="family-separator"/>
+
+<p>Vladimir, Zvonimir’s son, married Ingrid Schmarsch in Berlin in 1965.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.2.1.2.2.3.1.1. Milan-Aleksandar — son of Vladimir</li>
+</ul>
+<p>They had a daughter:</p>
+<ul>
+<li>5.2.1.2.2.3.1.2. Andrea — daughter of Vladimir</li>
+</ul>
+
+<h4>5.3. Jakov — son of Filip</h4>
+<p>Jakov – 5.3, Filip’s third son, married twice.</p>
+<p>In his first marriage, to Luca, née Kuprešanin, he had two daughters:</p>
+<ul>
+<li>5.3.1. Josipa — daughter of Jakov</li>
+<li>5.3.2. Pera — daughter of Jakov</li>
+</ul>
+<hr class="family-separator"/>
+
+<p>In his second marriage, to Kata, née Perić, he had a daughter:</p>
+<ul>
+<li>5.3.3. Kata — daughter of Jakov</li>
+</ul>
+
+<h4>5.4. Ivan — son of Filip</h4>
+<p>Ivan – 5.4, Filip’s youngest son, was married to Iva, née Knežević.</p>
+<p>They had a son:</p>
+<ul>
+<li>5.4.2. Petar — son of Ivan</li>
+</ul>
+<p>They had a daughter:</p>
+<ul>
+<li>5.4.1. Agata — daughter of Ivan</li>
+</ul>
+
+<h4>5.4.2. Petar — son of Ivan</h4>
+<p>Petar, Ivan’s son, married twice.</p>
+<p>He first married Luca Smoljić. It is not known whether they had children.</p>
+<hr class="family-separator"/>
+
+<p>In his second marriage, to Matija, née Čelan, he had a son:</p>
+<ul>
+<li>5.4.2.1. Nikola — son of Petar</li>
+</ul>
+<p>In the same marriage, he also had two daughters:</p>
+<ul>
+<li>5.4.2.2. Agata — daughter of Petar</li>
+<li>5.4.2.3. Ana — daughter of Petar</li>
+</ul>
+
+<!-- START OF THE INTERACTIVE FAMILY TREE -->
+<div class="filip-diagram-section">
+
+  <div class="diagram-header">
+    <h2>Interactive family tree of Filip’s line</h2>
+
+    <div class="diagram-language-flags" aria-label="Diagram language selection">
+      <a href="filipovagrana.html" title="Hrvatska verzija" aria-label="Hrvatska verzija">
+        <img src="flag-hr.png?v=4" alt="Hrvatski"/>
+      </a>
+      <a href="filipovagrana-en.html" title="English version" aria-label="English version" aria-current="page">
+        <img src="flag-uk.png?v=4" alt="English"/>
+      </a>
+    </div>
+  </div>
+
+  <p class="diagram-help">
+    Click a person’s name to view the details. Use the <strong>+</strong> and
+    <strong>−</strong> buttons to open or close descendants.
+  </p>
+
+  <div
+    class="diagram-scroll"
+    tabindex="0"
+    aria-label="Scrollable view of the interactive family tree">
+    <div class="diagram-canvas">
+
+      <iframe
+      class="diagram-frame"
+      src="filipova-loza-interaktivni-dijagram-en.html"
+      title="Interactive family tree of Filip’s line"
+      loading="lazy"
+      scrolling="yes">
+    </iframe>
+
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:15px;">
+    <a href="filipova-loza-interaktivni-dijagram-en.html" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;padding:10px 18px;border-radius:8px;background:#6b3d1f;color:#ffffff;font-weight:bold;text-decoration:none;">
+      Open the diagram in full screen
+    </a>
+  </p>
+</div>
+<!-- END OF THE INTERACTIVE FAMILY TREE -->
+
+</section>
+
+<footer id="data-sources">
+<h4>Sources</h4>
+<p>
+Milan Lažeta, <em>Rodoslovlje plemena Tandara</em>, Zagreb, 2012.<br/>
+Tomislav Perković, <em>Stanovništvo livanjskog polja u 18. i 19. stoljeću</em>.
+</p>
+</footer>
+
+<p class="branch-parent-link"><a href="index-en.html">← Return to Tandaras of Livno</a></p>
+</div>
+</div>
+</main>
+</div>
+
+<script>
+(function() {
+  var iframe = document.querySelector('.diagram-frame');
+  if (!iframe) return;
+
+  var wrapper = iframe.closest('.diagram-scroll');
+  var canvas = iframe.closest('.diagram-canvas');
+  var resizeObserver;
+  var mutationObserver;
+  var initialNaturalWidth = 0;
+  var scheduled = false;
+
+  function measureNaturalSize() {
+    var doc = iframe.contentDocument || iframe.contentWindow.document;
+    if (!doc || !doc.documentElement || !doc.body) return null;
+
+    /* Measure the natural size without the outer scale affecting it. */
+    var width = Math.max(
+      doc.documentElement.scrollWidth,
+      doc.body.scrollWidth,
+      doc.documentElement.offsetWidth,
+      doc.body.offsetWidth,
+      1
+    );
+
+    var height = Math.max(
+      doc.documentElement.scrollHeight,
+      doc.body.scrollHeight,
+      doc.documentElement.offsetHeight,
+      doc.body.offsetHeight,
+      900
+    );
+
+    return { width: width, height: height };
+  }
+
+  function syncDiagramSize(resetBaseline) {
+    scheduled = false;
+
+    try {
+      var size = measureNaturalSize();
+      if (!size) return;
+
+      if (resetBaseline || !initialNaturalWidth) {
+        initialNaturalWidth = size.width;
+      }
+
+      /* Fit the initial collapsed diagram into the full available width. */
+      var availableWidth = Math.max(wrapper.clientWidth - 2, 1);
+      var scale = Math.min(1, availableWidth / initialNaturalWidth);
+
+      iframe.style.width = size.width + 'px';
+      iframe.style.height = size.height + 'px';
+      iframe.style.transform = 'scale(' + scale + ')';
+
+      canvas.style.width = Math.ceil(size.width * scale) + 'px';
+      canvas.style.height = Math.ceil(size.height * scale) + 'px';
+
+      /* Keep the initial view aligned to the left edge. */
+      if (resetBaseline) {
+        wrapper.scrollLeft = 0;
+        wrapper.scrollTop = 0;
+      }
+    } catch (error) {
+      /* If measurement is blocked, manual scrolling remains available. */
+      iframe.style.position = 'static';
+      iframe.style.width = '100%';
+      iframe.style.minHeight = '900px';
+      canvas.style.width = '100%';
+      canvas.style.height = '900px';
+    }
+  }
+
+  function scheduleSync(resetBaseline) {
+    if (scheduled && !resetBaseline) return;
+    scheduled = true;
+    window.requestAnimationFrame(function() {
+      syncDiagramSize(Boolean(resetBaseline));
+    });
+  }
+
+  iframe.addEventListener('load', function() {
+    /* A second measurement covers content completed after the first paint. */
+    syncDiagramSize(true);
+    window.setTimeout(function() { syncDiagramSize(true); }, 180);
+
+    try {
+      var doc = iframe.contentDocument || iframe.contentWindow.document;
+
+      if ('ResizeObserver' in window) {
+        resizeObserver = new ResizeObserver(function() {
+          scheduleSync(false);
+        });
+        resizeObserver.observe(doc.documentElement);
+        if (doc.body) resizeObserver.observe(doc.body);
+      }
+
+      mutationObserver = new MutationObserver(function() {
+        scheduleSync(false);
+      });
+      mutationObserver.observe(doc.documentElement, {
+        childList:true,
+        subtree:true,
+        attributes:true,
+        characterData:true
+      });
+
+      doc.addEventListener('click', function() {
+        window.setTimeout(function() { syncDiagramSize(false); }, 60);
+        window.setTimeout(function() { syncDiagramSize(false); }, 260);
+      });
+
+      /* The mouse wheel moves the outer viewport even over the iframe. */
+      doc.addEventListener('wheel', function(event) {
+        var canMoveX = wrapper.scrollWidth > wrapper.clientWidth;
+        var canMoveY = wrapper.scrollHeight > wrapper.clientHeight;
+        if (!canMoveX && !canMoveY) return;
+
+        if (event.shiftKey && canMoveX) {
+          wrapper.scrollLeft += event.deltaY || event.deltaX;
+        } else {
+          if (canMoveX) wrapper.scrollLeft += event.deltaX;
+          if (canMoveY) wrapper.scrollTop += event.deltaY;
+        }
+        event.preventDefault();
+      }, { passive:false });
+    } catch (error) {
+      /* The outer viewport still allows manual diagram scrolling. */
+    }
+  });
+
+  window.addEventListener('resize', function() {
+    syncDiagramSize(false);
+  });
+})();
+</script>
+</body>
+</html>
