@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
-<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://www.google-analytics.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-71naR+tYh3A+SSiQNe32RBR5+XqjIKZ48PEJoDXg1/k=' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://s01.flagcounter.com https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; frame-src 'self'; font-src 'self' data:; media-src 'none'; worker-src 'none'; manifest-src 'self'; form-action 'none'; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources."/>
@@ -13,62 +11,48 @@
 <link rel="alternate" hreflang="en" href="filipovagrana-en.html"/>
 <link rel="alternate" hreflang="x-default" href="filipovagrana.html"/>
 <title>The Tandaras of Livno – Filip’s Branch</title>
-<!-- Google Analytics – GA4 basic tracking and useful clicks -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
-<script>
+<!-- Google Analytics: active, with URL parameters and fragments removed -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD" referrerpolicy="strict-origin-when-cross-origin"></script>
+<script>(function () {
+  'use strict';
+
   window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('consent', 'default', {
-    'analytics_storage': 'granted',
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied'
+  window.gtag = window.gtag || function () {
+    window.dataLayer.push(arguments);
+  };
+
+  var safeLocation = window.location.protocol + '//' +
+    window.location.host + window.location.pathname;
+  var safeReferrer = '';
+
+  if (document.referrer) {
+    try {
+      var referrerUrl = new URL(document.referrer);
+      safeReferrer = referrerUrl.origin;
+    } catch (error) {
+      safeReferrer = '';
+    }
+  }
+
+  window.gtag('consent', 'default', {
+    analytics_storage: 'granted',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
   });
-  gtag('js', new Date());
-  gtag('config', 'G-S33NBEJQFD', {
+
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-S33NBEJQFD', {
     send_page_view: true,
     page_title: document.title,
-    page_location: window.location.href,
+    page_location: safeLocation,
+    page_referrer: safeReferrer,
     page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'en'
+    language: document.documentElement.lang || navigator.language || 'en',
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
   });
-
-  // GA4 events: contact, external links and downloads.
-  document.addEventListener('click', function(event) {
-    var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
-
-    var href = link.href;
-    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
-    var isMail = href.indexOf('mailto:') === 0;
-    var isTel = href.indexOf('tel:') === 0;
-    var isExternal = link.hostname && link.hostname !== window.location.hostname;
-    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
-
-    if (isMail || isTel) {
-      gtag('event', 'contact_click', {
-        contact_type: isMail ? 'email' : 'phone',
-        link_text: text,
-        link_url: href
-      });
-    }
-
-    if (isExternal) {
-      gtag('event', 'external_link_click', {
-        link_text: text,
-        link_url: href
-      });
-    }
-
-    if (isDownload) {
-      gtag('event', 'file_download', {
-        file_name: (link.pathname || '').split('/').pop(),
-        link_text: text,
-        link_url: href
-      });
-    }
-  });
-</script>
+}());</script>
 <link href="style.css?v=6" rel="stylesheet"/>
 
 <style>
@@ -100,8 +84,7 @@
 }
 
 #filip-lineage h2,
-#filip-lineage h3,
-#filip-lineage h4 {
+#filip-lineage h3 {
   max-width:100%;
   margin-left:0;
   margin-right:0;
@@ -121,16 +104,8 @@
   margin-bottom:12px;
 }
 
-#filip-lineage h4 {
-  margin-top:40px;
-  margin-bottom:14px;
-  padding-top:20px;
-  border-top:2px solid rgba(107,61,31,0.25);
-}
-
 #filip-lineage h2 + p,
-#filip-lineage h3 + p,
-#filip-lineage h4 + p {
+#filip-lineage h3 + p {
   margin-top:0;
 }
 
@@ -190,7 +165,7 @@
 <svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
-<path d="M10 20v-6h4v6"></path>
+<path d="M10 20 V14 H14 V20"></path>
 </svg>
 </div>
 </a>
@@ -203,16 +178,16 @@
 <img alt="EN" src="flag-uk.png"/>
 </a>
 </div>
-<h2>THE TANDARA SURNAME</h2>
+<h2>TANDARA-SURNAME</h2>
 
 <ul class="heritage-menu">
-<li><span>🌳</span><a href="./autor-en.html">About the Author and the Project</a></li>
+<li><span>🌳</span><a href="./autor-en.html">About the Author &amp; Project</a></li>
 <li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the Surname</a></li>
 <li><span>🌳</span><a href="./rodoslovlje-en.html">Family Genealogy</a></li>
-<li><span>🌳</span><a href="./migracije-en.html">Migration and Distribution</a></li>
+<li><span>🌳</span><a href="./migracije-en.html">Migration &amp; Distribution</a></li>
 <li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting Facts</a></li>
-<li><span>🌳</span><a href="./contacts.html">Contact and Collaboration</a></li>
-<li><span>🌳</span><a href="./visitors-messages.html">Guestbook</a></li>
+<li><span>🌳</span><a href="./contacts.html">Contact &amp; Collaboration</a></li>
+<li><span>🌳</span><a href="./visitors-messages.html">Visitors' Messages</a></li>
 <li><span>🌳</span><a href="./privacy.html">Privacy Policy</a></li>
 </ul>
 <div class="author-photo">
@@ -223,8 +198,8 @@
 
 <div class="flagbox">
 <div class="flag-title">Visitors</div>
-<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer external" target="_blank" referrerpolicy="no-referrer">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/" referrerpolicy="strict-origin-when-cross-origin" decoding="async" loading="eager"/>
 </a>
 </div>
 </aside>
@@ -502,7 +477,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
     title="Interactive family tree of Filip’s line"
     loading="lazy"
     referrerpolicy="strict-origin-when-cross-origin"
-    allow="fullscreen"
+    allow="fullscreen; geolocation 'none'; microphone 'none'; camera 'none'; payment 'none'; usb 'none'"
     allowfullscreen>
   </iframe>
   <div class="filip-tree-actions">
@@ -514,7 +489,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 </section>
 
 <footer id="data-sources">
-<h4>Sources</h4>
+<h3>Sources</h3>
 <p>
 Milan Lažeta, <em>Rodoslovlje plemena Tandara</em>, Zagreb, 2012.<br/>
 Tomislav Perković, <em>Stanovništvo livanjskog polja u 18. i 19. stoljeću</em>.
