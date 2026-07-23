@@ -264,6 +264,17 @@
 }
 </style>
 
+
+<style>
+.ivan-combined-diagram{margin-top:34px;padding-top:26px;border-top:2px solid rgba(90,59,31,.24)}
+.ivan-combined-diagram h2{margin-bottom:10px}
+.ivan-diagram-actions{display:flex;justify-content:flex-end;margin:0 0 10px}
+.ivan-diagram-open{display:inline-block;padding:9px 13px;border-radius:9px;background:#5a3b1f;color:#fff;text-decoration:none;font-weight:700}
+.ivan-diagram-frame{display:block;width:100%;height:920px;border:1px solid rgba(90,59,31,.35);border-radius:12px;background:#f6f0e4}
+@media(max-width:900px){.ivan-diagram-frame{height:790px}.ivan-diagram-actions{justify-content:flex-start}}
+@media(max-width:560px){.ivan-diagram-frame{height:700px}.ivan-diagram-open{font-size:14px}}
+</style>
+
 </head>
 
 <body class="hr box-mobile-split">
@@ -352,11 +363,18 @@
 <section>
   <h2>Ivan Tandara *c. 1695.</h2>
 
-  <p>Ova stranica je pripremljena za okvir na obiteljskom stablu. Namijenjena je za buduće dopune: životopisne podatke, potomke, dokumente, fotografije i obiteljske bilješke.</p>
+  <p>Ivanova stranica sada je središnje mjesto za pregled četiriju glavnih obiteljskih grana koje se nastavljaju preko njegovih sinova <strong>Jure, Petra, Ante i Mate</strong>.</p>
 
-  <p>Sadržaj je u pripremi i bit će zamijenjen provjerenim, relevantnim tekstom kako se arhiv bude nadopunjavao.</p>
+  <p>U objedinjenom dijagramu zadržani su svi već izrađeni podaci, oznake i potomci iz četiri postojeća dijagrama u repozitoriju. Klikom na ime osobe otvaraju se opis i sljedeći naraštaji, a gumbima iznad dijagrama može se izdvojiti samo jedna grana.</p>
 
-  <p>Klikom na kućicu vraćate se na početnu stranicu obiteljskog stabla.</p>
+  <p>Pojedinačne stranice četiriju grana i dalje ostaju dostupne u lijevom izborniku.</p>
+</section>
+
+<section class="ivan-combined-diagram" aria-labelledby="ivan-diagram-title">
+  <h2 id="ivan-diagram-title">Objedinjeni rodoslovni dijagram Ivana Tandare</h2>
+  <p>Dijagram počinje Ivanom i povezuje sve četiri grane u jedno stablo.</p>
+  <div class="ivan-diagram-actions"><a class="ivan-diagram-open" href="dijagramivan.html">Otvori dijagram u cijelom prozoru</a></div>
+  <iframe class="ivan-diagram-frame" src="dijagramivan.html" title="Objedinjeni rodoslovni dijagram Ivana Tandare i četiriju grana" loading="lazy" allowfullscreen></iframe>
 </section>
 <!-- KRAJ SADRŽAJA / END OF CONTENT -->
 
