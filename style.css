@@ -296,11 +296,12 @@ body{
     position:absolute;
     cursor:pointer;
 
-    border:2px solid red;
-    background:rgba(255,0,0,.30);
+    border:2px solid transparent;
+    background:transparent;
 
     border-radius:4px;
     box-sizing:border-box;
+    transition:all .15s ease;
 }
 
 .hs-ivanov:hover,
@@ -309,7 +310,8 @@ body{
 .hs-antin:hover,
 .hs-matin:hover{
 
-    background:rgba(255,0,0,.60);
+    border:2px solid #d4af37;
+    background:rgba(212,175,55,.12);
 }
 /* KOORDINATE NOVIH OKVIRA */
 
