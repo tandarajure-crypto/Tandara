@@ -68,6 +68,180 @@ gtag('consent', 'default', {
 <meta content="https://tandarajure-crypto.github.io/Tandara/jurinagrana.png" property="og:image"/>
 <meta content="website" property="og:type"/>
 <link href="./style.css?v=5" rel="stylesheet"/>
+
+<style>
+/* Osobni zapisi Jurine grane — izdvojeno u ovoj datoteci da se ne mijenja style.css */
+.sr-only{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.people-directory{
+  max-width:900px;
+  margin:34px auto 10px;
+  padding:24px;
+  border:1px solid rgba(80,60,35,.28);
+  border-radius:12px;
+  background:rgba(255,250,238,.68);
+  text-align:left;
+  box-shadow:0 3px 10px rgba(0,0,0,.10);
+}
+.people-directory h2{
+  margin:0 0 8px;
+  text-align:center;
+  font-size:26px;
+  color:#3b2f22;
+}
+.people-directory .directory-intro{
+  margin:0 auto 18px;
+  max-width:720px;
+  text-align:center;
+  font-size:17px;
+  line-height:1.55;
+}
+.person-search-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  max-width:720px;
+  margin:0 auto 14px;
+}
+.person-search-row input{
+  width:100%;
+  min-height:46px;
+  padding:10px 13px;
+  box-sizing:border-box;
+  border:1px solid #8d7048;
+  border-radius:8px;
+  background:#fffdf8;
+  color:#2f2419;
+  font:17px Georgia,serif;
+}
+.person-search-row input:focus{
+  outline:3px solid rgba(154,113,52,.22);
+  border-color:#6f4e24;
+}
+.person-search-row button,
+.person-chip,
+.person-result-button,
+.person-detail-close{
+  border:1px solid #6f4e24;
+  border-radius:8px;
+  background:#6f4e24;
+  color:#fff;
+  font:700 15px Georgia,serif;
+  cursor:pointer;
+  transition:transform .12s ease, background .12s ease;
+}
+.person-search-row button{
+  min-height:46px;
+  padding:10px 20px;
+}
+.person-search-row button:hover,
+.person-chip:hover,
+.person-result-button:hover,
+.person-detail-close:hover{
+  background:#4f3518;
+  transform:translateY(-1px);
+}
+.person-list-label{
+  margin:15px 0 9px;
+  text-align:center;
+  font-weight:700;
+}
+.person-chips{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+}
+.person-chip{
+  padding:8px 11px;
+  background:#866438;
+}
+.person-search-status{
+  min-height:22px;
+  margin:14px 0 0;
+  text-align:center;
+  font-size:16px;
+}
+.person-search-results{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-top:10px;
+}
+.person-result-button{
+  padding:9px 12px;
+}
+.person-detail-box{
+  position:relative;
+  max-width:820px;
+  margin:24px auto 0;
+  padding:24px 26px;
+  border:2px solid #735226;
+  border-radius:12px;
+  background:#fffaf0;
+  box-shadow:0 5px 18px rgba(0,0,0,.16);
+  text-align:left;
+}
+.person-detail-box[hidden]{display:none;}
+.person-detail-box h2{
+  margin:0 48px 4px 0;
+  text-align:left;
+  font-size:28px;
+}
+.person-detail-code{
+  margin:0 48px 18px 0;
+  font-weight:700;
+  color:#735226;
+}
+.person-detail-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:38px;
+  height:38px;
+  padding:0;
+  font-size:22px;
+  line-height:1;
+}
+.person-detail-grid{
+  display:grid;
+  grid-template-columns:190px minmax(0,1fr);
+  gap:9px 16px;
+  margin:0;
+}
+.person-detail-grid dt{
+  font-weight:700;
+  color:#4a341b;
+}
+.person-detail-grid dd{
+  margin:0;
+  overflow-wrap:anywhere;
+}
+.person-detail-note{
+  margin:18px 0 0;
+  padding-top:14px;
+  border-top:1px solid rgba(80,60,35,.28);
+  line-height:1.6;
+}
+@media (max-width:650px){
+  .people-directory{padding:18px 14px;}
+  .person-search-row{grid-template-columns:1fr;}
+  .person-detail-box{padding:22px 16px;}
+  .person-detail-grid{grid-template-columns:1fr;gap:2px;}
+  .person-detail-grid dd{margin:0 0 10px;}
+}
+</style>
+
 </head>
 <body class="hr">
 <div class="layout">
@@ -111,7 +285,7 @@ gtag('consent', 'default', {
 <div class="branch-card">
 <img alt="Hrvatska zastava" class="branch-flag" src="./flag-hr.png?v=5"/>
 <h1>PRVA GRANA PRVE OBITELJI TANDARA</h1>
-<h3>1.0.Jure Tandara – Ivanov (rođen c. 1725 – )</h3>
+<h3>1.0. Jure Tandara – Ivanov (rođen c. 1725 – )</h3>
 <div class="branch-text-block">
 <p>
   
@@ -140,9 +314,143 @@ i potvrdi pripadnost Jurinoj lozi.
 
 </p> 
 </div>
+
+<section class="people-directory" aria-labelledby="peopleDirectoryTitle">
+<h2 id="peopleDirectoryTitle">Osobe Jurine grane</h2>
+<p class="directory-intro">Upišite ime, prezime, osobnu oznaku ili interni ID. Svaka supruga i kći sada ima vlastiti zapis i vlastiti opisni box.</p>
+<div class="person-search-row">
+<label class="sr-only" for="personSearch">Pretraži osobe Jurine grane</label>
+<input id="personSearch" type="search" autocomplete="off" placeholder="Primjer: Matija Lekić, Anđa Jurina ili 1.0-DAU-01"/>
+<button id="personSearchButton" type="button">Pronađi</button>
+</div>
+<div id="personSearchStatus" class="person-search-status" aria-live="polite"></div>
+<div id="personSearchResults" class="person-search-results"></div>
+<p class="person-list-label">Brzi odabir svih sedam osoba:</p>
+<div id="personChips" class="person-chips"></div>
+</section>
+<section id="personDetailBox" class="person-detail-box" aria-live="polite" hidden>
+<button id="personDetailClose" class="person-detail-close" type="button" aria-label="Zatvori opis">×</button>
+<h2 id="personDetailName"></h2>
+<p id="personDetailCode" class="person-detail-code"></p>
+<dl id="personDetailGrid" class="person-detail-grid"></dl>
+<p id="personDetailNote" class="person-detail-note"></p>
+</section>
+
 <img alt="Jurina grana" class="branch-tree-image" src="./jurinagrana.png?v=5"/>
 </div>
 </main>
 </div>
+
+<script>
+(function(){
+  'use strict';
+  const PEOPLE = [{"id":"T000002","personCode":"1.0","name":"Jure Tandara","aliases":["Jure Ivanov","Jure Ivanov Tandara"],"role":"Nositelj Jurine grane i najstariji sin Ivana Tandare","birth":"između 1720. i 1725.","death":"nije poznato","father":"Ivan Tandara (rođen oko 1695.)","mother":"nije poznata","spouse":"Matija Lekić (1.0-SP-01)","children":["Frane Jurin (1.1)","Anđa Jurina (1.0-DAU-01)","Ana Jurina (1.0-DAU-02)"],"siblings":[],"note":"Jure je bio najstariji Ivanov sin. S Matijom Lekić imao je sina Franu te kćeri Anđu i Anu."},{"id":"T000003","personCode":"1.0-SP-01","name":"Matija Lekić","aliases":["Matija Jurina","Jureova supruga"],"role":"Supruga Jure Tandare","birth":"nije poznato","death":"nije poznato","father":"nije poznat","mother":"nije poznata","spouse":"Jure Tandara (1.0)","children":["Frane Jurin (1.1)","Anđa Jurina (1.0-DAU-01)","Ana Jurina (1.0-DAU-02)"],"siblings":[],"note":"Matija Lekić bila je supruga Jure Tandare i majka Frane, Anđe i Ane."},{"id":"T000004","personCode":"1.1","name":"Frane Jurin","aliases":["Frane Tandara","Frane sin Jure"],"role":"Sin Jure Tandare i Matije Lekić","birth":"nije poznato","death":"nije poznato","father":"Jure Tandara (1.0)","mother":"Matija Lekić (1.0-SP-01)","spouse":"Boža Ćosić (1.1-SP-01)","children":["Nikola Franin (1.1.1), rođen 1792."],"siblings":["Anđa Jurina","Ana Jurina"],"note":"Frane je s Božom Ćosić 1792. godine dobio sina Nikolu."},{"id":"T000005","personCode":"1.1-SP-01","name":"Boža Ćosić","aliases":["Boža Franina","Franina supruga"],"role":"Supruga Frane Jurina","birth":"nije poznato","death":"nije poznato","father":"nije poznat","mother":"nije poznata","spouse":"Frane Jurin (1.1)","children":["Nikola Franin (1.1.1), rođen 1792."],"siblings":[],"note":"Boža Ćosić bila je supruga Frane Jurina i majka njihova jedinog poznatog djeteta, Nikole."},{"id":"T000006","personCode":"1.1.1","name":"Nikola Franin","aliases":["Nikola Tandara","Nikola sin Frane"],"role":"Sin Frane Jurina i Bože Ćosić","birth":"1792.","death":"nije poznato","father":"Frane Jurin (1.1)","mother":"Boža Ćosić (1.1-SP-01)","spouse":"nije poznato je li se ženio","children":["nije poznato je li imao djece"],"siblings":[],"note":"Nikola je jedino poznato dijete Frane Jurina i Bože Ćosić. Nakon njega gubi se pouzdan trag ove loze."},{"id":"T000007","personCode":"1.0-DAU-01","name":"Anđa Jurina","aliases":["Anđa Tandara","Andja Jurina","Andja Tandara"],"role":"Kći Jure Tandare i Matije Lekić","birth":"nije poznato","death":"nije poznato","father":"Jure Tandara (1.0)","mother":"Matija Lekić (1.0-SP-01)","spouse":"nije poznato","children":["nije poznato"],"siblings":["Frane Jurin","Ana Jurina"],"note":"Anđa je bila kći Jure Tandare i Matije Lekić. U dostupnim zapisima nisu navedeni podaci o njezinu braku ni djeci."},{"id":"T000008","personCode":"1.0-DAU-02","name":"Ana Jurina","aliases":["Ana Tandara"],"role":"Kći Jure Tandare i Matije Lekić","birth":"nije poznato","death":"nije poznato","father":"Jure Tandara (1.0)","mother":"Matija Lekić (1.0-SP-01)","spouse":"nije poznato","children":["nije poznato"],"siblings":["Frane Jurin","Anđa Jurina"],"note":"Ana je bila kći Jure Tandare i Matije Lekić. U dostupnim zapisima nisu navedeni podaci o njezinu braku ni djeci."}];
+  const LABELS = {"code":"Osobna oznaka","internal":"Interni ID","role":"Odnos u obitelji","birth":"Rođenje","death":"Smrt","father":"Otac","mother":"Majka","spouse":"Supružnik","children":"Djeca","siblings":"Braća i sestre","found1":"Pronađena je jedna osoba.","foundn":"Pronađeno osoba: ","none":"Nije pronađena osoba. Pokušajte upisati puno ime, oznaku ili interni ID.","prompt":"Upišite ime, oznaku ili interni ID.","codeprefix":"Oznaka "};
+  const searchInput = document.getElementById('personSearch');
+  const searchButton = document.getElementById('personSearchButton');
+  const searchStatus = document.getElementById('personSearchStatus');
+  const searchResults = document.getElementById('personSearchResults');
+  const chips = document.getElementById('personChips');
+  const detailBox = document.getElementById('personDetailBox');
+  const detailName = document.getElementById('personDetailName');
+  const detailCode = document.getElementById('personDetailCode');
+  const detailGrid = document.getElementById('personDetailGrid');
+  const detailNote = document.getElementById('personDetailNote');
+  const detailClose = document.getElementById('personDetailClose');
+
+  function normalize(value){
+    return String(value || '')
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function personSearchText(person){
+    return normalize([
+      person.name, person.personCode, person.id, person.role, person.birth,
+      person.father, person.mother, person.spouse,
+      ...(person.aliases || []), ...(person.children || []), ...(person.siblings || [])
+    ].join(' '));
+  }
+
+  function addDetailRow(label, value){
+    if (!value || (Array.isArray(value) && value.length === 0)) return;
+    const dt = document.createElement('dt');
+    const dd = document.createElement('dd');
+    dt.textContent = label;
+    dd.textContent = Array.isArray(value) ? value.join(', ') : value;
+    detailGrid.appendChild(dt);
+    detailGrid.appendChild(dd);
+  }
+
+  function showPerson(person){
+    detailName.textContent = person.name;
+    detailCode.textContent = LABELS.codeprefix + person.personCode;
+    detailGrid.replaceChildren();
+    addDetailRow(LABELS.code, person.personCode);
+    addDetailRow(LABELS.internal, person.id);
+    addDetailRow(LABELS.role, person.role);
+    addDetailRow(LABELS.birth, person.birth);
+    addDetailRow(LABELS.death, person.death);
+    addDetailRow(LABELS.father, person.father);
+    addDetailRow(LABELS.mother, person.mother);
+    addDetailRow(LABELS.spouse, person.spouse);
+    addDetailRow(LABELS.children, person.children);
+    addDetailRow(LABELS.siblings, person.siblings);
+    detailNote.textContent = person.note || '';
+    detailBox.hidden = false;
+    detailBox.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function makePersonButton(person, className){
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = className;
+    button.textContent = person.name + ' · ' + person.personCode;
+    button.addEventListener('click', function(){ showPerson(person); });
+    return button;
+  }
+
+  function runSearch(){
+    const query = normalize(searchInput.value);
+    searchResults.replaceChildren();
+    if (!query){
+      searchStatus.textContent = LABELS.prompt;
+      return;
+    }
+    const exact = PEOPLE.filter(function(person){
+      return [person.name, person.personCode, person.id, ...(person.aliases || [])]
+        .some(function(value){ return normalize(value) === query; });
+    });
+    const matches = exact.length ? exact : PEOPLE.filter(function(person){
+      return personSearchText(person).includes(query);
+    });
+    if (!matches.length){
+      searchStatus.textContent = LABELS.none;
+      return;
+    }
+    searchStatus.textContent = matches.length === 1 ? LABELS.found1 : LABELS.foundn + matches.length;
+    if (matches.length === 1){
+      showPerson(matches[0]);
+      return;
+    }
+    matches.forEach(function(person){
+      searchResults.appendChild(makePersonButton(person, 'person-result-button'));
+    });
+  }
+
+  PEOPLE.forEach(function(person){
+    chips.appendChild(makePersonButton(person, 'person-chip'));
+  });
+  searchButton.addEventListener('click', runSearch);
+  searchInput.addEventListener('keydown', function(event){
+    if (event.key === 'Enter'){ event.preventDefault(); runSearch(); }
+  });
+  detailClose.addEventListener('click', function(){ detailBox.hidden = true; });
+})();
+</script>
+
 </body>
 </html>
