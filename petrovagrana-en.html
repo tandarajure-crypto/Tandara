@@ -1,64 +1,226 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head><meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/><meta content="nosniff" http-equiv="X-Content-Type-Options"/><meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<head>
+
+<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content; frame-ancestors 'self'" http-equiv="Content-Security-Policy"/>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta name="description" content="Genealogical account of the Petar branch of the Tandara family, including historical records, descendants and migrations.">
+<meta name="keywords" content="Tandara, Petar branch, genealogy, family history, Ričice, Zavelim, family tree">
+<meta name="author" content="Jure Tandara">
+<meta name="robots" content="index, follow">
+
 <title>Petar Branch</title>
 <!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-gtag('consent', 'default', {
-  'analytics_storage': 'granted',
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied'
-});
-  gtag('js', new Date());
-  gtag('config', 'G-S33NBEJQFD', {
-    send_page_view: true,
-    page_title: document.title,
-    page_location: window.location.href,
-    page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'hr'
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  var consentKey = 'tandara_analytics_consent';
+  var savedConsent = null;
+
+  try {
+    savedConsent = localStorage.getItem(consentKey);
+  } catch (error) {
+    savedConsent = null;
+  }
+
+  gtag('consent', 'default', {
+    'analytics_storage': savedConsent === 'granted' ? 'granted' : 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
   });
 
-  // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
-  document.addEventListener('click', function(event) {
-    var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
+ document.addEventListener('DOMContentLoaded', function () {
+  var banner = document.getElementById('cookie-banner');
+  var acceptButton = document.getElementById('cookie-accept');
+  var rejectButton = document.getElementById('cookie-reject');
+  var flagCounterImage = document.getElementById('flag-counter-image');
 
-    var href = link.href;
-    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
-    var isMail = href.indexOf('mailto:') === 0;
-    var isTel = href.indexOf('tel:') === 0;
-    var isExternal = link.hostname && link.hostname !== window.location.hostname;
-    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
-
-    if (isMail || isTel) {
-      gtag('event', 'contact_click', {
-        contact_type: isMail ? 'email' : 'phone',
-        link_text: text,
-        link_url: href
-      });
+  function enableFlagCounter() {
+    if (!flagCounterImage) {
+      return;
     }
+
+    var flagSource = flagCounterImage.getAttribute('data-src');
+
+    if (flagSource && !flagCounterImage.getAttribute('src')) {
+      flagCounterImage.setAttribute('src', flagSource);
+    }
+
+    flagCounterImage.hidden = false;
+  }
+
+  function disableFlagCounter() {
+    if (!flagCounterImage) {
+      return;
+    }
+
+    flagCounterImage.removeAttribute('src');
+    flagCounterImage.hidden = true;
+  }
+
+  if (!banner || !acceptButton || !rejectButton) {
+    return;
+  }
+
+  if (savedConsent === 'granted') {
+    banner.style.display = 'none';
+    enableFlagCounter();
+  } else if (savedConsent === 'denied') {
+    banner.style.display = 'none';
+    disableFlagCounter();
+  }
+
+  acceptButton.addEventListener('click', function () {
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+
+    try {
+      localStorage.setItem(consentKey, 'granted');
+    } catch (error) {
+      /* Odluka vrijedi samo do zatvaranja stranice. */
+    }
+
+    enableFlagCounter();
+    banner.style.display = 'none';
+  });
+
+  rejectButton.addEventListener('click', function () {
+    gtag('consent', 'update', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+
+    try {
+      localStorage.setItem(consentKey, 'denied');
+    } catch (error) {
+      /* Odluka vrijedi samo do zatvaranja stranice. */
+    }
+
+    disableFlagCounter();
+    banner.style.display = 'none';
+  });
+});
+  
+</script>
+  
+<script>
+ 
+  var analyticsLoaded = false;
+  var analyticsClickTrackingStarted = false;
+
+  function startAnalyticsClickTracking() {
+    if (analyticsClickTrackingStarted) {
+      return;
+    }
+
+    analyticsClickTrackingStarted = true;
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a');
+
+      if (!link || !link.href || typeof gtag !== 'function') {
+        return;
+      }
+
+      var href = link.href;
+     
+      var isMail = href.indexOf('mailto:') === 0;
+      var isTel = href.indexOf('tel:') === 0;
+      var isExternal =
+        link.hostname &&
+        link.hostname !== window.location.hostname;
+
+      var isDownload =
+        /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i
+          .test(link.pathname || '');
+
+      if (isMail || isTel) {
+        gtag('event', 'contact_click', {
+          contact_type: isMail ? 'email' : 'phone'
+        });
+      }
 
     if (isExternal) {
-      gtag('event', 'external_link_click', {
-        link_text: text,
-        link_url: href
-      });
+  gtag('event', 'external_link_click', {
+    link_domain: link.hostname
+  });
+}
+
+if (isDownload) {
+  gtag('event', 'file_download', {
+    file_extension:
+      (link.pathname || '').split('.').pop().toLowerCase()
+  });
+}
+    });
+  }
+
+  function loadGoogleAnalytics() {
+    if (analyticsLoaded) {
+      return;
     }
 
-    if (isDownload) {
-      gtag('event', 'file_download', {
-        file_name: (link.pathname || '').split('/').pop(),
-        link_text: text,
-        link_url: href
-      });
+    analyticsLoaded = true;
+
+    var analyticsScript = document.createElement('script');
+    analyticsScript.async = true;
+    analyticsScript.src =
+      'https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD';
+
+    document.head.appendChild(analyticsScript);
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-S33NBEJQFD', {
+      send_page_view: true,
+      page_title: document.title,
+      page_location:
+        window.location.origin + window.location.pathname,
+      page_path: window.location.pathname,
+      language:
+        document.documentElement.lang ||
+        navigator.language ||
+        'en'
+    });
+
+    startAnalyticsClickTracking();
+  }
+
+  if (savedConsent === 'granted') {
+    loadGoogleAnalytics();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var acceptButton =
+      document.getElementById('cookie-accept');
+
+    if (!acceptButton) {
+      return;
     }
+
+    acceptButton.addEventListener(
+      'click',
+      loadGoogleAnalytics
+    );
   });
 </script>
 <link href="style.css?v=4" rel="stylesheet"/>
@@ -72,12 +234,35 @@ gtag('consent', 'default', {
 </style>
 </head>
 <body class="en">
+ <div id="cookie-banner" role="dialog" aria-modal="true"
+     aria-labelledby="cookie-title" aria-describedby="cookie-text">
+
+  <h2 id="cookie-title">Privacy settings</h2>
+
+  <p id="cookie-text">
+    This website uses Google Analytics and FlagCounter to measure visits.
+    Analytics services are activated only with your consent.
+    Read more in our
+    <a href="./privacy.html">Privacy Policy</a>.
+  </p>
+
+  <div class="cookie-buttons">
+    <button type="button" id="cookie-reject">
+      Reject
+    </button>
+
+    <button type="button" id="cookie-accept">
+      Accept
+    </button>
+  </div>
+
+</div> 
 <div class="layout">
 <aside class="left-menu">
 <!-- HOME -->
-<a class="home-button" href="index-en.html">
+<a class="home-button" href="index-en.html" aria-label="Home page">
 <div class="home-circle">
-<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
 <path d="M10 20v-6h4v6"></path>
@@ -93,122 +278,139 @@ gtag('consent', 'default', {
 <img alt="EN" src="flag-uk.png"/>
 </a>
 </div>
-<h2>TANDARA-SURNAME</h2>
-
-<ul class="heritage-menu"><li><span>🌳</span><a href="./autor-en.html">About the Author &amp; Project</a></li><li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the Surname</a></li><li><span>🌳</span><a href="./rodoslovlje-en.html">Family Genealogy</a></li><li><span>🌳</span><a href="./migracije-en.html">Migration &amp; Distribution</a></li><li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting Facts</a></li><li><span>🌳</span><a href="./contacts.html">Contact &amp; Collaboration</a></li><li><span>🌳</span><a href="./visitors-messages.html">Visitors' Messages</a></li><li><span>🌳</span><a href="./privacy.html">Privacy Policy</a></li></ul>
+<div class="menu-title">TANDARA-SURNAME</div>
+<ul class="heritage-menu">
+  <li><span>🌳</span><a href="./autor-en.html">About the author and project</a></li>
+  <li><span>🌳</span><a href="./podrijetlo-en.html">Origin of the surname</a></li>
+  <li><span>🌳</span><a href="./rodoslovlje-en.html">Family genealogy</a></li>
+  <li><span>🌳</span><a href="./migracije-en.html">Migration and distribution</a></li>
+  <li><span>🌳</span><a href="./zanimljivosti-en.html">Interesting facts</a></li>
+  <li><span>🌳</span><a href="./contacts.html">Contact and collaboration</a></li>
+  <li><span>🌳</span><a href="./visitors-messages.html">Visitors' messages</a></li>
+  <li><span>🌳</span><a href="./privacy.html">Privacy policy</a></li>
+</ul>
 <div class="author-photo">
 <a href="./autor-en.html">
 <img alt="Jure Tandara" src="./jure.png"/>
 </a>
 </div>
+
 <div class="flagbox">
+<div class="flag-title">Visitors</div>  
 <a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"/>
+<img id="flag-counter-image" alt="Flag Counter" data-src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/" hidden/>
 </a>
 </div>
 </aside>
 <main class="branch-content">
 <div class="branch-card">
-<img alt="UK flag" class="branch-flag" src="flag-uk.png?v=3"/>
-
+<img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=3"/>
 <h1><strong>THE SECOND BRANCH OF THE FIRST TANDARA FAMILY</strong></h1>
 <h3><strong>2.0. Petar Tandara (1734–1817)</strong></h3>
-<section class="branch-search-access" aria-labelledby="petar-search-title">
+<section class="branch-search-access" aria-labelledby="petrova-search-title">
 <div>
-<h2 id="petar-search-title">Search the complete Petar branch</h2>
-<p>The interactive search accepts several criteria at once: name, year, parents, spouse, place, nickname or personal code. Diacritics may be omitted.</p>
+<h2 id="petrova-search-title">Search the entire Petar branch</h2>
+<p>The interactive search accepts several criteria at the same time: name, year, parents, spouse, place, nickname or personal reference number. Names may also be entered without diacritics.</p>
 </div>
 <a class="branch-search-button" href="box2b-en.html">Open interactive search</a>
 </section>
 <div class="branch-text-block">
 <p>
-  Petar Tandara was Ivan’s second son. He died in 1817 at the age of eighty-three, so it is estimated that he was born c. 1734.
+  Petar Tandara was Ivan's second son. He died in 1817 at the age of eighty-three, so it is estimated that he was born around 1734.
   Petar was married to Jela Budić. They had seven sons—Grgo, Jakov, Martin, Marijan, Mijo, Tadija and Marko—and two daughters, Manda and Jela.
   The sons Jakov, Marijan and Marko do not appear in the 1806 Register of Souls, while Tadija is absent from the 1819 register.
-  It may therefore be assumed that they were no longer alive or that one of them had moved away from Ričice. Mijo, son of Petar, had no male descendants, and his branch died out.
+  It may therefore be assumed that they were no longer alive or that one or more of them had moved away from Ričice. Mijo, son of Petar, had no male descendants, and his branch died out.
 </p>
 
 <h3><strong>2.1. Grgo, son of Petar (1770– )</strong></h3>
 <p>
-  Grgo, Petar’s eldest son, married Ruža Pušić. They had a son, Šimun, and a daughter, Iva.
+  Grgo, Petar's eldest son, married Ruža Pušić. They had a son, Šimun, and a daughter, Iva.
 </p>
 
-<h3>2.1.1. Šimun, son of Grgo (1800–1874)</h3>
+<h3><strong>2.1.1. Šimun, son of Grgo (1800–1874)</strong></h3>
 <p>
   Šimun was married to Jela Budimir, with whom he had a son, Mate, and three daughters: Iva, Matija and Marta.
-  Only Mate’s year of birth is known, so it is not possible to establish the course of his later life or the circumstances that explain why no further records about him have survived.
+  Only Mate's year of birth is known, so neither the course of his later life nor the circumstances explaining the absence of further surviving records can be established.
 </p>
 
-<h3>2.2. Martin, son of Petar (1775–1844)</h3>
+<h3><strong>2.2. Martin, son of Petar (1775–1844)</strong></h3>
 <p>
-  Martin, Petar’s third son, married Ruža Lekić. They had six sons—Ivan, Jure, Mijo, Grgo, Filip and Josip—and two daughters, Matija and Ana.
+  Martin, Petar's third son, married Ruža Lekić. They had six sons—Ivan, Jure, Mijo, Grgo, Filip and Josip—and two daughters, Matija and Ana.
   No records of Jure, Filip or Josip have been found apart from their baptismal entries, so it is not known whether they died young or moved away.
   Only Ivan and Grgo continued the family line.
 </p>
 
-<h3>2.2.1. Ivan, son of Martin (1807–1877)</h3>
+<h3><strong>2.3. Mijo, son of Petar (years of birth and death unknown)</strong></h3>
 <p>
-  Ivan, Martin’s eldest son, married Antica Lažeta in 1826. Ivan and Antica had three sons—Marijan, Toma and Jure—and four daughters: Ruža, Iva, Joza and Matija.
-  Marijan died as a young child. No information about Jure has been found apart from the record of his birth. Toma was the only son to continue Ivan’s line and became the founder of the <strong>Tromići</strong> branch.
+  Mijo, son of Petar, was married to Ruža, whose maiden name is unknown. They had a daughter named Matija.
+  They had no son to continue the male line, and Mijo's branch therefore died out.
 </p>
 
-<h3>2.2.2. Mijo, son of Martin (1814– )</h3>
+<h3><strong>2.2.1. Ivan, son of Martin (1807–1877)</strong></h3>
 <p>
-  Martin’s third son, Mijo, and his wife Matija, née Parlov, had eight children: two sons, Martin and Mijo, the latter of whom died as a young child, and six daughters—Luca, Manda, Boža, Joza, Marija and Matija.
-  No records of Martin have been found apart from the record of his birth. It is not known whether he died or moved away. After Martin, Mijo’s line died out.
+  Martin's eldest son, Ivan, married Antica Lažeta in 1826. Ivan and Antica had three sons—Marijan, Toma and Jure—and four daughters: Ruža, Iva, Joza and Matija.
+  Marijan died as a young child. No information about Jure has been found apart from the record of his birth. Toma was the only son to continue Ivan's line and became the founder of the <strong>Tromići</strong> branch.
 </p>
 
-<h3>2.2.3. Grgo, son of Martin (1818– )</h3>
+<h3><strong>2.2.2. Mijo, son of Martin (1814– )</strong></h3>
 <p>
-  Grgo married twice. From his first marriage to Rosa, née Budimir, he had a son, Lovro, and a daughter, Jaka. In his second marriage to Jaka, née Knežević, Grgo had two sons,
-  Mate, who died as a young child, and Mijo, as well as three daughters: Matija, Joza and Veronika.
+  Martin's third son, Mijo, and his wife Matija, née Parlov, had eight children: two sons, Martin and Mijo, the latter of whom died as a young child, and six daughters—Luca, Manda, Boža, Joza, Marija and Matija.
+  No records of Martin have been found apart from the record of his birth. It is not known whether he died or moved away. After Martin, Mijo's male line died out.
 </p>
 
-<h2><strong>THE BEGINNING OF MIGRATION BEYOND RIČICE</strong></h2>
+<h3><strong>2.2.3. Grgo, son of Martin (1818– )</strong></h3>
 <p>
-  In 1819, the family of Martin Tandara, Lovro’s grandfather, was living in Zavelim. Martin’s sons Ivan, Mijo and Grgo were listed there. When the Austrian cadastral survey was conducted in 1835,
-  Martin Tandara, son of the late Petar, was recorded as a property owner in Ričice. At that time, most clans from Ričice owned property in Ričice, Zavelim, Podbila and Vir.
-  These villages belonged to the same parish in Ričice. Many families within the same clan moved from one locality to another, even within Ričice itself.
-  The population was growing rapidly, and new living space was needed. In this context, it is understandable that a family, or part of a family,
-  could be recorded in Ričice in one register and in Zavelim in the next, or vice versa. It is known with certainty, however, that Grgo returned with his children from Zavelim to Ričice, where he continued his family life.
+  Grgo married twice. From his first marriage to Rosa, née Budimir, he had a son, Lovro, and a daughter, Jaka.
+  In his second marriage to Jaka, née Knežević, Grgo had two sons, Mate, who died as a young child, and Mijo, as well as three daughters: Matija, Joza and Veronika.
+  His son Mijo from the second marriage had four sons and three daughters; however, none of Mijo's sons continued the male line.
+</p>
+
+<h2><strong>THE BEGINNING OF MIGRATION FROM RIČICE</strong></h2>
+<p>
+  In 1819, the family of Martin Tandara, Lovro's grandfather, was living in Zavelim. Martin's sons Ivan, Mijo and Grgo were also listed there.
+  When the Austrian cadastral survey was conducted in 1835, Martin Tandara, son of the late Petar, was recorded as a property owner in Ričice.
+  At that time, most clans from Ričice owned property in Ričice, Zavelim, Podbila and Vir. These villages belonged to the same parish in Ričice.
+  Many families within the same clan moved from one locality to another, even within Ričice itself.
+  The population was growing rapidly, and new living space was needed. In this context, it is understandable that a family, or part of a family, could be recorded in Ričice in one census and in Zavelim in the next, or vice versa.
+  It is known with certainty, however, that Grgo returned with his children from Zavelim to Ričice, where he continued his family life.
 </p>
 
 <h2><strong>TROMIĆI</strong></h2>
 <h3><strong>2.2.1.1. Toma, son of Ivan (1830– )</strong></h3>
 <p>
   Toma was married to Tomica Kovač. They had four sons: Ivan, Mate, Jure and another son also named Ivan, who died as a child.
-  Toma’s only son who continued the family line was <strong>Jure</strong>.
-  Toma’s line in Zavelim was known by the nickname <strong>Tromići</strong>, which, according to family tradition, referred to their tall stature and slow, heavy gait.
+  Toma's only son who continued the family line was <strong>Jure</strong>.
+  Toma's line in Zavelim was known by the nickname <strong>Tromići</strong>, which, according to family tradition, referred to their tall stature and slow, heavy gait.
 </p>
 
-<h2><strong>THE LINE OF JURE, SON OF TOMA</strong></h2>
+<h2><strong>LINE OF JURE, SON OF TOMA</strong></h2>
 <h3><strong>2.2.1.1.1. Jure, son of Toma (1874–1931)</strong></h3>
 <p>
-  Toma’s third son and only successor to the family line, Jure, married Iva Lažeta. They had five sons—Toma and Ivan, who both died as young children, followed by Pio, Dominik and Mate—and a daughter named Matija.
+  Toma's third son and only successor to the family line, Jure, married Iva Lažeta.
+  They had five sons—Toma and Ivan, who both died as young children, followed by Pio, Dominik and Mate—and a daughter named Matija.
 </p>
 
 <h3><strong>2.2.1.1.1.1. Pio, son of Jure (1916–1990)</strong></h3>
 <p>
-  Pio, Jure’s third son, married Terezija Budimir. They had three sons—Ivan, Jure and Jozo—and a daughter named Mara.
+  Pio, Jure's third son, married Terezija Budimir. They had three sons—Ivan, Jure and Jozo—and a daughter named Mara.
 </p>
 
-<h3>2.2.1.1.1.1.1. Ivan, son of Pio (1935–2025)</h3>
+<h3><strong>2.2.1.1.1.1.1. Ivan, son of Pio (1935–2025)</strong></h3>
 <p>
   Ivan married Marijana Petter. They had a son, Dino, and a daughter, Romana.
-  The family now lives in Zagreb.
+  The family lives in Zagreb.
 </p>
 
-<h3>2.2.1.1.1.1.1.1. Dino, son of Ivan</h3>
+<h3><strong>2.2.1.1.1.1.1.1. Dino, son of Ivan</strong></h3>
 <p>
   Dino married Matilda Klepikapić. They have three daughters: Hedviga, Leonarda and Lucija.
-  He has no male descendants. The family lives in Zagreb.
+  Dino has no male descendants. The family lives in Zagreb.
 </p>
 
 <h3><strong>2.2.1.1.1.1.2. Jure, son of Pio (1943–2004)</strong></h3>
 <p>
   Jure was married to Mila Škorić. They had a son, Tomislav, and three daughters: Marija, Angela and Nediljka.
-  Tomislav never married.
-  The family now lives in Split.
+  Tomislav never married. The family lives in Split.
 </p>
 
 <h3><strong>2.2.1.1.1.1.3. Jozo, son of Pio (1949– )</strong></h3>
@@ -219,8 +421,9 @@ gtag('consent', 'default', {
 
 <h3><strong>2.2.1.1.1.2. Dominik, son of Jure (1919–1987)</strong></h3>
 <p>
-  Dominik, Jure’s fourth son, married Mara Knezović. They had six sons—Ante, Bariša, Nikola, Pio, Sveto and Ivan—and a daughter named Olga. Ante, Nikola, Pio and Sveto have no sons. No information about Bariša’s marriage is available.
-  Only Ivan and his sons continued Dominik’s line.
+  Dominik, Jure's fourth son, married Mara Knezović. They had six sons—Ante, Bariša, Nikola, Pio, Sveto and Ivan—and a daughter named Olga.
+  Ante, Nikola, Pio and Sveto have no sons. No information about Bariša's marriage has been found.
+  Only Ivan and his sons continued Dominik's male line.
 </p>
 
 <h3><strong>2.2.1.1.1.2.1. Ante, son of Dominik (1948– )</strong></h3>
@@ -237,7 +440,7 @@ gtag('consent', 'default', {
 <h3><strong>2.2.1.1.1.2.3. Nikola, son of Dominik (1953– )</strong></h3>
 <p>
   Nikola married Nada Jurčević. They had four daughters: Marijana, Iva, Brigita and Anita.
-  Nikola returned to the village of Tandare in Zavelim.
+  Nikola returned to the hamlet of Tandare in Zavelim.
 </p>
 
 <h3><strong>2.2.1.1.1.2.4. Pio, son of Dominik (1954– )</strong></h3>
@@ -255,13 +458,13 @@ gtag('consent', 'default', {
 <h3><strong>2.2.1.1.1.2.6. Ivan, son of Dominik (1963– )</strong></h3>
 <p>
   Ivan married Mirjana Tandara. They have two sons, Dominik and David.
-  The family lives in the village of Tandare in Zavelim.
+  The family lives in the hamlet of Tandare in Zavelim.
 </p>
 
 <h3><strong>2.2.1.1.1.3. Mate, son of Jure (1922–1963)</strong></h3>
 <p>
-  Mate, Jure’s fifth son, married Mara Budić. They had a son named Tomislav, two other sons who died at the age of five,
-  and a daughter named Matija.
+  Mate was Jure's fifth son. He married Mara Budić.
+  They had a son named Tomislav, two other sons who died at the age of five, and a daughter named Matija.
 </p>
 
 <h3><strong>2.2.1.1.1.3.1. Tomislav, son of Mate (1947–2014)</strong></h3>
@@ -271,16 +474,24 @@ gtag('consent', 'default', {
 
 <h3><strong>2.2.1.1.1.3.1.1. Mate, son of Tomislav (1980– )</strong></h3>
 <p>
-  Mate married Ivana Trošelj. They had a daughter named Tena.
-  The descendants of Mate, son of Jure, now live in Zagreb.
+  Mate married Ivana Trošelj. They have a daughter named Tena.
+  Mate's descendants live in Zagreb.
 </p>
 
-<h2><strong>THE LINE OF LOVRO, SON OF GRGO</strong></h2>
+<h2><strong>LINE OF LOVRO, SON OF GRGO</strong></h2>
 <h3><strong>2.2.3.1. Lovro, son of Grgo (1842–1922)</strong></h3>
 <p>
-  Lovro married Iva Parlov. They had two sons, Ante and Marijan, and three daughters: Lucija, who died as a child, Iva, and another daughter also named Lucija. Ante and Marijan were the only sons who continued the family line.
-  Their sons had a total of thirty-three children.
-  The Ričice parish death register records that Lovro’s daughter Luca was “killed by stones” at the age of thirteen.
+  Lovro married Iva Parlov. They had two sons, Ante and Marijan, and three daughters: Lucija, who died as a child, Iva, and another daughter also named Lucija.
+  Ante and Marijan were the only sons who continued the family line. Their sons had a total of thirty-three children.
+  The Ričice parish death register records that Lovro's daughter Luca was “killed by stones” at the age of thirteen.
+</p>
+
+<h3><strong>2.2.3.2. Mijo, son of Grgo (1856–1933)</strong></h3>
+<p>
+  Mijo, Grgo's third son, married Iva Tandara. They had seven children: Martin, the first Nikola, Mate, the second Nikola, Iva, the first Mara and the second Mara.
+  Martin died at the age of nineteen, Mate died as a young child, and the older Nikola also died as a child.
+  No information about the younger Nikola has been found apart from the record of his birth.
+  There is no evidence that any of Mijo's sons married or had children, and Mijo's branch therefore died out.
 </p>
 
 <h3><strong>2.2.3.1.1. Ante, son of Lovro (1871–1933)</strong></h3>
@@ -291,108 +502,78 @@ gtag('consent', 'default', {
 
 <h3><strong>2.2.3.1.1.1. Ivan, son of Ante (1896– )</strong></h3>
 <p>
-  Ivan, Ante’s eldest son, married Mara Mršić. They had five sons—Lovro, Mirko, Mate, Ante Vlade and Nikola—and a daughter named Tomica.
-  Ivan moved to Slatina, and his descendants now live in Predavac near Bjelovar, Slatina, Obrovac, Zagreb and Germany.
+  Ivan, Ante's eldest son, married Mara Mršić. They had five sons—Lovro, Mirko, Mate, Ante Vlade and Nikola—and a daughter named Tomica.
+  Ivan moved to Slatina. His descendants now live in Predavac near Bjelovar, Slatina, Obrovac, Zagreb and Germany.
 </p>
 
 <h3><strong>2.2.3.1.1.2. Marijan, son of Ante (1898–1933)</strong></h3>
 <p>
-  Ante’s second son was married to Milica, née Mikulić. They had two sons—Frane, who was killed in Vienna in 1945 at the age of eighteen, and Ante, who died as a young child—
-  and two daughters, Marija and Stana. Marijan died of pneumonia at the age of thirty-five. His sons had no descendants, and his line therefore died out.
+  Marijan, Ante's second son, was married to Milica, née Mikulić.
+  They had two sons—Frane, who was killed in Vienna in 1945 at the age of eighteen, and Ante, who died as a young child—and two daughters, Marija and Stana.
+  Marijan died of pneumonia at the age of thirty-five. Neither of his sons produced descendants, and Marijan's male line died out.
 </p>
 
 <h3><strong>2.2.3.1.1.3. Mate, son of Ante (1910–1991)</strong></h3>
 <p>
-  Mate, Ante’s fourth son, was married to Mara Knežević. They had two sons, Ante Bruno and Frane, and three daughters: Ana, Dinka and Olga.
+  Mate, Ante's fourth son, was married to Mara Knežević.
+  They had two sons, Ante Bruno and Frane, and three daughters: Ana, Dinka and Olga.
 </p>
 
 <h3><strong>2.2.3.1.1.4. Nikola, son of Ante (1919–1981)</strong></h3>
 <p>
-  Nikola, Ante’s fifth son, was married to Tomica Budimir. They had four sons—Ante, Drago, Jerko and Ivan—and three daughters: Matija, Branka and Marija.
-  Jerko was married to Stanka Racetin, with whom he had a daughter named Ana. Drago was the only son to continue the line, and his sons now live in Ričice.
+  Nikola, Ante's fifth son, was married to Tomica Budimir.
+  They had four sons—Ante, who died as a young child, Drago, Jerko and Ivan, who also died as a young child—and three daughters: Matija, Branka and Marija.
+  Jerko was married to Stanka Racetin, and they had only one daughter, Ana.
+  Drago was the only son to continue Nikola's male line, and his sons now live in Ričice.
 </p>
 
 <h3><strong>2.2.3.1.1.1.1. Lovre, son of Ivan (1925– )</strong></h3>
 <p>
-  Lovre was Ivan’s eldest son. He and his wife Rozika Peška had two daughters, Štefica and Ana.
+  Lovre was Ivan's eldest son. He and his wife Rozika Peška had two daughters, Štefica and Ana.
 </p>
 
 <h3><strong>2.2.3.1.1.1.2. Mirko, son of Ivan (1928– )</strong></h3>
 <p>
   Mirko married Danica Lukić. They had two sons, Ivan and Veselko, and a daughter named Mirjana.
-  The family lives in Predavac near Bjelovar.
-</p>
-
-<h3><strong>2.2.3.1.1.1.2.1. Ivan, son of Mirko (1961– )</strong></h3>
-<p>
-  Ivan, Mirko’s elder son, married Nada Kegalj and
-  they had two sons, Robert and Kristijan. The family lives in Predavac near Bjelovar.
-</p>
-
-<h3><strong>2.2.3.1.1.1.2.2. Veselko, son of Mirko (1964– )</strong></h3>
-<p>
-  Veselko, Mirko’s younger son, married Martina Hohmann. They have a son, Mirko, and a daughter, Janina.
-  The family lives in Predavac.
+  Mirko's elder son Ivan married Nada Kegalj, and they had two sons, Robert and Kristijan. The family lives in Predavac near Bjelovar.
+  Mirko's younger son Veselko married Martina Hohmann, and they have a son, Mirko, and a daughter, Janina.
 </p>
 
 <h3><strong>2.2.3.1.1.1.3. Mate, son of Ivan (1932–1970)</strong></h3>
 <p>
-  Ivan’s third son married Marija Srebrnjak. They had one daughter, Sandra.
+  Mate, Ivan's third son, married Marija Srebrnjak. They have one daughter, Sandra, and no male descendants.
 </p>
 
 <h3><strong>2.2.3.1.1.1.4. Ante Vlade, son of Ivan (1934– )</strong></h3>
 <p>
-  Ante Vlade, Ivan’s fourth son, married twice. In his first marriage to Karina Mesch, he had two sons, Johan and Franz, and a daughter named Veronika.
-  He had no children in his second marriage to Tonka Zanne.
+  Ante Vlade, Ivan's fourth son, married twice.
+  In his first marriage to Karina Mesch, he had two sons, Johan and Franz, and a daughter named Veronika.
+  His elder son Johan and Johan's wife, Katarina Koniks, have a son, Gerd, and a daughter, Madita.
+  Ante Vlade had no children from his second marriage to Tonka Zanne.
 </p>
 
-<h3><strong>2.2.3.1.1.1.4.1. Johan, son of Ante Vlade (1960– )</strong></h3>
+<h3><strong>2.2.3.1.1.3.1. Ante Bruno Tandara, son of Mate (1937–1989)</strong></h3>
 <p>
-  Johan and his wife Katarina Koniks have a son, Gerd, and a daughter, Madita.
-  The family lives in Germany.
-</p>
-
-<h3><strong>2.2.3.1.1.1.4.2. Franz, son of Ante Vlade (1966– )</strong></h3>
-<p>
-  Franz married Honolore Genesen. They have a son named Marvin.
-  The family lives in Germany.
-</p>
-
-<h3><strong>2.2.3.1.1.3.1. Ante Bruno, son of Mate (1937–1989)</strong></h3>
-<p>
-  Dr Bruno was born on 7 October 1937 in Ričice. In 1968, he married Vanja Brkljača. They had a son, Zvonimir, and two daughters, Zrinka and Tomislava.
+  Dr Bruno was born in Ričice on 7 October 1937. In 1968, he married Vanja Brkljača.
+  They had a son, Zvonimir, and two daughters, Zrinka and Tomislava.
+  Zvonimir and his wife Aneta Gacek have a son named Oskar.
 </p>
 
 <p>
-  Dr Ante Bruno Tandara (1937–1989) was a Croatian physician, a member of the Parliament of the Socialist Republic of Croatia and a participant in the Croatian Spring.
-  He was elected to Parliament in 1969, and after the suppression of the Croatian Spring, his parliamentary immunity was revoked.
+  Dr Ante Bruno Tandara (1937–1989) was a Croatian physician, member of parliament and public figure who took an active part in the Croatian Spring movement in the late 1960s and early 1970s.
+  As a member of the Croatian reform movement, he advocated greater rights for Croatia within the Yugoslav federation of the time.
+  He also participated in the work of Matica hrvatska and in other public activities aimed at promoting Croatian national and cultural identity.
 </p>
 
 <p>
-  Because of his political activities, he was arrested and sentenced to two years and four months of imprisonment under a strict regime, which he served at Stara Gradiška Prison.
-</p>
-<figure class="sabina-photo">
-  <a href="Bruno.png" target="_blank" rel="noopener">
-    <img src="Bruno.png"
-         alt="Dr Ante Bruno Tandara"
-         loading="lazy">
-  </a>
-  <figcaption>Dr Ante Bruno Tandara</figcaption>
-</figure>
-<h3><strong>2.2.3.1.1.3.1.1. Zvonimir, son of Ante Bruno (1973– )</strong></h3>
-<p>
-  Zvonimir married Aneta Gacek. They have a son named Oskar.
-  The family lives in Supetar on the island of Brač.
+  After the suppression of the Croatian Spring in 1971, he was arrested, convicted and imprisoned because of his political activities.
+  He is remembered in Croatian public life as one of the prominent participants in the Croatian Spring and as a symbol of the political persecution of that period.
 </p>
 
 <h3><strong>2.2.3.1.1.3.2. Frane, son of Mate (1947– )</strong></h3>
 <p>
-  Frane, Mate’s younger son, married Matija Topalušić. They had two sons, Mate and Ante, and a daughter named Elza.
-  They live in Ričice.
-</p>
-
-<h3><strong>2.2.3.1.1.3.2.1. Mate, son of Frane (1973– )</strong></h3>
-<p>
+  Frane, Mate's younger son, married Matija Topalušić.
+  They have two sons, Mate and Ante, and a daughter named Elza.
   Mate married Ana Marija Vlahović. They have two sons, Ante and Frane, and a daughter named Leonarda.
   The family lives in Ričice.
 </p>
@@ -400,21 +581,21 @@ gtag('consent', 'default', {
 <h3><strong>2.2.3.1.1.4.1. Drago, son of Nikola (1952– )</strong></h3>
 <p>
   Drago and his wife Zdenka Budimir had two sons, Nikola and Ivica.
-  The family lives in Ričice.
 </p>
 
-<h3><strong>2.2.3.1.1.4.1.1. Ivica, son of Drago (1978– )</strong></h3>
+<h3><strong>2.2.3.1.1.4.1.1. Ivica, son of Drago (birth year unknown)</strong></h3>
 <p>
-  Ivica and his wife Jelena Perić have a son, Nikola, and a daughter, Laura. They live in Ričice.
+  Ivica and his wife Jelena Perić have a son, Nikola, and a daughter, Laura.
+  The family lives in Ričice.
 </p>
 
 <h3><strong>2.2.3.1.1.4.2. Jerko, son of Nikola (1953– )</strong></h3>
 <p>
-  Jerko, Nikola’s third son, married Stanka Racetin. They have a daughter named Ana. He has no male descendants.
+  Jerko, Nikola's third son, married Stanka Racetin. They have a daughter named Ana and no male descendants.
 </p>
 
-<h2><strong>THE LINE OF MARIJAN, SON OF LOVRO</strong></h2>
-<h3>2.2.3.1.2. Marijan, son of Lovro (1881–1939) — descendants known as LOVRIĆI</h3>
+<h2><strong>LINE OF MARIJAN, SON OF LOVRO</strong></h2>
+<h3><strong>2.2.3.1.2. Marijan, son of Lovro (1881–1939)</strong></h3>
 <p>
   Marijan married Luca Parlov. They had four sons—Mijo, Marin, Petar and Ivan—and four daughters: Matija, Ana, Iva and Tomica.
   Ivan died shortly after birth.
@@ -422,10 +603,10 @@ gtag('consent', 'default', {
 
 <h3><strong>2.2.3.1.2.1. Mijo, son of Marijan (1908– )</strong></h3>
 <p>
-  Mijo, Marijan’s eldest son, was married to Slavka Sablić. They had nine children: five sons—Vinko, the first Ivan, who died shortly after birth,
-  Milan, Marijan and another son also named Ivan, who died at the age of two—and four daughters: Mila-Iva, Anica, Nada and Maca.
-  Only Vinko, Milan and Marijan continued Mijo’s line.
-  Vinko’s and Milan’s descendants now live in Ričice, Split, Zagreb, Austria and Germany.
+  Marijan's eldest son, Mijo, was married to Slavka, née Sablić.
+  They had five sons—Vinko, Ivan, Milan, Marijan and another son also named Ivan, who died at the age of two—and four daughters: Mila-Iva, Anica, Nada and Maca.
+  Only Vinko and Milan continued Mijo's male line.
+  Vinko's and Milan's descendants now live in Ričice, Split, Zagreb, Austria and Germany.
 </p>
 
 <h3><strong>2.2.3.1.2.1.1. Vinko, son of Mijo</strong></h3>
@@ -443,35 +624,33 @@ gtag('consent', 'default', {
   Milan married Stana Tandara. They had three sons—Nediljko, Željko and Tihomir—and a daughter named Slavica.
 </p>
 
-<h3><strong>2.2.3.1.2.1.2.1. Nediljko, son of Milan (1962– )</strong></h3>
+<h3><strong>2.2.3.1.2.1.2.1. Nediljko, son of Milan</strong></h3>
 <p>
   Nediljko married Vesna Mandić. They had a son, Milan, and two daughters, Ana Marija and Elizabeta.
 </p>
 
 <h3><strong>2.2.3.1.2.1.2.2. Željko, son of Milan (1967–2020)</strong></h3>
 <p>
-  Željko married Valerija Glavota. They had three daughters: Mihaela, Marija and Stana. He had no male descendants.
+  Željko married Valerija Glavota. They had three daughters: Mihaela, Marija and Stana.
+  He had no male descendants.
 </p>
 
-<h3><strong>2.2.3.1.2.1.2.3. Tihomir, son of Milan (1969– )</strong></h3>
+<h3><strong>2.2.3.1.2.1.2.3. Tihomir, son of Milan</strong></h3>
 <p>
   Tihomir married Anica Miloš. They had two sons, Milan and Ivan.
 </p>
 
-<h3><strong>2.2.3.1.2.1.3. Marijan, son of Mijo (1942– )</strong></h3>
+<h3><strong>2.2.3.1.2.1.3. Marijan, son of Mijo</strong></h3>
 <p>
   Marijan married Milenka Budimir. They have a son, Mario, and a daughter, Silvana.
-</p>
-
-<h3><strong>2.2.3.1.2.1.3.1. Mario, son of Marijan (1974– )</strong></h3>
-<p>
-  Mario married Jasminka Ilić. He has no male descendants to continue the family line.
+  Mario has no male descendants to continue the family line.
 </p>
 
 <h3><strong>2.2.3.1.2.2. Marin, son of Marijan (1912–1989)</strong></h3>
 <p>
-  Marin married Matija Žuljić. They had five sons—Marijan, who died at the age of two, Alojz, Luka, who died at the age of one,
-  Vice and Blaž—and three daughters: Dragica, Nevenka and Anka. Marin’s descendants now live in Ričice, Split, Zagreb and Germany.
+  Marin married Matija Žuljić.
+  They had five sons—Marijan, who died at the age of two, Alojz, Luka, who died at the age of one, Vice and Blaž—and three daughters: Dragica, Nevenka and Anka.
+  Marin's descendants now live in Ričice, Split, Zagreb and Germany.
 </p>
 
 <h3><strong>2.2.3.1.2.2.1. Alojz, son of Marin</strong></h3>
@@ -481,18 +660,20 @@ gtag('consent', 'default', {
 
 <h3><strong>2.2.3.1.2.2.1.1. Robert, son of Alojz</strong></h3>
 <p>
-  Robert married Sabina Patzak. They have a son, Marco Marin, and two daughters, Carolina Victoria and Laura Nadine.
+  Robert married Sabina Patzak. They have a son, Marc Marin, and two daughters: Carolina Victoria and Laura Nadine.
 </p>
 
-<h3><strong>2.2.3.1.2.2.2. Vice, son of Marin (1949– )</strong></h3>
+<h3><strong>2.2.3.1.2.2.2. Vice, son of Marin</strong></h3>
 <p>
-  Vice is married to Ružica Barnjak, and they have no children. He is acknowledged here for his important role in initiating this project.
+  Vice is married to Ružica Barnjak. They have no children.
+  I recognise Vice as one of the individuals whose contribution was instrumental in launching this project.
 </p>
 
 <h3><strong>2.2.3.1.2.2.3. Blaž, son of Marin</strong></h3>
 <p>
   Blaž married Zorana Čarija. They had three sons: Mario, Ante and Vice.
-  Vice never married.
+  Vice never married. Mario and his wife Josipa Artić have a son, Lovro, and a daughter, Tonka.
+  Ante and his wife Tanja Koren have a son named Petar.
 </p>
 
 <h3><strong>2.2.3.1.2.2.3.1. Mario, son of Blaž</strong></h3>
@@ -509,36 +690,20 @@ gtag('consent', 'default', {
 <h3><strong>2.2.3.1.2.3. Petar, son of Marijan (1915– )</strong></h3>
 <p>
   Petar married Zorka Pavić. They had a son, Ante, who died shortly after birth, and six daughters: Mila, Marija, Ankica, Mira, Zorka and Rosa.
-  Petar had no son to continue his line.
+  Petar had no male descendants to continue the family line.
 </p>
-
-<h3><strong>2.2.3.2. Mijo, son of Grgo (1856–1933)</strong></h3>
-<p>
-  Mijo, Grgo’s third son, married Iva Tandara. They had seven children: four sons—Martin, the first Nikola, Mate and the second Nikola—and three daughters: Iva, the first Mara and the second Mara.
-  Martin died at the age of nineteen, while the first Nikola and Mate died as young children. No information about the second Nikola has been found apart from the record of his birth.
-  There is no evidence that any of Mijo’s sons married or had children, and Mijo’s branch therefore died out.
-</p>
-
-<h3>2.3. Mijo, son of Petar</h3>
-<p>
-  Mijo, son of Petar, married Ruža, whose surname is unknown. They had a daughter named Matija.
-  As he had no male descendants, his line came to an end.
-</p>
-
-
-
 </div>
 <section class="tree-note">
 <h3>Note</h3>
 <p>
-  The complete family tree of this branch can be found in the <strong>interactive diagram on the right</strong> of the Digital Archive of the Tandara Family home page.
+The complete family tree of this branch is available in the <strong>interactive diagram on the right</strong> of the Digital Archive home page.
 </p>
 <p>
-  Select the <strong>first row</strong>, then the <strong>second box in the top row of the tree</strong>, labelled <strong>“Petar’s Branch”</strong>. Clicking the box opens the corresponding part of the family tree and displays the descendants of this branch.
+Choose the <strong>first row</strong>, then the <strong>second box in the upper row</strong> labelled <strong>“Petar branch”</strong>. Clicking the box opens the corresponding family-tree section and its descendants.
 </p>
 </section>
 </div>
 </main>
 </div>
 </body>
-</html>
+</html> 
