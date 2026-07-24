@@ -222,7 +222,23 @@
 <div class="diagram-toolbar"><button class="primary" id="expandAll" type="button">Expand all</button><button id="collapse" type="button">Collapse</button><button id="threeLevels" type="button">Three generations</button><button id="fit" type="button">Fit</button><button id="zoomIn" type="button" aria-label="Zoom in">＋</button><button id="zoomOut" type="button" aria-label="Zoom out">−</button><div class="search-wrap"><input id="treeSearch" type="search" placeholder="Name, code or detail…"><button id="findBtn" type="button">Find</button></div></div></div>
 <div class="workspace"><svg id="treeSvg" aria-label="Interactive family tree of Frane’s sub-branch"><g id="viewport"><g id="links"></g><g id="nodes"></g></g></svg>
 <aside class="details" id="details"><button class="close-details" id="closeDetails" type="button" aria-label="Close">×</button><h3 id="detailTitle"></h3><div class="detail-code" id="detailCode"></div><p id="detailText"></p></aside>
-<div class="legend"><span><i class="swatch" style="background:#174f39;border-color:#0d3425"></i>Frane, Jure’s son</span><span><i class="swatch" style="background:#e8f2fb;border-color:#4d82aa"></i>Nikola, Frane’s son</span></div><div class="help">Wheel: zoom · drag: move · click a node: details and branching</div></div></div></article></main></div><script>
+<div class="legend">
+  <span><i class="swatch" style="background:#174f39;border-color:#0d3425"></i>Frane, Jure’s son</span>
+  <span><i class="swatch" style="background:#e8f2fb;border-color:#4d82aa"></i>Nikola, Frane’s son</span>
+</div>
+
+<div class="help">
+  Wheel: zoom · drag: move · click a node: details and branching
+</div>
+</div>
+</div>
+
+<img alt="Jure branch" class="branch-tree-image" src="./jurinagrana.png?v=6"/>
+
+</article>
+</main>
+</div>
+<script>
 const DATA = {"code":"1.1","label":"Frane, Jure’s son (★ unknown – ✝ unknown)","detail":"Frane Jurin was the son of Jure Tandara and Matija née Lekić and belonged to the oldest branch of the first Tandara family. He was married to Boža née Ćosić (★ unknown – ✝ unknown). According to the records currently available, they had one known son, Nikola.\n\nAs no later records have been found for this sub-branch, it is possible that the family moved away from Ričice, after which every trace of its members and descendants was lost.","children":[{"code":"1.1.1","label":"Nikola, Frane’s son (★ 1792 – ✝ unknown)","detail":"Nikola, Frane’s son, was born in 1792 and was the only known child of Frane Jurin and Boža née Ćosić. It is not known whether he married or had children.","children":[]}]};
 const UI = {"codeLabel": "Code", "noDetails": "No additional description is available for this person.", "notFound": "No result for: ", "locale": "en"};
 const svg=document.getElementById("treeSvg"),viewport=document.getElementById("viewport"),linksLayer=document.getElementById("links"),nodesLayer=document.getElementById("nodes"),details=document.getElementById("details");
