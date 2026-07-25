@@ -83,6 +83,60 @@ button:hover,button:focus-visible{background:#f2e8da}
 @media(max-width:1050px){header{grid-template-columns:1fr;gap:8px}.nav,.toolbar{justify-content:center}.title-wrap{order:-1}.help{font-size:12px}}
 @media(max-width:700px){header{padding:8px}h1{font-size:20px}.subtitle{font-size:11px}button{padding:7px 8px;font-size:12px}.home-link{font-size:12px}.search-wrap input{width:150px}.legend{font-size:10px;gap:7px}#details h2{font-size:19px}#detailText{font-size:14px}}
 @media print{header,#details,.legend,.help{display:none!important}body{overflow:visible}#workspace{height:auto}#treeSvg{width:100%;height:auto}}
+
+/* Ivanov dijagram: kompaktan mobilni raspored bez prekrivanja stabla. */
+@media(max-width:900px){
+  body.mobile-subpage-full{
+    height:100vh;
+    height:100dvh;
+    min-height:100vh;
+    min-height:100dvh;
+    overflow:hidden;
+  }
+  body.mobile-subpage-full > .mobile-box-topbar{
+    flex:0 0 auto;
+  }
+  body.mobile-subpage-full header{
+    display:block;
+    flex:0 0 auto;
+    padding:6px 8px;
+  }
+  body.mobile-subpage-full header .nav{
+    display:none;
+  }
+  body.mobile-subpage-full .title-wrap{
+    margin:0 0 6px;
+  }
+  body.mobile-subpage-full .subtitle{
+    display:none;
+  }
+  body.mobile-subpage-full .toolbar{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    overflow-x:auto;
+    overflow-y:hidden;
+    gap:6px;
+    padding:0 0 4px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+  }
+  body.mobile-subpage-full .toolbar > *{
+    flex:0 0 auto;
+  }
+  body.mobile-subpage-full .search-wrap input{
+    width:150px;
+  }
+  body.mobile-subpage-full #workspace{
+    flex:1 1 auto;
+    height:auto;
+    min-height:0;
+  }
+  body.mobile-subpage-full .help,
+  body.mobile-subpage-full .legend{
+    display:none;
+  }
+}
 </style>
 <link href="./mobile-subpages-fullscreen.css?v=1" rel="stylesheet"/>
 </head>
