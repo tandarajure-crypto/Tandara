@@ -84,8 +84,17 @@ button:hover,button:focus-visible{background:#f2e8da}
 @media(max-width:700px){header{padding:8px}h1{font-size:20px}.subtitle{font-size:11px}button{padding:7px 8px;font-size:12px}.home-link{font-size:12px}.search-wrap input{width:150px}.legend{font-size:10px;gap:7px}#details h2{font-size:19px}#detailText{font-size:14px}}
 @media print{header,#details,.legend,.help{display:none!important}body{overflow:visible}#workspace{height:auto}#treeSvg{width:100%;height:auto}}
 </style>
+<link href="./mobile-subpages-fullscreen.css?v=1" rel="stylesheet"/>
 </head>
-<body>
+<body class="mobile-subpage-full">
+<nav class="mobile-box-topbar" aria-label="Mobilna navigacija">
+  <a class="mobile-box-home" href="index-en.html">🏠 Home</a>
+  <div class="mobile-box-flags" aria-label="Odabir jezika">
+    <a href="dijagramivan.html" aria-label="Hrvatski"><img src="flag-hr.png" alt="HR"/></a>
+    <a href="diagramivan-en.html" aria-label="English"><img src="flag-uk.png" alt="EN"/></a>
+  </div>
+</nav>
+
 <header>
   <div class="nav">
     <a class="home-link" href="box1-en.html">Back to Ivan's page</a>
@@ -172,9 +181,37 @@ document.getElementById('threeLevels').onclick=()=>{setExpandedToDepth(3);render
 document.querySelectorAll('.branch-button').forEach(btn=>btn.addEventListener('click',()=>focusBranch(btn.dataset.code)));
 document.getElementById('fit').onclick=fitTree;document.getElementById('zoomIn').onclick=()=>zoomAt(1.22,svg.clientWidth/2,svg.clientHeight/2);document.getElementById('zoomOut').onclick=()=>zoomAt(.82,svg.clientWidth/2,svg.clientHeight/2);document.getElementById('findBtn').onclick=search;document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')search();if(e.key==='Escape')closeSearchResults();});document.getElementById('searchResultsClose').onclick=closeSearchResults;document.addEventListener('click',event=>{if(!event.target.closest('.search-wrap'))closeSearchResults();});document.getElementById('closeDetails').onclick=()=>details.classList.remove('open');
 svg.addEventListener('wheel',e=>{e.preventDefault();const rect=svg.getBoundingClientRect();zoomAt(e.deltaY<0?1.12:.89,e.clientX-rect.left,e.clientY-rect.top);},{passive:false});
-svg.addEventListener('pointerdown',e=>{if(e.target.closest&&e.target.closest('.node'))return;dragging=true;svg.classList.add('dragging');svg.setPointerCapture(e.pointerId);dragStart={x:e.clientX,y:e.clientY,panX,panY};});
-svg.addEventListener('pointermove',e=>{if(!dragging)return;panX=dragStart.panX+(e.clientX-dragStart.x);panY=dragStart.panY+(e.clientY-dragStart.y);applyTransform();});
-svg.addEventListener('pointerup',()=>{dragging=false;svg.classList.remove('dragging');});svg.addEventListener('pointercancel',()=>{dragging=false;svg.classList.remove('dragging');});window.addEventListener('resize',fitTree);
+// Povlačenje jednim prstom ili mišem te zumiranje dijagrama s dva prsta.
+const activePointers=new Map();
+let pinchStartDistance=0,pinchStartScale=1,pinchAnchorX=0,pinchAnchorY=0,suppressClickUntil=0;
+function localPointerPoint(e){const rect=svg.getBoundingClientRect();return{x:e.clientX-rect.left,y:e.clientY-rect.top};}
+function pointerDistance(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
+function pointerCenter(a,b){return{x:(a.x+b.x)/2,y:(a.y+b.y)/2};}
+function beginPinch(){const points=[...activePointers.values()];if(points.length<2)return;const a=points[0],b=points[1],center=pointerCenter(a,b);pinchStartDistance=pointerDistance(a,b);pinchStartScale=scale;pinchAnchorX=(center.x-panX)/scale;pinchAnchorY=(center.y-panY)/scale;dragging=false;svg.classList.remove("dragging");}
+svg.addEventListener("pointerdown",e=>{
+  const point=localPointerPoint(e);
+  try{svg.setPointerCapture(e.pointerId);}catch(error){}
+  if(e.pointerType==="touch"){
+    activePointers.set(e.pointerId,point);
+    if(activePointers.size>=2){e.preventDefault();beginPinch();return;}
+    if(e.target.closest&&e.target.closest(".node"))return;
+  }else if(e.target.closest&&e.target.closest(".node"))return;
+  dragging=true;svg.classList.add("dragging");dragStart={x:e.clientX,y:e.clientY,panX,panY};
+});
+svg.addEventListener("pointermove",e=>{
+  if(e.pointerType==="touch"&&activePointers.has(e.pointerId)){
+    activePointers.set(e.pointerId,localPointerPoint(e));
+    if(activePointers.size>=2&&pinchStartDistance){
+      e.preventDefault();
+      const points=[...activePointers.values()],a=points[0],b=points[1],center=pointerCenter(a,b);
+      const nextScale=Math.max(.18,Math.min(3,pinchStartScale*(pointerDistance(a,b)/pinchStartDistance)));
+      suppressClickUntil=Date.now()+500;scale=nextScale;panX=center.x-pinchAnchorX*scale;panY=center.y-pinchAnchorY*scale;applyTransform();return;
+    }
+  }
+  if(!dragging)return;panX=dragStart.panX+(e.clientX-dragStart.x);panY=dragStart.panY+(e.clientY-dragStart.y);applyTransform();
+});
+function endPointer(e){if(e.pointerType==="touch")activePointers.delete(e.pointerId);if(activePointers.size<2)pinchStartDistance=0;dragging=false;svg.classList.remove("dragging");}
+svg.addEventListener("pointerup",endPointer);svg.addEventListener("pointercancel",endPointer);svg.addEventListener("click",e=>{if(Date.now()<suppressClickUntil){e.preventDefault();e.stopPropagation();}},true);window.addEventListener("resize",fitTree);
 resetExpanded();render();requestAnimationFrame(fitTree);
 </script>
 </body>
