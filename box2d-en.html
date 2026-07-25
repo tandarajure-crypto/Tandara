@@ -399,6 +399,7 @@ function visibleNodes(){const result=[];function visit(node,parent=null,depth=0)
 function esc(value){return String(value??"").replace(/[&<>\"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));}
 function colors(node){const code=node.code;if(code==="4.0"||code==="4.1"||code==="4.1.1")return {fill:"#174f39",text:"#fff",stroke:"#0d3425"};if(code.startsWith("4.1.1.1"))return {fill:"#e8f2fb",text:"#173a57",stroke:"#4d82aa"};return {fill:"#fff1df",text:"#553719",stroke:"#bb8144"};}
 function wrapText(text,max=34){const words=String(text).split(/\s+/),lines=[];let line="";for(const word of words){const test=line?line+" "+word:word;if(test.length>max&&line){lines.push(line);line=word;}else line=test;}if(line)lines.push(line);return lines.slice(0,2);}
+function diagramLabel(node){if(node.relation==="spouse")return node.label;return String(node.label).replace(/\s+Tandara(?=\s*(?:\(|$))/i,"");}
 function render(){
   const visible=visibleNodes(),pos=new Map();
   let cursorY=MARGIN;
@@ -411,7 +412,7 @@ function render(){
   linksLayer.innerHTML=links;
   let markup="";
   visible.forEach(({node})=>{
-    const p=pos.get(node.code),h=p.h,color=colors(node),personLines=wrapText(node.label),children=personChildren(node),hasChildren=children.length>0,indicator=hasChildren?(node.expanded?"−":"+"):"",spouses=spousesOf(node);
+    const p=pos.get(node.code),h=p.h,color=colors(node),personLines=wrapText(diagramLabel(node)),children=personChildren(node),hasChildren=children.length>0,indicator=hasChildren?(node.expanded?"−":"+"):"",spouses=spousesOf(node);
     const personClasses=["entry","person-entry"];if(node.code===selectedCode)personClasses.push("selected");if(node.code===matchCode)personClasses.push("match");
     const personTag=node.tag?`<text class="tag" x="${BOX_W-42}" y="19" text-anchor="end" fill="${color.text}">${esc(node.tag)}</text>`:"";
     let entries=`<g class="${personClasses.join(" ")}" data-code="${esc(node.code)}"><rect class="entry-bg" x="1" y="1" width="${BOX_W-2}" height="${PERSON_H-1}" fill="${color.fill}" rx="8"></rect><text class="code" x="13" y="19" fill="${color.text}">${esc(node.code)}</text>${personTag}${personLines.map((line,i)=>`<text class="label" x="13" y="${40+i*16}" fill="${color.text}">${esc(line)}</text>`).join("")}</g>`;
@@ -423,11 +424,17 @@ function render(){
     markup+=`<g class="node family-node" data-owner-code="${esc(node.code)}" transform="translate(${p.x},${p.y})"><rect class="family-outline" width="${BOX_W}" height="${h}" rx="9" fill="#fff" stroke="${color.stroke}"></rect>${entries}</g>`;
   });
   nodesLayer.innerHTML=markup;
-  nodesLayer.querySelectorAll(".entry").forEach(entry=>entry.addEventListener("click",event=>{event.stopPropagation();const selected=findNode(entry.dataset.code);if(!selected)return;selectedCode=selected.code;matchCode=null;showDetails(selected);render();}));
-  nodesLayer.querySelectorAll(".toggle-control").forEach(toggle=>toggle.addEventListener("click",event=>{event.stopPropagation();const owner=findNode(toggle.dataset.ownerCode);if(!owner)return;selectedCode=owner.code;matchCode=null;showDetails(owner);owner.expanded=!owner.expanded;render();}));
   applyTransform();
 }
 function findNode(code){let result=null;walk(DATA,node=>{if(node.code===code)result=node;});return result;}
+function activateEntry(code){const selected=findNode(code);if(!selected)return;selectedCode=selected.code;matchCode=null;showDetails(selected);render();}
+nodesLayer.addEventListener("click",event=>{
+  const toggle=event.target.closest&&event.target.closest(".toggle-control");
+  if(toggle){event.preventDefault();event.stopPropagation();const owner=findNode(toggle.dataset.ownerCode);if(!owner)return;selectedCode=owner.code;matchCode=null;showDetails(owner);owner.expanded=!owner.expanded;render();return;}
+  const entry=event.target.closest&&event.target.closest(".entry");
+  if(entry){event.preventDefault();event.stopPropagation();activateEntry(entry.dataset.code);}
+});
+
 function findParentNode(code){let result=null;walk(DATA,(node,parent)=>{if(node.code===code)result=parent;});return result;}
 function showDetails(node){document.getElementById("detailTitle").textContent=node.label;document.getElementById("detailCode").textContent=UI.codeLabel+" "+node.code+(node.tag?" · "+UI.relation+": "+node.tag:"");document.getElementById("detailText").textContent=node.detail||UI.noDetails;details.classList.add("open");}
 function applyTransform(){viewport.setAttribute("transform",`translate(${panX},${panY}) scale(${scale})`);}
@@ -457,7 +464,16 @@ function localPointerPoint(e){const rect=svg.getBoundingClientRect();return{x:e.
 function pointerDistance(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
 function pointerCenter(a,b){return{x:(a.x+b.x)/2,y:(a.y+b.y)/2};}
 function beginPinch(){const points=[...activePointers.values()];if(points.length<2)return;const a=points[0],b=points[1],center=pointerCenter(a,b);pinchStartDistance=pointerDistance(a,b);pinchStartScale=scale;pinchAnchorX=(center.x-panX)/scale;pinchAnchorY=(center.y-panY)/scale;dragging=false;svg.classList.remove("dragging");}
-svg.addEventListener("pointerdown",e=>{const point=localPointerPoint(e);try{svg.setPointerCapture(e.pointerId);}catch(error){}if(e.pointerType==="touch"){activePointers.set(e.pointerId,point);if(activePointers.size>=2){e.preventDefault();beginPinch();return;}if(e.target.closest&&e.target.closest(".node"))return;}else if(e.target.closest&&e.target.closest(".node"))return;dragging=true;svg.classList.add("dragging");dragStart={x:e.clientX,y:e.clientY,panX,panY};});
+svg.addEventListener("pointerdown",e=>{
+  const point=localPointerPoint(e),interactive=e.target.closest&&e.target.closest(".entry,.toggle-control");
+  if(e.pointerType==="touch"){
+    activePointers.set(e.pointerId,point);
+    if(activePointers.size>=2){try{svg.setPointerCapture(e.pointerId);}catch(error){}e.preventDefault();beginPinch();return;}
+    if(interactive)return;
+  }else if(interactive)return;
+  try{svg.setPointerCapture(e.pointerId);}catch(error){}
+  dragging=true;svg.classList.add("dragging");dragStart={x:e.clientX,y:e.clientY,panX,panY};
+});
 svg.addEventListener("pointermove",e=>{if(e.pointerType==="touch"&&activePointers.has(e.pointerId)){activePointers.set(e.pointerId,localPointerPoint(e));if(activePointers.size>=2&&pinchStartDistance){e.preventDefault();const points=[...activePointers.values()],a=points[0],b=points[1],center=pointerCenter(a,b),nextScale=Math.max(.14,Math.min(3,pinchStartScale*(pointerDistance(a,b)/pinchStartDistance)));suppressClickUntil=Date.now()+500;scale=nextScale;panX=center.x-pinchAnchorX*scale;panY=center.y-pinchAnchorY*scale;applyTransform();return;}}if(!dragging)return;panX=dragStart.panX+(e.clientX-dragStart.x);panY=dragStart.panY+(e.clientY-dragStart.y);applyTransform();});
 function endPointer(e){if(e.pointerType==="touch")activePointers.delete(e.pointerId);if(activePointers.size<2)pinchStartDistance=0;dragging=false;svg.classList.remove("dragging");}
 svg.addEventListener("pointerup",endPointer);svg.addEventListener("pointercancel",endPointer);svg.addEventListener("click",e=>{if(Date.now()<suppressClickUntil){e.preventDefault();e.stopPropagation();}},true);window.addEventListener("resize",fitTree);
