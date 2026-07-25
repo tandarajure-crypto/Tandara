@@ -278,6 +278,36 @@ document.getElementById("collapse").onclick=()=>{walk(DATA,n=>n.expanded=false);
 document.getElementById("threeLevels").onclick=()=>{setExpandedToDepth(3);render();fitTree();};
 document.getElementById("fit").onclick=fitTree;document.getElementById("zoomIn").onclick=()=>zoomAt(1.22,svg.clientWidth/2,svg.clientHeight/2);document.getElementById("zoomOut").onclick=()=>zoomAt(.82,svg.clientWidth/2,svg.clientHeight/2);document.getElementById("findBtn").onclick=searchTree;document.getElementById("treeSearch").addEventListener("keydown",e=>{if(e.key==="Enter")searchTree();if(e.key==="Escape")closeSearchResults();});document.getElementById("searchResultsClose").onclick=closeSearchResults;document.addEventListener("click",event=>{if(!event.target.closest(".search-wrap"))closeSearchResults();});document.getElementById("closeDetails").onclick=()=>details.classList.remove("open");
 svg.addEventListener("wheel",e=>{e.preventDefault();const rect=svg.getBoundingClientRect();zoomAt(e.deltaY<0?1.12:.89,e.clientX-rect.left,e.clientY-rect.top);},{passive:false});
-svg.addEventListener("pointerdown",e=>{if(e.target.closest&&e.target.closest(".node"))return;dragging=true;svg.classList.add("dragging");svg.setPointerCapture(e.pointerId);dragStart={x:e.clientX,y:e.clientY,panX,panY};});svg.addEventListener("pointermove",e=>{if(!dragging)return;panX=dragStart.panX+(e.clientX-dragStart.x);panY=dragStart.panY+(e.clientY-dragStart.y);applyTransform();});svg.addEventListener("pointerup",()=>{dragging=false;svg.classList.remove("dragging");});svg.addEventListener("pointercancel",()=>{dragging=false;svg.classList.remove("dragging");});window.addEventListener("resize",fitTree);
+// Povlačenje jednim prstom ili mišem te zumiranje dijagrama s dva prsta.
+const activePointers=new Map();
+let pinchStartDistance=0,pinchStartScale=1,pinchAnchorX=0,pinchAnchorY=0,suppressClickUntil=0;
+function localPointerPoint(e){const rect=svg.getBoundingClientRect();return{x:e.clientX-rect.left,y:e.clientY-rect.top};}
+function pointerDistance(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
+function pointerCenter(a,b){return{x:(a.x+b.x)/2,y:(a.y+b.y)/2};}
+function beginPinch(){const points=[...activePointers.values()];if(points.length<2)return;const a=points[0],b=points[1],center=pointerCenter(a,b);pinchStartDistance=pointerDistance(a,b);pinchStartScale=scale;pinchAnchorX=(center.x-panX)/scale;pinchAnchorY=(center.y-panY)/scale;dragging=false;svg.classList.remove("dragging");}
+svg.addEventListener("pointerdown",e=>{
+  const point=localPointerPoint(e);
+  try{svg.setPointerCapture(e.pointerId);}catch(error){}
+  if(e.pointerType==="touch"){
+    activePointers.set(e.pointerId,point);
+    if(activePointers.size>=2){e.preventDefault();beginPinch();return;}
+    if(e.target.closest&&e.target.closest(".node"))return;
+  }else if(e.target.closest&&e.target.closest(".node"))return;
+  dragging=true;svg.classList.add("dragging");dragStart={x:e.clientX,y:e.clientY,panX,panY};
+});
+svg.addEventListener("pointermove",e=>{
+  if(e.pointerType==="touch"&&activePointers.has(e.pointerId)){
+    activePointers.set(e.pointerId,localPointerPoint(e));
+    if(activePointers.size>=2&&pinchStartDistance){
+      e.preventDefault();
+      const points=[...activePointers.values()],a=points[0],b=points[1],center=pointerCenter(a,b);
+      const nextScale=Math.max(.18,Math.min(3,pinchStartScale*(pointerDistance(a,b)/pinchStartDistance)));
+      suppressClickUntil=Date.now()+500;scale=nextScale;panX=center.x-pinchAnchorX*scale;panY=center.y-pinchAnchorY*scale;applyTransform();return;
+    }
+  }
+  if(!dragging)return;panX=dragStart.panX+(e.clientX-dragStart.x);panY=dragStart.panY+(e.clientY-dragStart.y);applyTransform();
+});
+function endPointer(e){if(e.pointerType==="touch")activePointers.delete(e.pointerId);if(activePointers.size<2)pinchStartDistance=0;dragging=false;svg.classList.remove("dragging");}
+svg.addEventListener("pointerup",endPointer);svg.addEventListener("pointercancel",endPointer);svg.addEventListener("click",e=>{if(Date.now()<suppressClickUntil){e.preventDefault();e.stopPropagation();}},true);window.addEventListener("resize",fitTree);
 setExpandedToDepth(3);render();requestAnimationFrame(fitTree);
 </script></body></html>
