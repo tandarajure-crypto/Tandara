@@ -116,10 +116,9 @@ gtag('consent', 'default', {
 }
 </style>
 
-<link href="./mobile-subpages-fullscreen.css?v=1" rel="stylesheet"/>
-
-<style>
-/* Technical content wrapping: no change to text or structure. */
+<link href="./mobile-subpages-fullscreen.css?v=2" rel="stylesheet"/>
+<style id="author-page-layout-fix">
+/* Ujednačen tehnički prikaz HR/EN stranice; sadržaj nije mijenjan. */
 html,
 body {
   width: 100%;
@@ -137,6 +136,7 @@ body {
 .left-menu,
 .content-page,
 .content-card,
+main,
 article,
 section,
 header,
@@ -147,6 +147,7 @@ div {
   max-width: 100%;
 }
 
+.content-page,
 .content-card {
   overflow-x: hidden;
 }
@@ -192,6 +193,31 @@ div {
   overflow-x: auto;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+/* Na računalu lijevi izbornik ostaje vidljiv tijekom skrolanja stranice. */
+@media (min-width: 901px) {
+  body.box-mobile-split .layout {
+    align-items: flex-start;
+  }
+
+  body.box-mobile-split .left-menu {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  body.box-mobile-split .content-page,
+  body.box-mobile-split .content-card {
+    min-width: 0;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 900px) {
