@@ -47,7 +47,7 @@ button,input{border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#2
 #workspace{position:relative;flex:1 1 auto;min-height:0;height:auto;overflow:hidden;background:radial-gradient(circle at center,rgba(23,79,57,.035),transparent 62%)}
 #treeSvg{width:100%;height:100%;display:block;cursor:grab;user-select:none;touch-action:none}#treeSvg.dragging{cursor:grabbing}.connector{fill:none;stroke:#a9ada8;stroke-width:2}
 .node{cursor:pointer}.node rect.main{stroke-width:2;filter:drop-shadow(0 2px 2px rgba(0,0,0,.07))}.node:hover rect.main,.node:focus rect.main{stroke-width:3}.node.selected rect.main{stroke:#c63030!important;stroke-width:4}.node.match rect.main{stroke:#9b6b00!important;stroke-width:4}
-.node text{pointer-events:none}.node .code{font-size:12px;font-weight:700;letter-spacing:.35px}.node .label{font-size:14px;font-weight:600}.node .toggle-circle{fill:rgba(255,255,255,.82);pointer-events:none}.node .toggle-symbol{font-size:15px;font-weight:700;pointer-events:none}.node .node-toggle{cursor:pointer}.node .spouse-row{cursor:pointer}.node .spouse-row-bg{fill:rgba(255,255,255,.88)}.node .spouse-divider{stroke:rgba(13,52,37,.35);stroke-width:1}.node .spouse-name{font-size:13px;font-weight:700;fill:#173a2b;pointer-events:none}.node.virtual-node rect.main{stroke-dasharray:5 3}
+.node text{pointer-events:none}.node .code{font-size:12px;font-weight:700;letter-spacing:.35px}.node .label{font-size:14px;font-weight:600}.node .toggle-circle{fill:rgba(255,255,255,.82);pointer-events:auto}.node .toggle-symbol{font-size:15px;font-weight:700;pointer-events:none}.node .node-toggle{cursor:pointer}.node .spouse-row{cursor:pointer}.node .spouse-row-bg{fill:rgba(255,255,255,.88)}.node .spouse-divider{stroke:rgba(13,52,37,.35);stroke-width:1}.node .spouse-name{font-size:13px;font-weight:700;fill:#173a2b;pointer-events:none}.node.virtual-node rect.main{stroke-dasharray:5 3}
 #details{position:absolute;right:14px;top:14px;width:min(455px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;background:rgba(255,255,255,.98);border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.16);padding:16px;display:none;z-index:4}
 #details.open{display:block}#details h2{font-size:18px;margin:0 34px 4px 0;color:var(--green)}#details .detail-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.detail-chip{font-size:12px;font-weight:700;color:#59645e;background:#f1f4f1;border-radius:999px;padding:4px 8px}
 #details p{font-size:14px;line-height:1.55;white-space:pre-line;margin:0 0 14px}#detailPage{display:none;text-decoration:none;background:var(--green);color:#fff;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:700}#detailPage.visible{display:inline-flex}
@@ -59,7 +59,7 @@ button,input{border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#2
 @media(max-width:720px){header{min-height:238px;padding:9px 10px}.toolbar{gap:5px}#workspace{height:auto}#search{width:155px}.legend,.help{display:none}h1{font-size:20px}button,input{padding:7px 8px;font-size:12px}.title-wrap{max-width:100%}}
 @media(max-width:420px){header{min-height:282px}#workspace{height:auto}#search{width:145px}.subtitle{font-size:12px}}
 @media(max-width:900px){body.mobile-subpage-full{height:100dvh}body.mobile-subpage-full>header{display:none!important}body.mobile-subpage-full>#workspace{flex:1 1 auto;min-height:0;height:auto!important}}
-@media print{header,#details,.legend,.help,.status{display:none!important}body{overflow:visible}#workspace{height:auto}#treeSvg{width:100%;height:auto}}
+@page{size:landscape;margin:10mm}@media print{header,#details,.legend,.help,.status,.mobile-box-topbar{display:none!important}html,body{height:auto!important;overflow:visible!important;background:#fff}#workspace{height:90vh!important;overflow:visible!important;background:#fff}#treeSvg{width:100%!important;height:90vh!important}}
 </style>
 <link href="./mobile-subpages-fullscreen.css?v=1" rel="stylesheet"/>
 </head>
@@ -92,6 +92,7 @@ button,input{border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#2
     <button id="fit" type="button">Uklopi</button>
     <button id="zoomIn" type="button" aria-label="Zoom in">＋</button>
     <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+    <button id="printDiagram" type="button" aria-label="Ispis dijagrama">Ispiši dijagram</button>
     <div class="search-wrap">
       <input id="search" type="search" placeholder="npr. Ivica 1978 Jelena, Robert Sabina ili Lovrići Zagreb…" autocomplete="off" aria-controls="searchResults" aria-label="Pretraživanje Petrove grane po više kriterija">
       <button id="findBtn" type="button">Pronađi</button>
@@ -233,6 +234,7 @@ document.getElementById('threeLevels').addEventListener('click',()=>{setExpanded
 document.getElementById('fit').addEventListener('click',fitTree);
 document.getElementById('zoomIn').addEventListener('click',()=>zoomAt(1.22,svg.clientWidth/2,svg.clientHeight/2));
 document.getElementById('zoomOut').addEventListener('click',()=>zoomAt(.82,svg.clientWidth/2,svg.clientHeight/2));
+document.getElementById('printDiagram').addEventListener('click',()=>window.print());
 document.getElementById('findBtn').addEventListener('click',searchTree);
 document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')searchTree();if(e.key==='Escape')closeSearchResults()});
 document.getElementById('searchResultsClose').addEventListener('click',closeSearchResults);document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))closeSearchResults()});
@@ -247,7 +249,7 @@ function pointerCenter(a,b){return{x:(a.x+b.x)/2,y:(a.y+b.y)/2};}
 function beginPinch(){const points=[...activePointers.values()];if(points.length<2)return;const a=points[0],b=points[1],center=pointerCenter(a,b);pinchStartDistance=pointerDistance(a,b);pinchStartScale=scale;pinchAnchorX=(center.x-panX)/scale;pinchAnchorY=(center.y-panY)/scale;primaryGesture=null;dragging=false;svg.classList.remove('dragging');}
 svg.addEventListener('pointerdown',e=>{
   if(e.pointerType==='mouse'&&e.button!==0)return;
-  const point=localPointerPoint(e);try{svg.setPointerCapture(e.pointerId);}catch(error){}
+  const point=localPointerPoint(e);
   if(e.pointerType==='touch'){activePointers.set(e.pointerId,point);if(activePointers.size>=2){e.preventDefault();beginPinch();return;}}
   primaryGesture={id:e.pointerId,startX:e.clientX,startY:e.clientY,panX,panY,moved:false};
 });
@@ -257,7 +259,7 @@ svg.addEventListener('pointermove',e=>{
     if(activePointers.size>=2&&pinchStartDistance){e.preventDefault();const points=[...activePointers.values()],a=points[0],b=points[1],center=pointerCenter(a,b),nextScale=Math.max(.18,Math.min(3,pinchStartScale*(pointerDistance(a,b)/pinchStartDistance)));suppressClickUntil=Date.now()+500;scale=nextScale;panX=center.x-pinchAnchorX*scale;panY=center.y-pinchAnchorY*scale;applyTransform();return;}
   }
   if(!primaryGesture||primaryGesture.id!==e.pointerId)return;const dx=e.clientX-primaryGesture.startX,dy=e.clientY-primaryGesture.startY;
-  if(!primaryGesture.moved&&Math.hypot(dx,dy)>5){primaryGesture.moved=true;dragging=true;svg.classList.add('dragging');}
+  if(!primaryGesture.moved&&Math.hypot(dx,dy)>5){primaryGesture.moved=true;dragging=true;try{svg.setPointerCapture(e.pointerId);}catch(error){}svg.classList.add('dragging');}
   if(!primaryGesture.moved)return;e.preventDefault();suppressClickUntil=Date.now()+500;panX=primaryGesture.panX+dx;panY=primaryGesture.panY+dy;applyTransform();
 });
 function endPointer(e){if(e.pointerType==='touch')activePointers.delete(e.pointerId);if(activePointers.size<2)pinchStartDistance=0;if(primaryGesture&&primaryGesture.id===e.pointerId){if(primaryGesture.moved)suppressClickUntil=Date.now()+500;primaryGesture=null;}dragging=false;svg.classList.remove('dragging');}
