@@ -249,11 +249,12 @@ gtag('consent', 'default', {
 .mate-diagram .detail-code{font-size:12px;font-weight:700;color:#6c756f;margin-bottom:12px}
 .mate-diagram .details p{font-size:14px;line-height:1.5;white-space:pre-line;margin:0}
 .mate-diagram .close-details{position:absolute;right:10px;top:9px;border:0;background:transparent;font-size:20px;padding:3px 7px}
-.mate-diagram .legend{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border:1px solid #d3d7d2;border-radius:10px;padding:9px 12px;font-size:12px;display:flex;gap:14px;box-shadow:0 4px 18px rgba(0,0,0,.08);z-index:3}
-.mate-diagram .legend span{display:flex;align-items:center;gap:6px}.mate-diagram .swatch{width:14px;height:14px;border-radius:4px;border:2px solid}
-.mate-diagram .help{position:absolute;right:15px;bottom:12px;color:#6d756f;font-size:12px;background:rgba(251,250,246,.9);padding:4px 7px;border-radius:6px;z-index:3}
-@media(max-width:900px){.mate-diagram .workspace{height:520px}.mate-diagram .diagram-header{align-items:flex-start}.mate-diagram #treeSearch{width:165px}.mate-diagram .legend{display:none}.mate-diagram .help{left:12px;right:auto;bottom:10px}}
-@media(max-width:600px){.mate-diagram .workspace{height:470px}.mate-diagram .diagram-title h2{font-size:19px}.mate-diagram .diagram-language{order:2;margin-left:0}.mate-diagram .diagram-lang-link{width:39px;height:32px}.mate-diagram button,.mate-diagram input{font-size:12px;padding:7px}.mate-diagram .help{display:none}}
+.mate-diagram .diagram-footer{display:grid;grid-template-columns:1fr;gap:9px;padding:12px 14px 14px;background:#fff;border-top:1px solid #d9ded9}
+.mate-diagram .legend{position:static;background:#fff;border:1px solid #d3d7d2;border-radius:10px;padding:9px 12px;font-size:12px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;box-shadow:none;z-index:auto}
+.mate-diagram .legend span{display:flex;align-items:center;gap:6px}.mate-diagram .swatch{width:14px;height:14px;border-radius:4px;border:2px solid;flex:0 0 auto}
+.mate-diagram .help{position:static;color:#59645e;font-size:12px;line-height:1.45;background:#fbfaf6;border:1px solid #e1e3df;padding:7px 10px;border-radius:8px;z-index:auto}
+@media(max-width:900px){.mate-diagram .workspace{height:520px}.mate-diagram .diagram-header{align-items:flex-start}.mate-diagram #treeSearch{width:165px}.mate-diagram .diagram-footer{display:none}}
+@media(max-width:600px){.mate-diagram .workspace{height:470px}.mate-diagram .diagram-title h2{font-size:19px}.mate-diagram .diagram-language{order:2;margin-left:0}.mate-diagram .diagram-lang-link{width:39px;height:32px}.mate-diagram button,.mate-diagram input{font-size:12px;padding:7px}}
 
 
 .mate-diagram .spouse-connector{stroke:#a45d8c;stroke-dasharray:7 5}
@@ -377,6 +378,8 @@ gtag('consent', 'default', {
   </div>
   <div class="workspace"><svg id="treeSvg" aria-label="Interaktivno rodoslovno stablo Matine grane"><g id="viewport"><g id="links"></g><g id="nodes"></g></g></svg>
     <aside class="details" id="details"><button class="close-details" id="closeDetails" type="button" aria-label="Zatvori">×</button><h3 id="detailTitle"></h3><div class="detail-code" id="detailCode"></div><p id="detailText"></p></aside>
+  </div>
+  <div class="diagram-footer" aria-label="Legenda i upute dijagrama">
     <div class="legend"><span><i class="swatch" style="background:#174f39;border-color:#0d3425"></i>Zajednička loza Mate–Ivan–Ante</span><span><i class="swatch" style="background:#e8f2fb;border-color:#4d82aa"></i>Podgrana Ivana Antina</span><span><i class="swatch" style="background:#fff1df;border-color:#bb8144"></i>Podgrana Mate Antina</span><span><i class="swatch" style="background:#f4e9f1;border-color:#a45d8c"></i>Supružnici</span></div>
     <div class="help">Kotačić ili dva prsta: povećanje · povlačenje: pomicanje · klik na osobu: detalji i grananje</div>
   </div>
