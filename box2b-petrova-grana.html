@@ -30,8 +30,8 @@ header{min-height:112px;display:flex;align-items:center;gap:16px;padding:10px 16
 .diagram-home-button:hover .diagram-home-circle{border-color:#d4af37;background:#d3b07a}
 .diagram-home-button:focus-visible{outline:3px solid rgba(155,107,0,.35);outline-offset:2px;border-radius:50%}
 .diagram-home-svg{width:28px;height:28px}
-#printDiagram{width:52px;height:46px;padding:3px 5px;font-size:29px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
-@media(max-width:720px){.diagram-home-circle{width:56px;height:56px}.diagram-home-svg{width:26px;height:26px}#printDiagram{width:48px;height:42px;font-size:27px}}
+#printDiagram{width:52px;height:46px;padding:2px 4px;line-height:1;display:inline-flex;align-items:center;justify-content:center}#printDiagram .print-icon{width:43px;height:auto;max-height:40px;display:block;object-fit:contain}
+@media(max-width:720px){.diagram-home-circle{width:56px;height:56px}.diagram-home-svg{width:26px;height:26px}#printDiagram{width:48px;height:42px;padding:2px 4px}#printDiagram .print-icon{width:39px;max-height:36px}}
 
 .back-link:hover,.lang-link:hover{background:#f0f4f1}.back-link:focus-visible,.lang-link:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid rgba(155,107,0,.35);outline-offset:2px}
 .lang-switch{display:flex;gap:6px}.lang-link{width:42px;padding:5px}.lang-link.active{border-color:var(--green);box-shadow:0 0 0 2px rgba(23,79,57,.13)}
@@ -101,7 +101,7 @@ button,input{border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#2
     <button id="fit" type="button">Uklopi</button>
     <button id="zoomIn" type="button" aria-label="Zoom in">＋</button>
     <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
-    <button id="printDiagram" type="button" aria-label="Ispis dijagrama" title="Ispis dijagrama">🖨</button>
+    <button id="printDiagram" type="button" aria-label="Ispis dijagrama" title="Ispis dijagrama"><img class="print-icon" src="print.png" alt="" aria-hidden="true"></button>
     <div class="search-wrap">
       <input id="search" type="search" placeholder="npr. Ivica 1978 Jelena, Robert Sabina ili Lovrići Zagreb…" autocomplete="off" aria-controls="searchResults" aria-label="Pretraživanje Petrove grane po više kriterija">
       <button id="findBtn" type="button">Pronađi</button>
