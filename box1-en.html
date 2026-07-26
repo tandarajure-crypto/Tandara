@@ -301,6 +301,20 @@
 @media(max-width:560px){.ivan-diagram-frame{height:700px}.ivan-diagram-open{font-size:14px}}
 </style>
 
+
+<style>
+@media (min-width:901px){
+  body.en .layout{max-width:none;width:100%;margin:0;gap:0;padding:0;grid-template-columns:300px minmax(0,1fr)}
+  body.en .content-page{width:100%;max-width:none;padding:0;justify-content:stretch}
+  body.en .content-card{width:100%;max-width:none;margin:0;border-radius:0;padding:42px 54px 0}
+  body.en .ivan-combined-diagram{width:calc(100% + 108px);max-width:none;margin-left:-54px;margin-right:-54px;margin-bottom:0}
+  body.en .ivan-diagram-frame{display:block;width:100%;max-width:none;height:920px;margin:0;border-left:0;border-right:0;border-radius:0}
+}
+@media (max-width:900px){
+  body.en .ivan-combined-diagram{width:calc(100% + 24px);margin-left:-12px;margin-right:-12px}
+  body.en .ivan-diagram-frame{width:100%;border-left:0;border-right:0;border-radius:0}
+}
+</style>
 </head>
 
 <body class="en box-mobile-split">
@@ -398,9 +412,9 @@
 
 <section class="ivan-combined-diagram" aria-labelledby="ivan-diagram-title">
   <h2 id="ivan-diagram-title">Combined family-tree diagram of Ivan Tandara</h2>
-  <p>The diagram begins with Ivan in a separate root box and connects all four branches into one shared tree.</p>
+  <p>The diagram begins with Ivan alone in the starting box and joins the four existing branch diagrams into one searchable family tree, including wives, daughters, unmarried sons and other recorded family members.</p>
   <div class="ivan-diagram-actions"><a class="ivan-diagram-open" href="diagramivan-en.html">Open the diagram in a full window</a></div>
-  <iframe class="ivan-diagram-frame" src="diagramivan-en.html" title="Combined family-tree diagram of Ivan Tandara and the four branches" loading="lazy" allowfullscreen></iframe>
+  <iframe class="ivan-diagram-frame" src="diagramivan-en.html" allow="fullscreen" title="Combined family-tree diagram of Ivan Tandara and the four branches" loading="lazy" allowfullscreen></iframe>
 </section>
 
 <!-- END OF CONTENT -->
