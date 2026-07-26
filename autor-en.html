@@ -117,6 +117,104 @@ gtag('consent', 'default', {
 </style>
 
 <link href="./mobile-subpages-fullscreen.css?v=1" rel="stylesheet"/>
+
+<style>
+/* Technical content wrapping: no change to text or structure. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.layout,
+.left-menu,
+.content-page,
+.content-card,
+article,
+section,
+header,
+footer,
+nav,
+div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.content-card {
+  overflow-x: hidden;
+}
+
+.content-card h1,
+.content-card h2,
+.content-card h3,
+.content-card p,
+.content-card li,
+.content-card a,
+.content-card strong,
+.content-card em {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.content-card p {
+  line-height: 1.65;
+}
+
+.content-card img,
+.content-card video,
+.content-card iframe,
+.content-card table,
+.content-card pre {
+  max-width: 100%;
+}
+
+.content-card img,
+.content-card video {
+  height: auto;
+}
+
+.content-card table {
+  display: block;
+  overflow-x: auto;
+}
+
+.content-card pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  body.box-mobile-split .content-page,
+  body.box-mobile-split .content-card {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body.box-mobile-split .content-card h1,
+  body.box-mobile-split .content-card h2,
+  body.box-mobile-split .content-card h3,
+  body.box-mobile-split .content-card p,
+  body.box-mobile-split .content-card li,
+  body.box-mobile-split .content-card a {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    white-space: normal;
+  }
+}
+</style>
+
 </head>
 <body class="en box-mobile-split mobile-subpage-full">
 <nav class="mobile-box-topbar" aria-label="Mobile navigation">
