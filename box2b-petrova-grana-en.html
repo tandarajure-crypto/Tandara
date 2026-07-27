@@ -120,6 +120,21 @@ h1{font-size:21px;margin:0 0 2px;color:var(--green);white-space:nowrap}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @media print{header,#details,.legend,.help{display:none!important}body{display:block;overflow:visible}#workspace{height:auto;overflow:visible}#treeSvg{width:100%;height:auto;min-height:1100px}}
 </style>
+<style id="tandara-search-focus-style">
+@keyframes tandaraSearchFocusPulse{
+  0%,100%{filter:drop-shadow(0 0 0 rgba(185,133,0,0))}
+  35%{filter:drop-shadow(0 0 12px rgba(185,133,0,.95))}
+  70%{filter:drop-shadow(0 0 6px rgba(185,133,0,.65))}
+}
+.tandara-search-focus rect{
+  stroke:#b98500!important;
+  stroke-width:5!important;
+  animation:tandaraSearchFocusPulse 1.15s ease-in-out 2;
+}
+@media (prefers-reduced-motion:reduce){
+  .tandara-search-focus rect{animation:none;filter:drop-shadow(0 0 8px rgba(185,133,0,.75))}
+}
+</style>
 </head>
 <body>
 <header>
@@ -215,7 +230,29 @@ function matchQuality(value){if(value<=.3)return'Exact match';if(value<=1.2)retu
 function compareCodes(a,b){const left=a.split('.').map(Number),right=b.split('.').map(Number);for(let i=0;i<Math.max(left.length,right.length);i++){const d=(left[i]||0)-(right[i]||0);if(d)return d;}return 0;}
 function collectResults(rawQuery){const results=[];walk(DATA,node=>{const context=PERSON_SEARCH_CONTEXT[node.code]||{},aliases=(PERSON_SEARCH_ALIASES[node.code]||[]).join(' '),primary=node.code+' '+node.label,personContext=[context.father,context.mother,aliases].join(' '),primaryScore=score(rawQuery,primary,personContext);if(Number.isFinite(primaryScore)){results.push({type:'node',node,hostCode:node.code,score:primaryScore,matchKind:'person'});}else{const detailScore=fuzzyFieldScore(rawQuery,node.detail||'');if(Number.isFinite(detailScore)&&detailScore<=1.35)results.push({type:'node',node,hostCode:node.code,score:detailScore+7,matchKind:'detail'});}});VIRTUAL_PEOPLE.forEach((person,index)=>{const primary=[person.label,person.name,person.rawName,person.qualifier].join(' '),secondary=[person.father,person.mother,person.gender,person.hostCode].join(' '),value=score(rawQuery,primary,secondary);if(Number.isFinite(value))results.push({type:'virtual',person,index,hostCode:person.hostCode,score:value+.35,matchKind:'person'});});Object.entries(FAMILY_META).forEach(([hostCode,families])=>families.forEach((family,index)=>{const node=findNode(hostCode),value=score(rawQuery,family.spouse,[node?.label,family.sons.join(' '),family.daughters.join(' ')].join(' '));if(Number.isFinite(value))results.push({type:'spouse',family,index,node,hostCode,score:value+.45,matchKind:'spouse'});}));const strongVirtualHosts=new Set(results.filter(result=>result.type==='virtual'&&result.score<=4).map(result=>result.hostCode));const filtered=results.filter(result=>!(result.type==='node'&&result.matchKind==='detail'&&strongVirtualHosts.has(result.hostCode)));const unique=new Map();for(const result of filtered){const label=result.type==='virtual'?result.person?.label:result.type==='spouse'?result.family?.spouse:result.node?.label;const key=[result.type,result.hostCode,normalize(label)].join('|');const previous=unique.get(key);if(!previous||result.score<previous.score)unique.set(key,result);}const ordered=[...unique.values()].sort((a,b)=>a.score-b.score||compareCodes(a.hostCode,b.hostCode)||String(a.person?.label||a.family?.spouse||a.node?.label).localeCompare(String(b.person?.label||b.family?.spouse||b.node?.label),'en'));if(!ordered.length)return[];const best=ordered[0].score,wordCount=normalize(rawQuery).split(' ').filter(Boolean).length,cutoff=best<=.75?(wordCount>=2?2.25:1.8):best<=2.1?best+.9:best+1.2;return ordered.filter(result=>result.score<=cutoff).slice(0,30);}
 function closeSearchResults(){document.getElementById('searchResults').hidden=true;document.getElementById('searchResultItems').innerHTML='';searchInput.setAttribute('aria-expanded','false');}
-function centerNode(code){requestAnimationFrame(()=>{const target=nodesLayer.querySelector(`[data-code="${code}"]`);if(!target)return;const matrix=target.getCTM(),rect=svg.getBoundingClientRect(),tx=matrix.e+BOX_W*scale/2,ty=matrix.f+BOX_H*scale/2;panX+=rect.width/2-tx;panY+=rect.height/2-ty;applyTransform();});}
+function centerNode(code){
+  requestAnimationFrame(()=>{
+    const escapedCode=String(code).replace(/"/g,'\"');
+    const target=nodesLayer.querySelector('[data-code="'+escapedCode+'"]');
+    if(!target)return;
+    const currentRect=target.getBoundingClientRect();
+    const desiredWidth=svg.clientWidth<700?190:250;
+    if(currentRect.width>0){scale=Math.max(.16,Math.min(3,scale*desiredWidth/currentRect.width));}
+    applyTransform();
+    requestAnimationFrame(()=>{
+      const nodeRect=target.getBoundingClientRect(),svgRect=svg.getBoundingClientRect(),rootMatrix=svg.getScreenCTM();
+      const unitX=rootMatrix?Math.max(.001,Math.hypot(rootMatrix.a,rootMatrix.b)):1;
+      const unitY=rootMatrix?Math.max(.001,Math.hypot(rootMatrix.c,rootMatrix.d)):1;
+      panX+=(svgRect.left+svgRect.width/2-(nodeRect.left+nodeRect.width/2))/unitX;
+      panY+=(svgRect.top+svgRect.height/2-(nodeRect.top+nodeRect.height/2))/unitY;
+      applyTransform();
+      target.classList.remove('tandara-search-focus');
+      void target.getBBox();
+      target.classList.add('tandara-search-focus');
+      window.setTimeout(()=>target.classList.remove('tandara-search-focus'),2400);
+    });
+  });
+}
 function focusNode(node){closeSearchResults();expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();showDetails(node);centerNode(node.code);}
 function focusVirtual(person){closeSearchResults();const node=findNode(person.hostCode);if(!node)return;expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();document.getElementById('detailTitle').textContent=person.label+(person.qualifier?' ('+person.qualifier+')':'');document.getElementById('detailCode').textContent='Family record '+person.hostCode;document.getElementById('detailText').textContent='Father: '+(person.father||'unknown')+'. Mother: '+(person.mother||'unknown')+'.\n\nThis person is mentioned in the expanded family description but does not have a separate numbered box. The complete family description is shown below:\n\n'+(node.detail||'');details.classList.add('open');centerNode(node.code);announce('Found person '+person.label);}
 function focusSpouse(result){closeSearchResults();const node=findNode(result.hostCode);if(!node)return;expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();showMarriageDetails(result.hostCode,result.index);centerNode(node.code);announce('Found spouse '+result.family.spouse);}

@@ -697,7 +697,22 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
   .branch-diagram{height:auto!important;min-height:0!important;border:0!important;box-shadow:none!important}
   .branch-diagram .subtree-diagram,.branch-diagram .subtree-workspace,.branch-diagram .subtree-svg{height:760px!important;min-height:760px!important;overflow:visible!important}
 }
-</style></head>
+</style><style id="tandara-search-focus-style">
+@keyframes tandaraSearchFocusPulse{
+  0%,100%{filter:drop-shadow(0 0 0 rgba(185,133,0,0))}
+  35%{filter:drop-shadow(0 0 12px rgba(185,133,0,.95))}
+  70%{filter:drop-shadow(0 0 6px rgba(185,133,0,.65))}
+}
+.tandara-search-focus rect{
+  stroke:#b98500!important;
+  stroke-width:5!important;
+  animation:tandaraSearchFocusPulse 1.15s ease-in-out 2;
+}
+@media (prefers-reduced-motion:reduce){
+  .tandara-search-focus rect{animation:none;filter:drop-shadow(0 0 8px rgba(185,133,0,.75))}
+}
+</style>
+</head>
 <body class="hr box-mobile-split">
 <div class="layout">
 <aside class="left-menu">
@@ -1123,7 +1138,28 @@ function apply(){viewport.setAttribute('transform',`translate(${panX},${panY}) s
 function fit(){const r=svg.getBoundingClientRect();scale=Math.min((r.width-40)/bounds.width,(r.height-40)/bounds.height,1.12);panX=(r.width-bounds.width*scale)/2;panY=(r.height-bounds.height*scale)/2;apply();}
 function zoom(f,cx,cy){const old=scale;scale=Math.max(.16,Math.min(3,scale*f));panX=cx-(cx-panX)*(scale/old);panY=cy-(cy-panY)*(scale/old);apply();}
 function expandAncestors(code){const parts=code.split('.');DATA.expanded=true;for(let i=1;i<parts.length;i++){const n=findNode(parts.slice(0,i+1).join('.'));if(n)n.expanded=true;}}
-function centerNode(code){requestAnimationFrame(()=>{const t=nodesLayer.querySelector('[data-code="'+CSS.escape(code)+'"]');if(!t)return;const matrix=t.getCTM(),r=svg.getBoundingClientRect();panX+=r.width/2-(matrix.e+BOX_W*scale/2);panY+=r.height/2-(matrix.f+BOX_H*scale/2);apply();});}
+function centerNode(code){
+  requestAnimationFrame(()=>{
+    const target=nodesLayer.querySelector('[data-code="'+CSS.escape(code)+'"]');
+    if(!target)return;
+    const currentRect=target.getBoundingClientRect();
+    const desiredWidth=svg.clientWidth<700?190:250;
+    if(currentRect.width>0){scale=Math.max(.16,Math.min(3,scale*desiredWidth/currentRect.width));}
+    apply();
+    requestAnimationFrame(()=>{
+      const nodeRect=target.getBoundingClientRect(),svgRect=svg.getBoundingClientRect(),rootMatrix=svg.getScreenCTM();
+      const unitX=rootMatrix?Math.max(.001,Math.hypot(rootMatrix.a,rootMatrix.b)):1;
+      const unitY=rootMatrix?Math.max(.001,Math.hypot(rootMatrix.c,rootMatrix.d)):1;
+      panX+=(svgRect.left+svgRect.width/2-(nodeRect.left+nodeRect.width/2))/unitX;
+      panY+=(svgRect.top+svgRect.height/2-(nodeRect.top+nodeRect.height/2))/unitY;
+      apply();
+      target.classList.remove('tandara-search-focus');
+      void target.getBBox();
+      target.classList.add('tandara-search-focus');
+      window.setTimeout(()=>target.classList.remove('tandara-search-focus'),2400);
+    });
+  });
+}
 ROOT.querySelector('[data-tree-action="expand"]').onclick=()=>{walk(DATA,n=>n.expanded=true);render();fit();};ROOT.querySelector('[data-tree-action="collapse"]').onclick=()=>{walk(DATA,n=>n.expanded=false);DATA.expanded=true;render();fit();};ROOT.querySelector('[data-tree-action="three"]').onclick=()=>{setDepth(3);render();fit();};ROOT.querySelector('[data-tree-action="fit"]').onclick=fit;ROOT.querySelector('[data-tree-action="zoom-in"]').onclick=()=>zoom(1.22,svg.clientWidth/2,svg.clientHeight/2);ROOT.querySelector('[data-tree-action="zoom-out"]').onclick=()=>zoom(.82,svg.clientWidth/2,svg.clientHeight/2);ROOT.querySelector('[data-tree-close]').onclick=()=>details.classList.remove('open');
 svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect();zoom(e.deltaY<0?1.12:.89,e.clientX-r.left,e.clientY-r.top);},{passive:false});
 svg.addEventListener('pointerdown',e=>{if(e.target.closest&&e.target.closest('.subtree-node,.subtree-family-card'))return;dragging=true;svg.classList.add('dragging');dragStart={x:e.clientX,y:e.clientY,px:panX,py:panY};try{svg.setPointerCapture(e.pointerId);}catch(_){} });svg.addEventListener('pointermove',e=>{if(!dragging)return;panX=dragStart.px+e.clientX-dragStart.x;panY=dragStart.py+e.clientY-dragStart.y;apply();});function end(){dragging=false;svg.classList.remove('dragging');}svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);

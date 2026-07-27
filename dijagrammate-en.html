@@ -66,6 +66,21 @@ button{cursor:pointer} button:hover{background:#f0f4f1} button.primary{backgroun
 @media(max-width:700px){#searchResults{left:7px;top:7px;width:calc(100% - 14px);max-height:calc(100% - 14px)}}
 @media print{header,#details,#searchResults,.legend,.help{display:none!important}body{overflow:visible}#workspace{height:auto}#treeSvg{width:100%;height:auto}}
 </style>
+<style id="tandara-search-focus-style">
+@keyframes tandaraSearchFocusPulse{
+  0%,100%{filter:drop-shadow(0 0 0 rgba(185,133,0,0))}
+  35%{filter:drop-shadow(0 0 12px rgba(185,133,0,.95))}
+  70%{filter:drop-shadow(0 0 6px rgba(185,133,0,.65))}
+}
+.tandara-search-focus rect{
+  stroke:#b98500!important;
+  stroke-width:5!important;
+  animation:tandaraSearchFocusPulse 1.15s ease-in-out 2;
+}
+@media (prefers-reduced-motion:reduce){
+  .tandara-search-focus rect{animation:none;filter:drop-shadow(0 0 8px rgba(185,133,0,.75))}
+}
+</style>
 </head>
 <body>
 <header>
@@ -127,7 +142,30 @@ function directNames(person){return [person.name,...(person.aliases||[])].map(no
 function searchableText(person){return normalizeText([person.id,person.name,(person.aliases||[]).join(" "),person.born,person.died,person.father,person.mother,(person.spouses||[]).join(" "),person.relation,person.status,person.note].join(" "));}
 function describePerson(person){const parts=[];if(person.relation)parts.push(person.relation);if(person.born||person.died)parts.push((person.born||"?")+" – "+(person.died||"?"));if(person.status)parts.push(person.status);return parts.join(" · ");}
 function scorePerson(person,q,tokens){const names=directNames(person),allTokens=new Set(searchableText(person).split(/\s+/).filter(Boolean)),code=normalizeText(person.id),nameTokens=new Set(names.join(" ").split(/\s+/).filter(Boolean));if(code===q)return 1000;if(!tokens.every(token=>allTokens.has(token)))return -1;const alphaTokens=tokens.filter(token=>/[a-z]/.test(token));if(alphaTokens.length&&!alphaTokens.some(token=>nameTokens.has(token)))return -1;let score=0;if(names.includes(q))score+=900;if(names.some(name=>name.startsWith(q)))score+=500;score+=tokens.filter(token=>nameTokens.has(token)).length*80;const yearTokens=new Set(normalizeText(person.born+" "+person.died).split(/\s+/).filter(Boolean));score+=tokens.filter(token=>yearTokens.has(token)).length*35;return score;}
-function centerHost(code){expandAncestors(code);selectedCode=code;matchCode=code;render();requestAnimationFrame(()=>{const target=nodesLayer.querySelector('[data-code="'+code.replace(/"/g,'\\"')+'"]');if(target){const matrix=target.getCTM(),rect=svg.getBoundingClientRect(),tx=matrix.e+BOX_W*scale/2,ty=matrix.f+BOX_H*scale/2;panX+=rect.width/2-tx;panY+=rect.height/2-ty;applyTransform();}});}
+function centerHost(code){
+  expandAncestors(code);selectedCode=code;matchCode=code;render();
+  requestAnimationFrame(()=>{
+    const escapedCode=String(code).replace(/"/g,'\"');
+    const target=nodesLayer.querySelector('[data-code="'+escapedCode+'"]');
+    if(!target)return;
+    const currentRect=target.getBoundingClientRect();
+    const desiredWidth=svg.clientWidth<700?190:250;
+    if(currentRect.width>0){scale=Math.max(.16,Math.min(3,scale*desiredWidth/currentRect.width));}
+    applyTransform();
+    requestAnimationFrame(()=>{
+      const nodeRect=target.getBoundingClientRect(),svgRect=svg.getBoundingClientRect(),rootMatrix=svg.getScreenCTM();
+      const unitX=rootMatrix?Math.max(.001,Math.hypot(rootMatrix.a,rootMatrix.b)):1;
+      const unitY=rootMatrix?Math.max(.001,Math.hypot(rootMatrix.c,rootMatrix.d)):1;
+      panX+=(svgRect.left+svgRect.width/2-(nodeRect.left+nodeRect.width/2))/unitX;
+      panY+=(svgRect.top+svgRect.height/2-(nodeRect.top+nodeRect.height/2))/unitY;
+      applyTransform();
+      target.classList.remove('tandara-search-focus');
+      void target.getBBox();
+      target.classList.add('tandara-search-focus');
+      window.setTimeout(()=>target.classList.remove('tandara-search-focus'),2400);
+    });
+  });
+}
 function selectPerson(person){centerHost(person.hostCode);showPersonDetails(person);searchResults.classList.remove("open");}
 function renderSearchResults(matches,q){resultList.innerHTML="";searchSummary.textContent=matches.length===1?"1 person found for: "+q:"People found: "+matches.length+". Choose the matching code.";matches.forEach(person=>{const button=document.createElement("button");button.type="button";button.className="result-item";button.innerHTML='<span class="result-code">'+esc(person.id)+'</span><span class="result-name">'+esc(person.name)+'</span><span class="result-meta">'+esc(describePerson(person))+'</span>';button.onclick=()=>selectPerson(person);resultList.appendChild(button);});searchResults.classList.add("open");}
 function search(){const raw=document.getElementById("search").value.trim(),q=normalizeText(raw);if(!q)return;const tokens=q.split(/\s+/).filter(Boolean);let matches=PEOPLE.map(person=>({person,score:scorePerson(person,q,tokens)})).filter(item=>item.score>=0).sort((a,b)=>b.score-a.score||a.person.id.localeCompare(b.person.id,UI.locale)).map(item=>item.person);const exact=matches.filter(person=>normalizeText(person.id)===q||directNames(person).includes(q));if(exact.length)matches=exact;if(!matches.length){alert(UI.notFound+raw);return;}if(matches.length===1){selectPerson(matches[0]);return;}renderSearchResults(matches,raw);}
