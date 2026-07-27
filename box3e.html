@@ -566,6 +566,12 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 .branch-diagram .diagram-toolbar{display:flex;align-items:center;gap:6px;width:max-content;min-width:max-content}
 .branch-diagram .search-wrap{display:flex;gap:6px;position:relative;margin-left:2px}
 .branch-diagram #treeSearch{width:245px}
+.branch-diagram .diagram-toolbar .tandara-person-search{position:relative;width:auto;margin:0 0 0 2px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.branch-diagram .diagram-toolbar .tandara-person-search>label{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.branch-diagram .diagram-toolbar .tandara-person-search-row{display:flex;align-items:center;gap:6px}
+.branch-diagram .diagram-toolbar .tandara-person-search input{width:245px;min-width:245px;padding:9px 11px;border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e}
+.branch-diagram .diagram-toolbar .tandara-person-search button{padding:9px 11px;border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;font-weight:400}
+.branch-diagram .diagram-toolbar .tandara-person-search button:hover{background:#f0f4f1;filter:none}
 .branch-diagram .search-results{position:fixed;left:10px;top:80px;width:min(550px,calc(100vw - 20px));max-height:min(420px,65vh);overflow:auto;background:#fff;border:1px solid #c9cec9;border-radius:11px;box-shadow:0 14px 36px rgba(0,0,0,.22);z-index:1000}
 .branch-diagram .search-results[hidden]{display:none}
 .branch-diagram .search-results-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:#f5f7f5;border-bottom:1px solid #e0e3e0;font-size:13px;font-weight:700;position:sticky;top:0;z-index:1}
@@ -797,7 +803,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <section aria-labelledby="box3e-diagram-title" class="branch-diagram diagram-setup" data-common-surname="Tandara" data-diagram-setup="" id="box3e-diagram"><header class="diagram-header">
 <div class="diagram-title">
 <h2 id="box3e-diagram-title">Rodoslovni dijagram Antine podgrane</h2>
-<div class="diagram-subtitle"><strong>77 numeriranih osoba</strong> · <strong>8 generacija</strong> · početni nositelj: <strong>Ante</strong></div>
+<div class="diagram-subtitle"><strong>77</strong> numeriranih osoba · <strong>8</strong> generacija · početni nositelj: <strong>Ante</strong></div>
 </div>
 <div aria-label="Navigacija i prikaz dijagrama" class="diagram-actions">
 <a aria-label="Početna" class="diagram-header-btn diagram-home-button" href="index.html" title="Početna">
@@ -805,14 +811,23 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 </a>
 <a aria-current="page" class="diagram-header-btn lang-icon active" href="box3e.html" title="Hrvatski"><img alt="HR" src="flag-hr.png"/></a>
 <a class="diagram-header-btn lang-icon" href="box3e-en.html" title="English"><img alt="EN" src="flag-uk.png"/></a>
+<button id="printDiagram" type="button" title="Ispis dijagrama" aria-label="Ispis dijagrama" onclick="window.print()"><img src="Print.png" alt="" aria-hidden="true"/></button>
 <button aria-label="Cijeli ekran" class="diagram-header-btn diagram-fullscreen-button" data-diagram-fullscreen="" title="Cijeli ekran" type="button"><span aria-hidden="true">⛶</span><span data-diagram-fullscreen-label="">Cijeli ekran</span></button>
-<button aria-label="Ispis" class="diagram-header-btn" onclick="window.print()" title="Ispis" type="button"><span aria-hidden="true">🖨</span><span>Ispis</span></button>
 </div>
+<div class="diagram-tools">
+<div class="toolbar-scroll" aria-label="Alati dijagrama">
+<div class="diagram-toolbar">
+<button class="primary" data-tree-action="expand" type="button">Raširi sve</button>
+<button data-tree-action="collapse" type="button">Sažmi</button>
+<button data-tree-action="three" type="button">Do 3. koljena</button>
+<button data-tree-action="fit" type="button">Uklopi</button>
+<button aria-label="Povećaj dijagram" data-tree-action="zoom-in" type="button">+</button>
+<button aria-label="Smanji dijagram" data-tree-action="zoom-out" type="button">−</button>
 <div class="search-wrap tandara-person-search" data-common-surname="Tandara" data-tandara-person-search="">
 <label for="box3e-person-search">Pretraži osobe u dijagramu</label>
 <div class="tandara-person-search-row">
 <input aria-controls="box3e-person-search-results" aria-expanded="false" autocomplete="off" data-tandara-search-input="" id="box3e-person-search" placeholder="Ime, šifra ili podatak" type="search"/>
-<button class="primary" data-tandara-search-button="" type="button">Pronađi</button>
+<button data-tandara-search-button="" type="button">Pronađi</button>
 </div>
 <div aria-label="Rezultati pretrage osoba" class="search-results tandara-person-search-results" data-tandara-search-results="" hidden="" id="box3e-person-search-results" role="region">
 <p class="tandara-person-search-title" data-tandara-search-title="">Rezultati pretrage</p>
@@ -820,15 +835,11 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 </div>
 <p aria-live="polite" class="tandara-visually-hidden" data-tandara-search-status=""></p>
 </div>
-</header><div class="subtree-diagram" data-subtree-diagram="" id="box3e-tree">
-<div aria-label="Alati dijagrama" class="diagram-tools subtree-toolbar">
-<button data-tree-action="expand" type="button">Raširi sve</button>
-<button data-tree-action="collapse" type="button">Sažmi</button>
-<button data-tree-action="three" type="button">Do 3. koljena</button>
-<button data-tree-action="fit" type="button">Uklopi</button>
-<button aria-label="Povećaj dijagram" data-tree-action="zoom-in" type="button">+</button>
-<button aria-label="Smanji dijagram" data-tree-action="zoom-out" type="button">−</button>
 </div>
+</div>
+</div>
+</header><div class="subtree-diagram" data-subtree-diagram="" id="box3e-tree">
+
 <div class="diagram-viewport subtree-workspace">
 <svg aria-label="Interaktivni rodoslovni dijagram" class="subtree-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 1000 650">
 <g data-tree-viewport=""><g data-tree-links=""></g><g data-tree-nodes=""></g></g>

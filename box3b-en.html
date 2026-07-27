@@ -520,6 +520,12 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 .branch-diagram .diagram-toolbar{display:flex;align-items:center;gap:6px;width:max-content;min-width:max-content}
 .branch-diagram .search-wrap{display:flex;gap:6px;position:relative;margin-left:2px}
 .branch-diagram #treeSearch{width:245px}
+.branch-diagram .diagram-toolbar .tandara-person-search{position:relative;width:auto;margin:0 0 0 2px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.branch-diagram .diagram-toolbar .tandara-person-search>label{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.branch-diagram .diagram-toolbar .tandara-person-search-row{display:flex;align-items:center;gap:6px}
+.branch-diagram .diagram-toolbar .tandara-person-search input{width:245px;min-width:245px;padding:9px 11px;border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e}
+.branch-diagram .diagram-toolbar .tandara-person-search button{padding:9px 11px;border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#26342e;font-weight:400}
+.branch-diagram .diagram-toolbar .tandara-person-search button:hover{background:#f0f4f1;filter:none}
 .branch-diagram .search-results{position:fixed;left:10px;top:80px;width:min(550px,calc(100vw - 20px));max-height:min(420px,65vh);overflow:auto;background:#fff;border:1px solid #c9cec9;border-radius:11px;box-shadow:0 14px 36px rgba(0,0,0,.22);z-index:1000}
 .branch-diagram .search-results[hidden]{display:none}
 .branch-diagram .search-results-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:#f5f7f5;border-bottom:1px solid #e0e3e0;font-size:13px;font-weight:700;position:sticky;top:0;z-index:1}
@@ -737,14 +743,23 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 </a>
 <a class="diagram-header-btn lang-icon" href="box3b.html" title="Hrvatski"><img alt="HR" src="flag-hr.png"/></a>
 <a aria-current="page" class="diagram-header-btn lang-icon active" href="box3b-en.html" title="English"><img alt="EN" src="flag-uk.png"/></a>
+<button id="printDiagram" type="button" title="Print diagram" aria-label="Print diagram" onclick="window.print()"><img src="Print.png" alt="" aria-hidden="true"/></button>
 <button aria-label="Full screen" class="diagram-header-btn diagram-fullscreen-button" data-diagram-fullscreen="" title="Full screen" type="button"><span aria-hidden="true">⛶</span><span data-diagram-fullscreen-label="">Full screen</span></button>
-<button aria-label="Print" class="diagram-header-btn" onclick="window.print()" title="Print" type="button"><span aria-hidden="true">🖨</span><span>Print</span></button>
 </div>
+<div class="diagram-tools">
+<div class="toolbar-scroll" aria-label="Diagram tools">
+<div class="diagram-toolbar">
+<button class="primary" data-tree-action="expand" type="button">Expand all</button>
+<button data-tree-action="collapse" type="button">Collapse</button>
+<button data-tree-action="three" type="button">Up to 3 generations</button>
+<button data-tree-action="fit" type="button">Fit</button>
+<button aria-label="Zoom in" data-tree-action="zoom-in" type="button">+</button>
+<button aria-label="Zoom out" data-tree-action="zoom-out" type="button">−</button>
 <div class="search-wrap tandara-person-search" data-common-surname="Tandara" data-tandara-person-search="">
 <label for="box3b-person-search">Search people in the diagram</label>
 <div class="tandara-person-search-row">
 <input aria-controls="box3b-person-search-results" aria-expanded="false" autocomplete="off" data-tandara-search-input="" id="box3b-person-search" placeholder="Name, code or information" type="search"/>
-<button class="primary" data-tandara-search-button="" type="button">Find</button>
+<button data-tandara-search-button="" type="button">Find</button>
 </div>
 <div aria-label="Person search results" class="search-results tandara-person-search-results" data-tandara-search-results="" hidden="" id="box3b-person-search-results" role="region">
 <p class="tandara-person-search-title" data-tandara-search-title="">Search results</p>
@@ -752,15 +767,11 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 </div>
 <p aria-live="polite" class="tandara-visually-hidden" data-tandara-search-status=""></p>
 </div>
-</header><div class="subtree-diagram" data-subtree-diagram="" id="box3b-tree">
-<div aria-label="Diagram tools" class="diagram-tools subtree-toolbar">
-<button data-tree-action="expand" type="button">Expand all</button>
-<button data-tree-action="collapse" type="button">Collapse</button>
-<button data-tree-action="three" type="button">Up to 3 generations</button>
-<button data-tree-action="fit" type="button">Fit</button>
-<button aria-label="Zoom in" data-tree-action="zoom-in" type="button">+</button>
-<button aria-label="Zoom out" data-tree-action="zoom-out" type="button">−</button>
 </div>
+</div>
+</div>
+</header><div class="subtree-diagram" data-subtree-diagram="" id="box3b-tree">
+
 <div class="diagram-viewport subtree-workspace">
 <svg aria-label="Interactive family-tree diagram" class="subtree-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 1000 650">
 <g data-tree-viewport=""><g data-tree-links=""></g><g data-tree-nodes=""></g></g>
