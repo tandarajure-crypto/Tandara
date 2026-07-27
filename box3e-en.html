@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
@@ -8,19 +9,19 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ante | TANDARA-SURNAME</title>
-<meta name="description" content="Ante’s sub-branch of the Tandara family line: Ante Tandara (1769–1849), his wife Matija born Jukić, their children and an interactive genealogical diagram of their descendants."/>
-<link rel="canonical" href="https://tandarajure-crypto.github.io/Tandara/box3e-en.html"/>
-<link rel="alternate" hreflang="hr" href="https://tandarajure-crypto.github.io/Tandara/box3e.html"/>
-<link rel="alternate" hreflang="en" href="https://tandarajure-crypto.github.io/Tandara/box3e-en.html"/>
-<link rel="alternate" hreflang="x-default" href="https://tandarajure-crypto.github.io/Tandara/box3e.html"/>
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Ante | TANDARA-SURNAME"/>
-<meta property="og:description" content="Ante’s sub-branch of the Tandara family line: Ante Tandara (1769–1849), his wife Matija born Jukić, their children and an interactive genealogical diagram of their descendants."/>
-<meta property="og:url" content="https://tandarajure-crypto.github.io/Tandara/box3e-en.html"/>
-<meta property="og:image" content="https://tandarajure-crypto.github.io/Tandara/family-tree.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
+<meta content="Ante’s sub-branch of the Tandara family line: Ante Tandara (1769–1849), his wife Matija born Jukić, their children and an interactive genealogical diagram of their descendants." name="description"/>
+<link href="https://tandarajure-crypto.github.io/Tandara/box3e-en.html" rel="canonical"/>
+<link href="https://tandarajure-crypto.github.io/Tandara/box3e-en.html" hreflang="hr" rel="alternate"/>
+<link href="https://tandarajure-crypto.github.io/Tandara/box3e-en.html" hreflang="en" rel="alternate"/>
+<link href="https://tandarajure-crypto.github.io/Tandara/box3e-en.html" hreflang="x-default" rel="alternate"/>
+<meta content="website" property="og:type"/>
+<meta content="Ante | TANDARA-SURNAME" property="og:title"/>
+<meta content="Ante’s sub-branch of the Tandara family line: Ante Tandara (1769–1849), his wife Matija born Jukić, their children and an interactive genealogical diagram of their descendants." property="og:description"/>
+<meta content="https://tandarajure-crypto.github.io/Tandara/box3e-en.html" property="og:url"/>
+<meta content="https://tandarajure-crypto.github.io/Tandara/family-tree.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
@@ -36,7 +37,7 @@ gtag('consent', 'default', {
     page_title: document.title,
     page_location: window.location.href,
     page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'en'
+    language: document.documentElement.lang || navigator.language || 'hr'
   });
 
   // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
@@ -76,9 +77,8 @@ gtag('consent', 'default', {
   });
 </script>
 <link href="style.css?v=5" rel="stylesheet"/>
-
 <style>
-/* English box pages: two-column navigation on tablets and mobile devices. */
+/* Hrvatske box stranice: dvostupčana navigacija samo na tabletima i mobitelima. */
 @media (max-width: 900px){
   body.box-mobile-split .mobile-box-topbar{
     position:sticky;
@@ -189,7 +189,7 @@ gtag('consent', 'default', {
   }
 }
 
-/* Ante’s sub-branch: heading, family data and instructions above the diagram. */
+/* Antina podgrana: zaglavlje, obiteljski podaci i upute iznad dijagrama. */
 .branch-heading{
   text-align:center;
   margin:0 0 24px;
@@ -234,8 +234,242 @@ gtag('consent', 'default', {
   }
 }
 
-</style>
 
+
+/* Shared technical setup for the third column (box3a–box3h). */
+.branch-heading{
+  text-align:center;
+  margin:0 0 24px;
+}
+.branch-heading .branch-flag{
+  display:block;
+  width:46px;
+  height:auto;
+  margin:0 auto 10px;
+}
+.branch-heading h1{
+  margin:0;
+  text-transform:uppercase;
+}
+.branch-summary,
+.diagram-instructions,
+.diagram-setup{
+  margin:0 0 26px;
+}
+.branch-summary h2,
+.diagram-instructions h2,
+.diagram-setup h2{
+  margin:0 0 12px;
+}
+.branch-summary p{
+  margin:0 0 12px;
+}
+.family-data{
+  line-height:1.65;
+}
+.family-dates{
+  font-weight:700;
+  white-space:nowrap;
+}
+.diagram-instructions ol{
+  margin:0;
+  padding-left:24px;
+}
+.diagram-instructions li{
+  margin:0 0 9px;
+}
+.diagram-setup{
+  border:1px solid rgba(90,59,31,.35);
+  border-radius:12px;
+  overflow:hidden;
+  background:#fbfaf6;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+}
+.diagram-setup-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 16px;
+  background:#ffffff;
+  border-bottom:1px solid #d8ddd8;
+}
+.diagram-setup-heading{
+  min-width:0;
+}
+.diagram-setup-heading h2{
+  color:#174f39;
+}
+.diagram-setup-heading p{
+  margin:0;
+  color:#68736d;
+  font-size:14px;
+  line-height:1.45;
+}
+.diagram-fullscreen-button{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:9px 13px;
+  border:1px solid #174f39;
+  border-radius:9px;
+  background:#174f39;
+  color:#ffffff;
+  font:inherit;
+  font-weight:700;
+  cursor:pointer;
+}
+.diagram-fullscreen-button:hover{
+  background:#0f3d2b;
+}
+.diagram-fullscreen-button:focus-visible{
+  outline:3px solid #d7a629;
+  outline-offset:2px;
+}
+.diagram-mount{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:220px;
+  padding:24px;
+  background:linear-gradient(180deg,#fbfaf6,#f5f3ec);
+}
+.diagram-pending{
+  max-width:720px;
+  margin:0;
+  text-align:center;
+  color:#68736d;
+  font-size:15px;
+  line-height:1.6;
+}
+.diagram-setup:fullscreen,
+.diagram-setup:-webkit-full-screen{
+  width:100%;
+  height:100%;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background:#fbfaf6;
+}
+.diagram-setup:fullscreen .diagram-mount,
+.diagram-setup:-webkit-full-screen .diagram-mount{
+  min-height:calc(100vh - 82px);
+}
+@media (max-width:700px){
+  .diagram-setup-header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .diagram-fullscreen-button{
+    width:100%;
+  }
+}
+@media (max-width:480px){
+  .branch-heading .branch-flag{width:38px}
+  .family-dates{white-space:normal}
+  .diagram-instructions ol{padding-left:20px}
+  .diagram-mount{min-height:180px;padding:18px 12px}
+}
+
+</style>
+<style id="tandara-common-search-style">
+.tandara-person-search{
+  position:relative;
+  margin:0 0 18px;
+  padding:14px;
+  border:1px solid #cdb98c;
+  border-radius:12px;
+  background:#fffdf7;
+  box-shadow:0 4px 14px rgba(61,45,18,.08);
+}
+.tandara-person-search label{
+  display:block;
+  margin:0 0 7px;
+  font-weight:800;
+  color:#3b2a12;
+}
+.tandara-person-search-row{
+  display:flex;
+  gap:8px;
+  align-items:stretch;
+}
+.tandara-person-search input{
+  flex:1 1 auto;
+  min-width:0;
+  padding:10px 12px;
+  border:1px solid #a9905c;
+  border-radius:9px;
+  font:inherit;
+  background:#fff;
+  color:#1f1b14;
+}
+.tandara-person-search input:focus{
+  outline:3px solid rgba(133,101,35,.22);
+  border-color:#765719;
+}
+.tandara-person-search button{
+  flex:0 0 auto;
+  padding:10px 16px;
+  border:1px solid #604816;
+  border-radius:9px;
+  background:#765719;
+  color:#fff;
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+}
+.tandara-person-search button:hover{filter:brightness(1.08)}
+.tandara-person-search-results{
+  margin-top:10px;
+  max-height:320px;
+  overflow:auto;
+  border:1px solid #cdb98c;
+  border-radius:10px;
+  background:#fff;
+}
+.tandara-person-search-results[hidden]{display:none}
+.tandara-person-search-title{
+  margin:0;
+  padding:10px 12px;
+  border-bottom:1px solid #e3d7ba;
+  background:#f7f0df;
+  font-weight:800;
+  color:#3b2a12;
+}
+.tandara-person-result{
+  display:block !important;
+  width:100%;
+  padding:10px 12px !important;
+  border:0 !important;
+  border-bottom:1px solid #eee4cf !important;
+  border-radius:0 !important;
+  background:#fff !important;
+  color:#241d11 !important;
+  text-align:left;
+  font-weight:700 !important;
+}
+.tandara-person-result:last-child{border-bottom:0 !important}
+.tandara-person-result:hover,.tandara-person-result:focus{background:#fff8e8 !important}
+.tandara-person-result small{display:block;margin-top:3px;font-weight:400;color:#6b604d}
+.tandara-person-search-empty{margin:0;padding:12px;color:#5f5545}
+.tandara-visually-hidden{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+@media (max-width:640px){
+  .tandara-person-search-row{flex-direction:column}
+  .tandara-person-search button{width:100%}
+}
+</style>
 </head>
 <body class="en box-mobile-split">
 <div class="layout">
@@ -243,7 +477,7 @@ gtag('consent', 'default', {
 <!-- HOME -->
 <a class="home-button" href="index-en.html">
 <div class="home-circle">
-<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<svg class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
 <path d="M3 10.5L12 3l9 7.5"></path>
 <path d="M5 10v10h14V10"></path>
 <path d="M10 20v-6h4v6"></path>
@@ -274,95 +508,367 @@ gtag('consent', 'default', {
 </aside>
 <main class="content-page">
 <article class="content-card">
-<!-- POČETAK SADRŽAJA / START OF CONTENT -->
-
-<header class="branch-heading">
-  <img class="branch-flag" src="flag-uk.png" alt="UK flag"/>
-  <h1>Ante’s sub-branch</h1>
-</header>
-
-<section class="branch-summary" aria-labelledby="ante-matija">
-  <h2 id="ante-matija">Ante Tandara and Matija born Jukić</h2>
-
-  <p class="family-data">
-    <strong>Ante Tandara:</strong>
-    ★ 1769 &nbsp;–&nbsp; ✝ 1849
+<section aria-labelledby="ante-matija" class="branch-summary">
+<h2 id="ante-matija">Ante Tandara and Matija born Jukić</h2>
+<p class="family-data">
+<strong>Ante Tandara:</strong>
+    ★ 1769  –  ✝ 1849
   </p>
-
-  <p class="family-data">
-    <strong>Wife Matija born Jukić:</strong>
-    ★ unknown &nbsp;–&nbsp; ✝ unknown
+<p class="family-data">
+<strong>Wife Matija born Jukić:</strong>
+    ★ unknown  –  ✝ unknown
   </p>
-
-  <p>
+<p>
     They had eight children: sons <strong>Lovro, Mijo and Petar</strong>,
     and daughters <strong>Pera, Ruža, Antica, Iva and Marija</strong>.
   </p>
-
-  <p>
+<p>
     No information about Petar has been found other than his birth record,
     so it is not known whether he died young or moved away from Zavelim.
     The family line was continued by the sons <strong>Lovro</strong> and
     <strong>Mijo</strong>.
   </p>
-
-  <p>
+<p>
     Mijo’s descendants received the nickname <strong>Tucići</strong>.
     Lovro’s descendants through his son Marijan became known as
     <strong>Lovrinovići</strong>, while those through his son Križan became
     known as <strong>Križanovići</strong>.
   </p>
-
-  <p>
+<p>
     According to the 1819 census, Ante lived in Zavelim, while his brother
     Filip lived in Ričice. Their descendants later moved throughout Croatia,
     Europe, the United States and Canada.
   </p>
 </section>
-
-<section class="diagram-instructions" aria-labelledby="diagram-instructions">
-  <h2 id="diagram-instructions">How to use the diagram</h2>
-
-  <ol>
-    <li>
-      Enter the name or code of a family member in the
-      <strong>Name or code</strong> field, then select <strong>Find</strong>.
-    </li>
-    <li>
-      <strong>Expand</strong> opens Ante’s entire sub-branch and displays
-      all recorded descendants.
-    </li>
-    <li>
-      <strong>Collapse</strong> closes the expanded parts of the diagram.
-    </li>
-    <li>
-      <strong>Up to 3 generations</strong> displays the first three
-      generations of the family sub-branch.
-    </li>
-    <li>
-      <strong>Fit</strong> adjusts the complete diagram to the available
-      space on the screen.
-    </li>
-    <li>
-      To trace your family line, first find a known family member and then
-      follow the connecting lines towards that person’s ancestors and
-      descendants.
-    </li>
-  </ol>
+<header class="branch-heading">
+<img alt="UK flag" class="branch-flag" src="flag-uk.png"/>
+<h1>Ante’s sub-branch</h1>
+</header>
+<!-- POČETAK SADRŽAJA / START OF CONTENT -->
+<section aria-labelledby="diagram-instructions" class="diagram-instructions">
+<h2 id="diagram-instructions">How to use the diagram</h2>
+<ol>
+<li>Enter the required term in the <strong>Name, code or detail</strong> field and select <strong>Find</strong>.</li>
+<li>Selecting a person’s name box opens the available details about that person and their family.</li>
+<li>The <strong>+</strong> or <strong>−</strong> symbol on a person’s box opens or closes their descendants.</li>
+<li>The <strong>Expand all</strong>, <strong>Collapse</strong> and <strong>Three generations</strong> buttons determine how many generations are displayed.</li>
+<li><strong>Fit</strong> adjusts the complete diagram to the available area, while the <strong>+</strong> and <strong>−</strong> buttons zoom in or out.</li>
+<li>On a computer, drag the diagram with the mouse. On a phone or tablet, drag it with your finger.</li>
+<li>The <strong>View full screen</strong> button opens the prepared diagram area across the entire screen.</li>
+<li>You may add the shared surname <strong>Tandara</strong> to any first name; the search will display every person matching the entered name.</li>
+</ol>
 </section>
-
-<div style="width:100%; margin:30px 0;">
-  <iframe
-    src="box3e-ante-podgrana-en.html"
-    title="Ante’s sub-branch – interactive family tree"
-    style="width:100%; height:850px; border:1px solid #cccccc; border-radius:12px; background:white;"
-    loading="lazy">
-  </iframe>
+<section aria-labelledby="box3e-diagram-title" class="diagram-setup" data-common-surname="Tandara" data-diagram-setup="">
+<div class="diagram-setup-header">
+<div class="diagram-setup-heading">
+<h2 id="box3e-diagram-title">Family-tree diagram of Ante’s sub-branch</h2>
+<p>Shared technical area for the interactive diagram in the third column.</p>
 </div>
+<button aria-label="View the diagram in full screen" class="diagram-fullscreen-button" data-diagram-fullscreen="" title="Full screen" type="button">
+<span aria-hidden="true">⛶</span>
+<span data-diagram-fullscreen-label="">View full screen</span>
+</button>
+</div>
+<div aria-label="Prepared area for the extracted family-tree diagram" class="diagram-mount" data-diagram-mount="" role="region">
+<div class="tandara-person-search" data-common-surname="Tandara" data-tandara-person-search="">
+<label for="box3e-person-search">Search people in the diagram</label>
+<div class="tandara-person-search-row">
+<input aria-controls="box3e-person-search-results" aria-expanded="false" autocomplete="off" data-tandara-search-input="" id="box3e-person-search" placeholder="First name, or first name and surname Tandara" type="search"/>
+<button data-tandara-search-button="" type="button">Find</button>
+</div>
+<div aria-label="Person search results" class="tandara-person-search-results" data-tandara-search-results="" hidden="" id="box3e-person-search-results" role="region">
+<p class="tandara-person-search-title" data-tandara-search-title="">Search results</p>
+<div data-tandara-search-items=""></div>
+</div>
+<p aria-live="polite" class="tandara-visually-hidden" data-tandara-search-status=""></p>
+</div>
+<p class="diagram-pending">The area for the extracted interactive diagram is ready. The diagram will be inserted later without changing this shared technical system.</p>
+<!--
+      REQUIRED STANDARD FOR EVERY PERSON IN THE DIAGRAM INSERTED LATER:
+      data-person-name="Vice Marinov"
+      data-person-id="jedinstvena-sifra"
+      data-person-aliases="Vice; Vinko"          (when needed)
+      data-person-qualifier="★ 1949."            (when needed)
+      data-person-dialog="id-dijaloga-osobe"     (when needed)
 
+      The shared surname Tandara MUST NOT be added to the visible name.
+      The technical system automatically includes it in the search for every registered person.
+      For JavaScript diagrams, people may also be registered through:
+      window.TandaraDiagramSearch.register('[data-diagram-setup]', [{ name:'Vice Marinov', dialogId:'vice-dijalog' }]);
+    -->
+<!-- INSERT THE EXTRACTED DIAGRAM OF THIS SUB-BRANCH HERE LATER. -->
+</div>
+</section>
 <!-- KRAJ SADRŽAJA / END OF CONTENT -->
 </article>
 </main>
 </div>
+<script id="tandara-common-search-script">
+(function(){
+  'use strict';
+
+  var COMMON_SURNAME = 'Tandara';
+  var registries = new Map();
+
+  function normalize(value){
+    return String(value || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase('en')
+      .replace(/[^a-z0-9čćđšž\s-]/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function queryTokens(rawQuery, surname){
+    var surnameToken = normalize(surname || COMMON_SURNAME);
+    return normalize(rawQuery)
+      .split(' ')
+      .filter(Boolean)
+      .filter(function(token){ return token !== surnameToken; });
+  }
+
+  function uniqueEntries(entries){
+    var seen = new Set();
+    return entries.filter(function(entry){
+      var key = [entry.id || '', normalize(entry.name), normalize(entry.qualifier || '')].join('|');
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function domEntries(setup){
+    return Array.prototype.slice.call(setup.querySelectorAll('[data-person-name]')).map(function(element, index){
+      return {
+        id: element.getAttribute('data-person-id') || element.id || 'dom-person-' + index,
+        name: element.getAttribute('data-person-name') || element.textContent.trim(),
+        aliases: element.getAttribute('data-person-aliases') || '',
+        qualifier: element.getAttribute('data-person-qualifier') || '',
+        dialogId: element.getAttribute('data-person-dialog') || '',
+        element: element
+      };
+    });
+  }
+
+  function entrySearchText(entry, surname){
+    return normalize([
+      entry.name,
+      entry.aliases,
+      entry.qualifier,
+      entry.father,
+      entry.mother,
+      entry.code,
+      surname || COMMON_SURNAME
+    ].filter(Boolean).join(' '));
+  }
+
+  function collectResults(setup, rawQuery){
+    var surname = setup.getAttribute('data-common-surname') || COMMON_SURNAME;
+    var tokens = queryTokens(rawQuery, surname);
+    if (!tokens.length) return [];
+
+    var registered = registries.get(setup) || [];
+    var entries = uniqueEntries(registered.concat(domEntries(setup)));
+
+    return entries.filter(function(entry){
+      var haystack = entrySearchText(entry, surname);
+      return tokens.every(function(token){ return haystack.indexOf(token) !== -1; });
+    }).sort(function(a, b){
+      return String(a.name || '').localeCompare(String(b.name || ''), 'en');
+    });
+  }
+
+  function openEntry(setup, entry){
+    if (typeof entry.open === 'function') {
+      entry.open(entry);
+      return;
+    }
+
+    var dialog = entry.dialogId ? document.getElementById(entry.dialogId) : null;
+    if (dialog) {
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else {
+        dialog.hidden = false;
+        dialog.setAttribute('open', '');
+        dialog.classList.add('is-open');
+      }
+      return;
+    }
+
+    if (entry.element && typeof entry.element.click === 'function') {
+      entry.element.click();
+      return;
+    }
+
+    setup.dispatchEvent(new CustomEvent('tandara:open-person', {
+      bubbles: true,
+      detail: { person: entry }
+    }));
+  }
+
+  function renderResults(setup, rawQuery){
+    var search = setup.querySelector('[data-tandara-person-search]');
+    if (!search) return;
+
+    var input = search.querySelector('[data-tandara-search-input]');
+    var panel = search.querySelector('[data-tandara-search-results]');
+    var title = search.querySelector('[data-tandara-search-title]');
+    var items = search.querySelector('[data-tandara-search-items]');
+    var status = search.querySelector('[data-tandara-search-status]');
+    var results = collectResults(setup, rawQuery);
+    var surname = setup.getAttribute('data-common-surname') || COMMON_SURNAME;
+    var tokens = queryTokens(rawQuery, surname);
+
+    items.innerHTML = '';
+    panel.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+
+    if (!tokens.length) {
+      title.textContent = 'Enter a first name with the surname ' + surname;
+      items.innerHTML = '<p class="tandara-person-search-empty">The shared surname alone is not enough. Enter the person’s first name as well.</p>';
+      status.textContent = 'Enter the person’s first name.';
+      return;
+    }
+
+    title.textContent = results.length
+      ? 'Possible people · found ' + results.length
+      : 'No people found';
+
+    if (!results.length) {
+      items.innerHTML = '<p class="tandara-person-search-empty">Not found: ' + escapeHtml(rawQuery) + '.</p>';
+      status.textContent = 'No results for ' + rawQuery + '.';
+      return;
+    }
+
+    results.forEach(function(entry){
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'tandara-person-result';
+      button.innerHTML = '<span>' + escapeHtml(entry.name || 'Unknown person') + '</span>' +
+        (entry.qualifier ? '<small>' + escapeHtml(entry.qualifier) + '</small>' : '');
+      button.addEventListener('click', function(){
+        openEntry(setup, entry);
+      });
+      items.appendChild(button);
+    });
+
+    status.textContent = 'People found: ' + results.length + '.';
+  }
+
+  function escapeHtml(value){
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function closeResults(search){
+    var panel = search.querySelector('[data-tandara-search-results]');
+    var input = search.querySelector('[data-tandara-search-input]');
+    if (panel) panel.hidden = true;
+    if (input) input.setAttribute('aria-expanded', 'false');
+  }
+
+  function setupSearch(setup){
+    if (!registries.has(setup)) registries.set(setup, []);
+    var search = setup.querySelector('[data-tandara-person-search]');
+    if (!search) return;
+
+    var input = search.querySelector('[data-tandara-search-input]');
+    var button = search.querySelector('[data-tandara-search-button]');
+
+    function runSearch(){
+      var query = input.value.trim();
+      if (!query) {
+        closeResults(search);
+        return;
+      }
+      renderResults(setup, query);
+    }
+
+    button.addEventListener('click', runSearch);
+    input.addEventListener('keydown', function(event){
+      if (event.key === 'Enter') runSearch();
+      if (event.key === 'Escape') closeResults(search);
+    });
+  }
+
+  document.querySelectorAll('[data-diagram-setup]').forEach(setupSearch);
+
+  window.TandaraDiagramSearch = Object.freeze({
+    commonSurname: COMMON_SURNAME,
+    register: function(setupReference, people){
+      var setup = typeof setupReference === 'string'
+        ? document.querySelector(setupReference)
+        : setupReference;
+      if (!setup || !setup.matches('[data-diagram-setup]')) return false;
+      var current = registries.get(setup) || [];
+      var additions = Array.isArray(people) ? people : [people];
+      registries.set(setup, current.concat(additions.filter(Boolean)));
+      return true;
+    },
+    collectResults: function(setupReference, query){
+      var setup = typeof setupReference === 'string'
+        ? document.querySelector(setupReference)
+        : setupReference;
+      return setup ? collectResults(setup, query) : [];
+    }
+  });
+})();
+</script>
+<script>
+(function(){
+  var setups = document.querySelectorAll('[data-diagram-setup]');
+
+  function currentFullscreenElement(){
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
+  function enterFullscreen(element){
+    if (element.requestFullscreen) return element.requestFullscreen();
+    if (element.webkitRequestFullscreen) return element.webkitRequestFullscreen();
+    return null;
+  }
+
+  function exitFullscreen(){
+    if (document.exitFullscreen) return document.exitFullscreen();
+    if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+    return null;
+  }
+
+  function syncButtons(){
+    var active = currentFullscreenElement();
+    setups.forEach(function(setup){
+      var button = setup.querySelector('[data-diagram-fullscreen]');
+      var label = setup.querySelector('[data-diagram-fullscreen-label]');
+      if (!button || !label) return;
+      var isActive = active === setup;
+      label.textContent = isActive ? 'Exit full screen' : 'View full screen';
+      button.setAttribute('aria-label', isActive ? 'Exit the full-screen diagram view' : 'View the diagram in full screen');
+      button.setAttribute('title', isActive ? 'Exit full screen' : 'Full screen');
+    });
+  }
+
+  setups.forEach(function(setup){
+    var button = setup.querySelector('[data-diagram-fullscreen]');
+    if (!button) return;
+    button.addEventListener('click', function(){
+      if (currentFullscreenElement() === setup) {
+        exitFullscreen();
+      } else {
+        var result = enterFullscreen(setup);
+        if (result && typeof result.catch === 'function') result.catch(function(){});
+      }
+    });
+  });
+
+  document.addEventListener('fullscreenchange', syncButtons);
+  document.addEventListener('webkitfullscreenchange', syncButtons);
+  syncButtons();
+})();
+</script>
 </body>
 </html>
