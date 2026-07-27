@@ -668,7 +668,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <li>Gumb <strong>Uklopi</strong> prilagođava cijeli dijagram dostupnom prostoru, a gumbi <strong>+</strong> i <strong>−</strong> povećavaju ili smanjuju prikaz.</li>
 <li>Na računalu se dijagram pomiče povlačenjem mišem, a na mobitelu ili tabletu povlačenjem prstom.</li>
 <li>Gumb <strong>Prikaži na cijelom ekranu</strong> otvara pripremljeni prostor dijagrama preko cijelog zaslona.</li>
-<li>Uz svako ime možete upisati zajedničko prezime <strong>Tandara</strong>; pretraga će prikazati sve osobe koje odgovaraju upisanom imenu.</li>
+<li>Zbog velikog broja osoba s istim imenima, za precizan pronalazak upišite <strong>ime osobe, očevo ime i majčino ime</strong>. Prezime <strong>Tandara</strong> možete dodati, ali samo ime i prezime često nisu dovoljni za jednoznačan rezultat; pretraga obuhvaća podatke o oba roditelja.</li>
 </ol>
 </section>
 <section aria-labelledby="box3a-diagram-title" class="branch-diagram diagram-setup" data-common-surname="Tandara" data-diagram-setup="" id="box3a-diagram"><header class="diagram-header">
@@ -688,7 +688,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <div class="search-wrap tandara-person-search" data-common-surname="Tandara" data-tandara-person-search="">
 <label for="box3a-person-search">Pretraži osobe u dijagramu</label>
 <div class="tandara-person-search-row">
-<input aria-controls="box3a-person-search-results" aria-expanded="false" autocomplete="off" data-tandara-search-input="" id="box3a-person-search" placeholder="Ime, šifra ili podatak" type="search"/>
+<input aria-controls="box3a-person-search-results" aria-expanded="false" autocomplete="off" data-tandara-search-input="" id="box3a-person-search" placeholder="Ime osobe + otac + majka" type="search"/>
 <button class="primary" data-tandara-search-button="" type="button">Pronađi</button>
 </div>
 <div aria-label="Rezultati pretrage osoba" class="search-results tandara-person-search-results" data-tandara-search-results="" hidden="" id="box3a-person-search-results" role="region">
@@ -862,8 +862,12 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
       var button = document.createElement('button');
       button.type = 'button';
       button.className = 'tandara-person-result';
+      var parentText = entry.father || entry.mother
+        ? 'Otac: ' + (entry.father || 'nepoznato') + ' · Majka: ' + (entry.mother || 'nepoznato')
+        : '';
       button.innerHTML = '<span>' + escapeHtml(entry.name || 'Nepoznata osoba') + '</span>' +
-        (entry.qualifier ? '<small>' + escapeHtml(entry.qualifier) + '</small>' : '');
+        (entry.qualifier ? '<small>' + escapeHtml(entry.qualifier) + '</small>' : '') +
+        (parentText ? '<small>' + escapeHtml(parentText) + '</small>' : '');
       button.addEventListener('click', function(){
         openEntry(setup, entry);
       });
@@ -1006,7 +1010,7 @@ function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 function wrap(text,max=34){const words=String(text||'').split(/\s+/),lines=[];let line='';for(const w of words){const t=(line+' '+w).trim();if(t.length>max&&line){lines.push(line);line=w;}else line=t;}if(line)lines.push(line);if(lines.length>2)lines[1]=lines.slice(1).join(' ').slice(0,max-1)+'…';return lines.slice(0,2);}
 function compact(items,max=42){const text=(items||[]).join(' · ');if(!text)return ['Nema dodatno evidentirane djece'];return text.length<=max?[text]:[text.slice(0,max-1)+'…'];}
 function nodePerson(code){return PEOPLE.find(p=>p.id===code)||null;}
-function personText(p,node){const lines=[];if(p.relation)lines.push('Odnos: '+p.relation+'.');if(p.qualifier)lines.push('Godine: '+p.qualifier+'.');if(p.father)lines.push('Otac: '+p.father+'.');if(p.mother)lines.push('Majka: '+p.mother+'.');if(p.spouses&&p.spouses.length)lines.push('Supružnik/ca: '+p.spouses.join(', ')+'.');if(p.status)lines.push('Status: '+p.status+'.');if(p.note)lines.push(p.note);if(node&&node.detail)lines.push('\n'+node.detail);return lines.join('\n')||((node&&node.detail)||'Za ovu osobu nema dodatnog opisa.');}
+function personText(p,node){const lines=[];if(p.relation)lines.push('Odnos: '+p.relation+'.');if(p.qualifier)lines.push('Godine: '+p.qualifier+'.');if(p.father)lines.push('Otac: '+p.father+'.');if(p.mother)lines.push('Majka: '+p.mother+'.');if(p.spouses&&p.spouses.length)lines.push('Supružnik/ca: '+p.spouses.join(', ')+'.');if(p.status)lines.push('Status: '+p.status+'.');const note=String(p.note||'').trim();if(note)lines.push(note);const detail=node&&node.detail?String(node.detail).trim():'';const canonical=value=>String(value||'').toLocaleLowerCase('hr').replace(/\s+/g,' ').trim();if(detail&&canonical(detail)!==canonical(note))lines.push(detail);return lines.join('\n')||((node&&node.detail)||'Za ovu osobu nema dodatnog opisa.');}
 function showPerson(p){const node=findNode(p.hostCode)||findNode(p.id);if(node){expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();centerNode(node.code);}ROOT.querySelector('[data-tree-detail-title]').textContent=p.name||'Nepoznata osoba';ROOT.querySelector('[data-tree-detail-code]').textContent='Obiteljski zapis '+(p.id||p.hostCode||'');ROOT.querySelector('[data-tree-detail-text]').textContent=personText(p,p.id===p.hostCode?node:null);details.classList.add('open');}
 function showNode(node){const p=nodePerson(node.code);if(p)showPerson(p);else{ROOT.querySelector('[data-tree-detail-title]').textContent=node.label;ROOT.querySelector('[data-tree-detail-code]').textContent='Šifra '+node.code;ROOT.querySelector('[data-tree-detail-text]').textContent=node.detail||'Za ovu osobu nema dodatnog opisa.';details.classList.add('open');}}
 function showFamily(code,index){const node=findNode(code),f=(FAMILY_META[code]||[])[index];if(!node||!f)return;ROOT.querySelector('[data-tree-detail-title]').textContent='Obitelj: '+node.label;ROOT.querySelector('[data-tree-detail-code]').textContent='Bračni zapis '+code;ROOT.querySelector('[data-tree-detail-text]').textContent='Supruga: '+(f.spouse||'nije poznata')+'\nUkupno djece: '+(f.total||0)+'\n\nSinovi:\n• '+((f.sons||[]).length?f.sons.join('\n• '):'nema zabilježenih')+'\n\nKćeri:\n• '+((f.daughters||[]).length?f.daughters.join('\n• '):'nema zabilježenih');details.classList.add('open');}
@@ -1041,7 +1045,7 @@ function centerNode(code){
 ROOT.querySelector('[data-tree-action="expand"]').onclick=()=>{walk(DATA,n=>n.expanded=true);render();fit();};ROOT.querySelector('[data-tree-action="collapse"]').onclick=()=>{walk(DATA,n=>n.expanded=false);DATA.expanded=true;render();fit();};ROOT.querySelector('[data-tree-action="three"]').onclick=()=>{setDepth(3);render();fit();};ROOT.querySelector('[data-tree-action="fit"]').onclick=fit;ROOT.querySelector('[data-tree-action="zoom-in"]').onclick=()=>zoom(1.22,svg.clientWidth/2,svg.clientHeight/2);ROOT.querySelector('[data-tree-action="zoom-out"]').onclick=()=>zoom(.82,svg.clientWidth/2,svg.clientHeight/2);ROOT.querySelector('[data-tree-close]').onclick=()=>details.classList.remove('open');
 svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect();zoom(e.deltaY<0?1.12:.89,e.clientX-r.left,e.clientY-r.top);},{passive:false});
 svg.addEventListener('pointerdown',e=>{if(e.target.closest&&e.target.closest('.subtree-node,.subtree-family-card'))return;dragging=true;svg.classList.add('dragging');dragStart={x:e.clientX,y:e.clientY,px:panX,py:panY};try{svg.setPointerCapture(e.pointerId);}catch(_){} });svg.addEventListener('pointermove',e=>{if(!dragging)return;panX=dragStart.px+e.clientX-dragStart.x;panY=dragStart.py+e.clientY-dragStart.y;apply();});function end(){dragging=false;svg.classList.remove('dragging');}svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
-setDepth(3);render();requestAnimationFrame(fit);window.addEventListener('resize',fit);
+setDepth(1);render();requestAnimationFrame(fit);window.addEventListener('resize',fit);
 const setup=ROOT.closest('[data-diagram-setup]');if(window.TandaraDiagramSearch&&setup){window.TandaraDiagramSearch.register(setup,PEOPLE.map(p=>({id:p.id,name:p.name,aliases:(p.aliases||[]).join('; '),qualifier:p.qualifier||p.relation||'',father:p.father||'',mother:p.mother||'',code:p.id,open:()=>showPerson(p)})));}
 ROOT._tandaraOpenPerson=function(id){const p=PEOPLE.find(x=>x.id===id);if(p)showPerson(p);};
 })();

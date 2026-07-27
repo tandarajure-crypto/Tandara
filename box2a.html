@@ -265,7 +265,9 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
     <li>Gumb <strong>Uklopi</strong> prilagođava cijeli dijagram dostupnom prostoru.</li>
     <li>Ružičasti okvir prikazuje suprugu, a ljubičasti okvir kćeri bračnog para. Klikom na bilo koji okvir otvaraju se podaci.</li>
     <li>Gumb <strong>Cijeli ekran</strong> proširuje dijagram preko cijelog zaslona, a ikona pisača priprema dijagram za ispis.</li>
-  </ol>
+  
+<li>Zbog velikog broja osoba s istim imenima, za precizan pronalazak upišite <strong>ime osobe, očevo ime i majčino ime</strong>. Prezime <strong>Tandara</strong> možete dodati, ali samo ime i prezime često nisu dovoljni za jednoznačan rezultat; pretraga obuhvaća podatke o oba roditelja.</li>
+</ol>
 </section>
 
 <section class="jure-diagram" id="jureDiagram" aria-labelledby="diagramTitle">
@@ -293,7 +295,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
           <button id="zoomIn" type="button" aria-label="Povećaj prikaz">＋</button>
           <button id="zoomOut" type="button" aria-label="Smanji prikaz">−</button>
           <div class="search-wrap">
-            <input id="treeSearch" type="search" placeholder="Ime, supruga, kćer ili šifra…" autocomplete="off" aria-controls="searchResults" aria-expanded="false"/>
+            <input id="treeSearch" type="search" placeholder="Ime osobe + otac + majka" autocomplete="off" aria-controls="searchResults" aria-expanded="false"/>
             <button id="findBtn" type="button">Pronađi</button>
           </div>
         </div>
@@ -356,6 +358,12 @@ const SEARCH_ENTRIES=[
   {type:'spouse',label:'Boža rođ. Ćosić',hostCode:'1.1',familyIndex:0,extra:'supruga Frane Jurina'},
   {type:'son',label:'Nikola',hostCode:'1.1.1',extra:'sin Frane Jurina i Bože Ćosić'}
 ];
+
+const PERSON_SEARCH_CONTEXT={
+  '1.0':{father:'Ivan Tandara',mother:''},
+  '1.1':{father:'Jure Tandara',mother:'Matija rođ. Lekić'},
+  '1.1.1':{father:'Frane, Jurin sin',mother:'Boža rođ. Ćosić'}
+};
 
 const UI={notFound:'Nije pronađeno: ',codeLabel:'Šifra'};
 const diagram=document.getElementById('jureDiagram');
@@ -494,8 +502,8 @@ function centerNode(code){
 function normalize(value){return String(value||'').toLocaleLowerCase('hr').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim();}
 function levenshtein(a,b){const matrix=Array.from({length:b.length+1},(_,i)=>[i]);for(let j=0;j<=a.length;j++)matrix[0][j]=j;for(let i=1;i<=b.length;i++)for(let j=1;j<=a.length;j++)matrix[i][j]=b[i-1]===a[j-1]?matrix[i-1][j-1]:Math.min(matrix[i-1][j-1]+1,matrix[i][j-1]+1,matrix[i-1][j]+1);return matrix[b.length][a.length];}
 function searchScore(query,text){const q=normalize(query),t=normalize(text);if(!q||!t)return Infinity;if(q===t)return 0;if(t.startsWith(q))return .2;if(t.includes(q))return .4;const qWords=q.split(' '),tWords=t.split(' ');if(qWords.every(word=>tWords.some(candidate=>candidate===word||candidate.startsWith(word))))return 1;let best=Infinity;for(const candidate of tWords){const distance=levenshtein(q,candidate);if(distance<=Math.max(1,Math.floor(Math.max(q.length,candidate.length)*.28)))best=Math.min(best,2+distance);}return best;}
-function nodeEntries(){const entries=[];walk(DATA,node=>entries.push({type:'node',label:node.label,hostCode:node.code,extra:node.detail}));return entries;}
-function collectResults(query){return [...nodeEntries(),...SEARCH_ENTRIES].map(entry=>({...entry,score:Math.min(searchScore(query,entry.label),searchScore(query,entry.extra)+2)})).filter(entry=>Number.isFinite(entry.score)).sort((a,b)=>a.score-b.score||a.label.localeCompare(b.label,'hr')).slice(0,20);}
+function nodeEntries(){const entries=[];walk(DATA,node=>{const context=PERSON_SEARCH_CONTEXT[node.code]||{};entries.push({type:'node',label:node.label,hostCode:node.code,extra:[node.detail,context.father,context.mother].filter(Boolean).join(' '),father:context.father||'',mother:context.mother||''});});return entries;}
+function collectResults(query){return [...nodeEntries(),...SEARCH_ENTRIES].map(entry=>({...entry,score:searchScore(query,[entry.label,entry.extra].filter(Boolean).join(' '))})).filter(entry=>Number.isFinite(entry.score)).sort((a,b)=>a.score-b.score||a.label.localeCompare(b.label,'hr')).slice(0,20);}
 function closeSearchResults(){searchPanel.hidden=true;document.getElementById('searchResultItems').innerHTML='';searchInput.setAttribute('aria-expanded','false');}
 function focusResult(result){
   closeSearchResults();const node=findNode(result.hostCode);if(!node)return;expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();centerNode(node.code);
@@ -510,7 +518,7 @@ function showSearchResults(results,query){
   items.innerHTML=results.length?results.map((result,index)=>`<button class="search-result-item" type="button" data-result-index="${index}"><span class="search-result-label">${esc(result.label)}</span><span class="search-result-meta">${result.type==='node'?'Numerirana osoba · šifra '+esc(result.hostCode):esc(result.extra)}</span>${result.type!=='node'?`<span class="search-result-family">Obiteljski zapis ${esc(result.hostCode)}</span>`:''}</button>`).join(''):`<div class="search-result-item"><span class="search-result-meta">Nije pronađeno: ${esc(query)}. Pokušajte upisati dio imena, prezimena ili šifru.</span></div>`;
   searchPanel.hidden=false;searchInput.setAttribute('aria-expanded','true');positionSearchResults();items.querySelectorAll('[data-result-index]').forEach(button=>button.addEventListener('click',()=>focusResult(results[Number(button.dataset.resultIndex)])));
 }
-function searchTree(){const raw=searchInput.value.trim();closeSearchResults();if(!raw)return;const exact=findNode(raw);if(exact){focusResult({type:'node',label:exact.label,hostCode:exact.code});return;}showSearchResults(collectResults(raw),raw);}
+function searchTree(){const raw=searchInput.value.trim();closeSearchResults();if(!raw)return;const query=raw.split(/\s+/).filter(part=>normalize(part)!=='tandara').join(' ');if(!query){showSearchResults([],raw);return;}const exact=findNode(query);if(exact){focusResult({type:'node',label:exact.label,hostCode:exact.code});return;}showSearchResults(collectResults(query),raw);}
 
 function toggleFullscreen(){
   if(!document.fullscreenElement){diagram.requestFullscreen().catch(()=>{});}else document.exitFullscreen();
@@ -543,7 +551,7 @@ function endPointer(event){pointers.delete(event.pointerId);if(pointers.size<2)p
 svg.addEventListener('pointerup',endPointer);svg.addEventListener('pointercancel',endPointer);
 window.addEventListener('resize',handleResize);
 
-setExpandedToDepth(3);render();requestAnimationFrame(fitTree);
+setExpandedToDepth(2);render();requestAnimationFrame(fitTree);
 </script>
 </body>
 </html>

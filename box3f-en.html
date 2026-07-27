@@ -791,7 +791,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <li><strong>Fit</strong> adjusts the complete diagram to the available area, while the <strong>+</strong> and <strong>−</strong> buttons zoom in or out.</li>
 <li>On a computer, drag the diagram with the mouse. On a phone or tablet, drag it with your finger.</li>
 <li>The <strong>View full screen</strong> button opens the prepared diagram area across the entire screen.</li>
-<li>You may add the shared surname <strong>Tandara</strong> to any first name; the search will display every person matching the entered name.</li>
+<li>Because many people share the same first name, enter the <strong>person’s name, father’s name and mother’s name</strong> for a precise match. You may also add the surname <strong>Tandara</strong>, but a first name and surname alone are often not enough to identify one person; the search includes both parents’ names.</li>
 </ol>
 </section>
 <section aria-labelledby="box3f-en-diagram-title" class="branch-diagram diagram-setup" data-common-surname="Tandara" data-diagram-setup="" id="box3f-en-diagram"><header class="diagram-header">
@@ -811,7 +811,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <div class="search-wrap tandara-person-search" data-common-surname="Tandara" data-tandara-person-search="">
 <label for="box3f-person-search">Search people in the diagram</label>
 <div class="tandara-person-search-row">
-<input aria-controls="box3f-person-search-results" aria-expanded="false" autocomplete="off" data-tandara-search-input="" id="box3f-person-search" placeholder="Name, code or information" type="search"/>
+<input aria-controls="box3f-person-search-results" aria-expanded="false" autocomplete="off" data-tandara-search-input="" id="box3f-person-search" placeholder="Person + father + mother" type="search"/>
 <button class="primary" data-tandara-search-button="" type="button">Find</button>
 </div>
 <div aria-label="Person search results" class="search-results tandara-person-search-results" data-tandara-search-results="" hidden="" id="box3f-person-search-results" role="region">
@@ -986,8 +986,12 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
       var button = document.createElement('button');
       button.type = 'button';
       button.className = 'tandara-person-result';
+      var parentText = entry.father || entry.mother
+        ? 'Father: ' + (entry.father || 'unknown') + ' · Mother: ' + (entry.mother || 'unknown')
+        : '';
       button.innerHTML = '<span>' + escapeHtml(entry.name || 'Unknown person') + '</span>' +
-        (entry.qualifier ? '<small>' + escapeHtml(entry.qualifier) + '</small>' : '');
+        (entry.qualifier ? '<small>' + escapeHtml(entry.qualifier) + '</small>' : '') +
+        (parentText ? '<small>' + escapeHtml(parentText) + '</small>' : '');
       button.addEventListener('click', function(){
         openEntry(setup, entry);
       });
@@ -1130,7 +1134,7 @@ function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 function wrap(text,max=34){const words=String(text||'').split(/\s+/),lines=[];let line='';for(const w of words){const t=(line+' '+w).trim();if(t.length>max&&line){lines.push(line);line=w;}else line=t;}if(line)lines.push(line);if(lines.length>2)lines[1]=lines.slice(1).join(' ').slice(0,max-1)+'…';return lines.slice(0,2);}
 function compact(items,max=42){const text=(items||[]).join(' · ');if(!text)return ['No additional children recorded'];return text.length<=max?[text]:[text.slice(0,max-1)+'…'];}
 function nodePerson(code){return PEOPLE.find(p=>p.id===code)||null;}
-function personText(p,node){const lines=[];if(p.relation)lines.push('Relationship: '+p.relation+'.');if(p.qualifier)lines.push('Years: '+p.qualifier+'.');if(p.father)lines.push('Father: '+p.father+'.');if(p.mother)lines.push('Mother: '+p.mother+'.');if(p.spouses&&p.spouses.length)lines.push('Spouse: '+p.spouses.join(', ')+'.');if(p.status)lines.push('Status: '+p.status+'.');if(p.note)lines.push(p.note);if(node&&node.detail)lines.push('\n'+node.detail);return lines.join('\n')||((node&&node.detail)||'No additional description is available for this person.');}
+function personText(p,node){const lines=[];if(p.relation)lines.push('Relationship: '+p.relation+'.');if(p.qualifier)lines.push('Years: '+p.qualifier+'.');if(p.father)lines.push('Father: '+p.father+'.');if(p.mother)lines.push('Mother: '+p.mother+'.');if(p.spouses&&p.spouses.length)lines.push('Spouse: '+p.spouses.join(', ')+'.');if(p.status)lines.push('Status: '+p.status+'.');const note=String(p.note||'').trim();if(note)lines.push(note);const detail=node&&node.detail?String(node.detail).trim():'';const canonical=value=>String(value||'').toLocaleLowerCase('en').replace(/\s+/g,' ').trim();if(detail&&canonical(detail)!==canonical(note))lines.push(detail);return lines.join('\n')||((node&&node.detail)||'No additional description is available for this person.');}
 function showPerson(p){const node=findNode(p.hostCode)||findNode(p.id);if(node){expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();centerNode(node.code);}ROOT.querySelector('[data-tree-detail-title]').textContent=p.name||'Unknown person';ROOT.querySelector('[data-tree-detail-code]').textContent='Family record '+(p.id||p.hostCode||'');ROOT.querySelector('[data-tree-detail-text]').textContent=personText(p,p.id===p.hostCode?node:null);details.classList.add('open');}
 function showNode(node){const p=nodePerson(node.code);if(p)showPerson(p);else{ROOT.querySelector('[data-tree-detail-title]').textContent=node.label;ROOT.querySelector('[data-tree-detail-code]').textContent='Code '+node.code;ROOT.querySelector('[data-tree-detail-text]').textContent=node.detail||'No additional description is available for this person.';details.classList.add('open');}}
 function showFamily(code,index){const node=findNode(code),f=(FAMILY_META[code]||[])[index];if(!node||!f)return;ROOT.querySelector('[data-tree-detail-title]').textContent='Family: '+node.label;ROOT.querySelector('[data-tree-detail-code]').textContent='Marriage record '+code;ROOT.querySelector('[data-tree-detail-text]').textContent='Spouse: '+(f.spouse||'unknown')+'\nTotal children: '+(f.total||0)+'\n\nSons:\n• '+((f.sons||[]).length?f.sons.join('\n• '):'none recorded')+'\n\nDaughters:\n• '+((f.daughters||[]).length?f.daughters.join('\n• '):'none recorded');details.classList.add('open');}
@@ -1165,7 +1169,7 @@ function centerNode(code){
 ROOT.querySelector('[data-tree-action="expand"]').onclick=()=>{walk(DATA,n=>n.expanded=true);render();fit();};ROOT.querySelector('[data-tree-action="collapse"]').onclick=()=>{walk(DATA,n=>n.expanded=false);DATA.expanded=true;render();fit();};ROOT.querySelector('[data-tree-action="three"]').onclick=()=>{setDepth(3);render();fit();};ROOT.querySelector('[data-tree-action="fit"]').onclick=fit;ROOT.querySelector('[data-tree-action="zoom-in"]').onclick=()=>zoom(1.22,svg.clientWidth/2,svg.clientHeight/2);ROOT.querySelector('[data-tree-action="zoom-out"]').onclick=()=>zoom(.82,svg.clientWidth/2,svg.clientHeight/2);ROOT.querySelector('[data-tree-close]').onclick=()=>details.classList.remove('open');
 svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect();zoom(e.deltaY<0?1.12:.89,e.clientX-r.left,e.clientY-r.top);},{passive:false});
 svg.addEventListener('pointerdown',e=>{if(e.target.closest&&e.target.closest('.subtree-node,.subtree-family-card'))return;dragging=true;svg.classList.add('dragging');dragStart={x:e.clientX,y:e.clientY,px:panX,py:panY};try{svg.setPointerCapture(e.pointerId);}catch(_){} });svg.addEventListener('pointermove',e=>{if(!dragging)return;panX=dragStart.px+e.clientX-dragStart.x;panY=dragStart.py+e.clientY-dragStart.y;apply();});function end(){dragging=false;svg.classList.remove('dragging');}svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
-setDepth(3);render();requestAnimationFrame(fit);window.addEventListener('resize',fit);
+setDepth(1);render();requestAnimationFrame(fit);window.addEventListener('resize',fit);
 const setup=ROOT.closest('[data-diagram-setup]');if(window.TandaraDiagramSearch&&setup){window.TandaraDiagramSearch.register(setup,PEOPLE.map(p=>({id:p.id,name:p.name,aliases:(p.aliases||[]).join('; '),qualifier:p.qualifier||p.relation||'',father:p.father||'',mother:p.mother||'',code:p.id,open:()=>showPerson(p)})));}
 ROOT._tandaraOpenPerson=function(id){const p=PEOPLE.find(x=>x.id===id);if(p)showPerson(p);};
 })();

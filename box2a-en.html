@@ -266,7 +266,9 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
     <li>The <strong>Fit</strong> button adjusts the complete diagram to the available space.</li>
     <li>The pink box represents a wife, while the purple box represents the daughters of a married couple. Select any box to open its information.</li>
     <li>The <strong>Full screen</strong> button expands the diagram across the entire screen, while the printer icon prepares the diagram for printing.</li>
-  </ol>
+  
+<li>Because many people share the same first name, enter the <strong>person’s name, father’s name and mother’s name</strong> for a precise match. You may also add the surname <strong>Tandara</strong>, but a first name and surname alone are often not enough to identify one person; the search includes both parents’ names.</li>
+</ol>
 </section>
 
 <section class="jure-diagram" id="jureDiagram" aria-labelledby="diagramTitle">
@@ -294,7 +296,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
           <button id="zoomIn" type="button" aria-label="Zoom in">＋</button>
           <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
           <div class="search-wrap">
-            <input id="treeSearch" type="search" placeholder="Name, spouse, daughter or code…" autocomplete="off" aria-controls="searchResults" aria-expanded="false"/>
+            <input id="treeSearch" type="search" placeholder="Person + father + mother" autocomplete="off" aria-controls="searchResults" aria-expanded="false"/>
             <button id="findBtn" type="button">Find</button>
           </div>
         </div>
@@ -357,6 +359,12 @@ const SEARCH_ENTRIES=[
   {type:'spouse',label:'Boža née Ćosić',hostCode:'1.1',familyIndex:0,extra:'wife of Frane, son of Jure'},
   {type:'son',label:'Nikola',hostCode:'1.1.1',extra:'son of Frane and Boža Ćosić'}
 ];
+
+const PERSON_SEARCH_CONTEXT={
+  '1.0':{father:'Ivan Tandara',mother:''},
+  '1.1':{father:'Jure Tandara',mother:'Matija née Lekić'},
+  '1.1.1':{father:'Frane, son of Jure',mother:'Boža née Ćosić'}
+};
 
 const UI={notFound:'Not found: ',codeLabel:'Code'};
 const diagram=document.getElementById('jureDiagram');
@@ -495,8 +503,8 @@ function centerNode(code){
 function normalize(value){return String(value||'').toLocaleLowerCase('en').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim();}
 function levenshtein(a,b){const matrix=Array.from({length:b.length+1},(_,i)=>[i]);for(let j=0;j<=a.length;j++)matrix[0][j]=j;for(let i=1;i<=b.length;i++)for(let j=1;j<=a.length;j++)matrix[i][j]=b[i-1]===a[j-1]?matrix[i-1][j-1]:Math.min(matrix[i-1][j-1]+1,matrix[i][j-1]+1,matrix[i-1][j]+1);return matrix[b.length][a.length];}
 function searchScore(query,text){const q=normalize(query),t=normalize(text);if(!q||!t)return Infinity;if(q===t)return 0;if(t.startsWith(q))return .2;if(t.includes(q))return .4;const qWords=q.split(' '),tWords=t.split(' ');if(qWords.every(word=>tWords.some(candidate=>candidate===word||candidate.startsWith(word))))return 1;let best=Infinity;for(const candidate of tWords){const distance=levenshtein(q,candidate);if(distance<=Math.max(1,Math.floor(Math.max(q.length,candidate.length)*.28)))best=Math.min(best,2+distance);}return best;}
-function nodeEntries(){const entries=[];walk(DATA,node=>entries.push({type:'node',label:node.label,hostCode:node.code,extra:node.detail}));return entries;}
-function collectResults(query){return [...nodeEntries(),...SEARCH_ENTRIES].map(entry=>({...entry,score:Math.min(searchScore(query,entry.label),searchScore(query,entry.extra)+2)})).filter(entry=>Number.isFinite(entry.score)).sort((a,b)=>a.score-b.score||a.label.localeCompare(b.label,'en')).slice(0,20);}
+function nodeEntries(){const entries=[];walk(DATA,node=>{const context=PERSON_SEARCH_CONTEXT[node.code]||{};entries.push({type:'node',label:node.label,hostCode:node.code,extra:[node.detail,context.father,context.mother].filter(Boolean).join(' '),father:context.father||'',mother:context.mother||''});});return entries;}
+function collectResults(query){return [...nodeEntries(),...SEARCH_ENTRIES].map(entry=>({...entry,score:searchScore(query,[entry.label,entry.extra].filter(Boolean).join(' '))})).filter(entry=>Number.isFinite(entry.score)).sort((a,b)=>a.score-b.score||a.label.localeCompare(b.label,'en')).slice(0,20);}
 function closeSearchResults(){searchPanel.hidden=true;document.getElementById('searchResultItems').innerHTML='';searchInput.setAttribute('aria-expanded','false');}
 function focusResult(result){
   closeSearchResults();const node=findNode(result.hostCode);if(!node)return;expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();centerNode(node.code);
@@ -511,7 +519,7 @@ function showSearchResults(results,query){
   items.innerHTML=results.length?results.map((result,index)=>`<button class="search-result-item" type="button" data-result-index="${index}"><span class="search-result-label">${esc(result.label)}</span><span class="search-result-meta">${result.type==='node'?'Numbered person · code '+esc(result.hostCode):esc(result.extra)}</span>${result.type!=='node'?`<span class="search-result-family">Family record ${esc(result.hostCode)}</span>`:''}</button>`).join(''):`<div class="search-result-item"><span class="search-result-meta">Not found: ${esc(query)}. Try entering part of a first name, surname or code.</span></div>`;
   searchPanel.hidden=false;searchInput.setAttribute('aria-expanded','true');positionSearchResults();items.querySelectorAll('[data-result-index]').forEach(button=>button.addEventListener('click',()=>focusResult(results[Number(button.dataset.resultIndex)])));
 }
-function searchTree(){const raw=searchInput.value.trim();closeSearchResults();if(!raw)return;const exact=findNode(raw);if(exact){focusResult({type:'node',label:exact.label,hostCode:exact.code});return;}showSearchResults(collectResults(raw),raw);}
+function searchTree(){const raw=searchInput.value.trim();closeSearchResults();if(!raw)return;const query=raw.split(/\s+/).filter(part=>normalize(part)!=='tandara').join(' ');if(!query){showSearchResults([],raw);return;}const exact=findNode(query);if(exact){focusResult({type:'node',label:exact.label,hostCode:exact.code});return;}showSearchResults(collectResults(query),raw);}
 
 function toggleFullscreen(){
   if(!document.fullscreenElement){diagram.requestFullscreen().catch(()=>{});}else document.exitFullscreen();
@@ -544,7 +552,7 @@ function endPointer(event){pointers.delete(event.pointerId);if(pointers.size<2)p
 svg.addEventListener('pointerup',endPointer);svg.addEventListener('pointercancel',endPointer);
 window.addEventListener('resize',handleResize);
 
-setExpandedToDepth(3);render();requestAnimationFrame(fitTree);
+setExpandedToDepth(2);render();requestAnimationFrame(fitTree);
 </script>
 </body>
 </html>
