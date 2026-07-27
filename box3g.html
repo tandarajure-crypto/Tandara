@@ -682,150 +682,6 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
   }
 }
 </style>
-
-<style id="tandara-long-diagram-title-fix">
-@media (min-width:1081px){
-  .branch-diagram .diagram-header{
-    grid-template-columns:minmax(330px,1fr) max-content minmax(250px,300px);
-  }
-  .branch-diagram .diagram-title{max-width:none;}
-  .branch-diagram .diagram-title h2,
-  .branch-diagram .diagram-subtitle{white-space:normal;}
-  .branch-diagram .diagram-actions{justify-self:end;}
-  .branch-diagram .tandara-person-search{
-    width:300px;
-    max-width:300px;
-    min-width:250px;
-    justify-self:end;
-  }
-}
-</style>
-
-<style id="tandara-ivan-matin-one-line-header">
-@media (min-width:1081px){
-  .branch-diagram .diagram-header{
-    grid-template-columns:minmax(205px,250px) max-content max-content minmax(250px,300px);
-    align-items:center;
-    gap:8px 10px;
-  }
-  .branch-diagram .diagram-title{display:block;min-width:0;max-width:none;}
-  .branch-diagram .diagram-title h2{margin:0 0 2px;white-space:nowrap;}
-  .branch-diagram .diagram-subtitle{display:block;white-space:normal;font-size:11px;line-height:1.25;}
-  .branch-diagram .diagram-actions{justify-self:start;gap:5px;}
-  .branch-diagram .diagram-home-circle{width:46px;height:46px;}
-  .branch-diagram .lang-icon{width:38px;height:32px;}
-  .branch-diagram #printDiagram{width:46px;height:38px;}
-  .branch-diagram .diagram-fullscreen-button{padding:7px 8px;}
-  .branch-diagram .header-tree-tools{display:flex;align-items:center;flex-wrap:nowrap;gap:5px;min-width:0;padding:0;border:0;background:transparent;}
-  .branch-diagram .header-tree-tools button{padding:7px 8px;font-size:12px;}
-  .branch-diagram .tandara-person-search{width:300px;max-width:300px;min-width:250px;justify-self:end;}
-}
-</style>
-
-<style id="tandara-ivan-matin-final-single-row-fix">
-/* Za ova četiri Ivanova boxa gornje zaglavlje ostaje u jednom retku na računalima. */
-@media (min-width:901px){
-  .branch-diagram .diagram-header{
-    display:grid!important;
-    flex-direction:initial!important;
-    grid-template-columns:minmax(165px,210px) max-content max-content minmax(160px,1fr)!important;
-    align-items:center!important;
-    gap:6px!important;
-    padding:7px 10px!important;
-  }
-  .branch-diagram .diagram-title{
-    display:block!important;
-    width:auto!important;
-    min-width:0!important;
-    max-width:none!important;
-  }
-  .branch-diagram .diagram-title h2{
-    margin:0 0 2px!important;
-    font-size:18px!important;
-    line-height:1.1!important;
-    white-space:nowrap!important;
-  }
-  .branch-diagram .diagram-subtitle{
-    display:block!important;
-    margin:0!important;
-    font-size:10px!important;
-    line-height:1.2!important;
-    white-space:normal!important;
-  }
-  .branch-diagram .diagram-actions{
-    display:flex!important;
-    align-items:center!important;
-    justify-content:flex-start!important;
-    flex-wrap:nowrap!important;
-    gap:4px!important;
-    min-width:max-content!important;
-  }
-  .branch-diagram .diagram-actions .diagram-header-btn{
-    padding:5px 6px!important;
-    font-size:11px!important;
-  }
-  .branch-diagram .diagram-home-circle{width:38px!important;height:38px!important;}
-  .branch-diagram .diagram-home-svg{width:19px!important;height:19px!important;}
-  .branch-diagram .lang-icon{width:32px!important;height:28px!important;padding:3px!important;}
-  .branch-diagram #printDiagram{width:38px!important;height:32px!important;padding:4px!important;}
-  .branch-diagram .diagram-fullscreen-button{width:34px!important;height:32px!important;padding:4px!important;}
-  .branch-diagram .diagram-fullscreen-button [data-diagram-fullscreen-label]{display:none!important;}
-  .branch-diagram .header-tree-tools{
-    display:flex!important;
-    align-items:center!important;
-    flex-wrap:nowrap!important;
-    gap:4px!important;
-    min-width:max-content!important;
-    width:max-content!important;
-    padding:0!important;
-    border:0!important;
-    background:transparent!important;
-  }
-  .branch-diagram .header-tree-tools button{
-    padding:6px 7px!important;
-    font-size:11px!important;
-    line-height:1.1!important;
-  }
-  .branch-diagram .tandara-person-search{
-    width:100%!important;
-    max-width:none!important;
-    min-width:160px!important;
-    margin-left:0!important;
-    justify-self:stretch!important;
-  }
-  .branch-diagram .tandara-person-search-row{
-    width:100%!important;
-    min-width:0!important;
-    gap:4px!important;
-  }
-  .branch-diagram .tandara-person-search input{
-    flex:1 1 auto!important;
-    width:auto!important;
-    min-width:0!important;
-    padding:6px 7px!important;
-    font-size:11px!important;
-  }
-  .branch-diagram .tandara-person-search button{
-    flex:0 0 auto!important;
-    padding:6px 7px!important;
-    font-size:11px!important;
-  }
-}
-</style>
-
-<style id="tandara-ivan-matin-search-one-third-narrower">
-@media (min-width:901px){
-  .branch-diagram .diagram-header{
-    grid-template-columns:minmax(165px,210px) max-content max-content 200px!important;
-  }
-  .branch-diagram .tandara-person-search{
-    width:200px!important;
-    max-width:200px!important;
-    min-width:200px!important;
-    justify-self:end!important;
-  }
-}
-</style>
 </head>
 <body class="hr box-mobile-split">
 <div class="layout">
@@ -882,7 +738,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <li>Zbog velikog broja osoba s istim imenima, za precizan pronalazak upišite <strong>ime osobe, očevo ime i majčino ime</strong>. Prezime <strong>Tandara</strong> možete dodati, ali samo ime i prezime često nisu dovoljni za jednoznačan rezultat; pretraga obuhvaća podatke o oba roditelja.</li>
 </ol>
 </section>
-<section aria-labelledby="box3g-diagram-title" class="branch-diagram diagram-setup" data-common-surname="Tandara" data-diagram-setup="" id="box3g-diagram"><div class="subtree-diagram" data-subtree-diagram="" id="box3g-tree"><header class="diagram-header">
+<section aria-labelledby="box3g-diagram-title" class="branch-diagram diagram-setup" data-common-surname="Tandara" data-diagram-setup="" id="box3g-diagram"><header class="diagram-header">
 <div class="diagram-title">
 <h2 id="box3g-diagram-title">Ivan Matin – I brak</h2>
 <div class="diagram-subtitle"><strong>23 numeriranih osoba</strong> · <strong>6 generacija</strong> · početni nositelj: <strong>Ivan Matin (–1870.)</strong></div>
@@ -896,14 +752,6 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <button aria-label="Cijeli ekran" class="diagram-header-btn diagram-fullscreen-button" data-diagram-fullscreen="" title="Cijeli ekran" type="button"><span aria-hidden="true">⛶</span><span data-diagram-fullscreen-label="">Cijeli ekran</span></button>
 <button id="printDiagram" aria-label="Ispis dijagrama" class="diagram-header-btn" onclick="window.print()" title="Ispis dijagrama" type="button"><img src="Print.png" alt="" aria-hidden="true"/></button>
 </div>
-<div aria-label="Alati dijagrama" class="diagram-tools subtree-toolbar header-tree-tools">
-<button data-tree-action="expand" type="button">Raširi sve</button>
-<button data-tree-action="collapse" type="button">Sažmi</button>
-<button data-tree-action="three" type="button">Do 3. koljena</button>
-<button data-tree-action="fit" type="button">Uklopi</button>
-<button aria-label="Povećaj dijagram" data-tree-action="zoom-in" type="button">+</button>
-<button aria-label="Smanji dijagram" data-tree-action="zoom-out" type="button">−</button>
-</div>
 <div class="search-wrap tandara-person-search" data-common-surname="Tandara" data-tandara-person-search="">
 <label for="box3g-person-search">Pretraži osobe u dijagramu</label>
 <div class="tandara-person-search-row">
@@ -916,7 +764,16 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 </div>
 <p aria-live="polite" class="tandara-visually-hidden" data-tandara-search-status=""></p>
 </div>
-</header><div class="diagram-viewport subtree-workspace">
+</header><div class="subtree-diagram" data-subtree-diagram="" id="box3g-tree">
+<div aria-label="Alati dijagrama" class="diagram-tools subtree-toolbar">
+<button data-tree-action="expand" type="button">Raširi sve</button>
+<button data-tree-action="collapse" type="button">Sažmi</button>
+<button data-tree-action="three" type="button">Do 3. koljena</button>
+<button data-tree-action="fit" type="button">Uklopi</button>
+<button aria-label="Povećaj dijagram" data-tree-action="zoom-in" type="button">+</button>
+<button aria-label="Smanji dijagram" data-tree-action="zoom-out" type="button">−</button>
+</div>
+<div class="diagram-viewport subtree-workspace">
 <svg aria-label="Interaktivni rodoslovni dijagram" class="subtree-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 1000 650">
 <g data-tree-viewport=""><g data-tree-links=""></g><g data-tree-nodes=""></g></g>
 </svg>
