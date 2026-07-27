@@ -666,6 +666,22 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
   .tandara-search-focus rect{animation:none;filter:drop-shadow(0 0 8px rgba(185,133,0,.75))}
 }
 </style>
+
+<style id="tandara-short-search-width">
+@media (min-width:1081px){
+  .branch-diagram .tandara-person-search{
+    width:min(440px,100%);
+    max-width:440px;
+    justify-self:end;
+  }
+  .branch-diagram .tandara-person-search-row{width:100%;}
+  .branch-diagram .tandara-person-search input{
+    flex:1 1 auto;
+    width:auto;
+    min-width:0;
+  }
+}
+</style>
 </head>
 <body class="hr box-mobile-split">
 <div class="layout">
