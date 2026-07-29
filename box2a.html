@@ -477,9 +477,13 @@ function zoomAt(factor,cx,cy){const old=scale;scale=Math.max(.14,Math.min(3.5,sc
 function expandAncestors(code){const parts=code.split('.');DATA.expanded=true;for(let i=2;i<parts.length;i++){const node=findNode(parts.slice(0,i).join('.'));if(node)node.expanded=true;}}
 function centerNode(code){
   requestAnimationFrame(()=>{
-    const escapedCode=String(code).replace(/"/g,'\"');
-    const target=nodesLayer.querySelector('[data-code="'+escapedCode+'"]');
+const target = Array.from(
+  nodesLayer.querySelectorAll('[data-code]')
+).find(function (node) {
+  return node.getAttribute('data-code') === String(code);
+});    
     if(!target)return;
+    
     const currentRect=target.getBoundingClientRect();
     const desiredWidth=svg.clientWidth<700?190:250;
     if(currentRect.width>0){scale=Math.max(.16,Math.min(3,scale*desiredWidth/currentRect.width));}
