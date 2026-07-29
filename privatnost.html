@@ -46,17 +46,13 @@
       if (!flagCounterImage) {
         return;
       }
+var flagCounterSource =
+  'https://s01.flagcounter.com/countxl/OyyA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/';
 
-      var flagSource =
-        flagCounterImage.getAttribute('data-src');
-
-      if (
-        flagSource &&
-        !flagCounterImage.getAttribute('src')
-      ) {
-        flagCounterImage.setAttribute('src', flagSource);
-      }
-
+if (!flagCounterImage.getAttribute('src')) {
+  flagCounterImage.setAttribute('src', flagCounterSource);
+}
+  
       flagCounterImage.hidden = false;
     }
 
