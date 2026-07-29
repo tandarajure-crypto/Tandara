@@ -5,7 +5,7 @@
 <meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
 <meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content; frame-ancestors 'self'" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://gateway.umami.is; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content; frame-ancestors 'self'" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Genealoški prikaz Petrove grane roda Tandara s povijesnim podacima, obiteljskim stablom i migracijama potomaka." name="description"/>
@@ -13,212 +13,8 @@
 <meta content="Jure Tandara" name="author"/>
 <meta content="index, follow" name="robots"/>
 <title>Petrova grana</title>
-<!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
-<script>
-  window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-
-  var consentKey = 'tandara_analytics_consent';
-  var savedConsent = null;
-
-  try {
-    savedConsent = localStorage.getItem(consentKey);
-  } catch (error) {
-    savedConsent = null;
-  }
-
-  gtag('consent', 'default', {
-    'analytics_storage': savedConsent === 'granted' ? 'granted' : 'denied',
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'wait_for_update': 500
-  });
-
- document.addEventListener('DOMContentLoaded', function () {
-  var banner = document.getElementById('cookie-banner');
-  var acceptButton = document.getElementById('cookie-accept');
-  var rejectButton = document.getElementById('cookie-reject');
-  var flagCounterImage = document.getElementById('flag-counter-image');
-
-  function enableFlagCounter() {
-    if (!flagCounterImage) {
-      return;
-    }
-
-var flagCounterSource =
-  'https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/';
-
-if (!flagCounterImage.getAttribute('src')) {
-  flagCounterImage.setAttribute('src', flagCounterSource);
-}
-
-    flagCounterImage.hidden = false;
-  }
-
-  function disableFlagCounter() {
-    if (!flagCounterImage) {
-      return;
-    }
-
-    flagCounterImage.removeAttribute('src');
-    flagCounterImage.hidden = true;
-  }
-
-  if (!banner || !acceptButton || !rejectButton) {
-    return;
-  }
-
-  if (savedConsent === 'granted') {
-    banner.style.display = 'none';
-    enableFlagCounter();
-  } else if (savedConsent === 'denied') {
-    banner.style.display = 'none';
-    disableFlagCounter();
-  }
-
-  acceptButton.addEventListener('click', function () {
-    gtag('consent', 'update', {
-      'analytics_storage': 'granted',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
-    });
-
-    try {
-      localStorage.setItem(consentKey, 'granted');
-    } catch (error) {
-      /* Odluka vrijedi samo do zatvaranja stranice. */
-    }
-
-    enableFlagCounter();
-    banner.style.display = 'none';
-  });
-
-  rejectButton.addEventListener('click', function () {
-    gtag('consent', 'update', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
-    });
-
-    try {
-      localStorage.setItem(consentKey, 'denied');
-    } catch (error) {
-      /* Odluka vrijedi samo do zatvaranja stranice. */
-    }
-
-    disableFlagCounter();
-    banner.style.display = 'none';
-  });
-});
-  
-</script>
-<script>
- 
-  var analyticsLoaded = false;
-  var analyticsClickTrackingStarted = false;
-
-  function startAnalyticsClickTracking() {
-    if (analyticsClickTrackingStarted) {
-      return;
-    }
-
-    analyticsClickTrackingStarted = true;
-
-    document.addEventListener('click', function (event) {
-      var link = event.target.closest('a');
-
-      if (!link || !link.href || typeof gtag !== 'function') {
-        return;
-      }
-
-      var href = link.href;
-     
-      var isMail = href.indexOf('mailto:') === 0;
-      var isTel = href.indexOf('tel:') === 0;
-      var isExternal =
-        link.hostname &&
-        link.hostname !== window.location.hostname;
-
-      var isDownload =
-        /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i
-          .test(link.pathname || '');
-
-      if (isMail || isTel) {
-        gtag('event', 'contact_click', {
-          contact_type: isMail ? 'email' : 'phone'
-        });
-      }
-
-    if (isExternal) {
-  gtag('event', 'external_link_click', {
-    link_domain: link.hostname
-  });
-}
-
-if (isDownload) {
-  gtag('event', 'file_download', {
-    file_extension:
-      (link.pathname || '').split('.').pop().toLowerCase()
-  });
-}
-    });
-  }
-
-  function loadGoogleAnalytics() {
-    if (analyticsLoaded) {
-      return;
-    }
-
-    analyticsLoaded = true;
-
-    var analyticsScript = document.createElement('script');
-    analyticsScript.async = true;
-    analyticsScript.src =
-      'https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD';
-
-    document.head.appendChild(analyticsScript);
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-S33NBEJQFD', {
-      send_page_view: true,
-      page_title: document.title,
-      page_location:
-        window.location.origin + window.location.pathname,
-      page_path: window.location.pathname,
-      language:
-        document.documentElement.lang ||
-        navigator.language ||
-        'hr'
-    });
-
-    startAnalyticsClickTracking();
-  }
-
-  if (savedConsent === 'granted') {
-    loadGoogleAnalytics();
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var acceptButton =
-      document.getElementById('cookie-accept');
-
-    if (!acceptButton) {
-      return;
-    }
-
-    acceptButton.addEventListener(
-      'click',
-      loadGoogleAnalytics
-    );
-  });
-</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
 <link href="style.css?v=4" rel="stylesheet"/>
 <style>
 .branch-search-access{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 28px;padding:18px 20px;border:1px solid #c8b78f;border-radius:12px;background:#fffaf0;box-shadow:0 3px 12px rgba(55,45,25,.08)}
@@ -229,25 +25,7 @@ if (isDownload) {
 @media(max-width:760px){.branch-search-access{align-items:stretch;flex-direction:column}.branch-search-button{width:100%;box-sizing:border-box}}
 </style>
 </head>
-<body class="hr">
-<div aria-describedby="cookie-text" aria-labelledby="cookie-title" aria-modal="true" id="cookie-banner" role="dialog">
-<h2 id="cookie-title">Postavke privatnosti</h2>
-<p id="cookie-text">
-    Ova web-stranica koristi Google Analytics i FlagCounter za mjerenje
-    posjećenosti. Analitičke usluge aktiviraju se samo uz vašu privolu.
-    Više informacija pročitajte u
-    <a href="./privatnost.html">Politici privatnosti</a>.
-  </p>
-<div class="cookie-buttons">
-<button id="cookie-reject" type="button">
-      Odbijam
-    </button>
-<button id="cookie-accept" type="button">
-      Prihvaćam
-    </button>
-</div>
-</div>
-<div class="layout">
+<body class="hr"><div class="layout">
 <aside class="left-menu">
 <!-- HOME -->
 <a aria-label="Početna stranica" class="home-button" href="index.html">
@@ -288,7 +66,7 @@ if (isDownload) {
 <div class="flagbox">
 <div class="flag-title">Posjetitelji</div>
 <a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" data-src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/" hidden="" id="flag-counter-image"/>
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/" id="flag-counter-image"/>
 </a>
 </div>
 </aside>

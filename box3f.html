@@ -5,7 +5,7 @@
 <meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
 <meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://gateway.umami.is; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Filip | TANDARA-PREZIME</title>
@@ -20,62 +20,8 @@
 <meta content="https://tandarajure-crypto.github.io/Tandara/box3f.html" property="og:url"/>
 <meta content="https://tandarajure-crypto.github.io/Tandara/family-tree.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<!-- Google Analytics – GA4 osnovno praćenje + korisni klikovi -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-gtag('consent', 'default', {
-  'analytics_storage': 'granted',
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied'
-});
-  gtag('js', new Date());
-  gtag('config', 'G-S33NBEJQFD', {
-    send_page_view: true,
-    page_title: document.title,
-    page_location: window.location.href,
-    page_path: window.location.pathname,
-    language: document.documentElement.lang || navigator.language || 'hr'
-  });
 
-  // GA4 događaji: kontakt, vanjski linkovi i preuzimanja.
-  document.addEventListener('click', function(event) {
-    var link = event.target.closest('a');
-    if (!link || !link.href || typeof gtag !== 'function') return;
-
-    var href = link.href;
-    var text = (link.innerText || link.textContent || '').trim().substring(0, 120);
-    var isMail = href.indexOf('mailto:') === 0;
-    var isTel = href.indexOf('tel:') === 0;
-    var isExternal = link.hostname && link.hostname !== window.location.hostname;
-    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|7z|png|jpe?g|gif|webp)$/i.test(link.pathname || '');
-
-    if (isMail || isTel) {
-      gtag('event', 'contact_click', {
-        contact_type: isMail ? 'email' : 'phone',
-        link_text: text,
-        link_url: href
-      });
-    }
-
-    if (isExternal) {
-      gtag('event', 'external_link_click', {
-        link_text: text,
-        link_url: href
-      });
-    }
-
-    if (isDownload) {
-      gtag('event', 'file_download', {
-        file_name: (link.pathname || '').split('/').pop(),
-        link_text: text,
-        link_url: href
-      });
-    }
-  });
-</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
 <link href="style.css?v=5" rel="stylesheet"/>
 <style>
 /* Hrvatske box stranice: dvostupčana navigacija samo na tabletima i mobitelima. */
