@@ -25,13 +25,11 @@
     img-src 'self' https://s01.flagcounter.com data:;
     script-src 'self' 'unsafe-inline'
       https://www.googletagmanager.com
-      https://www.google-analytics.com
-      https://static.cloudflareinsights.com;
+      https://www.google-analytics.com;
     connect-src 'self'
       https://www.google-analytics.com
       https://analytics.google.com
-      https://region1.google-analytics.com
-      https://cloudflareinsights.com;
+      https://region1.google-analytics.com;
     style-src 'self' 'unsafe-inline';
     form-action 'self' https://formsubmit.co;
     upgrade-insecure-requests;
@@ -366,8 +364,6 @@ if (!image.getAttribute('src')) {
   <p id="cookie-text">
     Google Analytics i FlagCounter
     aktiviraju se samo uz vašu privolu.
-    Cloudflare bilježi osnovnu statistiku
-    posjećenosti bez kolačića.
     Više informacija pročitajte u
     <a href="./privatnost.html">
       Politici privatnosti
@@ -480,15 +476,5 @@ if (!image.getAttribute('src')) {
 </div>
 </main>
 </div>
-<!-- Cloudflare Web Analytics -->
-
-<script
-  type="module"
-  src="https://static.cloudflareinsights.com/beacon.min.js"
-  data-cf-beacon='{"token":"a8db489870e7434b80128891e0c74d20"}'
-></script>
-
-<!-- End Cloudflare Web Analytics -->
-
 </body>
 </html>
