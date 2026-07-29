@@ -1232,3 +1232,16 @@ img, video, iframe{
 #filipova-loza h4 + p {
     margin-top: 0;
 }
+
+
+/* Keyboard access for family-tree hotspots */
+.hs,
+.hs-livanjske{
+    text-decoration:none;
+}
+
+.hs:focus-visible,
+.hs-livanjske:focus-visible{
+    outline:3px solid #d4af37;
+    outline-offset:2px;
+}

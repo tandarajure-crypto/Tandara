@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
-<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://gateway.umami.is; style-src 'self' 'unsafe-inline'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-fCdGpGYe7Ma4srJBQMrlkp74A65z1jiHz7N1Eyk0azg='; style-src-elem 'self' 'sha256-fCdGpGYe7Ma4srJBQMrlkp74A65z1jiHz7N1Eyk0azg='; style-src-attr 'none'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources."/>
@@ -14,7 +12,7 @@
 <link rel="alternate" hreflang="x-default" href="filipovagrana.html"/>
 <title>Tandaras of Livno – Filip’s Branch</title>
 
-<script defer src="https://cloud.umami.is/script.js" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
+<script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
 <link href="style.css?v=6" rel="stylesheet"/>
 
 <style>
@@ -448,7 +446,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
     title="Interactive family tree of Filip’s line"
     loading="lazy"
     referrerpolicy="strict-origin-when-cross-origin"
-    allow="fullscreen"
+    allow="fullscreen 'self'; geolocation 'none'; microphone 'none'; camera 'none'; payment 'none'; usb 'none'"
     allowfullscreen>
   </iframe>
   <div class="filip-tree-actions">

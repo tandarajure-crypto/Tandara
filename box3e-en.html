@@ -2,10 +2,8 @@
 
 <html lang="en">
 <head>
-<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
-<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://gateway.umami.is; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'sha256-XW16+Lv10cpZ6EL49cQBB2V8gc9fg6uOkYWogVRByTQ=' 'sha256-2uR9AD3yahQZJi2JjKnK3xp3vs0vzOSIJsqI2H1nG38=' 'sha256-Oz3cUxwXrh2EBlSsudt8fLwWmShB6Kt8GIVF3krA+rM=' 'sha256-GDWt5R8l18r4JyNlJT6hCFsbvFlAGFzX05cvd+Cn3Kk='; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-kmrok+uEWtOqL9WgwcEe3R6kYUejDv4h3FoMeN0bZAE=' 'sha256-3njXuYQFLIrnfU02F2ytoF0GEz+C5HUhugwCOso5k+s=' 'sha256-5q2dSf4VUJ9fWWMV7sGWqPJxBmQrCm4/SQS0vK1FsZI=' 'sha256-AoD3dr22EyWtfRpwV7VzTDcW4oHhqyzVVZZ+85XHgp0=' 'sha256-oeL8IU0hxI1mpvb67WLZVt8oHW8FLFJRE21KlIlup9I=' 'sha256-Jfb3Gdpgsj+llS7T5H3yB6/PV/yy8MtrQRkWXfhYz6U='; style-src-elem 'self' 'sha256-kmrok+uEWtOqL9WgwcEe3R6kYUejDv4h3FoMeN0bZAE=' 'sha256-3njXuYQFLIrnfU02F2ytoF0GEz+C5HUhugwCOso5k+s=' 'sha256-5q2dSf4VUJ9fWWMV7sGWqPJxBmQrCm4/SQS0vK1FsZI=' 'sha256-AoD3dr22EyWtfRpwV7VzTDcW4oHhqyzVVZZ+85XHgp0=' 'sha256-oeL8IU0hxI1mpvb67WLZVt8oHW8FLFJRE21KlIlup9I=' 'sha256-Jfb3Gdpgsj+llS7T5H3yB6/PV/yy8MtrQRkWXfhYz6U='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Ante | TANDARA-SURNAME</title>
@@ -21,7 +19,7 @@
 <meta content="https://tandarajure-crypto.github.io/Tandara/family-tree.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 
-<script defer src="https://cloud.umami.is/script.js" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
+<script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
 <link href="style.css?v=5" rel="stylesheet"/>
 <style>
 /* Hrvatske box stranice: dvostupčana navigacija samo na tabletima i mobitelima. */
@@ -769,7 +767,7 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 <a class="diagram-header-btn lang-icon" href="box3e.html" title="Hrvatski"><img alt="HR" src="flag-hr.png"/></a>
 <a aria-current="page" class="diagram-header-btn lang-icon active" href="box3e-en.html" title="English"><img alt="EN" src="flag-uk.png"/></a>
 <button aria-label="Full screen" class="diagram-header-btn diagram-fullscreen-button" data-diagram-fullscreen="" title="Full screen" type="button"><span aria-hidden="true">⛶</span><span data-diagram-fullscreen-label="">Full screen</span></button>
-<button id="printDiagram" aria-label="Print diagram" class="diagram-header-btn" onclick="window.print()" title="Print diagram" type="button"><img src="Print.png" alt="" aria-hidden="true"/></button>
+<button id="printDiagram" aria-label="Print diagram" class="diagram-header-btn" title="Print diagram" type="button"><img src="Print.png" alt="" aria-hidden="true"/></button>
 </div>
 <div class="search-wrap tandara-person-search" data-common-surname="Tandara" data-tandara-person-search="">
 <label for="box3e-person-search">Search people in the diagram</label>
@@ -1136,6 +1134,13 @@ setDepth(1);render();requestAnimationFrame(fit);window.addEventListener('resize'
 const setup=ROOT.closest('[data-diagram-setup]');if(window.TandaraDiagramSearch&&setup){window.TandaraDiagramSearch.register(setup,PEOPLE.map(p=>({id:p.id,name:p.name,aliases:(p.aliases||[]).join('; '),qualifier:p.qualifier||p.relation||'',father:p.father||'',mother:p.mother||'',code:p.id,open:()=>showPerson(p)})));}
 ROOT._tandaraOpenPerson=function(id){const p=PEOPLE.find(x=>x.id===id);if(p)showPerson(p);};
 })();
+</script>
+
+<script>
+(function () {
+  var printButton = document.getElementById('printDiagram');
+  if (printButton) printButton.addEventListener('click', function () { window.print(); });
+}());
 </script>
 </body>
 </html>

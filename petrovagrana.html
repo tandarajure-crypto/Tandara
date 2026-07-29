@@ -2,10 +2,25 @@
 
 <html lang="hr">
 <head>
-<meta content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" name="permissions-policy"/>
-<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://gateway.umami.is; style-src 'self' 'unsafe-inline'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content; frame-ancestors 'self'" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'sha256-71eQFyMGessbtfa9a2qqg92kgsz5B39M0XEvWguIHws='; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-efXfd0unZKEtgez8XUXGhP3kjktvk2KODr7VJDTgRBk=' 'sha256-shzEL3Rmy0Xa6ZY3LXwDXaHE+0ELMBJRbyja0Mysdm8='; style-src-elem 'self' 'sha256-efXfd0unZKEtgez8XUXGhP3kjktvk2KODr7VJDTgRBk=' 'sha256-shzEL3Rmy0Xa6ZY3LXwDXaHE+0ELMBJRbyja0Mysdm8='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<style id="anti-clickjack">html{display:none!important}html.same-origin-frame{display:block!important}</style>
+<script>
+(function () {
+  if (window.top === window.self) {
+    document.documentElement.classList.add('same-origin-frame');
+    return;
+  }
+  try {
+    if (window.top.location.origin === window.location.origin) {
+      document.documentElement.classList.add('same-origin-frame');
+    }
+  } catch (_error) {
+    /* Cross-origin frame: document intentionally remains hidden. */
+  }
+}());
+</script>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Genealoški prikaz Petrove grane roda Tandara s povijesnim podacima, obiteljskim stablom i migracijama potomaka." name="description"/>
@@ -14,7 +29,7 @@
 <meta content="index, follow" name="robots"/>
 <title>Petrova grana</title>
 
-<script defer src="https://cloud.umami.is/script.js" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
+<script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
 <link href="style.css?v=4" rel="stylesheet"/>
 <style>
 .branch-search-access{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 28px;padding:18px 20px;border:1px solid #c8b78f;border-radius:12px;background:#fffaf0;box-shadow:0 3px 12px rgba(55,45,25,.08)}
