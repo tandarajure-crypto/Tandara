@@ -153,10 +153,14 @@
 <section id="contact-form">
 <h2>Contact form</h2>
 <p>
-    You can send your message directly using the form below.
+    You can send your message directly using the form below. If you are requesting access to the private archive,
+    select the appropriate request type and name a person who can confirm your identity or family relationship.
+    Submitting a request and confirming an e-mail address do not automatically grant access: every request is
+    reviewed individually and access is granted only to validly identified and approved persons.
 </p>
 <div class="form-required-notice" role="note">
   <strong>Important:</strong> All required fields must be completed, including the publication permission choices.
+  For a private archive access request, provide accurate relationship details and name a person who can confirm your identity.
   The form cannot be submitted until all required information has been entered.
 </div>
 <div id="form-success" aria-live="polite"></div>
@@ -196,6 +200,23 @@
 </select>
 </div>
 </div>
+<div class="form-row">
+<div>
+<label for="request-type">Request type *</label>
+<select id="request-type" name="Request type" required>
+<option value="" selected disabled>Select one option *</option>
+<option value="General message or collaboration">General message or collaboration</option>
+<option value="Genealogy addition or correction">Genealogy addition or correction</option>
+<option value="Request to remove or amend information">Request to remove or amend information</option>
+<option value="Request for access to the private archive">Request for access to the private archive</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div>
+<label for="identity-confirmation">Person who can confirm identity or relationship</label>
+<input id="identity-confirmation" maxlength="150" name="Person who can confirm identity or relationship" placeholder="Required for private archive access requests" type="text">
+</div>
+</div>
 <label for="connection">Connection with the Tandara family line *</label>
 <input id="connection" minlength="3" maxlength="250" name="Connection with the Tandara family line" type="text" placeholder="e.g. I bear the surname Tandara, I am a descendant, I am researching the family..." required>
 <label for="message">Message *</label>
@@ -225,7 +246,7 @@
 </fieldset>
 <label class="checkbox-line required-consent">
 <input type="checkbox" name="Consent to privacy rules" value="YES" required>
-<span>I confirm that I understand the data will be used only for reply, communication and genealogical verification.</span>
+<span>I confirm that I have read the <a href="privacy.html">Privacy Policy</a> and understand that the data will be used only for reply, communication, identity checks and genealogical verification.</span>
 </label>
 <p class="form-note">
                         All fields marked with an asterisk are required. The form cannot be submitted until every required field and publication choice has been completed. Photographs and documents can be sent later as attachments in e-mail communication.
@@ -258,6 +279,8 @@
 <li>an e-mail address for reply,</li>
 <li>how you are connected with the Tandara surname,</li>
 <li>which family branch you belong to, if known,</li>
+<li>the type and reason for your request,</li>
+<li>if requesting private access, a person who can confirm your identity or family relationship,</li>
 <li>whether you want your message to be published in the visitors' messages section.</li>
 </ul>
 <p>
@@ -285,8 +308,12 @@
 <h2>Privacy</h2>
 <p>
                     Private e-mail addresses, telephone numbers and personal information about living persons will not be published
-                    without explicit consent. Data received through this page are used exclusively for communication,
-                    verification of genealogical connections and development of the Digital Archive of the Tandara Family.
+                    without explicit consent. Public records include persons born in 1930 or earlier and persons born after 1930
+                    whose death has been entered or confirmed. Records of persons born after 1930 without an entered or confirmed
+                    year of death are protected and are not available without prior verification and valid approval. Submitting the
+                    form, confirming an e-mail address or stating a family relationship does not itself grant access. Data received
+                    through this page are used exclusively for communication, identity and genealogical verification, and development
+                    of the Digital Archive of the Tandara Family. Further information is available in the <a href="privacy.html">Privacy Policy</a>.
                 </p>
 </section>
 <section id="final-message">

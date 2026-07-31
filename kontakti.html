@@ -289,12 +289,16 @@
 <section id="kontakt-obrazac">
 <h2>Kontakt obrazac</h2>
 <p>
-    Poruku možete poslati izravno preko ovog obrasca.
+    Poruku možete poslati izravno preko ovog obrasca. Ako tražite pristup privatnom dijelu arhiva,
+    odaberite odgovarajuću vrstu upita i navedite osobu koja može potvrditi Vaš identitet ili srodstvo.
+    Slanje zahtjeva i potvrda e-mail adrese ne daju automatsko pravo pristupa: svaki zahtjev zasebno se
+    provjerava i pristup se odobrava samo valjano identificiranim osobama.
 </p>
 
 <div class="form-required-notice" role="note">
     <strong>⚠️ Važna napomena:</strong><br>
     Molimo ispunite sva obavezna polja te obavezno odaberite odgovore na pitanja o javnoj objavi poruke i objavi imena i mjesta.
+    Za zahtjev za pristup privatnom arhivu obavezno navedite točne podatke o srodstvu i osobu koja može potvrditi Vaš identitet.
     <strong>Obrazac neće biti poslan dok sva obavezna polja nisu ispunjena.</strong>
 </div>
 <div aria-live="polite" id="form-success"></div>
@@ -331,6 +335,23 @@
 <option value="Matina grana">Matina grana</option>
 <option value="Drugo / potrebno provjeriti">Drugo / potrebno provjeriti</option>
 </select>
+</div>
+</div>
+<div class="form-row">
+<div>
+<label for="vrsta-upita">Vrsta upita *</label>
+<select id="vrsta-upita" name="Vrsta upita" required>
+<option value="" selected disabled>Odaberite jednu mogućnost *</option>
+<option value="Opća poruka ili suradnja">Opća poruka ili suradnja</option>
+<option value="Dopuna ili ispravak rodoslovlja">Dopuna ili ispravak rodoslovlja</option>
+<option value="Zahtjev za uklanjanje ili izmjenu podataka">Zahtjev za uklanjanje ili izmjenu podataka</option>
+<option value="Zahtjev za pristup privatnom arhivu">Zahtjev za pristup privatnom arhivu</option>
+<option value="Drugo">Drugo</option>
+</select>
+</div>
+<div>
+<label for="potvrda-identiteta">Osoba koja može potvrditi identitet ili srodstvo</label>
+<input id="potvrda-identiteta" maxlength="150" name="Osoba koja može potvrditi identitet ili srodstvo" placeholder="Obvezno za zahtjev za pristup privatnom arhivu" type="text"/>
 </div>
 </div>
 <label for="povezanost">Povezanost s rodom Tandara *</label>
@@ -391,6 +412,8 @@
 <li>e-mail adresu za odgovor,</li>
 <li>kako ste povezani s prezimenom Tandara,</li>
 <li>kojoj grani roda pripadate, ako je poznato,</li>
+<li>vrstu i razlog upita,</li>
+<li>ako tražite privatni pristup, osobu koja može potvrditi Vaš identitet ili srodstvo,</li>
 <li>želite li da se Vaša poruka objavi u knjizi poruka.</li>
 </ul>
 <p>
@@ -419,8 +442,13 @@
 <h2>Privatnost</h2>
 <p>
                     Privatne e-mail adrese, telefonski brojevi i osobni podaci živih osoba neće se objavljivati
-                    bez izričite suglasnosti. Podaci zaprimljeni putem ove stranice koriste se isključivo za
-                    komunikaciju, provjeru rodoslovnih veza i razvoj Digitalnog arhiva roda Tandara.
+                    bez izričite suglasnosti. Javno se prikazuju podaci osoba rođenih 1930. ili ranije te osoba
+                    rođenih nakon 1930. za koje je unesena ili potvrđena smrt. Podaci osoba rođenih nakon 1930.
+                    bez unesene ili potvrđene smrti zaštićeni su i nisu dostupni bez prethodne provjere i valjanog
+                    odobrenja. Slanje obrasca, potvrda e-mail adrese ili navođenje srodstva sami po sebi ne daju
+                    pravo pristupa. Podaci zaprimljeni putem ove stranice koriste se isključivo za komunikaciju,
+                    provjeru identiteta i rodoslovnih veza te razvoj Digitalnog arhiva roda Tandara. Više informacija
+                    nalazi se u <a href="privatnost.html">Politici privatnosti</a>.
                 </p>
 </section>
 <section id="zavrsna-poruka">
