@@ -39,6 +39,8 @@
 .branch-search-button:hover,.branch-search-button:focus-visible{background:#3f301a;text-decoration:none;transform:translateY(-1px)}
 @media(max-width:760px){.branch-search-access{align-items:stretch;flex-direction:column}.branch-search-button{width:100%;box-sizing:border-box}}
 </style>
+<link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
+<script crossorigin="anonymous" defer integrity="sha384-cuTAEWZTPz3iBJjjOmK50Bt8tYV4sscWBOg1Qi5c1Oxg1NHQquZWLH39N4MZr+TN" src="protected-access-modal.js?v=20260731"></script>
 </head>
 <body class="hr"><div class="layout">
 <aside class="left-menu">
@@ -88,12 +90,10 @@
 <main class="branch-content">
 <div class="branch-card">
 <img alt="Hrvatska zastava" class="branch-flag" src="flag-hr.png?v=3"/>
+<p class="protected-access-notice">
+<button class="protected-family-data-trigger" data-protected-access type="button"><span aria-hidden="true">🔒</span> Informacije o zaštićenim obiteljskim podacima</button>
+</p>
 <h1><strong>DRUGA GRANA PRVE OBITELJI TANDARA</strong></h1>
-<section class="branch-search-access" aria-label="Zaštita privatnosti živih članova">
-<div><h2>Zaštićeni podaci živih članova</h2><p>Imena, godine, fotografije i obiteljski podaci vjerojatno živih osoba dostupni su samo prethodno odobrenim korisnicima privatnog arhiva.</p></div>
-<a class="branch-search-button" href="kontakti.html">Zatraži pristup</a>
-</section>
-
 <h3><strong>2.0. Petar Tandara (1734–1817)</strong></h3>
 <p>Petar Tandara je bio Ivanov drugi sin. Umro je 1817. godine u osamdeset i trećoj godini života, pa se procjenjuje da je rođen c. 1734. godine. Petar je bio oženjen Jelom r. Budić. Imali su sinove Grgu, Jakova (1773.), Martina, Marijana (1781.-), Miju, Tadiju i Marka (1787.-), te kćeri Mandu (1777.-) i Jelu (-1824.). Sinovi Jakov (1773.-), Marijan (1781.-), Tadija i Marko (1787.-), ne pojavljuju se na Popisu duša iz 1806. godine, a Tadija je izostavljen s popisa iz 1819. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p>
 <h3><strong>2.1. Grgo Petrov (1770.- )</strong></h3>
@@ -132,8 +132,8 @@
 <p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p>
 <h3><strong>2.2.1.1.1.1.2. Jure Piin (1943.-2004.)</strong></h3>
 <p>Tomislav se nije ženio. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p>
-<h3><strong>2.2.1.1.1.1.3. Živi potomak – privatni podaci</strong></h3>
-<p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p>
+<h3><strong>2.2.1.1.1.1.3. Jozo Piin (1949.–2019.)</strong></h3>
+<p>Povijesni podatak o ovoj osobi ostaje javno dostupan. Podaci o vjerojatno živim članovima njegove obitelji premješteni su u privatni dio arhiva.</p>
 <h3><strong>2.2.1.1.1.2. Dominik Jurin (1919.–1987.)</strong></h3>
 <p>Povijesni podatak o ovoj osobi ostaje javno dostupan. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p>
 <h3><strong>2.2.1.1.1.2.1. Živi potomak – privatni podaci</strong></h3>
@@ -241,10 +241,12 @@
 <p>Povijesni podatak o ovoj osobi ostaje javno dostupan. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p>
 <h3><strong>2.2.3.2. Mijo Grgin (1856.-1933.)</strong></h3>
 <p>Treći Grgin sin Mijo oženio se Ivom Tandara, s kojom je dobio sedmero djece: sinove Martina (1886.-1905.), prvoga Nikolu (1889.-), Matu (1892.-) i drugoga Nikolu (1902.-), te kćeri Ivu (1883.-), prvu Maru (1886.-1891.) i drugu Maru (1894.-). Martin je umro u dobi od 19 godina, a prvi Nikola i Mate umrli su kao mala djeca. O drugom Nikoli nema drugih podataka osim zapisa o njegovu rođenju. Ni za jednoga Mijina sina nema podataka da se ženio ili imao djecu, pa se njegova obiteljska grana time ugasila.</p>
-<h2 id="petrova-search-title">Pretražite cijelu Petrovu granu</h2>
-<p>Interaktivna pretraga prihvaća više kriterija istodobno: ime, godinu, roditelje, supružnika, mjesto, nadimak ili osobnu oznaku. Moguć je i unos bez kvačica.</p>
+<section class="branch-diagram-link" aria-labelledby="petar-diagram-title">
+<div>
+<h2 id="petar-diagram-title">Interaktivni dijagram Petrove grane</h2>
+<p>Otvorite pripadajući interaktivni rodoslovni dijagram ove obiteljske grane.</p>
 </div>
-<a class="branch-search-button" href="box2b.html">Otvori interaktivnu pretragu</a>
+<a class="branch-diagram-link__button" href="box2b.html">Otvori dijagram</a>
 </section>
 <section class="tree-note">
 <h3>Napomena!</h3>

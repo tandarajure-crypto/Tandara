@@ -9,6 +9,8 @@
 
 <script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
 <link href="style.css?v=6" rel="stylesheet"/>
+<link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
+<script crossorigin="anonymous" defer integrity="sha384-cuTAEWZTPz3iBJjjOmK50Bt8tYV4sscWBOg1Qi5c1Oxg1NHQquZWLH39N4MZr+TN" src="protected-access-modal.js?v=20260731"></script>
 </head>
 <body class="en">
 <div class="layout">
@@ -51,12 +53,10 @@
 <main class="branch-content">
 <div class="branch-card">
 <img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=3"/>
+<p class="protected-access-notice">
+<button class="protected-family-data-trigger" data-protected-access type="button"><span aria-hidden="true">🔒</span> Information about protected family data</button>
+</p>
 <h1>THE FOURTH BRANCH OF THE FIRST TANDARA FAMILY</h1>
-<section class="branch-search-access" aria-label="Privacy protection for living family members">
-<div><h2>Protected information about living members</h2><p>Names, years, photographs and family details of likely living people are available only to previously approved users of the private archive.</p></div>
-<a class="branch-search-button" href="contacts.html">Request access</a>
-</section>
-
 <h3>3.0. Ante Tandara – Ivanov (born c. 1735)</h3>
 <p>Ante Tandara was Ivan Tandara's third son. Ante was about a year younger than Petar, which fits well with the known birth order of Ivan's children. He married Matija Brnas, with whom he had three sons, Ante, Filip and Pavao (1777–), and three daughters, Jaka (1771–), Luca and Ruža. Apart from the record of Pavao's birth, no other information about him has been found, suggesting that he probably died at a very young age or left Ričice before leaving any trace in the parish registers. Ante's line remained firmly connected to Ričice, where it developed most clearly during the nineteenth and twentieth centuries. This family nucleus produced the largest number of people bearing the Tandara surname, and Ante's line is therefore regarded as the most extensive among Ivan's descendants. In later generations, some members of this branch gradually began to move away—first to nearby settlements and later much farther afield, to various European Union countries, as well as Canada, the United States and Australia. Despite this worldwide dispersal, the original Ante line remained deeply rooted in Ričice, preserving the continuity of family identity and the richest written record of its beginnings.</p>
 <h2><strong>FIRST SUB-BRANCH OF ANTE ANTIN</strong></h2>
@@ -307,8 +307,13 @@
 <h3><strong>3.2.1.2.1.2.4.1. Living descendant – private data</strong></h3>
 <p>Information about this likely living family member is available only to approved users of the private archive.</p>
 </div>
-
-
+<section class="branch-diagram-link" aria-labelledby="ante-diagram-title">
+<div>
+<h2 id="ante-diagram-title">Interactive diagram of the Ante branch</h2>
+<p>Open the corresponding interactive genealogical diagram for this family branch.</p>
+</div>
+<a class="branch-diagram-link__button" href="box2c-en.html">Open diagram</a>
+</section>
 
 </div>
 </main>
