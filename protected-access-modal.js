@@ -24,19 +24,6 @@
     return 'protected-access-dialog.html';
   }
 
-  function closeDialog() {
-    if (!dialog) {
-      return;
-    }
-
-    if (typeof dialog.close === 'function' && dialog.open) {
-      dialog.close();
-    } else {
-      dialog.removeAttribute('open');
-      dialog.setAttribute('hidden', '');
-    }
-  }
-
   function restoreFocus() {
     if (lastTrigger && typeof lastTrigger.focus === 'function') {
       lastTrigger.focus();
@@ -44,22 +31,48 @@
     lastTrigger = null;
   }
 
+  function disposeDialog() {
+    var oldDialog = dialog;
+    dialog = null;
+    loadingPromise = null;
+
+    if (oldDialog && oldDialog.isConnected) {
+      oldDialog.remove();
+    }
+
+    restoreFocus();
+  }
+
+  function closeDialog() {
+    if (!dialog) {
+      return;
+    }
+
+    if (typeof dialog.close === 'function' && dialog.open) {
+      dialog.close();
+      return;
+    }
+
+    dialog.removeAttribute('open');
+    dialog.setAttribute('hidden', '');
+    disposeDialog();
+  }
+
   function installDialogEvents() {
     dialog.querySelectorAll('[data-protected-access-close]').forEach(function (button) {
       button.addEventListener('click', closeDialog);
     });
 
-    dialog.addEventListener('close', restoreFocus);
+    dialog.addEventListener('close', disposeDialog, { once: true });
+
+    dialog.addEventListener('cancel', function (event) {
+      event.preventDefault();
+      closeDialog();
+    });
 
     dialog.addEventListener('click', function (event) {
-      var rectangle = dialog.getBoundingClientRect();
-      var outsidePanel =
-        event.clientX < rectangle.left ||
-        event.clientX > rectangle.right ||
-        event.clientY < rectangle.top ||
-        event.clientY > rectangle.bottom;
-
-      if (outsidePanel) {
+      var panel = dialog.querySelector('.protected-access-dialog__panel');
+      if (panel && !panel.contains(event.target)) {
         closeDialog();
       }
     });
