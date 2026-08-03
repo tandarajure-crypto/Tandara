@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
-
 <html lang="hr">
 <head>
-<meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-shzEL3Rmy0Xa6ZY3LXwDXaHE+0ELMBJRbyja0Mysdm8='; style-src-elem 'self' 'sha256-shzEL3Rmy0Xa6ZY3LXwDXaHE+0ELMBJRbyja0Mysdm8='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-elem 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Matina grana</title>
@@ -14,16 +12,187 @@
 <meta content="https://tandarajure-crypto.github.io/Tandara/matinagrana.html" property="og:url"/>
 <meta content="https://tandarajure-crypto.github.io/Tandara/family-tree.png" property="og:image"/>
 <meta content="website" property="og:type"/>
-<link href="./style.css?v=5" rel="stylesheet"/>
+<link href="./style.css?v=7" rel="stylesheet"/>
+
 <style>
-.branch-search-access{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 28px;padding:18px 20px;border:1px solid #c8b78f;border-radius:12px;background:#fffaf0;box-shadow:0 3px 12px rgba(55,45,25,.08)}
-.branch-search-access h2{margin:0 0 6px;font-size:1.18rem;color:#4a3618}
-.branch-search-access p{margin:0;line-height:1.55;color:#403a31}
-.branch-search-button{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:44px;padding:10px 18px;border-radius:9px;background:#5b4727;color:#fff!important;font-weight:700;text-decoration:none;box-shadow:0 2px 7px rgba(0,0,0,.15)}
-.branch-search-button:hover,.branch-search-button:focus-visible{background:#3f301a;text-decoration:none;transform:translateY(-1px)}
-@media(max-width:760px){.branch-search-access{align-items:stretch;flex-direction:column}.branch-search-button{width:100%;box-sizing:border-box}}
-</style>
-<link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
+/* Zajednički tehnički standard za sve četiri glavne grane — HR i EN */
+.branch-card{
+  width:100%;
+  max-width:1200px;
+  box-sizing:border-box;
+}
+
+.branch-card > h1{
+  overflow-wrap:anywhere;
+}
+
+.branch-root-title{
+  width:100%;
+  max-width:760px;
+  margin:28px auto 14px;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+
+.branch-text-block{
+  width:100%;
+  max-width:760px;
+  margin:0 auto;
+  box-sizing:border-box;
+  text-align:left;
+}
+
+.branch-text-block > h2,
+.branch-text-block > h3{
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+
+.branch-text-block > p{
+  text-align:justify;
+  overflow-wrap:anywhere;
+  hyphens:auto;
+}
+
+.branch-search-access,
+.people-directory,
+.person-detail-box,
+.branch-diagram-link,
+.tree-note{
+  width:100%;
+  max-width:760px;
+  box-sizing:border-box;
+}
+
+.branch-search-access{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin:30px 0 24px;
+  padding:18px 20px;
+  border:1px solid #c8b78f;
+  border-radius:12px;
+  background:#fffaf0;
+  box-shadow:0 3px 12px rgba(55,45,25,.08);
+  text-align:left;
+}
+
+.branch-search-access h2{
+  margin:0 0 6px;
+  color:#4a3618;
+  font-size:1.18rem;
+}
+
+.branch-search-access p{
+  margin:0;
+  color:#403a31;
+  line-height:1.55;
+  text-align:left;
+}
+
+.branch-search-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  min-height:44px;
+  padding:10px 18px;
+  border-radius:9px;
+  background:#5b4727;
+  color:#fff !important;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 2px 7px rgba(0,0,0,.15);
+}
+
+.branch-search-button:hover,
+.branch-search-button:focus-visible{
+  background:#3f301a;
+  outline:3px solid #d4af37;
+  outline-offset:2px;
+  text-decoration:none;
+  transform:translateY(-1px);
+}
+
+.branch-diagram-link{
+  margin-top:32px;
+  margin-bottom:18px;
+}
+
+.tree-note{
+  margin:0;
+  padding:18px 20px;
+  border:1px solid #c8b78f;
+  border-left:5px solid #9b7745;
+  border-radius:10px;
+  background:#fff8ec;
+  color:#3b2f22;
+  text-align:left;
+  box-shadow:0 3px 10px rgba(55,45,25,.07);
+}
+
+.tree-note h3{
+  margin:0 0 10px;
+  color:#6b3d1f;
+  text-align:left;
+}
+
+.tree-note p{
+  margin:0 0 10px;
+  text-align:left;
+}
+
+.tree-note p:last-child{
+  margin-bottom:0;
+}
+
+@media (max-width:900px){
+  .branch-content{
+    padding:20px 12px;
+  }
+
+  .branch-card{
+    max-width:100%;
+    padding:24px 16px;
+  }
+
+  .branch-root-title{
+    margin-top:24px;
+    font-size:clamp(20px,5.5vw,23px);
+  }
+
+  .branch-text-block > p{
+    text-align:left;
+    hyphens:none;
+  }
+}
+
+@media (max-width:640px){
+  .protected-access-notice .protected-family-data-trigger{
+    width:100%;
+    max-width:100%;
+    justify-content:center;
+    white-space:normal;
+    text-align:center;
+  }
+
+  .branch-search-access{
+    align-items:stretch;
+    flex-direction:column;
+    padding:16px;
+  }
+
+  .branch-search-button{
+    width:100%;
+    box-sizing:border-box;
+  }
+
+  .tree-note{
+    padding:16px;
+  }
+}
+</style><link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
 <script crossorigin="anonymous" defer="" integrity="sha384-cuTAEWZTPz3iBJjjOmK50Bt8tYV4sscWBOg1Qi5c1Oxg1NHQquZWLH39N4MZr+TN" src="protected-access-modal.js?v=20260731"></script>
 </head>
 <body class="hr">
@@ -65,18 +234,9 @@
 <main class="branch-content">
 <div class="branch-card">
 <img alt="Hrvatska zastava" class="branch-flag" src="flag-hr.png?v=3"/>
-
 <h1><strong>ČETVRTA GRANA PRVE OBITELJI TANDARA</strong></h1><p class="protected-access-notice">
 <button class="protected-family-data-trigger" data-protected-access="" type="button"><span aria-hidden="true">🔒</span> Informacije o zaštićenim obiteljskim podacima</button>
-</p>
-<h2><strong>4.0. Mate Tandara – Ivanov (rođen c.★ 1740. – )</strong></h2>
-<section aria-labelledby="matina-search-title" class="branch-search-access">
-<div>
-<h2 id="matina-search-title">Pretražite cijelu Matinu granu</h2>
-<p>Interaktivna pretraga prihvaća više kriterija istodobno: ime, godinu, roditelje, supružnika, mjesto, nadimak ili osobnu oznaku. Moguć je i unos bez kvačica.</p>
-</div>
-<a class="branch-search-button" href="box2d.html">Otvori interaktivnu pretragu</a>
-</section><div class="branch-text-block"><p>
+</p><h3 class="branch-root-title"><strong>4.0. Mate Tandara – Ivanov (rođen c.★ 1740. – )</strong></h3><div class="branch-text-block"><p>
 
     Mate Tandara je bio četvrti sin Ivana Tandare. Mate i supruga Filipa Kopač imali su petero djece: sina Ivana, te kćeri Matiju, Mandu, Jaku i Ceciliju.
     Muška loza nastavila se isključivo preko sina Ivana. Ivan se ženio dva puta. U prvom braku s Pavom Sičenica dobio je sina Antu,
@@ -94,17 +254,24 @@
 <img alt="Ante Marijanov" loading="lazy" src="Ante Tandara Marijanov.png"/>
 </a>
 <figcaption>Ante Marijanov</figcaption>
-</figure><h3><strong>4.1.1.2.2.1.2. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.2. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.2.1. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.3. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.3.1. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.4. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.4.1. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3>4.1.1.2.3. Nikola Matin (1911.- 1980.)</h3><p>Nikola se nije ženio. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p><h3>4.1.1.2.3.1. Vinko Nikolin (1947.- 2010.)</h3><p>Nema podataka o Nikoli Davidu, je li se ženio ili je ostao samac. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p><section aria-labelledby="mate-diagram-title" class="branch-diagram-link">
+</figure><h3><strong>4.1.1.2.2.1.2. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.2. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.2.1. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.3. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.3.1. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.4. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3><strong>4.1.1.2.2.4.1. Živi potomak – privatni podaci</strong></h3><p>Podaci o vjerojatno živom članu dostupni su samo odobrenim korisnicima privatnog arhiva.</p><h3>4.1.1.2.3. Nikola Matin (1911.- 1980.)</h3><p>Nikola se nije ženio. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p><h3>4.1.1.2.3.1. Vinko Nikolin (1947.- 2010.)</h3><p>Nema podataka o Nikoli Davidu, je li se ženio ili je ostao samac. Podaci o vjerojatno živim članovima obitelji premješteni su u privatni dio arhiva.</p><section aria-labelledby="matina-search-title" class="branch-search-access">
+<div>
+<h2 id="matina-search-title">Pretražite cijelu Matinu granu</h2>
+<p>Interaktivna pretraga prihvaća više kriterija istodobno: ime, godinu, roditelje, supružnika, mjesto, nadimak ili osobnu oznaku. Moguć je i unos bez kvačica.</p>
+</div>
+<a class="branch-search-button" href="box2d.html">Otvori interaktivnu pretragu</a>
+</section><section aria-labelledby="mate-diagram-title" class="branch-diagram-link">
 <div>
 <h2 id="mate-diagram-title">Interaktivni dijagram Matine grane</h2>
 <p>Otvorite pripadajući interaktivni rodoslovni dijagram ove obiteljske grane.</p>
 </div>
 <a class="branch-diagram-link__button" href="box2d.html">Otvori dijagram</a>
-</section><section class="tree-note"><h3>Napomena!</h3><p>
-Kompletno rodoslovno stablo ove obiteljske grane nalazi se u <strong>desnom interaktivnom dijagramu</strong> na početnoj stranici Digitalnog arhiva roda Tandara.
-</p><p>
-Odaberite <strong>drugi red</strong>, zatim <strong>četvrti okvir odozgo</strong> pod nazivom <strong>"Mate &amp; Filipa Kopač"</strong>. Klikom na taj okvir otvara se odgovarajući dio rodoslovnog stabla s potomcima ove grane.
-</p></section></div>
+</section><section class="tree-note">
+<h3>Napomena!</h3>
+<p>Kompletno rodoslovno stablo ove obiteljske grane nalazi se u <strong>desnom interaktivnom dijagramu</strong> na početnoj stranici Digitalnog arhiva roda Tandara.</p>
+<p>Na početnoj stranici odaberite klikabilni okvir pod nazivom „<strong>Matina grana</strong>”. Klikom na taj okvir otvara se odgovarajući dio rodoslovnog stabla s potomcima ove grane.</p>
+</section></div>
+
 
 </div></main>
 </div>

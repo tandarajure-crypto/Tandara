@@ -1,14 +1,191 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self'; style-src-elem 'self'; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-elem 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ante's Branch</title>
 <script data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a" defer="" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" src="umami-tracker.js"></script>
-<link href="style.css?v=6" rel="stylesheet"/>
-<link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
+<link href="style.css?v=7" rel="stylesheet"/>
+<style>
+/* Zajednički tehnički standard za sve četiri glavne grane — HR i EN */
+.branch-card{
+  width:100%;
+  max-width:1200px;
+  box-sizing:border-box;
+}
+
+.branch-card > h1{
+  overflow-wrap:anywhere;
+}
+
+.branch-root-title{
+  width:100%;
+  max-width:760px;
+  margin:28px auto 14px;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+
+.branch-text-block{
+  width:100%;
+  max-width:760px;
+  margin:0 auto;
+  box-sizing:border-box;
+  text-align:left;
+}
+
+.branch-text-block > h2,
+.branch-text-block > h3{
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+
+.branch-text-block > p{
+  text-align:justify;
+  overflow-wrap:anywhere;
+  hyphens:auto;
+}
+
+.branch-search-access,
+.people-directory,
+.person-detail-box,
+.branch-diagram-link,
+.tree-note{
+  width:100%;
+  max-width:760px;
+  box-sizing:border-box;
+}
+
+.branch-search-access{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin:30px 0 24px;
+  padding:18px 20px;
+  border:1px solid #c8b78f;
+  border-radius:12px;
+  background:#fffaf0;
+  box-shadow:0 3px 12px rgba(55,45,25,.08);
+  text-align:left;
+}
+
+.branch-search-access h2{
+  margin:0 0 6px;
+  color:#4a3618;
+  font-size:1.18rem;
+}
+
+.branch-search-access p{
+  margin:0;
+  color:#403a31;
+  line-height:1.55;
+  text-align:left;
+}
+
+.branch-search-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  min-height:44px;
+  padding:10px 18px;
+  border-radius:9px;
+  background:#5b4727;
+  color:#fff !important;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 2px 7px rgba(0,0,0,.15);
+}
+
+.branch-search-button:hover,
+.branch-search-button:focus-visible{
+  background:#3f301a;
+  outline:3px solid #d4af37;
+  outline-offset:2px;
+  text-decoration:none;
+  transform:translateY(-1px);
+}
+
+.branch-diagram-link{
+  margin-top:32px;
+  margin-bottom:18px;
+}
+
+.tree-note{
+  margin:0;
+  padding:18px 20px;
+  border:1px solid #c8b78f;
+  border-left:5px solid #9b7745;
+  border-radius:10px;
+  background:#fff8ec;
+  color:#3b2f22;
+  text-align:left;
+  box-shadow:0 3px 10px rgba(55,45,25,.07);
+}
+
+.tree-note h3{
+  margin:0 0 10px;
+  color:#6b3d1f;
+  text-align:left;
+}
+
+.tree-note p{
+  margin:0 0 10px;
+  text-align:left;
+}
+
+.tree-note p:last-child{
+  margin-bottom:0;
+}
+
+@media (max-width:900px){
+  .branch-content{
+    padding:20px 12px;
+  }
+
+  .branch-card{
+    max-width:100%;
+    padding:24px 16px;
+  }
+
+  .branch-root-title{
+    margin-top:24px;
+    font-size:clamp(20px,5.5vw,23px);
+  }
+
+  .branch-text-block > p{
+    text-align:left;
+    hyphens:none;
+  }
+}
+
+@media (max-width:640px){
+  .protected-access-notice .protected-family-data-trigger{
+    width:100%;
+    max-width:100%;
+    justify-content:center;
+    white-space:normal;
+    text-align:center;
+  }
+
+  .branch-search-access{
+    align-items:stretch;
+    flex-direction:column;
+    padding:16px;
+  }
+
+  .branch-search-button{
+    width:100%;
+    box-sizing:border-box;
+  }
+
+  .tree-note{
+    padding:16px;
+  }
+}
+</style><link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
 <script crossorigin="anonymous" defer="" integrity="sha384-cuTAEWZTPz3iBJjjOmK50Bt8tYV4sscWBOg1Qi5c1Oxg1NHQquZWLH39N4MZr+TN" src="protected-access-modal.js?v=20260731"></script>
 </head>
 <body class="en">
@@ -52,269 +229,21 @@
 <main class="branch-content">
 <div class="branch-card">
 <img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=3"/>
-
 <h1>THE THIRD BRANCH OF THE FIRST TANDARA FAMILY</h1><p class="protected-access-notice">
 <button class="protected-family-data-trigger" data-protected-access="" type="button"><span aria-hidden="true">🔒</span> Information about protected family data</button>
-</p>
-<h3>3.0. Ante Tandara – Ivanov (born c. 1735)</h3><div class="branch-text-block"><p>Ante Tandara was Ivan Tandara's third son. Ante was about a year younger than Petar, which fits well with the known birth order of Ivan's children. He married Matija Brnas, with whom he had three sons, Ante, Filip and Pavao (1777–), and three daughters, Jaka (1771–), Luca and Ruža. Apart from the record of Pavao's birth, no other information about him has been found, suggesting that he probably died at a very young age or left Ričice before leaving any trace in the parish registers. Ante's line remained firmly connected to Ričice, where it developed most clearly during the nineteenth and twentieth centuries. This family nucleus produced the largest number of people bearing the Tandara surname, and Ante's line is therefore regarded as the most extensive among Ivan's descendants. In later generations, some members of this branch gradually began to move away—first to nearby settlements and later much farther afield, to various European Union countries, as well as Canada, the United States and Australia. Despite this worldwide dispersal, the original Ante line remained deeply rooted in Ričice, preserving the continuity of family identity and the richest written record of its beginnings.</p><h2><strong>FIRST SUB-BRANCH OF ANTE ANTIN</strong></h2><h3><strong>3.1. Ante (1769–1849)</strong></h3><p>As the eldest son of Ante Ivanov, Ante married Matija Jukić in 1801. They had three sons, Lovro, Mijo and Petar (1821–), and six daughters, Pera (1802–), Ruža (1804–), Antica (1807–), Iva (1808–), a second daughter named Antica (1814–), and Marija (1823–). No information about Petar has been found apart from his birth record, so it is assumed that he died young or moved away from Zavelim. The family line was continued by the sons Lovro and Mijo. Mijo's descendants became known by the family nickname Tucići, while Lovro's descendants through his son Marijan became known as Lovrinovići, and those through his son Križan as Križanovići. According to the 1819 census, Ante lived in Zavelim, while his brother Filip lived in Ričice. Their descendants later spread throughout Croatia and Europe, as well as to the United States and Canada.</p><h3><strong>3.1.1. Lovro Antin (1811–1903)</strong></h3><p>He married Matija Sičenica. They had two sons, Marijan and Križan.</p><h2><strong>THE LINE OF MARIJAN LOVRIN – LOVRINOVIĆI</strong></h2><h3><strong>3.1.1.1. Marijan Lovrin (1836–)</strong></h3><p>He married Matija Kovač. They had four sons, Jure (1867–), Marko, Stipan (1873–) and Jozo, and three daughters, Iva (–1869), Mara (1871–1872) and Matija (1880–1880). No information about Stipan has been found apart from his birth record, so it is assumed that he died young or moved away. Marijan's descendants through his sons Marko and Jure bear the family nickname Lovrinovići, derived from the name of Marijan's father, Lovro. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.1.1. Marko Marijanov (1869–)</strong></h3><p>Marko married Božica Pušić. They had a son, Mirko, and a daughter, Iva (1897–).</p><h3><strong>3.1.1.1.1.1. Mirko Markov (1901–)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.2. Jozo Marijanov (1882–1944) – family nickname Trošići</strong></h3><p>Jozo married Iva Kovač. They had two sons, Marijan and Luka.</p><h3><strong>3.1.1.1.2.1. Marijan Jozin (1910–1984)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.2.2. Luka Jozin (1912–1987)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h2><strong>THE LINE OF KRIŽAN LOVRIN – KRIŽANOVIĆI</strong></h2><h3><strong>3.1.1.2. Križan Lovrin (1843–1910)</strong></h3><p>He married Pera Budimir, with whom he had fifteen children: ten sons—Mate, Ilija (1867–1875), Ante, Jakov (1871–1872), Marijan (1873–), Paško (–1886), Jozo (1877–), Ivan, Jure and Grgo (1887–)—and five daughters: Anica (–1869), Jakovica (1868–), a second daughter named Anica (1875–1877), Joza (–1895), and a third daughter named Anica (1879–). Seven of Križan's children died before the age of ten. One notable detail is that his second son, Ilija, died after being gored by a bull in 1875. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1. Mate Križanov (1866–1948)</strong></h3><p>Križan's eldest son, Mate, married Iva Pirić. Mijo never married. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1.1. Marijan Matin (1902–1974)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.2. Jozo Matin (1904–1944)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.2. Ante Križanov (1870–1945)</strong></h3><p>Ante, the third son of Križan Lovrin, married Iva Trogrlić. They had a son, Stipan (1898–), and two daughters, Jela and Mara. It is not known whether he had descendants or what later became of him. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.3. Ivan Križanov (1881–1920)</strong></h3><p>Ivan was Križan's eighth son. He married Ruža Serdarušić, with whom he had three sons, Ante (1911–1916), Križan and Marijan (1914–1916), who died as a child, and two daughters, Mara (1909–) and Ana.</p><h3><strong>3.1.1.2.3.1. Križan Ivanov (1916–1944)</strong></h3><p>Križan was killed in Zagreb in 1944. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.3.1.1. Ivan Križanov (1938–2007)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.3.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.3.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4. Jure Križanov (1883–1947) – family nickname ĐULKO</strong></h3><p>He was the ninth son of Križan Lovrin and married three times—the highest number of marriages recorded among the Tandaras. His first wife was Pera Matišić, who came from the family of the renowned Croatian musical family Matišić. They had a son, Josip. Pera died in 1919 during the Spanish flu epidemic, which local people called ‘grla’. His second marriage was to a woman from the Budić family. They had a son, Martin, who was killed near Bihać in 1942. His third marriage was to Joza Dragun, and they had no children.</p><h3><strong>3.1.1.2.4.1. Josip Jurin (1911–1946)</strong></h3><p>In 1946, Josip tragically lost his life in circumstances that remained shrouded in secrecy for decades. He was killed above the cooperative building in Zavelim. According to testimony uncovered later, the crime was carried out by the brother of their immediate neighbour, while the neighbour himself organised the crime and acted for personal gain. Only a little more than thirty years later, shortly before his death, did an eyewitness reveal the true circumstances of the event and the identity of the perpetrator. According to his testimony, the man who carried out the killing died in Germany in 1963, while the organiser died in 1990 after a long and serious illness. Despite everything, no investigation was ever opened and no judicial proceedings were conducted, so this tragedy remained without legal consequences. On the contrary, we maintain good and friendly relations, free from the burden of the past and from any sense of guilt or responsibility for the actions of our long-deceased ancestors. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.4.1.1. Ivan Josipov (1933–2025)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.4.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2. Milan Josipov (1942–2003)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.4.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2. Mijo Antin (1818–1878) – family nickname Tucići</strong></h3><p>Mijo, Ante's second son, married Manda Martinović. They had nine children: five sons, Jozo, Ante (1852–), Mate, Mijo (1865–) and Petar, and four daughters, Iva (1856–), Matija (1858–), Ruža (1859–) and Antica (1861–). No information about the son Mijo has been found apart from his birth record. It is assumed that he died young or moved away to an unknown destination. The descendants through the sons Jozo, Mate and Petar bear the family nickname Tucići, which arose because members of the family were known for their romantic adventures.</p><h2><strong>THE LINE OF JOZO MIJIN</strong></h2><h3><strong>3.1.2.1. Jozo Mijin (1851–)</strong></h3><p>Jozo married Iva Bilojelić. They had seven children: three sons, Ante, Jozo (1884–) and Nikola (1889–1895), and four daughters, Matija (1880–), Jela (1885–), Mara (1895–) and Iva (1898–). The son Jozo never married, and Ante was the only one to pass the surname on to descendants.</p><h3><strong>3.1.2.1.1. Ante Jozin (1881–1942)</strong></h3><p>He married Jela Škorić. They had four sons, Marijan, Mate (1920–), Pilip (1926–1926) and Mijo, and four daughters, Jela (1912–), Mara (1915–1915), Kata (1922–) and Mila (1925–). The family line was continued by the sons Marijan and Mijo.</p><h3><strong>3.1.2.1.1.1. Marijan Antin (1908–2003) – family nickname Đika</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.1.1.1.1. Ivan Marijanov (1939–2024)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.2. Mijo Antin (1927–)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>THE LINE OF MATE MIJIN</strong></h2><h3><strong>3.1.2.2. Mate Mijin (1864–1905)</strong></h3><p>Mate married twice. In his first marriage, to Tomica Kovač, he had a son, Ivan (1888–1895). In his second marriage, to Iva Vlajčić, he had a daughter, Iva (1897–1914), and two sons, Martin (–1927) and Jure. There is no information indicating whether Martin ever married.</p><h3><strong>3.1.2.2.1. Jure Matin (1905–1974) – family nickname ĐUKA</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.2.1.1. Ante Jurin (1933–1999)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.2.1.1.1. Milan Antin (1958–1995)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.2.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>THE LINE OF PETAR MIJIN</strong></h2><h3><strong>3.1.2.3. Petar Mijin (1867–)</strong></h3><p>Petar was married to Matija Tandara, with whom he had four sons, Mate, Stipan, Ante (1911–1911) and Ilija, and a daughter, Anđa (1911–1911).</p><h3><strong>3.1.2.3.1. Mate Petrov (1902–1991)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.1.1. Ivan Matin (1932–2005)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.2. Stipan Petrov (1908–1989)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3. Ilija Petrov (1912–2006) – family nickname GRABUNJAŠ</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.3.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3.2. Mirko Ilijin (1945–2025)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.3.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3.2.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>SECOND SUB-BRANCH OF FILIP ANTIN</strong></h2><h3><strong>3.2. Filip Antin</strong></h3><p>Filip was the second son of Ante Ivanov. Unlike his brother Ante, Filip remained in Ričice and continued his life there. He was married to Matija Parlov, with whom he had three sons, Martin, Mate (1814–) and Ivan (1823–), and five daughters, Joza, Jela, Jurka (1811–), Antica and Ruža (1821–1822). Only birth records have been found for Ivan and Mate, so it is assumed that they died young or moved away from Ričice.</p><h3><strong>3.2.1. Martin Filipov (1811–)</strong></h3><p>Martin was married to Manda Manenica, with whom he had five sons, Jerko, Ilija, Ivan (1847–1851), Martin (–1853), and another son named Ivan (1852–), and four daughters, Tomica (–1870), Lucija (1845–), a second daughter named Lucija (1850–), and Iva (1854–). The family line was continued only by the sons Jerko and Ilija.</p><h2><strong>THE LINE OF JERKO MARTINOV</strong></h2><h3><strong>3.2.1.1. Jerko Martinov (1839–)</strong></h3><p>Jerko was married to Iva Topalušić, with whom he had three sons, Martin, Luka (1869–1869) and Ivan (1872–).</p><h3><strong>3.2.1.1.1. Martin Jerkin (1865–)</strong></h3><p>Martin was married to Iva Kovač, with whom he had three daughters, Matija (1893–), Mara (1895–1899) and Iva (1905–).</p><h3><strong>3.2.1.1.2. Ivan Jerkin (1872–)</strong></h3><p>Ivan was married to Jaka Martinović, with whom he had two sons, Mate and Martin, and three daughters, Ana (1900–), Tomica (1907–1908), and a second daughter named Tomica (1910–), born after the first Tomica died in her second year of life. It was common for parents, after the death of a child, to give the same name to a later child of the same sex.</p><h3><strong>3.2.1.1.2.1. Mate Ivanov (1898–) – family nickname Pikići</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.1.1. Nikola Matin (1927–1990)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.2. Mirko Matin (1932–2005)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.2.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.3.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.2. Martin Ivanov (1904–)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.2.1. Ivan Martinov (1932–1996)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>THE LINE OF ILIJA MARTINOV</strong></h2><h3><strong>3.2.1.2. Ilija Martinov (1843–)</strong></h3><p>Ilija was married to Luca Tavra, with whom he had three sons, Mate, Ivan (1877–1883) and Šimun (1880–1880), and four daughters, Tomica (1881–1882), a second daughter named Tomica (1884–), Iva (1886–1886) and Mara (1887–1888). Ivan died at the age of six, while Šimun died shortly after birth.</p><h3><strong>3.2.1.2.1. Mate Ilijin (1875–) – family nickname RUMIĆI</strong></h3><p>Mate was married to Mara Topalušić, with whom he had four sons, Ivan (1899–), Božo (1902–), Mijo and Toma, and three daughters, Tomica (1900–), Mara (1906–), and a second daughter named Mara (1912–). Only their birth years are known for Ivan and Božo, and it is not known whether they died young or moved away from Ričice.</p><h3><strong>3.2.1.2.1.1. Mijo Matin (1909–1945) – family nickname Rumići</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.4. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.5. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.2. Toma Matin (1909–1945) – family nickname Rumići</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.1. Petar Tomin (1925–1985)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.2.2. Slavko Tomin (1930–2006)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.3. Ante Tomin (1942–2011)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.3.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.2.4. Mate Tomin (1944–2007)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.4.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><section aria-labelledby="ante-diagram-title" class="branch-diagram-link">
+</p><h3 class="branch-root-title">3.0. Ante Tandara – Ivanov (born c. 1735)</h3><div class="branch-text-block"><p>Ante Tandara was Ivan Tandara's third son. Ante was about a year younger than Petar, which fits well with the known birth order of Ivan's children. He married Matija Brnas, with whom he had three sons, Ante, Filip and Pavao (1777–), and three daughters, Jaka (1771–), Luca and Ruža. Apart from the record of Pavao's birth, no other information about him has been found, suggesting that he probably died at a very young age or left Ričice before leaving any trace in the parish registers. Ante's line remained firmly connected to Ričice, where it developed most clearly during the nineteenth and twentieth centuries. This family nucleus produced the largest number of people bearing the Tandara surname, and Ante's line is therefore regarded as the most extensive among Ivan's descendants. In later generations, some members of this branch gradually began to move away—first to nearby settlements and later much farther afield, to various European Union countries, as well as Canada, the United States and Australia. Despite this worldwide dispersal, the original Ante line remained deeply rooted in Ričice, preserving the continuity of family identity and the richest written record of its beginnings.</p><h2><strong>FIRST SUB-BRANCH OF ANTE ANTIN</strong></h2><h3><strong>3.1. Ante (1769–1849)</strong></h3><p>As the eldest son of Ante Ivanov, Ante married Matija Jukić in 1801. They had three sons, Lovro, Mijo and Petar (1821–), and six daughters, Pera (1802–), Ruža (1804–), Antica (1807–), Iva (1808–), a second daughter named Antica (1814–), and Marija (1823–). No information about Petar has been found apart from his birth record, so it is assumed that he died young or moved away from Zavelim. The family line was continued by the sons Lovro and Mijo. Mijo's descendants became known by the family nickname Tucići, while Lovro's descendants through his son Marijan became known as Lovrinovići, and those through his son Križan as Križanovići. According to the 1819 census, Ante lived in Zavelim, while his brother Filip lived in Ričice. Their descendants later spread throughout Croatia and Europe, as well as to the United States and Canada.</p><h3><strong>3.1.1. Lovro Antin (1811–1903)</strong></h3><p>He married Matija Sičenica. They had two sons, Marijan and Križan.</p><h2><strong>THE LINE OF MARIJAN LOVRIN – LOVRINOVIĆI</strong></h2><h3><strong>3.1.1.1. Marijan Lovrin (1836–)</strong></h3><p>He married Matija Kovač. They had four sons, Jure (1867–), Marko, Stipan (1873–) and Jozo, and three daughters, Iva (–1869), Mara (1871–1872) and Matija (1880–1880). No information about Stipan has been found apart from his birth record, so it is assumed that he died young or moved away. Marijan's descendants through his sons Marko and Jure bear the family nickname Lovrinovići, derived from the name of Marijan's father, Lovro. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.1.1. Marko Marijanov (1869–)</strong></h3><p>Marko married Božica Pušić. They had a son, Mirko, and a daughter, Iva (1897–).</p><h3><strong>3.1.1.1.1.1. Mirko Markov (1901–)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.2. Jozo Marijanov (1882–1944) – family nickname Trošići</strong></h3><p>Jozo married Iva Kovač. They had two sons, Marijan and Luka.</p><h3><strong>3.1.1.1.2.1. Marijan Jozin (1910–1984)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.1.2.2. Luka Jozin (1912–1987)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h2><strong>THE LINE OF KRIŽAN LOVRIN – KRIŽANOVIĆI</strong></h2><h3><strong>3.1.1.2. Križan Lovrin (1843–1910)</strong></h3><p>He married Pera Budimir, with whom he had fifteen children: ten sons—Mate, Ilija (1867–1875), Ante, Jakov (1871–1872), Marijan (1873–), Paško (–1886), Jozo (1877–), Ivan, Jure and Grgo (1887–)—and five daughters: Anica (–1869), Jakovica (1868–), a second daughter named Anica (1875–1877), Joza (–1895), and a third daughter named Anica (1879–). Seven of Križan's children died before the age of ten. One notable detail is that his second son, Ilija, died after being gored by a bull in 1875. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1. Mate Križanov (1866–1948)</strong></h3><p>Križan's eldest son, Mate, married Iva Pirić. Mijo never married. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1.1. Marijan Matin (1902–1974)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.2. Jozo Matin (1904–1944)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.1.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.2. Ante Križanov (1870–1945)</strong></h3><p>Ante, the third son of Križan Lovrin, married Iva Trogrlić. They had a son, Stipan (1898–), and two daughters, Jela and Mara. It is not known whether he had descendants or what later became of him. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.3. Ivan Križanov (1881–1920)</strong></h3><p>Ivan was Križan's eighth son. He married Ruža Serdarušić, with whom he had three sons, Ante (1911–1916), Križan and Marijan (1914–1916), who died as a child, and two daughters, Mara (1909–) and Ana.</p><h3><strong>3.1.1.2.3.1. Križan Ivanov (1916–1944)</strong></h3><p>Križan was killed in Zagreb in 1944. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.3.1.1. Ivan Križanov (1938–2007)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.3.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.3.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4. Jure Križanov (1883–1947) – family nickname ĐULKO</strong></h3><p>He was the ninth son of Križan Lovrin and married three times—the highest number of marriages recorded among the Tandaras. His first wife was Pera Matišić, who came from the family of the renowned Croatian musical family Matišić. They had a son, Josip. Pera died in 1919 during the Spanish flu epidemic, which local people called ‘grla’. His second marriage was to a woman from the Budić family. They had a son, Martin, who was killed near Bihać in 1942. His third marriage was to Joza Dragun, and they had no children.</p><h3><strong>3.1.1.2.4.1. Josip Jurin (1911–1946)</strong></h3><p>In 1946, Josip tragically lost his life in circumstances that remained shrouded in secrecy for decades. He was killed above the cooperative building in Zavelim. According to testimony uncovered later, the crime was carried out by the brother of their immediate neighbour, while the neighbour himself organised the crime and acted for personal gain. Only a little more than thirty years later, shortly before his death, did an eyewitness reveal the true circumstances of the event and the identity of the perpetrator. According to his testimony, the man who carried out the killing died in Germany in 1963, while the organiser died in 1990 after a long and serious illness. Despite everything, no investigation was ever opened and no judicial proceedings were conducted, so this tragedy remained without legal consequences. On the contrary, we maintain good and friendly relations, free from the burden of the past and from any sense of guilt or responsibility for the actions of our long-deceased ancestors. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.4.1.1. Ivan Josipov (1933–2025)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.4.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2. Milan Josipov (1942–2003)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.1.2.4.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.1.2.4.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2. Mijo Antin (1818–1878) – family nickname Tucići</strong></h3><p>Mijo, Ante's second son, married Manda Martinović. They had nine children: five sons, Jozo, Ante (1852–), Mate, Mijo (1865–) and Petar, and four daughters, Iva (1856–), Matija (1858–), Ruža (1859–) and Antica (1861–). No information about the son Mijo has been found apart from his birth record. It is assumed that he died young or moved away to an unknown destination. The descendants through the sons Jozo, Mate and Petar bear the family nickname Tucići, which arose because members of the family were known for their romantic adventures.</p><h2><strong>THE LINE OF JOZO MIJIN</strong></h2><h3><strong>3.1.2.1. Jozo Mijin (1851–)</strong></h3><p>Jozo married Iva Bilojelić. They had seven children: three sons, Ante, Jozo (1884–) and Nikola (1889–1895), and four daughters, Matija (1880–), Jela (1885–), Mara (1895–) and Iva (1898–). The son Jozo never married, and Ante was the only one to pass the surname on to descendants.</p><h3><strong>3.1.2.1.1. Ante Jozin (1881–1942)</strong></h3><p>He married Jela Škorić. They had four sons, Marijan, Mate (1920–), Pilip (1926–1926) and Mijo, and four daughters, Jela (1912–), Mara (1915–1915), Kata (1922–) and Mila (1925–). The family line was continued by the sons Marijan and Mijo.</p><h3><strong>3.1.2.1.1.1. Marijan Antin (1908–2003) – family nickname Đika</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.1.1.1.1. Ivan Marijanov (1939–2024)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.2. Mijo Antin (1927–)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.1.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>THE LINE OF MATE MIJIN</strong></h2><h3><strong>3.1.2.2. Mate Mijin (1864–1905)</strong></h3><p>Mate married twice. In his first marriage, to Tomica Kovač, he had a son, Ivan (1888–1895). In his second marriage, to Iva Vlajčić, he had a daughter, Iva (1897–1914), and two sons, Martin (–1927) and Jure. There is no information indicating whether Martin ever married.</p><h3><strong>3.1.2.2.1. Jure Matin (1905–1974) – family nickname ĐUKA</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.2.1.1. Ante Jurin (1933–1999)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.2.1.1.1. Milan Antin (1958–1995)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.2.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.2.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>THE LINE OF PETAR MIJIN</strong></h2><h3><strong>3.1.2.3. Petar Mijin (1867–)</strong></h3><p>Petar was married to Matija Tandara, with whom he had four sons, Mate, Stipan, Ante (1911–1911) and Ilija, and a daughter, Anđa (1911–1911).</p><h3><strong>3.1.2.3.1. Mate Petrov (1902–1991)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.1.1. Ivan Matin (1932–2005)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.2. Stipan Petrov (1908–1989)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3. Ilija Petrov (1912–2006) – family nickname GRABUNJAŠ</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.3.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3.2. Mirko Ilijin (1945–2025)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.1.2.3.3.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.1.2.3.3.2.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>SECOND SUB-BRANCH OF FILIP ANTIN</strong></h2><h3><strong>3.2. Filip Antin</strong></h3><p>Filip was the second son of Ante Ivanov. Unlike his brother Ante, Filip remained in Ričice and continued his life there. He was married to Matija Parlov, with whom he had three sons, Martin, Mate (1814–) and Ivan (1823–), and five daughters, Joza, Jela, Jurka (1811–), Antica and Ruža (1821–1822). Only birth records have been found for Ivan and Mate, so it is assumed that they died young or moved away from Ričice.</p><h3><strong>3.2.1. Martin Filipov (1811–)</strong></h3><p>Martin was married to Manda Manenica, with whom he had five sons, Jerko, Ilija, Ivan (1847–1851), Martin (–1853), and another son named Ivan (1852–), and four daughters, Tomica (–1870), Lucija (1845–), a second daughter named Lucija (1850–), and Iva (1854–). The family line was continued only by the sons Jerko and Ilija.</p><h2><strong>THE LINE OF JERKO MARTINOV</strong></h2><h3><strong>3.2.1.1. Jerko Martinov (1839–)</strong></h3><p>Jerko was married to Iva Topalušić, with whom he had three sons, Martin, Luka (1869–1869) and Ivan (1872–).</p><h3><strong>3.2.1.1.1. Martin Jerkin (1865–)</strong></h3><p>Martin was married to Iva Kovač, with whom he had three daughters, Matija (1893–), Mara (1895–1899) and Iva (1905–).</p><h3><strong>3.2.1.1.2. Ivan Jerkin (1872–)</strong></h3><p>Ivan was married to Jaka Martinović, with whom he had two sons, Mate and Martin, and three daughters, Ana (1900–), Tomica (1907–1908), and a second daughter named Tomica (1910–), born after the first Tomica died in her second year of life. It was common for parents, after the death of a child, to give the same name to a later child of the same sex.</p><h3><strong>3.2.1.1.2.1. Mate Ivanov (1898–) – family nickname Pikići</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.1.1. Nikola Matin (1927–1990)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.2. Mirko Matin (1932–2005)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.2.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.1.3.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.2. Martin Ivanov (1904–)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.2.1. Ivan Martinov (1932–1996)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.1.2.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.1.2.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h2><strong>THE LINE OF ILIJA MARTINOV</strong></h2><h3><strong>3.2.1.2. Ilija Martinov (1843–)</strong></h3><p>Ilija was married to Luca Tavra, with whom he had three sons, Mate, Ivan (1877–1883) and Šimun (1880–1880), and four daughters, Tomica (1881–1882), a second daughter named Tomica (1884–), Iva (1886–1886) and Mara (1887–1888). Ivan died at the age of six, while Šimun died shortly after birth.</p><h3><strong>3.2.1.2.1. Mate Ilijin (1875–) – family nickname RUMIĆI</strong></h3><p>Mate was married to Mara Topalušić, with whom he had four sons, Ivan (1899–), Božo (1902–), Mijo and Toma, and three daughters, Tomica (1900–), Mara (1906–), and a second daughter named Mara (1912–). Only their birth years are known for Ivan and Božo, and it is not known whether they died young or moved away from Ričice.</p><h3><strong>3.2.1.2.1.1. Mijo Matin (1909–1945) – family nickname Rumići</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.3. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.4. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.1.5. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2.2. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.1.2.2.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.2. Toma Matin (1909–1945) – family nickname Rumići</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.1. Petar Tomin (1925–1985)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.1.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.2.2. Slavko Tomin (1930–2006)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.3. Ante Tomin (1942–2011)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.3.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><h3><strong>3.2.1.2.1.2.4. Mate Tomin (1944–2007)</strong></h3><p>The historical record for this person remains publicly available. Information about likely living family members has been moved to the private archive.</p><h3><strong>3.2.1.2.1.2.4.1. Living descendant – private data</strong></h3><p>Information about this likely living family member is available only to approved users of the private archive.</p><section aria-labelledby="ante-diagram-title" class="branch-diagram-link">
 <div>
 <h2 id="ante-diagram-title">Interactive diagram of the Ante branch</h2>
 <p>Open the corresponding interactive genealogical diagram for this family branch.</p>
 </div>
 <a class="branch-diagram-link__button" href="box2c-en.html">Open diagram</a>
-</section><section class="tree-note"><h3>Note</h3><p>The complete family tree of this branch can be found in the <strong>interactive diagram on the right-hand side</strong> of the Digital Archive of the Tandara Family Line home page.</p><p>On the home page, select the clickable box labelled “<strong>Ante branch</strong>”. Clicking that box opens the corresponding part of the family tree with the descendants of this branch.</p></section></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</section><section class="tree-note">
+<h3>Note</h3>
+<p>The complete family tree of this branch can be found in the <strong>interactive diagram on the right-hand side</strong> of the Digital Archive of the Tandara Family Line home page.</p>
+<p>On the home page, select the clickable box labelled “<strong>Ante branch</strong>”. Clicking that box opens the corresponding part of the family tree with the descendants of this branch.</p>
+</section></div>
 
 </div>
-
 </main></div>
-
-
 </body>
 </html>
