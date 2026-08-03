@@ -3,7 +3,7 @@
 
 <head>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-X6VyKYnKK5lrHKmMsjibk6AiyRR/EoKLo78PKvnxGgQ='; style-src-elem 'self' 'sha256-X6VyKYnKK5lrHKmMsjibk6AiyRR/EoKLo78PKvnxGgQ='; style-src-attr 'none'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-4K2DYZ4n4Na7fuQXi0g1K+WPBWmcGFsDs+AqXnk/zjY='; style-src-elem 'self' 'sha256-4K2DYZ4n4Na7fuQXi0g1K+WPBWmcGFsDs+AqXnk/zjY='; style-src-attr 'none'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -144,7 +144,82 @@ body.hr .branch-text-block > .filipova-grana-podnaslov {
   text-align:center;
 }
 
+
+/* Usklađivanje Filipove grane s ostalim granama */
+.diagram-instructions,
+.branch-search-access,
+.tree-note{
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
+}
+.diagram-instructions{
+  margin:32px 0 24px;
+  padding:20px 22px;
+  border:1px solid #c8b78f;
+  border-radius:12px;
+  background:#fffaf0;
+  box-shadow:0 3px 12px rgba(55,45,25,.08);
+  text-align:left;
+}
+.diagram-instructions h2{margin:0 0 12px;color:#4a3618;font-size:1.25rem;text-align:left}
+.diagram-instructions ol{margin:0;padding-left:24px}
+.diagram-instructions li{margin:0 0 9px;line-height:1.55;text-align:left}
+.diagram-instructions li:last-child{margin-bottom:0}
+.branch-search-access{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin:26px 0 0;
+  padding:18px 20px;
+  border:1px solid #c8b78f;
+  border-radius:12px;
+  background:#fffaf0;
+  box-shadow:0 3px 12px rgba(55,45,25,.08);
+  text-align:left;
+}
+.branch-search-access h2{margin:0 0 6px;color:#4a3618;font-size:1.18rem;text-align:left}
+.branch-search-access p{margin:0;color:#403a31;line-height:1.55;text-align:left}
+.branch-search-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  min-height:44px;
+  padding:10px 18px;
+  border-radius:9px;
+  background:#5b4727;
+  color:#fff!important;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 2px 7px rgba(0,0,0,.15);
+}
+.branch-search-button:hover,.branch-search-button:focus-visible{background:#3f301a;outline:3px solid #d4af37;outline-offset:2px;text-decoration:none;transform:translateY(-1px)}
+.tree-note{
+  margin:18px 0 0;
+  padding:18px 20px;
+  border:1px solid #c8b78f;
+  border-left:5px solid #9b7745;
+  border-radius:10px;
+  background:#fff8ec;
+  color:#3b2f22;
+  text-align:left;
+  box-shadow:0 3px 10px rgba(55,45,25,.07);
+}
+.tree-note h3{margin:0 0 10px;color:#6b3d1f;text-align:left}
+.tree-note p{margin:0 0 10px;text-align:left}
+.tree-note p:last-child{margin-bottom:0}
+@media(max-width:640px){
+  .protected-access-notice .protected-family-data-trigger{width:100%;max-width:100%;justify-content:center;white-space:normal;text-align:center}
+  .diagram-instructions,.tree-note{padding:16px}
+  .branch-search-access{align-items:stretch;flex-direction:column;padding:16px}
+  .branch-search-button{width:100%;box-sizing:border-box}
+}
+
 </style>
+<link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-cuTAEWZTPz3iBJjjOmK50Bt8tYV4sscWBOg1Qi5c1Oxg1NHQquZWLH39N4MZr+TN" src="protected-access-modal.js?v=20260731"></script>
 </head>
 
 <body class="hr">
@@ -241,10 +316,9 @@ body.hr .branch-text-block > .filipova-grana-podnaslov {
   <h1 id="filipova-grana">
     LIVANJSKE TANDARE – FILIPOVA GRANA
   </h1>
-<section class="branch-search-access" aria-label="Zaštita privatnosti živih članova">
-<div><h2>Zaštićeni podaci živih članova</h2><p>Imena, godine, fotografije i obiteljski podaci vjerojatno živih osoba dostupni su samo prethodno odobrenim korisnicima privatnog arhiva.</p></div>
-<a class="branch-search-button" href="kontakti.html">Zatraži pristup</a>
-</section>
+<p class="protected-access-notice">
+<button class="protected-family-data-trigger" data-protected-access="" type="button"><span aria-hidden="true">🔒</span> Informacije o zaštićenim obiteljskim podacima</button>
+</p>
 
 
   <h3 class="filipova-grana-podnaslov">
@@ -309,6 +383,21 @@ body.hr .branch-text-block > .filipova-grana-podnaslov {
 <h3>5.4.2. Petar Ivanov</h3>
 <p>Petar se ženio dva puta. Prvi put oženio se Lucom Smoljić. Nije poznato jesu li imali djece. U drugom braku s Matijom rođenom Čelan imao je Nikolu, Agatu i Anu.</p>
 
+<section class="diagram-instructions" aria-labelledby="filip-diagram-instructions">
+<h2 id="filip-diagram-instructions">Upute za korištenje dijagrama</h2>
+<ol>
+<li>U polje za pretraživanje upišite ime, broj osobe, supružnika, mjesto ili drugi poznati podatak, a zatim pritisnite <strong>Pronađi</strong>.</li>
+<li>Gumb <strong>Raširi sve</strong> prikazuje sve unesene članove Filipove grane.</li>
+<li>Gumb <strong>Sažmi</strong> zatvara proširene dijelove dijagrama.</li>
+<li>Gumb <strong>Do 3. naraštaja</strong> prikazuje prva tri naraštaja obiteljske grane.</li>
+<li>Gumb <strong>Uklopi</strong> prilagođava cijeli dijagram dostupnom prostoru.</li>
+<li>Gumbima <strong>＋</strong> i <strong>−</strong> povećavate ili smanjujete prikaz, a povlačenjem mišem ili prstom pomičete dijagram.</li>
+<li>Klikom na okvir osobe otvaraju se njezini podaci i, gdje postoje, prikazuju ili skrivaju potomci.</li>
+<li>Ikona kuće vraća na početnu stranicu, zastavice mijenjaju jezik, a ikona pisača priprema dijagram za ispis.</li>
+<li>Zbog ponavljanja istih imena za precizniji pronalazak unesite ime osobe zajedno s brojem, supružnikom, roditeljem ili mjestom.</li>
+</ol>
+</section>
+
 <!-- POČETAK UGRAĐENOG INTERAKTIVNOG RODOSLOVNOG DIJAGRAMA -->
 <div class="filip-tree-embed" id="filipov-dijagram">
   <iframe
@@ -324,6 +413,15 @@ body.hr .branch-text-block > .filipova-grana-podnaslov {
   </div>
 </div>
 <!-- KRAJ UGRAĐENOG INTERAKTIVNOG RODOSLOVNOG DIJAGRAMA -->
+<section class="tree-note">
+<h3>Napomena!</h3>
+<p>Kompletno rodoslovno stablo Filipove grane nalazi se u ugrađenom interaktivnom dijagramu iznad i može se otvoriti preko cijelog zaslona.</p>
+<p>Na početnoj stranici Digitalnog arhiva roda Tandara Filipovu granu otvarate odabirom poveznice <strong>„Livanjske Tandare – Filipova grana”</strong>.</p>
+</section>
+<section class="branch-search-access" aria-label="Zahtjev za pristup privatnom arhivu">
+<div><h2>Zahtjev za pristup privatnom arhivu</h2><p>Podaci vjerojatno živih osoba dostupni su samo odobrenim članovima obitelji i drugim osobama koje mogu potvrditi opravdanu povezanost s rodom Tandara.</p></div>
+<a class="branch-search-button" href="kontakti.html#kontakt-obrazac">Zatraži pristup</a>
+</section>
 </div>
 </div>
 </main>
