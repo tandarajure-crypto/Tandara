@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-<meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'sha256-VgpH9/OHZrwJZ2cGY9H6tJQDNiHUhx0ksAlD5t+2VYw=' 'sha256-4x9EAutg1PJOtBrxV04D7GJ3JkumOG8/bASwOnXJZHk='; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-Qzyq3K3M9yziTJWJTtGmVAEOkt4pGUEjQT0uJ0JOcXQ=' 'sha256-BztjUHUPbgdt8xam7TeWakoPLJPQ9gteTxvZU+M/Vpk=' 'sha256-O/v0qW6isKlIxz3tBSAnowHsGWh5qCtLYZiGFUuhiow=' 'unsafe-hashes' 'sha256-q25xGWCplX+6q44658nXru9hogwcwtNxgcKp6PDTJ0M=' 'sha256-9JQv48uhBNeIRhk8pvpp1wtw0aw41rvUow5XSe+AVg8=' 'sha256-cATJ9692GL7X0pi4OqH1ynTKRA2fJBeexPiG6FDuV/A=' 'sha256-BoPA+60uQQVhCnkVLxNaaY8vu/kN1ecduvnDTJv7poE='; style-src-elem 'self' 'sha256-Qzyq3K3M9yziTJWJTtGmVAEOkt4pGUEjQT0uJ0JOcXQ=' 'sha256-BztjUHUPbgdt8xam7TeWakoPLJPQ9gteTxvZU+M/Vpk=' 'sha256-O/v0qW6isKlIxz3tBSAnowHsGWh5qCtLYZiGFUuhiow=' 'sha256-cATJ9692GL7X0pi4OqH1ynTKRA2fJBeexPiG6FDuV/A=' 'sha256-BoPA+60uQQVhCnkVLxNaaY8vu/kN1ecduvnDTJv7poE='; style-src-attr 'unsafe-hashes' 'sha256-q25xGWCplX+6q44658nXru9hogwcwtNxgcKp6PDTJ0M=' 'sha256-9JQv48uhBNeIRhk8pvpp1wtw0aw41rvUow5XSe+AVg8='; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self' 'sha256-YUMa7vtI0UJ7rBsC+ynjtKqh6WW0hZAkULQdjh9Jdx4=' 'sha256-4x9EAutg1PJOtBrxV04D7GJ3JkumOG8/bASwOnXJZHk='; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-Qzyq3K3M9yziTJWJTtGmVAEOkt4pGUEjQT0uJ0JOcXQ=' 'sha256-BztjUHUPbgdt8xam7TeWakoPLJPQ9gteTxvZU+M/Vpk=' 'sha256-O/v0qW6isKlIxz3tBSAnowHsGWh5qCtLYZiGFUuhiow=' 'unsafe-hashes' 'sha256-q25xGWCplX+6q44658nXru9hogwcwtNxgcKp6PDTJ0M=' 'sha256-9JQv48uhBNeIRhk8pvpp1wtw0aw41rvUow5XSe+AVg8=' 'sha256-cATJ9692GL7X0pi4OqH1ynTKRA2fJBeexPiG6FDuV/A=' 'sha256-BoPA+60uQQVhCnkVLxNaaY8vu/kN1ecduvnDTJv7poE='; style-src-elem 'self' 'sha256-Qzyq3K3M9yziTJWJTtGmVAEOkt4pGUEjQT0uJ0JOcXQ=' 'sha256-BztjUHUPbgdt8xam7TeWakoPLJPQ9gteTxvZU+M/Vpk=' 'sha256-O/v0qW6isKlIxz3tBSAnowHsGWh5qCtLYZiGFUuhiow=' 'sha256-cATJ9692GL7X0pi4OqH1ynTKRA2fJBeexPiG6FDuV/A=' 'sha256-BoPA+60uQQVhCnkVLxNaaY8vu/kN1ecduvnDTJv7poE='; style-src-attr 'unsafe-hashes' 'sha256-q25xGWCplX+6q44658nXru9hogwcwtNxgcKp6PDTJ0M=' 'sha256-9JQv48uhBNeIRhk8pvpp1wtw0aw41rvUow5XSe+AVg8='; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -648,8 +648,29 @@ body.contact-success-page .content-card > section:not(#kontakt-obrazac){
   var form = document.querySelector('.archive-contact-form');
   if (!form) return;
 
+  var inquiryType = form.querySelector('#vrsta-upita');
+  var identityConfirmation = form.querySelector('#potvrda-identiteta');
+  var privateAccessValue = 'Request for access to the private archive';
+
+  function updateIdentityRequirement() {
+    var isPrivateAccessRequest = inquiryType && inquiryType.value === privateAccessValue;
+    if (!identityConfirmation) return;
+
+    identityConfirmation.required = Boolean(isPrivateAccessRequest);
+    identityConfirmation.setAttribute('aria-required', isPrivateAccessRequest ? 'true' : 'false');
+
+    if (!isPrivateAccessRequest) {
+      identityConfirmation.setCustomValidity('');
+    }
+  }
+
+  if (inquiryType) {
+    inquiryType.addEventListener('change', updateIdentityRequirement);
+  }
+  updateIdentityRequirement();
+
   var textFields = form.querySelectorAll(
-    'input[type="text"][required], input[type="email"][required], textarea[required]'
+    'input[type="text"][required], input[type="email"][required], textarea[required], #potvrda-identiteta'
   );
 
   textFields.forEach(function (field) {
@@ -660,10 +681,16 @@ body.contact-success-page .content-card > section:not(#kontakt-obrazac){
 
   form.addEventListener('submit', function (event) {
     var firstInvalid = null;
+    updateIdentityRequirement();
 
     textFields.forEach(function (field) {
       var value = field.value.trim();
       field.value = value;
+
+      if (!field.required) {
+        field.setCustomValidity('');
+        return;
+      }
 
       if (!value) {
         field.setCustomValidity('This field is required and cannot contain only spaces.');
