@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-1jZ40ig1iiSoWR/smlXzMR59dtltOKtKXP/J2833xSs='; style-src-elem 'self' 'sha256-1jZ40ig1iiSoWR/smlXzMR59dtltOKtKXP/J2833xSs='; style-src-attr 'none'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data:; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://api-gateway.umami.dev; style-src 'self' 'sha256-blEKZ8h9SaNgLW7CqZx0c9uSoJBKU4C7KRStZsemGfA='; style-src-elem 'self' 'sha256-blEKZ8h9SaNgLW7CqZx0c9uSoJBKU4C7KRStZsemGfA='; style-src-attr 'none'; frame-src 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources."/>
@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://tandarajure-crypto.github.io/Tandara/filipovagrana-en.html">
 <meta property="og:title" content="Tandaras of Livno – Filip’s Branch">
 <meta property="og:description" content="Filip’s branch of the Tandara families of Livno: origin, genealogy and sources.">
-<meta property="og:image" content="https://tandarajure-crypto.github.io/Tandara/family-tree.png">
+<meta property="og:image" content="https://tandarajure-crypto.github.io/Tandara/family-tree-en.png">
 <meta property="og:type" content="website">
 <link rel="alternate" hreflang="hr" href="https://tandarajure-crypto.github.io/Tandara/filipovagrana.html">
 <link rel="alternate" hreflang="en" href="https://tandarajure-crypto.github.io/Tandara/filipovagrana-en.html">
@@ -18,7 +18,7 @@
 <title>Tandaras of Livno – Filip’s Branch</title>
 
 <script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
-<link href="style.css?v=6" rel="stylesheet"/>
+<link href="style.css?v=12" rel="stylesheet"/>
 
 <style>
 /* Clear separation between the individual families in Filip’s line */
@@ -218,6 +218,18 @@ body.en .branch-text-block > .filip-branch-subtitle {
   .branch-search-button{width:100%;box-sizing:border-box}
 }
 
+
+
+/* Preserve the former visual appearance of the Sources h4 after semantic correction to h3. */
+#data-sources > h3 {
+  display:block;
+  font-size:1em;
+  margin-block-start:1.33em;
+  margin-block-end:1.33em;
+  margin-inline-start:0;
+  margin-inline-end:0;
+  font-weight:bold;
+}
 </style>
 <link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
 <script crossorigin="anonymous" defer="" integrity="sha384-Gx6CMszQkCp3v7+F4UUo2gcR0xqAkP78PiIkB3+rXu45BL0FffX6Gdj0mfmTUTuQ" src="protected-access-modal.js?v=20260804"></script>
@@ -259,7 +271,7 @@ body.en .branch-text-block > .filip-branch-subtitle {
 </ul>
 <div class="author-photo">
 <a href="./autor-en.html">
-<img alt="Jure Tandara" src="./jure.png"/>
+<img alt="Jure Tandara" src="./jure.png" srcset="./jure.webp"/>
 </a>
 </div>
 
@@ -463,7 +475,7 @@ To prove this assumption, DNA samples from descendants of both Tandara branches 
 </section>
 
 <footer id="data-sources">
-<h4>Sources</h4>
+<h3>Sources</h3>
 <p>
 Milan Lažeta, <em>Rodoslovlje plemena Tandara</em>, Zagreb, 2012.<br/>
 Tomislav Perković, <em>Stanovništvo livanjskog polja u 18. i 19. stoljeću</em>.
