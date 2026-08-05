@@ -1245,3 +1245,81 @@ img, video, iframe{
     outline:3px solid #d4af37;
     outline-offset:2px;
 }
+
+/* Responsive embedded family-tree diagrams */
+.family-diagram-embed {
+    width:100%;
+    margin:30px 0;
+}
+
+.family-diagram-frame {
+    display:block;
+    width:100%;
+    height:clamp(700px, 82vh, 850px);
+    min-height:0;
+    border:1px solid #cccccc;
+    border-radius:12px;
+    background:#ffffff;
+}
+
+@media (max-width:700px) {
+    .family-diagram-embed {
+        margin:24px 0;
+    }
+
+    .family-diagram-frame {
+        height:clamp(560px, 72vh, 720px);
+        border-radius:9px;
+    }
+}
+
+@media (max-height:500px) and (orientation:landscape) {
+    .family-diagram-frame {
+        height:clamp(440px, 88vh, 620px);
+    }
+}
+
+/* ======================================================
+   POČETNE STRANICE: LIJEVI STUPAC + DESNI SADRŽAJ
+   Uvodni tekst ostaje isključivo ispod početne slike u
+   desnom stupcu. Lijevi stupac može rasti s FlagCounterom.
+====================================================== */
+.home-layout{
+    align-items:stretch;
+}
+
+.home-layout .left-menu{
+    position:relative;
+    top:auto;
+    height:auto;
+    min-height:100vh;
+    overflow:visible;
+}
+
+.right-column{
+    min-width:0;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.right-column .right-image{
+    flex:0 0 auto;
+    width:100%;
+}
+
+.right-column .home-intro{
+    flex:0 0 auto;
+    width:100%;
+}
+
+@media (max-width:900px){
+    .home-layout .left-menu{
+        min-height:0;
+    }
+
+    .right-column{
+        width:100%;
+    }
+}
+
