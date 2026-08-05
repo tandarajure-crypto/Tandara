@@ -1,7 +1,8 @@
 const map = L.map('ricice-map').setView([43.51347, 17.11103], 11);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap'
+  attribution: '&copy; OpenStreetMap',
+  referrerPolicy: 'no-referrer'
 }).addTo(map);
 
 L.marker([43.51347, 17.11103])

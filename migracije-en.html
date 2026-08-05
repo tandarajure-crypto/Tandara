@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-O9hgClvKfH5DldltGmuAsCfbBTxnV8ftOXoWTGUAYzo='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-QwS8or4XpEXMl4T6/Sri2/QK4ikmo03fCtc0OsO43YI='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
@@ -21,13 +21,13 @@
 <meta name="twitter:card" content="summary_large_image"/>
 
 
-<script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
+<script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a" data-domains="tandarajure-crypto.github.io" data-exclude-search="true" data-exclude-hash="true" data-do-not-track="true"></script>
 <!-- OPEN GRAPH -->
 
 <link rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin="anonymous"/>
+      crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link href="./style.css?v=14" rel="stylesheet"/>
 
 <link rel="stylesheet" href="assets/css/common/mobile-topbar-en.css?v=1">
@@ -74,8 +74,8 @@
 </a>
 </div>
 <div class="flagbox">
-<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"/>
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank" referrerpolicy="no-referrer">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/" referrerpolicy="no-referrer"/>
 </a>
 </div>
 </aside>
@@ -170,12 +170,13 @@ The second expansion of the Tandara family most likely moved toward the Tomislav
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 const map = L.map('ricice-map').setView([43.51347, 17.11103], 11);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap'
+    attribution: '&copy; OpenStreetMap',
+    referrerPolicy: 'no-referrer'
 }).addTo(map);
 
 // Ričice

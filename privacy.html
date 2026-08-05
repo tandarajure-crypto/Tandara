@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="en" href="https://tandarajure-crypto.github.io/Tandara/privacy.html">
 <link rel="alternate" hreflang="x-default" href="https://tandarajure-crypto.github.io/Tandara/privatnost.html">
 
-<script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a"></script>
+<script defer src="umami-tracker.js" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a" data-domains="tandarajure-crypto.github.io" data-exclude-search="true" data-exclude-hash="true" data-do-not-track="true"></script>
 <meta content="Privacy Policy | Digital Archive of the Tandara Family Line" property="og:title"/>
 <meta content="Privacy Policy of the Digital Archive of the Tandara Family Line." property="og:description"/>
 <meta content="https://tandarajure-crypto.github.io/Tandara/privacy.html" property="og:url"/>
@@ -61,8 +61,8 @@
 </div>
 
 <div class="flagbox">
-<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer">
-<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/"/>
+<a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" referrerpolicy="no-referrer">
+<img alt="Flag Counter" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_1/pageviews_0/flags_1/percent_0/" referrerpolicy="no-referrer"/>
 </a>
 </div>
 </aside>
@@ -89,11 +89,12 @@
 <p>The contact form uses the FormSubmit service to deliver submitted messages to the website administrator by e-mail.</p>
 <p>The form includes several anti-spam mechanisms, including CAPTCHA verification, a hidden honeypot field and blacklist protection against automated spam submissions.</p>
 <h2>6. Website Analytics</h2>
-<p>This website uses Umami for basic anonymous website statistics. Umami does not use cookies, track visitors across websites or collect personal data.</p>
-<p>The website also uses FlagCounter to display visitor statistics by country.</p>
+<p>This website uses Umami for basic website statistics without cookies and without tracking visitors across different websites. URL search parameters and hash fragments are excluded from analytics, and the browser's Do Not Track setting is respected.</p>
+<p>When receiving a request, the analytics server may technically process the IP address and standard connection data. The tracker does not send names, e-mail addresses, contact-form contents or genealogical records.</p>
+<p>The website also uses FlagCounter to display visitor statistics by country. Because the counter is loaded as an image from an external server, that server may receive the IP address, request time and browser information. Sending the current page address as a referrer is disabled.</p>
 <h2>7. Interactive Maps and External Sources</h2>
 <p>The migration pages use the Leaflet library delivered through unpkg.com and OpenStreetMap map tiles delivered through tile.openstreetmap.org. When those maps are opened, the visitor's browser connects directly to these external services.</p>
-<p>These services may receive technical information required to deliver the requested content, such as the IP address, request time, browser type, requested map tile and the address of the page from which the request was made. This website does not use that information to create personal profiles or connect it with genealogical records.</p>
+<p>These services may receive technical information required to deliver the requested content, such as the IP address, request time, browser type and requested map tile. Leaflet files and map-tile requests use a <em>no-referrer</em> policy, so the address of the current page is not sent with those requests. This website does not use that information to create personal profiles or connect it with genealogical records.</p>
 <h2>8. Cookies and Private Access</h2>
 <p>Umami analytics on the public website does not use cookies. The separate private portal uses a necessary security session solely for authentication, approval checks and protection of private content.</p>
 <h2>9. GitHub Pages Hosting</h2>
