@@ -750,31 +750,31 @@ margin:28px 0 10px 0;
 }
 
 .ricice-gallery{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:22px;
+    display:block;
+    width:100%;
     margin:26px 0 30px 0;
     max-width:100%;
     box-sizing:border-box;
 }
 
 .ricice-item{
-    margin:0;
+    display:block;
+    width:100%;
+    margin:0 0 26px 0;
     padding:0;
     min-width:0;
     box-sizing:border-box;
-    overflow:hidden; /* SPRJEČAVA PRELIJEVANJE */
 }
 
 .ricice-item img{
     display:block;
     width:100%;
-    height:auto;      /* ISPRAVAK — više ne probija okvir */
-    object-fit:cover;
+    height:auto;
     max-width:100%;
     border-radius:12px;
     border:1px solid rgba(80,60,35,0.25);
     box-shadow:0 3px 8px rgba(0,0,0,0.18);
+    box-sizing:border-box;
 }
 
 .ricice-item figcaption{
@@ -786,8 +786,9 @@ margin:28px 0 10px 0;
 }
 
 .ricice-video{
-    max-width:620px;
-    margin:8px auto 36px auto;
+    width:100%;
+    max-width:none;
+    margin:8px 0 36px 0;
     box-sizing:border-box;
 }
 
@@ -862,15 +863,6 @@ margin:28px 0 10px 0;
 
     .content-card{
         padding:28px 18px;
-    }
-
-    .ricice-gallery{
-        grid-template-columns:1fr;
-        gap:18px;
-    }
-
-    .ricice-item img{
-        height:auto;
     }
 }
 @media (max-width:600px){
