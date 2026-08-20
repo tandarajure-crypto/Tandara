@@ -98,7 +98,9 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
 .jure-diagram .diagram-tools{min-width:0}
 .jure-diagram .toolbar-scroll{min-width:0;overflow-x:auto;padding:1px 2px 3px;scrollbar-width:thin}
 .jure-diagram .diagram-toolbar{display:flex;align-items:center;gap:6px;width:max-content;min-width:max-content}
-.jure-diagram .search-wrap{display:flex;gap:6px;position:relative;margin-left:2px}
+.jure-diagram .search-wrap{display:grid;grid-template-columns:110px 155px 145px 145px auto;gap:6px;position:relative;margin-left:2px;align-items:center}
+.jure-diagram .search-wrap input{min-width:0}
+@media(max-width:760px){.jure-diagram .search-wrap{grid-template-columns:1fr 1fr}.jure-diagram .search-wrap button{grid-column:1/-1}}
 .jure-diagram #treeSearch{width:245px}
 .jure-diagram .search-results{position:fixed;left:10px;top:80px;width:min(550px,calc(100vw - 20px));max-height:min(420px,65vh);overflow:auto;background:#fff;border:1px solid #c9cec9;border-radius:11px;box-shadow:0 14px 36px rgba(0,0,0,.22);z-index:1000}
 .jure-diagram .search-results[hidden]{display:none}
@@ -261,7 +263,10 @@ body.box-mobile-split .content-card{--card-pad-x:42px;width:100%;max-width:none;
           <button id="zoomIn" type="button" aria-label="Povećaj prikaz">＋</button>
           <button id="zoomOut" type="button" aria-label="Smanji prikaz">−</button>
           <div class="search-wrap">
-            <input id="treeSearch" type="search" placeholder="Ime osobe + otac + majka" autocomplete="off" aria-controls="searchResults" aria-expanded="false" aria-label="Pretraži osobe u rodoslovnom stablu"/>
+            <input id="treeCode" type="search" placeholder="Šifra" autocomplete="off" aria-label="Točna šifra"/>
+            <input id="treeSearch" type="search" placeholder="Ime osobe" autocomplete="off" aria-controls="searchResults" aria-expanded="false" aria-label="Ime osobe"/>
+            <input id="treeFather" type="search" placeholder="Otac" autocomplete="off" aria-label="Ime oca"/>
+            <input id="treeMother" type="search" placeholder="Majka" autocomplete="off" aria-label="Ime majke"/>
             <button id="findBtn" type="button">Pronađi</button>
           </div>
         </div>
@@ -318,17 +323,17 @@ const FAMILY_META={
 };
 
 const SEARCH_ENTRIES=[
-  {type:'spouse',label:'Matija rođ. Lekić',hostCode:'1.0',familyIndex:0,extra:'supruga Jure Tandare'},
-  {type:'daughter',label:'Anđa',hostCode:'1.0',familyIndex:0,extra:'kći Jure Tandare i Matije Lekić'},
-  {type:'daughter',label:'Ana',hostCode:'1.0',familyIndex:0,extra:'kći Jure Tandare i Matije Lekić'},
-  {type:'spouse',label:'Boža rođ. Ćosić',hostCode:'1.1',familyIndex:0,extra:'supruga Frane Jurina'},
-  {type:'son',label:'Nikola',hostCode:'1.1.1',extra:'sin Frane Jurina i Bože Ćosić'}
+  {type:'spouse',code:'1.0-SP-01',label:'Matija rođ. Lekić',hostCode:'1.0',familyIndex:0,extra:'supruga Jure Tandare'},
+  {type:'daughter',code:'1.0-K1',label:'Anđa',hostCode:'1.0',familyIndex:0,extra:'kći Jure Tandare i Matije Lekić',father:'Jure Tandara',mother:'Matija rođ. Lekić'},
+  {type:'daughter',code:'1.0-K2',label:'Ana',hostCode:'1.0',familyIndex:0,extra:'kći Jure Tandare i Matije Lekić',father:'Jure Tandara',mother:'Matija rođ. Lekić'},
+  {type:'spouse',code:'1.1-SP-01',label:'Boža rođ. Ćosić',hostCode:'1.1',familyIndex:0,extra:'supruga Frane Jurina'},
+  {type:'son',code:'1.1-S1',label:'Nikola',hostCode:'1.1.1',extra:'sin Frane Jurina i Bože Ćosić',father:'Frane, Jurin sin',mother:'Boža rođ. Ćosić'}
 ];
 
 const PERSON_SEARCH_CONTEXT={
-  '1.0':{father:'Ivan Tandara',mother:''},
-  '1.1':{father:'Jure Tandara',mother:'Matija rođ. Lekić'},
-  '1.1.1':{father:'Frane, Jurin sin',mother:'Boža rođ. Ćosić'}
+  '1.0':{searchCode:'1.0',father:'Ivan Tandara',mother:''},
+  '1.1':{searchCode:'1.1',father:'Jure Tandara',mother:'Matija rođ. Lekić'},
+  '1.1.1':{searchCode:'1.1-S1',father:'Frane, Jurin sin',mother:'Boža rođ. Ćosić'}
 };
 
 const UI={notFound:'Nije pronađeno: ',codeLabel:'Šifra'};
@@ -338,7 +343,10 @@ const viewport=document.getElementById('viewport');
 const linksLayer=document.getElementById('links');
 const nodesLayer=document.getElementById('nodes');
 const details=document.getElementById('details');
+const searchCodeInput=document.getElementById('treeCode');
 const searchInput=document.getElementById('treeSearch');
+const searchFatherInput=document.getElementById('treeFather');
+const searchMotherInput=document.getElementById('treeMother');
 const searchPanel=document.getElementById('searchResults');
 const liveStatus=document.getElementById('liveStatus');
 
@@ -472,8 +480,9 @@ const target = Array.from(
 function normalize(value){return String(value||'').toLocaleLowerCase('hr').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim();}
 function levenshtein(a,b){const matrix=Array.from({length:b.length+1},(_,i)=>[i]);for(let j=0;j<=a.length;j++)matrix[0][j]=j;for(let i=1;i<=b.length;i++)for(let j=1;j<=a.length;j++)matrix[i][j]=b[i-1]===a[j-1]?matrix[i-1][j-1]:Math.min(matrix[i-1][j-1]+1,matrix[i][j-1]+1,matrix[i-1][j]+1);return matrix[b.length][a.length];}
 function searchScore(query,text){const q=normalize(query),t=normalize(text);if(!q||!t)return Infinity;if(q===t)return 0;if(t.startsWith(q))return .2;if(t.includes(q))return .4;const qWords=q.split(' '),tWords=t.split(' ');if(qWords.every(word=>tWords.some(candidate=>candidate===word||candidate.startsWith(word))))return 1;let best=Infinity;for(const candidate of tWords){const distance=levenshtein(q,candidate);if(distance<=Math.max(1,Math.floor(Math.max(q.length,candidate.length)*.28)))best=Math.min(best,2+distance);}return best;}
-function nodeEntries(){const entries=[];walk(DATA,node=>{const context=PERSON_SEARCH_CONTEXT[node.code]||{};entries.push({type:'node',label:node.label,hostCode:node.code,extra:[node.detail,context.father,context.mother].filter(Boolean).join(' '),father:context.father||'',mother:context.mother||''});});return entries;}
-function collectResults(query){return [...nodeEntries(),...SEARCH_ENTRIES].map(entry=>({...entry,score:searchScore(query,[entry.label,entry.extra].filter(Boolean).join(' '))})).filter(entry=>Number.isFinite(entry.score)).sort((a,b)=>a.score-b.score||a.label.localeCompare(b.label,'hr')).slice(0,20);}
+function nodeEntries(){const entries=[];walk(DATA,node=>{const context=PERSON_SEARCH_CONTEXT[node.code]||{};entries.push({type:'node',code:context.searchCode||node.code,label:node.label,hostCode:node.code,extra:[node.detail,context.father,context.mother,context.searchCode||node.code].filter(Boolean).join(' '),father:context.father||'',mother:context.mother||''});});return entries;}
+function fieldMatch(value,query){if(!query)return true;const h=normalize(value),q=normalize(query);return !q||h===q||h.startsWith(q)||h.includes(q);}
+function collectResults(criteria){const entries=[...nodeEntries(),...SEARCH_ENTRIES];if(criteria.code){const q=normalize(criteria.code);return entries.filter(entry=>normalize(entry.code||entry.hostCode)===q);}return entries.filter(entry=>fieldMatch(entry.label,criteria.name)&&fieldMatch(entry.father,criteria.father)&&fieldMatch(entry.mother,criteria.mother)).sort((a,b)=>a.label.localeCompare(b.label,'hr')).slice(0,80);}
 function closeSearchResults(){searchPanel.hidden=true;document.getElementById('searchResultItems').innerHTML='';searchInput.setAttribute('aria-expanded','false');}
 function focusResult(result){
   closeSearchResults();const node=findNode(result.hostCode);if(!node)return;expandAncestors(node.code);selectedCode=node.code;matchCode=node.code;render();centerNode(node.code);
@@ -485,10 +494,10 @@ function focusResult(result){
 function positionSearchResults(){if(searchPanel.hidden)return;const margin=10,width=Math.min(550,window.innerWidth-margin*2),rect=searchInput.getBoundingClientRect();let left=Math.max(margin,Math.min(rect.right-width,window.innerWidth-width-margin)),top=rect.bottom+8,maxHeight=Math.min(420,window.innerHeight-top-margin);if(maxHeight<180&&rect.top>210){top=margin;maxHeight=Math.max(180,rect.top-margin);}searchPanel.style.left=left+'px';searchPanel.style.top=top+'px';searchPanel.style.width=width+'px';searchPanel.style.maxHeight=maxHeight+'px';}
 function showSearchResults(results,query){
   const items=document.getElementById('searchResultItems');document.getElementById('searchResultsTitle').textContent=results.length?'Odaberite rezultat · pronađeno '+results.length:'Nema rezultata';
-  items.innerHTML=results.length?results.map((result,index)=>`<button class="search-result-item" type="button" data-result-index="${index}"><span class="search-result-label">${esc(result.label)}</span><span class="search-result-meta">${result.type==='node'?'Numerirana osoba · šifra '+esc(result.hostCode):esc(result.extra)}</span>${result.type!=='node'?`<span class="search-result-family">Obiteljski zapis ${esc(result.hostCode)}</span>`:''}</button>`).join(''):`<div class="search-result-item"><span class="search-result-meta">Nije pronađeno: ${esc(query)}. Pokušajte upisati dio imena, prezimena ili šifru.</span></div>`;
+  items.innerHTML=results.length?results.map((result,index)=>`<button class="search-result-item" type="button" data-result-index="${index}"><span class="search-result-label">${esc(result.label)}</span><span class="search-result-meta">Šifra: ${esc(result.code||result.hostCode)} · Otac: ${esc(result.father||'nepoznato')} · Majka: ${esc(result.mother||'nepoznato')}</span></button>`).join(''):`<div class="search-result-item"><span class="search-result-meta">Nije pronađeno: ${esc(query)}. Pokušajte upisati dio imena, prezimena ili šifru.</span></div>`;
   searchPanel.hidden=false;searchInput.setAttribute('aria-expanded','true');positionSearchResults();items.querySelectorAll('[data-result-index]').forEach(button=>button.addEventListener('click',()=>focusResult(results[Number(button.dataset.resultIndex)])));
 }
-function searchTree(){const raw=searchInput.value.trim();closeSearchResults();if(!raw)return;const query=raw.split(/\s+/).filter(part=>normalize(part)!=='tandara').join(' ');if(!query){showSearchResults([],raw);return;}const exact=findNode(query);if(exact){focusResult({type:'node',label:exact.label,hostCode:exact.code});return;}showSearchResults(collectResults(query),raw);}
+function searchTree(){const criteria={code:searchCodeInput.value.trim(),name:searchInput.value.trim(),father:searchFatherInput.value.trim(),mother:searchMotherInput.value.trim()};closeSearchResults();if(!criteria.code&&!criteria.name&&!criteria.father&&!criteria.mother)return;const results=collectResults(criteria);if(results.length===1){focusResult(results[0]);return;}if(!results.length){showSearchResults([],'Nije pronađena osoba koja odgovara kriterijima.');return;}showSearchResults(results,criteria.name||criteria.code);}
 
 function toggleFullscreen(){
   if(!document.fullscreenElement){diagram.requestFullscreen().catch(()=>{});}else document.exitFullscreen();
@@ -503,7 +512,7 @@ document.getElementById('fit').onclick=fitTree;
 document.getElementById('zoomIn').onclick=()=>zoomAt(1.22,svg.clientWidth/2,svg.clientHeight/2);
 document.getElementById('zoomOut').onclick=()=>zoomAt(.82,svg.clientWidth/2,svg.clientHeight/2);
 document.getElementById('findBtn').onclick=searchTree;
-searchInput.addEventListener('keydown',event=>{if(event.key==='Enter')searchTree();if(event.key==='Escape')closeSearchResults();});
+[searchCodeInput,searchInput,searchFatherInput,searchMotherInput].forEach(input=>input.addEventListener('keydown',event=>{if(event.key==='Enter')searchTree();if(event.key==='Escape')closeSearchResults();}));
 document.getElementById('searchResultsClose').onclick=closeSearchResults;
 document.getElementById('closeDetails').onclick=()=>details.classList.remove('open');
 document.getElementById('printDiagram').onclick=()=>window.print();
