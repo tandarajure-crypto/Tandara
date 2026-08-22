@@ -123,58 +123,6 @@
   }
   ensureLanguageFlags();
 
-  // If this MASTER page is opened directly (for example box3a–box3h),
-  // build the ONE standard left column around the diagram. If it is inside
-  // an iframe (box1/box2/Filip), the outer page already owns that column.
-  function ensureStandaloneLeftColumn() {
-    let embedded = false;
-    try { embedded = window.self !== window.top; } catch (_error) { embedded = true; }
-    if (embedded || document.querySelector('.left-menu')) return;
-
-    const shell = document.querySelector('.diagram-shell');
-    if (!shell || !shell.parentNode) return;
-
-    document.body.classList.add('diagram-standalone-host');
-    const layout = document.createElement('div');
-    layout.className = 'diagram-standalone-layout';
-    const aside = document.createElement('aside');
-    aside.className = 'left-menu diagram-standalone-left';
-
-    const hrHref = document.body.dataset.hrHref || (LANG === 'en' ? window.location.pathname.split('/').pop().replace(/-en\.html$/i, '.html') : window.location.pathname.split('/').pop());
-    const enHref = document.body.dataset.enHref || (LANG === 'en' ? window.location.pathname.split('/').pop() : window.location.pathname.split('/').pop().replace(/\.html$/i, '-en.html'));
-    const homeHref = LANG === 'en' ? 'index-en.html' : 'index.html';
-    const authorHref = LANG === 'en' ? 'autor-en.html' : 'autor-hr.html';
-    const menu = LANG === 'en' ? [
-      ['About the author and project','autor-en.html'],['Surname origin','podrijetlo-en.html'],['Family genealogy','rodoslovlje-en.html'],
-      ['Migration and distribution','migracije-en.html'],['Interesting facts','zanimljivosti-en.html'],['Contact and cooperation','contacts.html'],
-      ['Guestbook','knjiga-poruka.html'],['Privacy policy','privacy.html']
-    ] : [
-      ['O autoru i projektu','autor-hr.html'],['Podrijetlo prezimena','podrijetlo-hr.html'],['Rodoslovlje roda','rodoslovlje-hr.html'],
-      ['Migracije i rasprostranjenost','migracije-hr.html'],['Zanimljivosti','zanimljivosti.html'],['Kontakt i suradnja','kontakti.html'],
-      ['Knjiga poruka','knjiga-poruka.html'],['Politika privatnosti','privatnost.html']
-    ];
-    const menuHtml = menu.map(item => `<li><span>🌳</span><a href="${item[1]}">${item[0]}</a></li>`).join('');
-    aside.innerHTML = `
-      <div class="standalone-top-row">
-        <a class="standalone-lang ${LANG === 'hr' ? 'active' : ''}" href="${hrHref}" title="Hrvatski"><img src="flag-hr.png" alt="HR"></a>
-        <a aria-label="Home" class="home-button standalone-home" href="${homeHref}"><span class="home-circle"><svg aria-hidden="true" class="home-svg" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg></span></a>
-        <a class="standalone-lang ${LANG === 'en' ? 'active' : ''}" href="${enHref}" title="English"><img src="flag-uk.png" alt="EN"></a>
-      </div>
-      <h2>TANDARA-PREZIME</h2>
-      <ul class="heritage-menu">${menuHtml}</ul>
-      <div class="author-photo"><a href="${authorHref}"><img alt="Jure Tandara" src="jure.png"></a></div>
-      <div class="flagbox"><span class="visitor-title">${LANG === 'en' ? 'Visitors' : 'Posjetitelji'}</span><a href="https://info.flagcounter.com/OyvA" referrerpolicy="no-referrer" rel="noopener noreferrer" target="_blank"><img alt="Flag Counter" referrerpolicy="no-referrer" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"></a></div>`;
-
-    shell.parentNode.insertBefore(layout, shell);
-    layout.appendChild(aside);
-    layout.appendChild(shell);
-
-    // Old direct counter belonged to the diagram area. Remove it there:
-    // the one and only counter now lives in the detached left column.
-    document.querySelectorAll('.direct-flagcounter').forEach(node => node.remove());
-  }
-  ensureStandaloneLeftColumn();
-
   const MIN_SCALE = 0.015;
 
   // Shared TANDARA geometry: parent on the left, next generation on the right.
