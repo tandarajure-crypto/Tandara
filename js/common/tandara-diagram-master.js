@@ -846,7 +846,7 @@
   function setDepth(maxDepth) {
     expanded.clear();
     for (const [code, depth] of depths) {
-      if (depth < maxDepth && hasFamily(code)) expanded.add(code);
+      if (depth < Math.max(0, maxDepth - 1) && hasFamily(code)) expanded.add(code);
     }
     render();
     requestAnimationFrame(fit);
@@ -1019,6 +1019,5 @@
     requestAnimationFrame(fit);
   });
 
-  render();
-  requestAnimationFrame(fit);
+  setDepth(3);
 })();
