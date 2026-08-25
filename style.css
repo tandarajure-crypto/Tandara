@@ -750,31 +750,31 @@ margin:28px 0 10px 0;
 }
 
 .ricice-gallery{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:22px;
+    display:block;
+    width:100%;
     margin:26px 0 30px 0;
     max-width:100%;
     box-sizing:border-box;
 }
 
 .ricice-item{
-    margin:0;
+    display:block;
+    width:100%;
+    margin:0 0 26px 0;
     padding:0;
     min-width:0;
     box-sizing:border-box;
-    overflow:hidden; /* SPRJEČAVA PRELIJEVANJE */
 }
 
 .ricice-item img{
     display:block;
     width:100%;
-    height:auto;      /* ISPRAVAK — više ne probija okvir */
-    object-fit:cover;
+    height:auto;
     max-width:100%;
     border-radius:12px;
     border:1px solid rgba(80,60,35,0.25);
     box-shadow:0 3px 8px rgba(0,0,0,0.18);
+    box-sizing:border-box;
 }
 
 .ricice-item figcaption{
@@ -786,8 +786,9 @@ margin:28px 0 10px 0;
 }
 
 .ricice-video{
-    max-width:620px;
-    margin:8px auto 36px auto;
+    width:100%;
+    max-width:none;
+    margin:8px 0 36px 0;
     box-sizing:border-box;
 }
 
@@ -862,15 +863,6 @@ margin:28px 0 10px 0;
 
     .content-card{
         padding:28px 18px;
-    }
-
-    .ricice-gallery{
-        grid-template-columns:1fr;
-        gap:18px;
-    }
-
-    .ricice-item img{
-        height:auto;
     }
 }
 @media (max-width:600px){
@@ -1322,26 +1314,112 @@ img, video, iframe{
         width:100%;
     }
 }
-/* Filipov dijagram: poravnanje s razdjelnicom lijevog stupca i desnim rubom. */
-@media (min-width:1101px){
-    body.hr .filip-tree-embed,
-    body.en .filip-tree-embed{
-        width:auto !important;
-        max-width:none !important;
-        margin-left:-68px !important;
-        margin-right:-52px !important;
-    }
+
+/* ======================================================
+   MIGRACIJE — RIČICE: fotografije i video ispod karte
+   Svaki medij ide punom širinom sadržaja; visina ostaje
+   u izvornom omjeru i automatski se prilagođava širini.
+====================================================== */
+.migracije-ricice-media{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+    margin:30px 0 34px;
 }
 
-@media (min-width:901px) and (max-width:1100px){
-    body.hr .filip-tree-embed,
-    body.en .filip-tree-embed{
-        width:auto !important;
-        max-width:none !important;
-        margin-left:-60px !important;
-        margin-right:-52px !important;
-    }
+.migracije-ricice-gallery{
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* TANDARA TRAJNO PRAVILO — FlagCounter već ima vlastiti naslov. */
-.flag-title, .visitor-title { display:none !important; }
+.migracije-ricice-item{
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin:0 0 30px;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.migracije-ricice-item img,
+.migracije-ricice-item video{
+    display:block;
+    width:100%;
+    max-width:100%;
+    height:auto;
+    margin:0;
+    object-fit:contain;
+    box-sizing:border-box;
+}
+
+.migracije-ricice-item figcaption{
+    margin:9px 0 0;
+    padding:0 8px;
+    font-size:16px;
+    line-height:1.4;
+    text-align:center;
+    color:#4a3b2a;
+}
+
+.migracije-ricice-video-item{
+    margin-bottom:8px;
+}
+
+/* Zanimljivosti — Australija: naziv Tandara */
+.australia-tandara-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:22px;
+    width:100%;
+    max-width:100%;
+    margin:22px 0 30px;
+    padding:0;
+    box-sizing:border-box;
+}
+.australia-tandara-item{
+    margin:0;
+    padding:0;
+    min-width:0;
+    box-sizing:border-box;
+}
+.australia-tandara-image{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    aspect-ratio:4 / 3;
+    overflow:hidden;
+    box-sizing:border-box;
+    border-radius:12px;
+    border:1px solid rgba(80,60,35,0.25);
+    background:#f5f3ef;
+    box-shadow:0 3px 8px rgba(0,0,0,0.18);
+}
+.australia-tandara-image img{
+    display:block;
+    width:100%;
+    height:100%;
+    max-width:100%;
+    object-fit:contain;
+    box-sizing:border-box;
+}
+.australia-tandara-item figcaption{
+    margin-top:8px;
+    min-height:2.7em;
+    font-size:16px;
+    line-height:1.35;
+    text-align:center;
+    color:#4a3b2a;
+}
+.australia-tandara-summary{
+    margin-top:24px;
+}
+@media (max-width:700px){
+    .australia-tandara-gallery{
+        grid-template-columns:1fr;
+    }
+}
