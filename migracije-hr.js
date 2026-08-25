@@ -8,7 +8,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.marker([43.51347, 17.11103])
   .addTo(map)
   .bindPopup('Ričice')
-  .openPopup();
+  .bindTooltip('Ričice', {
+    permanent: true,
+    direction: 'bottom',
+    offset: [0, 12],
+    opacity: 0.95
+  });
 
 L.marker([43.543333, 17.125556])
   .addTo(map)
