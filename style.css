@@ -1423,3 +1423,56 @@ img, video, iframe{
         grid-template-columns:1fr;
     }
 }
+
+
+/* ======================================================
+   SADRZAJNE SLIKE — CIJELA SLIKA U OKVIRU
+   Slike se ne povecavaju nepotrebno i ne rezu se rubovi.
+====================================================== */
+
+.content-card .australia-tandara-image img{
+    display:block !important;
+    width:auto !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    margin:auto !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+}
+
+.content-card .ricice-item,
+.content-card .migracije-ricice-item{
+    text-align:center;
+}
+
+.content-card .ricice-item img,
+.content-card .migracije-ricice-item img{
+    display:block !important;
+    width:auto !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:640px !important;
+    margin:0 auto !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+}
+
+.content-card .ricice-video img{
+    display:block !important;
+    width:auto !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:640px !important;
+    margin:0 auto !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+}
+
+@media (max-width:700px){
+    .content-card .ricice-item img,
+    .content-card .migracije-ricice-item img,
+    .content-card .ricice-video img{
+        max-height:72vh !important;
+    }
+}
