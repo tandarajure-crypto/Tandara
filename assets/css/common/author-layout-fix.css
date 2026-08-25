@@ -151,13 +151,9 @@ div {
 
 .author-books-gallery .australia-tandara-image img {
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  object-position: center center;
 }
 
 .author-books-gallery .australia-tandara-item figcaption {
@@ -200,4 +196,24 @@ div {
   .author-books-gallery .australia-tandara-item figcaption {
     font-size: 9px;
   }
+}
+
+
+/* Završno usklađenje naslovnica knjiga — tri jednake u jednom redu. */
+.author-books-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: space-between;
+  width: 100%;
+}
+.author-books-gallery .australia-tandara-item {
+  width: 100%;
+}
+.author-books-gallery .australia-tandara-image {
+  width: min(100%, 230px);
+  aspect-ratio: 376 / 404;
+}
+.author-books-gallery .australia-tandara-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
