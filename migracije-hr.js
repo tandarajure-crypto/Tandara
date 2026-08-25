@@ -68,3 +68,84 @@ const croatiaMarkers = [
 
 const croatiaGroup = L.featureGroup(croatiaMarkers).addTo(croatiaMap);
 croatiaMap.fitBounds(croatiaGroup.getBounds().pad(0.08));
+
+// OpenStreetMap 3 — hrvatski rod Tandara izvan Hrvatske.
+// Brojevi su radno stanje iz trenutno dostupnih rodoslovnih HTML podataka.
+// Ako izvor ne dopušta pouzdano brojanje, popup to izričito navodi.
+const worldMap = L.map('tandara-world-map').setView([45.0, 12.0], 3);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap',
+  referrerPolicy: 'no-referrer'
+}).addTo(worldMap);
+
+const worldMarkers = [
+  // Bosna i Hercegovina
+  L.marker([43.543333, 17.125556]).bindPopup(
+    '<b>Tandare, Zavelim — BiH</b><br>2 evidentirane obiteljske jedinice; najmanje 5 izričito lociranih članova.'
+  ),
+  L.marker([43.4728, 17.3262]).bindPopup(
+    '<b>Posušje — BiH</b><br>2 evidentirane obitelji + 1 zasebno locirani član; najmanje 3 izričito locirane osobe. Potpuni broj nije utvrđen.'
+  ),
+  L.marker([43.8563, 18.4131]).bindPopup(
+    '<b>Sarajevo — BiH</b><br>2 evidentirane obiteljske jedinice; 6 imenovanih članova u dostupnim zapisima.'
+  ),
+  L.marker([43.8249858, 17.0076892]).bindPopup(
+    '<b>Livno — BiH</b><br>U podacima je potvrđeno da potomci roda danas žive na području Livna; broj obitelji i članova nije utvrđen.'
+  ),
+
+  // Slovenija
+  L.marker([46.3592, 15.1103]).bindPopup(
+    '<b>Velenje — Slovenija</b><br>2 evidentirane obitelji; 8 imenovanih članova u dostupnim zapisima.'
+  ),
+
+  // Njemačka — točne lokacije
+  L.marker([48.1351, 11.5820]).bindPopup(
+    '<b>München — Njemačka</b><br>1 obitelj; 2 člana izričito locirana u Münchenu.'
+  ),
+  L.marker([52.5200, 13.4050]).bindPopup(
+    '<b>Berlin — Njemačka</b><br>1 izričito locirani član roda.'
+  ),
+  L.marker([52.0302, 8.5325]).bindPopup(
+    '<b>Bielefeld — Njemačka</b><br>2 evidentirane obitelji; 7 imenovanih članova u dostupnim zapisima.'
+  ),
+
+  // Njemačka — mjesto u državi nije navedeno
+  L.marker([51.1657, 10.4515]).bindPopup(
+    '<b>Njemačka — lokacija nije navedena</b><br>6 evidentiranih obitelji + 1 zasebno navedeni član; 25 imenovanih osoba. U tekstu se spominju i dodatne grane u Njemačkoj bez dovoljno podataka za pouzdano brojanje.'
+  ),
+
+  // Austrija
+  L.marker([48.2082, 16.3738]).bindPopup(
+    '<b>Beč — Austrija</b><br>1 evidentirana obitelj + 1 zasebno locirani član; ukupno 5 imenovanih osoba.'
+  ),
+  L.marker([47.5162, 14.5501]).bindPopup(
+    '<b>Austrija — dodatna lokacija nije navedena</b><br>U rodoslovnom tekstu navedena je najmanje 1 dodatna grana u Austriji; broj članova nije utvrđen.'
+  ),
+
+  // Ostala Europa
+  L.marker([46.8182, 8.2275]).bindPopup(
+    '<b>Švicarska — lokacija nije navedena</b><br>1 evidentirana obitelj; 4 imenovana člana.'
+  ),
+  L.marker([51.9194, 19.1451]).bindPopup(
+    '<b>Poljska — lokacija nije navedena</b><br>1 izričito navedeni član roda (Nikola Tandara).'
+  ),
+  L.marker([51.5074, -0.1278]).bindPopup(
+    '<b>London — Ujedinjeno Kraljevstvo</b><br>1 evidentirana obitelj; 4 imenovana člana.'
+  ),
+
+  // Prekomorske države
+  L.marker([56.1304, -106.3468]).bindPopup(
+    '<b>Kanada — lokacija nije navedena</b><br>1 evidentirana obitelj; 4 imenovana člana.'
+  ),
+  L.marker([39.8283, -98.5795]).bindPopup(
+    '<b>Sjedinjene Američke Države — lokacija nije navedena</b><br>1 evidentirana obitelj; 4 imenovana člana.'
+  ),
+  L.marker([-25.2744, 133.7751]).bindPopup(
+    '<b>Australija — lokacija nije navedena</b><br>Australija je navedena kao odredište iseljavanja hrvatskog roda Tandara; broj obitelji i članova u dostupnim HTML podacima nije utvrđen.'
+  )
+];
+
+const worldGroup = L.featureGroup(worldMarkers).addTo(worldMap);
+worldMap.fitBounds(worldGroup.getBounds().pad(0.10));
+

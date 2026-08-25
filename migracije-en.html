@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-lFuZw3OwXK5p2KFTsfVCpqumCVT1OvPMabk7TL8y9nw=' 'sha256-5n1yC2wWBcmMdC/Ft70THM+eiwKQC/alq33WAuWKSFg='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-jaeIQuBw/oRwiyaHs3Bo+KBWBa7ALf2L3W3S8cDUkMA=' 'sha256-5n1yC2wWBcmMdC/Ft70THM+eiwKQC/alq33WAuWKSFg='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
@@ -224,6 +224,30 @@ The second expansion of the Tandara family most likely moved toward the Tomislav
 
 <p>According to the data currently available to the project for <strong>2026</strong>, Croatia alone has <strong>more than 105 Tandara families with more than 330 members</strong>. At the same time, it is estimated that <strong>approximately the same number of Tandaras now live outside Croatia as within Croatia</strong>. This estimate includes descendants and family branches dispersed across several countries and should be understood as a working estimate, since equally complete and comparable official data are not available for every country.</p>
 
+
+<section aria-labelledby="osm3-en-title">
+<h3 id="osm3-en-title">OpenStreetMap 3: Present-Day Distribution of the Tandara Family Outside Croatia</h3>
+<p>
+This map shows only locations and countries explicitly mentioned in the currently available genealogical HTML
+records for the <strong>Croatian Tandara family line</strong>. Where a town or village is known, the marker is
+placed at that location. Where only the country is known, the marker is placed approximately at the country's
+geographical centre.
+</p>
+<p>
+The figures shown in the marker pop-ups are not an official population census. They represent a
+<strong>working snapshot derived from the genealogical data currently collected by the project</strong>.
+Where the available records do not support a reliable number of families or members, the pop-up states that
+the number is undetermined rather than inventing an estimate.
+</p>
+<p>
+<strong>Romanian and Slovak bearers of the name Tandara are not included on this map</strong>, because the
+research completed so far has not confirmed a common genealogical origin with the Croatian Tandara family.
+Likewise, Australian place names, hotels and other unrelated uses of the name “Tandara” are excluded; the
+Australian marker refers only to Australia as a recorded destination of emigrants from the Croatian family line.
+</p>
+<div id="tandara-world-map" aria-label="Map of the present-day distribution of the Croatian Tandara family outside Croatia"></div>
+</section>
+
 <p>These figures describe more than demographic growth. They reveal <strong>the migration path of a family line across three centuries</strong>: from one three-member household in Netrub, through gradual expansion within Croatia, to present-day generations living in different countries and on different continents. Each new location on that map represents another family story, another branch and a continuation of the same shared root.</p>
 
 <p><strong>From three members of a single family in 1725 to several hundred descendants three centuries later — this continuity and geographical spread show how profoundly migration has shaped the Tandara family as it exists today.</strong></p>
@@ -314,6 +338,72 @@ const croatiaMarkers = [
 
 const croatiaGroup = L.featureGroup(croatiaMarkers).addTo(croatiaMap);
 croatiaMap.fitBounds(croatiaGroup.getBounds().pad(0.08));
+
+// OpenStreetMap 3 — Croatian Tandara family outside Croatia.
+// Figures are a working snapshot from the currently available genealogical HTML records.
+const worldMap = L.map('tandara-world-map').setView([45.0, 12.0], 3);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap',
+  referrerPolicy: 'no-referrer'
+}).addTo(worldMap);
+
+const worldMarkers = [
+  L.marker([43.543333, 17.125556]).bindPopup(
+    '<b>Tandare, Zavelim — Bosnia and Herzegovina</b><br>2 recorded family units; at least 5 members explicitly located here.'
+  ),
+  L.marker([43.4728, 17.3262]).bindPopup(
+    '<b>Posušje — Bosnia and Herzegovina</b><br>2 recorded families + 1 separately located member; at least 3 people explicitly located. The complete number is undetermined.'
+  ),
+  L.marker([43.8563, 18.4131]).bindPopup(
+    '<b>Sarajevo — Bosnia and Herzegovina</b><br>2 recorded family units; 6 named members in the available records.'
+  ),
+  L.marker([43.8249858, 17.0076892]).bindPopup(
+    '<b>Livno — Bosnia and Herzegovina</b><br>The records confirm that descendants live in the Livno area today; the number of families and members is undetermined.'
+  ),
+  L.marker([46.3592, 15.1103]).bindPopup(
+    '<b>Velenje — Slovenia</b><br>2 recorded families; 8 named members in the available records.'
+  ),
+  L.marker([48.1351, 11.5820]).bindPopup(
+    '<b>Munich — Germany</b><br>1 family; 2 members explicitly located in Munich.'
+  ),
+  L.marker([52.5200, 13.4050]).bindPopup(
+    '<b>Berlin — Germany</b><br>1 explicitly located member of the family line.'
+  ),
+  L.marker([52.0302, 8.5325]).bindPopup(
+    '<b>Bielefeld — Germany</b><br>2 recorded families; 7 named members in the available records.'
+  ),
+  L.marker([51.1657, 10.4515]).bindPopup(
+    '<b>Germany — exact location not stated</b><br>6 recorded families + 1 separately mentioned member; 25 named people. Additional German branches are mentioned without enough detail for reliable counting.'
+  ),
+  L.marker([48.2082, 16.3738]).bindPopup(
+    '<b>Vienna — Austria</b><br>1 recorded family + 1 separately located member; 5 named people in total.'
+  ),
+  L.marker([47.5162, 14.5501]).bindPopup(
+    '<b>Austria — additional location not stated</b><br>At least 1 additional branch is mentioned in Austria; the number of members is undetermined.'
+  ),
+  L.marker([46.8182, 8.2275]).bindPopup(
+    '<b>Switzerland — exact location not stated</b><br>1 recorded family; 4 named members.'
+  ),
+  L.marker([51.9194, 19.1451]).bindPopup(
+    '<b>Poland — exact location not stated</b><br>1 explicitly mentioned member of the family line (Nikola Tandara).'
+  ),
+  L.marker([51.5074, -0.1278]).bindPopup(
+    '<b>London — United Kingdom</b><br>1 recorded family; 4 named members.'
+  ),
+  L.marker([56.1304, -106.3468]).bindPopup(
+    '<b>Canada — exact location not stated</b><br>1 recorded family; 4 named members.'
+  ),
+  L.marker([39.8283, -98.5795]).bindPopup(
+    '<b>United States — exact location not stated</b><br>1 recorded family; 4 named members.'
+  ),
+  L.marker([-25.2744, 133.7751]).bindPopup(
+    '<b>Australia — exact location not stated</b><br>Australia is recorded as a destination of emigrants from the Croatian Tandara family line; the number of families and members is undetermined in the available HTML records.'
+  )
+];
+
+const worldGroup = L.featureGroup(worldMarkers).addTo(worldMap);
+worldMap.fitBounds(worldGroup.getBounds().pad(0.10));
 
 </script>
 </body>
