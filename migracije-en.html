@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-p3IbN1M1231Fceg1kEr6+kKjxr/KvVGTZEadkLw2mYI=' 'sha256-NzrDxQRxmTfZQTtJpGTkW0slsY4ZQB0Daw0OWJUBdM0='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-p3IbN1M1231Fceg1kEr6+kKjxr/KvVGTZEadkLw2mYI=' 'sha256-5n1yC2wWBcmMdC/Ft70THM+eiwKQC/alq33WAuWKSFg='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
@@ -22,7 +22,7 @@
 <script data-do-not-track="true" data-domains="tandarajure-crypto.github.io" data-exclude-hash="true" data-exclude-search="true" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a" defer="" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" src="umami-tracker.js"></script>
 <!-- OPEN GRAPH -->
 <link crossorigin="anonymous" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" referrerpolicy="no-referrer" rel="stylesheet"/>
-<link href="./style.css?v=17" rel="stylesheet"/>
+<link href="./style.css?v=18" rel="stylesheet"/>
 <link href="assets/css/common/mobile-topbar-en.css?v=1" rel="stylesheet"/>
 <link href="assets/css/common/mobile-split-en.css?v=1" rel="stylesheet"/>
 <link href="./mobile-subpages-fullscreen.css?v=2" rel="stylesheet">
@@ -215,6 +215,13 @@ The second expansion of the Tandara family most likely moved toward the Tomislav
 </tbody>
 </table>
 
+
+<section aria-labelledby="osm2-en-title">
+<h3 id="osm2-en-title">OpenStreetMap 2: Distribution of Tandara Families in Croatia, 2008</h3>
+<p>Click a place marker. The figures in parentheses show the number of families and family members recorded in the 2008 table.</p>
+<div id="tandara-croatia-map" aria-label="Map of the distribution of Tandara families in Croatia in 2008"></div>
+</section>
+
 <p>According to the data currently available to the project for <strong>2026</strong>, Croatia alone has <strong>more than 105 Tandara families with more than 330 members</strong>. At the same time, it is estimated that <strong>approximately the same number of Tandaras now live outside Croatia as within Croatia</strong>. This estimate includes descendants and family branches dispersed across several countries and should be understood as a working estimate, since equally complete and comparable official data are not available for every country.</p>
 
 <p>These figures describe more than demographic growth. They reveal <strong>the migration path of a family line across three centuries</strong>: from one three-member household in Netrub, through gradual expansion within Croatia, to present-day generations living in different countries and on different continents. Each new location on that map represents another family story, another branch and a continuation of the same shared root.</p>
@@ -256,6 +263,53 @@ L.marker([43.543333, 17.125556])
 L.marker([43.8249858, 17.0076892])
     .addTo(map)
     .bindPopup('<b>Livno</b><br>Historic migration destination');
+
+// OpenStreetMap 2 — Tandara families in Croatia according to the 2008 table
+const croatiaMap = L.map('tandara-croatia-map').setView([45.25, 16.65], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap',
+    referrerPolicy: 'no-referrer'
+}).addTo(croatiaMap);
+
+const croatiaMarkers = [
+    L.marker([45.39806, 17.92583]).bindPopup('Bektež near Kutjevo (2 families, 3 members)'),
+    L.marker([45.89864, 16.84892]).bindPopup('Bjelovar (5 families, 13 members)'),
+    L.marker([46.20694, 16.91694]).bindPopup('Drnje (1 family, 2 members)'),
+    L.marker([45.80583, 16.24417]).bindPopup('Dugo Selo (1 family, 2 members)'),
+    L.marker([45.30833, 18.41056]).bindPopup('Đakovo (7 families, 22 members)'),
+    L.marker([44.13598, 15.63423]).bindPopup('Gornji Karin near Obrovac (1 family, 1 member)'),
+    L.marker([43.44667, 17.21667]).bindPopup('Imotski (1 family, 3 members)'),
+    L.marker([46.22306, 16.12028]).bindPopup('Ivanec (1 family, 3 members)'),
+    L.marker([43.51420, 16.51470]).bindPopup('Kamen near Split (1 family, 3 members)'),
+    L.marker([43.55357, 16.34831]).bindPopup('Kaštel Stari (2 families, 5 members)'),
+    L.marker([45.91837, 16.78667]).bindPopup('Klokočevac (3 families, 11 members)'),
+    L.marker([45.81484, 16.26053]).bindPopup('Kozinščak near Dugo Selo (1 family, 5 members)'),
+    L.marker([46.02194, 16.54250]).bindPopup('Križevci (1 family, 4 members)'),
+    L.marker([45.42611, 17.88222]).bindPopup('Kutjevo (2 families, 7 members)'),
+    L.marker([45.33250, 18.84111]).bindPopup('Nuštar (1 family, 1 member)'),
+    L.marker([43.48668, 16.55013]).bindPopup('Podstrana (3 families, 11 members)'),
+    L.marker([45.93583, 16.78333]).bindPopup('Predavac (9 families, 25 members)'),
+    L.marker([45.02083, 14.62889]).bindPopup('Punat (1 family, 2 members)'),
+    L.marker([43.51347, 17.11103]).bindPopup('Ričice (8 families, 35 members)'),
+    L.marker([45.32706, 14.44218]).bindPopup('Rijeka (1 family, 1 member)'),
+    L.marker([45.83111, 16.11639]).bindPopup('Sesvete (1 family, 3 members)'),
+    L.marker([45.48722, 16.37611]).bindPopup('Sisak (2 families, 5 members)'),
+    L.marker([45.70333, 17.70278]).bindPopup('Slatina (1 family, 1 member)'),
+    L.marker([45.16028, 18.01556]).bindPopup('Slavonski Brod (1 family, 1 member)'),
+    L.marker([43.50813, 16.44019]).bindPopup('Split (11 families, 35 members)'),
+    L.marker([44.71998, 14.89672]).bindPopup('Stinica near Senj (1 family, 2 members)'),
+    L.marker([43.50250, 16.52222]).bindPopup('Stobreč (5 families, 20 members)'),
+    L.marker([45.22592, 18.42881]).bindPopup('Strizivojna (2 families, 5 members)'),
+    L.marker([45.28833, 18.80472]).bindPopup('Vinkovci (1 family, 4 members)'),
+    L.marker([45.21024, 18.40528]).bindPopup('Vrpolje (1 family, 4 members)'),
+    L.marker([45.35161, 19.00225]).bindPopup('Vukovar (2 families, 5 members)'),
+    L.marker([45.81501, 15.98192]).bindPopup('Zagreb (24 families, 73 members)'),
+];
+
+const croatiaGroup = L.featureGroup(croatiaMarkers).addTo(croatiaMap);
+croatiaMap.fitBounds(croatiaGroup.getBounds().pad(0.08));
+
 </script>
 </body>
 </html>

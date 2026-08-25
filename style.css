@@ -1476,3 +1476,16 @@ img, video, iframe{
         max-height:72vh !important;
     }
 }
+
+
+/* OpenStreetMap 2 — rasprostranjenost Tandara u Hrvatskoj 2008. */
+#tandara-croatia-map {
+    width: 100%;
+    height: 560px;
+    margin: 18px 0 28px;
+}
+@media (max-width: 700px) {
+    #tandara-croatia-map {
+        height: 480px;
+    }
+}
