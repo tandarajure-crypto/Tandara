@@ -119,3 +119,81 @@ div {
     white-space: normal;
   }
 }
+
+
+/* O autoru — tri smanjene naslovnice knjiga uvijek u jednom redu. */
+.author-books-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 170px));
+  justify-content: center;
+  align-items: start;
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  margin: 22px auto 30px;
+  padding: 0;
+}
+
+.author-books-gallery .australia-tandara-item {
+  width: 170px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.author-books-gallery .australia-tandara-image {
+  width: 170px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+}
+
+.author-books-gallery .australia-tandara-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.author-books-gallery .australia-tandara-item figcaption {
+  margin-top: 8px;
+  min-height: 2.7em;
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: center;
+  color: #4a3b2a;
+}
+
+@media (max-width: 700px) {
+  .author-books-gallery {
+    grid-template-columns: repeat(3, minmax(0, 110px));
+    gap: 7px;
+  }
+
+  .author-books-gallery .australia-tandara-item,
+  .author-books-gallery .australia-tandara-image {
+    width: 110px;
+  }
+
+  .author-books-gallery .australia-tandara-item figcaption {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 420px) {
+  .author-books-gallery {
+    grid-template-columns: repeat(3, minmax(0, 86px));
+    gap: 5px;
+  }
+
+  .author-books-gallery .australia-tandara-item,
+  .author-books-gallery .australia-tandara-image {
+    width: 86px;
+  }
+
+  .author-books-gallery .australia-tandara-item figcaption {
+    font-size: 9px;
+  }
+}
