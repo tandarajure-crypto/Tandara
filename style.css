@@ -1504,3 +1504,330 @@ img, video, iframe{
         height: 460px;
     }
 }
+
+
+/* Ričice na prvoj OpenStreetMap karti: samo naziv, bez bijele strelice. */
+.leaflet-tooltip.ricice-label-no-arrow::before,
+.leaflet-tooltip-bottom.ricice-label-no-arrow::before,
+.leaflet-tooltip-top.ricice-label-no-arrow::before,
+.leaflet-tooltip-left.ricice-label-no-arrow::before,
+.leaflet-tooltip-right.ricice-label-no-arrow::before {
+    display: none !important;
+    border: 0 !important;
+}
+
+
+/* ==========================================================
+   ZAVRŠNO UJEDNAČAVANJE FOTOGRAFIJA — 2 U REDU
+   - isti vizualni okvir
+   - cijela fotografija vidljiva
+   - bez rezanja glava, nogu ili rubova
+   - treća/neparna slika centrirana
+========================================================== */
+
+/* Obiteljske fotografije i Zanimljivosti */
+.content-card .australia-tandara-gallery,
+section .australia-tandara-gallery {
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:20px !important;
+    align-items:start;
+}
+
+.content-card .australia-tandara-image,
+section .australia-tandara-image {
+    width:100% !important;
+    aspect-ratio:4 / 3 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+    background:#f5f3ef !important;
+}
+
+.content-card .australia-tandara-image img,
+section .australia-tandara-image img {
+    display:block !important;
+    width:auto !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    margin:auto !important;
+}
+
+/* Knjige: dvije u redu; portretni okvir je uredniji za naslovnice */
+.author-books-gallery {
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:20px !important;
+}
+.author-books-gallery .australia-tandara-image {
+    aspect-ratio:3 / 4 !important;
+}
+.author-books-gallery .australia-tandara-item:last-child:nth-child(odd) {
+    grid-column:1 / -1;
+    width:calc(50% - 10px);
+    justify-self:center;
+}
+
+/* Podrijetlo: dvije slike u redu */
+.ricice-gallery {
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:20px !important;
+    width:100% !important;
+    align-items:start;
+}
+.ricice-item {
+    width:100% !important;
+    margin:0 !important;
+}
+.ricice-item img {
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:4 / 3 !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    background:#f5f3ef !important;
+    margin:0 auto !important;
+}
+.ricice-gallery .ricice-item:last-child:nth-child(odd) {
+    grid-column:1 / -1;
+    width:calc(50% - 10px) !important;
+    justify-self:center;
+}
+
+/* Migracije i video-sličice: dvije u redu */
+.migracije-ricice-gallery {
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:20px !important;
+    width:100% !important;
+    align-items:start;
+}
+.migracije-ricice-item {
+    width:100% !important;
+    margin:0 !important;
+}
+.migracije-ricice-item img,
+.migracije-ricice-video-item img {
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:4 / 3 !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    background:#f5f3ef !important;
+    margin:0 auto !important;
+}
+.migracije-ricice-gallery .migracije-ricice-item:last-child:nth-child(odd) {
+    grid-column:1 / -1;
+    width:calc(50% - 10px) !important;
+    justify-self:center;
+}
+
+/* Ako neka standardna galerija ima neparan broj slika, zadnja je centrirana */
+.australia-tandara-gallery .australia-tandara-item:last-child:nth-child(odd) {
+    grid-column:1 / -1;
+    width:calc(50% - 10px);
+    justify-self:center;
+}
+
+/* Na vrlo uskom mobitelu važnije je da fotografija ostane čitljiva. */
+@media (max-width:540px) {
+    .content-card .australia-tandara-gallery,
+    section .australia-tandara-gallery,
+    .author-books-gallery,
+    .ricice-gallery,
+    .migracije-ricice-gallery {
+        grid-template-columns:1fr !important;
+    }
+
+    .author-books-gallery .australia-tandara-item:last-child:nth-child(odd),
+    .ricice-gallery .ricice-item:last-child:nth-child(odd),
+    .migracije-ricice-gallery .migracije-ricice-item:last-child:nth-child(odd),
+    .australia-tandara-gallery .australia-tandara-item:last-child:nth-child(odd) {
+        grid-column:auto !important;
+        width:100% !important;
+    }
+}
+
+
+/* ==========================================================
+   O AUTORU — 3 KNJIGE U JEDNOM REDU, JEDNAKE DIMENZIJE
+   Sva tri PNG-a: 376 × 404 px; bez rezanja i bez rastezanja.
+========================================================== */
+.author-books-gallery {
+    display:grid !important;
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    column-gap:clamp(20px, 4vw, 56px) !important;
+    row-gap:0 !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:24px auto 32px !important;
+    padding:0 !important;
+    align-items:start !important;
+    justify-content:space-between !important;
+}
+
+.author-books-gallery .australia-tandara-item {
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+}
+
+.author-books-gallery .australia-tandara-image {
+    width:min(100%, 230px) !important;
+    aspect-ratio:376 / 404 !important;
+    margin:0 auto !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+    background:#f5f3ef !important;
+}
+
+.author-books-gallery .australia-tandara-image img {
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    margin:0 !important;
+}
+
+.author-books-gallery .australia-tandara-item figcaption {
+    width:100% !important;
+    max-width:260px !important;
+    margin:9px auto 0 !important;
+    min-height:3.2em !important;
+    text-align:center !important;
+    line-height:1.3 !important;
+}
+
+/* Poništava staro pravilo koje je treću knjigu izdvajalo u novi red. */
+.author-books-gallery .australia-tandara-item:last-child:nth-child(odd) {
+    grid-column:auto !important;
+    width:100% !important;
+    justify-self:auto !important;
+}
+
+/* I na manjim ekranima ostaju sve tri u istom redu, samo se proporcionalno smanjuju. */
+@media (max-width:700px) {
+    .author-books-gallery {
+        grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+        column-gap:clamp(7px, 2vw, 16px) !important;
+    }
+    .author-books-gallery .australia-tandara-image {
+        width:min(100%, 150px) !important;
+    }
+    .author-books-gallery .australia-tandara-item figcaption {
+        font-size:10px !important;
+        line-height:1.2 !important;
+    }
+}
+
+@media (max-width:420px) {
+    .author-books-gallery {
+        grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+        column-gap:5px !important;
+    }
+    .author-books-gallery .australia-tandara-image {
+        width:min(100%, 105px) !important;
+    }
+    .author-books-gallery .australia-tandara-item figcaption {
+        font-size:9px !important;
+    }
+}
+
+
+/* ==========================================================
+   O AUTORU — 3 KNJIGE U JEDNOM REDU, BEZ VELIKIH OKVIRA
+========================================================== */
+.author-books-gallery {
+    display:grid !important;
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    gap:clamp(18px, 4vw, 48px) !important;
+    width:100% !important;
+    margin:22px auto 28px !important;
+    padding:0 !important;
+    align-items:start !important;
+}
+
+.author-books-gallery .australia-tandara-item {
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+}
+
+.author-books-gallery .australia-tandara-image {
+    width:auto !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    margin:0 auto !important;
+    padding:0 !important;
+    display:block !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    overflow:visible !important;
+}
+
+.author-books-gallery .australia-tandara-image img {
+    display:block !important;
+    width:auto !important;
+    height:220px !important;
+    max-width:100% !important;
+    max-height:none !important;
+    margin:0 auto !important;
+    padding:0 !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+}
+
+.author-books-gallery .australia-tandara-item figcaption {
+    width:100% !important;
+    max-width:260px !important;
+    margin:9px auto 0 !important;
+    min-height:0 !important;
+    text-align:center !important;
+    line-height:1.25 !important;
+}
+
+/* Treća knjiga ostaje u istom redu. */
+.author-books-gallery .australia-tandara-item:last-child:nth-child(odd) {
+    grid-column:auto !important;
+    width:100% !important;
+    justify-self:auto !important;
+}
+
+@media (max-width:700px) {
+    .author-books-gallery {
+        grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+        gap:8px !important;
+    }
+    .author-books-gallery .australia-tandara-image img {
+        height:150px !important;
+    }
+    .author-books-gallery .australia-tandara-item figcaption {
+        font-size:10px !important;
+    }
+}
