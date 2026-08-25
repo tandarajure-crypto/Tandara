@@ -10,9 +10,9 @@ L.marker([43.51347, 17.11103])
   .bindPopup('Ričice')
   .openPopup();
 
-L.marker([43.55, 17.116667])
+L.marker([43.543333, 17.125556])
   .addTo(map)
-  .bindPopup('Zavelim');
+  .bindPopup('Tandare, Zavelim');
 
 L.marker([43.8249858, 17.0076892])
   .addTo(map)
