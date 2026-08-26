@@ -11,8 +11,9 @@ L.marker([43.51347, 17.11103])
   .bindTooltip('Ričice', {
     permanent: true,
     direction: 'bottom',
-    offset: [0, 12],
-    opacity: 0.95
+    offset: [0, 10],
+    opacity: 0.95,
+    className: 'ricice-label-no-arrow'
   });
 
 L.marker([43.543333, 17.125556])
