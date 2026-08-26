@@ -3,7 +3,11 @@
 <html lang="hr">
 <head>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; script-src 'self'; script-src-attr 'none'; connect-src 'self'; style-src 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-elem 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-attr 'none'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com 'sha256-NiiGuZudi5Tl0gbyBLJTZ4Cz3OP1VFzTIyeerIrFXnM='; script-src-attr 'none'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; style-src 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-elem 'self' 'sha256-Wu67VUUnRmyTFM/E6GMmJ2eX/4kr9T60yPT+IyArNjg='; style-src-attr 'none'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S33NBEJQFD"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S33NBEJQFD');</script>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Genealoški prikaz Petrove grane roda Tandara s povijesnim podacima, obiteljskim stablom i migracijama potomaka." name="description"/>
@@ -18,7 +22,7 @@
 <link href="https://tandarajure-crypto.github.io/Tandara/petrovagrana.html" hreflang="x-default" rel="alternate"/>
 <meta content="Tandara, Petrova grana, rodoslovlje, genealogija, Ričice, Zavelim, obiteljsko stablo" name="keywords"/>
 <meta content="Jure Tandara" name="author"/>
-<meta content="noindex, nofollow, noarchive" name="robots"/>
+<meta name="robots" content="index,follow">
 <title>Petrova grana | TANDARA-PREZIME</title>
 <link href="style.css?v=14" rel="stylesheet"/>
 <link href="assets/css/common/main-branch-pages.css?v=1" rel="stylesheet"/>
@@ -156,7 +160,7 @@
  Zbog svojega političkog djelovanja bio je uhićen i osuđen na dvije godine i četiri mjeseca strogog zatvora, koje je odslužio u Staroj Gradiški.
 </p>
 <figure class="sabina-photo">
-<a href="bruno.png" rel="noopener" target="_blank">
+<a href="bruno.png" rel="noopener noreferrer" target="_blank">
 <img alt="Dr. Ante Bruno Tandara" loading="lazy" src="bruno.png"/>
 </a>
 <figcaption>Dr. Ante Bruno Tandara</figcaption>
