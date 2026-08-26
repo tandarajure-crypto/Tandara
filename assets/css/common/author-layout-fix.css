@@ -1,0 +1,219 @@
+/* Ujednačen tehnički prikaz HR/EN stranice; sadržaj nije mijenjan. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.layout,
+.left-menu,
+.content-page,
+.content-card,
+main,
+article,
+section,
+header,
+footer,
+nav,
+div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.content-page,
+.content-card {
+  overflow-x: hidden;
+}
+
+.content-card h1,
+.content-card h2,
+.content-card h3,
+.content-card p,
+.content-card li,
+.content-card a,
+.content-card strong,
+.content-card em {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.content-card p {
+  line-height: 1.65;
+}
+
+.content-card img,
+.content-card video,
+.content-card iframe,
+.content-card table,
+.content-card pre {
+  max-width: 100%;
+}
+
+.content-card img,
+.content-card video {
+  height: auto;
+}
+
+.content-card table {
+  display: block;
+  overflow-x: auto;
+}
+
+.content-card pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Na računalu lijevi izbornik ostaje vidljiv tijekom skrolanja stranice. */
+@media (min-width: 901px) {
+  body.box-mobile-split .layout {
+    align-items: flex-start;
+  }
+
+  body.box-mobile-split .left-menu {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  body.box-mobile-split .content-page,
+  body.box-mobile-split .content-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  body.box-mobile-split .content-page,
+  body.box-mobile-split .content-card {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body.box-mobile-split .content-card h1,
+  body.box-mobile-split .content-card h2,
+  body.box-mobile-split .content-card h3,
+  body.box-mobile-split .content-card p,
+  body.box-mobile-split .content-card li,
+  body.box-mobile-split .content-card a {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    white-space: normal;
+  }
+}
+
+
+/* O autoru — tri smanjene naslovnice knjiga uvijek u jednom redu. */
+.author-books-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 170px));
+  justify-content: center;
+  align-items: start;
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  margin: 22px auto 30px;
+  padding: 0;
+}
+
+.author-books-gallery .australia-tandara-item {
+  width: 170px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.author-books-gallery .australia-tandara-image {
+  width: 170px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+}
+
+.author-books-gallery .australia-tandara-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.author-books-gallery .australia-tandara-item figcaption {
+  margin-top: 8px;
+  min-height: 2.7em;
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: center;
+  color: #4a3b2a;
+}
+
+@media (max-width: 700px) {
+  .author-books-gallery {
+    grid-template-columns: repeat(3, minmax(0, 110px));
+    gap: 7px;
+  }
+
+  .author-books-gallery .australia-tandara-item,
+  .author-books-gallery .australia-tandara-image {
+    width: 110px;
+  }
+
+  .author-books-gallery .australia-tandara-item figcaption {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 420px) {
+  .author-books-gallery {
+    grid-template-columns: repeat(3, minmax(0, 86px));
+    gap: 5px;
+  }
+
+  .author-books-gallery .australia-tandara-item,
+  .author-books-gallery .australia-tandara-image {
+    width: 86px;
+  }
+
+  .author-books-gallery .australia-tandara-item figcaption {
+    font-size: 9px;
+  }
+}
+
+
+/* Završno usklađenje naslovnica knjiga — tri jednake u jednom redu. */
+.author-books-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: space-between;
+  width: 100%;
+}
+.author-books-gallery .australia-tandara-item {
+  width: 100%;
+}
+.author-books-gallery .australia-tandara-image {
+  width: min(100%, 230px);
+  aspect-ratio: 376 / 404;
+}
+.author-books-gallery .australia-tandara-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
