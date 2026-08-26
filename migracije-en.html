@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-jaeIQuBw/oRwiyaHs3Bo+KBWBa7ALf2L3W3S8cDUkMA=' 'sha256-5n1yC2wWBcmMdC/Ft70THM+eiwKQC/alq33WAuWKSFg='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com https://*.tile.openstreetmap.org https://unpkg.com data:; script-src 'self' https://unpkg.com 'sha256-mOIfef6J3GTV59SgMSPjcojcG/4e8Kl5/qYsZc8lPdA=' 'sha256-5n1yC2wWBcmMdC/Ft70THM+eiwKQC/alq33WAuWKSFg='; script-src-attr 'none'; connect-src 'self' https://*.tile.openstreetmap.org https://api-gateway.umami.dev; style-src 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-elem 'self' https://unpkg.com 'sha256-dbpofmyK/H8r7XQQZSUQQQQhkrTqMcHtSFBXexNCD20=' 'sha256-02k0rluV7zZUlmvJ6oObEesZjDY2g86UsL/lFXT1WNY=' 'sha256-QnurNjW96t1kp/sbeXepjaqk2GGXzMKDAWInOBQzLGQ='; style-src-attr 'none'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
@@ -22,7 +22,7 @@
 <script data-do-not-track="true" data-domains="tandarajure-crypto.github.io" data-exclude-hash="true" data-exclude-search="true" data-host-url="https://api-gateway.umami.dev" data-website-id="41653efe-d2ca-47a1-99c0-8fa9d20b128a" defer="" integrity="sha384-e3RxMgp4P3PdYNypfLmPgiuyYjCW9pCHTnhy/zqdvmPrY9+xrarWVQyIlT+eqano" src="umami-tracker.js"></script>
 <!-- OPEN GRAPH -->
 <link crossorigin="anonymous" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" referrerpolicy="no-referrer" rel="stylesheet"/>
-<link href="./style.css?v=18" rel="stylesheet"/>
+<link href="./style.css?v=20" rel="stylesheet"/>
 <link href="assets/css/common/mobile-topbar-en.css?v=1" rel="stylesheet"/>
 <link href="assets/css/common/mobile-split-en.css?v=1" rel="stylesheet"/>
 <link href="./mobile-subpages-fullscreen.css?v=2" rel="stylesheet">
@@ -279,8 +279,9 @@ L.marker([43.51347, 17.11103])
     .bindTooltip('Ričice', {
         permanent: true,
         direction: 'bottom',
-        offset: [0, 12],
-        opacity: 0.95
+        offset: [0, 10],
+        opacity: 0.95,
+        className: 'ricice-label-no-arrow'
     });
 
 // Tandare, Zavelim
