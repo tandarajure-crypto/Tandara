@@ -1853,3 +1853,24 @@ section .australia-tandara-image img {
     max-width: none !important;
     object-fit: contain;
 }
+
+
+/* Podrijetlo: prva fotografija Ričica preko cijele dostupne širine galerije. */
+.ricice-gallery > .ricice-item.ricice-featured {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.content-card .ricice-gallery > .ricice-item.ricice-featured img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+}
