@@ -1874,3 +1874,25 @@ section .australia-tandara-image img {
     object-fit: contain !important;
     margin: 0 !important;
 }
+
+/* Podrijetlo: prva fotografija Ričica izlazi iz okvira content-card
+   i zauzima cijelu dostupnu širinu desnog sadržajnog stupca. */
+.content-page{
+    container-type:inline-size;
+}
+.content-card .ricice-gallery > .ricice-item.ricice-featured{
+    position:relative !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    width:100cqw !important;
+    max-width:none !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+}
+.content-card .ricice-gallery > .ricice-item.ricice-featured img{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    object-fit:contain !important;
+}
