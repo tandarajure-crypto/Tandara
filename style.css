@@ -1843,7 +1843,13 @@ section .australia-tandara-image img {
     padding-bottom: 4px;
 }
 .ivan-josipov-gallery-row .sabina-photo {
-    flex: 0 0 65px;
-    width: 65px;
+    flex: 0 0 auto;
+    width: auto;
     margin: 0 0 12px 0;
+}
+.ivan-josipov-gallery-row .sabina-photo img {
+    height: 65px !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: contain;
 }
