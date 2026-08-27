@@ -1,3 +1,65 @@
 html,body{margin:0;width:100%;height:100%;overflow:hidden}body.diagram-master-host{background:#e7c191}.diagram-master-host .layout{width:100%;max-width:none;height:100vh;margin:0;padding:0;display:grid;grid-template-columns:300px minmax(0,1fr);gap:0;overflow:hidden}.diagram-master-host .left-menu{width:300px;height:100vh;max-height:100vh;position:relative;top:auto;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;border-right:4px solid #7a7a7a}.diagram-master-host .left-menu::-webkit-scrollbar{width:0;height:0}.diagram-master-host .diagram-main{min-width:0;height:100vh;margin:0;padding:0;overflow:hidden;background:#f4efe6}.diagram-master-host .family-diagram-embed{width:100%;height:100%;margin:0;padding:0;overflow:hidden}.diagram-master-host .family-diagram-frame{display:block;width:100%;height:100%;border:0;margin:0;padding:0;overflow:hidden;background:#f4efe6}.diagram-master-host .flagbox{position:relative}.diagram-master-host .visitor-title{position:absolute;top:1px;left:1px;z-index:2;display:inline-block;margin:0;padding:1px 5px;background:#fff;color:#000;font:700 11px/1.1 Arial,sans-serif;white-space:nowrap;pointer-events:none}@media(max-width:900px){.diagram-master-host .layout{grid-template-columns:240px minmax(0,1fr)}.diagram-master-host .left-menu{width:240px}.diagram-master-host .heritage-menu{padding-left:12px;padding-right:10px}.diagram-master-host .heritage-menu a{font-size:15px}.diagram-master-host .author-photo img{width:160px!important;max-width:160px!important}}@media(max-width:680px){.diagram-master-host .layout{grid-template-columns:180px minmax(0,1fr)}.diagram-master-host .left-menu{width:180px}.diagram-master-host .left-menu>h2:not(.visitor-title){font-size:18px}.diagram-master-host .heritage-menu{padding-left:8px;padding-right:6px}.diagram-master-host .heritage-menu li{gap:5px}.diagram-master-host .heritage-menu a{font-size:13px}.diagram-master-host .author-photo img{width:130px!important;max-width:130px!important}.diagram-master-host .flagbox{margin-left:8px;width:calc(100% - 8px)}}
 /* TANDARA FINAL BOX2 HOST */
 .family-diagram-frame{width:100%;max-width:none}
+
+/* TANDARA mobile diagram host: give the diagram full device width. */
+@media(max-width:680px){
+  html,body{height:100%;height:100dvh;overflow:hidden}
+  .diagram-master-host .layout{
+    width:100%;height:100vh;height:100dvh;
+    display:grid;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);
+    overflow:hidden
+  }
+  .diagram-master-host .left-menu{
+    width:100%;height:auto;max-height:142px;min-height:0;
+    position:relative;display:grid;
+    grid-template-columns:auto auto minmax(0,1fr) auto;
+    grid-template-areas:"home lang title flag" "menu menu menu menu";
+    align-items:center;gap:5px 8px;
+    padding:5px 7px 4px;margin:0;
+    overflow:hidden;border-right:0;border-bottom:2px solid #7a7a7a
+  }
+  .diagram-master-host .home-button{grid-area:home;position:static!important;margin:0!important}
+  .diagram-master-host .lang-switch{grid-area:lang;margin:0!important;display:flex;gap:4px}
+  .diagram-master-host .left-menu>h2:not(.visitor-title){
+    grid-area:title;margin:0!important;padding:0!important;
+    font-size:14px!important;line-height:1.1;text-align:left
+  }
+  .diagram-master-host .heritage-menu{
+    grid-area:menu;display:flex!important;flex-wrap:nowrap;gap:5px;
+    width:100%;margin:0!important;padding:2px 0 1px!important;
+    overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;list-style:none
+  }
+  .diagram-master-host .heritage-menu li{
+    flex:0 0 auto;display:flex;align-items:center;gap:2px;
+    margin:0!important;padding:0!important;white-space:nowrap
+  }
+  .diagram-master-host .heritage-menu li>span{display:none}
+  .diagram-master-host .heritage-menu a{
+    display:block;padding:5px 7px!important;border:1px solid rgba(95,76,52,.25);
+    border-radius:6px;background:#fff8ef;font-size:11px!important;line-height:1.1
+  }
+  .diagram-master-host .author-photo{display:none!important}
+  .diagram-master-host .flagbox{
+    grid-area:flag;position:relative!important;width:auto!important;max-width:112px!important;
+    height:34px!important;margin:0!important;overflow:hidden;justify-self:end
+  }
+  .diagram-master-host .flagbox>a{display:block;height:34px}
+  .diagram-master-host .flagbox img{
+    display:block!important;width:auto!important;max-width:112px!important;height:34px!important;
+    object-fit:contain;object-position:right center
+  }
+  .diagram-master-host .visitor-title{display:none!important}
+  .diagram-master-host .diagram-main{width:100%;height:auto;min-height:0;overflow:hidden}
+  .diagram-master-host .family-diagram-embed,
+  .diagram-master-host .family-diagram-frame{width:100%;height:100%;min-height:0}
+}
+@media(max-width:420px){
+  .diagram-master-host .left-menu{
+    max-height:170px;grid-template-columns:auto auto minmax(0,1fr);
+    grid-template-areas:"home lang title" "menu menu menu" "flag flag flag"
+  }
+  .diagram-master-host .flagbox{display:block!important;justify-self:start;height:28px!important;max-width:104px!important}
+  .diagram-master-host .flagbox>a{height:28px}
+  .diagram-master-host .flagbox img{height:28px!important;max-width:104px!important;object-position:left center}
+}
