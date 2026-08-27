@@ -1,0 +1,5 @@
+Jednokratno obrisati iz JAVNOG GitHub repozitorija:
+1. umami-tracker.js
+2. UMAMI-LICENSE.txt
+
+Nakon zamjene HTML datoteka iz ovog ZIP-a te dvije datoteke više nisu potrebne i u javnom webu nema Umami tragova.
