@@ -43,7 +43,9 @@
       if (visibleLabel) visibleLabel.textContent = collapsed ? (button.dataset.showLabel || '') : '';
     };
 
-    updateHeader(false);
+    const startCollapsed = window.matchMedia && window.matchMedia('(max-width: 680px)').matches;
+    if (startCollapsed) header.classList.add('header-collapsed');
+    updateHeader(startCollapsed);
     button.addEventListener('click', () => {
       const collapsed = header.classList.toggle('header-collapsed');
       updateHeader(collapsed);
