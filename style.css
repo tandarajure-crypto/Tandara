@@ -1831,3 +1831,19 @@ section .australia-tandara-image img {
         font-size:10px !important;
     }
 }
+
+
+/* Ivan Josipov kroz život - pet fotografija u jednom vodoravnom redu */
+.ivan-josipov-gallery-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+.ivan-josipov-gallery-row .sabina-photo {
+    flex: 0 0 65px;
+    width: 65px;
+    margin: 0 0 12px 0;
+}
