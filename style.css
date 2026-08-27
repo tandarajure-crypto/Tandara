@@ -102,7 +102,7 @@ body{
     display:block;
     width:30px;
     height:20px;
-    object-fit:contain;
+    object-fit:cover;
     border-radius:3px;
 }
 
@@ -1629,34 +1629,6 @@ section .australia-tandara-image img {
     justify-self:center;
 }
 
-/* Stabilan video-mozaik bez rastezanja ili preklapanja elemenata. */
-.migracije-ricice-video-mosaic {
-    align-items:start;
-}
-.migracije-ricice-video-mosaic .video-mosaic-left {
-    display:grid;
-    gap:20px;
-    min-width:0;
-}
-.migracije-ricice-video-mosaic .video-mosaic-suvaja {
-    display:block;
-    min-width:0;
-    width:100% !important;
-}
-.migracije-ricice-video-mosaic .video-mosaic-suvaja video,
-.migracije-ricice-video-mosaic .video-mosaic-ricice video {
-    display:block;
-    width:100%;
-    height:auto;
-    max-width:100%;
-    object-fit:contain;
-    background:#000;
-}
-.migracije-ricice-video-mosaic .migracije-ricice-item:last-child:nth-child(odd) {
-    width:100% !important;
-    justify-self:stretch;
-}
-
 /* Ako neka standardna galerija ima neparan broj slika, zadnja je centrirana */
 .australia-tandara-gallery .australia-tandara-item:last-child:nth-child(odd) {
     grid-column:1 / -1;
@@ -1680,15 +1652,6 @@ section .australia-tandara-image img {
     .australia-tandara-gallery .australia-tandara-item:last-child:nth-child(odd) {
         grid-column:auto !important;
         width:100% !important;
-    }
-
-    .migracije-ricice-video-mosaic .video-mosaic-left,
-    .migracije-ricice-video-mosaic .video-mosaic-suvaja {
-        display:block;
-    }
-
-    .migracije-ricice-video-mosaic .video-mosaic-left .migracije-ricice-item + .migracije-ricice-item {
-        margin-top:20px !important;
     }
 }
 
@@ -1889,4 +1852,47 @@ section .australia-tandara-image img {
     width: auto !important;
     max-width: none !important;
     object-fit: contain;
+}
+
+
+/* Podrijetlo: prva fotografija Ričica preko cijele dostupne širine galerije. */
+.ricice-gallery > .ricice-item.ricice-featured {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.content-card .ricice-gallery > .ricice-item.ricice-featured img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+}
+
+/* Podrijetlo: prva fotografija Ričica izlazi iz okvira content-card
+   i zauzima cijelu dostupnu širinu desnog sadržajnog stupca. */
+.content-page{
+    container-type:inline-size;
+}
+.content-card .ricice-gallery > .ricice-item.ricice-featured{
+    position:relative !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    width:100cqw !important;
+    max-width:none !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+}
+.content-card .ricice-gallery > .ricice-item.ricice-featured img{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    object-fit:contain !important;
 }
