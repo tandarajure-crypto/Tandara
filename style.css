@@ -1629,31 +1629,27 @@ section .australia-tandara-image img {
     justify-self:center;
 }
 
-/* Video-mozaik: dva manja zapisa lijevo, veliki zapis Suvaje desno. */
+/* Stabilan video-mozaik bez rastezanja ili preklapanja elemenata. */
 .migracije-ricice-video-mosaic {
-    grid-template-rows:repeat(2, minmax(0, auto));
-    align-items:stretch;
+    align-items:start;
 }
-.migracije-ricice-video-mosaic .video-mosaic-imotska {
-    grid-column:1;
-    grid-row:1;
-}
-.migracije-ricice-video-mosaic .video-mosaic-ricice {
-    grid-column:1;
-    grid-row:2;
+.migracije-ricice-video-mosaic .video-mosaic-left {
+    display:grid;
+    gap:20px;
+    min-width:0;
 }
 .migracije-ricice-video-mosaic .video-mosaic-suvaja {
-    display:flex;
-    flex-direction:column;
-    grid-column:2;
-    grid-row:1 / span 2;
+    display:block;
+    min-width:0;
     width:100% !important;
 }
-.migracije-ricice-video-mosaic .video-mosaic-suvaja video {
-    flex:1 1 auto;
+.migracije-ricice-video-mosaic .video-mosaic-suvaja video,
+.migracije-ricice-video-mosaic .video-mosaic-ricice video {
+    display:block;
     width:100%;
-    min-height:0;
-    object-fit:cover;
+    height:auto;
+    max-width:100%;
+    object-fit:contain;
     background:#000;
 }
 .migracije-ricice-video-mosaic .migracije-ricice-item:last-child:nth-child(odd) {
@@ -1686,17 +1682,13 @@ section .australia-tandara-image img {
         width:100% !important;
     }
 
-    .migracije-ricice-video-mosaic .video-mosaic-imotska,
-    .migracije-ricice-video-mosaic .video-mosaic-ricice,
+    .migracije-ricice-video-mosaic .video-mosaic-left,
     .migracije-ricice-video-mosaic .video-mosaic-suvaja {
         display:block;
-        grid-column:auto;
-        grid-row:auto;
     }
 
-    .migracije-ricice-video-mosaic .video-mosaic-suvaja video {
-        height:auto;
-        object-fit:contain;
+    .migracije-ricice-video-mosaic .video-mosaic-left .migracije-ricice-item + .migracije-ricice-item {
+        margin-top:20px !important;
     }
 }
 
