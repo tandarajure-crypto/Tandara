@@ -1,0 +1,45 @@
+/* Antina grana: sve fotografije iste osobe u jednom redu.
+   Natpis se smije prelamati samo unutar širine pripadajuće fotografije. */
+
+.ivan-josipov-gallery-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.ivan-josipov-gallery-row .sabina-photo {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: min-content;
+    justify-items: center;
+    width: min-content;
+    margin: 0 0 12px 0;
+    text-align: center;
+}
+
+.ivan-josipov-gallery-row .sabina-photo a {
+    display: block;
+}
+
+.ivan-josipov-gallery-row .sabina-photo img {
+    display: block;
+    height: 65px !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: contain;
+}
+
+.ivan-josipov-gallery-row .sabina-photo figcaption {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    text-align: center;
+    line-height: 1.25;
+}
