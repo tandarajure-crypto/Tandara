@@ -23,3 +23,27 @@
 /* Public person photo thumbnail: same display size as Bruno/Ante; original opens via link. */
 .person-details-photo{width:65px;max-width:65px}
 .person-details-photo img{width:65px!important;height:auto!important;max-width:65px;border:2px solid #b99867;border-radius:6px!important;box-shadow:0 3px 7px rgba(0,0,0,.25);box-sizing:border-box}
+
+/* TANDARA public-search privacy dialog — shared by all 28 HR/EN diagrams. */
+body.protected-search-open{overflow:hidden}
+.protected-search-modal{position:fixed;inset:0;z-index:2147483600;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(25,21,17,.68);font-family:Arial,Helvetica,sans-serif;overflow:auto}
+.protected-search-modal[hidden]{display:none!important}
+.protected-search-dialog{width:min(760px,100%);max-height:calc(100vh - 40px);overflow:auto;padding:24px 26px 22px;border:2px solid #315d49;border-radius:14px;background:#fffdf8;color:#2c261f;box-shadow:0 18px 50px rgba(0,0,0,.38)}
+.protected-search-dialog h2{margin:0 0 15px;color:#244e3d;font:800 24px/1.2 Arial,Helvetica,sans-serif}
+.protected-search-body{font:15px/1.55 Arial,Helvetica,sans-serif}
+.protected-search-body p{margin:0 0 13px}
+.protected-search-body ul{margin:2px 0 15px;padding-left:24px}
+.protected-search-body li{margin:5px 0}
+.protected-search-privacy{padding:10px 12px;border-left:4px solid #8b6b3f;background:#f7f0e5}
+.protected-search-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:15px;border-top:1px solid #d8cbbb}
+.protected-search-contact,.protected-search-close{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 16px;border-radius:8px;font:800 14px/1.2 Arial,Helvetica,sans-serif;text-decoration:none;cursor:pointer}
+.protected-search-contact{border:1px solid #244e3d;background:#315d49;color:#fff}
+.protected-search-contact:hover,.protected-search-contact:focus-visible{background:#244e3d;color:#fff;outline:3px solid rgba(49,93,73,.25);outline-offset:2px}
+.protected-search-close{border:1px solid #9c8d79;background:#fffaf3;color:#342a20}
+.protected-search-close:hover,.protected-search-close:focus-visible{border-color:#775d3c;background:#fff;outline:3px solid rgba(119,93,60,.2);outline-offset:2px}
+@media(max-width:590px){.protected-search-modal{align-items:flex-start;padding:10px}.protected-search-dialog{max-height:calc(100vh - 20px);padding:18px 16px 16px;border-radius:10px}.protected-search-dialog h2{font-size:21px}.protected-search-body{font-size:16px;line-height:1.5}.protected-search-actions{display:grid;grid-template-columns:1fr}.protected-search-contact,.protected-search-close{width:100%;min-height:46px;text-align:center}}
+@media(prefers-reduced-motion:reduce){.protected-search-modal *{scroll-behavior:auto!important}}
+/* Keep both privacy-dialog actions visible while long text scrolls on small screens. */
+.protected-search-dialog{display:flex;flex-direction:column;overflow:hidden}
+.protected-search-body{min-height:0;overflow:auto;padding-right:4px}
+.protected-search-actions{flex:0 0 auto;background:#fffdf8}
