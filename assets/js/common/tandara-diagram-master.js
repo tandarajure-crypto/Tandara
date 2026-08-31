@@ -45,6 +45,43 @@
     marriageWord: 'brak'
   };
 
+
+  const PROTECTED_SEARCH = LANG === 'en' ? {
+    title: '🔒 Protected Family Information',
+    intro: 'The person you searched for is not available in the public search. Publicly available records cover confirmed deceased persons and persons born in or before 1930. Information about living persons and persons born after 1930 for whom no death has been confirmed is held in the protected section of the archive.',
+    privacy: 'To protect privacy, this notice does not confirm whether the person entered is included in the private archive.',
+    accessBefore: 'If you have a legitimate family or research reason, you may request one-time access to the private website. Open the contact form and select ',
+    accessStrong: '“Request for access to the private archive”',
+    accessAfter: ' as the inquiry type. Complete all required fields and provide:',
+    items: [
+      'the person or family branch requested',
+      'your connection with the Tandara family',
+      'the reason for your request',
+      'a person who can verify your identity or family relationship.'
+    ],
+    ending: 'The administrator will review the request. If access is approved, you will receive instructions and access details for a single visit. Submitting a request does not guarantee approval.',
+    contact: 'Open the contact form',
+    close: 'Close',
+    contactHref: 'contacts.html#kontakt-obrazac'
+  } : {
+    title: '🔒 Zaštićeni obiteljski podaci',
+    intro: 'Tražena osoba nije dostupna u javnoj pretrazi. Javno su prikazani podaci o potvrđeno preminulim osobama te osobama rođenima do uključivo 1930. godine. Podaci o živim osobama i osobama rođenima nakon 1930. godine bez potvrđenog podatka o smrti nalaze se u zaštićenom dijelu arhiva.',
+    privacy: 'Radi zaštite privatnosti ova poruka ne potvrđuje nalazi li se upisana osoba u privatnom arhivu.',
+    accessBefore: 'Ako imate opravdan obiteljski ili istraživački razlog, možete zatražiti jednokratno odobrenje za pristup privatnoj web-stranici. Otvorite kontakt-obrazac i kao vrstu upita odaberite ',
+    accessStrong: '„Zahtjev za pristup privatnom arhivu”',
+    accessAfter: '. Ispunite sva obvezna polja te navedite:',
+    items: [
+      'osobu ili obiteljsku granu koju tražite',
+      'svoju povezanost s obitelji Tandara',
+      'razlog zahtjeva',
+      'osobu koja može potvrditi Vaš identitet ili srodstvo.'
+    ],
+    ending: 'Administrator će pregledati zahtjev. Ako pristup bude odobren, primit ćete upute i pristupne podatke za jednokratan ulazak. Slanje zahtjeva ne jamči odobrenje.',
+    contact: 'Otvori kontakt-obrazac',
+    close: 'Zatvori',
+    contactHref: 'kontakti.html#kontakt-obrazac'
+  };
+
   function localized(rec, key) {
     if (!rec) return '';
     if (LANG === 'en' && rec[`${key}En`] != null) return rec[`${key}En`];
@@ -54,6 +91,94 @@
   function recFather(rec) { return localized(rec, 'father'); }
   function recMother(rec) { return localized(rec, 'mother'); }
   function recDetail(rec) { return localized(rec, 'detail'); }
+
+  function isProtectedRecord(rec) {
+    if (!rec) return false;
+    const labels = [rec.label, rec.labelEn].map(value => normalize(value));
+    return labels.some(label =>
+      label.includes('ziva osoba podaci zasticeni')
+      || label.includes('living person details protected')
+    );
+  }
+
+  let protectedDialogPreviousFocus = null;
+
+  function ensureProtectedSearchDialog() {
+    let overlay = document.getElementById('protectedSearchDialog');
+    if (overlay) return overlay;
+
+    overlay = document.createElement('div');
+    overlay.id = 'protectedSearchDialog';
+    overlay.className = 'protected-search-modal';
+    overlay.hidden = true;
+    overlay.innerHTML = `
+      <section class="protected-search-dialog" role="dialog" aria-modal="true" aria-labelledby="protectedSearchTitle" aria-describedby="protectedSearchBody">
+        <h2 id="protectedSearchTitle">${esc(PROTECTED_SEARCH.title)}</h2>
+        <div id="protectedSearchBody" class="protected-search-body">
+          <p>${esc(PROTECTED_SEARCH.intro)}</p>
+          <p class="protected-search-privacy"><strong>${esc(PROTECTED_SEARCH.privacy)}</strong></p>
+          <p>${esc(PROTECTED_SEARCH.accessBefore)}<strong>${esc(PROTECTED_SEARCH.accessStrong)}</strong>${esc(PROTECTED_SEARCH.accessAfter)}</p>
+          <ul>${PROTECTED_SEARCH.items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>
+          <p>${esc(PROTECTED_SEARCH.ending)}</p>
+        </div>
+        <div class="protected-search-actions">
+          <a class="protected-search-contact" href="${esc(PROTECTED_SEARCH.contactHref)}" target="_top">${esc(PROTECTED_SEARCH.contact)}</a>
+          <button class="protected-search-close" type="button">${esc(PROTECTED_SEARCH.close)}</button>
+        </div>
+      </section>`;
+
+    document.body.appendChild(overlay);
+    const closeButton = overlay.querySelector('.protected-search-close');
+
+    const close = () => {
+      if (overlay.hidden) return;
+      overlay.hidden = true;
+      document.body.classList.remove('protected-search-open');
+      const restore = protectedDialogPreviousFocus;
+      protectedDialogPreviousFocus = null;
+      if (restore && typeof restore.focus === 'function' && document.contains(restore)) restore.focus();
+    };
+
+    overlay.addEventListener('click', event => {
+      if (event.target === overlay) close();
+    });
+    closeButton.addEventListener('click', close);
+    overlay._closeProtectedSearch = close;
+
+    overlay.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = Array.from(overlay.querySelectorAll('a[href],button:not([disabled])'))
+        .filter(el => !el.hidden && el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    return overlay;
+  }
+
+  function openProtectedSearchDialog() {
+    const overlay = ensureProtectedSearchDialog();
+    protectedDialogPreviousFocus = document.activeElement;
+    overlay.hidden = false;
+    document.body.classList.add('protected-search-open');
+    requestAnimationFrame(() => {
+      const contact = overlay.querySelector('.protected-search-contact');
+      if (contact) contact.focus();
+    });
+  }
 
   const svg = document.getElementById('treeSvg');
   const viewport = document.getElementById('viewport');
@@ -876,7 +1001,8 @@
     }
 
     const found = Object.values(nodes).filter(rec =>
-      matchField(rec.code, qCode)
+      !isProtectedRecord(rec)
+      && matchField(rec.code, qCode)
       && matchField(recLabel(rec), qPerson)
       && matchField(recFather(rec), qFather)
       && matchField(recMother(rec), qMother)
@@ -892,6 +1018,7 @@
     if (!found.length) {
       closeResults();
       showStatus(TXT.noResults);
+      openProtectedSearchDialog();
       return;
     }
 
