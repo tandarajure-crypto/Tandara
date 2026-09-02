@@ -1,0 +1,142 @@
+/* =========================================================
+   GLAVNE GRANE TANDARA — JEDAN ZAJEDNIČKI TEHNIČKI SUSTAV
+   Jurina / Petrova / Antina / Matina, HR + EN
+   ========================================================= */
+
+/* PC: bez bijele trake između lijevog izbornika i desnog sadržaja. */
+@media (min-width: 901px){
+    body .layout{
+        gap:0 !important;
+        column-gap:0 !important;
+    }
+
+    body .left-menu{
+        margin-right:0 !important;
+    }
+
+    body .branch-content{
+        margin-left:0 !important;
+        border-left:0 !important;
+        background:#e7c191 !important;
+    }
+}
+
+/* Zadnja dva boxa — isti sustav na svih 8 stranica. */
+.branch-card > .branch-diagram-link,
+.branch-card > .tree-note{
+    width:min(900px, 100%);
+    max-width:900px;
+    box-sizing:border-box;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    text-align:left !important;
+    border:1px solid #c8b78f;
+    border-radius:12px;
+    background:#f4dfbd;
+    box-shadow:0 3px 12px rgba(55,45,25,.10);
+    color:#3b2f22;
+}
+
+.branch-card > .branch-diagram-link{
+    display:flex !important;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    margin-top:34px !important;
+    margin-bottom:24px !important;
+    padding:22px 26px;
+}
+
+.branch-card > .branch-diagram-link > div{
+    flex:1 1 auto;
+    min-width:0;
+}
+
+.branch-card > .branch-diagram-link h2{
+    margin:0 0 8px !important;
+    padding:0 !important;
+    text-align:left !important;
+    font-size:22px !important;
+    line-height:1.25;
+    color:#4a3618;
+}
+
+.branch-card > .branch-diagram-link p{
+    margin:0 !important;
+    padding:0 !important;
+    text-align:left !important;
+    font-size:17px;
+    line-height:1.5;
+    color:#403a31;
+}
+
+.branch-card > .branch-diagram-link .branch-diagram-link__button{
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    min-height:42px;
+    padding:10px 20px;
+    border:1px solid #5b4727;
+    border-radius:8px;
+    background:#5b4727;
+    color:#fff !important;
+    font-weight:700;
+    text-decoration:none !important;
+    white-space:nowrap;
+    box-shadow:0 2px 7px rgba(0,0,0,.15);
+}
+
+.branch-card > .branch-diagram-link .branch-diagram-link__button:hover,
+.branch-card > .branch-diagram-link .branch-diagram-link__button:focus-visible{
+    background:#3f301a;
+    border-color:#3f301a;
+    color:#fff !important;
+    text-decoration:none !important;
+}
+
+.branch-card > .tree-note{
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+    padding:22px 26px 24px;
+}
+
+.branch-card > .tree-note h3{
+    margin:0 0 10px !important;
+    padding:0 !important;
+    text-align:left !important;
+    font-size:20px !important;
+    line-height:1.3;
+    color:#4a3618;
+}
+
+.branch-card > .tree-note p{
+    margin:0 0 10px !important;
+    padding:0 !important;
+    text-align:left !important;
+    font-size:17px;
+    line-height:1.55;
+    color:#403a31;
+}
+
+.branch-card > .tree-note p:last-child{
+    margin-bottom:0 !important;
+}
+
+@media (max-width:760px){
+    .branch-card > .branch-diagram-link{
+        flex-direction:column !important;
+        align-items:stretch !important;
+        gap:16px;
+        padding:18px;
+    }
+
+    .branch-card > .tree-note{
+        padding:18px;
+    }
+
+    .branch-card > .branch-diagram-link .branch-diagram-link__button{
+        width:100%;
+        box-sizing:border-box;
+    }
+}
