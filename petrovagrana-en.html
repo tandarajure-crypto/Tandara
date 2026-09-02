@@ -225,10 +225,12 @@ if (isDownload) {
 <script crossorigin="anonymous" defer="" integrity="sha384-Gx6CMszQkCp3v7+F4UUo2gcR0xqAkP78PiIkB3+rXu45BL0FffX6Gdj0mfmTUTuQ" src="protected-access-modal.js?v=20260804"></script>
 <style>
 
-.jozo-photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:12px 0 24px 0;}
+.jozo-photo-row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px;margin:12px 0 24px 0;}
 .jozo-photo-row figure{margin:0;min-width:0;}
-.jozo-photo-row img{display:block;width:100%;height:360px;object-fit:contain;background:#fff;border:2px solid #b99867;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,.20);}
-@media(max-width:650px){.jozo-photo-row{grid-template-columns:1fr;}}
+.jozo-photo-row a{display:inline-block;}
+.jozo-photo-row img{display:block;width:auto;height:65px;max-width:100%;object-fit:contain;background:#fff;border:2px solid #b99867;border-radius:6px;box-shadow:0 3px 7px rgba(0,0,0,.25);cursor:zoom-in;}
+.jozo-photo-row img.is-enlarged{width:auto;height:360px;max-width:100%;object-fit:contain;cursor:zoom-out;}
+@media(max-width:650px){.jozo-photo-row img.is-enlarged{height:auto;width:100%;max-width:360px;}}
 </style>
 </head>
 <body class="en">
@@ -460,5 +462,21 @@ if (isDownload) {
 </div>
 </main>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.jozo-photo-row a').forEach(function (link) {
+    var image = link.querySelector('img');
+    if (!image) return;
+    link.setAttribute('aria-expanded', 'false');
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      var enlarged = image.classList.toggle('is-enlarged');
+      link.setAttribute('aria-expanded', enlarged ? 'true' : 'false');
+    });
+  });
+});
+</script>
+
 </body>
 </html> 
