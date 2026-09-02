@@ -1,0 +1,18 @@
+/* Samo Antina HR: uklanja praznu/bijelu traku između lijevog i desnog stupca. */
+@media (min-width: 901px){
+  body.hr .layout{
+    gap:0 !important;
+    column-gap:0 !important;
+    background:#e7c191 !important;
+  }
+
+  body.hr .left-menu{
+    margin-right:0 !important;
+  }
+
+  body.hr .branch-content{
+    margin-left:0 !important;
+    border-left:0 !important;
+    background:#e7c191 !important;
+  }
+}
