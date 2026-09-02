@@ -228,28 +228,11 @@ if (isDownload) {
 @media(max-width:760px){.branch-search-access{align-items:stretch;flex-direction:column}.branch-search-button{width:100%;box-sizing:border-box}}
 .jozo-photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:12px 0 24px 0;}
 .jozo-photo-row figure{margin:0;min-width:0;}
-.jozo-photo-row img{display:block;width:100%;height:auto;border:2px solid #b99867;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,.20);}
+.jozo-photo-row img{display:block;width:100%;height:360px;object-fit:contain;background:#fff;border:2px solid #b99867;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,.20);}
 @media(max-width:650px){.jozo-photo-row{grid-template-columns:1fr;}}
 </style>
 </head>
 <body class="hr">
-<div aria-describedby="cookie-text" aria-labelledby="cookie-title" aria-modal="true" id="cookie-banner" role="dialog">
-<h2 id="cookie-title">Postavke privatnosti</h2>
-<p id="cookie-text">
-    Ova web-stranica koristi Google Analytics i FlagCounter za mjerenje
-    posjećenosti. Analitičke usluge aktiviraju se samo uz vašu privolu.
-    Više informacija pročitajte u
-    <a href="./privatnost.html">Politici privatnosti</a>.
-  </p>
-<div class="cookie-buttons">
-<button id="cookie-reject" type="button">
-      Odbijam
-    </button>
-<button id="cookie-accept" type="button">
-      Prihvaćam
-    </button>
-</div>
-</div>
 <div class="layout">
 <aside class="left-menu">
 <!-- HOME -->
@@ -290,7 +273,7 @@ if (isDownload) {
 <div class="flagbox">
 <div class="flag-title">Posjetitelji</div>
 <a href="https://info.flagcounter.com/OyvA" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" data-src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/" hidden="" id="flag-counter-image"/>
+<img alt="Flag Counter" id="flag-counter-image" src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
 </a>
 </div>
 </aside>
