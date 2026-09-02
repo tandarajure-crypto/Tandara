@@ -3,11 +3,12 @@
    Jurina / Petrova / Antina / Matina, HR + EN
    ========================================================= */
 
-/* PC: bez bijele trake između lijevog izbornika i desnog sadržaja. */
+/* PC: bez prazne/bijele trake između lijevog i desnog stupca. */
 @media (min-width: 901px){
     body .layout{
         gap:0 !important;
         column-gap:0 !important;
+        background:#e7c191 !important;
     }
 
     body .left-menu{
@@ -21,7 +22,7 @@
     }
 }
 
-/* Zadnja dva boxa — isti sustav na svih 8 stranica. */
+/* Zadnja dva boxa — isti sustav na svim glavnim granama. */
 .branch-card > .branch-diagram-link,
 .branch-card > .tree-note{
     width:min(900px, 100%);
