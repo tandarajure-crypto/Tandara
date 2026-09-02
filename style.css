@@ -107,10 +107,12 @@ body{
 }
 
 /* NASLOV */
-.left-menu > h2:not(.visitor-title){
+.left-menu > h2:not(.visitor-title),
+.left-menu > .menu-title{
     text-align:center;
     font-size:24px;
     font-weight:bold;
+    line-height:1.2;
     margin:-6px 0 14px 0;
     color:#3b2f22;
 }
@@ -1057,7 +1059,8 @@ img, video, iframe{
         height:56px;
     }
 
-    .left-menu > h2:not(.visitor-title){
+    .left-menu > h2:not(.visitor-title),
+    .left-menu > .menu-title{
         font-size:22px;
     }
 
