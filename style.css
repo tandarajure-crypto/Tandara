@@ -120,7 +120,7 @@ body{
 /* MENU */
 .heritage-menu{
     list-style:none;
-    padding:0 20px;
+    padding:0 20px 0 calc(20px + 1cm);
     margin:0;
 }
 
@@ -1065,7 +1065,7 @@ img, video, iframe{
     }
 
     .heritage-menu{
-        padding:0 14px;
+        padding:0 14px 0 calc(14px + 1cm);
     }
 
     .heritage-menu a{
