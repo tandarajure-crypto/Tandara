@@ -219,13 +219,9 @@ if (isDownload) {
   });
 </script>
 <link href="style.css?v=4" rel="stylesheet"/>
+<link crossorigin="anonymous" href="protected-access-modal.css?v=20260731" integrity="sha384-30d7m2pxtd/9V8NQzhO7V4HYUwWcxc97W+FJij3vAdNdnAjWOO1TW/c8S2R469Vq" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-Gx6CMszQkCp3v7+F4UUo2gcR0xqAkP78PiIkB3+rXu45BL0FffX6Gdj0mfmTUTuQ" src="protected-access-modal.js?v=20260804"></script>
 <style>
-.branch-search-access{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 28px;padding:18px 20px;border:1px solid #c8b78f;border-radius:12px;background:#fffaf0;box-shadow:0 3px 12px rgba(55,45,25,.08)}
-.branch-search-access h2{margin:0 0 6px;font-size:1.18rem;color:#4a3618}
-.branch-search-access p{margin:0;line-height:1.55;color:#403a31}
-.branch-search-button{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:44px;padding:10px 18px;border-radius:9px;background:#5b4727;color:#fff!important;font-weight:700;text-decoration:none;box-shadow:0 2px 7px rgba(0,0,0,.15)}
-.branch-search-button:hover,.branch-search-button:focus-visible{background:#3f301a;text-decoration:none;transform:translateY(-1px)}
-@media(max-width:760px){.branch-search-access{align-items:stretch;flex-direction:column}.branch-search-button{width:100%;box-sizing:border-box}}
 
 .jozo-photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:12px 0 24px 0;}
 .jozo-photo-row figure{margin:0;min-width:0;}
@@ -282,14 +278,10 @@ if (isDownload) {
 <div class="branch-card">
 <img alt="United Kingdom flag" class="branch-flag" src="flag-uk.png?v=3"/>
 <h1><strong>THE SECOND BRANCH OF THE FIRST TANDARA FAMILY</strong></h1>
+<p class="protected-access-notice">
+<button class="protected-family-data-trigger" data-protected-access="" type="button"><span aria-hidden="true">🔒</span> Information about protected family data</button>
+</p>
 <h3><strong>2.0. Petar Tandara (1734–1817)</strong></h3>
-<section aria-labelledby="petrova-search-title" class="branch-search-access">
-<div>
-<h2 id="petrova-search-title">Search the entire Petar branch</h2>
-<p>The interactive search accepts several criteria at the same time: name, year, parents, spouse, place, nickname or personal identifier. Names may also be entered without Croatian diacritics.</p>
-</div>
-<a class="branch-search-button" href="box2b-en.html">Open interactive search</a>
-</section>
 <div class="branch-text-block">
 <p>Petar Tandara was Ivan’s second son. He died in 1817 at the age of eighty-three, so it is estimated that he was born around 1734. Petar was married to Jela, née Budić. They had seven sons—Grgo, Jakov (1773–), Martin, Marijan (1781–), Mijo, Tadija and Marko (1787–)—and two daughters, Manda (1777–) and Jela (–1824). The sons Jakov (1773–), Marijan (1781–), Tadija and Marko (1787–) do not appear in the 1806 Register of Souls, and Tadija is also absent from the 1819 register. It may therefore be assumed that they were no longer alive or that one of them had moved away from Ričice.</p>
 <h3><strong>2.1. Grgo, son of Petar (1770– )</strong></h3>
@@ -322,7 +314,7 @@ if (isDownload) {
 <p>Dino married Matilda, née Klepikapić. They have three daughters: Hedviga (1991–), Leonarda (1995–) and Lucija (1999–). He has no male descendants. The family lives in Zagreb.</p>
 <h3><strong>2.2.1.1.1.1.2. Jure, son of Pio (1943–2004)</strong></h3>
 <p>Jure was married to Mila, née Škorić. They had a son, Tomislav (1972–), and three daughters: Marija (1968–), Angela (1971–) and Nediljka (1972–). Tomislav never married. The family now lives in Split.</p>
-<h3><strong>2.2.1.1.1.1.3. Jozo, son of Pio (1949– )</strong></h3>
+<h3><strong>2.2.1.1.1.1.3. Jozo, son of Pio (1949– ✝ 2019)</strong></h3>
 <div class="jozo-photo-row" aria-label="Photographs of Jozo Piin">
 <figure>
 <a href="jozopiin.jpg" rel="noopener noreferrer" target="_blank">
@@ -390,8 +382,8 @@ if (isDownload) {
 <p>Dr Ante Bruno was a Croatian physician, a member of the Parliament of the Socialist Republic of Croatia and a participant in the Croatian Spring. He was elected to Parliament in 1969, and after the suppression of the Croatian Spring, his parliamentary immunity was revoked.</p>
 <p>Because of his political activities, he was arrested and sentenced to two years and four months of imprisonment under a strict regime, which he served at Stara Gradiška Prison.</p>
 <figure class="sabina-photo">
-<a href="Bruno.png" rel="noopener" target="_blank">
-<img alt="Dr Ante Bruno Tandara" loading="lazy" src="Bruno.png"/>
+<a href="bruno.png" rel="noopener" target="_blank">
+<img alt="Dr Ante Bruno Tandara" loading="lazy" src="bruno.png"/>
 </a>
 <figcaption>Dr Ante Bruno Tandara</figcaption>
 </figure>
@@ -449,13 +441,7 @@ if (isDownload) {
 <h3>2.3. Mijo, son of Petar</h3>
 <p>Mijo married Ruža, whose surname is unknown. They had only one daughter, Matija (1810–). As he had no male descendants, his line came to an end.</p>
 </div>
-<section aria-labelledby="petar-diagram-title" class="branch-search-access">
-<div>
-<h2 id="petar-diagram-title">Interactive diagram of the Petar branch</h2>
-<p>Open the complete interactive genealogical diagram showing the descendants of the Petar branch.</p>
-</div>
-<a class="branch-search-button" href="box2b-petrova-grana-en.html">Open interactive diagram</a>
-</section><section class="tree-note">
+<section class="tree-note">
 <h3>Note</h3>
 <p>The complete family tree of this branch is available in the <strong>interactive diagram on the right</strong> on the home page of the Digital Archive of the Tandara Family Line.</p>
 <p>Select the <strong>first row</strong>, then the <strong>second box in the upper row of the tree</strong> entitled <strong>“Petar Branch”</strong>. Clicking that box opens the corresponding part of the family tree with the descendants of this branch.</p>
