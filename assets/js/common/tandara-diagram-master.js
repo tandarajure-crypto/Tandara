@@ -201,6 +201,14 @@
   const detailsParents = document.getElementById('personDetailsParents');
   const detailsText = document.getElementById('personDetailsText');
 
+  const PERSON_DETAIL_PHOTOS = Object.freeze({
+    '2.2.3.1.1.3.1': Object.freeze({
+      src: 'bruno.png',
+      altHr: 'Dr. Ante Bruno Tandara',
+      altEn: 'Dr Ante Bruno Tandara'
+    })
+  });
+
   // MASTER rule: every interactive diagram must expose both HR and EN flags.
   // Existing explicit links are preserved. If a converted page accidentally
   // omits them, the master inserts a safe fallback pair automatically.
@@ -418,6 +426,48 @@
     return `<text class="${className}" x="${x}" y="${y}"${fit}>${esc(name)}</text>`;
   }
 
+  function updatePersonDetailPhoto(code) {
+    if (!detailsBox) return;
+    const photo = PERSON_DETAIL_PHOTOS[code];
+    let figure = detailsBox.querySelector('[data-person-record-photo]');
+
+    if (!photo) {
+      if (figure) figure.remove();
+      return;
+    }
+
+    if (!figure) {
+      figure = document.createElement('figure');
+      figure.className = 'person-record-photo';
+      figure.setAttribute('data-person-record-photo', '');
+
+      const link = document.createElement('a');
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+
+      const image = document.createElement('img');
+      image.width = 292;
+      image.height = 407;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+
+      const caption = document.createElement('figcaption');
+      link.appendChild(image);
+      figure.append(link, caption);
+      detailsText.insertAdjacentElement('afterend', figure);
+    }
+
+    const alt = LANG === 'en' ? photo.altEn : photo.altHr;
+    const link = figure.querySelector('a');
+    const image = figure.querySelector('img');
+    const caption = figure.querySelector('figcaption');
+    link.href = photo.src;
+    link.setAttribute('aria-label', alt);
+    image.src = photo.src;
+    image.alt = alt;
+    caption.textContent = alt;
+  }
+
   function showPersonDetails(code) {
     if (!detailsBox || !nodes[code]) return;
     const rec = nodes[code];
@@ -428,6 +478,7 @@
     const detail = String(recDetail(rec) || '').trim();
     detailsText.innerHTML = formatDetailHtml(detail);
     detailsText.hidden = !detail;
+    updatePersonDetailPhoto(code);
     detailsBox.hidden = false;
   }
 
