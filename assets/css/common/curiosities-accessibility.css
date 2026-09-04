@@ -47,6 +47,20 @@
   margin-top: 26px;
 }
 
+/* Galerije: obje slike u svakom redu imaju jednaku visinu.
+   Širina se prilagođava izvornom omjeru slike, bez rezanja i rastezanja. */
+.content-card .australia-tandara-image{
+  aspect-ratio: 2 / 1 !important;
+}
+
+.content-card .australia-tandara-image img{
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
 .audio-pronunciation-box{
   margin: 22px 0 30px;
   padding: 20px 24px;
