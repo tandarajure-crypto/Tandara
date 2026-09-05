@@ -26,6 +26,7 @@
 
 .ivan-josipov-gallery-row .sabina-photo img {
     display: block;
+    box-sizing: border-box;
     height: 65px !important;
     width: auto !important;
     max-width: none !important;
