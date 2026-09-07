@@ -165,6 +165,60 @@
   margin-bottom:0;
 }
 
+/* Univerzalni prikaz fotografija osoba i njihovih natpisa. */
+.person-photo-gallery{
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:flex-start;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:4px;
+}
+
+.person-photo{
+  display:grid;
+  flex:0 0 auto;
+  grid-template-columns:min-content;
+  justify-items:center;
+  width:min-content;
+  margin:0 0 12px;
+  text-align:center;
+}
+
+.person-photo a{
+  display:block;
+  cursor:zoom-in;
+}
+
+.person-photo a:focus-visible{
+  outline:3px solid #d4af37;
+  outline-offset:3px;
+}
+
+.person-photo img{
+  display:block;
+  box-sizing:border-box;
+  width:auto !important;
+  height:65px !important;
+  max-width:none !important;
+  border:2px solid #b99867;
+  object-fit:contain;
+}
+
+.person-photo figcaption{
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+  margin-top:5px;
+  color:#4a3927;
+  font-size:11px;
+  font-style:italic;
+  line-height:1.25;
+  overflow-wrap:anywhere;
+  text-align:center;
+  white-space:normal;
+}
+
 @media (max-width:900px){
   .branch-content{
     padding:20px 12px;
@@ -243,5 +297,10 @@
 
   .branch-text-block > p{
     text-align:left;
+  }
+
+  .person-photo-gallery{
+    flex-wrap:wrap;
+    overflow:visible;
   }
 }
