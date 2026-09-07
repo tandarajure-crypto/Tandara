@@ -219,6 +219,25 @@
   white-space:normal;
 }
 
+.protected-person-heading{
+  gap:10px 12px;
+}
+
+.protected-access-notice.protected-person-heading .protected-family-data-trigger{
+  flex:0 1 auto;
+  min-height:0;
+  padding:1px 8px;
+  border:1px solid #9b7745;
+  border-radius:999px;
+  background:transparent;
+  box-shadow:none;
+  font-family:inherit;
+  font-size:.72em;
+  font-weight:600;
+  line-height:1.2;
+  text-decoration:none;
+}
+
 @media (max-width:900px){
   .branch-content{
     padding:20px 12px;
@@ -241,6 +260,111 @@
 }
 
 @media (max-width:640px){
+  body{
+    overflow-x:hidden;
+  }
+
+  .layout{
+    grid-template-columns:minmax(0,1fr);
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    padding:0;
+  }
+
+  .left-menu,
+  .branch-content,
+  .branch-card,
+  .branch-text-block{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  .left-menu{
+    position:relative;
+    top:auto;
+    height:auto;
+    max-height:none;
+    padding:10px 0 12px;
+    overflow:visible;
+    border-right:0;
+    border-bottom:3px solid #7a7a7a;
+  }
+
+  .home-button{
+    margin-bottom:4px;
+  }
+
+  .home-circle{
+    width:48px;
+    height:48px;
+  }
+
+  .left-menu .lang-switch{
+    margin-bottom:8px;
+  }
+
+  .left-menu > .menu-title{
+    margin:0 0 8px;
+    font-size:20px;
+  }
+
+  .left-menu .heritage-menu{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:4px;
+    width:100%;
+    padding:0 10px;
+    box-sizing:border-box;
+  }
+
+  .left-menu .heritage-menu li{
+    min-width:0;
+    padding:6px 4px;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:5px;
+  }
+
+  .left-menu .heritage-menu li:hover{
+    padding-left:4px;
+  }
+
+  .left-menu .heritage-menu a{
+    min-width:0;
+    font-size:14px;
+    overflow-wrap:anywhere;
+  }
+
+  .left-menu .heritage-menu li > span{
+    flex:0 0 auto;
+  }
+
+  .left-menu .author-photo{
+    display:none;
+  }
+
+  .branch-content{
+    padding:12px 8px;
+  }
+
+  .branch-card{
+    padding:18px 10px;
+    border-radius:10px;
+  }
+
+  .branch-card > h1{
+    font-size:clamp(22px,7vw,28px);
+    line-height:1.2;
+  }
+
+  .branch-text-block > h2,
+  .branch-text-block > h3,
+  .family-code-list,
+  .protected-person-heading > strong{
+    overflow-wrap:anywhere;
+  }
+
   .branch-page-actions,
   .branch-print-button{
     width:100%;
@@ -277,9 +401,13 @@
 @media print{
   .left-menu,
   .branch-page-actions,
-  .protected-access-notice,
+  .protected-access-notice:not(.protected-person-heading),
   .branch-diagram-link,
   .tree-note{
+    display:none !important;
+  }
+
+  .protected-person-heading .protected-family-data-trigger{
     display:none !important;
   }
 
