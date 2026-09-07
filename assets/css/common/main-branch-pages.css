@@ -48,6 +48,7 @@
   width:100%;
   max-width:760px;
   margin:28px auto 14px;
+  font-weight:400;
   text-align:center;
   overflow-wrap:anywhere;
 }
@@ -61,7 +62,9 @@
 }
 
 .branch-text-block > h2,
-.branch-text-block > h3{
+.branch-text-block > h3,
+.branch-text-block > h4{
+  font-weight:400;
   text-align:left;
   overflow-wrap:anywhere;
 }
