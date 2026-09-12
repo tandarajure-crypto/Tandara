@@ -1,8 +1,7 @@
 const map = L.map('ricice-map').setView([43.51347, 17.11103], 11);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap',
-  referrerPolicy: 'no-referrer'
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 L.marker([43.51347, 17.11103])
@@ -27,9 +26,8 @@ L.marker([43.8249858, 17.0076892])
 // OpenStreetMap 2 — Tandare u Hrvatskoj prema tablici iz 2008.
 const croatiaMap = L.map('tandara-croatia-map').setView([45.25, 16.65], 7);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap',
-  referrerPolicy: 'no-referrer'
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(croatiaMap);
 
 const croatiaMarkers = [
@@ -75,9 +73,8 @@ croatiaMap.fitBounds(croatiaGroup.getBounds().pad(0.08));
 // Ako izvor ne dopušta pouzdano brojanje, popup to izričito navodi.
 const worldMap = L.map('tandara-world-map').setView([45.0, 12.0], 3);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap',
-  referrerPolicy: 'no-referrer'
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(worldMap);
 
 const worldMarkers = [
@@ -149,4 +146,3 @@ const worldMarkers = [
 
 const worldGroup = L.featureGroup(worldMarkers).addTo(worldMap);
 worldMap.fitBounds(worldGroup.getBounds().pad(0.10));
-
