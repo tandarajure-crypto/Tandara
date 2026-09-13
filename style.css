@@ -30,6 +30,13 @@ body{
     top:0;
     height:100vh;
     overflow-y:auto;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+
+.left-menu::-webkit-scrollbar{
+    width:0;
+    height:0;
 }
 
 /* RESET */
