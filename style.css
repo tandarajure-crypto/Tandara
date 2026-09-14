@@ -304,8 +304,8 @@ body{
     position:absolute;
     cursor:pointer;
 
-    border:3px solid #ff0000;
-    background:rgba(255,0,0,.18);
+    border:2px solid transparent;
+    background:transparent;
 
     border-radius:4px;
     box-sizing:border-box;
@@ -318,8 +318,8 @@ body{
 .hs-antin:hover,
 .hs-matin:hover{
 
-    border:3px solid #ff0000;
-    background:rgba(255,0,0,.28);
+    border:2px solid #d4af37;
+    background:rgba(212,175,55,.12);
 }
 /* KOORDINATE NOVIH OKVIRA */
 
@@ -367,81 +367,6 @@ body{
     width:10.2%;
     height:9%;
 }
-/* ----------------------------------------------------------
-   DESNI DIJAGRAM - ZAVRŠNA VERZIJA
----------------------------------------------------------- */
-.hs-box1,
-.hs-box2,
-.hs-box3,
-.hs-box4,
-.hs-box5,
-.hs-box6,
-.hs-box7,
-.hs-box8{
-    position:absolute;
-    left:83.3%;
-    width:11.0%;
-    border:2px solid transparent;
-    background:transparent;
-    box-sizing:border-box;
-    border-radius:4px;
-    transition:all .15s ease;
-}
-
-.hs-box1:hover,
-.hs-box2:hover,
-.hs-box3:hover,
-.hs-box4:hover,
-.hs-box5:hover,
-.hs-box6:hover,
-.hs-box7:hover,
-.hs-box8:hover{
-    border:2px solid #d4af37;
-    background:rgba(212,175,55,.12);
-}
-
-/* VERTIKALNI POLOŽAJI */
-
-.hs-box1{
-    top:2.80%;
-    height:9.65%;
-}
-
-.hs-box2{
-    top:15.30%;
-    height:9.01%;
-}
-
-.hs-box3{
-    top:28%;
-    height:8.88%;
-}
-
-.hs-box4{
-    top:39.0%;
-    height:9.4%;
-}
-
-.hs-box5{
-    top:51.72%;
-    height:8.63%;
-}
-
-.hs-box6{
-    top:63.36%;
-    height:8.8%;
-}
-
-.hs-box7{
-    top:75.83%;
-    height:8.49%;
-}
-
-.hs-box8{
-    top:87.65%;
-    height:8.89%;
-}
-
 /* ======================================================
    CONTENT PAGES
 ====================================================== */
@@ -982,11 +907,7 @@ img, video, iframe{
     }
 
 
-    /* MOBITEL: korekcija klikabilnih okvira bez utjecaja na PC.
-       Pomaci su uneseni prema opažanju na mobitelu:
-       - glavne grane: Jurina/Antina ulijevo 10% širine okvira; Petrova/Matina ulijevo 5%
-       - desni dijagram: Ivan udesno 10% širine; 4 okvira udesno 20%; 8 boxova udesno 30%
-    */
+    /* MOBITEL: korekcija četiriju glavnih grana bez utjecaja na PC. */
     .hs-jurina,
     .hs-antina{
         left:calc(12.48% - 1.8%);
@@ -995,32 +916,6 @@ img, video, iframe{
     .hs-petrova,
     .hs-matina{
         left:calc(36.08% - 0.9%);
-    }
-
-    .hs-ivanov{
-        left:calc(60.9% + 1.17%);
-    }
-
-    .hs-jurin,
-    .hs-petrov,
-    .hs-antin,
-    .hs-matin{
-        left:calc(71.2% + 2.04%);
-    }
-
-    .hs-jurin{
-        left:calc(71% + 2.04%);
-    }
-
-    .hs-box1,
-    .hs-box2,
-    .hs-box3,
-    .hs-box4,
-    .hs-box5,
-    .hs-box6,
-    .hs-box7,
-    .hs-box8{
-        left:calc(83.3% + 3.3%);
     }
 
     .branch-content,
