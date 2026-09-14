@@ -304,8 +304,8 @@ body{
     position:absolute;
     cursor:pointer;
 
-    border:2px solid transparent;
-    background:transparent;
+    border:3px solid #ff0000;
+    background:rgba(255,0,0,.18);
 
     border-radius:4px;
     box-sizing:border-box;
@@ -318,8 +318,8 @@ body{
 .hs-antin:hover,
 .hs-matin:hover{
 
-    border:2px solid #d4af37;
-    background:rgba(212,175,55,.12);
+    border:3px solid #ff0000;
+    background:rgba(255,0,0,.28);
 }
 /* KOORDINATE NOVIH OKVIRA */
 
