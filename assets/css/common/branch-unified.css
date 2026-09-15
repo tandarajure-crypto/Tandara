@@ -141,3 +141,37 @@
         box-sizing:border-box;
     }
 }
+.bruno-graf-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 24px;
+  height: 380px; /* podesi po želji - ovo definira zajedničku visinu */
+}
+
+.bruno-graf-row figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bruno-graf-row img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .bruno-graf-row {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bruno-graf-row img {
+    height: auto;
+    width: 100%;
+  }
+}
