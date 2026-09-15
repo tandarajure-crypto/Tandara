@@ -144,35 +144,30 @@
 .bruno-graf-row {
   display: flex;
   flex-wrap: nowrap;
-  align-items: flex-start;   /* slike se poravnaju po vrhu, caption ide slobodno ispod */
+  align-items: flex-end;   /* slike su poravnane po dnu, caption ide ispod svake */
   justify-content: center;
-  gap: 24px;
+  gap: 16px;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
-.bruno-graf-row figure {
+.bruno-graf-row .bruno-graf-item {
   margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 0;
 }
 
-.bruno-graf-row img {
-  height: 300px;      /* postavi na stvarnu visinu bruno.png slike (u px) */
+.bruno-graf-row .bruno-graf-item img {
+  height: 65px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
-}
-
-@media (max-width: 640px) {
-  .bruno-graf-row {
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-  }
-  .bruno-graf-row img {
-    height: auto;
-    width: 100%;
-  }
+  display: block;
 }
