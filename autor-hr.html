@@ -1,261 +1,438 @@
-
 <!DOCTYPE html>
-
 <html lang="hr">
 <head>
-<meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://s01.flagcounter.com data: https://*.google-analytics.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; script-src-attr 'none'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; style-src 'self' 'sha256-Qzyq3K3M9yziTJWJTtGmVAEOkt4pGUEjQT0uJ0JOcXQ=' 'sha256-cduioN+5QTsPCHOr+sixBiON/n81OP96EKbv1H7N4jc=' 'sha256-+z6V4Vsz9HSvlmpfcOB92ljVbJls4IJWV6A2IkrqON8=' 'sha256-6Blv13CdqH/E/2wLb1laTKdwxINSY/FRbuepkcQF2+k=' 'unsafe-hashes' 'sha256-VDrEMFNorabLhBNXc7PjNmAKyo68gEuy9NiIkU3uKfc='; style-src-elem 'self' 'sha256-Qzyq3K3M9yziTJWJTtGmVAEOkt4pGUEjQT0uJ0JOcXQ=' 'sha256-cduioN+5QTsPCHOr+sixBiON/n81OP96EKbv1H7N4jc=' 'sha256-+z6V4Vsz9HSvlmpfcOB92ljVbJls4IJWV6A2IkrqON8=' 'sha256-6Blv13CdqH/E/2wLb1laTKdwxINSY/FRbuepkcQF2+k='; style-src-attr 'unsafe-hashes' 'sha256-VDrEMFNorabLhBNXc7PjNmAKyo68gEuy9NiIkU3uKfc='; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;" http-equiv="Content-Security-Policy"/>
-<!-- Google Analytics: one page view per top-level page; iframes do not double-count -->
-<script defer src="assets/js/common/google-analytics.js?v=20260904"></script>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <title>O autoru i projektu | TANDARA-PREZIME</title>
-<meta content="O autoru Juri Tandari, autoru projekta TANDARA-PREZIME – digitalnog arhiva podrijetla, rodoslovlja, povijesti i baštine prezimena Tandara." name="description"/>
-<link href="https://tandarajure-crypto.github.io/Tandara/autor-hr.html" rel="canonical"/>
-<link href="https://tandarajure-crypto.github.io/Tandara/autor-hr.html" hreflang="hr" rel="alternate"/>
-<link href="https://tandarajure-crypto.github.io/Tandara/autor-en.html" hreflang="en" rel="alternate"/>
-<link href="https://tandarajure-crypto.github.io/Tandara/autor-hr.html" hreflang="x-default" rel="alternate"/>
-<meta content="website" property="og:type"/>
-<meta content="O autoru i projektu | TANDARA-PREZIME" property="og:title"/>
-<meta content="O autoru Juri Tandari, autoru projekta TANDARA-PREZIME – digitalnog arhiva podrijetla, rodoslovlja, povijesti i baštine prezimena Tandara." property="og:description"/>
-<meta content="https://tandarajure-crypto.github.io/Tandara/autor-hr.html" property="og:url"/>
-<meta content="https://tandarajure-crypto.github.io/Tandara/jure.png" property="og:image"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<!-- OPEN GRAPH -->
-<link href="./style.css?v=20260904" rel="stylesheet"/>
-<link href="assets/css/common/mobile-topbar-hr.css?v=20260904" rel="stylesheet"/>
-<style>
-/* Hrvatske box stranice: dvostupčana navigacija samo na tabletima i mobitelima. */
-@media (max-width: 900px){
-  body.box-mobile-split .mobile-box-topbar{
-    position:sticky;
-    top:0;
-  }
-  body.box-mobile-split .layout{
-    display:grid;
-    grid-template-columns:minmax(150px, 34vw) minmax(0, 1fr);
-    align-items:start;
-    gap:0;
-    width:100%;
-    max-width:100%;
-    padding:0;
-  }
-  body.box-mobile-split .left-menu{
-    position:sticky;
-    top:59px;
-    width:100%;
-    height:calc(100vh - 59px);
-    max-height:calc(100vh - 59px);
-    overflow-y:auto;
-    overflow-x:hidden;
-    border-right:3px solid #7a7a7a;
-    border-bottom:0;
-    padding:10px 0 14px;
-    z-index:20;
-  }
-  body.box-mobile-split .left-menu .home-button,
-  body.box-mobile-split .left-menu .lang-switch,
-  body.box-mobile-split .left-menu > h2,
-  body.box-mobile-split .left-menu .author-photo,
-  body.box-mobile-split .left-menu .flagbox{
-    display:none;
-  }
-  body.box-mobile-split .heritage-menu{
-    padding:0 9px;
-  }
-  body.box-mobile-split .heritage-menu li{
-    align-items:flex-start;
-    gap:5px;
-    padding:9px 2px;
-  }
-  body.box-mobile-split .heritage-menu li span{
-    flex:0 0 auto;
-    font-size:12px;
-    line-height:1.35;
-  }
-  body.box-mobile-split .heritage-menu a{
-    display:block;
-    min-width:0;
-    font-size:clamp(12px, 2.15vw, 16px);
-    line-height:1.25;
-    overflow-wrap:anywhere;
-  }
-  body.box-mobile-split .content-page{
-    min-width:0;
-    width:100%;
-    padding:12px 8px;
-  }
-  body.box-mobile-split .content-card{
-    min-width:0;
-    width:100%;
-    padding:20px 12px;
-    border-radius:10px;
-  }
-}
-@media (max-width: 480px){
-  body.box-mobile-split .layout{
-    grid-template-columns:minmax(128px, 42vw) minmax(0, 1fr);
-  }
-  body.box-mobile-split .heritage-menu{
-    padding:0 6px;
-  }
-  body.box-mobile-split .heritage-menu li{
-    gap:3px;
-    padding:8px 1px;
-  }
-  body.box-mobile-split .heritage-menu a{
-    font-size:12px;
-  }
-  body.box-mobile-split .content-page{
-    padding:8px 5px;
-  }
-  body.box-mobile-split .content-card{
-    padding:16px 9px;
-  }
-}
-</style>
-<link href="./mobile-subpages-fullscreen.css?v=20260904" rel="stylesheet"/>
-<link href="assets/css/common/author-layout-fix.css?v=20260904" id="author-page-layout-fix" rel="stylesheet"/>
-<link href="assets/css/common/desktop-sticky-sidebar.css?v=20260904" rel="stylesheet">
-</link></head>
-<body class="hr box-mobile-split mobile-subpage-full">
-<nav aria-label="Mobilna navigacija" class="mobile-box-topbar">
-<a class="mobile-box-home" href="index.html">🏠 Početna</a>
-<div aria-label="Odabir jezika" class="mobile-box-flags">
-<a aria-label="Hrvatski" href="autor-hr.html"><img alt="HR" src="flag-hr.png"/></a>
-<a aria-label="English" href="autor-en.html"><img alt="EN" src="flag-uk.png"/></a>
-</div>
-</nav>
-<div class="layout">
-<div class="left-menu">
-<a aria-label="Početna" class="home-button" href="index.html">
-<div class="home-circle">
-<svg aria-hidden="true" class="home-svg" fill="none" stroke="white" stroke-width="2" viewbox="0 0 24 24">
-<path d="M3 10.5L12 3l9 7.5"></path>
-<path d="M5 10v10h14V10"></path>
-<path d="M10 20v-6h4v6"></path>
-</svg>
-</div>
-</a>
-<div class="lang-switch">
-<a class="lang-btn flag-btn" href="autor-hr.html">
-<img alt="HR" src="./flag-hr.png"/>
-</a>
-<a class="lang-btn flag-btn" href="autor-en.html">
-<img alt="EN" src="./flag-uk.png"/>
-</a>
-</div>
-<h2>TANDARA-PREZIME</h2>
-<ul class="heritage-menu"><li><span>🌳</span><a href="autor-hr.html">O autoru i projektu</a></li><li><span>🌳</span><a href="podrijetlo-hr.html">Podrijetlo prezimena</a></li><li><span>🌳</span><a href="rodoslovlje-hr.html">Rodoslovlje roda</a></li><li><span>🌳</span><a href="migracije-hr.html">Migracije i rasprostranjenost</a></li><li><span>🌳</span><a href="zanimljivosti.html">Zanimljivosti</a></li><li><span>🌳</span><a href="kontakti.html">Kontakt i suradnja</a></li><li><span>🌳</span><a href="knjiga-poruka.html">Knjiga poruka</a></li><li><span>🌳</span><a href="privatnost.html">Politika privatnosti</a></li></ul>
-<div class="author-photo">
-<a href="autor-hr.html">
-<img alt="Jure Tandara" src="./jure.png"/>
-</a>
-</div>
-<div class="flagbox">
-<div class="flag-title">Posjetitelji</div>
-<a href="https://info.flagcounter.com/OyvA" referrerpolicy="no-referrer" rel="noopener noreferrer" target="_blank">
-<img alt="Flag Counter" referrerpolicy="no-referrer" data-flag-counter-src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"/>
-</a>
-</div>
-</div>
-<main class="content-page">
+<meta name="description" content="O autoru Juri Tandari, autoru projekta TANDARA-PREZIME – digitalnog arhiva podrijetla, rodoslovlja, povijesti i baštine prezimena Tandara.">
+
+<link rel="canonical" href="https://tandarajure-crypto.github.io/Tandara/autor-hr.html">
+<link rel="alternate" hreflang="hr" href="https://tandarajure-crypto.github.io/Tandara/autor-hr.html">
+<link rel="alternate" hreflang="en" href="https://tandarajure-crypto.github.io/Tandara/autor-en.html">
+<link rel="alternate" hreflang="x-default" href="https://tandarajure-crypto.github.io/Tandara/autor-hr.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="O autoru i projektu | TANDARA-PREZIME">
+<meta property="og:description" content="O autoru Juri Tandari, autoru projekta TANDARA-PREZIME – digitalnog arhiva podrijetla, rodoslovlja, povijesti i baštine prezimena Tandara.">
+<meta property="og:url" content="https://tandarajure-crypto.github.io/Tandara/autor-hr.html">
+<meta property="og:image" content="https://tandarajure-crypto.github.io/tandara-common/slike/common-foto/jure.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="../tandara-common/css/site-shell.css?v=20260919-1">
+<link rel="stylesheet" href="../tandara-common/css/subpages-content.css?v=20260919-1">
+<script defer src="../tandara-common/js/site-shell.js?v=20260919-1"></script>
+</head>
+
+<body class="hr" data-site-root="./" data-author-image="slike/common-foto/jure.webp" data-page-hr="autor-hr.html" data-page-en="autor-en.html" data-page="autor">
+<main class="content-page" data-site-content>
 <article class="content-card">
+
 <h1>O autoru</h1>
 
 <section id="uvod">
 <h2>Osobni uvod</h2>
-<p>Poštovani posjetitelju, dobro došli na mrežne stranice posvećene povijesti,
-    podrijetlu i baštini prezimena <strong>Tandara</strong>.</p>
-<p>Moje ime je <strong>Jure Tandara</strong> i inženjer sam cestovnog prometa. Imam 70 godina
-    i već šest godina sam u mirovini. Sa suprugom <strong>Ružom</strong> živim u Zagrebu. Otac sam
-    dvojice sinova te djed petero unučadi.</p>
-<p>Nakon dugog radnog vijeka danas se posvećujem obitelji, istraživanju naših
-    korijena i svemu što me povezuje s prirodom i stvaralaštvom.</p>
 
-<div aria-label="Fotografije autora" class="australia-tandara-gallery">
+<p>
+Poštovani posjetitelju, dobro došli na mrežne
+stranice posvećene povijesti, podrijetlu i
+baštini prezimena <strong>Tandara</strong>.
+</p>
+
+<p>
+Moje ime je <strong>Jure Tandara</strong> i
+inženjer sam cestovnog prometa. Imam 70 godina
+i već šest godina sam u mirovini. Sa suprugom
+<strong>Ružom</strong> živim u Zagrebu.
+Otac sam dvojice sinova te djed petero unučadi.
+</p>
+
+<p>
+Nakon dugog radnog vijeka danas se posvećujem
+obitelji, istraživanju naših korijena i svemu
+što me povezuje s prirodom i stvaralaštvom.
+</p>
+
+<div class="australia-tandara-gallery" role="group" aria-label="Fotografije autora">
 <figure class="australia-tandara-item">
 <div class="australia-tandara-image">
-<img alt="Fotografija autora" decoding="async" loading="eager" src="slike/sl.3.6.jpg"/>
+<img src="../tandara-common/slike/autor/sl.3.6.jpg" alt="Fotografija autora" loading="eager" decoding="async">
 </div>
-<figcaption>Sa suprugom Ružom, sinovima, nevjestama i unucima</figcaption>
+<figcaption>
+Sa suprugom Ružom, sinovima, nevjestama
+i unucima
+</figcaption>
 </figure>
+
 <figure class="australia-tandara-item">
 <div class="australia-tandara-image">
-<img alt="Fotografija autora" decoding="async" loading="eager" src="slike/sl.3.7.jpg"/>
+<img src="../tandara-common/slike/autor/sl.3.7.jpg" alt="Fotografija autora" loading="eager" decoding="async">
 </div>
-<figcaption>Proslava rođendana od najmlađeg unuka</figcaption>
+<figcaption>
+Proslava rođendana od najmlađeg unuka
+</figcaption>
 </figure>
 </div>
-
 </section>
+
 <section id="profesionalni-put">
 <h2>Profesionalni put</h2>
-<p>Profesionalni put započeo sam kao <strong>Rukovoditelj pogona za popravak i održavanje voznog parka Hrvatskih željeznica</strong>
-    u Zagrebu, gdje sam bio odgovoran za organizaciju, nadzor i kvalitetu održavanja te pouzdanost voznog parka. Ovaj početni angažman dao mi je snažnu tehničku i organizacijsku osnovu za daljnji rad u području prometnih sustava.</p>
-<p>Nakon toga radio sam kao <strong>Rukovoditelj kontejnerskog terminala u Zagrebu</strong>,
-    gdje sam bio zadužen za upravljanje terminalnim operacijama, organizaciju teretnih tokova i koordinaciju logističkih procesa.</p>
-<p>Potom sam preuzeo dužnost <strong>Rukovoditelj službe za sigurnost prometa</strong>
-    na Autocesti Rijeka–Zagreb. U suradnji s kolegom, rukovoditeljem sektora održavanja,
-    <strong>g. Dinkom Pešutom</strong>, postavili smo temelje modernom sustavu održavanja i upravljanja sigurnošću prometa na autocestama, prvom takvom sustavu u Republici Hrvatskoj. Naš rad prepoznala je i Europska komisija, dodijelivši tunelu Tuhobić priznanje za najsigurniji tunel u Europi 2009. godine, kao tunelu koji je ostvario najveći napredak u sigurnosti nakon loše ocjene na prvom testiranju 2004.</p>
-<p>Važan dio mog profesionalnog djelovanja bilo je i <strong>vođenje projekta implementacije RDS-TMC sustava</strong>
-    u Republici Hrvatskoj, čime je postavljen temelj suvremenog prometnog informiranja i integracije cestovnih informacija u europsku mrežu dinamičkog upravljanja prometom.</p>
-<div aria-label="Fotografije iz profesionalnog puta" class="australia-tandara-gallery">
-<figure class="australia-tandara-item">
-<div class="australia-tandara-image">
-<img alt="Sa Dinkom Pešutom u CKP tunela Mt. Blanc" decoding="async" loading="lazy" src="mt.blanc.tunel.jpg"/>
-</div>
-<figcaption>Sa Dinkom Pešutom u CKP tunela Mt.Blanc</figcaption>
-</figure>
-<figure class="australia-tandara-item">
-<div class="australia-tandara-image">
-<img alt="Sa Antom Pribanićem na dodjeli nagrade u Briselu 2009." decoding="async" loading="lazy" src="brisel.dodijela.nagrade.jpg"/>
-</div>
-<figcaption>Sa Antom Pribanićem na dodijeli nagrade u Briselu 2009.</figcaption>
-</figure>
-</div>
 
+<p>
+Profesionalni put započeo sam kao
+<strong>Rukovoditelj pogona za popravak i održavanje
+voznog parka Hrvatskih željeznica</strong>
+u Zagrebu, gdje sam bio odgovoran za organizaciju,
+nadzor i kvalitetu održavanja te pouzdanost voznog
+parka. Ovaj početni angažman dao mi je snažnu
+tehničku i organizacijsku osnovu za daljnji rad
+u području prometnih sustava.
+</p>
+
+<p>
+Nakon toga radio sam kao
+<strong>Rukovoditelj kontejnerskog terminala u Zagrebu</strong>,
+gdje sam bio zadužen za upravljanje terminalnim
+operacijama, organizaciju teretnih tokova i
+koordinaciju logističkih procesa.
+</p>
+
+<p>
+Potom sam preuzeo dužnost
+<strong>Rukovoditelja službe za sigurnost prometa</strong>
+na Autocesti Rijeka–Zagreb. U suradnji s kolegom,
+Rukovoditeljem sektora održavanja,
+<strong>g. Dinkom Pešutom</strong>, postavili smo
+temelje modernom sustavu održavanja i upravljanja
+sigurnošću prometa na autocestama, prvom takvom
+sustavu u Republici Hrvatskoj. Naš rad prepoznala
+je i Europska komisija, dodijelivši tunelu Tuhobić
+priznanje za najsigurniji tunel u Europi 2009.
+godine, kao tunelu koji je ostvario najveći
+napredak u sigurnosti nakon loše ocjene na prvom
+testiranju 2004.
+</p>
+
+<p>
+Važan dio mog profesionalnog djelovanja bilo je i
+<strong>vođenje projekta implementacije RDS-TMC sustava</strong>
+u Republici Hrvatskoj, čime je postavljen temelj
+suvremenog prometnog informiranja i integracije
+cestovnih informacija u europsku mrežu dinamičkog
+upravljanja prometom.
+</p>
+
+<div class="australia-tandara-gallery" role="group" aria-label="Fotografije iz profesionalnog puta">
+<figure class="australia-tandara-item">
+<div class="australia-tandara-image">
+<img src="../tandara-common/slike/autor/mt.blanc.tunel.jpg" alt="Sa Dinkom Pešutom u CKP tunela Mt. Blanc" loading="lazy" decoding="async">
+</div>
+<figcaption>Sa Dinkom Pešutom u CKP tunela Mt. Blanc</figcaption>
+</figure>
+
+<figure class="australia-tandara-item">
+<div class="australia-tandara-image">
+<img src="../tandara-common/slike/autor/brisel.dodijela.nagrade.jpg" alt="Sa Antom Pribanićem na dodjeli nagrade u Briselu 2009." loading="lazy" decoding="async">
+</div>
+<figcaption>
+Sa Antom Pribanićem na dodjeli nagrade
+u Briselu 2009.
+</figcaption>
+</figure>
+</div>
 </section>
+
 <section id="sport-i-stvaralastvo">
 <h2>Sport i tehničko stvaralaštvo</h2>
-<p>Uz profesionalni rad, velik dio života posvetio sam sportu i tehničkom stvaralaštvu. Nositelj sam crnog pojasa
-    u karateu i bivši reprezentativac Karate kluba Tempo, a godinama sam se bavio skijanjem, planinarenjem i
-    biciklizmom.</p>
-<p>Posebnu radost nalazio sam u izradi maketa povijesnih brodova, replika rimskih i antičkih ratnih naprava,
-    te drvenih igračaka za svoje unuke.</p>
+
+<p>
+Uz profesionalni rad, velik dio života posvetio sam
+sportu i tehničkom stvaralaštvu. Nositelj sam crnog
+pojasa u karateu i bivši reprezentativac Karate
+kluba Tempo, a godinama sam se bavio skijanjem,
+planinarenjem i biciklizmom.
+</p>
+
+<p>
+Posebnu radost nalazio sam u izradi maketa
+povijesnih brodova, replika rimskih i antičkih
+ratnih naprava, te drvenih igračaka za svoje unuke.
+</p>
 </section>
+
 <section id="obitelj">
 <h2>Obitelj i svakodnevni život</h2>
-<p>Danas najviše uživam u prirodi i vremenu provedenom s unucima, stvarajući s njima uspomene koje nadilaze
-    generacije. Moja obitelj, djeca, unuci i prijatelji ostaju moj najveći izvor nadahnuća i životne radosti.</p>
+
+<p>
+Danas najviše uživam u prirodi i vremenu provedenom
+s unucima, stvarajući s njima uspomene koje nadilaze
+generacije. Moja obitelj, djeca, unuci i prijatelji
+ostaju moj najveći izvor nadahnuća i životne radosti.
+</p>
 </section>
+
 <section id="o-projektu">
-<h2>O projektu</h2><p>Digitalni arhiv roda Tandara nastajao je iz jednostavne, ali zahtjevne želje: prikupiti ono što je još moguće pronaći, povezati rasute obiteljske tragove i sačuvati ih prije nego što ih vrijeme, zaborav i odlazak generacija učine nedostupnima. Iza stranica, imena, godina, fotografija i rodoslovnih veza nalazi se mnogo mjeseci istraživanja, provjeravanja podataka, prepiske, razgovora i pokušaja da se dođe do ljudi koji mogu dopuniti ono što pisani izvori više ne mogu ispričati.</p><p>Tijekom tog rada pokazalo se da potraga za vlastitim korijenima ne pobuđuje kod svih jednak interes. Dok su pojedinci s iskrenom željom za suradnjom dijelili obiteljske podatke, uspomene i fotografije, dio obitelji nije pokazao zanimanje za projekt, a neki su dostavljanje ili objavu podataka vezivali uz različite uvjete. Na određene adrese zamolbe su upućivane više puta, ali odgovor nikada nije stigao. Upravo je mali broj ljudi spremnih na aktivnu suradnju bio jedno od neočekivanih iskustava tijekom stvaranja ovog arhiva.</p><p>Paradoks je našeg vremena da nikada nije bilo više sredstava za komunikaciju, a ponekad je do čovjeka teže doći nego prije nekoliko desetljeća. Dio pripadnika moje i starijih generacija nije uključen u društvene mreže niti se redovito koristi novim oblicima digitalne komunikacije. Drugi ne prihvaćaju poruke osoba koje ne poznaju, pa je prvi kontakt gotovo nemoguće ostvariti. Mlađe generacije, premda su tehnološki daleko dostupnije, često se još ne zanimaju za rodoslovlje i obiteljsku prošlost. Između te dvije generacijske krajnosti ostaje prostor u kojem mnogi vrijedni podaci mogu nestati prije nego što ih netko zabilježi.</p><p>Zato ovaj projekt nije mogao biti samo prepisivanje postojećih rodoslovlja. Trebalo je uspoređivati izvore, tražiti potvrde, prepoznavati nedosljednosti, povezivati obiteljske grane i, gdje god je to moguće, stupati u izravan kontakt s potomcima. Ondje gdje odgovora nije bilo, ostala je praznina. Takve praznine nisu popunjavane pretpostavkama samo zato da bi rodoslovlje izgledalo dovršeno. Bolje je ostaviti otvoreno pitanje nego budućim generacijama predati lijepo oblikovanu, ali netočnu priču.</p><p>Cijeli projekt nastao je volonterski, bez komercijalne svrhe. U njega su uloženi mjeseci rada, vrijeme, osobna sredstva i mnogo strpljenja. Vrijednost takva rada teško je izraziti brojem sati jer najveći dio vremena nije utrošen na ono što se danas vidi na zaslonu, nego na ono što mu je prethodilo: traženje, provjeravanje, uspoređivanje, ispravljanje i ponovno traženje.</p><p>Sve je to učinjeno s mišlju da ovaj arhiv možda neće jednako značiti svima danas, ali da bi nekome mogao postati dragocjen sutra. Možda će neki budući potomak, tražeći ime svojega djeda, pradjeda ili obiteljskog mjesta, upravo ovdje pronaći nit koja ga povezuje s ljudima koji su živjeli mnogo prije njega. Tada će svrha uloženoga rada biti ispunjena.</p><p>Jer rodoslovlje nije samo niz imena i godina. Ono je podsjetnik da nitko od nas ne počinje sam od sebe. Iza svakoga stoje generacije ljudi čiji su život, rad, odluke, selidbe, stradanja i obitelji omogućili da mi danas postojimo. Čuvati uspomenu na njih nije samo zanimanje za prošlost nego i oblik poštovanja prema nasljeđu koje smo primili.</p><p>Ovaj arhiv zbog toga ne treba promatrati kao završen posao. Rodoslovlje živoga roda nikada zapravo nije završeno. Rađaju se nove generacije, nastaju nove obitelji, mijenjaju se mjesta života, pojavljuju se novi dokumenti i ispravljaju stari podaci. Da bi projekt imao trajnu vrijednost, morat će se i nakon njegova početnog dovršetka nastaviti dopunjavati i ažurirati.</p><p>Jedna od najvećih želja autora stoga nije samo da arhiv opstane, nego da se u budućnosti pronađu ljudi koji će ga smatrati dovoljno vrijednim da ga nastave. Svaki ovakav projekt nadživi svojega začetnika samo ako netko drugi prepozna njegov smisao, preuzme odgovornost za njegovo čuvanje i nastavi ondje gdje je prethodna generacija stala.</p><p>Ako ovaj arhiv jednom potakne samo nekoliko ljudi da pitaju svoje roditelje i djedove za obiteljske priče dok ih još mogu čuti, da sačuvaju staru fotografiju umjesto da je odbace ili da zapišu ime koje bi inače bilo zaboravljeno, već će ispuniti važan dio svoje svrhe.</p><p><strong>Naše nasljeđe nije samo ono što smo dobili od svojih predaka. Ono je i ono što ćemo od toga uspjeti sačuvati za one koji dolaze poslije nas.</strong></p><h3>Uređivačka načela projekta</h3><p>Svaki dio arhiva ima jasnu ulogu. Podrijetlo obrađuje povijesni okvir prezimena, Rodoslovlje obiteljske veze i naraštaje, Migracije kretanje pojedinih grana, a Zanimljivosti širi jezični i kulturni kontekst naziva Tandara. Tako se ista činjenica ne ponavlja bez potrebe, nego se na svakoj stranici promatra iz drugoga kuta.</p><p>U radu prednost imaju dokumentirani podaci. Kada izravna potvrda nedostaje, pretpostavke se označavaju kao moguće ili vjerojatne, a otvorena pitanja ostaju jasno odvojena od potvrđenih činjenica. Interaktivni dijagrami služe kao pregled obiteljskih veza, dok tekstualna poglavlja daju povijesni i istraživački kontekst.</p><p>Stranica je prvenstveno namijenjena korištenju na prijenosnom ili osobnom računalu, jer obiteljska stabla i grafički prikazi sadrže velik broj detalja. Na manjim zaslonima sadržaj ostaje dostupan, ali je za cjelovit pregled složenijih dijagrama praktičniji veći ekran.</p><h3>Javni i privatni podaci</h3><p>Poštovanje privatnosti sastavni je dio uređivanja arhiva. Na stranici O autoru zato se ne ponavljaju dobne granice, kriteriji objave ni pravila pristupa; sva su takva pravila objedinjena na jednom mjestu, u Politici privatnosti.</p><p>Dopune, ispravci i zahtjevi vezani uz obiteljske podatke obrađuju se preko stranice <a href="kontakti.html">Kontakt i suradnja</a> kako bi svaka promjena imala jasan izvor i mogla se provjeriti prije uključivanja u arhiv.</p><h3>Izvori i razvoj arhiva</h3><p>Obiteljska stabla i podaci objavljeni na ovim stranicama rezultat su višegodišnjeg rada sa župnim arhivima, matičnim knjigama, povijesnim izvorima, arhivskom građom i svjedočanstvima članova obitelji. Svaki novi podatak uspoređuje se s postojećom strukturom roda prije nego što postane dio javnog prikaza.</p><p>
-    U sklopu daljnjeg razvoja projekta planira se izrada majica različitih veličina s logom početne stranice – obiteljskim stablom s četiri glavne grane i desnim dijagramom prvih obitelji prezimena Tandara. Budući da se cijeli projekt financira isključivo iz moje mirovine, broj majica bit će ograničen. Nekoliko primjeraka bit će poklonjeno prvim ili istaknutim članovima našeg roda, onima koji će s ponosom nositi prezime na svojim prsima.
-  </p><p>
-    Ako postoji interes za izradu zidnog postera – bilo kao ukras za sobu, bilo kao veliku mapu za zid – molim da mi se javite putem kontakta navedenog na stranici. Rado ću razmotriti mogućnosti izrade i dogovoriti detalje sa svima koji žele imati takav prikaz obiteljske povijesti.
-  </p></section>
+<h2>O projektu</h2>
+
+<p>
+Digitalni arhiv roda Tandara nastajao je iz
+jednostavne, ali zahtjevne želje: prikupiti ono što
+je još moguće pronaći, povezati rasute obiteljske
+tragove i sačuvati ih prije nego što ih vrijeme,
+zaborav i odlazak generacija učine nedostupnima.
+Iza stranica, imena, godina, fotografija i
+rodoslovnih veza nalazi se mnogo mjeseci
+istraživanja, provjeravanja podataka, prepiske,
+razgovora i pokušaja da se dođe do ljudi koji mogu
+dopuniti ono što pisani izvori više ne mogu ispričati.
+</p>
+
+<p>
+Tijekom tog rada pokazalo se da potraga za vlastitim
+korijenima ne pobuđuje kod svih jednak interes.
+Dok su pojedinci s iskrenom željom za suradnjom
+dijelili obiteljske podatke, uspomene i fotografije,
+dio obitelji nije pokazao zanimanje za projekt,
+a neki su dostavljanje ili objavu podataka vezivali
+uz različite uvjete. Na određene adrese zamolbe su
+upućivane više puta, ali odgovor nikada nije stigao.
+Upravo je mali broj ljudi spremnih na aktivnu
+suradnju bio jedno od neočekivanih iskustava tijekom
+stvaranja ovog arhiva.
+</p>
+
+<p>
+Paradoks je našeg vremena da nikada nije bilo više
+sredstava za komunikaciju, a ponekad je do čovjeka
+teže doći nego prije nekoliko desetljeća. Dio
+pripadnika moje i starijih generacija nije uključen
+u društvene mreže niti se redovito koristi novim
+oblicima digitalne komunikacije. Drugi ne prihvaćaju
+poruke osoba koje ne poznaju, pa je prvi kontakt
+gotovo nemoguće ostvariti. Mlađe generacije, premda
+su tehnološki daleko dostupnije, često se još ne
+zanimaju za rodoslovlje i obiteljsku prošlost.
+Između te dvije generacijske krajnosti ostaje prostor
+u kojem mnogi vrijedni podaci mogu nestati prije nego
+što ih netko zabilježi.
+</p>
+
+<p>
+Zato ovaj projekt nije mogao biti samo prepisivanje
+postojećih rodoslovlja. Trebalo je uspoređivati
+izvore, tražiti potvrde, prepoznavati nedosljednosti,
+povezivati obiteljske grane i, gdje god je to moguće,
+stupati u izravan kontakt s potomcima. Ondje gdje
+odgovora nije bilo, ostala je praznina. Takve praznine
+nisu popunjavane pretpostavkama samo zato da bi
+rodoslovlje izgledalo dovršeno. Bolje je ostaviti
+otvoreno pitanje nego budućim generacijama predati
+lijepo oblikovanu, ali netočnu priču.
+</p>
+
+<p>
+Cijeli projekt nastao je volonterski, bez
+komercijalne svrhe. U njega su uloženi mjeseci rada,
+vrijeme, osobna sredstva i mnogo strpljenja.
+Vrijednost takva rada teško je izraziti brojem sati
+jer najveći dio vremena nije utrošen na ono što se
+danas vidi na zaslonu, nego na ono što mu je
+prethodilo: traženje, provjeravanje, uspoređivanje,
+ispravljanje i ponovno traženje.
+</p>
+
+<p>
+Sve je to učinjeno s mišlju da ovaj arhiv možda
+neće jednako značiti svima danas, ali da bi nekome
+mogao postati dragocjen sutra. Možda će neki budući
+potomak, tražeći ime svojega djeda, pradjeda ili
+obiteljskog mjesta, upravo ovdje pronaći nit koja
+ga povezuje s ljudima koji su živjeli mnogo prije
+njega. Tada će svrha uloženoga rada biti ispunjena.
+</p>
+
+<p>
+Jer rodoslovlje nije samo niz imena i godina.
+Ono je podsjetnik da nitko od nas ne počinje sam od
+sebe. Iza svakoga stoje generacije ljudi čiji su
+život, rad, odluke, selidbe, stradanja i obitelji
+omogućili da mi danas postojimo. Čuvati uspomenu na
+njih nije samo zanimanje za prošlost nego i oblik
+poštovanja prema nasljeđu koje smo primili.
+</p>
+
+<p>
+Ovaj arhiv zbog toga ne treba promatrati kao završen
+posao. Rodoslovlje živoga roda nikada zapravo nije
+završeno. Rađaju se nove generacije, nastaju nove
+obitelji, mijenjaju se mjesta života, pojavljuju se
+novi dokumenti i ispravljaju stari podaci. Da bi
+projekt imao trajnu vrijednost, morat će se i nakon
+njegova početnog dovršetka nastaviti dopunjavati i
+ažurirati.
+</p>
+
+<p>
+Jedna od najvećih želja autora stoga nije samo da
+arhiv opstane, nego da se u budućnosti pronađu ljudi
+koji će ga smatrati dovoljno vrijednim da ga nastave.
+Svaki ovakav projekt nadživi svojega začetnika samo
+ako netko drugi prepozna njegov smisao, preuzme
+odgovornost za njegovo čuvanje i nastavi ondje gdje
+je prethodna generacija stala.
+</p>
+
+<p>
+Ako ovaj arhiv jednom potakne samo nekoliko ljudi
+da pitaju svoje roditelje i djedove za obiteljske
+priče dok ih još mogu čuti, da sačuvaju staru
+fotografiju umjesto da je odbace ili da zapišu ime
+koje bi inače bilo zaboravljeno, već će ispuniti
+važan dio svoje svrhe.
+</p>
+
+<p><strong>
+Naše nasljeđe nije samo ono što smo dobili od
+svojih predaka. Ono je i ono što ćemo od toga
+uspjeti sačuvati za one koji dolaze poslije nas.
+</strong></p>
+
+<h3>Uređivačka načela projekta</h3>
+
+<p>
+Svaki dio arhiva ima jasnu ulogu. Podrijetlo
+obrađuje povijesni okvir prezimena, Rodoslovlje
+obiteljske veze i naraštaje, Migracije kretanje
+pojedinih grana, a Zanimljivosti širi jezični i
+kulturni kontekst naziva Tandara. Tako se ista
+činjenica ne ponavlja bez potrebe, nego se na svakoj
+stranici promatra iz drugoga kuta.
+</p>
+
+<p>
+U radu prednost imaju dokumentirani podaci. Kada
+izravna potvrda nedostaje, pretpostavke se označavaju
+kao moguće ili vjerojatne, a otvorena pitanja ostaju
+jasno odvojena od potvrđenih činjenica. Interaktivni
+dijagrami služe kao pregled obiteljskih veza, dok
+tekstualna poglavlja daju povijesni i istraživački
+kontekst.
+</p>
+
+<p>
+Stranica je prvenstveno namijenjena korištenju na
+prijenosnom ili osobnom računalu, jer obiteljska
+stabla i grafički prikazi sadrže velik broj detalja.
+Na manjim zaslonima sadržaj ostaje dostupan, ali je
+za cjelovit pregled složenijih dijagrama praktičniji
+veći ekran.
+</p>
+
+<h3>Javni i privatni podaci</h3>
+
+<p>
+Poštovanje privatnosti sastavni je dio uređivanja
+arhiva. Na stranici O autoru zato se ne ponavljaju
+dobne granice, kriteriji objave ni pravila pristupa;
+sva su takva pravila objedinjena na jednom mjestu,
+u Politici privatnosti.
+</p>
+
+<p>
+Dopune, ispravci i zahtjevi vezani uz obiteljske
+podatke obrađuju se preko stranice
+<a href="kontakti.html">Kontakt i suradnja</a>
+kako bi svaka promjena imala jasan izvor i mogla se
+provjeriti prije uključivanja u arhiv.
+</p>
+
+<h3>Izvori i razvoj arhiva</h3>
+
+<p>
+Obiteljska stabla i podaci objavljeni na ovim
+stranicama rezultat su višegodišnjeg rada sa župnim
+arhivima, matičnim knjigama, povijesnim izvorima,
+arhivskom građom i svjedočanstvima članova obitelji.
+Svaki novi podatak uspoređuje se s postojećom
+strukturom roda prije nego što postane dio javnog
+prikaza.
+</p>
+
+<p>
+U sklopu daljnjeg razvoja projekta planira se izrada
+majica različitih veličina s logom početne stranice –
+obiteljskim stablom s četiri glavne grane i desnim
+dijagramom prvih obitelji prezimena Tandara.
+Budući da se cijeli projekt financira isključivo iz
+moje mirovine, broj majica bit će ograničen.
+Nekoliko primjeraka bit će poklonjeno prvim ili
+istaknutim članovima našeg roda, onima koji će s
+ponosom nositi prezime na svojim prsima.
+</p>
+
+<p>
+Ako postoji interes za izradu zidnog postera –
+bilo kao ukras za sobu, bilo kao veliku mapu za zid –
+molim da mi se javite putem kontakta navedenog na
+stranici. Rado ću razmotriti mogućnosti izrade i
+dogovoriti detalje sa svima koji žele imati takav
+prikaz obiteljske povijesti.
+</p>
+</section>
+
 <section id="zahvala">
 <h2>Zahvala</h2>
-<p>Ovaj digitalni arhiv ne bi nastao bez ljudi koji su svojim znanjem, predanošću i ljubavlju prema obiteljskoj
-    baštini postavili njegove čvrste temelje.</p>
-<p>Posebnu zahvalnost dugujem svom rođaku i prijatelju <strong>Vici Tandari</strong>, koji je svojim entuzijazmom
-    i vizijom bio inicijator nastanka publikacije <em>„Rodoslovlje plemena Tandara“</em>. Njegova zamisao da se
-    istraži, sačuva i trajno zabilježi povijest našega roda bila je početak projekta koji je ostavio neizbrisiv trag
-    za buduće naraštaje.</p>
-<p>Iskrenu i duboku zahvalnost upućujem našem zajedničkom prijatelju <strong>Milanu Lažeti</strong>, autoru
-    publikacije <em>„Rodoslovlje plemena Tandara“</em>. Godinama je predano istraživao crkvene i državne arhive,
-    matične knjige te brojne druge povijesne izvore, strpljivo prikupljajući i povezujući podatke o granama i lozama
-    velike obitelji Tandara. Rezultat njegova višegodišnjeg rada pretočen je u ovu iznimno vrijednu publikaciju koja
-    predstavlja neprocjenjiv doprinos očuvanju povijesti i baštine našega roda.</p>
-<p>Publikacija <em>„Rodoslovlje plemena Tandara“</em> predstavlja temelj i glavni izvor podataka na kojem je izgrađen
-    ovaj digitalni arhiv. Bez vizije Vice Tandare i predanoga istraživačkog rada Milana Lažete ovaj projekt ne bi bio
-    moguć.</p>
-<p>Obojici od srca izražavam iskrenu zahvalnost i duboko poštovanje za njihov nemjerljiv doprinos očuvanju
-    zajedničke baštine roda Tandara.</p>
-<p style="margin-top:40px;"><strong>Jure Tandara</strong></p>
+
+<p>
+Ovaj digitalni arhiv ne bi nastao bez ljudi koji su
+svojim znanjem, predanošću i ljubavlju prema
+obiteljskoj baštini postavili njegove čvrste temelje.
+</p>
+
+<p>
+Posebnu zahvalnost dugujem svom rođaku i prijatelju
+<strong>Vici Tandari</strong>, koji je svojim
+entuzijazmom i vizijom bio inicijator nastanka
+publikacije <em>„Rodoslovlje plemena Tandara“</em>.
+Njegova zamisao da se istraži, sačuva i trajno
+zabilježi povijest našega roda bila je početak
+projekta koji je ostavio neizbrisiv trag za buduće
+naraštaje.
+</p>
+
+<p>
+Iskrenu i duboku zahvalnost upućujem našem
+zajedničkom prijatelju <strong>Milanu Lažeti</strong>,
+autoru publikacije <em>„Rodoslovlje plemena Tandara“</em>.
+Godinama je predano istraživao crkvene i državne
+arhive, matične knjige te brojne druge povijesne
+izvore, strpljivo prikupljajući i povezujući podatke
+o granama i lozama velike obitelji Tandara.
+Rezultat njegova višegodišnjeg rada pretočen je u
+ovu iznimno vrijednu publikaciju koja predstavlja
+neprocjenjiv doprinos očuvanju povijesti i baštine
+našega roda.
+</p>
+
+<p>
+Publikacija <em>„Rodoslovlje plemena Tandara“</em>
+predstavlja temelj i glavni izvor podataka na kojem
+je izgrađen ovaj digitalni arhiv. Bez vizije Vice
+Tandare i predanoga istraživačkog rada Milana Lažete
+ovaj projekt ne bi bio moguć.
+</p>
+
+<p>
+Obojici od srca izražavam iskrenu zahvalnost i duboko
+poštovanje za njihov nemjerljiv doprinos očuvanju
+zajedničke baštine roda Tandara.
+</p>
+
+<p class="signature"><strong>Jure Tandara</strong></p>
+
 </section>
 </article>
 </main>
-</div>
 </body>
 </html>
