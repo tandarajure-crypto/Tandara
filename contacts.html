@@ -103,7 +103,7 @@
 
   <script
     defer
-    src="../tandara-common/js/contact-form.js?v=20260920-1"
+    src="../tandara-common/js/contact-form.js?v=20260921-1"
   ></script>
 </head>
 
@@ -356,7 +356,7 @@
                 Photograph or document
               </option>
 
-              <option value="Request for access to the private archive">
+              <option value="Request for access to the private archive" disabled>
                 Request for access to the private archive
               </option>
 
@@ -367,7 +367,11 @@
               <option value="Other">
                 Other
               </option>
-            </select>
+              </select>
+              <p class="form-note">
+                You can also send an access request directly through the
+                <a href="https://privat-tvz.pages.dev/__access-request?lang=en">protected form</a>.
+              </p>
 
           </div>
 
@@ -519,7 +523,9 @@
               </a>
               and agree that the information submitted may
               be used to reply to my request, verify information
-              and supplement the Tandara Digital Family Archive.
+              and supplement the Tandara Digital Family Archive
+              and, where applicable, process a request for access
+              to the private archive.
             </span>
 
           </label>
