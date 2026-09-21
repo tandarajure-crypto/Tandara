@@ -277,19 +277,24 @@
 
       <section>
 
-        <h2>7. Contact Form and FormSubmit</h2>
+        <h2>7. Contact Form and Access Requests</h2>
 
         <p>
-          The contact form uses the external
+          For other enquiries, the contact form uses the external
           <strong>FormSubmit</strong> service to deliver
           messages to the project author's e-mail address.
         </p>
 
         <p>
-          When the form is submitted, the information entered
-          into it passes through that service so that the message
-          can be delivered. The form also uses basic protection
-          against automated unwanted messages.
+          When JavaScript is enabled, requests for access to the
+          private archive are sent to the private system on
+          Cloudflare instead of FormSubmit. Without JavaScript,
+          the public form sends the message through FormSubmit;
+          such a request does not automatically enter the access
+          approval queue. The form also uses basic protection
+          against automated unwanted messages and temporarily
+          records the last submission time in the browser to
+          limit repeated submissions.
         </p>
 
       </section>
@@ -371,11 +376,8 @@
         </p>
 
         <p>
-          For its publicly accessible entry address,
-          <strong>
-            Cloudflare is intended to serve as an intermediary
-            security layer
-          </strong>
+          Its publicly accessible entry address uses
+          <strong>Cloudflare as an intermediary security layer</strong>
           through which access permission is checked before
           a user can open the protected content.
         </p>
@@ -386,6 +388,32 @@
           for those functions, such as the IP address, access
           time, browser information and security session
           identifiers.
+        </p>
+
+        <p>
+          A new access request includes a name, e-mail address
+          and description of the applicant's connection to the
+          family. A request sent through the public form may also
+          include a family branch, a person who can confirm the
+          applicant's identity or relationship, and a message.
+          The private system stores the request in Cloudflare D1
+          as pending, and Brevo notifies the owner. The owner
+          decides whether to approve first-time access and which
+          access type to grant, or to reject the request. After
+          approval, Brevo sends an access link to the approved
+          e-mail address.
+        </p>
+
+        <p>
+          An already approved address can automatically receive
+          a new link without another approval; revoked or used-up
+          one-time access is not renewed in this way. A pending
+          request has no automatic expiry and remains stored
+          until the owner decides. Decision records and approved
+          addresses are not currently deleted automatically;
+          they are kept to record decisions and manage access.
+          A request to review or erase this information may be
+          submitted through the contact page.
         </p>
 
         <p>
@@ -415,7 +443,7 @@
         </p>
 
         <p>
-          The private system may use only those cookies,
+          The private system uses only those cookies,
           security tokens or session information that are
           necessary for sign-in, permission verification and
           protection of private content.
@@ -503,7 +531,7 @@
 
         <p>
           <strong>
-            Last updated: 16 September 2026.
+            Last updated: 21 September 2026.
           </strong>
         </p>
 

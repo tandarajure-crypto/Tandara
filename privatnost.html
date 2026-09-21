@@ -267,19 +267,24 @@
 
       <section>
 
-        <h2>7. Kontakt obrazac i FormSubmit</h2>
+        <h2>7. Kontakt obrazac i zahtjevi za pristup</h2>
 
         <p>
-          Kontakt obrazac koristi vanjsku uslugu
+          Za ostale upite kontakt obrazac koristi vanjsku uslugu
           <strong>FormSubmit</strong> radi dostave poruke na
           e-mail adresu autora projekta.
         </p>
 
         <p>
-          Slanjem obrasca podaci uneseni u obrazac prolaze kroz
-          tu uslugu kako bi poruka mogla biti dostavljena.
-          Obrazac koristi i osnovne zaštite od automatiziranih
-          neželjenih poruka.
+          Zahtjev za pristup privatnom arhivu, kada je u pregledniku
+          omogućen JavaScript, šalje se u privatni sustav na
+          Cloudflareu, a ne putem FormSubmita. Ako JavaScript nije
+          omogućen, javni obrazac šalje poruku putem FormSubmita;
+          takav zahtjev ne ulazi automatski u popis zahtjeva za
+          odobrenje. Obrazac koristi i osnovne zaštite od
+          automatiziranih neželjenih poruka te u pregledniku
+          privremeno bilježi vrijeme posljednjeg slanja radi
+          ograničavanja učestalosti poruka.
         </p>
 
       </section>
@@ -361,7 +366,7 @@
         </p>
 
         <p>
-          Za njegovu javno dostupnu ulaznu adresu predviđen je
+          Njegova javno dostupna ulazna adresa koristi
           <strong>Cloudflare kao posrednički sigurnosni sloj</strong>
           kojim se provjerava dopuštenje pristupa prije nego
           što korisnik može otvoriti zaštićeni sadržaj.
@@ -372,6 +377,30 @@
           pristupa može obrađivati podatke potrebne za rad te
           funkcije, kao što su IP adresa, vrijeme pristupa,
           podaci preglednika i sigurnosni identifikatori sesije.
+        </p>
+
+        <p>
+          Novi zahtjev za pristup sadrži ime, e-mail adresu i
+          opis povezanosti s obitelji; zahtjev poslan javnim
+          obrascem može sadržavati i granu, osobu koja može
+          potvrditi identitet ili srodstvo te poruku. Privatni
+          sustav sprema podatke zahtjeva u bazu Cloudflare D1
+          kao zahtjev na čekanju. Brevo šalje obavijest vlasniku.
+          Vlasnik odlučuje o prvom odobrenju ili odbijanju i,
+          pri odobrenju, o vrsti pristupa. Brevo zatim šalje
+          pristupnu poveznicu na odobrenu e-mail adresu.
+        </p>
+
+        <p>
+          Adresa kojoj je pristup već odobren može automatski
+          dobiti novu poveznicu bez ponovnog odobrenja; ukinut
+          ili iskorišten jednokratni pristup time se ne obnavlja.
+          Zahtjev na čekanju nema automatski rok isteka i ostaje
+          spremljen do odluke vlasnika. Zapisi o odluci i
+          odobrenim adresama trenutačno se ne brišu automatski;
+          čuvaju se radi evidencije odluke i upravljanja
+          pristupom. Za provjeru ili brisanje podataka može se
+          podnijeti zahtjev putem stranice za kontakt.
         </p>
 
         <p>
@@ -401,7 +430,7 @@
         </p>
 
         <p>
-          Privatni sustav može koristiti samo one kolačiće,
+          Privatni sustav koristi samo one kolačiće,
           sigurnosne tokene ili sesijske podatke koji su nužni
           za prijavu, provjeru dopuštenja i zaštitu privatnog
           sadržaja.
@@ -487,7 +516,7 @@
 
         <p>
           <strong>
-            Zadnje ažuriranje: 16. rujna 2026.
+            Zadnje ažuriranje: 21. rujna 2026.
           </strong>
         </p>
 
