@@ -3974,7 +3974,9 @@
       "detail": "Zaštićeni osobni podaci — podaci o supružniku i djeci nisu javno objavljeni; u javnom prikazu ostaju samo njihove šifre. Nastavak prezimena Tandara: podatak nije javno objavljen.",
       "type": "primary",
       "parent": "3.3.1.2.1.4.5",
-      "children": [],
+      "children": [
+        "3.3.1.2.1.4.5.1.2"
+      ],
       "protected": true,
       "detailEn": "Protected personal data — information about the spouse and children is not publicly disclosed; only their codes are shown in the public view. Continuation of the Tandara surname: not publicly disclosed."
     },
@@ -5478,8 +5480,12 @@
     ],
     "3.3.1.2.1.4.5.1": [
       "3.3.1.2.1.4.5.1-SP-1",
-      "3.3.1.2.1.4.5.1.1",
-      "3.3.1.2.1.4.5.1.2"
+      "3.3.1.2.1.4.5.1.1"
+    ],
+    "3.3.1.2.1.4.5.1.2": [
+      "3.3.1.2.1.4.5.1.2-SP-1",
+      "3.3.1.2.1.4.5.1.2-K1",
+      "3.3.1.2.1.4.5.1.2-K2"
     ],
     "3.3.1.2.1.4.5": [
       "3.3.1.2.1.4.5-SP-1"
@@ -20075,8 +20081,11 @@
       "birth": null,
       "death": null,
       "detail": "",
-      "type": "son",
-      "host": "3.3.1.2.1.4.5.1",
+      "type": "primary",
+      "parent": "3.3.1.2.1.4.5.1",
+      "children": [
+        "3.3.1.2.1.4.5.1.2.1"
+      ],
       "protected": true
     },
     "3.3.1.2.1.4.5.1.2-SP-1": {
@@ -20147,8 +20156,9 @@
       "birth": null,
       "death": null,
       "detail": "",
-      "type": "son",
-      "host": "3.3.1.2.1.4.5.1.2",
+      "type": "primary",
+      "parent": "3.3.1.2.1.4.5.1.2",
+      "children": [],
       "protected": true
     },
     "3.3.1.2.1.4.5-SP-1": {
