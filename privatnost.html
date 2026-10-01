@@ -295,29 +295,42 @@
         <h2>8. Statistika posjeta</h2>
 
         <p>
-          Pojedine javne stranice koriste
+          Javne stranice Digitalnog arhiva koriste besplatni
           <strong>FlagCounter</strong> za zbirni prikaz posjeta
-          prema državama.
+          prema državama. Javni i privatni web imaju odvojene
+          brojače pa se njihove statistike ne miješaju.
         </p>
 
         <p>
-          Učitavanjem te vanjske usluge preglednik se povezuje
-          s njezinim poslužiteljem, pri čemu pružatelj usluge
-          može primiti tehničke podatke potrebne za isporuku
-          sadržaja, primjerice IP adresu, vrijeme zahtjeva i
-          podatke preglednika.
+          Brojač se učitava kao vanjska slika. Kada preglednik
+          zatraži sliku, FlagCounter prima mrežne podatke potrebne
+          za obradu zahtjeva, uključujući IP adresu i podatke
+          preglednika. Ugradnja slike i poveznice koristi
+          <strong>no-referrer</strong>, pa se adresa stranice na
+          kojoj se brojač nalazi ne šalje kao referenca.
+          Rodoslovni sadržaj ne šalje se pružatelju kao zaseban
+          skup podataka.
         </p>
 
         <p>
-          Rodoslovni sadržaj ne šalje se FlagCounteru kao
-          poseban skup rodoslovnih podataka.
+          Prema
+          <a href="https://www.flagcounter.com/privacy.html"
+             target="_blank" rel="noopener noreferrer"
+             referrerpolicy="no-referrer">pravilima privatnosti FlagCountera</a>,
+          besplatni brojači prikazuju samo zbirne brojeve prema
+          državi ili regiji i datumu. Pružatelj navodi da ne
+          zapisuje IP adrese posjetitelja niti izrađuje njihove
+          profile. Radi sprječavanja ponovnog brojanja, kombinacija
+          IP adrese i oznake brojača pretvara se u jednosmjerni
+          hash koji se čuva do sedam dana. Zadano se isti posjetitelj
+          broji jednom u 24 sata; brojanje prikaza stranica je
+          isključeno.
         </p>
 
         <p>
-          Nova verzija projekta trenutačno ne koristi Google
-          Analytics. Ako se analitički sustav u budućnosti
-          ponovno uvede, ova će se politika prije toga
-          odgovarajuće ažurirati.
+          Stranica sa statistikama nalazi se izvan Digitalnog
+          arhiva i podliježe pravilima pružatelja. Projekt ne koristi
+          Google Analytics ni Umami.
         </p>
 
       </section>
@@ -419,21 +432,22 @@
         <h2>11. Kolačići i tehničke sesije</h2>
 
         <p>
-          Javni dio projekta sam ne postavlja vlastite
-          analitičke kolačiće.
+          Javni web ne postavlja vlastite analitičke kolačiće.
+          Prema FlagCounteru, ugrađena slika brojača ne koristi
+          kolačiće. To ne mijenja mrežnu obradu tehničkih podataka
+          opisanu u odjeljku 8.
         </p>
 
         <p>
-          Vanjske usluge korištene na pojedinim stranicama mogu
-          koristiti vlastite tehničke mehanizme u skladu sa
-          svojim pravilima.
+          Otvaranjem vanjske stranice sa statistikama posjetitelj
+          napušta Digitalni arhiv; eventualni kolačići na toj
+          stranici uređuju se pravilima pružatelja.
         </p>
 
         <p>
-          Privatni sustav koristi samo one kolačiće,
-          sigurnosne tokene ili sesijske podatke koji su nužni
-          za prijavu, provjeru dopuštenja i zaštitu privatnog
-          sadržaja.
+          Privatni sustav koristi samo kolačiće, sigurnosne tokene
+          ili sesijske podatke nužne za prijavu, provjeru dopuštenja
+          i zaštitu privatnog sadržaja.
         </p>
 
       </section>
@@ -516,7 +530,7 @@
 
         <p>
           <strong>
-            Zadnje ažuriranje: 21. rujna 2026.
+            Zadnje ažuriranje: 1. listopada 2026.
           </strong>
         </p>
 

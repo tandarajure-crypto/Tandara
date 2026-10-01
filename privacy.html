@@ -305,29 +305,42 @@
         <h2>8. Visitor Statistics</h2>
 
         <p>
-          Certain public pages use
-          <strong>FlagCounter</strong>
-          to provide an aggregate display of visits by country.
+          The public pages of the Digital Archive use the free
+          <strong>FlagCounter</strong> to display aggregate visits
+          by country. The public and private websites use separate
+          counters, so their statistics are not combined.
         </p>
 
         <p>
-          When this external service is loaded, the browser
-          connects to its server, and the service provider may
-          receive technical information required to deliver
-          the content, such as the IP address, request time
-          and browser information.
+          The counter loads as an external image. When the browser
+          requests it, FlagCounter receives the network information
+          needed to process the request, including the IP address
+          and browser information. The image and its link use
+          <strong>no-referrer</strong>, so the address of the page
+          containing the counter is not sent as a referrer.
+          Genealogical content is not sent to the provider as a
+          separate data set.
         </p>
 
         <p>
-          Genealogical content is not sent to FlagCounter as
-          a separate set of genealogical data.
+          According to
+          <a href="https://www.flagcounter.com/privacy.html"
+             target="_blank" rel="noopener noreferrer"
+             referrerpolicy="no-referrer">FlagCounter's Privacy Policy</a>,
+          free counters display only aggregate totals by country
+          or region and date. The provider says it does not log
+          visitors' IP addresses or build visitor profiles. To
+          prevent repeat counting, a combination of the IP address
+          and counter identifier is converted into a one-way hash
+          retained for up to seven days. By default, the same
+          visitor is counted once every 24 hours; pageview counting
+          is disabled.
         </p>
 
         <p>
-          The current version of the project does not use
-          Google Analytics. If an analytics system is introduced
-          again in the future, this policy will be updated
-          accordingly beforehand.
+          The statistics page is hosted outside the Digital Archive
+          and is subject to the provider's policies. The project
+          does not use Google Analytics or Umami.
         </p>
 
       </section>
@@ -432,21 +445,22 @@
         <h2>11. Cookies and Technical Sessions</h2>
 
         <p>
-          The public section of the project does not itself
-          set its own analytics cookies.
+          The public website does not set its own analytics cookies.
+          According to FlagCounter, its embedded counter image does
+          not use cookies. This does not change the technical data
+          processing described in Section 8.
         </p>
 
         <p>
-          External services used on certain pages may use their
-          own technical mechanisms in accordance with their
-          respective policies.
+          Opening the external statistics page takes the visitor
+          outside the Digital Archive; any cookies on that page are
+          governed by the provider's policies.
         </p>
 
         <p>
-          The private system uses only those cookies,
-          security tokens or session information that are
-          necessary for sign-in, permission verification and
-          protection of private content.
+          The private system uses only cookies, security tokens or
+          session information necessary for sign-in, permission
+          verification and protection of private content.
         </p>
 
       </section>
@@ -531,7 +545,7 @@
 
         <p>
           <strong>
-            Last updated: 21 September 2026.
+            Last updated: 1 October 2026.
           </strong>
         </p>
 
