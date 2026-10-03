@@ -1,0 +1,24 @@
+{
+  "enabled": true,
+  "id": "hrvatska-engleska-20261003",
+  "startsAt": null,
+  "endsAt": null,
+  "title": {
+    "hr": "Navijamo za Vatrene!",
+    "en": "Cheering for Croatia!"
+  },
+  "message": {
+    "hr": "Ponos. Strast. Zajedništvo. Sretno, Hrvatska!",
+    "en": "Pride. Passion. Togetherness. Good luck, Croatia!"
+  },
+  "image": "objave/hrvatska-engleska.png",
+  "imageAlt": {
+    "hr": "Navijački plakat Hrvatska protiv Engleske, s Lukom Modrićem i Harryjem Kaneom.",
+    "en": "Supporter poster for Croatia versus England, featuring Luka Modrić and Harry Kane."
+  },
+  "link": "",
+  "linkLabel": {
+    "hr": "",
+    "en": ""
+  }
+}
