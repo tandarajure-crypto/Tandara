@@ -1,7 +1,7 @@
 # Uređivanje objave u skočnom prozoru
 
 Objava se prikazuje na javnim stranicama Tandara. Postavke su u datoteci
-`objava.json`, a slike objava spremi u mapu `objave/`.
+`objava.json`, a stalna slika objave nalazi se u datoteci `objave/popup.png`.
 
 ## Uključivanje i raspored
 
@@ -16,23 +16,24 @@ Objava se prikazuje na javnim stranicama Tandara. Postavke su u datoteci
 
 ## Promjena slike i teksta
 
-1. Dodaj novu sliku pod novim nazivom u mapu `objave/` unutar repozitorija
-   `Tandara-main`; novi naziv izbjegava prikazivanje stare, predmemorirane
-   slike.
-2. U `objava.json` promijeni `title`, `message` i `imageAlt` na hrvatskom
-   i engleskom jeziku te postavi putanju slike u `image`.
-3. Svakoj novoj objavi dodijeli novi jedinstveni `id`. Tako će se nova
-   objava prikazati i posjetiteljima koji su zatvorili prethodnu.
+1. Zamijeni sliku `objave/popup.png` novom slikom, ali zadrži točno isti naziv
+   i putanju. Nemoj stvarati novu slikovnu datoteku za svaku objavu.
+2. U `objava.json` zadrži `"image": "objave/popup.png"`. Promijeni `title`,
+   `message` i `imageAlt` na hrvatskom i engleskom jeziku te po potrebi datume.
+3. Svakoj novoj objavi dodijeli novi jedinstveni `id`. Zajednički JavaScript
+   koristi taj ID kao oznaku verzije slike, pa preglednik učita zamijenjenu
+   sliku i nova objava se pokaže i posjetiteljima koji su zatvorili prethodnu.
 4. Po želji postavi `link` i njegove natpise u `linkLabel`; ostavi ih prazne
    ako objava nema poveznicu.
-5. Objavi izmjenu repozitorija `Tandara-main` na GitHubu. GitHub Pages zatim
-   poslužuje novu postavku i sliku.
+5. Prenesi zamijenjenu sliku i spremljeni `objava.json` u korijen GitHub
+   repozitorija `Tandara` na grani koju objavljuje GitHub Pages.
 
 Posjetitelj zatvaranjem velikog gumba **×** skriva istu objavu do završetka
 sesije te kartice preglednika. Nova objava s drugim `id` može se prikazati
 već tijekom iste sesije. Ako kartica ostane otvorena preko vremena početka
 ili kraja, raspored se osvježava pri sljedećem učitavanju stranice.
 
-Kod prozora nalazi se u repozitoriju `tandara-common-main`. Prilikom prvog
-postavljanja ove funkcije objavi izmjene zajedničkog repozitorija prije
-izmjena repozitorija `Tandara-main`.
+Zajednički kod prozora nalazi se u repozitoriju `tandara-common`. Za redovne
+objave mijenjaš samo sliku `objave/popup.png` i datoteku `objava.json` u
+repozitoriju `Tandara`. JavaScript mijenjaš samo ako mijenjaš ponašanje ili
+izgled prozora.
