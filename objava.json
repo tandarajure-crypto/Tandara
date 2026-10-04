@@ -1,14 +1,14 @@
 {
   "enabled": true,
-  "id": "poraz-20261003-popup-v2",
+  "id": "poraz-20261003-popup-v3",
   "startsAt": null,
   "endsAt": null,
   "title": {
-    "hr": "Bilo bi bolje da su klinci sa tribina igrali!",
+    "hr": "Da su klinci sa tribina igrali, bilo bi bolje!",
     "en": "It was sad to watch!"
   },
   "message": {
-    "hr": "Najlošija utakmica reprezentacije do sad!",
+    "hr": "Kako ovaj poraz protumačiti, ista momčad sa Dalićem se borila za svjetski vrh, a sad pod vodstvom Bilića, rasprodajemo stečeni ugled! ",
     "en": "Bad, worse, the worst!"
   },
   "image": "objave/popup.png",
