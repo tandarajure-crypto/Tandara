@@ -1,20 +1,20 @@
 {
   "enabled": true,
-  "id": "poraz-20261003-popup-v1",
+  "id": "hrvatska-spanjolska-20261006",
   "startsAt": null,
-  "endsAt": "2026-10-05T11:55:00+02:00",
+  "endsAt": "2026-10-06T20:45:00+02:00",
   "title": {
-    "hr": "Da su klinci sa tribina igrali, bilo bi bolje!",
-    "en": "It was sad to watch!"
+    "hr": "Što očekivati protiv Furije?",
+    "en": "What to expect against La Furia?"
   },
   "message": {
-    "hr": "Kako ovaj poraz protumačiti, ista momčad sa Dalićem se borila za svjetski vrh? ",
-    "en": "Bad, worse, the worst!"
+    "hr": "Možemo li bolje nego zadnji put?",
+    "en": "Can we do better than last time?"
   },
   "image": "objave/popup.png",
   "imageAlt": {
-    "hr": "Navijački plakat Hrvatska protiv Engleske, s Lukom Modrićem i Harryjem Kaneom.",
-    "en": "Supporter poster for Croatia versus England, featuring Luka Modrić and Harry Kane."
+    "hr": "Navijački plakat Hrvatska protiv Španjolske, s Lukom Modrićem.",
+    "en": "Supporter poster for Croatia versus Spain, featuring Luka Modrić."
   },
   "link": "",
   "linkLabel": {
