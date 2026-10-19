@@ -1,6 +1,6 @@
 /* Public memorial records, approved by the site owner on 2026-10-19.
-   Only the 28 confirmed deceased people in this register are supplemented.
-   Mijo Marijanov's death is confirmed by the owner; its year is unknown.
+   Only the 30 confirmed deceased people in this register are supplemented.
+   Deaths of Mijo Marijanov, Anka Marinova and Dragica Marinova are confirmed by the owner; years are unknown.
    Other people, relationships and protected records are not copied or changed. */
 (() => {
   'use strict';
@@ -505,6 +505,38 @@
         "captionEn": "Zlata née Vučemil"
       }
     ]
+  },
+  {
+    "code": "2.3.4.1.3.2-K3",
+    "name": "Anka Marinova",
+    "nameEn": "Anka Marinova",
+    "birth": "1954",
+    "death": null,
+    "branch": "petrovagrana",
+    "htmlHost": "2.3.4.1.3.2",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ankavicina.jpg",
+        "caption": "Anka Marinova",
+        "captionEn": "Anka Marinova"
+      }
+    ]
+  },
+  {
+    "code": "2.3.4.1.3.2-K1",
+    "name": "Dragica Marinova",
+    "nameEn": "Dragica Marinova",
+    "birth": "1938",
+    "death": null,
+    "branch": "petrovagrana",
+    "htmlHost": "2.3.4.1.3.2",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/dragicavicina.jpg",
+        "caption": "Dragica Marinova",
+        "captionEn": "Dragica Marinova"
+      }
+    ]
   }
 ];
   const en = (document.documentElement.lang || document.body.dataset.lang || 'hr').startsWith('en');
@@ -515,16 +547,18 @@
   const normalizeUrl = u => { try { return decodeURI(new URL(u, location.href).href); } catch (_) { return u; } };
 
   function makeGallery(r, photos) {
+    const branchPage = !document.getElementById('diagramData');
     const gallery = document.createElement('div');
-    gallery.className = 'public-memorial-gallery';
+    gallery.className = branchPage ? 'public-memorial-gallery person-photo-gallery' : 'public-memorial-gallery';
     gallery.dataset.memorialCode = r.code;
-    gallery.style.cssText = 'display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;margin:16px 0;';
+    if (!branchPage) gallery.style.cssText = 'display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;margin:16px 0;';
     for (const p of photos) {
       const figure = document.createElement('figure');
-      figure.style.cssText = 'margin:0;flex:0 1 280px;max-width:100%;text-align:center;';
+      if (branchPage) figure.className = 'person-photo';
+      if (!branchPage) figure.style.cssText = 'margin:0;flex:0 1 280px;max-width:100%;text-align:center;';
       const a = document.createElement('a'); a.href = p.src; a.target = '_blank'; a.rel = 'noopener noreferrer';
       const img = document.createElement('img'); img.src = p.src; img.alt = caption(p); img.loading = 'lazy'; img.decoding = 'async';
-      img.style.cssText = 'display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;margin:auto;';
+      if (!branchPage) img.style.cssText = 'display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;margin:auto;';
       const cap = document.createElement('figcaption'); cap.textContent = caption(p);
       a.append(img); figure.append(a, cap); gallery.append(figure);
     }
@@ -574,6 +608,24 @@
         const strong = document.createElement('strong'); strong.textContent = r.code;
         el.replaceChildren(strong, document.createTextNode(' ' + name(r) + ' ' + dates(r)));
       }
+      if (r.htmlHost) {
+        const host = [...document.querySelectorAll('h3[data-person-code]')].find(el => el.dataset.personCode === r.htmlHost);
+        if (!host) continue;
+        let gallery = document.querySelector(`[data-memorial-host="${r.htmlHost}"]`);
+        if (!gallery) {
+          gallery = makeGallery({code:r.htmlHost}, []);
+          gallery.dataset.memorialHost = r.htmlHost;
+          host.after(gallery);
+        }
+        if (!gallery.querySelector(`[data-person-code="${r.code}"]`)) {
+          const additions = makeGallery(r, r.photos);
+          for (const figure of [...additions.children]) {
+            figure.dataset.personCode = r.code;
+            gallery.append(figure);
+          }
+        }
+        continue;
+      }
       let heading = matches.find(el => /^H[234]$/.test(el.tagName));
       if (!heading) {
         const entry = matches.find(el => el.tagName === 'SPAN');
@@ -599,3 +651,4 @@
     }
   }
 })();
+
