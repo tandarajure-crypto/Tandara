@@ -1,5 +1,5 @@
 /* Public memorial records, approved by the site owner on 2026-10-19.
-   Only the 30 confirmed deceased people in this register are supplemented.
+   Only the 32 confirmed deceased people in this register are supplemented.
    Deaths of Mijo Marijanov, Anka Marinova and Dragica Marinova are confirmed by the owner; years are unknown.
    Other people, relationships and protected records are not copied or changed. */
 (() => {
@@ -166,23 +166,23 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobobiteljinikolemarijanova.jpg",
-        "caption": "Nikola Marijanov (1939.–2018.) i Marija Lukić (1939.–2021.)",
-        "captionEn": "Nikola Marijanov (1939–2018) and Marija Lukić (1939–2021)"
+        "caption": "Nikola Marijanov (1939.–2018.) i Marija Lekić (1939.–2021.)",
+        "captionEn": "Nikola Marijanov (1939–2018) and Marija Lekić (1939–2021)"
       }
     ]
   },
   {
     "code": "3.1.1.1.4.1.1-SP-1",
-    "name": "Marija rođ. Lukić",
-    "nameEn": "Marija née Lukić",
+    "name": "Marija rođ. Lekić",
+    "nameEn": "Marija née Lekić",
     "birth": "1939",
     "death": "2021",
     "branch": "antinagrana",
     "photos": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobobiteljinikolemarijanova.jpg",
-        "caption": "Nikola Marijanov (1939.–2018.) i Marija Lukić (1939.–2021.)",
-        "captionEn": "Nikola Marijanov (1939–2018) and Marija Lukić (1939–2021)"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanikolina.jpg",
+        "caption": "Marija rođ. Lekić",
+        "captionEn": "Marija née Lekić"
       }
     ]
   },
@@ -536,6 +536,36 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/dragicavicina.jpg",
         "caption": "Dragica Marinova",
         "captionEn": "Dragica Marinova"
+      }
+    ]
+  },
+  {
+    "code": "4.1.1.4.5-K1",
+    "name": "Dragica Nikolina",
+    "nameEn": "Dragica Nikolina",
+    "birth": "1937",
+    "death": "2015",
+    "branch": "matinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dragicanikolina.jpg",
+        "caption": "Dragica Nikolina",
+        "captionEn": "Dragica Nikolina"
+      }
+    ]
+  },
+  {
+    "code": "3.1.2.3.2.2-SP-1",
+    "name": "Danica rođ. Malenica",
+    "nameEn": "Danica née Malenica",
+    "birth": "1935",
+    "death": "2016",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/danicamatina.jpg",
+        "caption": "Danica rođ. Malenica",
+        "captionEn": "Danica née Malenica"
       }
     ]
   }
