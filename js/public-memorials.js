@@ -151,8 +151,8 @@
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanjinirod.jpg",
-        "caption": "Željko Matin i supruga Ankica r. Šitum",
-        "captionEn": "Željko Matin i supruga Ankica r. Šitum"
+        "caption": "Željko Matin i supruga",
+        "captionEn": "Željko Matin and his wife"
       }
     ]
   },
@@ -254,7 +254,8 @@
         "caption": "Milan Josipov i Slavka rođ. Budimir",
         "captionEn": "Milan Josipov and Slavka née Budimir"
       }
-    ]
+    ],
+    "familyListOnly": true
   },
   {
     "code": "3.1.1.2.8.1-SP-1",
@@ -301,8 +302,8 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ikokum.jpg",
-        "caption": "Ivan Marijanov (1939.–2025.)",
-        "captionEn": "Ivan Marijanov (1939–2025)"
+        "caption": "Ivan Marijanov",
+        "captionEn": "Ivan Marijanov"
       }
     ]
   },
@@ -557,7 +558,7 @@
       if (branchPage) figure.className = 'person-photo';
       if (!branchPage) figure.style.cssText = 'margin:0;flex:0 1 280px;max-width:100%;text-align:center;';
       const a = document.createElement('a'); a.href = p.src; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      const img = document.createElement('img'); img.src = p.src; img.alt = caption(p); img.loading = 'lazy'; img.decoding = 'async';
+      const img = document.createElement('img'); img.alt = caption(p); img.loading = 'lazy'; img.decoding = 'async'; img.src = p.src;
       if (!branchPage) img.style.cssText = 'display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;margin:auto;';
       const cap = document.createElement('figcaption'); cap.textContent = caption(p);
       a.append(img); figure.append(a, cap); gallery.append(figure);
@@ -588,17 +589,7 @@
       data.meta.memorialsUpdated = '2026-10-19';
     }
     dataEl.textContent = JSON.stringify(data);
-    const codeEl = document.getElementById('personDetailsCode');
-    if (codeEl) {
-      const render = () => {
-        const imageEl = document.getElementById('personDetailsImage');
-        if (!imageEl) return;
-        const r = byCode.get(codeEl.textContent.replace(/^[^:]*:\s*/, '').trim());
-        if (!r) return;
-        imageEl.replaceChildren(makeGallery(r, r.photos)); imageEl.hidden = false;
-      };
-      new MutationObserver(render).observe(codeEl, {childList:true, characterData:true, subtree:true});
-    }
+
   } else {
     const page = location.pathname.split('/').pop().replace(/-en(?=\.html$)/, '').replace(/\.html$/, '');
     for (const r of records.filter(r => r.branch === page)) {
@@ -608,6 +599,7 @@
         const strong = document.createElement('strong'); strong.textContent = r.code;
         el.replaceChildren(strong, document.createTextNode(' ' + name(r) + ' ' + dates(r)));
       }
+      if (r.familyListOnly) continue;
       if (r.htmlHost) {
         const host = [...document.querySelectorAll('h3[data-person-code]')].find(el => el.dataset.personCode === r.htmlHost);
         if (!host) continue;
@@ -651,4 +643,5 @@
     }
   }
 })();
+
 
