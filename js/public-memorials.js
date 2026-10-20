@@ -1,6 +1,6 @@
 /* Public memorial records, approved by the site owner on 2026-10-19.
    Only the 32 confirmed deceased people in this register are supplemented.
-   Deaths of Mijo Marijanov, Anka Marinova and Dragica Marinova are confirmed by the owner; years are unknown.
+   Mijo Marijanov's death year is unknown; Anka (2024) and Dragica (2023) were confirmed on 2026-10-20.
    Other people, relationships and protected records are not copied or changed. */
 (() => {
   'use strict';
@@ -512,7 +512,7 @@
     "name": "Anka Marinova",
     "nameEn": "Anka Marinova",
     "birth": "1954",
-    "death": null,
+    "death": "2024",
     "branch": "petrovagrana",
     "htmlHost": "2.3.4.1.3.2",
     "photos": [
@@ -528,7 +528,7 @@
     "name": "Dragica Marinova",
     "nameEn": "Dragica Marinova",
     "birth": "1938",
-    "death": null,
+    "death": "2023",
     "branch": "petrovagrana",
     "htmlHost": "2.3.4.1.3.2",
     "photos": [
