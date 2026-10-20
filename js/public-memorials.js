@@ -30,6 +30,11 @@
     "branch": "petrovagrana",
     "photos": [
       {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijomarijanov1908.jpg",
+        "caption": "Mijo Marijanov",
+        "captionEn": "Mijo Marijanov"
+      },
+      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijomarijanov.jpg",
         "caption": "Mijo Marijanov i supruga Slavka rođ. Sabljić",
         "captionEn": "Mijo Marijanov and his wife Slavka née Sabljić"
