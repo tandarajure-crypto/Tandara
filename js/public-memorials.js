@@ -38,6 +38,11 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijomarijanov.jpg",
         "caption": "Mijo i Slavka",
         "captionEn": "Mijo i Slavka"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "caption": "Mijo Marijanov (1908.) — gornji red, 2. osoba slijeva.",
+        "captionEn": "Mijo, son of Marijan (born 1908) — top row, 2nd person from the left."
       }
     ]
   },
