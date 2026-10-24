@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "id": "roda-obitelji-20261024",
+  "id": "roda-obitelji-od-20261025",
   "startsAt": null,
   "endsAt": null,
   "title": {
@@ -8,8 +8,8 @@
     "en": "A gift for our young Tandara families"
   },
   "message": {
-    "hr": "",
-    "en": ""
+    "hr": "Dar od 500 eura vrijedi za obitelji prezimena Tandara kojima se peto dijete rodi 25. listopada 2026. ili kasnije. Ne odnosi se na obitelji koje su peto dijete dobile prije tog datuma.",
+    "en": "The €500 gift applies to families bearing the Tandara name whose fifth child is born on or after 25 October 2026. It does not apply to families whose fifth child was born before that date."
   },
   "image": {
     "hr": "../tandara-common/slike/common-foto/roda.hr.jpg",
