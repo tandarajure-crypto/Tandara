@@ -1,24 +1,28 @@
 {
   "enabled": true,
-  "id": "hrvatska-spanjolska-20261006",
+  "id": "roda-obitelji-20261024",
   "startsAt": null,
-  "endsAt": "2026-10-06T20:45:00+02:00",
+  "endsAt": null,
   "title": {
-    "hr": "Što očekivati protiv Furije?",
-    "en": "What to expect against La Furia?"
+    "hr": "Dar mladim obiteljima Tandara",
+    "en": "A gift for our young Tandara families"
   },
   "message": {
-    "hr": "Možemo li bolje nego zadnji put?",
-    "en": "Can we do better than last time?"
+    "hr": "",
+    "en": ""
   },
-  "image": "objave/popup.png",
+  "image": {
+    "hr": "../tandara-common/slike/common-foto/roda.hr.jpg",
+    "en": "../tandara-common/slike/common-foto/roda.en.jpg"
+  },
   "imageAlt": {
-    "hr": "Navijački plakat Hrvatska protiv Španjolske, s Lukom Modrićem.",
-    "en": "Supporter poster for Croatia versus Spain, featuring Luka Modrić."
+    "hr": "Poruka Jure Tandare: dar od 500 eura obitelji prezimena Tandara koja dobije peto dijete.",
+    "en": "Message from Jure Tandara: a gift of €500 to a family bearing the Tandara name that welcomes its fifth child."
   },
   "link": "",
   "linkLabel": {
     "hr": "",
     "en": ""
-  }
+  },
+  "imageOnly": true
 }
