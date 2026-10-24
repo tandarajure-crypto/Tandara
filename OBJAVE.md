@@ -1,39 +1,25 @@
-# Uređivanje objave u skočnom prozoru
+# Skočna objava za obitelji Tandara
 
-Objava se prikazuje na javnim stranicama Tandara. Postavke su u datoteci
-`objava.json`, a stalna slika objave nalazi se u datoteci `objave/popup.png`.
+Postavke su u `objava.json`. Hrvatska stranica bira `image.hr`, a engleska
+`image.en`. Slike su u `tandara-common/slike/common-foto/`:
 
-## Uključivanje i raspored
+- `roda.hr.jpg` za hrvatski.
+- `roda.en.jpg` za engleski.
 
-- `enabled: true` uključuje objavu; `enabled: false` je isključuje.
-- `startsAt` određuje početak prikazivanja, a `endsAt` kraj. Vrijeme kraja
-  nije uključeno u razdoblje prikazivanja.
-- Za objavu bez vremenskog ograničenja upiši `null` u oba polja. Trenutni
-  primjer ostaje uključen dok ga ne isključiš ili mu ne postaviš datum kraja.
-- Datume zapiši u ISO obliku s vremenskom zonom, na primjer
-  `2026-12-24T00:00:00+01:00`. Prikaz se određuje prema satu uređaja
-  posjetitelja.
+`imageOnly: true` prikazuje cijeli plakat bez dodatnog naslova i okvira.
+Nacrtani križić u gornjem desnom kutu ima stvarni gumb za zatvaranje.
+Klik ili Escape zatvaraju prozor i omogućuju rad sa stranicom.
+Zatvaranje se pamti za `id` tijekom sesije iste kartice, na oba jezika.
+Za novu objavu promijeni `id`; on također osvježava predmemoriju slike.
 
-## Promjena slike i teksta
+`enabled: false` isključuje prikaz pri sljedećem učitavanju. `startsAt: null`
+i `endsAt: null` znače prikaz odmah, bez krajnjeg roka. Za rok koristi ISO datum
+s vremenskom zonom, npr. `2026-12-27T00:00:00+01:00`. Kraj nije uključen:
+navedeni primjer uključuje cijeli 26. prosinca. Otvoren popup zatvara se
+na isteku, bez osvježavanja stranice (u uspavanoj kartici pri povratku).
+Budući početak primjenjuje se pri sljedećem učitavanju stranice.
 
-1. Zamijeni sliku `objave/popup.png` novom slikom, ali zadrži točno isti naziv
-   i putanju. Nemoj stvarati novu slikovnu datoteku za svaku objavu.
-2. U `objava.json` zadrži `"image": "objave/popup.png"`. Promijeni `title`,
-   `message` i `imageAlt` na hrvatskom i engleskom jeziku te po potrebi datume.
-3. Svakoj novoj objavi dodijeli novi jedinstveni `id`. Zajednički JavaScript
-   koristi taj ID kao oznaku verzije slike, pa preglednik učita zamijenjenu
-   sliku i nova objava se pokaže i posjetiteljima koji su zatvorili prethodnu.
-4. Po želji postavi `link` i njegove natpise u `linkLabel`; ostavi ih prazne
-   ako objava nema poveznicu.
-5. Prenesi zamijenjenu sliku i spremljeni `objava.json` u korijen GitHub
-   repozitorija `Tandara` na grani koju objavljuje GitHub Pages.
-
-Posjetitelj zatvaranjem velikog gumba **×** skriva istu objavu do završetka
-sesije te kartice preglednika. Nova objava s drugim `id` može se prikazati
-već tijekom iste sesije. Ako kartica ostane otvorena preko vremena početka
-ili kraja, raspored se osvježava pri sljedećem učitavanju stranice.
-
-Zajednički kod prozora nalazi se u repozitoriju `tandara-common`. Za redovne
-objave mijenjaš samo sliku `objave/popup.png` i datoteku `objava.json` u
-repozitoriju `Tandara`. JavaScript mijenjaš samo ako mijenjaš ponašanje ili
-izgled prozora.
+Za uobičajenu objavu sa zasebnim naslovom i tekstom postavi `imageOnly: false`,
+upiši `title` i `message` na oba jezika. `image` može i dalje biti jedna putanja,
+npr. `objave/popup.png`, ili objekt s putanjama `hr` i `en`.
+Prvo objavi zajednički kod u tandara-common, zatim konfiguraciju u Tandara.
