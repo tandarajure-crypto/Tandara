@@ -21,5 +21,6 @@ Budući početak primjenjuje se pri sljedećem učitavanju stranice.
 
 Za uobičajenu objavu sa zasebnim naslovom i tekstom postavi `imageOnly: false`,
 upiši `title` i `message` na oba jezika. `image` može i dalje biti jedna putanja,
-npr. `objave/popup.png`, ili objekt s putanjama `hr` i `en`.
+npr. `../tandara-common/slike/common-foto/roda.hr.jpg`, ili objekt s putanjama `hr` i `en`.
+Isti `objava.json` i iste putanje koriste javna (Tandara) i privatna (PRIVAT) stranica.
 Prvo objavi zajednički kod u tandara-common, zatim konfiguraciju u Tandara.
