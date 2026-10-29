@@ -374,6 +374,11 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ikopiin.jpg",
         "caption": "Ivan Piin",
         "captionEn": "Ivan Piin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grobikepiina.jpg",
+        "caption": "Grob Ivana Piina i Marijane rođ. Petter",
+        "captionEn": "Grave of Ivan Piin and Marijana née Petter"
       }
     ]
   },
@@ -599,6 +604,74 @@
         "captionEn": "Grave of Blaž Marinov (1953–2021) and Zorana née Čarija (1958–2024)"
       }
     ]
+  },
+  {
+    "code": "3.1.2.1.1.1",
+    "name": "Marijan Antin – nadimak Đika",
+    "nameEn": "Marijan Antin – family nickname Đika",
+    "birth": "1908",
+    "death": "1997",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobdikin.jpg",
+        "caption": "Grob Marijana Antina – Đike i Ive rođ. Čorbić",
+        "captionEn": "Grave of Marijan Antin – Đika and Iva née Čorbić"
+      }
+    ]
+  },
+  {
+    "code": "3.1.2.1.1.1-SP-1",
+    "name": "Iva rođ. Čorbić",
+    "nameEn": "Iva née Čorbić",
+    "birth": "1910",
+    "death": "2007",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobdikin.jpg",
+        "caption": "Grob Marijana Antina – Đike i Ive rođ. Čorbić",
+        "captionEn": "Grave of Marijan Antin – Đika and Iva née Čorbić"
+      }
+    ],
+    "familyListOnly": true
+  },
+  {
+    "code": "3.1.2.1.1.1.2-SP-1",
+    "name": "Mara-Marija rođ. Pušić",
+    "nameEn": "Mara-Marija née Pušić",
+    "birth": "1946",
+    "death": "1988",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijamilanova.png",
+        "caption": "Marija Milanova – Mara-Marija rođ. Pušić (1946.–1988.)",
+        "captionEn": "Marija Milanova – Mara-Marija née Pušić (1946–1988)"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobmarijemilanove.jpg",
+        "caption": "Grob Marije Milanove – Mare-Marije rođ. Pušić",
+        "captionEn": "Grave of Marija Milanova – Mara-Marija née Pušić"
+      }
+    ],
+    "familyListOnly": true
+  },
+  {
+    "code": "2.3.1.2.3.3.1-SP-1",
+    "name": "Marijana rođ. Petter",
+    "nameEn": "Marijana née Petter",
+    "birth": "1936",
+    "death": "2013",
+    "branch": "petrovagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grobikepiina.jpg",
+        "caption": "Grob Ivana Piina i Marijane rođ. Petter",
+        "captionEn": "Grave of Ivan Piin and Marijana née Petter"
+      }
+    ],
+    "familyListOnly": true
   }
 ];
   const en = (document.documentElement.lang || document.body.dataset.lang || 'hr').startsWith('en');
