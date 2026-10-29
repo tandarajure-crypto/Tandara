@@ -638,8 +638,8 @@
   },
   {
     "code": "3.1.2.1.1.1.2-SP-1",
-    "name": "Mara-Marija rođ. Pušić",
-    "nameEn": "Mara-Marija née Pušić",
+    "name": "Mara-Marija Milanova, rođ. Pušić",
+    "nameEn": "Mara-Marija Milanova, née Pušić",
     "birth": "1946",
     "death": "1988",
     "branch": "antinagrana",
