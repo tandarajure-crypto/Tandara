@@ -1,5 +1,5 @@
 /* Public memorial records, approved by the site owner on 2026-10-19.
-   Only the 32 confirmed deceased people in this register are supplemented.
+   Only the confirmed deceased people in this register are supplemented.
    Mijo Marijanov's death year is unknown; Anka (2024) and Dragica (2023) were confirmed on 2026-10-20.
    Other people, relationships and protected records are not copied or changed. */
 (() => {
@@ -499,6 +499,11 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazmarinov.jpg",
         "caption": "Blaž Marinov",
         "captionEn": "Blaž Marinov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazevgrob.jpg",
+        "caption": "Grob Blaža Marinova (1953.–2021.) i Zorane rođ. Čarija (1958.–2024.)",
+        "captionEn": "Grave of Blaž Marinov (1953–2021) and Zorana née Čarija (1958–2024)"
       }
     ]
   },
@@ -576,6 +581,22 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/danicamatina.jpg",
         "caption": "Danica rođ. Malenica",
         "captionEn": "Danica née Malenica"
+      }
+    ]
+  },
+  {
+    "code": "2.3.4.1.3.2.5-SP-1",
+    "name": "Zorana rođ. Čarija",
+    "nameEn": "Zorana née Čarija",
+    "birth": "1958",
+    "death": "2024",
+    "branch": "petrovagrana",
+    "familyListOnly": true,
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazevgrob.jpg",
+        "caption": "Grob Blaža Marinova (1953.–2021.) i Zorane rođ. Čarija (1958.–2024.)",
+        "captionEn": "Grave of Blaž Marinov (1953–2021) and Zorana née Čarija (1958–2024)"
       }
     ]
   }
