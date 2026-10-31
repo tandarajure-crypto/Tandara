@@ -1,6 +1,6 @@
 /* Public memorial records, approved by the site owner on 2026-10-19.
    Only the confirmed deceased people in this register are supplemented.
-   Mijo Marijanov's death year is unknown; Anka (2024) and Dragica (2023) were confirmed on 2026-10-20.
+   Mijo Marijanov died in 1965, confirmed by the owner; Anka (2024) and Dragica (2023) were confirmed on 2026-10-20.
    Other people, relationships and protected records are not copied or changed. */
 (() => {
   'use strict';
@@ -26,7 +26,7 @@
     "name": "Mijo Marijanov",
     "nameEn": "Mijo Marijanov",
     "birth": "1908",
-    "death": null,
+    "death": "1965",
     "branch": "petrovagrana",
     "photos": [
       {
@@ -777,5 +777,6 @@
     }
   }
 })();
+
 
 
