@@ -1,6 +1,6 @@
 /* Public memorial records, approved by the site owner on 2026-10-19.
-   Only the 32 confirmed deceased people in this register are supplemented.
-   Mijo Marijanov's death year is unknown; Anka (2024) and Dragica (2023) were confirmed on 2026-10-20.
+   Only the confirmed deceased people in this register are supplemented.
+   Mijo Marijanov died in 1965, confirmed by the owner; Anka (2024) and Dragica (2023) were confirmed on 2026-10-20.
    Other people, relationships and protected records are not copied or changed. */
 (() => {
   'use strict';
@@ -26,7 +26,7 @@
     "name": "Mijo Marijanov",
     "nameEn": "Mijo Marijanov",
     "birth": "1908",
-    "death": null,
+    "death": "1965",
     "branch": "petrovagrana",
     "photos": [
       {
@@ -374,6 +374,11 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ikopiin.jpg",
         "caption": "Ivan Piin",
         "captionEn": "Ivan Piin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grobikepiina.jpg",
+        "caption": "Grob Ivana Piina i Marijane rođ. Petter",
+        "captionEn": "Grave of Ivan Piin and Marijana née Petter"
       }
     ]
   },
@@ -499,6 +504,11 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazmarinov.jpg",
         "caption": "Blaž Marinov",
         "captionEn": "Blaž Marinov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazevgrob.jpg",
+        "caption": "Grob Blaža Marinova (1953.–2021.) i Zorane rođ. Čarija (1958.–2024.)",
+        "captionEn": "Grave of Blaž Marinov (1953–2021) and Zorana née Čarija (1958–2024)"
       }
     ]
   },
@@ -578,6 +588,90 @@
         "captionEn": "Danica née Malenica"
       }
     ]
+  },
+  {
+    "code": "2.3.4.1.3.2.5-SP-1",
+    "name": "Zorana rođ. Čarija",
+    "nameEn": "Zorana née Čarija",
+    "birth": "1958",
+    "death": "2024",
+    "branch": "petrovagrana",
+    "familyListOnly": true,
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazevgrob.jpg",
+        "caption": "Grob Blaža Marinova (1953.–2021.) i Zorane rođ. Čarija (1958.–2024.)",
+        "captionEn": "Grave of Blaž Marinov (1953–2021) and Zorana née Čarija (1958–2024)"
+      }
+    ]
+  },
+  {
+    "code": "3.1.2.1.1.1",
+    "name": "Marijan Antin – nadimak Đika",
+    "nameEn": "Marijan Antin – family nickname Đika",
+    "birth": "1908",
+    "death": "1997",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobdikin.jpg",
+        "caption": "Grob Marijana Antina – Đike i Ive rođ. Čorbić",
+        "captionEn": "Grave of Marijan Antin – Đika and Iva née Čorbić"
+      }
+    ]
+  },
+  {
+    "code": "3.1.2.1.1.1-SP-1",
+    "name": "Iva rođ. Čorbić",
+    "nameEn": "Iva née Čorbić",
+    "birth": "1910",
+    "death": "2007",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobdikin.jpg",
+        "caption": "Grob Marijana Antina – Đike i Ive rođ. Čorbić",
+        "captionEn": "Grave of Marijan Antin – Đika and Iva née Čorbić"
+      }
+    ],
+    "familyListOnly": true
+  },
+  {
+    "code": "3.1.2.1.1.1.2-SP-1",
+    "name": "Mara-Marija Milanova, rođ. Pušić",
+    "nameEn": "Mara-Marija Milanova, née Pušić",
+    "birth": "1946",
+    "death": "1988",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijamilanova.png",
+        "caption": "Marija Milanova – Mara-Marija rođ. Pušić (1946.–1988.)",
+        "captionEn": "Marija Milanova – Mara-Marija née Pušić (1946–1988)"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobmarijemilanove.jpg",
+        "caption": "Grob Marije Milanove – Mare-Marije rođ. Pušić",
+        "captionEn": "Grave of Marija Milanova – Mara-Marija née Pušić"
+      }
+    ],
+    "familyListOnly": true
+  },
+  {
+    "code": "2.3.1.2.3.3.1-SP-1",
+    "name": "Marijana rođ. Petter",
+    "nameEn": "Marijana née Petter",
+    "birth": "1936",
+    "death": "2013",
+    "branch": "petrovagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grobikepiina.jpg",
+        "caption": "Grob Ivana Piina i Marijane rođ. Petter",
+        "captionEn": "Grave of Ivan Piin and Marijana née Petter"
+      }
+    ],
+    "familyListOnly": true
   }
 ];
   const en = (document.documentElement.lang || document.body.dataset.lang || 'hr').startsWith('en');
@@ -683,5 +777,6 @@
     }
   }
 })();
+
 
 
