@@ -144,14 +144,14 @@
         "captionEn": "Ivan Josipov with his great-grandson"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-07.jpg",
-        "caption": "Ivan Josipov u krugu obitelji",
-        "captionEn": "Ivan Josipov with his family"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
         "caption": "Grob Ivana Josipova",
         "captionEn": "Ivan Josipov’s grave"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-07.jpg",
+        "caption": "Ivan Josipov u krugu obitelji",
+        "captionEn": "Ivan Josipov with his family"
       }
     ]
   },
