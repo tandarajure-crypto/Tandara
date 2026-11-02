@@ -7,6 +7,15 @@
   if (location.hostname !== 'tandarajure-crypto.github.io' || !location.pathname.startsWith('/Tandara/')) return;
   const records = [
   {
+    "code": "2.3.4.1.3.1.3.3",
+    "name": "Tihomir Milanov",
+    "nameEn": "Tihomir Milanov",
+    "birth": "1969",
+    "death": "2006",
+    "branch": "petrovagrana",
+    "photos": []
+  },
+  {
     "code": "2.3.4.1.3",
     "name": "Marijan Lovrin",
     "nameEn": "Marijan Lovrin",
@@ -708,9 +717,9 @@
         const n = group && group[r.code]; if (!n) continue;
         const wasProtected = n.protected || /Zaštićeni|Protected personal/.test(n.label || '');
         Object.assign(n, {label:r.name, labelEn:r.nameEn, birth:r.birth, death:r.death, protected:false,
-          photo:r.photos[0].src, photoEn:r.photos[0].src,
-          photoCaption:r.photos[0].caption, photoCaptionEn:r.photos[0].captionEn,
-          photoAlt:r.photos[0].caption, photoAltEn:r.photos[0].captionEn,
+          photo:r.photos[0]?.src || "", photoEn:r.photos[0]?.src || "",
+          photoCaption:r.photos[0]?.caption || "", photoCaptionEn:r.photos[0]?.captionEn || "",
+          photoAlt:r.photos[0]?.caption || "", photoAltEn:r.photos[0]?.captionEn || "",
           photos:r.photos.map(p => ({src:p.src, caption:caption(p), alt:caption(p)}))});
         if (wasProtected) {
           n.detail = `${r.name} ${r.birth || ''}.–${r.death ? r.death + '.' : ''} Podaci o zaštićenim članovima obitelji nisu javno objavljeni.`;
