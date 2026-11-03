@@ -116,6 +116,26 @@
     ]
   },
   {
+    "code": "3.1.1.2.8.1.1-SP-1",
+    "name": "Matija rođ. Pušić",
+    "nameEn": "Matija née Pušić",
+    "birth": "1933",
+    "death": "1999",
+    "branch": "antinagrana",
+    "photos": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-01.jpg",
+        "caption": "Matija rođ. Pušić — fotografija 1",
+        "captionEn": "Matija née Pušić — photograph 1"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-02.jpg",
+        "caption": "Matija rođ. Pušić — fotografija 2",
+        "captionEn": "Matija née Pušić — photograph 2"
+      }
+    ]
+  },
+  {
     "code": "3.1.1.2.8.1.1",
     "name": "Ivan Josipov",
     "nameEn": "Ivan Josipov",
