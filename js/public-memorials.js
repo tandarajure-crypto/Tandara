@@ -50,8 +50,8 @@
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
-        "caption": "Mijo Marijanov (1908.) — gornji red, 2. osoba slijeva.",
-        "captionEn": "Mijo, son of Marijan (born 1908) — top row, 2nd person from the left."
+        "caption": "Mijo Marijanov — gornji red, 2. osoba slijeva.",
+        "captionEn": "Mijo, son of Marijan — top row, 2nd person from the left."
       }
     ]
   },
@@ -209,8 +209,8 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobobiteljinikolemarijanova.jpg",
-        "caption": "Nikola Marijanov (1939.–2018.) i Marija Lekić (1939.–2021.)",
-        "captionEn": "Nikola Marijanov (1939–2018) and Marija Lekić (1939–2021)"
+        "caption": "Nikola Marijanov i Marija Lekić",
+        "captionEn": "Nikola Marijanov and Marija Lekić"
       }
     ]
   },
@@ -540,8 +540,8 @@
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazevgrob.jpg",
-        "caption": "Grob Blaža Marinova (1953.–2021.) i Zorane rođ. Čarija (1958.–2024.)",
-        "captionEn": "Grave of Blaž Marinov (1953–2021) and Zorana née Čarija (1958–2024)"
+        "caption": "Grob Blaža Marinova i Zorane rođ. Čarija",
+        "captionEn": "Grave of Blaž Marinov and Zorana née Čarija"
       }
     ]
   },
@@ -633,8 +633,8 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazevgrob.jpg",
-        "caption": "Grob Blaža Marinova (1953.–2021.) i Zorane rođ. Čarija (1958.–2024.)",
-        "captionEn": "Grave of Blaž Marinov (1953–2021) and Zorana née Čarija (1958–2024)"
+        "caption": "Grob Blaža Marinova i Zorane rođ. Čarija",
+        "captionEn": "Grave of Blaž Marinov and Zorana née Čarija"
       }
     ]
   },
@@ -679,8 +679,8 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijamilanova.png",
-        "caption": "Marija Milanova – Mara-Marija rođ. Pušić (1946.–1988.)",
-        "captionEn": "Marija Milanova – Mara-Marija née Pušić (1946–1988)"
+        "caption": "Marija Milanova – Mara-Marija rođ. Pušić",
+        "captionEn": "Marija Milanova – Mara-Marija née Pušić"
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobmarijemilanove.jpg",
