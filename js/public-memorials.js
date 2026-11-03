@@ -125,15 +125,15 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-01.jpg",
-        "caption": "",
-        "captionEn": "",
+        "caption": "Matija Ivanova",
+        "captionEn": "Matija Ivanova",
         "alt": "Matija rođ. Pušić — fotografija 1",
         "altEn": "Matija née Pušić — photograph 1"
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-02.jpg",
-        "caption": "",
-        "captionEn": "",
+        "caption": "Matija r. Pušić - prva desno",
+        "captionEn": "Matija née Pušić — first from the right",
         "alt": "Matija rođ. Pušić — fotografija 2",
         "altEn": "Matija née Pušić — photograph 2"
       }
