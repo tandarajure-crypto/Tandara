@@ -125,13 +125,17 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-01.jpg",
-        "caption": "Matija rođ. Pušić — fotografija 1",
-        "captionEn": "Matija née Pušić — photograph 1"
+        "caption": "",
+        "captionEn": "",
+        "alt": "Matija rođ. Pušić — fotografija 1",
+        "altEn": "Matija née Pušić — photograph 1"
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-02.jpg",
-        "caption": "Matija rođ. Pušić — fotografija 2",
-        "captionEn": "Matija née Pušić — photograph 2"
+        "caption": "",
+        "captionEn": "",
+        "alt": "Matija rođ. Pušić — fotografija 2",
+        "altEn": "Matija née Pušić — photograph 2"
       }
     ]
   },
@@ -707,6 +711,7 @@
   const byCode = new Map(records.map(r => [r.code, r]));
   const dates = r => en ? `(${r.birth || '?'}–${r.death || ''})` : `(${r.birth || '?'}.–${r.death ? r.death + '.' : ''})`;
   const caption = p => en ? p.captionEn : p.caption;
+  const photoAlt = (p, english = en) => (english ? p.altEn : p.alt) || (english ? p.captionEn : p.caption) || '';
   const name = r => en ? r.nameEn : r.name;
   const normalizeUrl = u => { try { return decodeURI(new URL(u, location.href).href); } catch (_) { return u; } };
 
@@ -721,10 +726,11 @@
       if (branchPage) figure.className = 'person-photo';
       if (!branchPage) figure.style.cssText = 'margin:0;flex:0 1 280px;max-width:100%;text-align:center;';
       const a = document.createElement('a'); a.href = p.src; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      const img = document.createElement('img'); img.alt = caption(p); img.loading = 'lazy'; img.decoding = 'async'; img.src = p.src;
+      const img = document.createElement('img'); img.alt = photoAlt(p); img.loading = 'lazy'; img.decoding = 'async'; img.src = p.src;
       if (!branchPage) img.style.cssText = 'display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;margin:auto;';
-      const cap = document.createElement('figcaption'); cap.textContent = caption(p);
-      a.append(img); figure.append(a, cap); gallery.append(figure);
+      a.append(img); figure.append(a);
+      if (caption(p)) { const cap = document.createElement('figcaption'); cap.textContent = caption(p); figure.append(cap); }
+      gallery.append(figure);
     }
     return gallery;
   }
@@ -739,8 +745,8 @@
         Object.assign(n, {label:r.name, labelEn:r.nameEn, birth:r.birth, death:r.death, protected:false,
           photo:r.photos[0]?.src || "", photoEn:r.photos[0]?.src || "",
           photoCaption:r.photos[0]?.caption || "", photoCaptionEn:r.photos[0]?.captionEn || "",
-          photoAlt:r.photos[0]?.caption || "", photoAltEn:r.photos[0]?.captionEn || "",
-          photos:r.photos.map(p => ({src:p.src, caption:caption(p), alt:caption(p)}))});
+          photoAlt:r.photos[0] ? photoAlt(r.photos[0], false) : "", photoAltEn:r.photos[0] ? photoAlt(r.photos[0], true) : "",
+          photos:r.photos.map(p => ({src:p.src, caption:caption(p), alt:photoAlt(p)}))});
         if (wasProtected) {
           n.detail = `${r.name} ${r.birth || ''}.–${r.death ? r.death + '.' : ''} Podaci o zaštićenim članovima obitelji nisu javno objavljeni.`;
           n.detailEn = `${r.nameEn} ${r.birth || ''}–${r.death || ''}. Information about protected family members is not publicly disclosed.`;
