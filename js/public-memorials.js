@@ -155,24 +155,14 @@
     "branch": "antinagrana",
     "photos": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-01.jpg",
-        "caption": "Ivan Josipov – 1960.",
-        "captionEn": "Ivan Josipov – 1960."
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-02.jpg",
-        "caption": "Ivanova obitelj – 1968.",
-        "captionEn": "Ivan’s family – 1968."
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-03.jpg",
-        "caption": "Ivan Josipov i Jure Ivanov – 2022.",
-        "captionEn": "Ivan Josipov and Jure Ivanov – 2022."
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-04.jpg",
         "caption": "Ivan Josipov s praunukom",
         "captionEn": "Ivan Josipov with his great-grandson"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-06.jpg",
+        "caption": "",
+        "captionEn": ""
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
@@ -180,9 +170,9 @@
         "captionEn": "Ivan Josipov’s grave"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-07.jpg",
-        "caption": "Ivan Josipov u krugu obitelji",
-        "captionEn": "Ivan Josipov with his family"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-08.jpg",
+        "caption": "",
+        "captionEn": ""
       }
     ]
   },
