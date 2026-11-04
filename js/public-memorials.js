@@ -248,16 +248,17 @@
     "birth": "1911",
     "death": "1946",
     "branch": "antinagrana",
+    "branchGalleryManaged": true,
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-01.jpg",
-        "caption": "Josip Jurin i Anica rođ. Dragun",
-        "captionEn": "Josip Jurin and Anica née Dragun"
+        "caption": "Josip Jurin",
+        "captionEn": "Josip Jurin"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-03.jpg",
-        "caption": "Obiteljska grobnica Josipa Jurina",
-        "captionEn": "Josip Jurin’s family tomb"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.-02-Z.jpg",
+        "caption": "Dijagram potomaka",
+        "captionEn": "Descendants diagram"
       }
     ]
   },
@@ -761,7 +762,7 @@
         const strong = document.createElement('strong'); strong.textContent = r.code;
         el.replaceChildren(strong, document.createTextNode(' ' + name(r) + ' ' + dates(r)));
       }
-      if (r.familyListOnly) continue;
+      if (r.familyListOnly || r.branchGalleryManaged) continue;
       if (r.htmlHost) {
         const host = [...document.querySelectorAll('h3[data-person-code]')].find(el => el.dataset.personCode === r.htmlHost);
         if (!host) continue;
