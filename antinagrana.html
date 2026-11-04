@@ -901,8 +901,9 @@ Radi kao istraživač u Centru za sigurnosne studije BiH, a područja njegova in
 (() => {
   const order = ['JJ-01.jpg', 'JJ-02.jpg', 'JJ.-02-Z.jpg', 'JJ-04.jpg'];
   const heading = document.querySelector('h3[data-person-code="3.1.1.2.8.1"]');
-  const gallery = heading && heading.nextElementSibling;
-  if (!gallery || !gallery.classList.contains('person-photo-gallery')) return;
+  let gallery = heading && heading.nextElementSibling;
+  while (gallery && !gallery.classList.contains('person-photo-gallery')) gallery = gallery.nextElementSibling;
+  if (!gallery) return;
   function removeStrays() {
     let sibling = heading.nextElementSibling;
     while (sibling && sibling !== gallery) {
