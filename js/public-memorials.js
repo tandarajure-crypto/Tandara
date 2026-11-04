@@ -165,14 +165,14 @@
         "captionEn": ""
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
-        "caption": "Grob Ivana Josipova",
-        "captionEn": "Ivan Josipov’s grave"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-08.jpg",
         "caption": "",
         "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
+        "caption": "Grob Ivana Josipova",
+        "captionEn": "Ivan Josipov’s grave"
       }
     ]
   },
