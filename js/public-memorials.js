@@ -258,11 +258,6 @@
         "captionEn": "Josip Jurin and Anica née Dragun"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-02.jpg",
-        "caption": "Graf stabla Josipa Jurina – javna verzija",
-        "captionEn": "Josip Jurin’s family tree – public version"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-03.jpg",
         "caption": "Obiteljska grobnica Josipa Jurina",
         "captionEn": "Josip Jurin’s family tomb"
@@ -313,7 +308,8 @@
         "caption": "Josip Jurin i Anica rođ. Dragun",
         "captionEn": "Josip Jurin and Anica née Dragun"
       }
-    ]
+    ],
+    "familyListOnly": true
   },
   {
     "code": "3.1.1.1.2.1.1",
