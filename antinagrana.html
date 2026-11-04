@@ -18,7 +18,7 @@
 <meta content="website" property="og:type"/>
 <link href="../tandara-common/css/site-shell.css?v=20261028-author-stable" rel="stylesheet"/>
 <link href="../tandara-common/css/branch-page.css?v=20261005-3" rel="stylesheet"/>
-<script defer="" src="../tandara-common/js/site-shell.js?v=20261105-josip-gallery"></script>
+<script defer="" src="../tandara-common/js/site-shell.js?v=20261105-josip-no-duplicate"></script>
 <script defer="" src="../tandara-common/js/branch-page-engine.js?v=20260918-1"></script>
 <script defer src="https://tandarajure-crypto.github.io/tandara-common/js/branch-media.js?v=20261019-1"></script>
 <style id="antinagrana-single-row-photos">
@@ -897,31 +897,17 @@ Radi kao istraživač u Centru za sigurnosne studije BiH, a područja njegova in
 </figure>
 </div>
 <script id="josip-public-gallery-guard">
-/* Keep only the four confirmed photographs in Josip Jurin's public gallery. */
+/* Remove only the legacy injected Josip duplicate, never the four-photo gallery. */
 (() => {
-  const order = ['JJ-01.jpg', 'JJ-02.jpg', 'JJ.-02-Z.jpg', 'JJ-04.jpg'];
-  const heading = document.querySelector('h3[data-person-code="3.1.1.2.8.1"]');
-  let gallery = heading && heading.nextElementSibling;
-  while (gallery && !gallery.classList.contains('person-photo-gallery')) gallery = gallery.nextElementSibling;
-  if (!gallery) return;
-  function removeStrays() {
-    let sibling = heading.nextElementSibling;
-    while (sibling && sibling !== gallery) {
-      const next = sibling.nextElementSibling;
-      if (sibling.matches('figure') && /(?:dijagram|diagram|grobnica|grave)/i.test(sibling.textContent + ' ' + (sibling.querySelector('img')?.alt || ''))) sibling.remove();
-      sibling = next;
+  const cleanup = () => document.querySelectorAll(
+    '[data-memorial-code="3.1.1.2.8.1"]'
+  ).forEach(gallery => gallery.remove());
+  document.addEventListener('DOMContentLoaded', () => {
+    cleanup();
+    if (window.tandaraPublicRecordsReady?.then) {
+      window.tandaraPublicRecordsReady.then(cleanup, cleanup);
     }
-    const figures = [...gallery.querySelectorAll(':scope > figure')];
-    const seen = new Set();
-    for (const fig of figures) {
-      const img = fig.querySelector('img');
-      const filename = img ? img.getAttribute('src')?.split('?')[0].split('/').pop() : '';
-      if (!order.includes(filename) || seen.has(filename)) fig.remove();
-      else seen.add(filename);
-    }
-  }
-  removeStrays();
-  new MutationObserver(removeStrays).observe(gallery, {childList:true});
+  }, { once: true });
 })();
 </script>
 
