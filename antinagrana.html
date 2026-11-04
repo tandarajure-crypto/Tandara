@@ -979,42 +979,9 @@ Radi kao istraživač u Centru za sigurnosne studije BiH, a područja njegova in
 <figure class="person-photo" data-person-code="3.1.1.2.8.1.1-SP-1" data-person-codes="3.1.1.2.8.1.1-SP-1"><a href="https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-02.jpg" target="_blank" rel="noopener noreferrer"><img src="https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-02.jpg" alt="Fotografija – 3.1.1.2.8.1.1-SP-1" loading="lazy" decoding="async"/></a></figure>
 <figure class="person-photo" data-person-code="3.1.1.2.8.1.1-SP-1" data-person-codes="3.1.1.2.8.1.1-SP-1"><a href="https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-05.jpg" target="_blank" rel="noopener noreferrer"><img src="https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-05.jpg" alt="Fotografija – 3.1.1.2.8.1.1-SP-1" loading="lazy" decoding="async"/></a></figure>
 </div>
-<script>
-/* Matija photo recovery: preserve originals, avoid broken-image icons. */
-(function () {
-  const gallery = document.querySelector('.person-photo-gallery[data-person-code="3.1.1.2.8.1.1-SP-1"]');
-  if (!gallery) return;
-  gallery.querySelectorAll('img').forEach(function (photo) {
-    let fallbackUsed = false;
-    function recover() {
-      if (!photo.isConnected) return;
-      if (!fallbackUsed) {
-        fallbackUsed = true;
-        const original = new URL(photo.currentSrc || photo.src, document.baseURI);
-        const prefix = '/tandara-common/';
-        if (!original.pathname.startsWith(prefix)) return;
-        const replacement = document.createElement('img');
-        replacement.alt = photo.alt;
-        replacement.loading = 'eager';
-        replacement.decoding = 'async';
-        replacement.onerror = function () {
-          const figure = replacement.closest('figure');
-          if (figure) figure.hidden = true;
-        };
-        replacement.src = 'https://raw.githubusercontent.com/tandarajure-crypto/tandara-common/main/' + original.pathname.slice(prefix.length);
-        photo.replaceWith(replacement);
-      }
-    }
-    photo.addEventListener('error', recover, { once: true });
-    if (photo.complete && photo.naturalWidth === 0) recover();
-  });
-})();
-</script>
-
-<div class="person-photo-gallery" aria-label="Fotografije Matije rođ. Pušić" role="group">
 
 
-</div>
+
 <h3 data-person-code="3.1.1.2.8.1.1.1">
 <strong>
             3.1.1.2.8.1.1.1. Jure Ivanov
