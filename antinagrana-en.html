@@ -3091,6 +3091,21 @@ Your browser does not support this video. <a href="https://tandarajure-crypto.gi
   });
 })();
 </script>
+<script id="anica-duplicate-guard">
+/* Preserve the existing Anica photo block and suppress a second block
+   introduced by older cached memorial scripts. */
+(() => {
+  const code = '3.1.1.2.8.1-SP-1';
+  const clean = () => {
+    document.querySelectorAll('h3[data-person-code="' + code + '"]').forEach(el => el.remove());
+    document.querySelectorAll('[data-memorial-code="' + code + '"]').forEach(el => el.remove());
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    clean();
+    if (window.tandaraPublicRecordsReady?.then) window.tandaraPublicRecordsReady.then(clean, clean);
+  }, { once: true });
+})();
+</script>
 </body>
 </html>
 
