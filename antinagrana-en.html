@@ -19,7 +19,7 @@
 <meta content="website" property="og:type"/>
 <link href="../tandara-common/css/site-shell.css?v=20261028-author-stable" rel="stylesheet"/>
 <link href="../tandara-common/css/branch-page.css?v=20261005-3" rel="stylesheet"/>
-<script defer="" src="../tandara-common/js/site-shell.js?v=20261104-anica-fix"></script>
+<script defer="" src="../tandara-common/js/site-shell.js?v=20261105-josip-gallery"></script>
 <script defer="" src="../tandara-common/js/branch-page-engine.js?v=20260918-1"></script>
 <style id="antinagrana-single-row-photos">
 body[data-page="antinagrana"] .branch-card .person-photo-gallery {
@@ -864,6 +864,34 @@ He works as a researcher at the Centre for Security Studies BiH, and his areas o
 <figcaption>Josip Jurin’s grave</figcaption>
 </figure>
 </div>
+<script id="josip-public-gallery-guard">
+/* Keep only the four confirmed photographs in Josip Jurin's public gallery. */
+(() => {
+  const order = ['JJ-01.jpg', 'JJ-02.jpg', 'JJ.-02-Z.jpg', 'JJ-04.jpg'];
+  const heading = document.querySelector('h3[data-person-code="3.1.1.2.8.1"]');
+  const gallery = heading && heading.nextElementSibling;
+  if (!gallery || !gallery.classList.contains('person-photo-gallery')) return;
+  function removeStrays() {
+    let sibling = heading.nextElementSibling;
+    while (sibling && sibling !== gallery) {
+      const next = sibling.nextElementSibling;
+      if (sibling.matches('figure') && /(?:dijagram|diagram|grobnica|grave)/i.test(sibling.textContent + ' ' + (sibling.querySelector('img')?.alt || ''))) sibling.remove();
+      sibling = next;
+    }
+    const figures = [...gallery.querySelectorAll(':scope > figure')];
+    const seen = new Set();
+    for (const fig of figures) {
+      const img = fig.querySelector('img');
+      const filename = img ? img.getAttribute('src')?.split('?')[0].split('/').pop() : '';
+      if (!order.includes(filename) || seen.has(filename)) fig.remove();
+      else seen.add(filename);
+    }
+  }
+  removeStrays();
+  new MutationObserver(removeStrays).observe(gallery, {childList:true});
+})();
+</script>
+
 <p>Josip, son of Jure — wife: Anica née Dragun (1911–1989). Children, in birth order: son Ivan (1933–2025), daughter Slava (1935–1977), daughter Mara (1936–2012), daughter Neda (1939–2025), daughter Matija (Zaštićeni podaci), son Milan (1942–2003), daughter Zlata (1944–1945) and son Martin (1946–1947). Continuation of the Tandara surname: sons Ivan, son of Josip and Milan, son of Josip. Josip, son of Jure was married to Anica, née Dragun (1911–1989).</p>
 <p class="family-code-list" data-family-code="3.1.1.2.8.1"><strong>Family member codes:</strong>
 <span data-person-code="3.1.1.2.8.1-SP-1" data-spouse-of="3.1.1.2.8.1">
