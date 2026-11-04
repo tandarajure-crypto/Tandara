@@ -124,18 +124,25 @@
     "branch": "antinagrana",
     "photos": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-01.jpg",
-        "caption": "Matija Ivanova",
-        "captionEn": "Matija Ivanova",
-        "alt": "Matija rođ. Pušić — fotografija 1",
-        "altEn": "Matija née Pušić — photograph 1"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-01.jpg",
+        "caption": "",
+        "captionEn": "",
+        "alt": "Matija rođ. Pušić",
+        "altEn": "Matija née Pušić"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-K1-02.jpg",
-        "caption": "Matija r. Pušić - prva desno",
-        "captionEn": "Matija née Pušić — first from the right",
-        "alt": "Matija rođ. Pušić — fotografija 2",
-        "altEn": "Matija née Pušić — photograph 2"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-02.jpg",
+        "caption": "",
+        "captionEn": "",
+        "alt": "Matija rođ. Pušić",
+        "altEn": "Matija née Pušić"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-05.jpg",
+        "caption": "",
+        "captionEn": "",
+        "alt": "Matija rođ. Pušić",
+        "altEn": "Matija née Pušić"
       }
     ]
   },
