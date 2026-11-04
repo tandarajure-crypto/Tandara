@@ -18,7 +18,7 @@
 <meta content="website" property="og:type"/>
 <link href="../tandara-common/css/site-shell.css?v=20261028-author-stable" rel="stylesheet"/>
 <link href="../tandara-common/css/branch-page.css?v=20261005-3" rel="stylesheet"/>
-<script defer="" src="../tandara-common/js/site-shell.js?v=20261104-anica-fix"></script>
+<script defer="" src="../tandara-common/js/site-shell.js?v=20261105-josip-gallery"></script>
 <script defer="" src="../tandara-common/js/branch-page-engine.js?v=20260918-1"></script>
 <script defer src="https://tandarajure-crypto.github.io/tandara-common/js/branch-media.js?v=20261019-1"></script>
 <style id="antinagrana-single-row-photos">
@@ -896,6 +896,34 @@ Radi kao istraživač u Centru za sigurnosne studije BiH, a područja njegova in
 <figcaption>Grobnica Josipa Jurina</figcaption>
 </figure>
 </div>
+<script id="josip-public-gallery-guard">
+/* Keep only the four confirmed photographs in Josip Jurin's public gallery. */
+(() => {
+  const order = ['JJ-01.jpg', 'JJ-02.jpg', 'JJ.-02-Z.jpg', 'JJ-04.jpg'];
+  const heading = document.querySelector('h3[data-person-code="3.1.1.2.8.1"]');
+  const gallery = heading && heading.nextElementSibling;
+  if (!gallery || !gallery.classList.contains('person-photo-gallery')) return;
+  function removeStrays() {
+    let sibling = heading.nextElementSibling;
+    while (sibling && sibling !== gallery) {
+      const next = sibling.nextElementSibling;
+      if (sibling.matches('figure') && /(?:dijagram|diagram|grobnica|grave)/i.test(sibling.textContent + ' ' + (sibling.querySelector('img')?.alt || ''))) sibling.remove();
+      sibling = next;
+    }
+    const figures = [...gallery.querySelectorAll(':scope > figure')];
+    const seen = new Set();
+    for (const fig of figures) {
+      const img = fig.querySelector('img');
+      const filename = img ? img.getAttribute('src')?.split('?')[0].split('/').pop() : '';
+      if (!order.includes(filename) || seen.has(filename)) fig.remove();
+      else seen.add(filename);
+    }
+  }
+  removeStrays();
+  new MutationObserver(removeStrays).observe(gallery, {childList:true});
+})();
+</script>
+
 <p>Josip Jurin — supruga: Anica rođ. Dragun (1911.–1989.). Djeca, redom po rođenju: sin Ivan (1933.–2025.), kći Slava (1935.–1977.), kći Mara (1936.–2012.), kći Neda (1939.–2025.), kći Matija (Zaštićeni podaci), sin Milan (1942.–2003.), kći Zlata (1944.–1945.) i sin Martin (1946.–1947.).
           Nastavak prezimena Tandara: sinovi Ivan Josipov i Milan Josipov.</p>
 <p class="family-code-list" data-family-code="3.1.1.2.8.1"><strong>Šifre članova obitelji:</strong>
