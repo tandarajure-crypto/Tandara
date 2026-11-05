@@ -673,8 +673,8 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijamilanova.png",
-        "caption": "Marija Milanova – Mara-Marija rođ. Pušić",
-        "captionEn": "Marija Milanova – Mara-Marija née Pušić"
+        "caption": "Marija Milanova – rođ. Pušić",
+        "captionEn": "Marija Milanova – née Pušić"
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobmarijemilanove.jpg",
