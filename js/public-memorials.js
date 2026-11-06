@@ -492,11 +492,7 @@
     "death": "1989",
     "branch": "petrovagrana",
     "photos": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/bruno.png",
-        "caption": "Dr. Ante Bruno Tandara",
-        "captionEn": "Dr. Ante Bruno Tandara"
-      },
+
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno1.jpg",
         "caption": "Dr. Ante Bruno Tandara – fotografija 1",
