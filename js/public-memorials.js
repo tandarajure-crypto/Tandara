@@ -498,6 +498,16 @@
         "captionEn": "Dr. Ante Bruno Tandara"
       },
       {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno1.jpg",
+        "caption": "Dr. Ante Bruno Tandara – fotografija 1",
+        "captionEn": "Dr. Ante Bruno Tandara – photograph 1"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno2.jpg",
+        "caption": "Dr. Ante Bruno Tandara – fotografija 2",
+        "captionEn": "Dr. Ante Bruno Tandara – photograph 2"
+      },
+      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno-graf.jpeg",
         "caption": "Grafički prikaz grananja prezimena",
         "captionEn": "Graphic representation of surname branching"
