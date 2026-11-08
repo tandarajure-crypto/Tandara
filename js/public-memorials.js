@@ -421,16 +421,6 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin3.jpg",
         "caption": "Jozo Piin",
         "captionEn": "Jozo Piin"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin.jpg",
-        "caption": "Jozo Piin",
-        "captionEn": "Jozo, son of Pio"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin1.jpg",
-        "caption": "Jozo Piin",
-        "captionEn": "Jozo, son of Pio"
       }
     ]
   },
