@@ -46,9 +46,12 @@ try {
       const searchCode = page.locator('#searchCode');
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
+      const before = await page.evaluate(() => ({rootExists:!!document.body.dataset.rootCode,filled:!!document.getElementById('searchCode')?.value}));
       await searchCode.fill(rootCode);
-      // Dispatch the same DOM click event without assuming a toolbar is pointer-visible.
+      const afterFill = await page.evaluate(() => ({filled:!!document.getElementById('searchCode')?.value}));
       await page.locator('#findBtn').evaluate(el => el.click());
+      const afterClick = await page.evaluate(() => ({filled:!!document.getElementById('searchCode')?.value,opened:!document.getElementById('personDetails')?.hidden}));
+      console.log('DIAG '+file+' '+JSON.stringify({before,afterFill,afterClick,pageErrorKinds:[...pageErrorKinds]}));
       await page.waitForTimeout(200);
       const detailShown = await page.locator('#personDetails').evaluate(el => !el.hidden);
       if (!detailShown) {
