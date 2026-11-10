@@ -18,4 +18,6 @@ jobs:
         with:
           node-version: '22'
       - name: Validate JSON, diagrams, JavaScript and references
-        run: python3 scripts/validate.py
+        run: |
+          python3 scripts/validate.py
+          python3 scripts/validate-relationships.py
