@@ -47,8 +47,8 @@ try {
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
       const before = await page.evaluate(() => ({rootExists:!!document.body.dataset.rootCode,filled:!!document.getElementById('searchCode')?.value}));
-      await searchCode.fill(rootCode);
-      const afterFill = await page.evaluate(() => ({filled:!!document.getElementById('searchCode')?.value}));
+      await page.evaluate(code => { const el = document.getElementById('searchCode'); el.value = code; el.dispatchEvent(new Event('input',{bubbles:true})); }, rootCode);
+      const afterFill = await page.evaluate(() => ({filled:!!document.getElementById('searchCode')?.value,tag:document.getElementById('searchCode')?.tagName,type:document.getElementById('searchCode')?.type}));
       await page.locator('#findBtn').evaluate(el => el.click());
       const afterClick = await page.evaluate(() => ({filled:!!document.getElementById('searchCode')?.value,opened:!document.getElementById('personDetails')?.hidden}));
       console.log('DIAG '+file+' '+JSON.stringify({before,afterFill,afterClick,pageErrorKinds:[...pageErrorKinds]}));
