@@ -1,0 +1,23 @@
+name: Read-only site checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JSON, diagrams, JavaScript and references
+        run: |
+          python3 scripts/validate.py
+          python3 scripts/validate-relationships.py
