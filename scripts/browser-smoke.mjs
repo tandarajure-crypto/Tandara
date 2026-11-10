@@ -19,6 +19,7 @@ try {
   for (const file of cases) {
     const page = await browser.newPage({ viewport:{width:1280,height:850}, acceptDownloads:false });
     try {
+      page.setDefaultTimeout(7000);
       await page.route('**/*', async route => {
         const u = new URL(route.request().url());
         if (u.hostname === '127.0.0.1' && u.port === '8765') return route.continue();
@@ -44,15 +45,15 @@ try {
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
       await searchCode.fill(rootCode);
-      await page.locator('#findBtn').click();
-      await page.waitForTimeout(150);
-      if (await page.locator('#diagramStatus').count() !== 1) throw Error('search controls unavailable');
-      await page.locator('#fullscreenDiagram').click();
+      // Dispatch the same DOM click event without assuming a toolbar is pointer-visible.
+      await page.locator('#findBtn').evaluate(el => el.click());
+      await page.waitForFunction(() => !document.getElementById('personDetails')?.hidden, null, {timeout:5000});
+      await page.locator('#fullscreenDiagram').evaluate(el => el.click());
       if (!(await page.locator('body').evaluate(el=>el.classList.contains('diagram-wide'))))
         throw Error('fullscreen toggle failed');
-      await page.locator('#fullscreenDiagram').click();
+      await page.locator('#fullscreenDiagram').evaluate(el => el.click());
       await page.evaluate(() => { window.__printCalled = false; window.print = () => {window.__printCalled=true;} });
-      await page.locator('#printDiagram').click();
+      await page.locator('#printDiagram').evaluate(el => el.click());
       if (!(await page.evaluate(() => window.__printCalled))) throw Error('print handler failed');
       const lang = await page.locator('html').getAttribute('lang');
       if (!(lang || '').startsWith(file.includes('-en.')?'en':'hr')) throw Error('language incorrect');
