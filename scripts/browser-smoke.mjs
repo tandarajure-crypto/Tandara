@@ -7,7 +7,7 @@ import { resolve, extname } from 'node:path';
 
 const root = resolve(process.cwd());
 const repo = process.env.GITHUB_REPOSITORY?.split('/').pop() || 'site';
-const cases = process.env.SMOKE_DIAGNOSTIC === '1' ? ['box2a.html'] : ['box1', 'box2a', 'box2b', 'box2c', 'box2d']
+const cases = ['box1', 'box2a', 'box2b', 'box2c', 'box2d']
   .flatMap(base => [base + '.html', base + '-en.html']);
 const host = 'http://127.0.0.1:8765';
 const mime = {'.js':'text/javascript','.css':'text/css','.json':'application/json',
@@ -46,12 +46,8 @@ try {
       const searchCode = page.locator('#searchCode');
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
-      const before = await page.evaluate(() => ({rootExists:!!document.body.dataset.rootCode,filled:!!document.getElementById('searchCode')?.value}));
       await page.evaluate(code => { const el = document.getElementById('searchCode'); el.value = code; el.dispatchEvent(new Event('input',{bubbles:true})); }, rootCode);
-      const afterFill = await page.evaluate(() => ({filled:!!document.getElementById('searchCode')?.value,tag:document.getElementById('searchCode')?.tagName,type:document.getElementById('searchCode')?.type}));
       await page.locator('#findBtn').evaluate(el => el.click());
-      const afterClick = await page.evaluate(() => ({filled:!!document.getElementById('searchCode')?.value,opened:!document.getElementById('personDetails')?.hidden}));
-      console.log('DIAG '+file+' '+JSON.stringify({before,afterFill,afterClick,pageErrorKinds:[...pageErrorKinds]}));
       await page.waitForTimeout(200);
       const detailShown = await page.locator('#personDetails').evaluate(el => !el.hidden);
       if (!detailShown) {
