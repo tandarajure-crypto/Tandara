@@ -1,0 +1,38 @@
+name: Diagram browser smoke (review only)
+on:
+  pull_request:
+    paths:
+      - 'box*.html'
+      - 'scripts/browser-smoke.mjs'
+      - '.github/workflows/browser-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chromium-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+        with:
+          path: site
+          persist-credentials: false
+      - name: Checkout public shared assets
+        uses: actions/checkout@v4
+        with:
+          repository: tandarajure-crypto/tandara-common
+          path: tandara-common
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated test browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run browser checks against local copies (no private data uploaded)
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
+          node site/scripts/browser-smoke.mjs
