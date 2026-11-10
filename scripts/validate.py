@@ -120,6 +120,115 @@ for path in paths({'.html', '.htm'}):
     if strange:
         warnings.append(f'{rel}: {strange} nonstandard person codes (review only)')
 
+
+# Additional non-destructive checks. Structural anomalies remain warnings until
+# the genealogy schema has been agreed and baseline anomalies reviewed.
+diagram_pages = {}
+cross_repo_links = collections.Counter()
+for path in paths({'.html', '.htm'}):
+    rel = path.relative_to(ROOT)
+    try:
+        page = Page()
+        page.feed(path.read_text(encoding='utf-8-sig'))
+        page.close()
+    except (UnicodeError, OSError, ValueError):
+        continue
+    for _, _, address in page.links:
+        parsed = urlsplit(address)
+        parts = unquote(parsed.path).split('/')
+        if 'tandara-common' in parts or '../tandara-common/' in address:
+            cross_repo_links['tandara-common'] += 1
+        if 'PRIVAT' in parts:
+            cross_repo_links['PRIVAT'] += 1
+    for _, raw in page.json_scripts:
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(data, dict) or not any(key in data for key in ('primary', 'nodes')):
+            continue
+        people = {}
+        for group_name in ('primary', 'nodes'):
+            group = data.get(group_name, {})
+            if not isinstance(group, dict):
+                warnings.append(f'{rel}: diagram group {group_name} is not an object')
+                continue
+            for code, person in group.items():
+                if not isinstance(person, dict):
+                    warnings.append(f'{rel}: non-object person entry in {group_name}')
+                    continue
+                if code in people:
+                    warnings.append(f'{rel}: person code is present in multiple diagram groups')
+                people[code] = person
+                if person.get('code') not in (None, code) or person.get('id') not in (None, code):
+                    warnings.append(f'{rel}: diagram entry code/id differs from its key')
+        if not people:
+            continue
+        counts['diagrams'] += 1
+        counts['diagram entries'] += len(people)
+        anomalies = collections.Counter()
+        for code, person in people.items():
+            parent = person.get('parent')
+            if parent is not None and not isinstance(parent, str):
+                anomalies['parent field is not text'] += 1
+            children = person.get('children', [])
+            if children is not None and not isinstance(children, list):
+                anomalies['children field is not a list'] += 1
+                continue
+            for child in children or []:
+                if not isinstance(child, str):
+                    anomalies['child reference is not text'] += 1
+                elif child == code:
+                    anomalies['person references self as child'] += 1
+                elif child in people:
+                    child_parent = people[child].get('parent')
+                    if child_parent and child_parent != code:
+                        anomalies['parent/child references differ'] += 1
+                else:
+                    anomalies['child reference outside this diagram (verify across diagrams)'] += 1
+            if parent == code:
+                anomalies['person references self as parent'] += 1
+            elif parent and parent in people:
+                other_children = people[parent].get('children')
+                if isinstance(other_children, list) and code not in other_children:
+                    anomalies['parent missing reciprocal child reference'] += 1
+        for kind, number in sorted(anomalies.items()):
+            warnings.append(f'{rel}: {number} genealogy entries: {kind}')
+        diagram_pages[str(rel)] = people
+
+# Compare corresponding pages by code only; never print names or biographies.
+for filename, people in sorted(diagram_pages.items()):
+    if filename.endswith('-en.html'):
+        continue
+    english = filename[:-5] + '-en.html'
+    if english in diagram_pages:
+        a, b = set(people), set(diagram_pages[english])
+        if a != b:
+            warnings.append(f'{filename}: HR/EN diagram identifiers differ '
+                            f'(HR-only={len(a-b)}, EN-only={len(b-a)})')
+        shared = a & b
+        changed_links = sum(
+            people[code].get('parent') != diagram_pages[english][code].get('parent')
+            or people[code].get('children', []) != diagram_pages[english][code].get('children', [])
+            for code in shared
+        )
+        if changed_links:
+            warnings.append(f'{filename}: {changed_links} HR/EN genealogy relationship differences')
+        counts['HR/EN diagram pairs'] += 1
+
+# This is deliberately not a claim of cross-repository or publishing privacy safety.
+for target, number in sorted(cross_repo_links.items()):
+    print(f'INFO: {number} references to {target}; remote targets require separate verification')
+if (ROOT / 'objava.json').exists():
+    try:
+        objava = json.loads((ROOT / 'objava.json').read_text(encoding='utf-8-sig'))
+        for key in ('title', 'message', 'imageAlt', 'linkLabel'):
+            value = objava.get(key)
+            if isinstance(value, dict) and set(('hr', 'en')) - set(value):
+                warnings.append(f'objava.json: missing HR/EN setting in {key}')
+    except (ValueError, OSError):
+        pass
+
 print('Tandara read-only validation')
 print('Counts:', ', '.join(f'{key}={value}' for key, value in sorted(counts.items())))
 print(f'Syntax failures={len(errors)}; review warnings={len(warnings)}')
