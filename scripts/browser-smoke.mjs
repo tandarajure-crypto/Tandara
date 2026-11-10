@@ -7,7 +7,7 @@ import { resolve, extname } from 'node:path';
 
 const root = resolve(process.cwd());
 const repo = process.env.GITHUB_REPOSITORY?.split('/').pop() || 'site';
-const cases = ['box1', 'box2a', 'box2b', 'box2c', 'box2d']
+const cases = process.env.SMOKE_DIAGNOSTIC === '1' ? ['box2a.html'] : ['box1', 'box2a', 'box2b', 'box2c', 'box2d']
   .flatMap(base => [base + '.html', base + '-en.html']);
 const host = 'http://127.0.0.1:8765';
 const mime = {'.js':'text/javascript','.css':'text/css','.json':'application/json',
@@ -18,6 +18,8 @@ const browser = await chromium.launch({headless:true, args:['--no-sandbox']});
 try {
   for (const file of cases) {
     const page = await browser.newPage({ viewport:{width:1280,height:850}, acceptDownloads:false });
+    const pageErrorKinds = new Set();
+    page.on('pageerror', error => pageErrorKinds.add(error.name || 'Error'));
     try {
       page.setDefaultTimeout(7000);
       await page.route('**/*', async route => {
@@ -47,7 +49,18 @@ try {
       await searchCode.fill(rootCode);
       // Dispatch the same DOM click event without assuming a toolbar is pointer-visible.
       await page.locator('#findBtn').evaluate(el => el.click());
-      await page.waitForFunction(() => !document.getElementById('personDetails')?.hidden, null, {timeout:5000});
+      await page.waitForTimeout(200);
+      const detailShown = await page.locator('#personDetails').evaluate(el => !el.hidden);
+      if (!detailShown) {
+        const diag = await page.evaluate(() => ({
+          renderedNodes: document.querySelectorAll('#nodesLayer [data-code]').length,
+          resultVisible: !document.getElementById('searchResults')?.hidden,
+          searchFieldHasValue: !!document.getElementById('searchCode')?.value,
+          detailBoxExists: !!document.getElementById('personDetails'),
+          lastStatusPresent: !!document.getElementById('diagramStatus')?.textContent?.trim()
+        }));
+        throw Error('search card did not open; '+JSON.stringify(diag)+'; errors='+[...pageErrorKinds].join(','));
+      }
       await page.locator('#fullscreenDiagram').evaluate(el => el.click());
       if (!(await page.locator('body').evaluate(el=>el.classList.contains('diagram-wide'))))
         throw Error('fullscreen toggle failed');
