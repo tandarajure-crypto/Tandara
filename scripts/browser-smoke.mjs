@@ -69,7 +69,41 @@ try {
       if (!(await page.evaluate(() => window.__printCalled))) throw Error('print handler failed');
       const lang = await page.locator('html').getAttribute('lang');
       if (!(lang || '').startsWith(file.includes('-en.')?'en':'hr')) throw Error('language incorrect');
-      console.log('PASS: '+file+' — diagram/search/wide/print controls');
+      // Check safe image-card markup only when a portrait is present.
+      const photoCheck = await page.evaluate(() => {
+        const box = document.getElementById('personDetails');
+        const imgs = [...(box?.querySelectorAll('figure.person-details-photo img') || [])];
+        return {
+          count: imgs.length,
+          allAlt: imgs.every(img => !!img.getAttribute('alt')),
+          allLinks: imgs.every(img => img.closest('a')?.rel.includes('noopener')),
+          allExternal: imgs.every(img => {
+            try { const u = new URL(img.src); return u.protocol === 'https:' && u.hostname === 'tandarajure-crypto.github.io'; }
+            catch { return false; }
+          })
+        };
+      });
+      if (photoCheck.count && (!photoCheck.allAlt || !photoCheck.allLinks || !photoCheck.allExternal))
+        throw Error('person card photograph markup invalid');
+
+      // Validate print layout without producing a private PDF or screenshot.
+      await page.emulateMedia({media:'print'});
+      const printable = await page.locator('#treeSvg').evaluate(el => {
+        const r = el.getBoundingClientRect();
+        return r.width > 0 && r.height > 0 && getComputedStyle(el).display !== 'none';
+      });
+      await page.emulateMedia({media:'screen'});
+      if (!printable) throw Error('diagram hidden in print layout');
+
+      // Follow the real language-switch hyperlink; do not log URL or person records.
+      const counterpart = file.includes('-en.') ? file.replace('-en.html','.html') : file.replace('.html','-en.html');
+      const languageLink = page.locator('a[href="'+counterpart+'"]').first();
+      if (await languageLink.count() !== 1) throw Error('language switch hyperlink missing');
+      await languageLink.evaluate(el => el.click());
+      await page.waitForURL(u => u.pathname.endsWith('/'+counterpart),{timeout:7000});
+      const switched = await page.locator('html').getAttribute('lang');
+      if (!(switched || '').startsWith(file.includes('-en.')?'hr':'en')) throw Error('language switch destination invalid');
+      console.log('PASS: '+file+' — diagram/search/wide/print/layout/language link/photo markup');
     } catch(e) {
       // Do not print JavaScript errors or page content from private data.
       const safe = String(e?.message||'').split('\n')[0].replace(/https?:\S+/g,'[url]').slice(0,140);
