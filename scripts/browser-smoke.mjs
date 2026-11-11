@@ -103,6 +103,15 @@ try {
         }
       }
       if (device !== 'desktop') {
+        // A real modal announcement intentionally blocks the page until dismissed.
+        const announcement = page.locator('dialog.tandara-announcement[open]');
+        if (await announcement.count()) {
+          await announcement.locator('button.tandara-announcement__close').click({timeout:5000});
+          await page.waitForFunction(() => !document.querySelector('dialog.tandara-announcement[open]'),null,{timeout:5000});
+          console.log('ANNOUNCEMENT: '+file+' ('+device+') closed via visible close button');
+        }
+      }
+      if (device !== 'desktop') {
         // Pointer-level check: scroll to the control, then verify its center
         // can receive a real click. Never log page contents or person data.
         for (const id of ['zoomIn', 'zoomOut']) {
