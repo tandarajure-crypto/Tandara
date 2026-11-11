@@ -85,7 +85,7 @@ try {
         });
         const warnings = geometry.filter(x => x.state !== 'visible' || x.small || x.outside);
         if (warnings.length) {
-          console.log('REVIEW: '+file+' ('+device+') — '+warnings.length+' control geometry warnings (not proof of defect)');
+          console.log('REVIEW: '+file+' ('+device+') — '+warnings.map(w=>w.id+':'+(w.state!=='visible'?w.state:w.small?'small':'offscreen')).join(',')+' (not proof of defect)');
         }
       }
       const searchCode = page.locator('#searchCode');
