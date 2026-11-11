@@ -138,6 +138,36 @@ try {
         // Restore standard fit after testing, without mutating any persisted data.
         await page.locator('#fit').evaluate(el=>el.click());
       }
+      if (device !== 'desktop') {
+        // Approximate WCAG 2.2 SC 2.5.8 spacing test for the two zoom buttons:
+        // undersized targets use a 24px-diameter circle; neighboring large
+        // targets must not intersect it. Log only element IDs and counts.
+        const spacing = await page.evaluate(() => {
+          const interactive = [...document.querySelectorAll('button,a[href],input,select,[role="button"]')]
+            .filter(el => {
+              const r=el.getBoundingClientRect(),c=getComputedStyle(el);
+              return r.width>0&&r.height>0&&c.display!=='none'&&c.visibility!=='hidden'
+                && !el.closest('dialog.tandara-announcement');
+            });
+          return ['zoomIn','zoomOut'].map(id => {
+            const el=document.getElementById(id),r=el.getBoundingClientRect();
+            const cx=r.left+r.width/2,cy=r.top+r.height/2,undersized=r.width<24||r.height<24;
+            let overlaps=0,nearestGap=Infinity;
+            for(const other of interactive){
+              if(other===el)continue;
+              const q=other.getBoundingClientRect();
+              const dx=Math.max(q.left-cx,0,cx-q.right),dy=Math.max(q.top-cy,0,cy-q.bottom);
+              const dist=Math.hypot(dx,dy);
+              nearestGap=Math.min(nearestGap,dist);
+              const otherUndersized=q.width<24||q.height<24;
+              const centerDistance=Math.hypot(cx-(q.left+q.width/2),cy-(q.top+q.height/2));
+              if(undersized && (otherUndersized?centerDistance<24-0.01:dist<12-0.01)) overlaps++;
+            }
+            return {id,undersized,overlaps,nearest:Math.round(nearestGap*10)/10};
+          });
+        });
+        console.log('SPACING-AUDIT: '+file+' ('+device+') '+spacing.map(v=>v.id+':'+(v.overlaps?'overlaps='+v.overlaps:'clear')+':nearest='+v.nearest).join(','));
+      }
       const searchCode = page.locator('#searchCode');
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
