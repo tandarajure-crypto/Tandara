@@ -67,6 +67,27 @@ try {
         if (!mobileLayout.diagramVisible || !mobileLayout.searchVisible || !mobileLayout.viewportMeta)
           throw Error('mobile diagram/search/viewport structure unavailable');
       }
+      if (device !== 'desktop') {
+        // Read-only geometry audit. SVG canvas may intentionally pan/zoom;
+        // report control warnings only, never alter site styles or content.
+        const geometry = await page.evaluate(() => {
+          const ids = ['findBtn', 'fullscreenDiagram', 'printDiagram', 'zoomIn', 'zoomOut'];
+          return ids.map(id => {
+            const el = document.getElementById(id);
+            if (!el) return {id, state:'missing'};
+            const r = el.getBoundingClientRect();
+            const cs = getComputedStyle(el);
+            const shown = r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none';
+            return {id, state:shown?'visible':'hidden',
+              small:shown && (r.width < 24 || r.height < 24),
+              outside:shown && (r.right < 0 || r.left > innerWidth)};
+          });
+        });
+        const warnings = geometry.filter(x => x.state !== 'visible' || x.small || x.outside);
+        if (warnings.length) {
+          console.log('REVIEW: '+file+' ('+device+') — '+warnings.length+' control geometry warnings (not proof of defect)');
+        }
+      }
       const searchCode = page.locator('#searchCode');
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
