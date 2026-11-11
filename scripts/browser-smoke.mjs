@@ -79,11 +79,25 @@ try {
             const cs = getComputedStyle(el);
             const shown = r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none';
             return {id, state:shown?'visible':'hidden',
+              width:Math.round(r.width),height:Math.round(r.height),
               small:shown && (r.width < 24 || r.height < 24),
-              outside:shown && (r.right < 0 || r.left > innerWidth)};
+              outside:shown && (r.right < 0 || r.left > innerWidth),
+              centerCovered: shown && (() => {
+                const x = Math.max(0,Math.min(innerWidth-1,r.left+r.width/2));
+                const y = Math.max(0,Math.min(innerHeight-1,r.top+r.height/2));
+                if (y < 0 || y >= innerHeight) return false; // scrollable controls can be below fold
+                const top = document.elementFromPoint(x,y);
+                return !!top && top !== el && !el.contains(top);
+              })()};
           });
         });
         const warnings = geometry.filter(x => x.state !== 'visible' || x.small || x.outside);
+        const overflow = await page.evaluate(() => {
+          const d = document.documentElement;
+          return Math.max(d.scrollWidth,document.body.scrollWidth)-d.clientWidth;
+        });
+        const zoom = geometry.filter(x => x.id === 'zoomIn' || x.id === 'zoomOut');
+        console.log('MOBILE-AUDIT: '+file+' ('+device+') zoom='+zoom.map(x=>x.id+':'+x.width+'x'+x.height+(x.centerCovered?':covered':'')).join(',')+' overflow='+Math.round(overflow)+'px');
         if (warnings.length) {
           console.log('REVIEW: '+file+' ('+device+') — '+warnings.map(w=>w.id+':'+(w.state!=='visible'?w.state:w.small?'small':'offscreen')).join(',')+' (not proof of defect)');
         }
