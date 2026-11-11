@@ -102,6 +102,31 @@ try {
           console.log('REVIEW: '+file+' ('+device+') — '+warnings.map(w=>w.id+':'+(w.state!=='visible'?w.state:w.small?'small':'offscreen')).join(',')+' (not proof of defect)');
         }
       }
+      if (device !== 'desktop') {
+        // Pointer-level check: scroll to the control, then verify its center
+        // can receive a real click. Never log page contents or person data.
+        for (const id of ['zoomIn', 'zoomOut']) {
+          const target = page.locator('#'+id);
+          await target.evaluate(el => el.scrollIntoView({block:'center', inline:'nearest'}));
+          await page.waitForTimeout(80);
+          const hit = await target.evaluate(el => {
+            const r=el.getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2;
+            if (x<0 || y<0 || x>=innerWidth || y>=innerHeight) return 'outside-viewport';
+            const top=document.elementFromPoint(x,y);
+            if (!top) return 'no-hit-target';
+            return (top===el || el.contains(top)) ? 'target' : 'obstructed';
+          });
+          await target.evaluate(el => { el.dataset.smokePointerClicked=''; el.addEventListener('click', () => {el.dataset.smokePointerClicked='yes';},{once:true}); });
+          let pointer='timeout';
+          try {
+            await target.click({timeout:2500});
+            pointer=await target.evaluate(el=>el.dataset.smokePointerClicked==='yes'?'clicked':'not-received');
+          } catch { pointer='not-clickable'; }
+          console.log('TOUCH-CHECK: '+file+' ('+device+') '+id+' center='+hit+' pointer='+pointer);
+        }
+        // Restore standard fit after testing, without mutating any persisted data.
+        await page.locator('#fit').evaluate(el=>el.click());
+      }
       const searchCode = page.locator('#searchCode');
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
