@@ -7,8 +7,14 @@ import { resolve, extname } from 'node:path';
 
 const root = resolve(process.cwd());
 const repo = process.env.GITHUB_REPOSITORY?.split('/').pop() || 'site';
-const cases = ['box1', 'box2a', 'box2b', 'box2c', 'box2d']
-  .flatMap(base => [base + '.html', base + '-en.html']);
+const desktopCases = ['box1', 'box2a', 'box2b', 'box2c', 'box2d']
+  .flatMap(base => [base + '.html', base + '-en.html'])
+  .map(file => ({file, device:'desktop', viewport:{width:1280,height:850}}));
+// Representative phone screens: public and private, HR and EN.
+const phoneCases = ['box1', 'box2a']
+  .flatMap(base => [base + '.html',base + '-en.html'])
+  .map(file => ({file, device:'phone', viewport:{width:390,height:844}}));
+const cases = [...desktopCases, ...phoneCases];
 const host = 'http://127.0.0.1:8765';
 const mime = {'.js':'text/javascript','.css':'text/css','.json':'application/json',
  '.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp',
@@ -16,8 +22,8 @@ const mime = {'.js':'text/javascript','.css':'text/css','.json':'application/jso
 const failures = [];
 const browser = await chromium.launch({headless:true, args:['--no-sandbox']});
 try {
-  for (const file of cases) {
-    const page = await browser.newPage({ viewport:{width:1280,height:850}, acceptDownloads:false });
+  for (const {file, device, viewport} of cases) {
+    const page = await browser.newPage({ viewport, isMobile:device==='phone', hasTouch:device==='phone', acceptDownloads:false });
     const pageErrorKinds = new Set();
     page.on('pageerror', error => pageErrorKinds.add(error.name || 'Error'));
     try {
@@ -43,6 +49,19 @@ try {
       await page.waitForSelector('#nodesLayer [data-code]', {timeout:18000});
       const ready = await page.locator('#nodesLayer [data-code]').count();
       if (!ready) throw Error('diagram node not rendered');
+      if (device === 'phone') {
+        const mobileLayout = await page.evaluate(() => {
+          const svg = document.getElementById('treeSvg');
+          const search = document.getElementById('searchCode');
+          const rect = svg?.getBoundingClientRect();
+          const input = search?.getBoundingClientRect();
+          return {diagramVisible:!!rect && rect.width>0 && rect.height>0,
+            searchVisible:!!input && input.width>0 && input.height>0,
+            viewportMeta:!!document.querySelector('meta[name="viewport"]')};
+        });
+        if (!mobileLayout.diagramVisible || !mobileLayout.searchVisible || !mobileLayout.viewportMeta)
+          throw Error('mobile diagram/search/viewport structure unavailable');
+      }
       const searchCode = page.locator('#searchCode');
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
@@ -103,12 +122,12 @@ try {
       await page.waitForURL(u => u.pathname.endsWith('/'+counterpart),{timeout:7000});
       const switched = await page.locator('html').getAttribute('lang');
       if (!(switched || '').startsWith(file.includes('-en.')?'hr':'en')) throw Error('language switch destination invalid');
-      console.log('PASS: '+file+' — diagram/search/wide/print/layout/language link/photo markup');
+      console.log('PASS: '+file+' ('+device+') — diagram/search/wide/print/layout/language link/photo markup');
     } catch(e) {
       // Do not print JavaScript errors or page content from private data.
       const safe = String(e?.message||'').split('\n')[0].replace(/https?:\S+/g,'[url]').slice(0,140);
-      console.log('FAIL: '+file+' — '+safe);
-      failures.push(file);
+      console.log('FAIL: '+file+' ('+device+') — '+safe);
+      failures.push(file+' ('+device+')');
     } finally { await page.close(); }
   }
 } finally { await browser.close(); }
