@@ -32,10 +32,29 @@
 #rodbinski-odnosi figcaption { margin-top: 12px; font-size: 16px; line-height: 1.5; text-align: center; }
 #rodbinski-odnosi figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
-/* Uska tablica naziva predaka, prema odobrenom izgledu. */
-#nazivi-predaka table { width: 258px; max-width: 100%; margin: 28px 0 0 10px; border-collapse: collapse; table-layout: fixed; }
-#nazivi-predaka th, #nazivi-predaka td { border: 1px solid #333; padding: 2px 8px; text-align: center; line-height: 1.35; }
-#nazivi-predaka th:first-child, #nazivi-predaka td:first-child { width: 120px; }
+/* Poravnanje stupaca Koljeno/Naziv (Generation/Name): jedna tablicna mreza. */
+#nazivi-predaka table {
+  display: table;
+  width: 320px;
+  max-width: 100%;
+  margin: 28px 0 0 10px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+#nazivi-predaka th,
+#nazivi-predaka td {
+  box-sizing: border-box;
+  border: 1px solid #333;
+  padding: 4px 8px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+#nazivi-predaka th:first-child,
+#nazivi-predaka td:first-child { width: 105px; }
+#nazivi-predaka th:nth-child(2),
+#nazivi-predaka td:nth-child(2) { width: 215px; }
 #nazivi-predaka th { font-weight: 700; }
 </style>
 </head>
