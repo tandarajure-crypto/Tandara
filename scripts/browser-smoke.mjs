@@ -14,7 +14,12 @@ const desktopCases = ['box1', 'box2a', 'box2b', 'box2c', 'box2d']
 const phoneCases = ['box1', 'box2a']
   .flatMap(base => [base + '.html',base + '-en.html'])
   .map(file => ({file, device:'phone', viewport:{width:390,height:844}}));
-const cases = [...desktopCases, ...phoneCases];
+// Extra edge cases for narrow and landscape mobile viewports.
+const edgePhoneCases = ['box2a.html', 'box2a-en.html'].flatMap(file => [
+  {file, device:'narrow-phone', viewport:{width:320,height:568}},
+  {file, device:'landscape-phone', viewport:{width:667,height:375}}
+]);
+const cases = [...desktopCases, ...phoneCases, ...edgePhoneCases];
 const host = 'http://127.0.0.1:8765';
 const mime = {'.js':'text/javascript','.css':'text/css','.json':'application/json',
  '.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp',
@@ -23,7 +28,7 @@ const failures = [];
 const browser = await chromium.launch({headless:true, args:['--no-sandbox']});
 try {
   for (const {file, device, viewport} of cases) {
-    const page = await browser.newPage({ viewport, isMobile:device==='phone', hasTouch:device==='phone', acceptDownloads:false });
+    const page = await browser.newPage({ viewport, isMobile:device!=='desktop', hasTouch:device!=='desktop', acceptDownloads:false });
     const pageErrorKinds = new Set();
     page.on('pageerror', error => pageErrorKinds.add(error.name || 'Error'));
     try {
@@ -49,7 +54,7 @@ try {
       await page.waitForSelector('#nodesLayer [data-code]', {timeout:18000});
       const ready = await page.locator('#nodesLayer [data-code]').count();
       if (!ready) throw Error('diagram node not rendered');
-      if (device === 'phone') {
+      if (device !== 'desktop') {
         const mobileLayout = await page.evaluate(() => {
           const svg = document.getElementById('treeSvg');
           const search = document.getElementById('searchCode');
