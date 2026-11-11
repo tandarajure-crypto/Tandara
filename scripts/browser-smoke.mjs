@@ -131,17 +131,9 @@ try {
             await target.click({timeout:2500});
             pointer=await target.evaluate(el=>el.dataset.smokePointerClicked==='yes'?'clicked':'not-received');
           } catch { pointer='not-clickable'; }
-          const diagnostic = await target.evaluate(el => {
-            const r=el.getBoundingClientRect();
-            const x=r.left+r.width/2,y=r.top+r.height/2;
-            const top=(x>=0&&x<innerWidth&&y>=0&&y<innerHeight)?document.elementFromPoint(x,y):null;
-            const header=document.getElementById('diagramHeader')?.getBoundingClientRect();
-            return {x:Math.round(x),y:Math.round(y),vw:innerWidth,vh:innerHeight,
-              topTag:top?.tagName||'none',topId:top?.id||'-',topClass:String(top?.className?.baseVal||top?.className||'-').slice(0,55),
-              headerBottom:Math.round(header?.bottom||0),scrollY:Math.round(window.scrollY)};
-          });
-          console.log('HIT-DETAIL: '+file+' ('+device+') '+id+' '+JSON.stringify(diagnostic));
-          console.log('TOUCH-CHECK: '+file+' ('+device+') '+id+' center='+hit+' pointer='+pointer);
+          if (hit !== 'target' || pointer !== 'clicked')
+            throw Error('mobile zoom pointer click unavailable: '+id);
+          console.log('TOUCH-CHECK: '+file+' ('+device+') '+id+' clicked');
         }
         // Restore standard fit after testing, without mutating any persisted data.
         await page.locator('#fit').evaluate(el=>el.click());
