@@ -206,23 +206,23 @@
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobobiteljinikolemarijanova.jpg",
-        "caption": "Nikola Marijanov i Marija Lekić",
-        "captionEn": "Nikola Marijanov and Marija Lekić"
+        "caption": "Nikola Marijanov i Marija Lukić",
+        "captionEn": "Nikola Marijanov and Marija Lukić"
       }
     ]
   },
   {
     "code": "3.1.1.1.4.1.1-SP-1",
-    "name": "Marija rođ. Lekić",
-    "nameEn": "Marija née Lekić",
+    "name": "Marija rođ. Lukić",
+    "nameEn": "Marija née Lukić",
     "birth": "1939",
     "death": "2021",
     "branch": "antinagrana",
     "photos": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanikolina.jpg",
-        "caption": "Marija rođ. Lekić",
-        "captionEn": "Marija née Lekić"
+        "caption": "Marija rođ. Lukić",
+        "captionEn": "Marija née Lukić"
       }
     ]
   },
