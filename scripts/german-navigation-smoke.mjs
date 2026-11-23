@@ -41,6 +41,7 @@ try {
   page.setDefaultTimeout(10000);
   const runtimeErrors = [];
   page.on('pageerror', e => runtimeErrors.push(e.name || 'Error'));
+  page.on('requestfailed', r => console.error('REQUEST FAILED '+r.url()+' '+(r.failure()?.errorText || '')));
   await page.route('**/*', async route => {
     const u = new URL(route.request().url());
     if (u.hostname === '127.0.0.1' && u.port === '8765') return route.continue();
@@ -88,10 +89,14 @@ try {
           if (new URL(page.url()).pathname.split('/').pop() !== currentFile)
             throw Error('current-page link changed URL unexpectedly');
         } else {
-          const navResponsePromise = page.waitForNavigation({waitUntil:'domcontentloaded'});
-          await link.click({noWaitAfter:true});
-          const targetResponse = await navResponsePromise;
-          if (targetResponse?.status() !== 200) throw Error('HTTP '+(targetResponse?.status() ?? 'no response'));
+          const targetUrl = new URL(href, page.url()).href;
+          console.log('CLICK '+source+' -> '+key+' href='+targetUrl+' from='+page.url());
+          await Promise.all([
+            page.waitForURL(url => url.href === targetUrl, {timeout:5000}),
+            link.click({noWaitAfter:true})
+          ]);
+          const targetResponse = await page.request.get(targetUrl);
+          if (targetResponse.status() !== 200) throw Error('HTTP '+targetResponse.status());
         }
         const landedFile = new URL(page.url()).pathname.split('/').pop();
         if (landedFile !== routes[key]) throw Error('landed on '+landedFile);
