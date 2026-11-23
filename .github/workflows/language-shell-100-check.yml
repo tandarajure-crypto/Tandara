@@ -24,12 +24,6 @@ jobs:
         with:
           path: site
           persist-credentials: false
-      - name: Checkout private website source
-        uses: actions/checkout@v4
-        with:
-          repository: tandarajure-crypto/PRIVAT
-          path: private
-          persist-credentials: false
       - name: Checkout shared common engine
         uses: actions/checkout@v4
         with:
