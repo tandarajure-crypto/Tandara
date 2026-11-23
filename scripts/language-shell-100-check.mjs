@@ -42,11 +42,14 @@ try {
   const page = await context.newPage();
   page.setDefaultTimeout(15000);
   page.on('requestfailed', request => {
+    // Ignore requests cancelled by the next page navigation; they are not broken assets.
+    if (request.failure()?.errorText === 'net::ERR_ABORTED') return;
     const u = new URL(request.url());
     if (u.hostname === 'tandarajure-crypto.github.io' && u.pathname.startsWith('/tandara-common/')) {
       addFailure('COMMON REQUEST FAILED '+request.url()+' '+(request.failure()?.errorText||''));
     }
   });
+  page.on('pageerror', error => addFailure('PAGE JAVASCRIPT ERROR '+String(error?.message||error).slice(0,220)));
   page.on('response', response => {
     const u = new URL(response.url());
     if (u.hostname === 'tandarajure-crypto.github.io' && u.pathname.startsWith('/tandara-common/') && response.status() >= 400) {
