@@ -81,10 +81,18 @@ try {
           failures.push(source+' -> '+key+' href expected '+routes[key]+' got '+actualFile);
           continue;
         }
-        const navResponsePromise = page.waitForNavigation({waitUntil:'domcontentloaded'});
-        await link.click();
-        const targetResponse = await navResponsePromise;
-        if (targetResponse?.status() !== 200) throw Error('HTTP '+(targetResponse?.status() ?? 'no response'));
+        const currentFile = new URL(page.url()).pathname.split('/').pop();
+        if (currentFile === routes[key]) {
+          // The current-page menu item is a real click, but may not trigger a reload.
+          await link.click({noWaitAfter:true});
+          if (new URL(page.url()).pathname.split('/').pop() !== currentFile)
+            throw Error('current-page link changed URL unexpectedly');
+        } else {
+          const navResponsePromise = page.waitForNavigation({waitUntil:'domcontentloaded'});
+          await link.click({noWaitAfter:true});
+          const targetResponse = await navResponsePromise;
+          if (targetResponse?.status() !== 200) throw Error('HTTP '+(targetResponse?.status() ?? 'no response'));
+        }
         const landedFile = new URL(page.url()).pathname.split('/').pop();
         if (landedFile !== routes[key]) throw Error('landed on '+landedFile);
         const lang = await page.locator('html').getAttribute('lang');
