@@ -24,6 +24,18 @@ const families = [
   {key:'home', pages:{hr:'index.html',en:'index-en.html',de:'index-de.html'}}
 ];
 const navKeys = ['author','instructions','origin','genealogy','migration','life','facts','contact','guestbook','privacy'];
+const germanLabels = {
+  author:'Über den Autor und das Projekt',
+  instructions:'Anleitung',
+  origin:'Herkunft des Familiennamens',
+  genealogy:'Familienstammbaum',
+  migration:'Migration und Verbreitung',
+  life:'Leben durch drei Jahrhunderte',
+  facts:'Wissenswertes',
+  contact:'Kontakt und Zusammenarbeit',
+  guestbook:'Gästebuch',
+  privacy:'Datenschutzerklärung'
+};
 const routeByKey = Object.fromEntries(families.filter(x=>x.key!=='home').map(x=>[x.key,x.pages]));
 const sites = [{name:'PUBLIC', prefix:'/site'}];
 if (existsSync(resolve(root,'private'))) sites.push({name:'PRIVATE', prefix:'/private'});
@@ -119,6 +131,13 @@ try {
               throw Error('navigation key set incorrect: '+state.nav.map(n=>n.key).join(','));
             }
             if (state.nav.some(n=>!n.text || !n.href)) throw Error('empty navigation label or href');
+            if (lang === 'de') {
+              for (const nav of state.nav) {
+                if (nav.text !== germanLabels[nav.key]) {
+                  throw Error('German label '+nav.key+' expected '+germanLabels[nav.key]+' got '+nav.text);
+                }
+              }
+            }
             if (state.switchHidden) throw Error('language switch is hidden');
 
             for (const targetLang of languages) {
@@ -128,8 +147,16 @@ try {
               if (actualFile!==expectedFile) throw Error(targetLang+' language switch expected '+expectedFile+' got '+actualFile);
             }
             for (const nav of state.nav) {
+              const actualUrl = new URL(nav.href,url);
+              const actualFile = actualUrl.pathname.split('/').pop();
+              if (nav.key === 'instructions' && lang === 'de') {
+                const expectedPdf = 'https://tandarajure-crypto.github.io/tandara-common/Pdf/WEB-tandara.anleitung.pdf';
+                if (actualUrl.href !== expectedPdf) {
+                  throw Error('German instructions expected '+expectedPdf+' got '+actualUrl.href);
+                }
+                continue;
+              }
               const expectedFile = routeByKey[nav.key]?.[lang];
-              const actualFile = new URL(nav.href,url).pathname.split('/').pop();
               if (!expectedFile || actualFile!==expectedFile) {
                 throw Error('menu '+nav.key+' expected '+expectedFile+' got '+actualFile);
               }
