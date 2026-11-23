@@ -1,0 +1,53 @@
+name: 100-round HR EN DE shell verification
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'scripts/language-shell-100-check.mjs'
+      - '.github/workflows/language-shell-100-check.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - 'scripts/language-shell-100-check.mjs'
+      - '.github/workflows/language-shell-100-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  language-shell-100-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout public website
+        uses: actions/checkout@v4
+        with:
+          path: site
+          persist-credentials: false
+      - name: Checkout private website source
+        uses: actions/checkout@v4
+        with:
+          repository: tandarajure-crypto/PRIVAT
+          path: private
+          persist-credentials: false
+      - name: Checkout shared common engine
+        uses: actions/checkout@v4
+        with:
+          repository: tandarajure-crypto/tandara-common
+          path: tandara-common
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run 100 rounds on HR, EN and DE pages in both websites
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          sleep 2
+          node site/scripts/language-shell-100-check.mjs
