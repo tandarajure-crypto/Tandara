@@ -3,6 +3,7 @@
 // Each round loads every HR, EN and DE page and checks the rendered shared shell.
 import { chromium } from 'playwright';
 import { readFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { resolve, extname } from 'node:path';
 
 const root = resolve(process.cwd());
@@ -24,10 +25,8 @@ const families = [
 ];
 const navKeys = ['author','instructions','origin','genealogy','migration','life','facts','contact','guestbook','privacy'];
 const routeByKey = Object.fromEntries(families.filter(x=>x.key!=='home').map(x=>[x.key,x.pages]));
-const sites = [
-  {name:'PUBLIC', prefix:'/site'},
-  {name:'PRIVATE', prefix:'/private'}
-];
+const sites = [{name:'PUBLIC', prefix:'/site'}];
+if (existsSync(resolve(root,'private'))) sites.push({name:'PRIVATE', prefix:'/private'});
 const mime = {'.js':'text/javascript','.css':'text/css','.json':'application/json','.html':'text/html',
   '.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp',
   '.svg':'image/svg+xml','.gif':'image/gif','.woff2':'font/woff2','.ico':'image/x-icon'};
