@@ -113,8 +113,11 @@ try {
         if (key === 'instructions') {
           const targetUrl = expectedRoute;
           const responsePromise = page.waitForResponse(response => response.url() === targetUrl && response.status() === 200, {timeout:10000});
-          await Promise.all([responsePromise, link.click({noWaitAfter:true})]);
-          if (page.url() !== targetUrl) throw Error('PDF link did not open the German guide');
+          const [pdfResponse] = await Promise.all([responsePromise, link.click({noWaitAfter:true})]);
+          const contentType = pdfResponse.headers()['content-type'] || '';
+          if (!contentType.toLowerCase().includes('application/pdf')) {
+            throw Error('German guide response has content type '+contentType);
+          }
           console.log('PASS '+source+' -> instructions -> German PDF');
           await page.goto(host+'/site/'+source,{waitUntil:'domcontentloaded'});
           await page.waitForSelector('#site-shell [data-nav-key]',{state:'attached'});
