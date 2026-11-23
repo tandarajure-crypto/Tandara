@@ -20,7 +20,7 @@ const pages = [
 ];
 const routes = {
   author: 'autor-de.html',
-  instructions: 'upute-de.html',
+  instructions: 'https://tandarajure-crypto.github.io/tandara-common/Pdf/WEB-tandara.anleitung.pdf',
   origin: 'podrijetlo-de.html',
   genealogy: 'rodoslovlje-de.html',
   migration: 'migracije-de.html',
@@ -44,6 +44,15 @@ try {
   page.on('requestfailed', r => console.error('REQUEST FAILED '+r.url()+' '+(r.failure()?.errorText || '')));
   await page.route('**/*', async route => {
     const u = new URL(route.request().url());
+    if (u.hostname === 'tandarajure-crypto.github.io' && u.pathname === '/tandara-common/Pdf/WEB-tandara.anleitung.pdf') {
+      const pdfPath = resolve(root, 'tandara-common', 'Pdf/WEB-tandara.anleitung.pdf');
+      try {
+        const body = await readFile(pdfPath);
+        return route.fulfill({status:200, body, contentType:'application/pdf'});
+      } catch {
+        return route.fulfill({status:404, body:'German PDF guide missing'});
+      }
+    }
     if (u.hostname === '127.0.0.1' && u.port === '8765') return route.continue();
     if (u.hostname === 'tandarajure-crypto.github.io' && u.pathname.startsWith('/tandara-common/')) {
       const relative = decodeURIComponent(u.pathname.slice('/tandara-common/'.length));
@@ -77,12 +86,21 @@ try {
       try {
         const link = page.locator('#site-shell [data-nav-key="'+key+'"]');
         const href = await link.getAttribute('href');
-        const actualFile = new URL(href,host+'/site/').pathname.split('/').pop();
-        if (actualFile !== routes[key]) {
+        const expectedRoute = routes[key];
+        const actualRoute = key === 'instructions' ? new URL(href,host+'/site/').href : new URL(href,host+'/site/').pathname.split('/').pop();
+        if (actualRoute !== expectedRoute) {
           failures.push(source+' -> '+key+' href expected '+routes[key]+' got '+actualFile);
           continue;
         }
         const currentFile = new URL(page.url()).pathname.split('/').pop();
+        if (key === 'instructions') {
+          const targetUrl = expectedRoute;
+          const responsePromise = page.waitForResponse(response => response.url() === targetUrl && response.status() === 200, {timeout:10000});
+          await Promise.all([responsePromise, link.click({noWaitAfter:true})]);
+          if (page.url() !== targetUrl) throw Error('PDF link did not open the German guide');
+          console.log('PASS '+source+' -> instructions -> German PDF');
+          continue;
+        }
         if (currentFile === routes[key]) {
           // The current-page menu item is a real click, but may not trigger a reload.
           await link.click({noWaitAfter:true});
