@@ -36,7 +36,7 @@ jobs:
       - name: Install Playwright and Chromium
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
       - name: Run 100 rounds on HR, EN and DE pages in both websites
         shell: bash
         run: |
