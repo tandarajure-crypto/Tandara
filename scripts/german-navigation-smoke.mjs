@@ -31,6 +31,18 @@ const routes = {
   privacy: 'privatnost-de.html'
 };
 const expectedKeys = Object.keys(routes);
+const labels = {
+  author: 'Über den Autor und das Projekt',
+  instructions: 'Anleitung',
+  origin: 'Herkunft des Familiennamens',
+  genealogy: 'Familienstammbaum',
+  migration: 'Migration und Verbreitung',
+  life: 'Leben durch drei Jahrhunderte',
+  facts: 'Wissenswertes',
+  contact: 'Kontakt und Zusammenarbeit',
+  guestbook: 'Gästebuch',
+  privacy: 'Datenschutzerklärung'
+};
 const mime = {'.js':'text/javascript','.css':'text/css','.json':'application/json',
   '.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp',
   '.svg':'image/svg+xml','.gif':'image/gif','.woff2':'font/woff2','.ico':'image/x-icon'};
@@ -38,7 +50,7 @@ const failures = [];
 const browser = await chromium.launch({headless:true, args:['--no-sandbox']});
 try {
   const page = await browser.newPage({viewport:{width:1440,height:1000}});
-  page.setDefaultTimeout(10000);
+  page.setDefaultTimeout(2500);
   const runtimeErrors = [];
   page.on('pageerror', e => runtimeErrors.push(e.name || 'Error'));
   page.on('requestfailed', r => console.error('REQUEST FAILED '+r.url()+' '+(r.failure()?.errorText || '')));
@@ -86,10 +98,15 @@ try {
       try {
         const link = page.locator('#site-shell [data-nav-key="'+key+'"]');
         const href = await link.getAttribute('href');
+        const visibleLabel = (await link.innerText()).trim();
+        if (visibleLabel !== labels[key]) {
+          failures.push(source+' -> '+key+' label expected '+labels[key]+' got '+visibleLabel);
+          continue;
+        }
         const expectedRoute = routes[key];
         const actualRoute = key === 'instructions' ? new URL(href,host+'/site/').href : new URL(href,host+'/site/').pathname.split('/').pop();
         if (actualRoute !== expectedRoute) {
-          failures.push(source+' -> '+key+' href expected '+routes[key]+' got '+actualFile);
+          failures.push(source+' -> '+key+' href expected '+routes[key]+' got '+actualRoute);
           continue;
         }
         const currentFile = new URL(page.url()).pathname.split('/').pop();
@@ -112,7 +129,7 @@ try {
           const targetUrl = new URL(href, page.url()).href;
           console.log('CLICK '+source+' -> '+key+' href='+targetUrl+' from='+page.url());
           await Promise.all([
-            page.waitForURL(url => url.href === targetUrl, {timeout:5000}),
+            page.waitForURL(url => url.href === targetUrl, {timeout:1500}),
             link.click({noWaitAfter:true})
           ]);
           const targetResponse = await page.request.get(targetUrl);
