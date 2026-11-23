@@ -99,6 +99,8 @@ try {
           await Promise.all([responsePromise, link.click({noWaitAfter:true})]);
           if (page.url() !== targetUrl) throw Error('PDF link did not open the German guide');
           console.log('PASS '+source+' -> instructions -> German PDF');
+          await page.goto(host+'/site/'+source,{waitUntil:'domcontentloaded'});
+          await page.waitForSelector('#site-shell [data-nav-key]',{state:'attached'});
           continue;
         }
         if (currentFile === routes[key]) {
