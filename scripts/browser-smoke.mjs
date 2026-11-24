@@ -67,6 +67,107 @@ try {
         if (!mobileLayout.diagramVisible || !mobileLayout.searchVisible || !mobileLayout.viewportMeta)
           throw Error('mobile diagram/search/viewport structure unavailable');
       }
+      if (device !== 'desktop') {
+        // Read-only geometry audit. SVG canvas may intentionally pan/zoom;
+        // report control warnings only, never alter site styles or content.
+        const geometry = await page.evaluate(() => {
+          const ids = ['findBtn', 'fullscreenDiagram', 'printDiagram', 'zoomIn', 'zoomOut'];
+          return ids.map(id => {
+            const el = document.getElementById(id);
+            if (!el) return {id, state:'missing'};
+            const r = el.getBoundingClientRect();
+            const cs = getComputedStyle(el);
+            const shown = r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none';
+            return {id, state:shown?'visible':'hidden',
+              width:Math.round(r.width),height:Math.round(r.height),
+              small:shown && (r.width < 24 || r.height < 24),
+              outside:shown && (r.right < 0 || r.left > innerWidth),
+              centerCovered: shown && (() => {
+                const x = Math.max(0,Math.min(innerWidth-1,r.left+r.width/2));
+                const y = Math.max(0,Math.min(innerHeight-1,r.top+r.height/2));
+                if (y < 0 || y >= innerHeight) return false; // scrollable controls can be below fold
+                const top = document.elementFromPoint(x,y);
+                return !!top && top !== el && !el.contains(top);
+              })()};
+          });
+        });
+        const warnings = geometry.filter(x => x.state !== 'visible' || x.small || x.outside);
+        const overflow = await page.evaluate(() => {
+          const d = document.documentElement;
+          return Math.max(d.scrollWidth,document.body.scrollWidth)-d.clientWidth;
+        });
+        const zoom = geometry.filter(x => x.id === 'zoomIn' || x.id === 'zoomOut');
+        console.log('MOBILE-AUDIT: '+file+' ('+device+') zoom='+zoom.map(x=>x.id+':'+x.width+'x'+x.height+(x.centerCovered?':covered':'')).join(',')+' overflow='+Math.round(overflow)+'px');
+        if (warnings.length) {
+          console.log('REVIEW: '+file+' ('+device+') — '+warnings.map(w=>w.id+':'+(w.state!=='visible'?w.state:w.small?'small':'offscreen')).join(',')+' (not proof of defect)');
+        }
+      }
+      if (device !== 'desktop') {
+        // A real modal announcement intentionally blocks the page until dismissed.
+        const announcement = page.locator('dialog.tandara-announcement[open]');
+        if (await announcement.count()) {
+          await announcement.locator('button.tandara-announcement__close').click({timeout:5000});
+          await page.waitForFunction(() => !document.querySelector('dialog.tandara-announcement[open]'),null,{timeout:5000});
+          console.log('ANNOUNCEMENT: '+file+' ('+device+') closed via visible close button');
+        }
+      }
+      if (device !== 'desktop') {
+        // Pointer-level check: scroll to the control, then verify its center
+        // can receive a real click. Never log page contents or person data.
+        for (const id of ['zoomIn', 'zoomOut']) {
+          const target = page.locator('#'+id);
+          await target.evaluate(el => el.scrollIntoView({block:'center', inline:'nearest'}));
+          await page.waitForTimeout(80);
+          const hit = await target.evaluate(el => {
+            const r=el.getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2;
+            if (x<0 || y<0 || x>=innerWidth || y>=innerHeight) return 'outside-viewport';
+            const top=document.elementFromPoint(x,y);
+            if (!top) return 'no-hit-target';
+            return (top===el || el.contains(top)) ? 'target' : 'obstructed';
+          });
+          await target.evaluate(el => { el.dataset.smokePointerClicked=''; el.addEventListener('click', () => {el.dataset.smokePointerClicked='yes';},{once:true}); });
+          let pointer='timeout';
+          try {
+            await target.click({timeout:2500});
+            pointer=await target.evaluate(el=>el.dataset.smokePointerClicked==='yes'?'clicked':'not-received');
+          } catch { pointer='not-clickable'; }
+          if (hit !== 'target' || pointer !== 'clicked')
+            throw Error('mobile zoom pointer click unavailable: '+id);
+          console.log('TOUCH-CHECK: '+file+' ('+device+') '+id+' clicked');
+        }
+        // Restore standard fit after testing, without mutating any persisted data.
+        await page.locator('#fit').evaluate(el=>el.click());
+      }
+      if (device !== 'desktop') {
+        // Approximate WCAG 2.2 SC 2.5.8 spacing test for the two zoom buttons:
+        // undersized targets use a 24px-diameter circle; neighboring large
+        // targets must not intersect it. Log only element IDs and counts.
+        const spacing = await page.evaluate(() => {
+          const interactive = [...document.querySelectorAll('button,a[href],input,select,[role="button"]')]
+            .filter(el => {
+              const r=el.getBoundingClientRect(),c=getComputedStyle(el);
+              return r.width>0&&r.height>0&&c.display!=='none'&&c.visibility!=='hidden'
+                && !el.closest('dialog.tandara-announcement');
+            });
+          return ['zoomIn','zoomOut'].map(id => {
+            const el=document.getElementById(id),r=el.getBoundingClientRect();
+            const cx=r.left+r.width/2,cy=r.top+r.height/2,undersized=r.width<24||r.height<24;
+            let overlaps=0,nearestGap=Infinity;
+            for(const other of interactive){
+              if(other===el)continue;
+              const q=other.getBoundingClientRect();
+              const dx=Math.max(q.left-cx,0,cx-q.right),dy=Math.max(q.top-cy,0,cy-q.bottom);
+              const dist=Math.hypot(dx,dy);
+              nearestGap=Math.min(nearestGap,dist);
+              const otherUndersized=q.width<24||q.height<24;
+              const centerDistance=Math.hypot(cx-(q.left+q.width/2),cy-(q.top+q.height/2));
+              if(undersized && (otherUndersized?centerDistance<24-0.01:dist<12-0.01)) overlaps++;
+            }
+            return {id,undersized,overlaps,nearest:Math.round(nearestGap*10)/10};
+          });
+        });
+        console.log('SPACING-AUDIT: '+file+' ('+device+') '+spacing.map(v=>v.id+':'+(v.overlaps?'overlaps='+v.overlaps:'clear')+':nearest='+v.nearest).join(','));
+      }
       const searchCode = page.locator('#searchCode');
       const rootCode = await page.locator('body').getAttribute('data-root-code');
       if (!rootCode) throw Error('missing root-code attribute');
