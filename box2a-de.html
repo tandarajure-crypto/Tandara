@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://s01.flagcounter.com; script-src 'self'; script-src-attr 'none'; connect-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; style-src-attr 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+
+<title>Jurin Familienzweig | TANDARA-FAMILIENNAME</title>
+
+<link rel="canonical" href="https://tandarajure-crypto.github.io/Tandara/box2a.html">
+
+<link rel="stylesheet"
+      href="../tandara-common/css/site-shell.css?v=20261028-author-stable">
+
+<link rel="stylesheet"
+      href="../tandara-common/css/tandara-diagram.css?v=20260918-1">
+
+<script
+  defer
+  src="../tandara-common/js/site-shell.js?v=20261123-language-parity-1">
+</script>
+
+</head>
+
+<body data-date-symbols="none"
+  class="de"
+  data-lang="de"
+  data-site-root="./"
+  data-author-image="slike/common-foto/jure.webp"
+  data-page-hr="box2a.html"
+  data-page-en="box2a-en.html"
+  data-page="box2a"
+  data-root-code="1.0"
+  data-hr-href="box2a.html"
+  data-en-href="box2a-en.html"
+  data-flag-base="../tandara-common/slike/ikone/">
+<main class="diagram-shell" id="diagramShell" data-site-content>
+
+<header class="diagram-header" id="diagramHeader">
+
+<div class="topbar">
+
+<a
+  class="icon-btn flag-btn active"
+  href="box2a.html"
+  hreflang="hr"
+  lang="hr"
+  target="_top"
+  title="Kroatisch">
+  <img
+    alt="HR"
+    src="../tandara-common/slike/ikone/zastava-hr.png">
+</a>
+
+<a
+  aria-label="Startseite"
+  class="icon-btn home-btn"
+  href="index.html"
+  target="_top"
+  title="Startseite">
+  <img
+    alt="Startseite"
+    src="../tandara-common/slike/ikone/pocetna.png">
+</a>
+
+<a
+  class="icon-btn flag-btn"
+  href="box2a-en.html"
+  hreflang="en"
+  lang="en"
+  target="_top"
+  title="Englisch">
+  <img
+    alt="EN"
+    src="../tandara-common/slike/ikone/zastava-uk.png">
+</a>
+
+<div class="title-wrap">
+  <h1>Jurin Familienzweig</h1>
+  <p>Interaktives Stammbaumdiagramm · 7 Einträge · TANDARA MASTER</p>
+</div>
+
+<button
+  aria-label="Vollbild"
+  id="fullscreenDiagram"
+  title="Vollbild"
+  data-enter-label="Vollbild"
+  data-exit-label="Zurück"
+  type="button">
+  Vollbild
+</button>
+
+<button
+  aria-label="Drucken"
+  class="print-btn"
+  id="printDiagram"
+  title="Drucken"
+  type="button">
+  <img
+    alt=""
+    src="../tandara-common/slike/ikone/ispis.png">
+</button>
+
+</div>
+
+<div class="toolbar">
+
+<div class="action-group">
+  <button class="primary" id="expandAll" type="button">
+    Alles aufklappen
+  </button>
+
+  <button id="collapse" type="button">
+    Einklappen
+  </button>
+
+  <button id="threeLevels" type="button">
+    Bis zur 3. Generation
+  </button>
+
+  <button id="fit" type="button">
+    Einpassen
+  </button>
+
+  <button aria-label="+" id="zoomIn" type="button">
+    ＋
+  </button>
+
+  <button aria-label="-" id="zoomOut" type="button">
+    −
+  </button>
+</div>
+
+<div class="search-wrap">
+
+<label class="search-field code" for="searchCode">
+  <span>Code</span>
+  <input
+    autocomplete="off"
+    id="searchCode"
+    type="search">
+</label>
+
+<label class="search-field" for="searchPerson">
+  <span>Name der Person</span>
+  <input
+    autocomplete="off"
+    id="searchPerson"
+    type="search">
+</label>
+
+<label class="search-field" for="searchFather">
+  <span>Name des Vaters</span>
+  <input
+    autocomplete="off"
+    id="searchFather"
+    type="search">
+</label>
+
+<label class="search-field" for="searchMother">
+  <span>Name der Mutter</span>
+  <input
+    autocomplete="off"
+    id="searchMother"
+    type="search">
+</label>
+
+<button
+  class="find-btn"
+  id="findBtn"
+  type="button">
+  Suchen
+</button>
+
+<div
+  aria-label="Suchergebnisse"
+  class="search-results"
+  hidden
+  id="searchResults"
+  role="region">
+
+  <div class="search-results-head">
+    <span id="searchResultsTitle"></span>
+
+    <button
+      aria-label="Schließen"
+      class="search-results-close"
+      id="searchResultsClose"
+      type="button">
+      ×
+    </button>
+  </div>
+
+  <div id="searchResultItems"></div>
+</div>
+
+</div>
+</div>
+
+<div class="guidebar">
+
+<div class="legend-inline">
+
+<span class="guide-title">Legende:</span>
+
+<span class="legend-item">
+  <span class="root-mini">P</span>
+  Stammvater des Zweigs
+</span>
+
+<span class="legend-item">
+  <span class="numeric-mini">2.1</span>
+  Sohn und Namensüberträger
+</span>
+
+<span class="legend-item">
+  <span class="k-mini">K</span>
+  Tochter
+</span>
+
+<span class="legend-item">
+  <span class="carrier-daughter-mini">K+</span>
+  Tochter und Namensüberträgerin
+</span>
+
+<span class="legend-item">
+  <span class="sp-mini">SP</span>
+  Ehefrau
+</span>
+
+<span class="legend-item">
+  <span class="s-mini">S</span>
+  Sohn ohne Weitergabe des Familiennamens
+</span>
+
+<span class="legend-item">
+  <span class="date-symbol-mini"></span>
+  Geburt
+</span>
+
+<span class="legend-item">
+  <span class="date-symbol-mini"></span>
+  Tod
+</span>
+
+<span class="legend-item">
+  <span class="gn-mini">N.G.</span>
+  Jahr unbekannt
+</span>
+
+</div>
+
+<div class="instructions-inline">
+
+<span class="guide-title instructions-title">
+  Anleitung:
+</span>
+
+<div class="instructions-text">
+
+<span class="instruction-item">
+  <span class="toggle-mini">+</span>/<span class="toggle-mini">−</span>
+  öffnet bzw. schließt die Fortsetzung des Familienzweigs.
+</span>
+
+<span class="instruction-item">
+  Durch Ziehen mit der Maus wird das Diagramm verschoben.
+</span>
+
+<span class="instruction-item">
+  Mit dem Mausrad wird die Ansicht vergrößert oder verkleinert.
+</span>
+
+</div>
+</div>
+</div>
+
+<button
+  aria-expanded="true"
+  aria-label="Oberen Diagrammbereich ausblenden"
+  aria-controls="diagramHeader"
+  class="header-collapse-btn"
+  data-hide-label="Oberen Diagrammbereich ausblenden"
+  data-show-label="Oberen Diagrammbereich anzeigen"
+  id="headerCollapse"
+  title="Oberen Diagrammbereich ausblenden"
+  type="button">
+  <span aria-hidden="true" data-collapse-symbol>▲</span>
+  <span class="header-collapse-label" data-collapse-label></span>
+</button>
+
+</header>
+
+<div id="workspace">
+
+<svg
+  aria-label="Jurin Familienzweig"
+  id="treeSvg"
+  role="img">
+
+  <g id="viewport">
+    <g id="links"></g>
+    <g id="nodesLayer"></g>
+  </g>
+
+</svg>
+
+<div
+  aria-live="polite"
+  data-diagram-status
+  id="diagramStatus"
+  role="status">
+</div>
+
+<aside
+  aria-label="Personendaten"
+  class="person-details"
+  hidden
+  id="personDetails">
+
+  <button
+    aria-label="Schließen"
+    class="person-details-close"
+    id="personDetailsClose"
+    type="button">
+    ×
+  </button>
+
+  <h2 id="personDetailsName"></h2>
+
+  <div
+    class="person-details-code"
+    id="personDetailsCode">
+  </div>
+
+  <div
+    class="person-details-dates"
+    id="personDetailsDates">
+  </div>
+
+  <div
+    class="person-details-parents"
+    id="personDetailsParents">
+  </div>
+
+  <div
+    class="person-details-text"
+    hidden
+    id="personDetailsText">
+  </div>
+
+</aside>
+
+</div>
+
+</main>
+
+<script id="diagramData" type="application/json">
+{
+  "primary": {
+    "1.0": {
+      "id": "1.0",
+      "code": "1.0",
+      "label": "Jure Tandara – Ivanov (um 1725–)",
+      "labelEn": "Jure Tandara – Sohn von Ivan (um 1725–)",
+      "type": "primary",
+      "father": "Ivan Tandara",
+      "mother": "",
+      "fatherEn": "Ivan Tandara",
+      "motherEn": "",
+      "relation": "Stammvater des Familienzweigs",
+      "relationEn": "Stammvater des Familienzweigs",
+      "parent": "0.0",
+      "children": [
+        "1.1"
+      ],
+      "birth": "um 1725",
+      "death": null,
+      "detail": "Jure Tandara, geboren um 1725, war der älteste Sohn von Ivan Tandara. Der Jurin-Zweig ist der älteste Familienzweig der Familie Tandara. Jure heiratete Matija Lekić (unbekannt – unbekannt). Mit ihr hatte er einen Sohn, Frane, und zwei Töchter, Anđa und Ana.\n\nBei der Volkszählung in Ričice im Jahr 1806 wurde kein Mitglied der Familie von Jure erfasst. Aufgrund der fehlenden Informationen über diesen Familienzweig ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat. Es wäre wertvoll, wenn sich eines Tages ein Nachkomme dieses Zweigs melden und seine Zugehörigkeit zur Linie von Jure bestätigen würde.",
+      "detailEn": "Jure Tandara, geboren um 1725, war der älteste Sohn von Ivan Tandara. Der Jurin-Zweig ist der älteste Familienzweig der Familie Tandara. Jure heiratete Matija, geborene Lekić (unbekannt – unbekannt). Mit ihr hatte er einen Sohn, Frane, und zwei Töchter, Anđa und Ana.\n\nBei der Volkszählung in Ričice im Jahr 1806 wurde kein Mitglied der Familie von Jure erfasst. Aufgrund der fehlenden Informationen über diesen Familienzweig ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat. Es wäre wertvoll, wenn sich eines Tages ein Nachkomme dieses Zweigs melden und seine Zugehörigkeit zur Linie von Jure bestätigen würde.",
+      "protected": false
+    },
+    "1.1": {
+      "id": "1.1",
+      "code": "1.1",
+      "label": "Frane Jurin",
+      "labelEn": "Frane, Sohn von Jure",
+      "type": "primary",
+      "father": "Jure Tandara",
+      "mother": "Matija Lekić",
+      "fatherEn": "Jure Tandara",
+      "motherEn": "Matija Lekić",
+      "relation": "Stammvater des Familienzweigs",
+      "relationEn": "Stammvater des Familienzweigs",
+      "parent": "1.0",
+      "children": [],
+      "birth": "1760",
+      "death": "1830",
+      "detail": "Frane Jurin war der Sohn von Jure Tandara und Matija, geborene Lekić, und gehörte zum ältesten Zweig der ersten Tandara-Familie. Er war mit Boža, geborene Ćosić (unbekannt – unbekannt), verheiratet. Nach den bisher verfügbaren Angaben hatten sie einen bekannten Sohn, Nikola.\n\nDa für diesen Unterzweig keine späteren Aufzeichnungen gefunden wurden, ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat.",
+      "detailEn": "Frane Jurin war der Sohn von Jure Tandara und Matija, geborene Lekić, und gehörte zum ältesten Zweig der ersten Tandara-Familie. Er war mit Boža, geborene Ćosić (unbekannt – unbekannt), verheiratet. Nach den bisher verfügbaren Angaben hatten sie einen bekannten Sohn, Nikola.\n\nDa für diesen Unterzweig keine späteren Aufzeichnungen gefunden wurden, ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat.",
+      "protected": false
+    }
+  },
+  "sideByHost": {
+    "1.0": [
+      "1.0-SP-1",
+      "1.0-K1",
+      "1.0-K2"
+    ],
+    "1.1": [
+      "1.1-SP-1",
+      "1.1.1"
+    ]
+  },
+  "nodes": {
+    "1.0": {
+      "id": "1.0",
+      "code": "1.0",
+      "label": "Jure Tandara – Ivanov (um 1725–)",
+      "labelEn": "Jure Tandara – Sohn von Ivan (um 1725–)",
+      "type": "primary",
+      "father": "Ivan Tandara",
+      "mother": "",
+      "fatherEn": "Ivan Tandara",
+      "motherEn": "",
+      "relation": "Stammvater des Familienzweigs",
+      "relationEn": "Stammvater des Familienzweigs",
+      "parent": "0.0",
+      "children": [
+        "1.1"
+      ],
+      "birth": "um 1725",
+      "death": null,
+      "detail": "Jure Tandara, geboren um 1725, war der älteste Sohn von Ivan Tandara. Der Jurin-Zweig ist der älteste Familienzweig der Familie Tandara. Jure heiratete Matija Lekić (unbekannt – unbekannt). Mit ihr hatte er einen Sohn, Frane, und zwei Töchter, Anđa und Ana.\n\nBei der Volkszählung in Ričice im Jahr 1806 wurde kein Mitglied der Familie von Jure erfasst. Aufgrund der fehlenden Informationen über diesen Familienzweig ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat. Es wäre wertvoll, wenn sich eines Tages ein Nachkomme dieses Zweigs melden und seine Zugehörigkeit zur Linie von Jure bestätigen würde.",
+      "detailEn": "Jure Tandara, geboren um 1725, war der älteste Sohn von Ivan Tandara. Der Jurin-Zweig ist der älteste Familienzweig der Familie Tandara. Jure heiratete Matija, geborene Lekić (unbekannt – unbekannt). Mit ihr hatte er einen Sohn, Frane, und zwei Töchter, Anđa und Ana.\n\nBei der Volkszählung in Ričice im Jahr 1806 wurde kein Mitglied der Familie von Jure erfasst. Aufgrund der fehlenden Informationen über diesen Familienzweig ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat. Es wäre wertvoll, wenn sich eines Tages ein Nachkomme dieses Zweigs melden und seine Zugehörigkeit zur Linie von Jure bestätigen würde.",
+      "protected": false
+    },
+    "1.1": {
+      "id": "1.1",
+      "code": "1.1",
+      "label": "Frane Jurin",
+      "labelEn": "Frane, Sohn von Jure",
+      "type": "primary",
+      "father": "Jure Tandara",
+      "mother": "Matija Lekić",
+      "fatherEn": "Jure Tandara",
+      "motherEn": "Matija Lekić",
+      "relation": "Stammvater des Familienzweigs",
+      "relationEn": "Stammvater des Familienzweigs",
+      "parent": "1.0",
+      "children": [],
+      "birth": "1760",
+      "death": "1830",
+      "detail": "Frane Jurin war der Sohn von Jure Tandara und Matija, geborene Lekić, und gehörte zum ältesten Zweig der ersten Tandara-Familie. Er war mit Boža, geborene Ćosić (unbekannt – unbekannt), verheiratet. Nach den bisher verfügbaren Angaben hatten sie einen bekannten Sohn, Nikola.\n\nDa für diesen Unterzweig keine späteren Aufzeichnungen gefunden wurden, ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat.",
+      "detailEn": "Frane Jurin war der Sohn von Jure Tandara und Matija, geborene Lekić, und gehörte zum ältesten Zweig der ersten Tandara-Familie. Er war mit Boža, geborene Ćosić (unbekannt – unbekannt), verheiratet. Nach den bisher verfügbaren Angaben hatten sie einen bekannten Sohn, Nikola.\n\nDa für diesen Unterzweig keine späteren Aufzeichnungen gefunden wurden, ist es möglich, dass die Familie aus Ričice weggezogen ist und sich danach jede Spur ihrer Mitglieder und Nachkommen verloren hat.",
+      "protected": false
+    },
+    "1.1.1": {
+      "id": "1.1.1",
+      "code": "1.1.1",
+      "label": "Nikola Franin (1792–)",
+      "labelEn": "Nikola, Sohn von Frane (1792–)",
+      "type": "son",
+      "father": "Frane Jurin",
+      "mother": "Boža Ćosić",
+      "fatherEn": "Frane Jurin",
+      "motherEn": "Boža Ćosić",
+      "relation": "Sohn ohne bestätigte Nachkommen",
+      "relationEn": "Sohn ohne bestätigte Nachkommen",
+      "host": "1.1",
+      "birth": "1792",
+      "death": null,
+      "detail": "Nikola Franin, geboren 1792, war das einzige bekannte Kind von Frane Jurin und Boža, geborene Ćosić. Es ist nicht bekannt, ob er geheiratet oder Kinder gehabt hat.",
+      "detailEn": "Nikola, Sohn von Frane, wurde 1792 geboren und war das einzige bekannte Kind von Frane Jurin und Boža, geborene Ćosić. Es ist nicht bekannt, ob er geheiratet oder Kinder gehabt hat.",
+      "protected": false
+    },
+    "1.0-SP-1": {
+      "id": "1.0-SP-1",
+      "code": "1.0-SP-1",
+      "label": "Matija Lekić",
+      "labelEn": "Matija, geborene Lekić",
+      "type": "spouse",
+      "father": "",
+      "mother": "",
+      "fatherEn": "",
+      "motherEn": "",
+      "relation": "Ehefrau",
+      "relationEn": "Ehefrau",
+      "host": "1.0",
+      "birth": null,
+      "death": null,
+      "protected": false
+    },
+    "1.0-K1": {
+      "id": "1.0-K1",
+      "code": "1.0-K1",
+      "label": "Anđa",
+      "labelEn": "Anđa",
+      "type": "daughter",
+      "father": "Jure Tandara",
+      "mother": "Matija Lekić",
+      "fatherEn": "Jure Tandara",
+      "motherEn": "Matija Lekić",
+      "relation": "Tochter",
+      "relationEn": "Tochter",
+      "host": "1.0",
+      "birth": null,
+      "death": null,
+      "protected": false
+    },
+    "1.0-K2": {
+      "id": "1.0-K2",
+      "code": "1.0-K2",
+      "label": "Ana",
+      "labelEn": "Ana",
+      "type": "daughter",
+      "father": "Jure Tandara",
+      "mother": "Matija Lekić",
+      "fatherEn": "Jure Tandara",
+      "motherEn": "Matija Lekić",
+      "relation": "Tochter",
+      "relationEn": "Tochter",
+      "host": "1.0",
+      "birth": null,
+      "death": null,
+      "protected": false
+    },
+    "1.1-SP-1": {
+      "id": "1.1-SP-1",
+      "code": "1.1-SP-1",
+      "label": "Boža Ćosić",
+      "labelEn": "Boža, geborene Ćosić",
+      "type": "spouse",
+      "father": "",
+      "mother": "",
+      "fatherEn": "",
+      "motherEn": "",
+      "relation": "Ehefrau",
+      "relationEn": "Ehefrau",
+      "host": "1.1",
+      "birth": null,
+      "death": null,
+      "protected": false
+    }
+  },
+  "meta": {
+    "rootCode": "1.0",
+    "externalFatherCode": "0.0",
+    "externalFatherName": "Ivan Tandara",
+    "totalBranchPeople": 7,
+    "primaryCount": 2,
+    "spouseCount": 2,
+    "sonCount": 1,
+    "daughterCount": 2,
+    "source": "JURIN FAMILIENZWEIG – bisher bestätigte Angaben",
+    "master": "1.0-IZVEDEN-IZ-PETAR-REFERENCE",
+    "engine": "tandara-diagram-engine.js",
+    "yearsSource": "bestehendes Jure-Diagramm",
+    "dateSymbols": "Geburt; Tod; N.G. = Jahr unbekannt",
+    "protectedCount": 0,
+    "synchronizedAt": "2026-10-31",
+    "synchronization": "Ergänzender Abgleich; bestehende Quelldaten beibehalten; neue öffentliche Knoten geschützt.",
+    "totalUniquePeople": 1095
+  },
+  "targets": {}
+}
+</script>
+
+<script
+  defer
+  src="../tandara-common/js/tandara-diagram-engine.js?v=20261123-language-parity-1">
+</script>
+
+</body>
+</html>
