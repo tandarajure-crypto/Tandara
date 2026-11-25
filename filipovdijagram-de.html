@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://s01.flagcounter.com; script-src 'self'; script-src-attr 'none'; connect-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; style-src-attr 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+
+<title>Filips Stammbaumdiagramm | TANDARA-FAMILIENNAME</title>
+<link rel="canonical" href="https://tandarajure-crypto.github.io/Tandara/filipovdijagram.html">
+
+<link rel="stylesheet" href="../tandara-common/css/site-shell.css?v=20261028-author-stable">
+<link rel="stylesheet" href="../tandara-common/css/tandara-diagram.css?v=20260918-1">
+
+<script defer src="../tandara-common/js/site-shell.js?v=20261123-authoritative-language-5"></script>
+</head>
+
+<body data-date-symbols="none"
+  class="hr"
+  data-lang="hr"
+  data-site-root="./"
+  data-author-image="slike/common-foto/jure.webp"
+  data-page-hr="filipovdijagram.html"
+  data-page-en="filipovdijagram-en.html"
+  data-page="filipovdijagram"
+  data-root-code="5.0"
+  data-hr-href="filipovdijagram.html"
+  data-en-href="filipovdijagram-en.html"
+  data-flag-base="../tandara-common/slike/ikone/">
+
+<main class="diagram-shell" id="diagramShell" data-site-content>
+
+<header class="diagram-header" id="diagramHeader">
+
+<div class="topbar">
+
+<a class="icon-btn flag-btn active"
+   href="filipovdijagram.html"
+   hreflang="hr"
+   lang="hr"
+   target="_top"
+   title="Kroatisch"
+   aria-current="page">
+  <img alt="HR" src="../tandara-common/slike/ikone/zastava-hr.png">
+</a>
+
+<a aria-label="Startseite"
+   class="icon-btn home-btn"
+   href="index.html"
+   target="_top"
+   title="Startseite">
+  <img alt="Startseite" src="../tandara-common/slike/ikone/pocetna.png">
+</a>
+
+<a class="icon-btn flag-btn"
+   href="filipovdijagram-en.html"
+   hreflang="en"
+   lang="en"
+   target="_top"
+   title="Englisch">
+  <img alt="EN" src="../tandara-common/slike/ikone/zastava-uk.png">
+</a>
+
+<div class="title-wrap">
+  <h1>Filips Stammbaumdiagramm</h1>
+  <p>Interaktives Stammbaumdiagramm · 76 Einträge · TANDARA MASTER</p>
+</div>
+
+<button
+  aria-label="Vollbild"
+  id="fullscreenDiagram"
+  title="Vollbild"
+  data-enter-label="Vollbild"
+  data-exit-label="Zurück"
+  type="button">
+  Vollbild
+</button>
+
+<button
+  aria-label="Drucken"
+  class="print-btn"
+  id="printDiagram"
+  title="Drucken"
+  type="button">
+  <img alt="" src="../tandara-common/slike/ikone/ispis.png">
+</button>
+
+</div>
+
+<div class="toolbar">
+
+<div class="action-group">
+  <button class="primary" id="expandAll" type="button">Alle aufklappen</button>
+  <button id="collapse" type="button">Einklappen</button>
+  <button id="threeLevels" type="button">Bis zur 3. Generation</button>
+  <button id="fit" type="button">Ansicht anpassen</button>
+  <button aria-label="+" id="zoomIn" type="button">＋</button>
+  <button aria-label="-" id="zoomOut" type="button">−</button>
+</div>
+
+<div class="search-wrap">
+
+<label class="search-field code" for="searchCode">
+  <span>Code</span>
+  <input autocomplete="off" id="searchCode" type="search">
+</label>
+
+<label class="search-field" for="searchPerson">
+  <span>Name der Person</span>
+  <input autocomplete="off" id="searchPerson" type="search">
+</label>
+
+<label class="search-field" for="searchFather">
+  <span>Name des Vaters</span>
+  <input autocomplete="off" id="searchFather" type="search">
+</label>
+
+<label class="search-field" for="searchMother">
+  <span>Name der Mutter</span>
+  <input autocomplete="off" id="searchMother" type="search">
+</label>
+
+<button class="find-btn" id="findBtn" type="button">Suchen</button>
+
+<div aria-label="Suchergebnisse"
+     class="search-results"
+     hidden
+     id="searchResults"
+     role="region">
+  <div class="search-results-head">
+    <span id="searchResultsTitle"></span>
+    <button aria-label="Schließen"
+            class="search-results-close"
+            id="searchResultsClose"
+            type="button">×</button>
+  </div>
+  <div id="searchResultItems"></div>
+</div>
+
+</div>
+</div>
+
+<div class="guidebar">
+
+<div class="legend-inline">
+  <span class="guide-title">Legende:</span>
+  <span class="legend-item"><span class="root-mini">P</span> Begründer des Familienzweigs</span>
+  <span class="legend-item"><span class="numeric-mini">5.1</span> Sohn, der den Familiennamen weiterführt</span>
+  <span class="legend-item"><span class="k-mini">K</span> Tochter</span>
+  <span class="legend-item"><span class="carrier-daughter-mini">K+</span> Tochter, die den Familiennamen weiterführt</span>
+  <span class="legend-item"><span class="sp-mini">SP</span> Ehefrau</span>
+  <span class="legend-item"><span class="s-mini">S</span> Sohn ohne Weiterführung des Familiennamens</span>
+
+
+  <span class="legend-item"><span class="gn-mini">N.G.</span> Geburtsjahr unbekannt</span>
+</div>
+
+<div class="instructions-inline">
+  <span class="guide-title instructions-title">Anleitung:</span>
+  <div class="instructions-text">
+    <span class="instruction-item"><span class="toggle-mini">+</span>/<span class="toggle-mini">−</span> öffnet oder schließt die Fortsetzung des Familienzweigs.</span>
+    <span class="instruction-item">Durch Ziehen mit der Maus lässt sich das Diagramm verschieben.</span>
+    <span class="instruction-item">Mit dem Mausrad lässt sich die Ansicht vergrößern oder verkleinern.</span>
+  </div>
+</div>
+
+</div>
+
+<button
+  aria-expanded="true"
+  aria-label="Oberen Diagrammbereich ausblenden"
+  aria-controls="diagramHeader"
+  class="header-collapse-btn"
+  data-hide-label="Oberen Diagrammbereich ausblenden"
+  data-show-label="Oberen Diagrammbereich anzeigen"
+  id="headerCollapse"
+  title="Oberen Diagrammbereich ausblenden"
+  type="button">
+  <span aria-hidden="true" data-collapse-symbol>▲</span>
+  <span class="header-collapse-label" data-collapse-label></span>
+</button>
+
+</header>
+
+<div id="workspace">
+
+<svg aria-label="Filips Stammbaumdiagramm" id="treeSvg" role="img">
+  <g id="viewport">
+    <g id="links"></g>
+    <g id="nodesLayer"></g>
+  </g>
+</svg>
+
+<div aria-live="polite"
+     data-diagram-status
+     id="diagramStatus"
+     role="status">
+</div>
+
+<aside aria-label="Personendaten"
+       class="person-details"
+       hidden
+       id="personDetails">
+
+  <button aria-label="Schließen"
+          class="person-details-close"
+          id="personDetailsClose"
+          type="button">×</button>
+
+  <h2 id="personDetailsName"></h2>
+  <div class="person-details-code" id="personDetailsCode"></div>
+  <div class="person-details-dates" id="personDetailsDates"></div>
+  <div class="person-details-parents" id="personDetailsParents"></div>
+  <div class="person-details-text" hidden id="personDetailsText"></div>
+
+</aside>
+
+</div>
+</main>
+
+<script id="diagramData" type="application/json">
+{
+  "primary": {
+    "5.0": {
+      "id": "5.0",
+      "code": "5.0",
+      "label": "Filip Tandara",
+      "labelEn": "Filip Tandara — Founder of the Livno branch",
+      "father": "Ivan Tandara (moguća veza)",
+      "mother": "",
+      "fatherEn": "Ivan Tandara (possible connection)",
+      "motherEn": "",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "branch founder",
+      "birth": null,
+      "death": null,
+      "detail": "Filip Tandara gilt als Begründer des livnoer Familienzweigs der Tandaras. Er war mit Jela Bralić verheiratet. Sie hatten vier Söhne: Mate, Jure, Jakov und Ivan. In dieser Darstellung wird er als möglicher fünfter Sohn von Ivan Tandara aus Ričice geführt; diese Verwandtschaftsbeziehung ist jedoch nicht durch Dokumente belegt.",
+      "detailEn": "Filip Tandara is regarded as the founder of the Livno branch of the Tandara family. He was married to Jela Bralić. They had four sons: Mate, Jure, Jakov and Ivan. In this presentation he is marked as a possible fifth son of Ivan Tandara of Ričice; that relationship has not been confirmed by documentary evidence.",
+      "type": "primary",
+      "parent": null,
+      "children": [
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4"
+      ],
+      "protected": false
+    },
+    "5.1": {
+      "id": "5.1",
+      "code": "5.1",
+      "label": "Mate Filipov",
+      "labelEn": "Mate — son of Filip",
+      "father": "Filip Tandara",
+      "mother": "Jela r. Bralić",
+      "fatherEn": "Filip Tandara",
+      "motherEn": "Jela Bralić",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": null,
+      "detail": "Mate war Filips ältester Sohn und heiratete Kata Jazvić. Sie hatten eine Tochter namens Jela.",
+      "detailEn": "Mate was Filip’s eldest son. He married Kata Jazvić. They had a daughter, Jela.",
+      "type": "primary",
+      "parent": "5.0",
+      "children": [],
+      "protected": false
+    },
+    "5.2": {
+      "id": "5.2",
+      "code": "5.2",
+      "label": "Jure Filipov",
+      "labelEn": "Jure — son of Filip",
+      "father": "Filip Tandara",
+      "mother": "Jela r. Bralić",
+      "fatherEn": "Filip Tandara",
+      "motherEn": "Jela Bralić",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": "1804",
+      "detail": "Jure, Filips zweiter Sohn, heiratete Manda Matić. Sie hatten nur einen Sohn namens Josip.",
+      "detailEn": "Jure, Filip’s second son, married Manda Matić. They had only one son, Josip.",
+      "type": "primary",
+      "parent": "5.0",
+      "children": [
+        "5.2.1"
+      ],
+      "protected": false
+    },
+    "5.2.1": {
+      "id": "5.2.1",
+      "code": "5.2.1",
+      "label": "Josip Jurin",
+      "labelEn": "Josip — son of Jure",
+      "father": "Jure Filipov",
+      "mother": "Manda r. Matić",
+      "fatherEn": "Jure Filipov",
+      "motherEn": "Manda Matić",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": null,
+      "detail": "Josip, der einzige Sohn von Jure, Filips Sohn, und Manda, geborene Matić, heiratete 1818 Cvita Knežević. Sie hatten drei Söhne: Jakov, Ivan und Antun.",
+      "detailEn": "Josip, the only son of Jure, son of Filip, and Manda, née Matić, married Cvita Knežević in 1818. They had sons Jakov, Ivan and Ante.",
+      "type": "primary",
+      "parent": "5.2",
+      "children": [
+        "5.2.1.2",
+        "5.2.1.3"
+      ],
+      "protected": false
+    },
+    "5.2.1.2": {
+      "id": "5.2.1.2",
+      "code": "5.2.1.2",
+      "label": "Jakov Josipov",
+      "labelEn": "Jakov — son of Josip",
+      "father": "Josip Jurin",
+      "mother": "Cvita Knežević",
+      "fatherEn": "Josip Jurin",
+      "motherEn": "Cvita Knežević",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": null,
+      "detail": "Jakov, Josips ältester Sohn, heiratete Ruža, geborene Rimac. Sie hatten nur einen Sohn namens Josip.",
+      "detailEn": "Jakov, Josip’s eldest son, married Ruža, née Rimac. They had only one son, Josip.",
+      "type": "primary",
+      "parent": "5.2.1",
+      "children": [
+        "5.2.1.2.1"
+      ],
+      "protected": false
+    },
+    "5.2.1.2.1": {
+      "id": "5.2.1.2.1",
+      "code": "5.2.1.2.1",
+      "label": "Josip Jakovljev",
+      "labelEn": "Josip — son of Jakov",
+      "father": "Jakov Josipov",
+      "mother": "Ruža Rimac",
+      "fatherEn": "Jakov Josipov",
+      "motherEn": "Ruža Rimac",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": null,
+      "detail": "Josip Jakovljev heiratete Anđa, geborene Gabrić. Sie hatten zwei Söhne, Jozo und Mate, sowie drei Töchter: Ana, Mara und Anđa.",
+      "detailEn": "Josip, son of Jakov, married Anđa, née Gabrić. They had sons Jozo and Mate and daughters Ana, Mara and Anđa.",
+      "type": "primary",
+      "parent": "5.2.1.2",
+      "children": [
+        "5.2.1.2.1.1"
+      ],
+      "protected": false
+    },
+    "5.2.1.2.1.1": {
+      "id": "5.2.1.2.1.1",
+      "code": "5.2.1.2.1.1",
+      "label": "Jozo Josipov",
+      "labelEn": "Jozo — son of Josip",
+      "father": "Josip Jakovljev",
+      "mother": "Anđa Gabrić",
+      "fatherEn": "Josip Jakovljev",
+      "motherEn": "Anđa Gabrić",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": "1884",
+      "death": null,
+      "detail": "Jozo war zweimal verheiratet. Aus seiner ersten Ehe mit Marica, geborene Mioč, stammte sein Sohn Ante Božidar. Aus seiner zweiten Ehe mit Kata Pastuh stammten sein Sohn Jakov und seine Tochter Ana.",
+      "detailEn": "Jozo married twice. In his first marriage, to Marica, née Mioč, he had a son, Ante Božidar. In his second marriage, to Kata Pastuh, he had a son, Jakov, and a daughter, Ana.",
+      "type": "primary",
+      "parent": "5.2.1.2.1",
+      "children": [],
+      "protected": false
+    },
+    "5.2.1.3": {
+      "id": "5.2.1.3",
+      "code": "5.2.1.3",
+      "label": "Ivan Josipov",
+      "labelEn": "Ivan — son of Josip",
+      "father": "Josip Jurin",
+      "mother": "Cvita Knežević",
+      "fatherEn": "Josip Jurin",
+      "motherEn": "Cvita Knežević",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": null,
+      "detail": "Ivan, der zweite Sohn von Josip und Cvita, geborene Knežević, war zweimal verheiratet. Seine erste Ehe schloss er 1859 mit Ruža Laštrić. Es gibt keine Aufzeichnungen darüber, dass sie Kinder hatten. Später heiratete er Anđa Erceg. Sie hatten zwei Söhne, Jakov und Stipo.",
+      "detailEn": "Ivan, the second son of Josip and Cvita, née Knežević, married twice. He first married Ruža Laštrić in 1859. There is no record that they had children. He later married Anđa Erceg. They had sons Jakov and Stipo.",
+      "type": "primary",
+      "parent": "5.2.1",
+      "children": [
+        "5.2.1.3.1",
+        "5.2.1.3.2"
+      ],
+      "protected": false
+    },
+    "5.2.1.3.1": {
+      "id": "5.2.1.3.1",
+      "code": "5.2.1.3.1",
+      "label": "Jakov Ivanov",
+      "labelEn": "Jakov — son of Ivan",
+      "father": "Ivan Josipov",
+      "mother": "Anđa Erceg",
+      "fatherEn": "Ivan Josipov",
+      "motherEn": "Anđa Erceg",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": null,
+      "detail": "Jakov heiratete 1894 in Livno Ruža Meštrović. Sie hatten acht Kinder: Josip, Stipo, Ivo, Matko, Mara, Joza, Milka und Anđa.",
+      "detailEn": "Jakov married Ruža Meštrović in Livno in 1894. They had eight children: Josip, Stipo, Ivo, Matko, Mara, Joza, Milka and Anđa.",
+      "type": "primary",
+      "parent": "5.2.1.3",
+      "children": [
+        "5.2.1.3.1.4"
+      ],
+      "protected": false
+    },
+    "5.2.1.3.1.4": {
+      "id": "5.2.1.3.1.4",
+      "code": "5.2.1.3.1.4",
+      "label": "Matko Jakovljev",
+      "labelEn": "Matko — son of Jakov",
+      "father": "Jakov Ivanov",
+      "mother": "Ruža r. Meštrović",
+      "fatherEn": "Jakov Ivanov",
+      "motherEn": "Ruža Meštrović",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": "1911",
+      "death": null,
+      "detail": "Matko, Jakovs jüngster Sohn, heiratete Anica Župčić. Sie hatten einen Sohn namens Krešimir und eine Tochter namens Davorka.",
+      "detailEn": "Matko, Jakov’s youngest son, married Anica Župčić. They had a son, Krešimir, and a daughter, Davorka.",
+      "type": "primary",
+      "parent": "5.2.1.3.1",
+      "children": [
+        "5.2.1.3.1.4.1"
+      ],
+      "protected": false
+    },
+    "5.2.1.3.1.4.1": {
+      "id": "5.2.1.3.1.4.1",
+      "code": "5.2.1.3.1.4.1",
+      "label": "Krešimir Matkov",
+      "labelEn": "Krešimir — son of Matko",
+      "father": "Matko Jakovljev",
+      "mother": "Anica r. Župčić",
+      "fatherEn": "Matko Jakovljev",
+      "motherEn": "Anica Župčić",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null, "death": null, "dateProtected": true,
+      "detail": "Krešimir heiratete Biserka Kučak. Sie hatten Nachkommen; die Angaben zu lebenden Familienmitgliedern sind geschützt. Die Familie zog nach Sisak.",
+      "detailEn": "Krešimir married Biserka Kučak. They had descendants; details of living family members are protected. The family moved to Sisak.",
+      "type": "primary",
+      "parent": "5.2.1.3.1.4",
+      "children": [
+        "5.2.1.3.1.4.1.1"
+      ],
+      "protected": false
+    },
+    "5.2.1.3.1.4.1.1": {
+      "id": "5.2.1.3.1.4.1.1",
+      "code": "5.2.1.3.1.4.1.1",
+      "type": "primary",
+      "parent": "5.2.1.3.1.4.1",
+      "children": [],
+      "label": "Geschützte personenbezogene Daten",
+      "labelEn": "Protected personal data",
+      "birth": null,
+      "death": null,
+      "protected": true,
+      "detail": "",
+      "detailEn": "",
+      "father": "",
+      "mother": "",
+      "fatherEn": "",
+      "motherEn": "",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "nositelj prezimena u dijagramu"
+    },
+    "5.2.1.3.2": {
+      "id": "5.2.1.3.2",
+      "code": "5.2.1.3.2",
+      "label": "Stipo Ivanov",
+      "labelEn": "Stipo — son of Ivan",
+      "father": "Ivan Josipov",
+      "mother": "Anđa Erceg",
+      "fatherEn": "Ivan Josipov",
+      "motherEn": "Anđa Erceg",
+      "relation": "Namensgeber des Familienzweigs im Diagramm",
+      "relationEn": "surname holder in the diagram",
+      "birth": null,
+      "death": null,
+      "detail": "Stipo, der jüngere Sohn von Ivan und Anđa, geborene Erceg, heiratete Ana, geborene Sučić. Sie hatten drei Söhne: Ivo, Pero und Zvonimir, sowie drei Töchter: Iva, Anđa und Ljubica.",
+      "detailEn": "Stipo, the younger son of Ivan and Anđa, née Erceg, married Ana, née Sučić. They had sons Ivo, Pero and Zvonimir and daughters Iva, Anđa and Ljubica.",
+      "type": "primary",
+      "parent": "5.2.1.3",
+      "children": [
+        "5.2.1.3.2.3"
+      ],
