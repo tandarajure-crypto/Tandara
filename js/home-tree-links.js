@@ -9,7 +9,7 @@
   if (!tree || tree.dataset.homeTreeReady === "true") return;
 
   const pathFile = window.location.pathname.split("/").pop() || "index.html";
-  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\\.html$|$)/i);
+  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$|$)/i);
   const languageCode = value => {
     const code = String(value || "").trim().toLowerCase().slice(0, 2);
     return ["hr", "en", "de"].includes(code) ? code : null;
