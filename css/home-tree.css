@@ -1,0 +1,249 @@
+
+/* =========================================================
+   TANDARA — HOME TREE
+
+   Stil samo za početno obiteljsko stablo.
+
+   OVA DATOTEKA SADRŽI:
+   - okvir slike početnog stabla
+   - 10 hotspotova
+   - njihove stvarne pozicije
+   - hover / focus ponašanje
+
+   OVA DATOTEKA NE SADRŽI:
+   - lijevi stupac
+   - glavni izbornik
+   - rodoslovne grane
+   - dijagrame
+   - print
+   - mobilne zakrpe
+   - posebne popravke drugih stranica
+   ========================================================= */
+
+
+/* =========================================================
+   STRANICA STABLA
+   ========================================================= */
+
+.home-tree-page {
+  min-width: 0;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   OKVIR SLIKE
+   ========================================================= */
+
+.home-tree {
+  position: relative;
+
+  width: 100%;
+  max-width: 1672px;
+
+  margin: 0 auto;
+
+  line-height: 0;
+}
+
+.home-tree__image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   ZAJEDNIČKI HOTSPOT
+   ========================================================= */
+
+.home-tree__hotspot {
+  position: absolute;
+  z-index: 2;
+
+  box-sizing: border-box;
+
+  display: block;
+
+  background: transparent;
+
+  border:
+    2px solid transparent;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  touch-action: manipulation;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.home-tree__hotspot:hover,
+.home-tree__hotspot:focus-visible {
+  background:
+    rgba(212, 175, 55, 0.16);
+
+  border-color:
+    #d4af37;
+}
+
+.home-tree__hotspot:focus-visible {
+  outline:
+    3px solid #d4af37;
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   ČETIRI GLAVNE GRANE
+   ========================================================= */
+
+.home-tree__hotspot--jurina,
+.home-tree__hotspot--petrova {
+  top: 31.75%;
+
+  width: 19.5652%;
+  height: 10.15%;
+}
+
+.home-tree__hotspot--antina,
+.home-tree__hotspot--matina {
+  top: 48.1%;
+
+  width: 19.5652%;
+  height: 10.15%;
+}
+
+.home-tree__hotspot--jurina,
+.home-tree__hotspot--antina {
+  left: 9.2174%;
+}
+
+.home-tree__hotspot--petrova,
+.home-tree__hotspot--matina {
+  left: 34.8696%;
+}
+
+
+/* =========================================================
+   IVAN TANDARA
+   ========================================================= */
+
+.home-tree__hotspot--ivanov {
+  top: 44%;
+  left: 68.4783%;
+
+  width: 12.7174%;
+  height: 9.6%;
+}
+
+
+/* =========================================================
+   ČETIRI DIJAGRAMA GRANA
+   ========================================================= */
+
+.home-tree__hotspot--jurin {
+  top: 6.85%;
+  left: 83.8804%;
+
+  width: 11.087%;
+  height: 9%;
+}
+
+.home-tree__hotspot--petrov {
+  top: 26.7%;
+  left: 84.0978%;
+
+  width: 11.087%;
+  height: 9%;
+}
+
+.home-tree__hotspot--antin {
+  top: 59.4%;
+  left: 84.0978%;
+
+  width: 11.087%;
+  height: 9%;
+}
+
+.home-tree__hotspot--matin {
+  top: 82.2%;
+  left: 84.0978%;
+
+  width: 11.087%;
+  height: 9%;
+}
+
+
+/* =========================================================
+   LIVANJSKE TANDARE
+   ========================================================= */
+
+.home-tree__hotspot--livanjske {
+  top: 68%;
+  left: 45%;
+
+  width: 8%;
+  height: 5.2%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1px;
+
+  overflow: hidden;
+
+  background:
+    rgba(248, 232, 190, 0.92);
+
+  border-color:
+    #7a5a2f;
+  border-radius: 8px;
+
+  box-shadow:
+    0 3px 8px
+    rgba(0, 0, 0, 0.28);
+
+  color:
+    #3b2a1a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      5px,
+      0.8vw,
+      13px
+    );
+
+  font-weight: 700;
+  line-height: 1.05;
+
+  text-align: center;
+  white-space: normal;
+}
+
+.home-tree__hotspot--livanjske:hover,
+.home-tree__hotspot--livanjske:focus-visible {
+  background:
+    #d4af37;
+
+  color:
+    #ffffff;
+
+  transform:
+    scale(1.04);
+}
