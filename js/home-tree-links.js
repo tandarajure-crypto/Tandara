@@ -1,5 +1,6 @@
 /* TANDARA — izravne poveznice početnog stabla
-   Jezik se čita isključivo iz atributa <html lang>.
+   Jezik preuzima iz zajedničkog TandaraLanguage autoriteta.
+   HTML lang ostaje siguran fallback za samostalni prikaz.
    Svaki okvir ima unaprijed određenu adresu za HR, EN i DE.
 */
 (() => {
@@ -7,8 +8,18 @@
   const tree = document.querySelector("[data-home-tree]");
   if (!tree || tree.dataset.homeTreeReady === "true") return;
 
-  const lang = (document.documentElement.lang || "hr").toLowerCase().slice(0, 2);
-  const language = ["hr", "en", "de"].includes(lang) ? lang : "hr";
+  const pathFile = window.location.pathname.split("/").pop() || "index.html";
+  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\\.html$|$)/i);
+  const languageCode = value => {
+    const code = String(value || "").trim().toLowerCase().slice(0, 2);
+    return ["hr", "en", "de"].includes(code) ? code : null;
+  };
+  const language =
+    window.TandaraLanguage?.get() ||
+    languageCode(pathMatch?.[1]) ||
+    languageCode(document.documentElement.getAttribute("lang")) ||
+    languageCode(document.body?.dataset.lang) ||
+    "hr";
   const routes = [
     { key:"jurina", labels:{hr:"Jurina grana",en:"Jure's branch",de:"Jurinas Familienzweig"}, files:{hr:"jurinagrana.html",en:"jurinagrana-en.html",de:"jurinagrana-de.html"} },
     { key:"petrova", labels:{hr:"Petrova grana",en:"Petar's branch",de:"Peters Familienzweig"}, files:{hr:"petrovagrana.html",en:"petrovagrana-en.html",de:"petrovagrana-de.html"} },
