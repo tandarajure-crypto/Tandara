@@ -149,13 +149,6 @@ try {
             for (const nav of state.nav) {
               const actualUrl = new URL(nav.href,url);
               const actualFile = actualUrl.pathname.split('/').pop();
-              if (nav.key === 'instructions' && lang === 'de') {
-                const expectedPdf = 'https://tandarajure-crypto.github.io/tandara-common/Pdf/WEB-tandara.anleitung.pdf';
-                if (actualUrl.href !== expectedPdf) {
-                  throw Error('German instructions expected '+expectedPdf+' got '+actualUrl.href);
-                }
-                continue;
-              }
               const expectedFile = routeByKey[nav.key]?.[lang];
               if (!expectedFile || actualFile!==expectedFile) {
                 throw Error('menu '+nav.key+' expected '+expectedFile+' got '+actualFile);
