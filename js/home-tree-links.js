@@ -25,7 +25,7 @@
     { key:"petrova", labels:{hr:"Petrova grana",en:"Petar's branch",de:"Peters Familienzweig"}, files:{hr:"petrovagrana.html",en:"petrovagrana-en.html",de:"petrovagrana-de.html"} },
     { key:"antina", labels:{hr:"Antina grana",en:"Ante's branch",de:"Antes Familienzweig"}, files:{hr:"antinagrana.html",en:"antinagrana-en.html",de:"antinagrana-de.html"} },
     { key:"matina", labels:{hr:"Matina grana",en:"Mate's branch",de:"Mates Familienzweig"}, files:{hr:"matinagrana.html",en:"matinagrana-en.html",de:"matinagrana-de.html"} },
-    { key:"ivanov", labels:{hr:"Ivan Tandara",en:"Ivan Tandara",de:"Ivan Tandara"}, files:{hr:"box1.html",en:"box1-en.html",de:"index-de.html"} },
+    { key:"ivanov", labels:{hr:"Ivan Tandara",en:"Ivan Tandara",de:"Ivan Tandara"}, files:{hr:"box1.html",en:"box1-en.html",de:"box1-de.html"} },
     { key:"jurin", labels:{hr:"Jure Tandara",en:"Jure Tandara",de:"Jure Tandara"}, files:{hr:"box2a.html",en:"box2a-en.html",de:"box2a-de.html"} },
     { key:"petrov", labels:{hr:"Petar Tandara",en:"Petar Tandara",de:"Petar Tandara"}, files:{hr:"box2b.html",en:"box2b-en.html",de:"box2b-de.html"} },
     { key:"antin", labels:{hr:"Ante Tandara",en:"Ante Tandara",de:"Ante Tandara"}, files:{hr:"box2c.html",en:"box2c-en.html",de:"box2c-de.html"} },
