@@ -20,7 +20,7 @@ const pages = [
 ];
 const routes = {
   author: 'autor-de.html',
-  instructions: 'https://tandarajure-crypto.github.io/tandara-common/Pdf/WEB-tandara.anleitung.pdf',
+  instructions: 'upute-de.html',
   origin: 'podrijetlo-de.html',
   genealogy: 'rodoslovlje-de.html',
   migration: 'migracije-de.html',
@@ -104,21 +104,32 @@ try {
           continue;
         }
         const expectedRoute = routes[key];
-        const actualRoute = key === 'instructions' ? new URL(href,host+'/site/').href : new URL(href,host+'/site/').pathname.split('/').pop();
+        const actualRoute = new URL(href,host+'/site/').pathname.split('/').pop();
         if (actualRoute !== expectedRoute) {
           failures.push(source+' -> '+key+' href expected '+routes[key]+' got '+actualRoute);
           continue;
         }
         const currentFile = new URL(page.url()).pathname.split('/').pop();
         if (key === 'instructions') {
-          const targetUrl = expectedRoute;
-          const responsePromise = page.waitForResponse(response => response.url() === targetUrl && response.status() === 200, {timeout:10000});
-          const [pdfResponse] = await Promise.all([responsePromise, link.click({noWaitAfter:true})]);
-          const contentType = pdfResponse.headers()['content-type'] || '';
-          if (!contentType.toLowerCase().includes('application/pdf')) {
-            throw Error('German guide response has content type '+contentType);
+          const targetUrl = new URL(href, page.url()).href;
+          await Promise.all([
+            page.waitForURL(url => url.href === targetUrl, {timeout:1500}),
+            link.click({noWaitAfter:true})
+          ]);
+          const targetResponse = await page.request.get(targetUrl);
+          if (targetResponse.status() !== 200) throw Error('German guide page HTTP '+targetResponse.status());
+          const pdfFrame = page.locator('iframe.instructions-pdf-frame');
+          const pdfSrc = await pdfFrame.getAttribute('src');
+          if (!pdfSrc || !pdfSrc.includes('WEB-tandara.anleitung.pdf')) {
+            throw Error('German guide page does not embed the German PDF');
           }
-          console.log('PASS '+source+' -> instructions -> German PDF');
+          const pdfUrl = new URL(pdfSrc, page.url()).href;
+          const pdfResponse = await page.request.get(pdfUrl);
+          const contentType = pdfResponse.headers()['content-type'] || '';
+          if (pdfResponse.status() !== 200 || !contentType.toLowerCase().includes('application/pdf')) {
+            throw Error('German PDF unavailable: HTTP '+pdfResponse.status()+' '+contentType);
+          }
+          console.log('PASS '+source+' -> instructions -> German guide page and PDF');
           await page.goto(host+'/site/'+source,{waitUntil:'domcontentloaded'});
           await page.waitForSelector('#site-shell [data-nav-key]',{state:'attached'});
           continue;
